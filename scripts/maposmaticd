@@ -2,7 +2,7 @@
 # coding: utf-8
 
 import time, os , sys, select, signal
-from datetime import datetime
+from datetime import datetime, timedelta
 
 from www.maposmatic.models import MapRenderingJob
 from www.settings import RENDERING_RESULT_PATH, LOG, RENDERING_RESULT_FORMATS
@@ -57,7 +57,7 @@ def render_job(job):
                 return
         finally:
             print "end of process %d" % pid
-            (pid, status) = os.waitpid(pid, os.WNOHANG)
+            (pid, status) = os.waitpid(pid, 0)
             resultmsg = "unknown error"
             if os.WIFEXITED(status):
                 error_code = os.WEXITSTATUS(status)
@@ -71,6 +71,27 @@ def render_job(job):
             job.end_rendering(resultmsg)
             return
 
+# This function checks that the total size of the files in
+# RENDERING_RESULT_PATH does not exceed 80% of
+# RENDERING_RESULT_MAX_SIZE_GB. If it does, the function removes as
+# many files as needed, oldest first
+def cleanup_files():
+    files = [ os.path.join(RENDERING_RESULT_PATH, f) for f in os.listdir(RENDERING_RESULT_PATH)]
+    files = [(f, os.stat(f).st_ctime, os.stat(f).st_size) for f in files]
+    size = reduce(lambda x, y: x + y[2], files, 0)
+    # threshold = 0.8 * RENDERING_RESULT_MAX_SIZE_GB * 1024 * 1024 * 1024
+    threshold = 10 * 1024 * 1024
+    if size < threshold:
+        return
+    files.sort(lambda x, y: cmp(x[1], y[1]))
+    for f in files:
+        os.remove(os.path.join(RENDERING_RESULT_PATH, f[0]))
+        size -= f[2]
+        logdaemon.debug("remove '%s', %f GB consumed over a %f GB threshold" % \
+                            (f[0], (size / 1024 / 1024 / 1024), (threshold / 1024 / 1024 / 1024)))
+        if size < threshold:
+            break
+
 if not os.path.isdir(RENDERING_RESULT_PATH):
     LOG.error("ERROR: please set RENDERING_RESULT_PATH ('%s') to an existing directory" % \
                         RENDERING_RESULT_PATH)
@@ -78,7 +99,22 @@ if not os.path.isdir(RENDERING_RESULT_PATH):
 
 LOG.info("started")
 
+# Reset the job that might have been left into the "rendering" state
+# due to a daemon interruption back into the "waiting for rendering"
+# state
+jobs = MapRenderingJob.objects.filter(status=1)
+for job in jobs:
+    logdaemon.debug("reset job %d into waiting for rendering state" % job.id)
+    job.status = 0
+    job.save()
+
+last_file_cleanup = None
+
 while True:
+    # Test each 20 seconds if we need to cleanup files
+    if not last_file_cleanup or last_file_cleanup < (datetime.now() - timedelta(0, 20)):
+        cleanup_files()
+        last_file_cleanup = datetime.now()
     jobs = MapRenderingJob.objects.to_render()
     if not jobs:
         time.sleep(10)

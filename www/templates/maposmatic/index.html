@@ -1,7 +1,7 @@
 {% extends "maposmatic/base.html" %}
 
 {% block extrajs %}
-function generation_mode_switch(mode)
+function area_selection_mode_switch(mode)
 {
   if (mode == 'bbox-mode')
   {
@@ -27,32 +27,32 @@ class="activelink"
 
 <table>
   <tr>
-    <td>Nom de la carte</td>
+    <td>Title for the generated map</td>
     <td>{{ form.maptitle }}</td>
   </tr>
   <tr>
-    <td>Mode de génération</td>
+    <td>Area selection mode</td>
     <td>
-      <input type="radio" name="generation-mode" value="admin" checked="checked" onclick="generation_mode_switch('admin-mode');"/>Basé sur la limite administrative<br/>
-      <input type="radio" name="generation-mode" value="bbox" onclick="generation_mode_switch('bbox-mode');"/>Basé sur une <i>bouding box</i>
+      <input type="radio" name="area-selection-mode" value="admin" checked="checked" onclick="area_selection_mode_switch('admin-mode');"/>Based on administrative limit<br/>
+      <input type="radio" name="area-selection-mode" value="bbox" onclick="area_selection_mode_switch('bbox-mode');"/>Based on a bounding box <i>bouding box</i>
     </td>
   </tr>
   <tr id="admin-mode">
-    <td>Nom de la ville</td>
+    <td>City name</td>
     <td>{{ form.administrative_city }}</td>
   </tr>
   <tr id="bbox-mode" style="display: none;">
     <td>Bounding box</td>
     <td style="text-align: center">
-      <input type="text" id="id_lat_upper_left" style="width: 100px"/><br/>
-      <input type="text" id="id_lon_upper_left"  style="width: 100px"/>
+      <input type="text" id="id_lat_upper_left" style="width: 100px; margin-bottom: 5px;"/><br/>
+      <input type="text" id="id_lon_upper_left"  style="width: 100px; margin-bottom: 5px;"/>
       <input type="text" id="id_lon_bottom_right"  style="width: 100px"/><br/>
       <input type="text" id="id_lat_bottom_right"  style="width: 100px"/>
     </td>
   </tr>
   <tr>
     <td></td>
-    <td><input type="submit" value="Générer"/></td>
+    <td><input type="submit" value="Generate"/></td>
   </tr>
 </table>
 
