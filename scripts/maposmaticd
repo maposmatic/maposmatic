@@ -14,7 +14,7 @@ def handler(signum, frame, pipe_write):
 
 def render_job_process(job):
 
-    if job.administrative_city is None:
+    if job.administrative_city == "":
         bbox = ocitysmap.coords.BoundingBox(job.lat_upper_left,
                                             job.lon_upper_left,
                                             job.lat_bottom_right,

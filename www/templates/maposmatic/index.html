@@ -40,14 +40,21 @@ class="activelink"
   <tr id="admin-mode">
     <td>City name</td>
     <td>{{ form.administrative_city }}</td>
+    <td>{{ form.administrative_city.errors }}</td>
   </tr>
   <tr id="bbox-mode" style="display: none;">
     <td>Bounding box</td>
     <td style="text-align: center">
-      <input type="text" id="id_lat_upper_left" style="width: 100px; margin-bottom: 5px;"/><br/>
-      <input type="text" id="id_lon_upper_left"  style="width: 100px; margin-bottom: 5px;"/>
-      <input type="text" id="id_lon_bottom_right"  style="width: 100px"/><br/>
-      <input type="text" id="id_lat_bottom_right"  style="width: 100px"/>
+      <input type="text" name="lat_upper_left" style="width: 100px; margin-bottom: 5px;"/><br/>
+      <input type="text" name="lon_upper_left"  style="width: 100px; margin-bottom: 5px;"/>
+      <input type="text" name="lon_bottom_right"  style="width: 100px"/><br/>
+      <input type="text" name="lat_bottom_right"  style="width: 100px"/>
+    </td>
+    <td>
+      {{ form.lat_upper_left.errors }}
+      {{ form.lon_upper_left.errors }}
+      {{ form.lat_bottom_right.errors }}
+      {{ form.lon_bottom_right.errors }}
     </td>
   </tr>
   <tr>

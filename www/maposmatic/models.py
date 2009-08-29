@@ -24,7 +24,7 @@ class MapRenderingJob(models.Model):
         )
 
     maptitle = models.CharField(max_length=256)
-    administrative_city = models.CharField(max_length=256, blank=True, null=True)
+    administrative_city = models.CharField(max_length=256, blank=True)
     lat_upper_left = models.FloatField(blank=True, null=True)
     lon_upper_left = models.FloatField(blank=True, null=True)
     lat_bottom_right = models.FloatField(blank=True, null=True)
