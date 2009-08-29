@@ -79,8 +79,9 @@ class MapRenderingJob(models.Model):
     def output_files(self):
         allfiles = []
         for format in www.settings.RENDERING_RESULT_FORMATS:
-            allfiles.append((www.settings.RENDERING_RESULT_URL + "/" + self.files_prefix() + "." + format,
-                             self.maptitle + " %s Map" % format.upper()))
+            if format != 'csv':
+                allfiles.append((www.settings.RENDERING_RESULT_URL + "/" + self.files_prefix() + "." + format,
+                                 self.maptitle + " %s Map" % format.upper()))
             allfiles.append((www.settings.RENDERING_RESULT_URL + "/" + self.files_prefix() + "_index." + format,
                              self.maptitle + " %s Index" % format.upper()))
         return allfiles
