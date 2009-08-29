@@ -16,4 +16,10 @@ urlpatterns = patterns('',
     (r'^jobs/$', maposmatic.views.all_jobs),
     (r'^maps/$', maposmatic.views.all_maps),
     (r'^about/$', maposmatic.views.about),
+
+
+    (r'^results/(?P<path>.*)$',
+     'django.views.static.serve',
+     {'document_root': '/tmp/foo/'}),
+
 )

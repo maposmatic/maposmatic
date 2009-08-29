@@ -1,5 +1,6 @@
 from django.db import models
 from datetime import datetime
+import www.settings
 import re
 
 import logging
@@ -59,6 +60,30 @@ class MapRenderingJob(models.Model):
         self.endofrendering_time = datetime.now()
         self.resultmsg = resultmsg
         self.save()
+
+    def is_waiting(self):
+        return self.status == 0
+
+    def is_rendering(self):
+        return self.status == 1
+
+    def is_done(self):
+        return self.status == 2
+
+    def is_done_ok(self):
+        return self.is_done() and self.resultmsg == "ok"
+
+    def is_done_failed(self):
+        return self.is_done() and self.resultmsg != "ok"
+
+    def output_files(self):
+        allfiles = []
+        for format in www.settings.RENDERING_RESULT_FORMATS:
+            allfiles.append((www.settings.RENDERING_RESULT_URL + "/" + self.files_prefix() + "." + format,
+                             self.maptitle + " %s Map" % format.upper()))
+            allfiles.append((www.settings.RENDERING_RESULT_URL + "/" + self.files_prefix() + "_index." + format,
+                             self.maptitle + " %s Index" % format.upper()))
+        return allfiles
 
     def current_position_in_queue(self):
         return MapRenderingJob.objects.filter(status=0).filter(index_queue_at_submission__lte=self.index_queue_at_submission).count()

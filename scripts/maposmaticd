@@ -5,7 +5,7 @@ import time, os , sys, select, signal
 from datetime import datetime
 
 from www.maposmatic.models import MapRenderingJob
-from www.settings import RENDERING_RESULT_PATH, logdaemon
+from www.settings import RENDERING_RESULT_PATH, logdaemon, RENDERING_RESULT_FORMATS
 import ocitysmap
 
 def handler(signum, frame, pipe_write):
@@ -26,10 +26,10 @@ def render_job_process(job):
     outfile_prefix = os.path.join(RENDERING_RESULT_PATH, job.files_prefix())
 
     _map = renderer.render_into_files(job.maptitle, outfile_prefix,
-                                      ["png"], "zoom:16")
+                                      RENDERING_RESULT_FORMATS, "zoom:16")
 
     renderer.render_index(job.maptitle, outfile_prefix,
-                          ["png"], _map.width, _map.height)
+                          RENDERING_RESULT_FORMATS, _map.width, _map.height)
 
     sys.exit(0)
 

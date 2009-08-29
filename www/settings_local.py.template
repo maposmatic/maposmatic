@@ -14,6 +14,7 @@ DATABASE_PORT = ''             # Set to empty string for default. Not used with 
 
 RENDERING_RESULT_PATH = '/tmp/direc/tory'
 RENDERING_RESULT_URL = 'http://host.name/dir/ec/tory'
+RENDERING_RESULT_FORMATS = ['png', 'svg', 'pdf']
 
 WWW_LOGFILE = '/tmp/maposmatic-www.log'
 WWW_LOGLEVEL = logging.INFO

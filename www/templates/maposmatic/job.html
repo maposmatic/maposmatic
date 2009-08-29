@@ -7,7 +7,7 @@ class="activelink"
 {% endblock %}
 
 {% block page %}
-<h1>Map Status</h1>
+<h1>Map <i>{{ job.maptitle }}</i> Status</h1>
 
 <table>
   <tr>
@@ -41,24 +41,24 @@ class="activelink"
   <tr>
     <td>Start of rendering time</td>
     <td>
-      {% ifequal job.status 0 %}
+      {% if job.is_waiting %}
       Rendering not started yet
       {% else %}
       {{ job.startofrendering_time|date:"l d M Y \a\t H:i:s" }}
-      {% endifequal %}
+      {% endif %}
     </td>
   </tr>
   <tr>
     <td>End of rendering time</td>
     <td>
-      {% ifequal job.status 2 %}
+      {% if job.is_done %}
       {{ job.endofrendering_time|date:"l d M Y \a\t H:i:s" }}
       {% else %}
       Rendering not finished yet
-      {% endifequal %}
+      {% endif %}
     </td>
   </tr>
-  {% ifequal job.status 0 %}
+  {% if job.is_waiting %}
   <tr>
     <td>Current position in queue</td>
     <td>{{ job.current_position_in_queue }}
@@ -67,7 +67,19 @@ class="activelink"
     <td>Estimated rendering time completion</td>
     <td>{{ job.rendering_estimated_start_time|timeuntil }}</td>
   </tr>
-  {% endifequal %}
+  {% endif %}
+  {% if job.is_done_ok %}
+  <tr>
+    <td>Result files</td>
+    <td>
+      <ul>
+      {% for file in job.output_files %}
+	<li><a href="{{file.0}}">{{file.1}}</a></li>
+      {% endfor %}
+      </ul>
+    </td>
+  </tr>
+  {% endif %}
 
 </table>
 
