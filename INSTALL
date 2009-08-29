@@ -1,7 +1,16 @@
+INSTALLATION NOTES
+==================
 
 www/ contains the Django web application. The file
 www/settings_local.py.template must be copied to www/settings_local.py
 and adapted to the installation configuration. Likewise for the file
 www/maposmatic.wsgi-template
 
-scripts/ contains the crontab job that executes the map renderings.
+The database must be initialize with the tables needed for MapOSMatic,
+using :
+
+ ./www/manage.py syncdb
+
+scripts/maposmaticd is the daemon that should be run in the
+background. It will fetch rendering jobs from the database and put the
+results in a directory, as specified in the settings_local.py file.
