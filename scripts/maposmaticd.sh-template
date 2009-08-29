@@ -1,0 +1,15 @@
+#! /bin/sh
+
+_here=`dirname "$0"`
+_pydir=`cd "$_here"/.. && /bin/pwd`
+
+PYTHONPATH="$PYTHONPATH:/path/to/ocitysmap:$_pydir"
+export PYTHONPATH
+
+DJANGO_SETTINGS_MODULE="www.settings"
+export DJANGO_SETTINGS_MODULE
+
+MAPOSMATIC_LOG_FILE="/tmp/maposmaticd.log"
+export MAPOSMATIC_LOG_FILE
+
+exec "$_here"/maposmaticd
