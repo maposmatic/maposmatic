@@ -19,9 +19,9 @@ def render_job_process(job):
                                             job.lon_upper_left,
                                             job.lat_bottom_right,
                                             job.lon_bottom_right)
-        renderer = ocitysmap.OCitySMap(None, bbox)
+        renderer = ocitysmap.OCitySMap(boundingbox=bbox)
     else:
-        renderer = ocitysmap.OCitySMap(job.administrative_city, None)
+        renderer = ocitysmap.OCitySMap(city_name=job.administrative_city)
 
     outfile_prefix = os.path.join(RENDERING_RESULT_PATH, job.files_prefix())
 
