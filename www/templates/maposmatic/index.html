@@ -14,10 +14,24 @@ function area_selection_mode_switch(mode)
     document.getElementById('bbox-mode').style.display = 'none';
   }
 }
+
+function pageinit()
+{
+  document.getElementById('id_mode_0').setAttribute('onclick', "area_selection_mode_switch('admin-mode')");
+  document.getElementById('id_mode_1').setAttribute('onclick', "area_selection_mode_switch('bbox-mode')");
+  if (document.getElementById('id_mode_0').getAttribute('checked') == 'checked')
+    area_selection_mode_switch('admin-mode');
+  else if (document.getElementById('id_mode_1').getAttribute('checked') == 'checked')
+    area_selection_mode_switch('bbox-mode');
+}
 {% endblock %}
 
 {% block menu-home %}
 class="activelink"
+{% endblock %}
+
+{% block extrabody %}
+onload='pageinit()'
 {% endblock %}
 
 {% block page %}
@@ -29,12 +43,12 @@ class="activelink"
   <tr>
     <td>Title for the generated map</td>
     <td>{{ form.maptitle }}</td>
+    <td>{{ form.maptitle.errors }}</td>
   </tr>
   <tr>
     <td>Area selection mode</td>
     <td>
-      <input type="radio" name="area-selection-mode" value="admin" checked="checked" onclick="area_selection_mode_switch('admin-mode');"/>Based on administrative limit<br/>
-      <input type="radio" name="area-selection-mode" value="bbox" onclick="area_selection_mode_switch('bbox-mode');"/>Based on a bounding box <i>bouding box</i>
+      {{ form.mode }}
     </td>
   </tr>
   <tr id="admin-mode">
@@ -45,16 +59,10 @@ class="activelink"
   <tr id="bbox-mode" style="display: none;">
     <td>Bounding box</td>
     <td style="text-align: center">
-      <input type="text" name="lat_upper_left" style="width: 100px; margin-bottom: 5px;"/><br/>
-      <input type="text" name="lon_upper_left"  style="width: 100px; margin-bottom: 5px;"/>
-      <input type="text" name="lon_bottom_right"  style="width: 100px"/><br/>
-      <input type="text" name="lat_bottom_right"  style="width: 100px"/>
-    </td>
-    <td>
-      {{ form.lat_upper_left.errors }}
-      {{ form.lon_upper_left.errors }}
-      {{ form.lat_bottom_right.errors }}
-      {{ form.lon_bottom_right.errors }}
+      <input type="text" name="lat_upper_left" style="width: 100px; margin-bottom: 5px;"/>{{ form.lat_upper_left.errors }}<br/>
+      <input type="text" name="lon_upper_left"  style="width: 100px; margin-bottom: 5px;"/>{{ form.lon_upper_left.errors }}
+      <input type="text" name="lon_bottom_right"  style="width: 100px"/>{{ form.lat_bottom_right.errors }}<br/>
+      <input type="text" name="lat_bottom_right"  style="width: 100px"/>{{ form.lon_bottom_right.errors }}
     </td>
   </tr>
   <tr>

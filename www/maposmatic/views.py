@@ -1,6 +1,7 @@
 # Create your views here.
 
-from django.forms import ModelForm
+from django.forms.util import ErrorList
+from django.forms import ChoiceField, RadioSelect, ModelForm, ValidationError
 from django.shortcuts import get_object_or_404, render_to_response
 from django.http import HttpResponseRedirect
 from www.maposmatic.models import MapRenderingJob
@@ -11,6 +12,31 @@ class MapRenderingJobForm(ModelForm):
         model = MapRenderingJob
         fields = ('maptitle', 'administrative_city', 'lat_upper_left', 'lon_upper_left',
                   'lat_bottom_right', 'lon_bottom_right')
+
+    modes = (('admin', 'Administrative boundary'),
+             ('bbox', 'Bounding box'))
+    mode = ChoiceField(choices=modes, initial='admin', widget=RadioSelect)
+
+    def clean(self):
+        cleaned_data = self.cleaned_data
+
+        mode = cleaned_data.get("mode")
+        city = cleaned_data.get("administrative_city")
+
+        if mode == 'admin' and city == "":
+            msg = u"Administrative city required"
+            self._errors["administrative_city"] = ErrorList([msg])
+            del cleaned_data["administrative_city"]
+
+        if mode == 'bbox':
+            for f in [ "lat_upper_left", "lon_upper_left",
+                       "lat_bottom_right", "lon_bottom_right" ]:
+                val = cleaned_data.get(f)
+                msg = u"Required"
+                self._errors[f] = ErrorList([msg])
+                del cleaned_data[f]
+
+        return cleaned_data
 
 def index(request):
     if request.method == 'POST':
