@@ -13,6 +13,7 @@ def handler(signum, frame, pipe_write):
     f.write("end")
 
 def render_job_process(job):
+
     if job.administrative_city is None:
         bbox = ocitysmap.coords.BoundingBox(job.lat_upper_left,
                                             job.lon_upper_left,
@@ -34,9 +35,7 @@ def render_job_process(job):
 
 def render_job(job):
     print 'Rendering "%s"...' % job.maptitle
-    job.status = 1
-    job.startofrendering_time = datetime.now()
-    job.save()
+    job.start_rendering()
     (pipe_read, pipe_write) = os.pipe()
     signal.signal(signal.SIGCHLD,
                   lambda signal, frame: handler(signal, frame, pipe_write))
@@ -52,36 +51,22 @@ def render_job(job):
                 os.kill(pid, signal.SIGTERM)
                 time.sleep(2)
                 os.kill(pid, signal.SIGKILL)
-                job.resultmsg = "rendering took too long, killed"
-                job.status = 2
-                job.save()
+                job.end_rendering("rendering took too long, killed")
                 return
         finally:
             print "end of process %d" % pid
             (pid, status) = os.waitpid(pid, os.WNOHANG)
+            resultmsg = "unknown error"
             if os.WIFEXITED(status):
                 error_code = os.WEXITSTATUS(status)
                 if error_code == 0:
-                    job.resultmsg = "ok"
+                    resultmsg = "ok"
                 else:
-                    job.resultmsg = "rendering failed with %d" % error_code
+                    resultmsg = "rendering failed with %d" % error_code
             elif os.WIFSIGNALED(status):
-                job.resultmsg = "rendering killed by signal %d" % os.WTERMSIG(status)
-            job.status = 2
-            job.save()
+                resultmsg = "rendering killed by signal %d" % os.WTERMSIG(status)
+            job.end_rendering(resultmsg)
             return
-
-# hakipu (c) d.sespere
-# j = MapRenderingJob()
-# j.maptitle = "Carte de test"
-# j.lat_upper_left = 44.4883
-# j.lon_upper_left = -1.0901
-# j.lat_bottom_right = 44.4778
-# j.lon_bottom_right = -1.0637
-# j.status = 0
-# j.submitterip = "0.0.0.0"
-# j.index_queue_at_submission = 42
-# j.save()
 
 if not os.path.isdir(RENDERING_RESULT_PATH):
     print "ERROR: please set RENDERING_RESULT_PATH ('%s') to an existing directory" % \

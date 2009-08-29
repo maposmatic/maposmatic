@@ -14,4 +14,6 @@ urlpatterns = patterns('',
      {'document_root': settings.LOCAL_MEDIA_PATH}),
     (r'^jobs/(?P<job_id>\d+)$', maposmatic.views.job),
     (r'^jobs/$', maposmatic.views.all_jobs),
+    (r'^maps/$', maposmatic.views.all_maps),
+    (r'^about/$', maposmatic.views.about),
 )

@@ -45,3 +45,9 @@ def all_jobs(request):
     print jobs
     return render_to_response('maposmatic/all_jobs.html',
                               { 'jobs' : jobs })
+
+def all_maps(request):
+    return render_to_response('maposmatic/all_maps.html')
+
+def about(request):
+    return render_to_response('maposmatic/about.html')

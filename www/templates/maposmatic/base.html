@@ -7,7 +7,9 @@
  <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
  <meta http-equiv="Content-Language" content="fr-fr" />
  <link rel="stylesheet" type="text/css" href="/smedia/style.css" media="screen" />
- {% block extrahead %}{% endblock %}
+ <script language="JavaScript" type="text/javascript">
+ {% block extrajs %}{% endblock %}
+ </script>
 </head>
 
 <body>
@@ -15,9 +17,10 @@
 <h1>MapOSMatic</h1>
  <div id="menu">
   <ul id="nav">
-   <li><a href="#">Accueil</a></li>
-   <li><a href="#">Cartes</a></li>
-   <li><a href="#">À propos</a></li>
+   <li {% block menu-home %}{% endblock %}><a href="/">Home</a></li>
+   <li {% block menu-jobs %}{% endblock %}><a href="/jobs">Status</a></li>
+   <li {% block menu-maps %}{% endblock %}><a href="/maps">Maps</a></li>
+   <li {% block menu-about %}{% endblock %}><a href="/about">About</a></li>
   </ul>
  </div>
 </div>
@@ -28,14 +31,14 @@
 
 <div id="left">
 <div class="box">
-  <h2>Liens :</h2>
+  <h2>Links :</h2>
   <ul>
     <li><a href="http://www.openstreetmap.org">OpenStreetMap</a></li>
   </ul>
 </div>
 
 <div class="box">
-<div style="font-size: 0.8em;">Design par <a href="http://www.minimalistic-design.net">Minimalistic Design</a></div>
+<div style="font-size: 0.8em;">Design by <a href="http://www.minimalistic-design.net">Minimalistic Design</a></div>
 </div>
 </div>
 </div>

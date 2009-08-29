@@ -36,3 +36,16 @@ class MapRenderingJob(models.Model):
         return "%d-%s-%s" % (self.id,
                              self.startofrendering_time.strftime("%Y-%m-%d-%H:%M"),
                              self.maptitle_computized())
+
+    def start_rendering(self):
+        self.status = 1
+        self.startofrendering_time = datetime.now()
+        self.save()
+
+    def end_rendering(self, resultmsg):
+        self.status = 2
+        self.endofrendering_time = datetime.now()
+        self.resultmsg = resultmsg
+        self.save()
+
+

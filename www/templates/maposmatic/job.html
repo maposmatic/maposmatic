@@ -1,8 +1,64 @@
 {% extends "maposmatic/base.html" %}
 
-{% block page %}
-<h1>MapOSMatic</h1>
+{% load extratags %}
 
-{{ job.maptitle }}
+{% block menu-jobs %}
+class="activelink"
+{% endblock %}
+
+{% block page %}
+<h1>Map Status</h1>
+
+<table>
+  <tr>
+    <td>Map title</td>
+    <td>{{ job.maptitle }}</td>
+  </tr>
+{% if job.administrative_city %}
+  <tr>
+    <td>Administrative city</td>
+    <td>{{ job.administrative_city }}</td>
+  </tr>
+{% else %}
+  <tr>
+    <td>Bounding-box coordinates</td>
+    <td>
+      <code>
+      (lat={{ job.lat_upper_left }}, lon={{ job.lon_upper_left }}),
+      (lat={{ job.lat_bottom_right }}, lon={{ job.lon_bottom_right }})
+      </code>
+    </td>
+  </tr>
+{% endif %}
+  <tr>
+    <td>Status</td>
+    <td>{{ job.status|job_status_to_str:job.resultmsg }}</td>
+  </tr>
+  <tr>
+    <td>Submission time</td>
+    <td>{{ job.submission_time|date:"l d M Y \a\t H:i" }}</td>
+  </tr>
+  <tr>
+    <td>Start of rendering time</td>
+    <td>
+      {% ifequal job.status 0 %}
+      Rendering not started yet
+      {% else %}
+      {{ job.startofrendering_time|date:"l d M Y \a\t H:i" }}
+      {% endifequal %}
+    </td>
+  </tr>
+  <tr>
+    <td>End of rendering time</td>
+    <td>
+      {% ifequal job.status 2 %}
+      {{ job.endofrendering_time|date:"l d M Y \a\t H:i" }}
+      {% else %}
+      Rendering not finished yet
+      {% endifequal %}
+    </td>
+  </tr>
+
+</table>
 
 {% endblock %}

@@ -1,5 +1,11 @@
 {% extends "maposmatic/base.html" %}
 
+{% load extratags %}
+
+{% block menu-jobs %}
+class="activelink"
+{% endblock %}
+
 {% block page %}
 
 <p><b>Job list</b></p>
@@ -11,19 +17,7 @@
       <a href="/jobs/{{ job.id }}">{{ job.maptitle }}</a><br/>
     </td>
     <td>
-      {% ifequal job.status 0 %}
-      Waiting rendering
-      {% endifequal %}
-      {% ifequal job.status 1 %}
-      Rendering in progress...
-      {% endifequal %}
-      {% ifequal job.status 2 %}
-      {% ifequal job.resultmsg "ok" %}
-      Rendering successfull
-      {% else %}
-      Rendering failed, reason: <i>{{ job.resultmsg }}</i>
-      {% endifequal %}
-      {% endifequal %}
+      {{ job.status|job_status_to_str:job.resultmsg }}
     </td>
   </tr>
 {% endfor %}

@@ -1,7 +1,6 @@
 {% extends "maposmatic/base.html" %}
 
-{% block extrahead %}
-<script language="JavaScript" type="text/javascript">
+{% block extrajs %}
 function generation_mode_switch(mode)
 {
   if (mode == 'bbox-mode')
@@ -15,7 +14,10 @@ function generation_mode_switch(mode)
     document.getElementById('bbox-mode').style.display = 'none';
   }
 }
-</script>
+{% endblock %}
+
+{% block menu-home %}
+class="activelink"
 {% endblock %}
 
 {% block page %}
