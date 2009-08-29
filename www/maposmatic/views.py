@@ -14,10 +14,8 @@ class MapRenderingJobForm(ModelForm):
 
 def index(request):
     if request.method == 'POST':
-        print 'POST'
         form = MapRenderingJobForm(request.POST)
         if form.is_valid():
-            print 'form_valid'
             job = MapRenderingJob()
             job.maptitle = form.cleaned_data['maptitle']
             job.administrative_city = form.cleaned_data['administrative_city']
