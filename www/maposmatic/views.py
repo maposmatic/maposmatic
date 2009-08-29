@@ -13,8 +13,6 @@ import www.settings
 # OpenStreetMap database. We don't go through the Django ORM but
 # directly to the database for simplicity reasons.
 def city_exists(city):
-
-    print "city exists %s ?" % city
     try:
         conn = psycopg2.connect("dbname='%s' user='%s' host='%s' password='%s'" % \
                                     (www.settings.DATABASE_NAME, www.settings.DATABASE_USER,
@@ -29,9 +27,6 @@ def city_exists(city):
                         name=%s""",
                    (city,))
     result = cursor.fetchall()
-    print city
-    print result
-
     return (result[0][0] == 1)
 
 class MapRenderingJobForm(ModelForm):
