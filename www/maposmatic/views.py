@@ -6,6 +6,33 @@ from django.shortcuts import get_object_or_404, render_to_response
 from django.http import HttpResponseRedirect
 from www.maposmatic.models import MapRenderingJob
 import datetime
+import psycopg2
+import www.settings
+
+# Test if a given city has its administrative boundaries inside the
+# OpenStreetMap database. We don't go through the Django ORM but
+# directly to the database for simplicity reasons.
+def city_exists(city):
+
+    print "city exists %s ?" % city
+    try:
+        conn = psycopg2.connect("dbname='%s' user='%s' host='%s' password='%s'" % \
+                                    (www.settings.DATABASE_NAME, www.settings.DATABASE_USER,
+                                     www.settings.DATABASE_HOST, www.settings.DATABASE_PASSWORD))
+    except psycopg2.OperationalError:
+        return False
+
+    cursor = conn.cursor()
+    cursor.execute("""select count(*) from planet_osm_line where
+                        boundary='administrative' and
+                        admin_level='8' and
+                        name=%s""",
+                   (city,))
+    result = cursor.fetchall()
+    print city
+    print result
+
+    return (result[0][0] == 1)
 
 class MapRenderingJobForm(ModelForm):
     class Meta:
@@ -23,10 +50,15 @@ class MapRenderingJobForm(ModelForm):
         mode = cleaned_data.get("mode")
         city = cleaned_data.get("administrative_city")
 
-        if mode == 'admin' and city == "":
-            msg = u"Administrative city required"
-            self._errors["administrative_city"] = ErrorList([msg])
-            del cleaned_data["administrative_city"]
+        if mode == 'admin':
+            if city == "":
+                msg = u"Administrative city required"
+                self._errors["administrative_city"] = ErrorList([msg])
+                del cleaned_data["administrative_city"]
+            elif not city_exists(city):
+                msg = u"City doesn't exist"
+                self._errors["administrative_city"] = ErrorList([msg])
+                del cleaned_data["administrative_city"]
 
         if mode == 'bbox':
             for f in [ "lat_upper_left", "lon_upper_left",
