@@ -79,8 +79,7 @@ def cleanup_files():
     files = [ os.path.join(RENDERING_RESULT_PATH, f) for f in os.listdir(RENDERING_RESULT_PATH)]
     files = [(f, os.stat(f).st_ctime, os.stat(f).st_size) for f in files]
     size = reduce(lambda x, y: x + y[2], files, 0)
-    # threshold = 0.8 * RENDERING_RESULT_MAX_SIZE_GB * 1024 * 1024 * 1024
-    threshold = 10 * 1024 * 1024
+    threshold = 0.8 * RENDERING_RESULT_MAX_SIZE_GB * 1024 * 1024 * 1024
     if size < threshold:
         return
     files.sort(lambda x, y: cmp(x[1], y[1]))
