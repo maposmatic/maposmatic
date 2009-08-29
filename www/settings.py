@@ -72,14 +72,15 @@ INSTALLED_APPS = (
 
 formatter = logging.Formatter("%(name)s - %(asctime)s - %(levelname)s - %(message)s")
 
-logwww = logging.getLogger("maposmatic-www")
-logwww.setLevel(WWW_LOGLEVEL)
-fh = logging.FileHandler(WWW_LOGFILE)
-fh.setFormatter(formatter)
-logwww.addHandler(fh)
 
-logdaemon = logging.getLogger("maposmaticd")
-logdaemon.setLevel(DAEMON_LOGLEVEL)
-fh = logging.FileHandler(DAEMON_LOGFILE)
-fh.setFormatter(formatter)
-logdaemon.addHandler(fh)
+LOG = logging.getLogger(os.environ.get("MAPOSMATIC_LOG_TARGET",
+                                       "maposmatic"))
+LOG.setLevel(os.environ.get("MAPOSMATIC_LOG_LEVEL", DEFAULT_MAPOSMATIC_LOG_LEVEL))
+try:
+    _fh = logging.FileHandler(os.environ.get('MAPOSMATIC_LOG_FILE',
+                                             DEFAULT_MAPOSMATIC_LOG_FILE))
+except KeyError:
+    _fh = logging.FileHandler('maposmatic.log')
+
+LOG.addHandler(_fh)
+LOG.info("log restarted.")

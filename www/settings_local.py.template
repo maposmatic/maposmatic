@@ -19,8 +19,9 @@ RENDERING_RESULT_URL = 'http://host.name/dir/ec/tory'
 RENDERING_RESULT_FORMATS = ['png', 'svg', 'pdf']
 RENDERING_RESULT_MAX_SIZE_GB = 30
 
-WWW_LOGFILE = '/tmp/maposmatic-www.log'
-WWW_LOGLEVEL = logging.INFO
+# Default output log file when the env variable MAPOSMATIC_LOG_FILE is not set
+DEFAULT_MAPOSMATIC_LOG_FILE = '/tmp/maposmatic.log'
 
-DAEMON_LOGFILE = '/tmp/maposmaticd.log'
-DAEMON_LOGLEVEL = logging.INFO
+# Default log level when the env variable DEFAULT_MAPOSMATIC_LOG_LEVEL
+# is not set
+DEFAULT_MAPOSMATIC_LOG_LEVEL = logging.INFO
