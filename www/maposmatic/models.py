@@ -1,5 +1,6 @@
 from django.db import models
 from datetime import datetime
+import re
 
 import logging
 
@@ -9,6 +10,9 @@ class MapRenderingJobManager(models.Manager):
 
     def queue_size(self):
         return MapRenderingJob.objects.filter(status=0).count()
+
+SPACE_REDUCE = re.compile(r"\s+")
+NONASCII_REMOVE = re.compile(r"[^A-Za-z0-9]+")
 
 class MapRenderingJob(models.Model):
 
@@ -35,11 +39,14 @@ class MapRenderingJob(models.Model):
     objects = MapRenderingJobManager()
 
     def maptitle_computized(self):
-        return "'%s'" % self.maptitle
+        t = self.maptitle.strip()
+        t = SPACE_REDUCE.sub("-", t)
+        t = NONASCII_REMOVE.sub("", t)
+        return t
 
     def files_prefix(self):
-        return "%d-%s-%s" % (self.id,
-                             self.startofrendering_time.strftime("%Y-%m-%d-%H:%M"),
+        return "%06d_%s_%s" % (self.id,
+                             self.startofrendering_time.strftime("%Y-%m-%d_%H-%M"),
                              self.maptitle_computized())
 
     def start_rendering(self):
