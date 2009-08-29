@@ -26,7 +26,7 @@ def index(request):
             job.lon_bottom_right = form.cleaned_data['lon_bottom_right']
             job.status = 0 # Submitted
             job.submitterip = request.META['REMOTE_ADDR']
-            job.index_queue_at_submission = 0
+            job.index_queue_at_submission = MapRenderingJob.objects.queue_size()
             job.save()
 
             return HttpResponseRedirect('/jobs/%d' % job.id)
@@ -41,8 +41,7 @@ def job(request, job_id):
                               { 'job' : job })
 
 def all_jobs(request):
-    jobs = MapRenderingJob.objects.all()
-    print jobs
+    jobs = MapRenderingJob.objects.all().order_by('-submission_time')
     return render_to_response('maposmatic/all_jobs.html',
                               { 'jobs' : jobs })
 

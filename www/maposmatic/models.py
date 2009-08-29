@@ -1,9 +1,14 @@
 from django.db import models
 from datetime import datetime
 
+import logging
+
 class MapRenderingJobManager(models.Manager):
     def to_render(self):
         return MapRenderingJob.objects.filter(status=0).order_by('submission_time')
+
+    def queue_size(self):
+        return MapRenderingJob.objects.filter(status=0).count()
 
 class MapRenderingJob(models.Model):
 
@@ -48,4 +53,15 @@ class MapRenderingJob(models.Model):
         self.resultmsg = resultmsg
         self.save()
 
+    def current_position_in_queue(self):
+        return MapRenderingJob.objects.filter(status=0).filter(index_queue_at_submission__lte=self.index_queue_at_submission).count()
 
+    # Estimate the date at which the rendering will be started
+    def rendering_estimated_start_time(self):
+        waiting_time = datetime.now() - self.submission_time
+        progression = self.index_queue_at_submission - self.current_position_in_queue()
+        if progression == 0:
+            return datetime.now()
+        mean_job_rendering_time = waiting_time // progression
+        estimated_time_left = mean_job_rendering_time * self.current_position_in_queue()
+        return datetime.now() + estimated_time_left
