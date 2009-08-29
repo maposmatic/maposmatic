@@ -87,7 +87,7 @@ def cleanup_files():
     for f in files:
         os.remove(os.path.join(RENDERING_RESULT_PATH, f[0]))
         size -= f[2]
-        logdaemon.debug("remove '%s', %f GB consumed over a %f GB threshold" % \
+        LOG.debug("remove '%s', %f GB consumed over a %f GB threshold" % \
                             (f[0], (size / 1024 / 1024 / 1024), (threshold / 1024 / 1024 / 1024)))
         if size < threshold:
             break
@@ -104,7 +104,7 @@ LOG.info("started")
 # state
 jobs = MapRenderingJob.objects.filter(status=1)
 for job in jobs:
-    logdaemon.debug("reset job %d into waiting for rendering state" % job.id)
+    LOG.debug("reset job %d into waiting for rendering state" % job.id)
     job.status = 0
     job.save()
 
