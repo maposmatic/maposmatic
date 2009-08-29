@@ -5,7 +5,7 @@ import time, os , sys, select, signal
 from datetime import datetime
 
 from www.maposmatic.models import MapRenderingJob
-from www.settings import RENDERING_RESULT_PATH, logdaemon, RENDERING_RESULT_FORMATS
+from www.settings import RENDERING_RESULT_PATH, LOG, RENDERING_RESULT_FORMATS
 import ocitysmap
 
 def handler(signum, frame, pipe_write):
@@ -34,7 +34,7 @@ def render_job_process(job):
     sys.exit(0)
 
 def render_job(job):
-    logdaemon.info("[job %d] starting rendering, title '%s'" % (job.id, job.maptitle))
+    LOG.info("[job %d] starting rendering, title '%s'" % (job.id, job.maptitle))
     job.start_rendering()
     (pipe_read, pipe_write) = os.pipe()
     signal.signal(signal.SIGCHLD,
@@ -52,7 +52,7 @@ def render_job(job):
                 time.sleep(2)
                 os.kill(pid, signal.SIGKILL)
                 resultmsg = "rendering took too long, killed"
-                logdaemon.info("[job %d] %s" % (job.id, resultmsg))
+                LOG.info("[job %d] %s" % (job.id, resultmsg))
                 job.end_rendering(resultmsg)
                 return
         finally:
@@ -67,16 +67,16 @@ def render_job(job):
                     resultmsg = "rendering failed with %d" % error_code
             elif os.WIFSIGNALED(status):
                 resultmsg = "rendering killed by signal %d" % os.WTERMSIG(status)
-            logdaemon.info("[job %d] %s" % (job.id, resultmsg))
+            LOG.info("[job %d] %s" % (job.id, resultmsg))
             job.end_rendering(resultmsg)
             return
 
 if not os.path.isdir(RENDERING_RESULT_PATH):
-    logdaemon.error("ERROR: please set RENDERING_RESULT_PATH ('%s') to an existing directory" % \
+    LOG.error("ERROR: please set RENDERING_RESULT_PATH ('%s') to an existing directory" % \
                         RENDERING_RESULT_PATH)
     sys.exit(1)
 
-logdaemon.info("started")
+LOG.info("started")
 
 while True:
     jobs = MapRenderingJob.objects.to_render()
