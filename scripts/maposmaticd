@@ -25,8 +25,8 @@ def render_job_process(job):
 
     outfile_prefix = os.path.join(RENDERING_RESULT_PATH, job.files_prefix())
 
-    _map = renderer.render_into_files(job.maptitle, outfile_prefix,
-                                      RENDERING_RESULT_FORMATS, "zoom:16")
+    _map = renderer.render_map_into_files(job.maptitle, outfile_prefix,
+                                          RENDERING_RESULT_FORMATS, "zoom:16")
 
     renderer.render_index(job.maptitle, outfile_prefix,
                           RENDERING_RESULT_FORMATS, _map.width, _map.height)
