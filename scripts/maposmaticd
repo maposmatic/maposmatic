@@ -57,7 +57,7 @@ def render_job(job):
                 return
         finally:
             print "end of process %d" % pid
-            (pid, status) = os.waitpid(pid, os.WNOHANG)
+            (pid, status) = os.waitpid(pid, 0)
             resultmsg = "unknown error"
             if os.WIFEXITED(status):
                 error_code = os.WEXITSTATUS(status)
@@ -98,6 +98,15 @@ if not os.path.isdir(RENDERING_RESULT_PATH):
     sys.exit(1)
 
 logdaemon.info("started")
+
+# Reset the job that might have been left into the "rendering" state
+# due to a daemon interruption back into the "waiting for rendering"
+# state
+jobs = MapRenderingJob.objects.filter(status=1)
+for job in jobs:
+    logdaemon.debug("reset job %d into waiting for rendering state" % job.id)
+    job.status = 0
+    job.save()
 
 last_file_cleanup = None
 
