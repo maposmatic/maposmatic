@@ -4,6 +4,7 @@ from django.forms import ModelForm
 from django.shortcuts import get_object_or_404, render_to_response
 from django.http import HttpResponseRedirect
 from www.maposmatic.models import MapRenderingJob
+import datetime
 
 class MapRenderingJobForm(ModelForm):
     class Meta:
@@ -41,7 +42,8 @@ def job(request, job_id):
                               { 'job' : job })
 
 def all_jobs(request):
-    jobs = MapRenderingJob.objects.all().order_by('-submission_time')
+    one_day_before = datetime.datetime.now() - datetime.timedelta(1)
+    jobs = MapRenderingJob.objects.all().order_by('-submission_time').filter(submission_time__gte=one_day_before)
     return render_to_response('maposmatic/all_jobs.html',
                               { 'jobs' : jobs })
 

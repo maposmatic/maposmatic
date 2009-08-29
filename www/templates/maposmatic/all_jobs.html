@@ -30,17 +30,17 @@ class="activelink"
     <td>
       {{ job.status|job_status_to_str:job.resultmsg }}
     </td>
-    <td>{{ job.submission_time|date:"l d M Y \a\t H:i:s" }}</td>
+    <td>{{ job.submission_time|date:"Y-m-d H:i:s" }}</td>
     <td>
       {% ifequal job.status 0 %}
       not started
       {% else %}
-      {{ job.startofrendering_time|date:"l d M Y \a\t H:i:s" }}
+      {{ job.startofrendering_time|date:"Y-m-d H:i:s" }}
       {% endifequal %}
     </td>
     <td>
       {% ifequal job.status 2 %}
-      {{ job.endofrendering_time|date:"l d M Y \a\t H:i:s" }}
+      {{ job.endofrendering_time|date:"Y-m-d H:i:s" }}
       {% else %}
       not finished
       {% endifequal %}
@@ -52,7 +52,7 @@ class="activelink"
     </td>
     <td>
       {% ifequal job.status 0 %}
-      {{ job.rendering_estimated_start_time }}
+      {{ job.rendering_estimated_start_time|timeuntil }}
       {% endifequal %}
     </td>
   </tr>
