@@ -1,8 +1,6 @@
 import os, sys
 
-print >>sys.stderr, "SALUT MON POTE"
-sys.path.append("/home/maposmatic/apache/maposmatic-prod/websrv")
-print >>sys.stderr, "HELLO MON POTE", sys.path
+sys.path.append("/path/to/our/parent/directory")
 
 os.environ["DJANGO_SETTINGS_MODULE"] = 'www.settings'
 

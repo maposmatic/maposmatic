@@ -1,6 +1,7 @@
 
 www/ contains the Django web application. The file
 www/settings_local.py.template must be copied to www/settings_local.py
-and adapted to the installation configuration.
+and adapted to the installation configuration. Likewise for the file
+www/maposmatic.wsgi-template
 
 scripts/ contains the crontab job that executes the map renderings.
