@@ -5,7 +5,7 @@ import time, os , sys, select, signal
 from datetime import datetime, timedelta
 
 from www.maposmatic.models import MapRenderingJob
-from www.settings import RENDERING_RESULT_PATH, LOG, RENDERING_RESULT_FORMATS
+from www.settings import RENDERING_RESULT_PATH, LOG, RENDERING_RESULT_FORMATS, RENDERING_RESULT_MAX_SIZE_GB
 import ocitysmap
 
 def handler(signum, frame, pipe_write):
