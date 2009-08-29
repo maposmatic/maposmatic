@@ -34,9 +34,8 @@ div#header {
 }
 
 div#header h1, div#menu {
-    width:770px;
     margin:0 auto;
-    text-align:left;
+    text-align:center;
 }
 
 div#header h1 {
@@ -51,7 +50,7 @@ ul#nav,ul#nav li {
 }
 
 ul#nav {
-    float:right;
+    margin-left: 5em;
     font-size: 80%;
 }
 
