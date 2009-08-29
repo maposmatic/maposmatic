@@ -51,7 +51,7 @@ class MapRenderingJobForm(ModelForm):
                 self._errors["administrative_city"] = ErrorList([msg])
                 del cleaned_data["administrative_city"]
             elif not city_exists(city):
-                msg = u"City doesn't exist. Try with proper casing."
+                msg = u"No administrative boundaries found for this city. Try with proper casing."
                 self._errors["administrative_city"] = ErrorList([msg])
                 del cleaned_data["administrative_city"]
 
