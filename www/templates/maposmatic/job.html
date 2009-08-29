@@ -36,7 +36,7 @@ class="activelink"
   </tr>
   <tr>
     <td>Submission time</td>
-    <td>{{ job.submission_time|date:"l d M Y \a\t H:i" }}</td>
+    <td>{{ job.submission_time|date:"l d M Y \a\t H:i:s" }}</td>
   </tr>
   <tr>
     <td>Start of rendering time</td>
@@ -44,7 +44,7 @@ class="activelink"
       {% ifequal job.status 0 %}
       Rendering not started yet
       {% else %}
-      {{ job.startofrendering_time|date:"l d M Y \a\t H:i" }}
+      {{ job.startofrendering_time|date:"l d M Y \a\t H:i:s" }}
       {% endifequal %}
     </td>
   </tr>
@@ -52,12 +52,22 @@ class="activelink"
     <td>End of rendering time</td>
     <td>
       {% ifequal job.status 2 %}
-      {{ job.endofrendering_time|date:"l d M Y \a\t H:i" }}
+      {{ job.endofrendering_time|date:"l d M Y \a\t H:i:s" }}
       {% else %}
       Rendering not finished yet
       {% endifequal %}
     </td>
   </tr>
+  {% ifequal job.status 0 %}
+  <tr>
+    <td>Current position in queue</td>
+    <td>{{ job.current_position_in_queue }}
+  </tr>
+  <tr>
+    <td>Estimated rendering time completion</td>
+    <td>{{ job.rendering_estimated_start_time|timeuntil }}</td>
+  </tr>
+  {% endifequal %}
 
 </table>
 

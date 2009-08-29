@@ -11,6 +11,17 @@ class="activelink"
 <p><b>Job list</b></p>
 
 <table class="list">
+  <thead>
+    <tr>
+      <th>Title</th>
+      <th>Status</th>
+      <th>Submission time</th>
+      <th>Start rendering time</th>
+      <th>End rendering time</th>
+      <th>Position in queue</th>
+      <th>ETA before rendering</th>
+    </tr>
+  </thead>
 {% for job in jobs %}
   <tr class="{% cycle odd,even %}">
     <td>
@@ -18,6 +29,31 @@ class="activelink"
     </td>
     <td>
       {{ job.status|job_status_to_str:job.resultmsg }}
+    </td>
+    <td>{{ job.submission_time|date:"l d M Y \a\t H:i:s" }}</td>
+    <td>
+      {% ifequal job.status 0 %}
+      not started
+      {% else %}
+      {{ job.startofrendering_time|date:"l d M Y \a\t H:i:s" }}
+      {% endifequal %}
+    </td>
+    <td>
+      {% ifequal job.status 2 %}
+      {{ job.endofrendering_time|date:"l d M Y \a\t H:i:s" }}
+      {% else %}
+      not finished
+      {% endifequal %}
+    </td>
+    <td>
+      {% ifequal job.status 0 %}
+      {{ job.current_position_in_queue }}
+      {% endifequal %}
+    </td>
+    <td>
+      {% ifequal job.status 0 %}
+      {{ job.rendering_estimated_start_time }}
+      {% endifequal %}
     </td>
   </tr>
 {% endfor %}
