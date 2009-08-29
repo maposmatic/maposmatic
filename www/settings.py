@@ -1,5 +1,6 @@
 # Django settings for www project.
 
+import logging
 from settings_local import *
 
 TEMPLATE_DEBUG = DEBUG
@@ -68,3 +69,17 @@ LOCAL_MEDIA_PATH = os.path.join(PROJECT_PATH, 'media')
 INSTALLED_APPS = (
     'www.maposmatic',
 )
+
+formatter = logging.Formatter("%(name)s - %(asctime)s - %(levelname)s - %(message)s")
+
+logwww = logging.getLogger("maposmatic-www")
+logwww.setLevel(WWW_LOGLEVEL)
+fh = logging.FileHandler(WWW_LOGFILE)
+fh.setFormatter(formatter)
+logwww.addHandler(fh)
+
+logdaemon = logging.getLogger("maposmaticd")
+logdaemon.setLevel(DAEMON_LOGLEVEL)
+fh = logging.FileHandler(DAEMON_LOGFILE)
+fh.setFormatter(formatter)
+logdaemon.addHandler(fh)
