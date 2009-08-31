@@ -167,3 +167,27 @@ input[type="submit"]
 {
     width: 300px;
 }
+
+table.list
+{
+  margin: 1em;
+  padding-right: 2em;
+  width: 100%;
+}
+
+table.list tr
+{
+  background: white;
+}
+
+table.list tr.odd
+{
+  background: #FFF6BF;
+}
+
+table.list td
+{
+  text-align: center;
+  padding: 1em;
+  vertical-align: middle;
+}

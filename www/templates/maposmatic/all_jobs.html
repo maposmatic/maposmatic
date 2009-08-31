@@ -33,16 +33,20 @@ class="activelink"
 
 {% block page %}
 
-<p><b>Job list</b></p>
+<h1>Job list</h1>
+
+<p>This page gives the status of all the rendering requests received
+during the last 24 hours, starting from the most recent one.</p>
 
 <table class="list">
   <thead>
     <tr>
       <th>Title</th>
+      <th>Location</th>
       <th>Status</th>
-      <th>Submission time</th>
-      <th>Start rendering time</th>
-      <th>End rendering time</th>
+      <th>Submission at</th>
+      <th>Rendering started at</th>
+      <th>Rendering finished at</th>
       <th>Position in queue</th>
       <th>ETA before rendering</th>
     </tr>
@@ -53,32 +57,40 @@ class="activelink"
       <a href="/jobs/{{ job.id }}">{{ job.maptitle }}</a><br/>
     </td>
     <td>
+      {% if job.lat_upper_left %}
+      {{ job.lat_upper_left }}<br/>
+      {{ job.lon_upper_left }}&nbsp;{{job.lon_bottom_right}}<br/>
+      {{ job.lat_bottom_right }}
+      {% else %}
+      {{ job.administrative_city }}
+      {% endif %}
+    <td>
       {{ job.status|job_status_to_str:job.resultmsg }}
     </td>
     <td>{{ job.submission_time|date:"Y-m-d H:i:s" }}</td>
     <td>
-      {% ifequal job.status 0 %}
+      {% if job.is_waiting %}
       not started
       {% else %}
       {{ job.startofrendering_time|date:"Y-m-d H:i:s" }}
-      {% endifequal %}
+      {% endif %}
     </td>
     <td>
-      {% ifequal job.status 2 %}
+      {% if job.is_done %}
       {{ job.endofrendering_time|date:"Y-m-d H:i:s" }}
       {% else %}
       not finished
-      {% endifequal %}
+      {% endif %}
     </td>
     <td>
-      {% ifequal job.status 0 %}
+      {% if job.is_waiting %}
       {{ job.current_position_in_queue }}
-      {% endifequal %}
+      {% endif %}
     </td>
     <td>
-      {% ifequal job.status 0 %}
+      {% if job.is_waiting %}
       {{ job.rendering_estimated_start_time|timeuntil }}
-      {% endifequal %}
+      {% endif %}
     </td>
   </tr>
 {% endfor %}
