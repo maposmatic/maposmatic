@@ -33,13 +33,18 @@ div#header {
     background: #BBD9EE;
 }
 
-div#header h1, div#menu {
+div#header h1, div#header h2, div#menu {
     margin:0 auto;
     text-align:center;
 }
 
 div#header h1 {
-    padding: 30px 0 20px;
+    padding: 30px 0 10px;
+    color: #fff;
+}
+
+div#header h2 {
+    padding: 10px 0 10px;
     color: #fff;
 }
 
