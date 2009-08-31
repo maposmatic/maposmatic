@@ -62,11 +62,76 @@ onload='pageinit()'
 {% block page %}
 <h1>MapOSMatic</h1>
 
+<h2>Introduction</h2>
+
+<div style="float: right; margin-left: 5em;">
+  <table style="text-align: center">
+    <tr>
+      <td><img src="/smedia/chavagne-small.png"></td>
+      <td><img src="/smedia/chavagne_index-small.png"></td>
+    </tr>
+    <tr>
+      <td>
+	City Map<br/>
+	<a href="/smedia/chavagne.png">PNG</a>&nbsp;-&nbsp;
+	<a href="/smedia/chavagne.pdf">PDF</a>&nbsp;-&nbsp;
+	<a href="/smedia/chavagne.svg">SVG</a>
+      </td>
+      <td>
+	Streets index<br/>
+	<a href="/smedia/chavagne_index.png">PNG</a>&nbsp;-&nbsp;
+	<a href="/smedia/chavagne_index.pdf">PDF</a>&nbsp;-&nbsp;
+	<a href="/smedia/chavagne_index.svg">SVG</a>
+      </td>
+    </tr>
+  </table>
+</div>
+
+<p>MapOSMatic is a free software web service that allows to generate
+maps of cities using OpenStreetMap data. A city map is made of two
+pages :</p>
+
+<ul>
+  <li>the map itself, split in squares allowing to easily look for streets&nbsp;;</li>
+  <li>an index of the streets with references to the squares on the map.</li>
+</ul>
+
+<p>The generated maps are available in PNG, PDF and SVG and are ready
+to be printed. Submit your map generation request below, wait a few
+minutes and get your own map&nbsp;!</p>
+
+<p style="text-align: right"><a href="/about/">More details</a></p>
+
+<h2>Generate your own map</h2>
+
+<p>For the moment <i>MapOSMatic</i> is only available for the
+metropolitan France. We need contributors to translate and adapt the
+few parts of <i>MapOSMatic</i> that are country specific.</p>
+
+<p>To select the city to be rendered, two modes are
+available&nbsp;:</p>
+
+<ul>
+  <li>Using an administrative boundary. These boundaries allow to get
+  a map with precise boundaries of the city, but the boundaries are
+  for the moment only available for part of the French cities (about a
+  third). The name of the provided city must exactly match the one
+  available in the OpenStreetMap database (no case or accent
+  difference is allowed). Working examples are: <i>Chavagne</i>,
+  <i>Bénodet</i> or <i>Sanguinet</i>.</li>
+  <li>Using a traditionnal bounding box.</li>
+</ul>
+
+<p>Once the rendering is submitted, you will be brought to a page
+giving the status of your rendering request. As soon as the rendering
+is completed (might take some time depending on the queue length),
+this page will contain links to the generated map.</p>
+
 <form method="post" action="">
 
-<table>
+<table style="margin: auto; border: 1px solid #CCC; padding: 10px;">
   <tr>
-    <td>Title for the generated map</td>
+    <td width="50%">Title of the map</td>
     <td>{{ form.maptitle }}</td>
     <td>{{ form.maptitle.errors }}</td>
   </tr>

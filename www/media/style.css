@@ -139,12 +139,17 @@ ul#nav li.activelink a,ul#nav li.activelink a:hover {
     background: #fff;
 }
 
-ul {
-    padding: 0;
-    margin: 0;
+div#content h1 {
+    border-bottom: 2px solid #036DA7;
 }
 
-li {
+div#content h2 {
+    font-size: 140%;
+}
+
+form ul {
+    padding: 0;
+    margin: 0;
     list-style-type: none;
 }
 
@@ -161,5 +166,5 @@ input:hover {
 
 input[type="submit"]
 {
-  width: auto;
+    width: 300px;
 }
