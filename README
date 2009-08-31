@@ -1,0 +1,17 @@
+MapOSMatic is a web application to generate maps of cities or towns,
+including index of streets, from OpenStreetMap data.
+
+It is made of two components:
+
+ * maposmatic, the web front-end. An application written using the
+   Django framework allows to submit and visualize map rendering jobs.
+   The rendering is done in the background by a daemon;
+
+ * ocitysmap, the back-end that generates the map. It is available as a
+   Python module, used both by the maposmatic daemon (above) and by a
+   sample command line application.
+
+This source tree contains maposmatic, the web front-end.
+
+It is license under under GNU AGPLv3 (GNU Affero General Public License
+3.0).
