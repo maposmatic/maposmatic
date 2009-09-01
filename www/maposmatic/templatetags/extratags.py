@@ -41,7 +41,7 @@ def job_status_to_str(value, arg, autoescape=None):
         result = _("Rendering in progress")
     elif value == 2:
         if arg == "ok":
-            result = _("Rendering successfull")
+            result = _("Rendering successful")
         else:
             result = _("Rendering failed, reason: <i>%(errmsg)s</i>") \
                 % dict(errmsg=esc(arg))

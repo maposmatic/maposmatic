@@ -74,7 +74,7 @@ msgid "Rendering in progress"
 msgstr "Rendu en cours..."
 
 #: maposmatic/templatetags/extratags.py:21
-msgid "Rendering successfull"
+msgid "Rendering successful"
 msgstr "Rendu terminé avec succès"
 
 #: maposmatic/templatetags/extratags.py:46
