@@ -22,7 +22,7 @@
  You should have received a copy of the GNU Affero General Public License
  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 -->
-
+{% load i18n %}
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
@@ -43,10 +43,10 @@
 <h2>Your free city maps&nbsp;!</h2>
  <div id="menu">
   <ul id="nav">
-   <li {% block menu-home %}{% endblock %}><a href="/">Home</a></li>
-   <li {% block menu-jobs %}{% endblock %}><a href="/jobs">Status</a></li>
-   <li {% block menu-maps %}{% endblock %}><a href="/maps">Maps</a></li>
-   <li {% block menu-about %}{% endblock %}><a href="/about">About</a></li>
+   <li {% block menu-home %}{% endblock %}><a href="/">{% trans "Home" %}</a></li>
+   <li {% block menu-jobs %}{% endblock %}><a href="/jobs">{% trans "Jobs" %}</a></li>
+   <li {% block menu-maps %}{% endblock %}><a href="/maps">{% trans "Maps" %}</a></li>
+   <li {% block menu-about %}{% endblock %}><a href="/about">{% trans "About" %}</a></li>
   </ul>
  </div>
 </div>
@@ -57,14 +57,14 @@
 
 <div id="left">
 <div class="box">
-  <h2>Links :</h2>
+  <h2>{% trans "Links:" %}</h2>
   <ul>
     <li><a href="http://www.openstreetmap.org">OpenStreetMap</a></li>
   </ul>
 </div>
 
 <div class="box">
-<div style="font-size: 0.8em;">Design by <a href="http://www.minimalistic-design.net">Minimalistic Design</a></div>
+<div style="font-size: 0.8em;">{% trans "Design by" %} <a href="http://www.minimalistic-design.net">Minimalistic Design</a></div>
 </div>
 </div>
 </div>

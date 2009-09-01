@@ -24,6 +24,7 @@
 -->
 
 {% extends "maposmatic/base.html" %}
+{% load i18n %}
 
 {% load extratags %}
 
@@ -33,7 +34,7 @@ class="activelink"
 
 {% block page %}
 
-<h1>Job list</h1>
+<h1>{% trans "Job list" %}</h1>
 
 <p>This page gives the status of all the rendering requests received
 during the last 24 hours, starting from the most recent one.</p>
@@ -41,14 +42,14 @@ during the last 24 hours, starting from the most recent one.</p>
 <table class="list">
   <thead>
     <tr>
-      <th>Title</th>
-      <th>Location</th>
-      <th>Status</th>
-      <th>Submission at</th>
-      <th>Rendering started at</th>
-      <th>Rendering finished at</th>
-      <th>Position in queue</th>
-      <th>ETA before rendering</th>
+      <th>{% trans "Title" %}</th>
+      <th>{% trans "Location" %}</th>
+      <th>{% trans "Job status" %}</th>
+      <th>{% trans "Submission at" %}</th>
+      <th>{% trans "Rendering started at" %}</th>
+      <th>{% trans "Rendering finished at" %}</th>
+      <th>{% trans "Position in queue" %}</th>
+      <th>{% trans "ETA before rendering" %}</th>
     </tr>
   </thead>
 {% for job in jobs %}
@@ -67,10 +68,10 @@ during the last 24 hours, starting from the most recent one.</p>
     <td>
       {{ job.status|job_status_to_str:job.resultmsg }}
     </td>
-    <td>{{ job.submission_time|date:"Y-m-d H:i:s" }}</td>
+    <td>{{ job.submission_time|date:"Y-m-d H:i:s"}}</td>
     <td>
       {% if job.is_waiting %}
-      not started
+      {%trans "not started" %}
       {% else %}
       {{ job.startofrendering_time|date:"Y-m-d H:i:s" }}
       {% endif %}
@@ -79,7 +80,7 @@ during the last 24 hours, starting from the most recent one.</p>
       {% if job.is_done %}
       {{ job.endofrendering_time|date:"Y-m-d H:i:s" }}
       {% else %}
-      not finished
+      {% trans "not finished" %}
       {% endif %}
     </td>
     <td>

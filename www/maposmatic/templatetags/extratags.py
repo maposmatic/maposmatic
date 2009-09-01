@@ -24,6 +24,7 @@
 from django import template
 from django.utils.html import conditional_escape
 from django.utils.safestring import mark_safe
+from django.utils.translation import ugettext_lazy as _
 
 register = template.Library()
 
@@ -35,14 +36,15 @@ def job_status_to_str(value, arg, autoescape=None):
         esc = lambda x: x
 
     if value == 0:
-        result = "Waiting rendering"
+        result = _("Waiting rendering")
     elif value == 1:
-        result = "Rendering in progress"
+        result = _("Rendering in progress")
     elif value == 2:
         if arg == "ok":
-            result = "Rendering successfull"
+            result = _("Rendering successfull")
         else:
-            result = "Rendering failed, reason: <i>%s</i>" % esc(arg)
+            result = _("Rendering failed, reason: <i>%(errmsg)s</i>") \
+                % dict(errmsg=esc(arg))
     else:
         result = ""
 

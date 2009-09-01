@@ -24,6 +24,7 @@
 -->
 
 {% extends "maposmatic/base.html" %}
+{% load i18n %}
 
 {% block extrajs %}
 function area_selection_mode_switch(mode)
@@ -131,23 +132,23 @@ this page will contain links to the generated map.</p>
 
 <table style="margin: auto; border: 1px solid #CCC; padding: 10px;">
   <tr>
-    <td width="50%">Title of the map</td>
+    <td width="50%">{% trans "Title of the map" %}</td>
     <td>{{ form.maptitle }}</td>
     <td>{{ form.maptitle.errors }}</td>
   </tr>
   <tr>
-    <td>Area selection mode</td>
+    <td>{% trans "Area selection mode" %}</td>
     <td>
       {{ form.mode }}
     </td>
   </tr>
   <tr id="admin-mode">
-    <td>City name</td>
+    <td>{% trans "City name" %}</td>
     <td>{{ form.administrative_city }}</td>
     <td>{{ form.administrative_city.errors }}</td>
   </tr>
   <tr id="bbox-mode" style="display: none;">
-    <td>Bounding box</td>
+    <td>{% trans "Bounding box" %}</td>
     <td style="text-align: center">
       <input type="text" name="lat_upper_left" style="width: 100px; margin-bottom: 5px;"/>{{ form.lat_upper_left.errors }}<br/>
       <input type="text" name="lon_upper_left"  style="width: 100px; margin-bottom: 5px;"/>{{ form.lon_upper_left.errors }}
@@ -157,7 +158,7 @@ this page will contain links to the generated map.</p>
   </tr>
   <tr>
     <td></td>
-    <td><input type="submit" value="Generate"/></td>
+    <td><input type="submit" value="{% trans 'Generate' %}"/></td>
   </tr>
 </table>
 

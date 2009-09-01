@@ -24,12 +24,13 @@
 -->
 
 {% extends "maposmatic/base.html" %}
+{% load i18n %}
 
 {% block menu-about %}
 class="activelink"
 {% endblock %}
 
 {% block page %}
-<h1>About</h1>
+<h1>{% trans "About" %}</h1>
 
 {% endblock %}

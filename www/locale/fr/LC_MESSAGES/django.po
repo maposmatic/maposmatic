@@ -1,0 +1,220 @@
+# maposmatic, the web front-end of the MapOSMatic city map generation system
+# Copyright (C) 2009  David Decotigny
+# Copyright (C) 2009  Frédéric Lehobey
+# Copyright (C) 2009  David Mentré
+# Copyright (C) 2009  Maxime Petazzoni
+# Copyright (C) 2009  Thomas Petazzoni
+# Copyright (C) 2009  Gaël Utard
+
+# This program is free software: you can redistribute it and/or modify
+# it under the terms of the GNU Affero General Public License as
+# published by the Free Software Foundation, either version 3 of the
+# License, or any later version.
+
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU Affero General Public License for more details.
+
+# You should have received a copy of the GNU Affero General Public License
+# along with this program.  If not, see <http://www.gnu.org/licenses/>.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: mapOSMatic 0.1\n"
+"Report-Msgid-Bugs-To: bugs@maposmatic.org\n"
+"POT-Creation-Date: 2009-09-01 09:53+0200\n"
+"PO-Revision-Date: 2009-08-31 22:42+UTC\n"
+"Last-Translator: David Decotigny <d2@maposmatic.org>\n"
+"Language-Team: FR <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: maposmatic/models.py:109
+#, python-format
+msgid "%(title)s %(format)s Map"
+msgstr "Carte pour %(title)s (format %(format)s)"
+
+#: maposmatic/models.py:113
+#, python-format
+msgid "%(title)s %(format)s Index"
+msgstr "Index des rues pour %(title)s (format %(format)s)"
+
+#: maposmatic/views.py:63
+msgid "Administrative boundary"
+msgstr "Limites administratives (nom de ville)"
+
+#: maposmatic/views.py:64 templates/maposmatic/index.html:151
+msgid "Bounding box"
+msgstr "Zone géographique"
+
+#: maposmatic/views.py:75
+msgid "Administrative city required"
+msgstr "Nom de ville obligatoire"
+
+#: maposmatic/views.py:79
+msgid ""
+"No administrative boundaries found for this city. Try with proper casing."
+msgstr ""
+"Aucune limite administrative disponible pour cette ville. Essayez en "
+"corrigeant la casse (majuscule sur la première lettre)"
+
+#: maposmatic/views.py:87
+msgid "Required"
+msgstr "Obligatoire"
+
+#: maposmatic/templatetags/extratags.py:39
+msgid "Waiting rendering"
+msgstr "Attente de début du rendu"
+
+#: maposmatic/templatetags/extratags.py:41
+msgid "Rendering in progress"
+msgstr "Rendu en cours..."
+
+#: maposmatic/templatetags/extratags.py:21
+msgid "Rendering successfull"
+msgstr "Rendu terminé avec succès"
+
+#: maposmatic/templatetags/extratags.py:46
+#, python-format
+msgid "Rendering failed, reason: <i>%(errmsg)s</i>"
+msgstr "Rendu échoué, raison : <i>%(errmsg)s</i>"
+
+#: templates/maposmatic/about.html:34 templates/maposmatic/base.html:49
+msgid "About"
+msgstr "À propos..."
+
+#: templates/maposmatic/all_jobs.html:37
+msgid "Job list"
+msgstr "Liste des rendus"
+
+#: templates/maposmatic/all_jobs.html:45
+msgid "Title"
+msgstr "Titre"
+
+#: templates/maposmatic/all_jobs.html:46
+msgid "Location"
+msgstr "Lieu"
+
+#: templates/maposmatic/all_jobs.html:47
+msgid "Job status"
+msgstr "État du rendu"
+
+#: templates/maposmatic/all_jobs.html:48
+msgid "Submission at"
+msgstr "Date de soumission"
+
+#: templates/maposmatic/all_jobs.html:49
+msgid "Rendering started at"
+msgstr "Date de début du rendu"
+
+#: templates/maposmatic/all_jobs.html:50
+msgid "Rendering finished at"
+msgstr "Date de fin du rendu"
+
+#: templates/maposmatic/all_jobs.html:51
+msgid "Position in queue"
+msgstr "Position dans la file d'attente"
+
+#: templates/maposmatic/all_jobs.html:52
+msgid "ETA before rendering"
+msgstr "Temps estimé avant rendu"
+
+#: templates/maposmatic/all_jobs.html:74
+msgid "not started"
+msgstr "Rendu en attente"
+
+#: templates/maposmatic/all_jobs.html:83
+msgid "not finished"
+msgstr "n/d"
+
+#: templates/maposmatic/all_maps.html:34 templates/maposmatic/base.html:48
+msgid "Maps"
+msgstr "Cartes"
+
+#: templates/maposmatic/base.html:46
+msgid "Home"
+msgstr "Accueil"
+
+#: templates/maposmatic/base.html:47
+msgid "Jobs"
+msgstr "Rendus"
+
+#: templates/maposmatic/base.html:60
+msgid "Links:"
+msgstr "Liens :"
+
+#: templates/maposmatic/base.html:67
+msgid "Design by"
+msgstr "Style :"
+
+#: templates/maposmatic/index.html:135
+msgid "Title of the map"
+msgstr "Titre de la carte"
+
+#: templates/maposmatic/index.html:140
+msgid "Area selection mode"
+msgstr "Mode de sélection"
+
+#: templates/maposmatic/index.html:146
+msgid "City name"
+msgstr "Nom de la ville"
+
+#: templates/maposmatic/index.html:161
+msgid "Generate"
+msgstr "Générer..."
+
+#: templates/maposmatic/job.html:36
+#, python-format
+msgid "Map <i>%(job_t)s</i> Status"
+msgstr "État du rendu de la carte <i>%(job_t)s</i>"
+
+#: templates/maposmatic/job.html:40
+msgid "Map title"
+msgstr "Titre de la carte"
+
+#: templates/maposmatic/job.html:45
+msgid "Administrative city"
+msgstr "Limite administrative"
+
+#: templates/maposmatic/job.html:50
+msgid "Bounding-box coordinates"
+msgstr "Coordonnées de la zone géographique (long/lat)"
+
+#: templates/maposmatic/job.html:60
+msgid "Status"
+msgstr "État"
+
+#: templates/maposmatic/job.html:64
+msgid "Submission time"
+msgstr "Date de soumission"
+
+#: templates/maposmatic/job.html:68
+msgid "Start of rendering time"
+msgstr "Date de début du rendu"
+
+#: templates/maposmatic/job.html:71
+msgid "Rendering not started yet"
+msgstr "Rendu en attente"
+
+#: templates/maposmatic/job.html:78
+msgid "End of rendering time"
+msgstr "Date de fin du rendu"
+
+#: templates/maposmatic/job.html:83
+msgid "Rendering not finished yet"
+msgstr "Rendu en cours..."
+
+#: templates/maposmatic/job.html:89
+msgid "Current position in queue"
+msgstr "Position dans la file d'attente"
+
+#: templates/maposmatic/job.html:93
+msgid "Estimated rendering time completion"
+msgstr "Temps estimé avant rendu"
+
+#: templates/maposmatic/job.html:99
+msgid "Result files"
+msgstr "Fichiers générés"

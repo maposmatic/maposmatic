@@ -27,6 +27,8 @@ from django.forms.util import ErrorList
 from django.forms import ChoiceField, RadioSelect, ModelForm, ValidationError
 from django.shortcuts import get_object_or_404, render_to_response
 from django.http import HttpResponseRedirect
+from django.utils.translation import ugettext_lazy as _
+
 from www.maposmatic.models import MapRenderingJob
 import datetime
 import psycopg2
@@ -55,11 +57,11 @@ def city_exists(city):
 class MapRenderingJobForm(ModelForm):
     class Meta:
         model = MapRenderingJob
-        fields = ('maptitle', 'administrative_city', 'lat_upper_left', 'lon_upper_left',
-                  'lat_bottom_right', 'lon_bottom_right')
+        fields = ('maptitle', 'administrative_city', 'lat_upper_left',
+                  'lon_upper_left', 'lat_bottom_right', 'lon_bottom_right')
 
-    modes = (('admin', 'Administrative boundary'),
-             ('bbox', 'Bounding box'))
+    modes = (('admin', _('Administrative boundary')),
+             ('bbox', _('Bounding box')))
     mode = ChoiceField(choices=modes, initial='admin', widget=RadioSelect)
 
     def clean(self):
@@ -70,11 +72,11 @@ class MapRenderingJobForm(ModelForm):
 
         if mode == 'admin':
             if city == "":
-                msg = u"Administrative city required"
+                msg = _(u"Administrative city required")
                 self._errors["administrative_city"] = ErrorList([msg])
                 del cleaned_data["administrative_city"]
             elif not city_exists(city):
-                msg = u"No administrative boundaries found for this city. Try with proper casing."
+                msg = _(u"No administrative boundaries found for this city. Try with proper casing.")
                 self._errors["administrative_city"] = ErrorList([msg])
                 del cleaned_data["administrative_city"]
 
@@ -82,7 +84,7 @@ class MapRenderingJobForm(ModelForm):
             for f in [ "lat_upper_left", "lon_upper_left",
                        "lat_bottom_right", "lon_bottom_right" ]:
                 val = cleaned_data.get(f)
-                msg = u"Required"
+                msg = _(u"Required")
                 self._errors[f] = ErrorList([msg])
                 del cleaned_data[f]
 

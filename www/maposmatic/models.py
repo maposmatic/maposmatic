@@ -22,6 +22,8 @@
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 from django.db import models
+from django.utils.translation import ugettext_lazy as _
+
 from datetime import datetime
 import www.settings
 import re
@@ -104,9 +106,13 @@ class MapRenderingJob(models.Model):
         for format in www.settings.RENDERING_RESULT_FORMATS:
             if format != 'csv':
                 allfiles.append((www.settings.RENDERING_RESULT_URL + "/" + self.files_prefix() + "." + format,
-                                 self.maptitle + " %s Map" % format.upper()))
+                                 _("%(title)s %(format)s Map") \
+                                     % { 'title' : self.maptitle,
+                                         'format': format.upper() } ))
             allfiles.append((www.settings.RENDERING_RESULT_URL + "/" + self.files_prefix() + "_index." + format,
-                             self.maptitle + " %s Index" % format.upper()))
+                             _("%(title)s %(format)s Index") % \
+                                 { 'title': self.maptitle,
+                                   'format': format.upper() }))
         return allfiles
 
     def current_position_in_queue(self):
