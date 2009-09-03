@@ -34,9 +34,26 @@ class="activelink"
 <h1>{% trans "Maps" %}</h1>
 
 <table class="list">
+    <thead>
+    <tr>
+      <th>{% trans "Title" %}</th>
+      <th>{% trans "Location" %}</th>
+      <th>{% trans "Thumbnail" %}</th>
+      <th>{% trans "Files" %}</th>
+    </tr>
+  </thead>
 {% for map in maps %}
 <tr class="{% cycle odd,even %}">
-  <td>{{map.maptitle}}</td>
+  <td><a href="/jobs/{{map.id}}">{{map.maptitle}}</a></td>
+  <td>
+    {% if map.lat_upper_left %}
+    {{ map.lat_upper_left }}<br/>
+    {{ map.lon_upper_left }}&nbsp;{{map.lon_bottom_right}}<br/>
+    {{ map.lat_bottom_right }}
+    {% else %}
+    {{ map.administrative_city }}
+    {% endif %}
+  </td>
   <td>
     {% if map.get_thumbnail %}
     <img src="{{ map.get_thumbnail }}"/>

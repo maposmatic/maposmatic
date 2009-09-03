@@ -20,8 +20,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: mapOSMatic 0.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-09-03 21:04+0200\n"
-"PO-Revision-Date: 2009-09-03 21:08+0100\n"
+"POT-Creation-Date: 2009-09-03 21:18+0200\n"
+"PO-Revision-Date: 2009-09-03 21:18+0100\n"
 "Last-Translator: Thomas Petazzoni <thomas.petazzoni@enix.org>\n"
 "Language-Team: FR <LL@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -86,10 +86,12 @@ msgid "Job list"
 msgstr "Liste des rendus"
 
 #: templates/maposmatic/all_jobs.html:45
+#: templates/maposmatic/all_maps.html:39
 msgid "Title"
 msgstr "Titre"
 
 #: templates/maposmatic/all_jobs.html:46
+#: templates/maposmatic/all_maps.html:40
 msgid "Location"
 msgstr "Lieu"
 
@@ -117,11 +119,11 @@ msgstr "Position dans la file d'attente"
 msgid "ETA before rendering"
 msgstr "Temps estimé avant rendu"
 
-#: templates/maposmatic/all_jobs.html:74
+#: templates/maposmatic/all_jobs.html:75
 msgid "not started"
 msgstr "Rendu en attente"
 
-#: templates/maposmatic/all_jobs.html:83
+#: templates/maposmatic/all_jobs.html:84
 msgid "not finished"
 msgstr "n/d"
 
@@ -129,6 +131,14 @@ msgstr "n/d"
 #: templates/maposmatic/base.html:48
 msgid "Maps"
 msgstr "Cartes"
+
+#: templates/maposmatic/all_maps.html:41
+msgid "Thumbnail"
+msgstr "Miniature"
+
+#: templates/maposmatic/all_maps.html:42
+msgid "Files"
+msgstr "Fichiers"
 
 #: templates/maposmatic/base.html:46
 msgid "Home"
