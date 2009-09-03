@@ -15,3 +15,13 @@ This source tree contains maposmatic, the web front-end.
 
 It is license under under GNU AGPLv3 (GNU Affero General Public License
 3.0).
+
+Translation
+===========
+
+The .po files are stored in www/locale/<locale>/LC_MESSAGES/. To
+generate or update a .po file, run: django-admin.py makemessages -l
+<locale>. Then, edit the .po file manually, or using a graphical tool
+such as poedit (available in the Debian/Ubuntu package of the same
+name). Once done, don't forget to compile the .po file into an .mo
+file using django-admin.py compilemessages.
