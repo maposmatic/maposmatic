@@ -20,8 +20,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: mapOSMatic 0.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-09-03 22:26+0200\n"
-"PO-Revision-Date: 2009-09-03 22:26+0100\n"
+"POT-Creation-Date: 2009-09-03 22:27+0200\n"
+"PO-Revision-Date: 2009-09-03 22:28+0100\n"
 "Last-Translator: Thomas Petazzoni <thomas.petazzoni@enix.org>\n"
 "Language-Team: FR <LL@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -102,6 +102,10 @@ msgid ""
 "licensed under the AGPLv3."
 msgstr "Bien entendu, MapOSMatic est un Logiciel Libre, disponible sous les termes de la licence AGPLv3."
 
+#: templates/maposmatic/about.html:49
+msgid "How does it work ?"
+msgstr "Comment est-ce que ça fonctionne ?"
+
 #: templates/maposmatic/about.html:51
 msgid ""
 "On our server, we run a PostgreSQL server, with the\n"
@@ -172,6 +176,10 @@ msgid ""
 "because of the CPU and I/O intensive nature of the map rendering\n"
 "process."
 msgstr "Ce service Web a été appelé <i>MapOSMatic</i>, comme <i>map-o-matic</i> mais avec une référence à OpenStreetMap (OSM). Le service Web est écrit en Python en utilisant Django et est chargé de stocker les demandes de rendu et d'afficher le résultat de ces demandes. Le rendu en tant que tel est effectué de manière asynchrone par le démon <i>maposmaticd</i>, de manière à ce qu'un seul rendu soit effectué à un instant donné, ce qui est très important étant donné la nature très intensive en charge processeur et d'entrées-sorties du processus de rendu."
+
+#: templates/maposmatic/about.html:98
+msgid "Contributing"
+msgstr "Contribuer"
 
 #: templates/maposmatic/about.html:100
 msgid ""
