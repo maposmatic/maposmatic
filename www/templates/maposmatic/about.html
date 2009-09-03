@@ -33,4 +33,56 @@ class="activelink"
 {% block page %}
 <h1>{% trans "About" %}</h1>
 
+<h2>History</h2>
+
+<p>MapOSMatic has been started through the idea of Gilles Lamiral, an
+OpenStreetMap and free software contributor from the area of Rennes,
+France. Then, a group of crazy hackers, grouped together during a
+one-week <i>Hackfest</i> in August 2009 brought the idea of Gilles
+Lamiral to life by writing the code and named the project
+MapOSMatic. Through this page, the group of crazy hackers would like
+to thank Gilles for sharing his bright idea.</p>
+
+<p>Of course, MapOSMatic is fully free software, licensed under the
+AGPLv3.</p>
+
+<h2>How does it work ?</h2>
+
+<p>On our server, we run a PostgreSQL server, with the PostGIS
+extension. In this PostgreSQL server, we have loaded the full
+OpenStreetMap data for the metropolitan France, using the <a
+href="">dumps</a> and the <a href="">osm2pgsql</a> tool.</p>
+
+<p>For the map rendering, we use the famous <a href="">Mapnik</a> with
+the OpenStreetMap stylesheet available <a href="">in OpenStreetMap
+Subversion repository</a>. Using Mapnik, we built <i>OCitySMap</i>, a
+Python module that :</p>
+
+<ul>
+
+  <li>Renders the map using OpenStreetMap data and the OpenStreetMap
+  Mapnik stylesheet</li>
+
+  <li>Renders on top of the map, using Mapnik, the grid of 500 meters
+  squares, the labels of the squares, and a few other informations on
+  the map (copyright, scale, etc.)</li>
+
+  <li>Renders an index of the streets, based on OpenStreetMap data and
+  the intersection of the streets with the squares on the map</li>
+
+</ul>
+
+<p>This Python module can be used through a command-line provided with
+OCitySMap, so everyone can run its own city-map rendering
+suite. However, as the installation of the different components is
+quite complicated, a small web service has been created on top of
+it.</p>
+
+<p>MapOSMatic is the association of a small web service developed on
+top of the Django framework and a daemon that processes the rendering
+requests.</p>
+
+<h2>Contributing</h2>
+
+
 {% endblock %}
