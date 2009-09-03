@@ -14,3 +14,6 @@ using :
 scripts/maposmaticd is the daemon that should be run in the
 background. It will fetch rendering jobs from the database and put the
 results in a directory, as specified in the settings_local.py file.
+
+To get proper internationalisation, in www/, run:
+ python /usr/share/python-support/python-django/django/bin/django-admin.py compilemessages
