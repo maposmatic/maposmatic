@@ -36,8 +36,11 @@ class="activelink"
 
 <h1>{% trans "Job list" %}</h1>
 
-<p>This page gives the status of all the rendering requests received
-during the last 24 hours, starting from the most recent one.</p>
+{% if jobs %}
+
+<p>{%blocktrans%}This page gives the status of all the rendering
+requests received during the last 24 hours, starting from the most
+recent one.{%endblocktrans%}</p>
 
 <table class="list">
   <thead>
@@ -97,5 +100,9 @@ during the last 24 hours, starting from the most recent one.</p>
   </tr>
 {% endfor %}
 </table>
+{% else %}
+<p>{%blocktrans%}No map rendering request since the last 24
+hours.{%endblocktrans%}</p>
+{% endif %}
 
 {% endblock %}
