@@ -20,8 +20,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: mapOSMatic 0.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-09-03 22:27+0200\n"
-"PO-Revision-Date: 2009-09-03 22:28+0100\n"
+"POT-Creation-Date: 2009-09-03 22:42+0200\n"
+"PO-Revision-Date: 2009-09-03 22:42+0100\n"
 "Last-Translator: Thomas Petazzoni <thomas.petazzoni@enix.org>\n"
 "Language-Team: FR <LL@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -210,6 +210,12 @@ msgstr ""
 
 #: templates/maposmatic/about.html:115
 msgid ""
+"The IRC channel <code>#maposmatic</code> on\n"
+"  Freenode."
+msgstr "Le canal IRC <code>#maposmatic</code> sur le réseau Freenode."
+
+#: templates/maposmatic/about.html:118
+msgid ""
 "The <a\n"
 "  href=\"http://git.savannah.gnu.org/cgit/maposmatic/ocitysmap.git\">OCitySMap\n"
 "  Git repository</a>, which can be cloned using <code>git clone\n"
@@ -218,7 +224,7 @@ msgstr ""
 "Le <a\n"
 "  href=\"http://git.savannah.gnu.org/cgit/maposmatic/ocitysmap.git\">dépôt Git OCitySMap</a>, qui peut être cloné via <code>git clone git://git.sv.gnu.org/maposmatic/ocitysmap.git</code>"
 
-#: templates/maposmatic/about.html:120
+#: templates/maposmatic/about.html:123
 msgid ""
 "The <a\n"
 "  href=\"http://git.savannah.gnu.org/cgit/maposmatic.git\">MapOSMatic\n"
@@ -226,7 +232,7 @@ msgid ""
 "  <code>git://git.sv.gnu.org/maposmatic.git</code>"
 msgstr "Le <a href=\"http://git.savannah.gnu.org/cgit/maposmatic.git\">dépôt Git MapOSMatic</a>, qui peut être cloné via <code>git://git.sv.gnu.org/maposmatic.git</code>"
 
-#: templates/maposmatic/about.html:125
+#: templates/maposmatic/about.html:128
 msgid ""
 "<a\n"
 "  href=\"https://savannah.nongnu.org/task/?group=maposmatic\">TODO-list\n"
@@ -235,6 +241,10 @@ msgstr ""
 "<a\n"
 "  href=\"https://savannah.nongnu.org/task/?group=maposmatic\">TODO-list\n"
 "  et idées</a>"
+
+#: templates/maposmatic/about.html:134
+msgid "Authors"
+msgstr "Auteurs"
 
 #: templates/maposmatic/all_jobs.html:37
 msgid "Job list"
