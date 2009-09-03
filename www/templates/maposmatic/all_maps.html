@@ -33,4 +33,24 @@ class="activelink"
 {% block page %}
 <h1>{% trans "Maps" %}</h1>
 
+<table class="list">
+{% for map in maps %}
+<tr class="{% cycle odd,even %}">
+  <td>{{map.maptitle}}</td>
+  <td>
+    {% if map.get_thumbnail %}
+    <img src="{{ map.get_thumbnail }}"/>
+    {% endif %}
+  </td>
+  <td style="text-align: left">
+    <ul>
+      {% for file in map.output_files %}
+      <li><a href="{{file.0}}">{{file.1}}</a></li>
+      {% endfor %}
+    </ul>
+  </td>
+</tr>
+{% endfor %}
+</table>
+
 {% endblock %}

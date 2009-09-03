@@ -27,6 +27,7 @@ from django.utils.translation import ugettext_lazy as _
 from datetime import datetime
 import www.settings
 import re
+import os
 
 import logging
 
@@ -114,6 +115,14 @@ class MapRenderingJob(models.Model):
                                  { 'title': self.maptitle,
                                    'format': format.upper() }))
         return allfiles
+
+    def get_thumbnail(self):
+        thumbnail_file = os.path.join(www.settings.RENDERING_RESULT_PATH, self.files_prefix() + "_small.png")
+        thumbnail_url = www.settings.RENDERING_RESULT_URL + "/" + self.files_prefix() + "_small.png"
+        if os.path.exists(thumbnail_file):
+            return thumbnail_url
+        else:
+            return None
 
     def current_position_in_queue(self):
         return MapRenderingJob.objects.filter(status=0).filter(index_queue_at_submission__lte=self.index_queue_at_submission).count()
