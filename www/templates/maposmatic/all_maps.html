@@ -60,11 +60,15 @@ class="activelink"
     {% endif %}
   </td>
   <td style="text-align: left">
+    {% if map.output_files %}
     <ul>
       {% for file in map.output_files %}
       <li><a href="{{file.0}}">{{file.1}}</a></li>
       {% endfor %}
     </ul>
+    {% else %}
+    {% trans "The generated files are no longer available" %}
+    {% endif %}
   </td>
 </tr>
 {% endfor %}

@@ -20,20 +20,20 @@ msgid ""
 msgstr ""
 "Project-Id-Version: mapOSMatic 0.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-09-03 22:42+0200\n"
-"PO-Revision-Date: 2009-09-03 22:42+0100\n"
+"POT-Creation-Date: 2009-09-03 23:09+0200\n"
+"PO-Revision-Date: 2009-09-03 23:09+0100\n"
 "Last-Translator: Thomas Petazzoni <thomas.petazzoni@enix.org>\n"
 "Language-Team: FR <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: maposmatic/models.py:110
+#: maposmatic/models.py:123
 #, python-format
 msgid "%(title)s %(format)s Map"
 msgstr "Carte pour %(title)s (format %(format)s)"
 
-#: maposmatic/models.py:114
+#: maposmatic/models.py:128
 #, python-format
 msgid "%(title)s %(format)s Index"
 msgstr "Index des rues pour %(title)s (format %(format)s)"
@@ -317,6 +317,11 @@ msgstr "Miniature"
 #: templates/maposmatic/all_maps.html:42
 msgid "Files"
 msgstr "Fichiers"
+
+#: templates/maposmatic/all_maps.html:70
+#: templates/maposmatic/job.html:106
+msgid "The generated files are no longer available"
+msgstr "Les fichiers générés ne sont plus disponibles"
 
 #: templates/maposmatic/base.html:46
 msgid "Home"

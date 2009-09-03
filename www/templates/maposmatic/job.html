@@ -98,9 +98,13 @@ class="activelink"
   <tr class="odd">
     <td>{% trans "Result files" %}</td>
     <td>
+      {% if job.output_files %}
       {% for file in job.output_files %}
 	<a href="{{file.0}}">{{file.1}}</a><br/>
       {% endfor %}
+      {% else %}
+      {% trans "The generated files are no longer available" %}
+      {% endif %}
     </td>
   </tr>
   {% endif %}

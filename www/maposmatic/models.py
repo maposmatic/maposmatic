@@ -102,18 +102,32 @@ class MapRenderingJob(models.Model):
     def is_done_failed(self):
         return self.is_done() and self.resultmsg != "ok"
 
+    def get_map_fileurl(self, format):
+        return www.settings.RENDERING_RESULT_URL + "/" + self.files_prefix() + "." + format
+
+    def get_map_filepath(self, format):
+        return os.path.join(www.settings.RENDERING_RESULT_PATH, self.files_prefix() + "." + format)
+
+    def get_index_fileurl(self, format):
+        return www.settings.RENDERING_RESULT_URL + "/" + self.files_prefix() + "_index." + format
+
+    def get_index_filepath(self, format):
+        return os.path.join(www.settings.RENDERING_RESULT_PATH, self.files_prefix() + "_index." + format)
+
     def output_files(self):
         allfiles = []
         for format in www.settings.RENDERING_RESULT_FORMATS:
-            if format != 'csv':
-                allfiles.append((www.settings.RENDERING_RESULT_URL + "/" + self.files_prefix() + "." + format,
+            print format
+            if format != 'csv' and os.path.exists(self.get_map_filepath(format)):
+                allfiles.append((self.get_map_fileurl(format),
                                  _("%(title)s %(format)s Map") \
                                      % { 'title' : self.maptitle,
                                          'format': format.upper() } ))
-            allfiles.append((www.settings.RENDERING_RESULT_URL + "/" + self.files_prefix() + "_index." + format,
-                             _("%(title)s %(format)s Index") % \
-                                 { 'title': self.maptitle,
-                                   'format': format.upper() }))
+            if os.path.exists(self.get_index_filepath(format)):
+                allfiles.append((self.get_index_fileurl(format),
+                                 _("%(title)s %(format)s Index") % \
+                                     { 'title': self.maptitle,
+                                       'format': format.upper() }))
         return allfiles
 
     def get_thumbnail(self):
