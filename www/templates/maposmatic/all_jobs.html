@@ -65,6 +65,7 @@ during the last 24 hours, starting from the most recent one.</p>
       {% else %}
       {{ job.administrative_city }}
       {% endif %}
+    </td>
     <td>
       {{ job.status|job_status_to_str:job.resultmsg }}
     </td>
