@@ -5,39 +5,35 @@
 # Copyright (C) 2009  Maxime Petazzoni
 # Copyright (C) 2009  Thomas Petazzoni
 # Copyright (C) 2009  Gaël Utard
-
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU Affero General Public License as
 # published by the Free Software Foundation, either version 3 of the
 # License, or any later version.
-
 # This program is distributed in the hope that it will be useful,
 # but WITHOUT ANY WARRANTY; without even the implied warranty of
 # MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 # GNU Affero General Public License for more details.
-
 # You should have received a copy of the GNU Affero General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #
-#, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: mapOSMatic 0.1\n"
-"Report-Msgid-Bugs-To: bugs@maposmatic.org\n"
-"POT-Creation-Date: 2009-09-01 09:53+0200\n"
-"PO-Revision-Date: 2009-08-31 22:42+UTC\n"
-"Last-Translator: David Decotigny <d2@maposmatic.org>\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2009-09-03 21:04+0200\n"
+"PO-Revision-Date: 2009-09-03 21:08+0100\n"
+"Last-Translator: Thomas Petazzoni <thomas.petazzoni@enix.org>\n"
 "Language-Team: FR <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: maposmatic/models.py:109
+#: maposmatic/models.py:110
 #, python-format
 msgid "%(title)s %(format)s Map"
 msgstr "Carte pour %(title)s (format %(format)s)"
 
-#: maposmatic/models.py:113
+#: maposmatic/models.py:114
 #, python-format
 msgid "%(title)s %(format)s Index"
 msgstr "Index des rues pour %(title)s (format %(format)s)"
@@ -46,7 +42,8 @@ msgstr "Index des rues pour %(title)s (format %(format)s)"
 msgid "Administrative boundary"
 msgstr "Limites administratives (nom de ville)"
 
-#: maposmatic/views.py:64 templates/maposmatic/index.html:151
+#: maposmatic/views.py:64
+#: templates/maposmatic/index.html:158
 msgid "Bounding box"
 msgstr "Zone géographique"
 
@@ -55,13 +52,10 @@ msgid "Administrative city required"
 msgstr "Nom de ville obligatoire"
 
 #: maposmatic/views.py:79
-msgid ""
-"No administrative boundaries found for this city. Try with proper casing."
-msgstr ""
-"Aucune limite administrative disponible pour cette ville. Essayez en "
-"corrigeant la casse (majuscule sur la première lettre)"
+msgid "No administrative boundaries found for this city. Try with proper casing."
+msgstr "Aucune limite administrative disponible pour cette ville. Essayez en corrigeant la casse (majuscule sur la première lettre)"
 
-#: maposmatic/views.py:87
+#: maposmatic/views.py:88
 msgid "Required"
 msgstr "Obligatoire"
 
@@ -73,7 +67,7 @@ msgstr "Attente de début du rendu"
 msgid "Rendering in progress"
 msgstr "Rendu en cours..."
 
-#: maposmatic/templatetags/extratags.py:21
+#: maposmatic/templatetags/extratags.py:44
 msgid "Rendering successful"
 msgstr "Rendu terminé avec succès"
 
@@ -82,7 +76,8 @@ msgstr "Rendu terminé avec succès"
 msgid "Rendering failed, reason: <i>%(errmsg)s</i>"
 msgstr "Rendu échoué, raison : <i>%(errmsg)s</i>"
 
-#: templates/maposmatic/about.html:34 templates/maposmatic/base.html:49
+#: templates/maposmatic/about.html:34
+#: templates/maposmatic/base.html:49
 msgid "About"
 msgstr "À propos..."
 
@@ -130,7 +125,8 @@ msgstr "Rendu en attente"
 msgid "not finished"
 msgstr "n/d"
 
-#: templates/maposmatic/all_maps.html:34 templates/maposmatic/base.html:48
+#: templates/maposmatic/all_maps.html:34
+#: templates/maposmatic/base.html:48
 msgid "Maps"
 msgstr "Cartes"
 
@@ -150,19 +146,102 @@ msgstr "Liens :"
 msgid "Design by"
 msgstr "Style :"
 
-#: templates/maposmatic/index.html:135
+#: templates/maposmatic/index.html:66
+msgid "Introduction"
+msgstr "Introduction"
+
+#: templates/maposmatic/index.html:76
+msgid "City Map"
+msgstr "Carte de la ville"
+
+#: templates/maposmatic/index.html:82
+msgid "Streets index"
+msgstr "Index des rues "
+
+#: templates/maposmatic/index.html:91
+msgid ""
+"MapOSMatic is a free software web service that\n"
+"allows to generate maps of cities using OpenStreetMap data. A city map\n"
+"is made of two pages :"
+msgstr "MapOSMatic est un service Web en Logiciel Libre qui permet de générer des cartes de villes en utilisant les données OpenStreetMap. La carte d'une ville est constituée de deux pages :"
+
+#: templates/maposmatic/index.html:96
+msgid "the map itself, splitted in squares allowing to easily look for streets;"
+msgstr "la carte elle-même, découpée en carrés pour faciliter la recherche de rues&nbsp;;"
+
+#: templates/maposmatic/index.html:97
+msgid "an index of the streets with references to the squares on the map."
+msgstr "un index des rues référencés selon les carrés de la carte."
+
+#: templates/maposmatic/index.html:100
+msgid ""
+"The generated maps are available in PNG, PDF and\n"
+"SVG and are ready to be printed. Submit your map generation request\n"
+"below, wait a few minutes and get your own map!"
+msgstr "Les cartes générées sont disponibles en PNG, PDF et SVG et sont prêtes à être imprimées. Soumettez une requête de génération de carte ci-dessous, attendez quelques minutes et vous obtiendrez votre carte&nbsp;!"
+
+#: templates/maposmatic/index.html:104
+msgid "More details"
+msgstr "Plus d'informations"
+
+#: templates/maposmatic/index.html:106
+msgid "Generate your own map"
+msgstr "Générer votre carte"
+
+#: templates/maposmatic/index.html:108
+msgid ""
+"For the moment <i>MapOSMatic</i> is only available\n"
+"for the metropolitan France. We need contributors to translate and\n"
+"adapt the few parts of <i>MapOSMatic</i> that are country\n"
+"specific."
+msgstr "Pour le moment, <i>MapOSMatic</i> est uniquement disponible pour la France métropolitaine. Nous avons besoin de contributeurs pour traduire et adapter les quelques parties de <i>MapOSMatic</i> qui sont spécifiques à un pays donné."
+
+#: templates/maposmatic/index.html:113
+msgid ""
+"To select the city to be rendered, two modes are\n"
+"available:"
+msgstr "Pour sélectionner la ville, deux modes sont disponibles&nbsp;:"
+
+#: templates/maposmatic/index.html:118
+msgid ""
+"Using an administrative boundary. These boundaries\n"
+"  allow to get a map with precise boundaries of the city, but the\n"
+"  boundaries are for the moment only available for part of the\n"
+"  Metropolitan French cities (about a third). The name of the provided\n"
+"  city must exactly match the one available in the OpenStreetMap\n"
+"  database (no case or accent difference is allowed). Working examples\n"
+"  are: <i>Chavagne</i>, <i>Bénodet</i> or\n"
+"  <i>Sanguinet</i>."
+msgstr "En utilisant une limite administrative. Ces limites permettent d'avoir une carte avec les limites précises de la ville, mais ces limites ne sont pour le moment disponibles que pour une partie des villes de France métropolitaine (environ un tiers). Le nom de la ville donné ici doit correspondre exactement à celui de la base de données OpenStreetMap (aucune différence d'accent ou de majuscule n'est possible). Quelques exemples fonctionnels sont&nbsp;: <i>Chavagne</i>, <i>Bédonet</i> et <i>Sanguinet</i>."
+
+#: templates/maposmatic/index.html:127
+msgid ""
+"Using a traditionnal bounding\n"
+"  box."
+msgstr "En utilisant une <i>bounding box</i> traditionnelle."
+
+#: templates/maposmatic/index.html:132
+msgid ""
+"Once the rendering is submitted, you will be brought\n"
+"to a page giving the status of your rendering request. As soon as the\n"
+"rendering is completed (might take some time depending on the queue\n"
+"length), this page will contain links to the generated\n"
+"map."
+msgstr "Une fois que le rendu a été soumis, vous allez être redirigé vers une page donnant l'état de votre demande de rendu. Dès que le rendu est terminé (ce qui peut prendre un peu de temps en fonction de la longueur de la file d'attente), cette page contiendra des liens vers la carte générée."
+
+#: templates/maposmatic/index.html:142
 msgid "Title of the map"
 msgstr "Titre de la carte"
 
-#: templates/maposmatic/index.html:140
+#: templates/maposmatic/index.html:147
 msgid "Area selection mode"
 msgstr "Mode de sélection"
 
-#: templates/maposmatic/index.html:146
+#: templates/maposmatic/index.html:153
 msgid "City name"
 msgstr "Nom de la ville"
 
-#: templates/maposmatic/index.html:161
+#: templates/maposmatic/index.html:168
 msgid "Generate"
 msgstr "Générer..."
 
@@ -218,3 +297,4 @@ msgstr "Temps estimé avant rendu"
 #: templates/maposmatic/job.html:99
 msgid "Result files"
 msgstr "Fichiers générés"
+

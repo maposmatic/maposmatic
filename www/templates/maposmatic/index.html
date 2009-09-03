@@ -63,7 +63,7 @@ onload='pageinit()'
 {% block page %}
 <h1>MapOSMatic</h1>
 
-<h2>Introduction</h2>
+<h2>{% trans "Introduction" %}</h2>
 
 <div style="float: right; margin-left: 3em;">
   <table style="text-align: center">
@@ -73,13 +73,13 @@ onload='pageinit()'
     </tr>
     <tr>
       <td>
-	City Map<br/>
+	{% trans "City Map" %}<br/>
 	<a href="/smedia/chavagne.png">PNG</a>&nbsp;-&nbsp;
 	<a href="/smedia/chavagne.pdf">PDF</a>&nbsp;-&nbsp;
 	<a href="/smedia/chavagne.svg">SVG</a>
       </td>
       <td>
-	Streets index<br/>
+	{% trans "Streets index" %}<br/>
 	<a href="/smedia/chavagne_index.png">PNG</a>&nbsp;-&nbsp;
 	<a href="/smedia/chavagne_index.pdf">PDF</a>&nbsp;-&nbsp;
 	<a href="/smedia/chavagne_index.svg">SVG</a>
@@ -88,45 +88,52 @@ onload='pageinit()'
   </table>
 </div>
 
-<p>MapOSMatic is a free software web service that allows to generate
-maps of cities using OpenStreetMap data. A city map is made of two
-pages :</p>
+<p>{% blocktrans %}MapOSMatic is a free software web service that
+allows to generate maps of cities using OpenStreetMap data. A city map
+is made of two pages :{% endblocktrans %}</p>
 
 <ul>
-  <li>the map itself, splitted in squares allowing to easily look for streets;</li>
-  <li>an index of the streets with references to the squares on the map.</li>
+  <li>{% blocktrans %}the map itself, splitted in squares allowing to easily look for streets;{% endblocktrans %}</li>
+  <li>{% blocktrans %}an index of the streets with references to the squares on the map.{% endblocktrans %}</li>
 </ul>
 
-<p>The generated maps are available in PNG, PDF and SVG and are ready
-to be printed. Submit your map generation request below, wait a few
-minutes and get your own map&nbsp;!</p>
+<p>{% blocktrans %}The generated maps are available in PNG, PDF and
+SVG and are ready to be printed. Submit your map generation request
+below, wait a few minutes and get your own map!{% endblocktrans %}</p>
 
-<p style="text-align: right"><a href="/about/">More details</a></p>
+<p style="text-align: right"><a href="/about/">{% trans "More details" %}</a></p>
 
-<h2 style="clear: right">Generate your own map</h2>
+<h2 style="clear: right">{% trans "Generate your own map" %}</h2>
 
-<p>For the moment <i>MapOSMatic</i> is only available for the
-metropolitan France. We need contributors to translate and adapt the
-few parts of <i>MapOSMatic</i> that are country specific.</p>
+<p>{%blocktrans%}For the moment <i>MapOSMatic</i> is only available
+for the metropolitan France. We need contributors to translate and
+adapt the few parts of <i>MapOSMatic</i> that are country
+specific.{%endblocktrans%}</p>
 
-<p>To select the city to be rendered, two modes are
-available&nbsp;:</p>
+<p>{%blocktrans%}To select the city to be rendered, two modes are
+available:{%endblocktrans%}</p>
 
 <ul>
-  <li>Using an administrative boundary. These boundaries allow to get
-  a map with precise boundaries of the city, but the boundaries are
-  for the moment only available for part of the Metropolitan French
-  cities (about a third). The name of the provided city must exactly
-  match the one available in the OpenStreetMap database (no case or
-  accent difference is allowed). Working examples are:
-  <i>Chavagne</i>, <i>Bénodet</i> or <i>Sanguinet</i>.</li>
-  <li>Using a traditionnal bounding box.</li>
+
+  <li>{%blocktrans%}Using an administrative boundary. These boundaries
+  allow to get a map with precise boundaries of the city, but the
+  boundaries are for the moment only available for part of the
+  Metropolitan French cities (about a third). The name of the provided
+  city must exactly match the one available in the OpenStreetMap
+  database (no case or accent difference is allowed). Working examples
+  are: <i>Chavagne</i>, <i>Bénodet</i> or
+  <i>Sanguinet</i>.{%endblocktrans%}</li>
+
+  <li>{%blocktrans%}Using a traditionnal bounding
+  box.{%endblocktrans%}</li>
+
 </ul>
 
-<p>Once the rendering is submitted, you will be brought to a page
-giving the status of your rendering request. As soon as the rendering
-is completed (might take some time depending on the queue length),
-this page will contain links to the generated map.</p>
+<p>{%blocktrans%}Once the rendering is submitted, you will be brought
+to a page giving the status of your rendering request. As soon as the
+rendering is completed (might take some time depending on the queue
+length), this page will contain links to the generated
+map.{%endblocktrans%}</p>
 
 <form method="post" action="">
 
