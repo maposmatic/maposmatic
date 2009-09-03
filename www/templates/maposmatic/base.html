@@ -57,15 +57,17 @@
 
 <div id="left">
 <div class="box">
-  <h2>{% trans "Links:" %}</h2>
-  <ul>
-    <li><a href="http://www.openstreetmap.org">OpenStreetMap</a></li>
-  </ul>
+  <h2>{% trans "Random map" %}</h2>
+  {% if randommap %}
+  <a href="/jobs/{{randommap.id}}">
+  <img src="{{randommap.get_thumbnail}}" style="margin-top: 20px; margin-bottom: 20px"/><br/>
+  <i>{{randommap.maptitle}}</i>
+  </a>
+  {% else %}
+  {% trans "No random map found." %}
+  {% endif %}
 </div>
 
-<div class="box">
-<div style="font-size: 0.8em;">{% trans "Design by" %} <a href="http://www.minimalistic-design.net">Minimalistic Design</a></div>
-</div>
 </div>
 </div>
 

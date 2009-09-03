@@ -71,6 +71,13 @@ TEMPLATE_LOADERS = (
 #     'django.template.loaders.eggs.load_template_source',
 )
 
+from django.conf.global_settings import TEMPLATE_CONTEXT_PROCESSORS
+
+TEMPLATE_CONTEXT_PROCESSORS += (
+     'django.core.context_processors.request',
+     'maposmatic.context_processors.all',
+)
+
 MIDDLEWARE_CLASSES = (
     'django.middleware.common.CommonMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',

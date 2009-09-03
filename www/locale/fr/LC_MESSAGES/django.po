@@ -20,42 +20,42 @@ msgid ""
 msgstr ""
 "Project-Id-Version: mapOSMatic 0.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-09-03 23:09+0200\n"
-"PO-Revision-Date: 2009-09-03 23:09+0100\n"
+"POT-Creation-Date: 2009-09-03 23:57+0200\n"
+"PO-Revision-Date: 2009-09-03 23:57+0100\n"
 "Last-Translator: Thomas Petazzoni <thomas.petazzoni@enix.org>\n"
 "Language-Team: FR <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: maposmatic/models.py:123
+#: maposmatic/models.py:138
 #, python-format
 msgid "%(title)s %(format)s Map"
 msgstr "Carte pour %(title)s (format %(format)s)"
 
-#: maposmatic/models.py:128
+#: maposmatic/models.py:143
 #, python-format
 msgid "%(title)s %(format)s Index"
 msgstr "Index des rues pour %(title)s (format %(format)s)"
 
-#: maposmatic/views.py:63
+#: maposmatic/views.py:64
 msgid "Administrative boundary"
 msgstr "Limites administratives (nom de ville)"
 
-#: maposmatic/views.py:64
+#: maposmatic/views.py:65
 #: templates/maposmatic/index.html:158
 msgid "Bounding box"
 msgstr "Zone géographique"
 
-#: maposmatic/views.py:75
+#: maposmatic/views.py:76
 msgid "Administrative city required"
 msgstr "Nom de ville obligatoire"
 
-#: maposmatic/views.py:79
+#: maposmatic/views.py:80
 msgid "No administrative boundaries found for this city. Try with proper casing."
 msgstr "Aucune limite administrative disponible pour cette ville. Essayez en corrigeant la casse (majuscule sur la première lettre)"
 
-#: maposmatic/views.py:88
+#: maposmatic/views.py:89
 msgid "Required"
 msgstr "Obligatoire"
 
@@ -332,12 +332,12 @@ msgid "Jobs"
 msgstr "Rendus"
 
 #: templates/maposmatic/base.html:60
-msgid "Links:"
-msgstr "Liens :"
+msgid "Random map"
+msgstr "Carte au hasard"
 
 #: templates/maposmatic/base.html:67
-msgid "Design by"
-msgstr "Style :"
+msgid "No random map found."
+msgstr "Aucune carte trouvée."
 
 #: templates/maposmatic/index.html:66
 msgid "Introduction"
@@ -490,4 +490,9 @@ msgstr "Temps estimé avant rendu"
 #: templates/maposmatic/job.html:99
 msgid "Result files"
 msgstr "Fichiers générés"
+
+#~ msgid "Links:"
+#~ msgstr "Liens :"
+#~ msgid "Design by"
+#~ msgstr "Style :"
 

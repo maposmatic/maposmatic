@@ -28,6 +28,7 @@ from django.forms import ChoiceField, RadioSelect, ModelForm, ValidationError
 from django.shortcuts import get_object_or_404, render_to_response
 from django.http import HttpResponseRedirect
 from django.utils.translation import ugettext_lazy as _
+from django.template import RequestContext
 
 from www.maposmatic.models import MapRenderingJob
 import datetime
@@ -111,23 +112,28 @@ def index(request):
     else:
         form = MapRenderingJobForm()
     return render_to_response('maposmatic/index.html',
-                              { 'form' : form })
+                              { 'form' : form },
+                              context_instance=RequestContext(request))
 
 def job(request, job_id):
     job = get_object_or_404(MapRenderingJob, id=job_id)
     return render_to_response('maposmatic/job.html',
-                              { 'job' : job })
+                              { 'job' : job },
+                              context_instance=RequestContext(request))
 
 def all_jobs(request):
     one_day_before = datetime.datetime.now() - datetime.timedelta(1)
     jobs = MapRenderingJob.objects.all().order_by('-submission_time').filter(submission_time__gte=one_day_before)
     return render_to_response('maposmatic/all_jobs.html',
-                              { 'jobs' : jobs })
+                              { 'jobs' : jobs },
+                              context_instance=RequestContext(request))
 
 def all_maps(request):
     maps = MapRenderingJob.objects.filter(status=2).filter(resultmsg="ok").order_by("-submission_time")
     return render_to_response('maposmatic/all_maps.html',
-                              {'maps':maps})
+                              {'maps':maps},
+                              context_instance=RequestContext(request))
 
 def about(request):
-    return render_to_response('maposmatic/about.html')
+    return render_to_response('maposmatic/about.html',
+                              context_instance=RequestContext(request))

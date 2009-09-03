@@ -24,7 +24,7 @@
 from django.db import models
 from django.utils.translation import ugettext_lazy as _
 
-from datetime import datetime
+from datetime import datetime, timedelta
 import www.settings
 import re
 import os
@@ -37,6 +37,18 @@ class MapRenderingJobManager(models.Manager):
 
     def queue_size(self):
         return MapRenderingJob.objects.filter(status=0).count()
+
+    # We try to find a rendered map from the last 15 days, which still
+    # has its thumbnail present.
+    def get_random_with_thumbnail(self):
+        fifteen_days_before = datetime.now() - timedelta(15)
+        maps = MapRenderingJob.objects.filter(status=2).filter(submission_time__gte=fifteen_days_before).order_by('?')[0:10]
+        for m in maps:
+            print m
+            print m.get_thumbnail()
+            if m.get_thumbnail():
+                return m
+        return None
 
 SPACE_REDUCE = re.compile(r"\s+")
 NONASCII_REMOVE = re.compile(r"[^A-Za-z0-9]+")
@@ -64,6 +76,9 @@ class MapRenderingJob(models.Model):
     index_queue_at_submission = models.IntegerField()
 
     objects = MapRenderingJobManager()
+
+    def __str__(self):
+        return self.maptitle.encode('utf-8')
 
     def maptitle_computized(self):
         t = self.maptitle.strip()
