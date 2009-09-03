@@ -35,18 +35,18 @@ class="activelink"
 {% block page %}
 <h1>{% blocktrans with job.maptitle as job_t %}Map <i>{{ job_t }}</i> Status{% endblocktrans %}</h1>
 
-<table>
-  <tr>
+<table class="list">
+  <tr class="odd">
     <td>{% trans "Map title" %}</td>
     <td>{{ job.maptitle }}</td>
   </tr>
 {% if job.administrative_city %}
-  <tr>
+  <tr class="even">
     <td>{% trans "Administrative city" %}</td>
     <td>{{ job.administrative_city }}</td>
   </tr>
 {% else %}
-  <tr>
+  <tr class="even">
     <td>{% trans "Bounding-box coordinates" %}</td>
     <td>
       <code>
@@ -56,15 +56,15 @@ class="activelink"
     </td>
   </tr>
 {% endif %}
-  <tr>
+  <tr class="odd">
     <td>{% trans "Status" %}</td>
     <td>{{ job.status|job_status_to_str:job.resultmsg }}</td>
   </tr>
-  <tr>
+  <tr class="even">
     <td>{% trans "Submission time" %}</td>
     <td>{{ job.submission_time|date:"l d M Y\, H:i:s"}}</td>
   </tr>
-  <tr>
+  <tr class="odd">
     <td>{% trans "Start of rendering time" %}</td>
     <td>
       {% if job.is_waiting %}
@@ -74,7 +74,7 @@ class="activelink"
       {% endif %}
     </td>
   </tr>
-  <tr>
+  <tr class="even">
     <td>{% trans "End of rendering time" %}</td>
     <td>
       {% if job.is_done %}
@@ -85,7 +85,7 @@ class="activelink"
     </td>
   </tr>
   {% if job.is_waiting %}
-  <tr>
+  <tr class="odd">
     <td>{% trans "Current position in queue" %}</td>
     <td>{{ job.current_position_in_queue }}
   </tr>
@@ -95,14 +95,12 @@ class="activelink"
   </tr>
   {% endif %}
   {% if job.is_done_ok %}
-  <tr>
+  <tr class="odd">
     <td>{% trans "Result files" %}</td>
     <td>
-      <ul>
       {% for file in job.output_files %}
-	<li><a href="{{file.0}}">{{file.1}}</a></li>
+	<a href="{{file.0}}">{{file.1}}</a><br/>
       {% endfor %}
-      </ul>
     </td>
   </tr>
   {% endif %}
