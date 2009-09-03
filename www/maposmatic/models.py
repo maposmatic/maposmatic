@@ -44,8 +44,6 @@ class MapRenderingJobManager(models.Manager):
         fifteen_days_before = datetime.now() - timedelta(15)
         maps = MapRenderingJob.objects.filter(status=2).filter(submission_time__gte=fifteen_days_before).order_by('?')[0:10]
         for m in maps:
-            print m
-            print m.get_thumbnail()
             if m.get_thumbnail():
                 return m
         return None
@@ -132,7 +130,6 @@ class MapRenderingJob(models.Model):
     def output_files(self):
         allfiles = []
         for format in www.settings.RENDERING_RESULT_FORMATS:
-            print format
             if format != 'csv' and os.path.exists(self.get_map_filepath(format)):
                 allfiles.append((self.get_map_fileurl(format),
                                  _("%(title)s %(format)s Map") \
