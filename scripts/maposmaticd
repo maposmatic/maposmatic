@@ -28,6 +28,7 @@ from datetime import datetime, timedelta
 from www.maposmatic.models import MapRenderingJob
 from www.settings import RENDERING_RESULT_PATH, LOG, RENDERING_RESULT_FORMATS, RENDERING_RESULT_MAX_SIZE_GB
 import ocitysmap
+import Image
 
 def handler(signum, frame, pipe_write):
     f = os.fdopen(pipe_write, 'w')
@@ -51,6 +52,12 @@ def render_job_process(job):
 
     renderer.render_index(job.maptitle, outfile_prefix,
                           RENDERING_RESULT_FORMATS, _map.width, _map.height)
+
+    if "png" in RENDERING_RESULT_FORMATS:
+        mapimg = outfile_prefix + ".png"
+        i = Image.open(mapimg)
+        i.thumbnail((200,200))
+        i.save(outfile_prefix + "_small.png")
 
     sys.exit(0)
 

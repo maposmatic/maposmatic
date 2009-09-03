@@ -84,9 +84,10 @@ class MapRenderingJobForm(ModelForm):
             for f in [ "lat_upper_left", "lon_upper_left",
                        "lat_bottom_right", "lon_bottom_right" ]:
                 val = cleaned_data.get(f)
-                msg = _(u"Required")
-                self._errors[f] = ErrorList([msg])
-                del cleaned_data[f]
+                if val is None:
+                    msg = _(u"Required")
+                    self._errors[f] = ErrorList([msg])
+                    del cleaned_data[f]
 
         return cleaned_data
 
@@ -124,7 +125,9 @@ def all_jobs(request):
                               { 'jobs' : jobs })
 
 def all_maps(request):
-    return render_to_response('maposmatic/all_maps.html')
+    maps = MapRenderingJob.objects.filter(status=2).filter(resultmsg="ok").order_by("-submission_time")
+    return render_to_response('maposmatic/all_maps.html',
+                              {'maps':maps})
 
 def about(request):
     return render_to_response('maposmatic/about.html')
