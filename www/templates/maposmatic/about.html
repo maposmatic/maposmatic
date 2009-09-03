@@ -33,56 +33,95 @@ class="activelink"
 {% block page %}
 <h1>{% trans "About" %}</h1>
 
-<h2>History</h2>
+<h2>{% trans "History" %}</h2>
 
-<p>MapOSMatic has been started through the idea of Gilles Lamiral, an
-OpenStreetMap and free software contributor from the area of Rennes,
-France. Then, a group of crazy hackers, grouped together during a
-one-week <i>Hackfest</i> in August 2009 brought the idea of Gilles
-Lamiral to life by writing the code and named the project
-MapOSMatic. Through this page, the group of crazy hackers would like
-to thank Gilles for sharing his bright idea.</p>
+<p>{%blocktrans%}MapOSMatic has been started thanks to an idea of
+Gilles Lamiral, an OpenStreetMap and free software contributor. From
+his idea, a group of crazy hackers, met together during a one-week
+<i>Hackfest</i> in August 2009 and brought the idea of Gilles Lamiral
+to life by writing the code and named the project MapOSMatic. The
+group of crazy hackers would like to thank Gilles for sharing his
+bright idea.{%endblocktrans%}</p>
 
-<p>Of course, MapOSMatic is fully free software, licensed under the
-AGPLv3.</p>
+<p>{%blocktrans%}Of course, MapOSMatic is fully free software,
+licensed under the AGPLv3.{%endblocktrans%}</p>
 
 <h2>How does it work ?</h2>
 
-<p>On our server, we run a PostgreSQL server, with the PostGIS
-extension. In this PostgreSQL server, we have loaded the full
+<p>{%blocktrans%}On our server, we run a PostgreSQL server, with the
+PostGIS extension. In this PostgreSQL server, we have loaded the full
 OpenStreetMap data for the metropolitan France, using the <a
-href="">dumps</a> and the <a href="">osm2pgsql</a> tool.</p>
+href="">dumps</a> and the <a href="">osm2pgsql</a>
+tool.{%endblocktrans%}</p>
 
-<p>For the map rendering, we use the famous <a href="">Mapnik</a> with
-the OpenStreetMap stylesheet available <a href="">in OpenStreetMap
-Subversion repository</a>. Using Mapnik, we built <i>OCitySMap</i>, a
-Python module that :</p>
+<p>{%blocktrans%}For the map rendering, we use the famous <a
+href="">Mapnik</a> with the OpenStreetMap stylesheet available <a
+href="">in OpenStreetMap Subversion repository</a>. Using Mapnik and
+Cairo, we built <i>OCitySMap</i>, a Python module that
+:{%endblocktrans%}</p>
 
 <ul>
 
-  <li>Renders the map using OpenStreetMap data and the OpenStreetMap
-  Mapnik stylesheet</li>
+  <li>{%blocktrans%}Renders the map using OpenStreetMap data and the
+  OpenStreetMap Mapnik stylesheet{%endblocktrans%}</li>
 
-  <li>Renders on top of the map, using Mapnik, the grid of 500 meters
-  squares, the labels of the squares, and a few other informations on
-  the map (copyright, scale, etc.)</li>
+  <li>{%blocktrans%}Renders on top of the map, using Mapnik, the grid
+  of 500 meters squares, the labels of the squares, and a few other
+  informations on the map (copyright, scale, etc.){%endblocktrans%}</li>
 
-  <li>Renders an index of the streets, based on OpenStreetMap data and
-  the intersection of the streets with the squares on the map</li>
+  <li>{%blocktrans%}Renders an index of the streets, based on
+  OpenStreetMap data and the intersection of the streets with the
+  squares on the map{%endblocktrans%}</li>
 
 </ul>
 
-<p>This Python module can be used through a command-line provided with
-OCitySMap, so everyone can run its own city-map rendering
-suite. However, as the installation of the different components is
-quite complicated, a small web service has been created on top of
-it.</p>
+<p>{%blocktrans%}This Python module can be used through a command-line
+provided with OCitySMap, so everyone can run its own city-map
+rendering suite. However, as the installation of the different
+components is quite complicated, a small web service has been created
+on top of it so that end-users can easily generate and use
+OpenStreetMap city maps.{%endblocktrans%}</p>
 
-<p>MapOSMatic is the association of a small web service developed on
-top of the Django framework and a daemon that processes the rendering
-requests.</p>
+<p>{%blocktrans%}This web service has been called <i>MapOSMatic</i>,
+like <i>map-o-matic</i> but with a reference to OpenStreetMap
+(OSM). The web service is written in Python using Django and is
+responsible for storing the rendering requests and displaying the
+result of these requests. The rendering itself takes place
+asynchronously through the <i>maposmaticd</i> daemon, so that only one
+rendering at a time is being processed, which is very important
+because of the CPU and I/O intensive nature of the map rendering
+process.{%endblocktrans%}</p>
 
 <h2>Contributing</h2>
 
+<p>{%blocktrans%}As stated above, both <i>OCitySMap</i> and
+<i>MapOSMatic</i> are fully free software, so you're invited to
+contribute. Here are the few starting points to help
+us:{%endblocktrans%}</p>
 
+<ul>
+
+  <li>{%blocktrans%}The <a
+  href="https://savannah.nongnu.org/projects/maposmatic/">project on
+  Savannah</a>{%endblocktrans%}</li>
+
+  <li>{%blocktrans%}The <a
+  href="http://lists.nongnu.org/mailman/listinfo/maposmatic-dev">development
+  mailing-list</a>{%endblocktrans%}</li>
+
+  <li>{%blocktrans%}The <a
+  href="http://git.savannah.gnu.org/cgit/maposmatic/ocitysmap.git">OCitySMap
+  Git repository</a>, which can be cloned using <code>git clone
+  git://git.sv.gnu.org/maposmatic/ocitysmap.git</code>{%endblocktrans%}</li>
+
+  <li>{%blocktrans%}The <a
+  href="http://git.savannah.gnu.org/cgit/maposmatic.git">MapOSMatic
+  Git repository</a>, which can be cloned using
+  <code>git://git.sv.gnu.org/maposmatic.git</code>{%endblocktrans%}</li>
+
+  <li>{%blocktrans%}<a
+  href="https://savannah.nongnu.org/task/?group=maposmatic">TODO-list
+  and ideas</a>{%endblocktrans%}</li>
+
+</ul>
 {% endblock %}
