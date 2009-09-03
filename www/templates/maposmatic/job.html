@@ -96,6 +96,14 @@ class="activelink"
   {% endif %}
   {% if job.is_done_ok %}
   <tr class="odd">
+    <td>{% trans "Thumbnail" %}</td>
+    <td>
+      {% if job.get_thumbnail %}
+      <img src="{{ job.get_thumbnail }}"/>
+      {% endif %}
+    </td>
+  </tr>
+  <tr class="even">
     <td>{% trans "Result files" %}</td>
     <td>
       {% if job.output_files %}
