@@ -75,7 +75,7 @@ from django.conf.global_settings import TEMPLATE_CONTEXT_PROCESSORS
 
 TEMPLATE_CONTEXT_PROCESSORS += (
      'django.core.context_processors.request',
-     'maposmatic.context_processors.all',
+     'www.maposmatic.context_processors.all',
 )
 
 MIDDLEWARE_CLASSES = (
