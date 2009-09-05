@@ -39,6 +39,10 @@ a {
     text-decoration: none;
 }
 
+a img {
+    border-style: none;
+}
+
 h1 {
     font: bold 2.1em Sans-Serif;
     color: #036DA7;

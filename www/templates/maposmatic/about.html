@@ -35,46 +35,54 @@ class="activelink"
 
 <h2>{% trans "History" %}</h2>
 
-<p>{%blocktrans%}MapOSMatic has been started thanks to an idea of
-Gilles Lamiral, an OpenStreetMap and free software contributor. From
-his idea, a group of crazy hackers, met together during a one-week
-<i>Hackfest</i> in August 2009 and brought the idea of Gilles Lamiral
-to life by writing the code and named the project MapOSMatic. The
-group of crazy hackers would like to thank Gilles for sharing his
-bright idea.{%endblocktrans%}</p>
+<p>{%blocktrans%}MapOSMatic has been started thanks to an idea of Gilles
+Lamiral, an <a href="http://www.openstreetmap.org">OpenStreetMap</a> and
+free software contributor or Rennes area, France. From his idea, a group
+of crazy hackers, met together during a one-week <em>Hackfest</em> in
+August 2009 and brought the idea of Gilles Lamiral to life by writing
+the code and named the project
+<strong>MapOSMatic</strong>. The group of crazy hackers would like to
+thank Gilles for sharing his bright idea!{%endblocktrans%}</p>
 
 <p>{%blocktrans%}Of course, MapOSMatic is fully free software,
-licensed under the AGPLv3.{%endblocktrans%}</p>
+licensed under the <a href="http://www.fsf.org/licensing/licenses/agpl-3.0.html">AGPLv3</a>.{%endblocktrans%}</p>
 
-<h2>{% trans "How does it work ?" %}</h2>
+<h2>{% trans "How does it work?" %}</h2>
 
-<p>{%blocktrans%}On our server, we run a PostgreSQL server, with the
-PostGIS extension. In this PostgreSQL server, we have loaded the full
-OpenStreetMap data for the metropolitan France, using the <a
-href="http://download.geofabrik.de/osm/europe/">dumps</a> from
-Geofabrik and the <a
-href="http://wiki.openstreetmap.org/wiki/Osm2pgsql">osm2pgsql</a>
+<p>{%blocktrans%}On our server, we run
+a <a href="http://www.postgresql.org">PostgreSQL</a> server, with the
+<a href="http://postgis.refractions.net">PostGIS</a> extension. In this
+PostgreSQL server, we have loaded the full OpenStreetMap data for the
+metropolitan France, using
+the <a href="http://download.geofabrik.de/osm/europe/">dumps</a> from
+Geofabrik and
+the <a href="http://wiki.openstreetmap.org/wiki/Osm2pgsql">osm2pgsql</a>
 tool.{%endblocktrans%}</p>
 
-<p>{%blocktrans%}For the map rendering, we use the famous <a
-href="http://www.mapnik.org">Mapnik</a> with the OpenStreetMap
-stylesheet available <a
-href="http://svn.openstreetmap.org/applications/rendering/mapnik">in
-OpenStreetMap Subversion repository</a>. Using Mapnik and Cairo, we
-built <i>OCitySMap</i>, a Python module that :{%endblocktrans%}</p>
+<p>{%blocktrans%}For the map rendering, we use the
+famous <a href="http://www.mapnik.org">Mapnik</a> with the OpenStreetMap
+stylesheet
+available <a href="http://svn.openstreetmap.org/applications/rendering/mapnik">in
+OpenStreetMap Subversion repository</a>. Using Mapnik
+and <a href="http://cairographics.org/pycairo/">Cairo</a>, we
+built <i>OCitySMap</i>, a Python module that:{%endblocktrans%}</p>
 
 <ul>
 
   <li>{%blocktrans%}Renders the map using OpenStreetMap data and the
-  OpenStreetMap Mapnik stylesheet{%endblocktrans%}</li>
+  OpenStreetMap Mapnik stylesheet;{%endblocktrans%}</li>
 
   <li>{%blocktrans%}Renders on top of the map, using Mapnik, the grid
   of 500 meters squares, the labels of the squares, and a few other
-  informations on the map (copyright, scale, etc.){%endblocktrans%}</li>
+  informations on the map (copyright, scale,
+  etc.);{%endblocktrans%}</li>
+
+  <li>{%blocktrans%}Greys out all the area outside the city if we find
+  its administrative boundary;{%endblocktrans%}</li>
 
   <li>{%blocktrans%}Renders an index of the streets, based on
   OpenStreetMap data and the intersection of the streets with the
-  squares on the map{%endblocktrans%}</li>
+  squares on the map{%endblocktrans%}.</li>
 
 </ul>
 
@@ -86,14 +94,14 @@ on top of it so that end-users can easily generate and use
 OpenStreetMap city maps.{%endblocktrans%}</p>
 
 <p>{%blocktrans%}This web service has been called <i>MapOSMatic</i>,
-like <i>map-o-matic</i> but with a reference to OpenStreetMap
-(OSM). The web service is written in Python using Django and is
-responsible for storing the rendering requests and displaying the
-result of these requests. The rendering itself takes place
-asynchronously through the <i>maposmaticd</i> daemon, so that only one
-rendering at a time is being processed, which is very important
-because of the CPU and I/O intensive nature of the map rendering
-process.{%endblocktrans%}</p>
+like <i>map-o-matic</i> but with a reference to OpenStreetMap (OSM). The
+web service is written in Python
+using <a href="http://www.djangoproject.com">Django</a>. It is
+responsible for storing the rendering requests and displaying the result
+of these requests. The rendering itself takes place asynchronously
+through the <i>maposmaticd</i> daemon. This daemon does only one
+rendering at a time, which is very important because of the CPU and I/O
+intensive nature of the map rendering process.{%endblocktrans%}</p>
 
 <h2>{% trans "Contributing" %}</h2>
 
@@ -106,28 +114,28 @@ us:{%endblocktrans%}</p>
 
   <li>{%blocktrans%}The <a
   href="https://savannah.nongnu.org/projects/maposmatic/">project on
-  Savannah</a>{%endblocktrans%}</li>
+  Savannah</a>;{%endblocktrans%}</li>
 
   <li>{%blocktrans%}The <a
   href="http://lists.nongnu.org/mailman/listinfo/maposmatic-dev">development
-  mailing-list</a>{%endblocktrans%}</li>
+  mailing-list</a>;{%endblocktrans%}</li>
 
   <li>{%blocktrans%}The IRC channel <code>#maposmatic</code> on
-  Freenode.{%endblocktrans%}</li>
+  Freenode;{%endblocktrans%}</li>
 
   <li>{%blocktrans%}The <a
   href="http://git.savannah.gnu.org/cgit/maposmatic/ocitysmap.git">OCitySMap
   Git repository</a>, which can be cloned using <code>git clone
-  git://git.sv.gnu.org/maposmatic/ocitysmap.git</code>{%endblocktrans%}</li>
+  git://git.sv.gnu.org/maposmatic/ocitysmap.git</code>;{%endblocktrans%}</li>
 
   <li>{%blocktrans%}The <a
   href="http://git.savannah.gnu.org/cgit/maposmatic.git">MapOSMatic
   Git repository</a>, which can be cloned using
-  <code>git://git.sv.gnu.org/maposmatic.git</code>{%endblocktrans%}</li>
+  <code>git clone git://git.sv.gnu.org/maposmatic.git</code>;{%endblocktrans%}</li>
 
   <li>{%blocktrans%}<a
   href="https://savannah.nongnu.org/task/?group=maposmatic">TODO-list
-  and ideas</a>{%endblocktrans%}</li>
+  and ideas</a>.{%endblocktrans%}</li>
 
 </ul>
 

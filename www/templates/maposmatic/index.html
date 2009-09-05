@@ -68,8 +68,8 @@ onload='pageinit()'
 <div style="float: right; margin-left: 3em;">
   <table style="text-align: center">
     <tr>
-      <td><img src="/smedia/chavagne-small.png"></td>
-      <td><img src="/smedia/chavagne_index-small.png"></td>
+      <td><a href="/smedia/chavagne.png"><img src="/smedia/chavagne-small.png"></td></a>
+      <td><a href="/smedia/chavagne_index.png"><img src="/smedia/chavagne_index-small.png"></a></td>
     </tr>
     <tr>
       <td>
@@ -90,24 +90,28 @@ onload='pageinit()'
 
 <p>{% blocktrans %}MapOSMatic is a free software web service that
 allows to generate maps of cities using OpenStreetMap data. A city map
-is made of two pages :{% endblocktrans %}</p>
+is made of two pages:{% endblocktrans %}</p>
 
 <ul>
-  <li>{% blocktrans %}the map itself, splitted in squares allowing to easily look for streets;{% endblocktrans %}</li>
-  <li>{% blocktrans %}an index of the streets with references to the squares on the map.{% endblocktrans %}</li>
+  <li>{% blocktrans %}The map itself, splitted in squares allowing to easily look for streets;{% endblocktrans %}</li>
+  <li>{% blocktrans %}An index of the streets with references to the squares on the map.{% endblocktrans %}</li>
 </ul>
 
 <p>{% blocktrans %}The generated maps are available in PNG, PDF and
 SVG and are ready to be printed. Submit your map generation request
 below, wait a few minutes and get your own map!{% endblocktrans %}</p>
 
+<p>{% blocktrans %}As the data used to generate maps are coming from
+  OpenStreetMap, you can freely reuse, sell, modify, ... the generated
+  maps.{% endblocktrans %}</p>
+
 <p style="text-align: right"><a href="/about/">{% trans "More details" %}</a></p>
 
 <h2 style="clear: right">{% trans "Generate your own map" %}</h2>
 
-<p>{%blocktrans%}For the moment <i>MapOSMatic</i> is only available
-for the metropolitan France. We need contributors to translate and
-adapt the few parts of <i>MapOSMatic</i> that are country
+<p>{%blocktrans%}Right now <em>MapOSMatic</em> is only available for the
+metropolitan France area. We need contributors to translate and adapt
+the few parts of <em>MapOSMatic</em> that are country
 specific.{%endblocktrans%}</p>
 
 <p>{%blocktrans%}To select the city to be rendered, two modes are
@@ -115,23 +119,23 @@ available:{%endblocktrans%}</p>
 
 <ul>
 
-  <li>{%blocktrans%}Using an administrative boundary. These boundaries
-  allow to get a map with precise boundaries of the city, but the
-  boundaries are for the moment only available for part of the
-  Metropolitan French cities (about a third). The name of the provided
-  city must exactly match the one available in the OpenStreetMap
-  database (no case or accent difference is allowed). Working examples
-  are: <i>Chavagne</i>, <i>Bénodet</i> or
-  <i>Sanguinet</i>.{%endblocktrans%}</li>
+  <li>{%blocktrans%}Using an administrative boundary. It allows to get a
+  map with precise boundaries of the city, but they are for the moment
+  only available for part of the metropolitan French cities (about a
+  third). The name of the provided city must <em>exactly match</em> the
+  one available in the OpenStreetMap database (no case or accent
+  difference is allowed). Working examples
+  are: <code>Chavagne</code>, <code>Bénodet</code> or
+  <code>Sanguinet</code>.{%endblocktrans%}</li>
 
-  <li>{%blocktrans%}Using a traditionnal bounding
+  <li>{%blocktrans%}Using a traditional bounding
   box.{%endblocktrans%}</li>
 
 </ul>
 
 <p>{%blocktrans%}Once the rendering is submitted, you will be brought
 to a page giving the status of your rendering request. As soon as the
-rendering is completed (might take some time depending on the queue
+rendering is completed (that might take some time depending on the queue
 length), this page will contain links to the generated
 map.{%endblocktrans%}</p>
 
