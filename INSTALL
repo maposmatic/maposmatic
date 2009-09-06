@@ -1,19 +1,38 @@
 INSTALLATION NOTES
 ==================
 
-www/ contains the Django web application. The file
-www/settings_local.py.template must be copied to www/settings_local.py
-and adapted to the installation configuration. Likewise for
-www/maposmatic.wsgi-template and scripts/maposmaticd.sh
+Dependencies
+------------
 
-The database must be initialize with the tables needed for MapOSMatic,
+MapOSMatic depends on Python, Django and python-psycodg2. You will also most
+likely need a working PostGIS installation for the entire pipeline to run.
+
+
+Setup
+-----
+
+The www/ directory contains the Django web application. The file
+www/settings_local.py.template must be copied to www/settings_local.py and
+modified to match your installation configuration.
+
+Likewise for www/maposmatic.wsgi-template and scripts/maposmaticd.sh.
+
+The database must then be initialized with the tables needed for MapOSMatic,
 using :
 
- ./www/manage.py syncdb
+  python www/manage.py syncdb
 
-scripts/maposmaticd is the daemon that should be run in the
-background. It will fetch rendering jobs from the database and put the
-results in a directory, as specified in the settings_local.py file.
+The scripts/maposmaticd daemon should be run in the background. It will fetch
+rendering jobs from the database and put the results in a directory, as
+specified in the settings_local.py file.
 
-To get proper internationalisation, in www/, run:
- python /usr/share/python-support/python-django/django/bin/django-admin.py compilemessages
+
+Internationalization
+--------------------
+
+To get proper internationalisation, you need to compile the gettext locale files:
+
+  django-admin compilemessages
+
+Don't forget to restart the Django server or it won't pick up the new
+translated strings!
