@@ -347,7 +347,11 @@ msgstr "Accueil"
 msgid "Jobs"
 msgstr "Rendus"
 
-#: templates/maposmatic/base.html:61
+#: templates/maposmatic/base.html:64
+msgid "Language:"
+msgstr "Langue&nbsp;:"
+
+#: templates/maposmatic/base.html:81
 msgid "Random map"
 msgstr "Carte au hasard"
 

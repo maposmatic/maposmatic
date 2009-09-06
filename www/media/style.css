@@ -156,20 +156,38 @@ form ul {
     list-style-type: none;
 }
 
-input {
+.submitmap input {
     background: #FFF6BF;
     border: 3px solid #CCC;
     width: 300px;
     padding: 3px;
 }
 
-input:hover {
+.submitmap input:hover {
     border: 3px solid #AAA;
 }
 
-input[type="submit"]
+.submitmap input[type="submit"]
 {
     width: 300px;
+}
+
+.langsel {
+    text-align: right;
+}
+
+.langsel input {
+    background: #FFF6BF;
+    border: 3px solid #CCC;
+    padding: 3px;
+}
+
+.langsel input:hover {
+    border: 3px solid #AAA;
+}
+
+.langsel input[type="submit"]
+{
 }
 
 table.list

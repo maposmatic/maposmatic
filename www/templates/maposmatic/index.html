@@ -141,7 +141,7 @@ rendering is completed (that might take some time depending on the queue
 length), this page will contain links to the generated
 map.{%endblocktrans%}</p>
 
-<form method="post" action="">
+<form method="post" action="" class="submitmap">
 
 <table style="margin: auto; border: 1px solid #CCC; padding: 10px;">
   <tr>
@@ -171,7 +171,9 @@ map.{%endblocktrans%}</p>
   </tr>
   <tr>
     <td></td>
-    <td><input type="submit" value="{% trans 'Generate' %}"/></td>
+    <td>
+      <input type="submit" value="{% trans 'Generate' %}"/>
+    </td>
   </tr>
 </table>
 
