@@ -24,7 +24,7 @@
 # Create your views here.
 
 from django.forms.util import ErrorList
-from django.forms import ChoiceField, RadioSelect, ModelForm, ValidationError
+from django.forms import CharField, ChoiceField, RadioSelect, ModelForm, ValidationError
 from django.shortcuts import get_object_or_404, render_to_response
 from django.http import HttpResponseRedirect
 from django.utils.translation import ugettext_lazy as _
@@ -64,12 +64,14 @@ class MapRenderingJobForm(ModelForm):
     modes = (('admin', _('Administrative boundary')),
              ('bbox', _('Bounding box')))
     mode = ChoiceField(choices=modes, initial='admin', widget=RadioSelect)
+    maptitle = CharField(max_length=256, required=False)
 
     def clean(self):
         cleaned_data = self.cleaned_data
 
         mode = cleaned_data.get("mode")
         city = cleaned_data.get("administrative_city")
+        title = cleaned_data.get("maptitle")
 
         if mode == 'admin':
             if city == "":
@@ -81,7 +83,14 @@ class MapRenderingJobForm(ModelForm):
                 self._errors["administrative_city"] = ErrorList([msg])
                 del cleaned_data["administrative_city"]
 
+            cleaned_data["maptitle"] = city
+
         if mode == 'bbox':
+            if title == '':
+                msg = _(u"Map title required")
+                self._errors["maptitle"] = ErrorList([msg])
+                del cleaned_data["maptitle"]
+
             for f in [ "lat_upper_left", "lon_upper_left",
                        "lat_bottom_right", "lon_bottom_right" ]:
                 val = cleaned_data.get(f)

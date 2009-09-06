@@ -47,15 +47,19 @@ msgstr "Limites administratives (nom de ville)"
 msgid "Bounding box"
 msgstr "Zone géographique"
 
-#: maposmatic/views.py:76
+#: maposmatic/views.py:79
 msgid "Administrative city required"
 msgstr "Nom de ville obligatoire"
 
-#: maposmatic/views.py:80
+#: maposmatic/views.py:83
 msgid "No administrative boundaries found for this city. Try with proper casing."
 msgstr "Aucune limite administrative disponible pour cette ville. Essayez en corrigeant la casse (majuscule sur la première lettre)"
 
-#: maposmatic/views.py:89
+#: maposmatic/views.py:91
+msgid "Map title required"
+msgstr "Titre de la carte obligatoire"
+
+#: maposmatic/views.py:99
 msgid "Required"
 msgstr "Obligatoire"
 
