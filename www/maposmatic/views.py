@@ -41,7 +41,7 @@ import www.settings
 def city_exists(city):
     try:
         conn = psycopg2.connect("dbname='%s' user='%s' host='%s' password='%s'" % \
-                                    (www.settings.DATABASE_NAME, www.settings.DATABASE_USER,
+                                    (www.settings.GIS_DATABASE_NAME, www.settings.DATABASE_USER,
                                      www.settings.DATABASE_HOST, www.settings.DATABASE_PASSWORD))
     except psycopg2.OperationalError:
         return False
