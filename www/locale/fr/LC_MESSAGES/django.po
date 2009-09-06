@@ -20,9 +20,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: mapOSMatic 0.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-09-05 13:09+0200\n"
-"PO-Revision-Date: 2009-09-05 13:12+0100\n"
-"Last-Translator: David MENTRÉ <dmentre@linux-france.org>\n"
+"POT-Creation-Date: 2009-09-06 16:22+0200\n"
+"PO-Revision-Date: 2009-09-06 17:07+0100\n"
+"Last-Translator: David Decotigny <d2@maposmatic.org>\n"
 "Language-Team: FR <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -80,8 +80,29 @@ msgstr "Rendu terminé avec succès"
 msgid "Rendering failed, reason: <i>%(errmsg)s</i>"
 msgstr "Rendu échoué, raison : <i>%(errmsg)s</i>"
 
+#: templates/500.html:3
+#: templates/maposmatic/base.html:48
+msgid "Home"
+msgstr "Accueil"
+
+#: templates/500.html:3
+msgid "Server error"
+msgstr "Erreur interne"
+
+#: templates/500.html:5
+msgid "Server error (500)"
+msgstr "Erreur interne (500)"
+
+#: templates/500.html:8
+msgid "Server Error <em>(500)</em>"
+msgstr "Erreur interne <em>500</em>"
+
+#: templates/500.html:9
+msgid "There's been an error."
+msgstr "Une erreur est apparue."
+
 #: templates/maposmatic/about.html:35
-#: templates/maposmatic/base.html:50
+#: templates/maposmatic/base.html:51
 msgid "About"
 msgstr "À propos..."
 
@@ -321,7 +342,7 @@ msgid ""
 msgstr "Pas de demande de rendu de carte durant les dernières 24 heures."
 
 #: templates/maposmatic/all_maps.html:35
-#: templates/maposmatic/base.html:49
+#: templates/maposmatic/base.html:50
 msgid "Maps"
 msgstr "Cartes"
 
@@ -343,11 +364,7 @@ msgstr "Les fichiers générés ne sont plus disponibles"
 msgid "Your free city maps!"
 msgstr "Vos cartes de villes libres&nbsp;!"
 
-#: templates/maposmatic/base.html:47
-msgid "Home"
-msgstr "Accueil"
-
-#: templates/maposmatic/base.html:48
+#: templates/maposmatic/base.html:49
 msgid "Jobs"
 msgstr "Rendus"
 
@@ -355,7 +372,7 @@ msgstr "Rendus"
 msgid "Random map"
 msgstr "Carte au hasard"
 
-#: templates/maposmatic/base.html:68
+#: templates/maposmatic/base.html:88
 msgid "No random map found."
 msgstr "Aucune carte trouvée."
 
