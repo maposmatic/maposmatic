@@ -189,7 +189,7 @@ table.list tr.odd
   background: #FFF6BF;
 }
 
-table.list td
+table.list td, th
 {
   text-align: center;
   padding: 1em;
