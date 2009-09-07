@@ -41,6 +41,7 @@
 <div id="header">
 <h1>MapOSMatic</h1>
 <h2>{% trans "Your free city maps!" %}</h2>
+
  <div id="menu">
   <ul id="nav">
    <li {% block menu-home %}{% endblock %}><a href="/">{% trans "Home" %}</a></li>
@@ -56,6 +57,25 @@
 </div>
 
 <div id="left">
+
+  <div class="box">
+    <form name="langsel" action="/i18n/setlang/" method="post" class="langsel">
+      <label for="language">{%trans "Language:" %}</label>
+      <select name="language" onChange="document.langsel.submit();">
+	{% for lang in LANGUAGES %}
+	<option
+	   {% ifequal lang.0 LANGUAGE_CODE %}
+	   selected
+	   {% endifequal %}
+	   value="{{ lang.0 }}">
+	  {{ lang.1 }}
+	</option>
+	{% endfor %}
+      </select>
+      <input type="submit" value="Go" />
+    </form>
+  </div>
+
 <div class="box">
   <h2>{% trans "Random map" %}</h2>
   {% if randommap %}
