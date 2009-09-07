@@ -48,6 +48,7 @@
    <li {% block menu-jobs %}{% endblock %}><a href="/jobs">{% trans "Jobs" %}</a></li>
    <li {% block menu-maps %}{% endblock %}><a href="/maps">{% trans "Maps" %}</a></li>
    <li {% block menu-about %}{% endblock %}><a href="/about">{% trans "About" %}</a></li>
+   <li class="right"><a href="">Machin</a></li>
   </ul>
  </div>
 </div>
@@ -57,6 +58,18 @@
 </div>
 
 <div id="left">
+
+<div class="box">
+  <h2>{% trans "Random map" %}</h2>
+  {% if randommap %}
+  <a href="/jobs/{{randommap.id}}">
+  <img src="{{randommap.get_thumbnail}}" style="margin-top: 20px; margin-bottom: 20px"/><br/>
+  <i>{{randommap.maptitle}}</i>
+  </a>
+  {% else %}
+  {% trans "No random map found." %}
+  {% endif %}
+</div>
 
   <div class="box">
     <form name="langsel" action="/i18n/setlang/" method="post" class="langsel">
@@ -75,18 +88,6 @@
       <input type="submit" value="Go" />
     </form>
   </div>
-
-<div class="box">
-  <h2>{% trans "Random map" %}</h2>
-  {% if randommap %}
-  <a href="/jobs/{{randommap.id}}">
-  <img src="{{randommap.get_thumbnail}}" style="margin-top: 20px; margin-bottom: 20px"/><br/>
-  <i>{{randommap.maptitle}}</i>
-  </a>
-  {% else %}
-  {% trans "No random map found." %}
-  {% endif %}
-</div>
 
 </div>
 </div>

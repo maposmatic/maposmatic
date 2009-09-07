@@ -182,6 +182,17 @@ form ul {
     padding: 3px;
 }
 
+.langsel select {
+    background: #FFF6BF;
+    border: 3px solid #CCC;
+    width: 100px;
+    padding: 3px;
+}
+
+.langsel select:hover {
+    border: 3px solid #AAA
+}
+
 .langsel input:hover {
     border: 3px solid #AAA;
 }
