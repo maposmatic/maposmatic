@@ -37,6 +37,7 @@ import datetime
 import psycopg2
 import www.settings
 from www.maposmatic.widgets import AreaField
+from ocitysmap.coords import BoundingBox
 
 # Test if a given city has its administrative boundaries inside the
 # OpenStreetMap database. We don't go through the Django ORM but
@@ -111,6 +112,16 @@ class MapRenderingJobForm(ModelForm):
                     msg = _(u"Required")
                     self._errors[f] = ErrorList([msg])
                     del cleaned_data[f]
+
+            bbox = BoundingBox(cleaned_data.get("lat_upper_left"),
+                               cleaned_data.get("lon_upper_left"),
+                               cleaned_data.get("lat_bottom_right"),
+                               cleaned_data.get("lon_bottom_right"))
+            (metric_size_lat, metric_size_long) = bbox.spheric_sizes()
+            if metric_size_lat > www.settings.BBOX_MAXIMUM_LENGTH_IN_METERS or \
+                    metric_size_long > www.settings.BBOX_MAXIMUM_LENGTH_IN_METERS:
+                msg = _(u"Bounding Box too big")
+                self._errors['bbox'] = ErrorList([msg])
 
         return cleaned_data
 

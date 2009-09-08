@@ -52,3 +52,7 @@ DEFAULT_MAPOSMATIC_LOG_LEVEL = logging.INFO
 
 # Base bounding box
 BASE_BOUNDING_BOX = (51.956, -7.838, 41.458, 11.937)
+
+# Maximum length of the bounding box to be rendered. This length is
+# checked in both directions (longitude and latitude)
+BBOX_MAXIMUM_LENGTH_IN_METERS = 20000
