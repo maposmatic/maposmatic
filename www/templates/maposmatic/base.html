@@ -60,6 +60,7 @@
 
 <div class="box">
   <h2>{% trans "Random map" %}</h2>
+  <p style="text-align: center">
   {% if randommap %}
   <a href="/jobs/{{randommap.id}}">
   <img src="{{randommap.get_thumbnail}}" style="margin-top: 20px; margin-bottom: 20px"/><br/>
@@ -68,6 +69,7 @@
   {% else %}
   {% trans "No random map found." %}
   {% endif %}
+  </p>
 </div>
 
 <div class="box">
