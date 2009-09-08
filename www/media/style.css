@@ -234,3 +234,15 @@ div.pagination
 {
   text-align: center;
 }
+
+table#mapform td
+{
+  padding: 20px;
+  width: 50%;
+}
+
+ul.errorlist
+{
+  margin-top: 5px;
+  color: red;
+}

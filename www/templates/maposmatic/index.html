@@ -142,24 +142,29 @@ rendering is completed (that might take some time depending on the queue
 length), this page will contain links to the generated
 map.{%endblocktrans%}</p>
 
-<form method="post" action="" class="submitmap">
+<a name="submitmapform"/>
+<form method="post" action="/#submitmapform" class="submitmap">
 
 <table id="mapform" style="margin: auto; border: 1px solid #CCC; padding: 10px; width: 70%;">
   <tr>
-    <td width="50%">{% trans "Area selection mode" %}</td>
-    <td width="50%" colspan="2">
+    <td>{% trans "Area selection mode" %}</td>
+    <td>
       {{ form.mode }}
     </td>
   </tr>
   <tr class="byadmin">
     <td>{% trans "City name" %}</td>
-    <td>{{ form.administrative_city }}</td>
-    <td>{{ form.administrative_city.errors }}</td>
+    <td>
+      {{ form.administrative_city }}
+      {{ form.administrative_city.errors }}
+    </td>
   </tr>
   <tr class="bybbox">
     <td width="50%">{% trans "Title of the map" %}</td>
-    <td>{{ form.maptitle }}</td>
-    <td>{{ form.maptitle.errors }}</td>
+    <td>
+      {{ form.maptitle }}
+      {{ form.maptitle.errors }}
+    </td>
   </tr>
   <tr class="bybbox" style="display: none;">
     <td>{% trans "Bounding box" %}</td>
@@ -172,7 +177,7 @@ map.{%endblocktrans%}</p>
   </tr>
   <tr>
     <td></td>
-    <td colspan="2">
+    <td>
       <input type="submit" value="{% trans 'Generate' %}"/>
     </td>
   </tr>
