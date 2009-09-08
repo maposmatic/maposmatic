@@ -100,7 +100,6 @@ class MapRenderingJobForm(ModelForm):
                        "lat_bottom_right", "lon_bottom_right" ]:
                 val = cleaned_data.get(f)
                 if val is None:
-                    print "missing value %s" % f
                     msg = _(u"Required")
                     self._errors[f] = ErrorList([msg])
                     del cleaned_data[f]
@@ -110,7 +109,6 @@ class MapRenderingJobForm(ModelForm):
 def index(request):
     if request.method == 'POST':
         form = MapRenderingJobForm(request.POST)
-        print "form post"
         if form.is_valid():
             job = MapRenderingJob()
             job.maptitle = form.cleaned_data['maptitle']
