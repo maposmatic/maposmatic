@@ -21,7 +21,7 @@ msgstr ""
 "Project-Id-Version: mapOSMatic 0.1\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2009-09-08 22:06+0200\n"
-"PO-Revision-Date: 2009-09-08 22:07+0100\n"
+"PO-Revision-Date: 2009-09-08 22:08+0100\n"
 "Last-Translator: Thomas Petazzoni <thomas.petazzoni@enix.org>\n"
 "Language-Team: FR <LL@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -385,7 +385,7 @@ msgstr "Les fichiers générés ne sont plus disponibles"
 
 #: templates/maposmatic/base.html:43
 msgid "Your free city maps!"
-msgstr "Vos cartes de villes libres&nbsp;!"
+msgstr "Vos cartes de ville libres&nbsp;!"
 
 #: templates/maposmatic/base.html:48
 msgid "Jobs"
