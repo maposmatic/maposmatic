@@ -20,8 +20,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: mapOSMatic 0.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-09-08 21:38+0200\n"
-"PO-Revision-Date: 2009-09-08 21:38+0100\n"
+"POT-Creation-Date: 2009-09-08 21:49+0200\n"
+"PO-Revision-Date: 2009-09-08 21:50+0100\n"
 "Last-Translator: Thomas Petazzoni <thomas.petazzoni@enix.org>\n"
 "Language-Team: FR <LL@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -367,7 +367,7 @@ msgid "Maps"
 msgstr "Cartes"
 
 #: templates/maposmatic/all_maps.html:42
-#: templates/maposmatic/job.html:101
+#: templates/maposmatic/job.html:114
 msgid "Thumbnail"
 msgstr "Miniature"
 
@@ -376,7 +376,7 @@ msgid "Files"
 msgstr "Fichiers"
 
 #: templates/maposmatic/all_maps.html:71
-#: templates/maposmatic/job.html:116
+#: templates/maposmatic/job.html:129
 msgid "The generated files are no longer available"
 msgstr "Les fichiers générés ne sont plus disponibles"
 
@@ -513,51 +513,56 @@ msgstr "Générer..."
 msgid "Map <i>%(job_t)s</i> Status"
 msgstr "État du rendu de la carte <i>%(job_t)s</i>"
 
-#: templates/maposmatic/job.html:42
+#: templates/maposmatic/job.html:45
+msgid "Refresh the status"
+msgstr "Rafraîchir l'état du rendu"
+
+#: templates/maposmatic/job.html:51
 msgid "Map title"
 msgstr "Titre de la carte"
 
-#: templates/maposmatic/job.html:47
+#: templates/maposmatic/job.html:56
 msgid "Administrative city"
 msgstr "Limite administrative"
 
-#: templates/maposmatic/job.html:52
+#: templates/maposmatic/job.html:61
 msgid "Bounding-box coordinates"
 msgstr "Coordonnées de la zone géographique (long/lat)"
 
-#: templates/maposmatic/job.html:62
+#: templates/maposmatic/job.html:71
 msgid "Status"
 msgstr "État"
 
-#: templates/maposmatic/job.html:66
+#: templates/maposmatic/job.html:75
 msgid "Submission time"
 msgstr "Date de soumission"
 
-#: templates/maposmatic/job.html:70
+#: templates/maposmatic/job.html:79
 msgid "Start of rendering time"
 msgstr "Date de début du rendu"
 
-#: templates/maposmatic/job.html:73
+#: templates/maposmatic/job.html:82
+#: templates/maposmatic/job.html.py:95
 msgid "Rendering not started yet"
 msgstr "Rendu en attente"
 
-#: templates/maposmatic/job.html:80
+#: templates/maposmatic/job.html:89
 msgid "End of rendering time"
 msgstr "Date de fin du rendu"
 
-#: templates/maposmatic/job.html:85
+#: templates/maposmatic/job.html:98
 msgid "Rendering not finished yet"
 msgstr "Rendu en cours..."
 
-#: templates/maposmatic/job.html:91
+#: templates/maposmatic/job.html:104
 msgid "Current position in queue"
 msgstr "Position dans la file d'attente"
 
-#: templates/maposmatic/job.html:95
+#: templates/maposmatic/job.html:108
 msgid "Estimated rendering time completion"
 msgstr "Temps estimé avant rendu"
 
-#: templates/maposmatic/job.html:109
+#: templates/maposmatic/job.html:122
 msgid "Result files"
 msgstr "Fichiers générés"
 

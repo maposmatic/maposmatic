@@ -38,6 +38,15 @@ class="activelink"
 <h1>{% blocktrans with job.maptitle as job_t %}Map <i>{{ job_t }}</i> Status{% endblocktrans %}</h1>
 
 <table class="list">
+{% if not job.is_done %}
+  <tr class="even">
+    <td colspan="2">
+      <a href="javascript:location.reload(true)">
+      {% trans "Refresh the status" %}
+      </a>
+    </td>
+  </tr>
+{% endif %}
   <tr class="odd">
     <td>{% trans "Map title" %}</td>
     <td>{{ job.maptitle }}</td>
@@ -81,7 +90,11 @@ class="activelink"
     <td>
       {% if job.is_done %}
       {{ job.endofrendering_time|date:"l d M Y\, H:i:s" }}
-      {% else %}
+      {% endif %}
+      {% if job.is_waiting %}
+      {% trans "Rendering not started yet" %}
+      {% endif %}
+      {% if job.is_rendering %}
       {% trans "Rendering not finished yet" %}
       {% endif %}
     </td>
