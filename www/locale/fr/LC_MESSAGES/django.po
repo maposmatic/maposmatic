@@ -20,8 +20,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: mapOSMatic 0.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-09-08 21:49+0200\n"
-"PO-Revision-Date: 2009-09-08 21:50+0100\n"
+"POT-Creation-Date: 2009-09-08 21:52+0200\n"
+"PO-Revision-Date: 2009-09-08 21:52+0100\n"
 "Last-Translator: Thomas Petazzoni <thomas.petazzoni@enix.org>\n"
 "Language-Team: FR <LL@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -396,7 +396,11 @@ msgstr "Carte au hasard"
 msgid "No random map found."
 msgstr "Aucune carte trouvée."
 
-#: templates/maposmatic/base.html:75
+#: templates/maposmatic/base.html:74
+msgid "Contact"
+msgstr "Contact"
+
+#: templates/maposmatic/base.html:80
 msgid "Language:"
 msgstr "Langue&nbsp;:"
 
