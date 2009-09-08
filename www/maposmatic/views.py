@@ -35,6 +35,7 @@ from www.maposmatic.models import MapRenderingJob
 import datetime
 import psycopg2
 import www.settings
+from www.maposmatic.widgets import AreaField, PointField
 
 # Test if a given city has its administrative boundaries inside the
 # OpenStreetMap database. We don't go through the Django ORM but
@@ -68,6 +69,7 @@ class MapRenderingJobForm(ModelForm):
              ('bbox', _('Bounding box')))
     mode = ChoiceField(choices=modes, initial='admin', widget=RadioSelect)
     maptitle = CharField(max_length=256, required=False)
+    bbox = AreaField(label=_("Area"), fields=(PointField(), PointField()))
 
     def clean(self):
         cleaned_data = self.cleaned_data
@@ -98,6 +100,7 @@ class MapRenderingJobForm(ModelForm):
                        "lat_bottom_right", "lon_bottom_right" ]:
                 val = cleaned_data.get(f)
                 if val is None:
+                    print "missing value %s" % f
                     msg = _(u"Required")
                     self._errors[f] = ErrorList([msg])
                     del cleaned_data[f]
@@ -107,6 +110,7 @@ class MapRenderingJobForm(ModelForm):
 def index(request):
     if request.method == 'POST':
         form = MapRenderingJobForm(request.POST)
+        print "form post"
         if form.is_valid():
             job = MapRenderingJob()
             job.maptitle = form.cleaned_data['maptitle']

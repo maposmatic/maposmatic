@@ -26,6 +26,10 @@
 {% endcomment %}
 {% load i18n %}
 
+{% block extralink %}
+{{ form.media }}
+{% endblock %}
+
 {% block extrajs %}
 function area_selection_mode_switch(mode)
 {
@@ -169,10 +173,7 @@ map.{%endblocktrans%}</p>
   <tr class="bybbox" style="display: none;">
     <td>{% trans "Bounding box" %}</td>
     <td style="text-align: center">
-      <input type="text" name="lat_upper_left" style="width: 100px; margin-bottom: 5px;"/>{{ form.lat_upper_left.errors }}<br/>
-      <input type="text" name="lon_upper_left"  style="width: 100px; margin-bottom: 5px;"/>{{ form.lon_upper_left.errors }}
-      <input type="text" name="lon_bottom_right"  style="width: 100px"/>{{ form.lat_bottom_right.errors }}<br/>
-      <input type="text" name="lat_bottom_right"  style="width: 100px"/>{{ form.lon_bottom_right.errors }}
+      {{ form.bbox }}
     </td>
   </tr>
   <tr>

@@ -246,3 +246,14 @@ ul.errorlist
   margin-top: 5px;
   color: red;
 }
+
+#map{
+    border: 1px solid black;
+    width:450px;
+    height:350px;
+}
+
+#map_bb input{
+    width:100px;
+    margin:6px;
+}
