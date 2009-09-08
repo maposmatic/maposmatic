@@ -43,7 +43,7 @@ class="activelink"
       <th>{% trans "Files" %}</th>
     </tr>
   </thead>
-{% for map in maps %}
+{% for map in maps.object_list %}
 <tr class="{% cycle odd,even %}">
   <td><a href="/jobs/{{map.id}}">{{map.maptitle}}</a></td>
   <td>
@@ -75,4 +75,21 @@ class="activelink"
 {% endfor %}
 </table>
 
+{% ifnotequal maps.paginator.num_pages 1 %}
+<div class="pagination">
+  <span class="step-links">
+    {% if maps.has_previous %}
+      <a href="?page={{ maps.previous_page_number }}">{% trans "Previous" %}</a>
+    {% endif %}
+
+    <span class="current">
+      {% trans "Page" %} {{ maps.number }} {% trans "of" %} {{ maps.paginator.num_pages }}
+    </span>
+
+    {% if maps.has_next %}
+      <a href="?page={{ maps.next_page_number }}">{% trans "Next" %}</a>
+    {% endif %}
+  </span>
+</div>
+{% endifnotequal %}
 {% endblock %}

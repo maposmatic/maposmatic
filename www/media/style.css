@@ -218,9 +218,19 @@ table.list tr.odd
   background: #FFF6BF;
 }
 
-table.list td, th
+table.list td, table.list th
 {
   text-align: center;
   padding: 1em;
   vertical-align: middle;
+}
+
+table.list th
+{
+  padding: 0.5em !important;
+}
+
+div.pagination
+{
+  text-align: center;
 }

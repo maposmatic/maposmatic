@@ -118,3 +118,5 @@ except KeyError:
 
 LOG.addHandler(_fh)
 LOG.info("log restarted.")
+
+ITEMS_PER_PAGE = 25

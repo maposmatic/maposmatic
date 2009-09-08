@@ -23,6 +23,7 @@
 
 # Create your views here.
 
+from django.core.paginator import Paginator
 from django.forms.util import ErrorList
 from django.forms import CharField, ChoiceField, RadioSelect, ModelForm, ValidationError
 from django.shortcuts import get_object_or_404, render_to_response
@@ -40,9 +41,11 @@ import www.settings
 # directly to the database for simplicity reasons.
 def city_exists(city):
     try:
-        conn = psycopg2.connect("dbname='%s' user='%s' host='%s' password='%s'" % \
-                                    (www.settings.GIS_DATABASE_NAME, www.settings.DATABASE_USER,
-                                     www.settings.DATABASE_HOST, www.settings.DATABASE_PASSWORD))
+        conn = psycopg2.connect("dbname='%s' user='%s' host='%s' password='%s'" %
+                                (www.settings.GIS_DATABASE_NAME,
+                                 www.settings.DATABASE_USER,
+                                 www.settings.DATABASE_HOST,
+                                 www.settings.DATABASE_PASSWORD))
     except psycopg2.OperationalError:
         return False
 
@@ -132,15 +135,42 @@ def job(request, job_id):
 
 def all_jobs(request):
     one_day_before = datetime.datetime.now() - datetime.timedelta(1)
-    jobs = MapRenderingJob.objects.all().order_by('-submission_time').filter(submission_time__gte=one_day_before)
+    job_list = (MapRenderingJob.objects.all()
+            .order_by('-submission_time')
+            .filter(submission_time__gte=one_day_before))
+    paginator = Paginator(job_list, www.settings.ITEMS_PER_PAGE)
+
+    try:
+        page = int(request.GET.get('page', '1'))
+    except ValueError:
+        page = 1
+
+    try:
+        jobs = paginator.page(page)
+    except (EmptyPage, InvalidPage):
+        jobs = paginator.page(paginator.num_pages)
+
     return render_to_response('maposmatic/all_jobs.html',
                               { 'jobs' : jobs },
                               context_instance=RequestContext(request))
 
 def all_maps(request):
-    maps = MapRenderingJob.objects.filter(status=2).filter(resultmsg="ok").order_by("-submission_time")
+    map_list = (MapRenderingJob.objects.filter(status=2)
+            .filter(resultmsg="ok")
+            .order_by("-submission_time"))
+    paginator = Paginator(map_list, www.settings.ITEMS_PER_PAGE)
+
+    try:
+        page = int(request.GET.get('page', '1'))
+    except ValueError:
+        page = 1
+
+    try:
+        maps = paginator.page(page)
+    except (EmptyPage, InvalidPage):
+        maps = paginator.page(paginator.num_pages)
     return render_to_response('maposmatic/all_maps.html',
-                              {'maps':maps},
+                              { 'maps': maps },
                               context_instance=RequestContext(request))
 
 def about(request):
