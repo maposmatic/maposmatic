@@ -40,10 +40,10 @@ function updateForm()
     var bottomright = new OpenLayers.LonLat(bounds.right, bounds.bottom);
     bottomright = bottomright.transform(epsg_projection, epsg_display_projection);
 
-    getUpperLeftLat().value = topleft.lat;
-    getUpperLeftLon().value = topleft.lon;
-    getBottomRightLat().value = bottomright.lat;
-    getBottomRightLon().value = bottomright.lon;
+    getUpperLeftLat().value = topleft.lat.toFixed(4);
+    getUpperLeftLon().value = topleft.lon.toFixed(4);
+    getBottomRightLat().value = bottomright.lat.toFixed(4);
+    getBottomRightLon().value = bottomright.lon.toFixed(4);
 }
 
 /* update map on form field modification */
@@ -80,5 +80,6 @@ function init()
     map.events.register('zoomend', map, updateForm);
     map.events.register('moveend', map, updateForm);
     updateMap();
+    updateForm();
 }
 
