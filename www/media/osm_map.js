@@ -70,7 +70,6 @@ function init()
         maxExtent: new OpenLayers.Bounds(-20037508.34,-20037508.34,20037508.34,20037508.34),
         numZoomLevels: 18,
         maxResolution: 156543.0399,
-        units: 'm',
         projection: epsg_projection,
         displayProjection: epsg_display_projection
     } );
@@ -81,6 +80,5 @@ function init()
     map.events.register('zoomend', map, updateForm);
     map.events.register('moveend', map, updateForm);
     updateMap();
-    map.zoomTo(5);
 }
 

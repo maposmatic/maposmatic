@@ -173,8 +173,6 @@ table#mapform td
   padding: 3px;
 }
 
-tr.byadmin, tr.bybbox { display: none; vertical-align: top; }
-
 table#mapform tr.label
 {
   font-weight: bold;
