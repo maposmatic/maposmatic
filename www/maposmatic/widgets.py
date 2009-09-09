@@ -23,22 +23,12 @@ Extra widgets and fields
 
 from django import forms
 from django.utils.safestring import mark_safe
-from django.contrib.gis.db import models
 
 from www import settings
 
 URL_OSM_CSS = ["http://www.openlayers.org/api/theme/default/style.css"]
 URL_OSM_JS = ["http://www.openlayers.org/api/OpenLayers.js",
           "http://www.openstreetmap.org/openlayers/OpenStreetMap.js"]
-
-class PointField(models.PointField):
-    '''
-    Set the widget for the form field
-    '''
-    def clean(self, value):
-        if len(value) != 2 and self.required:
-            raise ValidationError(_("Invalid point"))
-        return value
 
 class AreaWidget(forms.TextInput):
     """

@@ -25,7 +25,8 @@
 
 from django.core.paginator import Paginator
 from django.forms.util import ErrorList
-from django.forms import CharField, ChoiceField, RadioSelect, ModelForm, ValidationError
+from django.forms import CharField, ChoiceField, FloatField, RadioSelect, \
+                         ModelForm, ValidationError
 from django.shortcuts import get_object_or_404, render_to_response
 from django.http import HttpResponseRedirect
 from django.utils.translation import ugettext_lazy as _
@@ -35,7 +36,7 @@ from www.maposmatic.models import MapRenderingJob
 import datetime
 import psycopg2
 import www.settings
-from www.maposmatic.widgets import AreaField, PointField
+from www.maposmatic.widgets import AreaField
 
 # Test if a given city has its administrative boundaries inside the
 # OpenStreetMap database. We don't go through the Django ORM but
@@ -69,7 +70,8 @@ class MapRenderingJobForm(ModelForm):
              ('bbox', _('Bounding box')))
     mode = ChoiceField(choices=modes, initial='admin', widget=RadioSelect)
     maptitle = CharField(max_length=256, required=False)
-    bbox = AreaField(label=_("Area"), fields=(PointField(), PointField()))
+    bbox = AreaField(label=_("Area"), fields=(FloatField(), FloatField(),
+                                              FloatField(), FloatField()))
 
     def clean(self):
         cleaned_data = self.cleaned_data
