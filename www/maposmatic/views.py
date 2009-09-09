@@ -42,6 +42,12 @@ from www.maposmatic.widgets import AreaField
 # OpenStreetMap database. We don't go through the Django ORM but
 # directly to the database for simplicity reasons.
 def city_exists(city):
+
+    # If not GIS database is configured, bypass the city_exists check by
+    # returning True.
+    if not www.settings.has_gis_database():
+        return True
+
     try:
         conn = psycopg2.connect("dbname='%s' user='%s' host='%s' password='%s'" %
                                 (www.settings.GIS_DATABASE_NAME,

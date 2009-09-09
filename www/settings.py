@@ -120,3 +120,6 @@ LOG.addHandler(_fh)
 LOG.info("log restarted.")
 
 ITEMS_PER_PAGE = 25
+
+def has_gis_database():
+    return GIS_DATABASE_NAME and GIS_DATABASE_NAME != ''
