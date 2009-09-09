@@ -106,6 +106,9 @@ class AreaField(forms.MultiValueField):
     '''
     widget = AreaWidget
 
+    def clean(self, value):
+        pass
+
     def compress(self, data_list):
         if not data_list:
             return None
