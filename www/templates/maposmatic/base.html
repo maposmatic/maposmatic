@@ -61,42 +61,47 @@
 
 <div class="box">
   <h2>{% trans "Random map" %}</h2>
-  <p style="text-align: center">
   {% if randommap %}
-  <a href="/jobs/{{randommap.id}}">
-  <img src="{{randommap.get_thumbnail}}" style="margin-top: 20px; margin-bottom: 20px"/><br/>
-  <i>{{randommap.maptitle}}</i>
-  </a>
+  <p class="randommap">
+    <a href="/jobs/{{randommap.id}}">
+      <img src="{{randommap.get_thumbnail}}"
+           style="margin-top: 20px; margin-bottom: 20px"/><br />
+      <i>{{randommap.maptitle}}</i>
+    </a>
+  </p>
   {% else %}
-  {% trans "No random map found." %}
+  <p>{% trans "No random map found." %}</p>
   {% endif %}
   </p>
 </div>
 
 <div class="box">
   <h2>{% trans "Contact" %}</h2>
-  <a href="mailto:contact@maposmatic.org">contact@maposmatic.org</a>
+  <p>
+  {% trans "Mail:" %} <a href="mailto:contact@maposmatic.org">contact@maposmatic.org</a><br />
+  {% trans "IRC:" %} <tt>#maposmatic</tt> {% trans "on" %} Freenode
+  </p>
 </div>
 
-  <div class="box">
-    <form name="langsel" action="/i18n/setlang/" method="post" class="langsel">
-      <label for="language">{%trans "Language:" %}</label>
-      <select name="language" onChange="document.langsel.submit();">
-	{% for lang in LANGUAGES %}
-	<option
-	   {% ifequal lang.0 LANGUAGE_CODE %}
-	   selected
-	   {% endifequal %}
-	   value="{{ lang.0 }}">
-	  {{ lang.1 }}
-	</option>
-	{% endfor %}
-      </select>
-      <noscript>
-        <input type="submit" value="Go" />
-      </noscript>
-    </form>
-  </div>
+<div class="box">
+  <form name="langsel" action="/i18n/setlang/" method="post" class="langsel">
+    <label for="language">{%trans "Language:" %}</label>
+    <select name="language" onChange="document.langsel.submit();">
+    {% for lang in LANGUAGES %}
+    <option
+       {% ifequal lang.0 LANGUAGE_CODE %}
+       selected
+       {% endifequal %}
+       value="{{ lang.0 }}">
+      {{ lang.1 }}
+    </option>
+    {% endfor %}
+    </select>
+    <noscript>
+      <input type="submit" value="Go" />
+    </noscript>
+  </form>
+</div>
 
 </div>
 </div>

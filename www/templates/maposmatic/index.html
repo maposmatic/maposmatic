@@ -31,13 +31,15 @@
 {% endblock %}
 
 {% block extrajs %}
+String.prototype.startsWith = function(str) { return this.indexOf(str) === 0; }
+
 function area_selection_mode_switch(mode)
 {
   var arr = document.getElementById('mapform').getElementsByTagName('tr');
   for (i=0; i < arr.length; i++) {
     arr[i].style.display = '';
-    if ((arr[i].className == 'byadmin' && mode != 'admin-mode') ||
-      (arr[i].className == 'bybbox' && mode != 'bbox-mode')) {
+    if ((arr[i].className.startsWith('byadmin') && mode != 'admin-mode') ||
+        (arr[i].className.startsWith('bybbox') && mode != 'bbox-mode')) {
       arr[i].style.display = 'none';
     }
   }
@@ -50,10 +52,10 @@ function pageinit()
   document.getElementById('id_mode_1').setAttribute('onclick',
     "area_selection_mode_switch('bbox-mode')");
 
-  if (document.getElementById('id_mode_0').getAttribute('checked') == 'checked')
-    area_selection_mode_switch('admin-mode');
-  else if (document.getElementById('id_mode_1').getAttribute('checked') == 'checked')
+  if (document.getElementById('id_mode_1').checked)
     area_selection_mode_switch('bbox-mode');
+  else
+    area_selection_mode_switch('admin-mode');
 }
 {% endblock %}
 
@@ -94,7 +96,8 @@ onload='pageinit()'
 </div>
 
 <p>{% blocktrans %}MapOSMatic is a free software web service that
-allows to generate maps of cities using OpenStreetMap data. A city map
+allows you to generate maps of cities using
+<a href="http://www.openstreetmap.org">OpenStreetMap</a> data. A city map
 is made of two pages:{% endblocktrans %}</p>
 
 <ul>
@@ -103,16 +106,16 @@ is made of two pages:{% endblocktrans %}</p>
 </ul>
 
 <p>{% blocktrans %}The generated maps are available in PNG, PDF and
-SVG and are ready to be printed. Submit your map generation request
+SVG formats and are ready to be printed. Submit your map generation request
 below, wait a few minutes and get your own map!{% endblocktrans %}</p>
 
-<p>{% blocktrans %}As the data used to generate maps are coming from
+<p>{% blocktrans %}As the data used to generate maps is coming from
   OpenStreetMap, you can freely (under
   the <a href="http://wiki.openstreetmap.org/wiki/License">terms of
   OpenStreetMap license</a>) reuse, sell, modify, ... the generated
   maps.{% endblocktrans %}</p>
 
-<p style="text-align: right"><a href="/about/">{% trans "More details" %}</a></p>
+<p><a href="/about/">{% trans "More details" %} &raquo;</a></p>
 
 <h2 style="clear: right">{% trans "Generate your own map" %}</h2>
 
@@ -146,44 +149,51 @@ rendering is completed (that might take some time depending on the queue
 length), this page will contain links to the generated
 map.{%endblocktrans%}</p>
 
-<a name="submitmapform"/>
+<a name="submitmapform"></a>
 <form method="post" action="/#submitmapform" class="submitmap">
 
-<table id="mapform" style="margin: auto; border: 1px solid #CCC; padding: 10px; width: 70%;">
-  <tr>
-    <td>{% trans "Area selection mode" %}</td>
-    <td>
-      {{ form.mode }}
-    </td>
-  </tr>
-  <tr class="byadmin">
-    <td>{% trans "City name" %}</td>
-    <td>
-      {{ form.administrative_city }}
-      {{ form.administrative_city.errors }}
-    </td>
-  </tr>
-  <tr class="bybbox">
-    <td width="50%">{% trans "Title of the map" %}</td>
-    <td>
-      {{ form.maptitle }}
-      {{ form.maptitle.errors }}
-    </td>
-  </tr>
-  <tr class="bybbox" style="display: none;">
-    <td>{% trans "Bounding box" %}</td>
-    <td style="text-align: center">
-      {{ form.bbox }}
-    </td>
-  </tr>
-  <tr>
-    <td></td>
-    <td>
-      <input type="submit" value="{% trans 'Generate' %}"/>
-    </td>
-  </tr>
-</table>
+  <table id="mapform">
+    <tr class="label">
+      <td>{% trans "Area selection mode:" %}</td>
+      <td rowspan="6" class="image">
+        <input type="image" src="/smedia/Go-next.png" value="{% trans "Generate" %}"
+               title="{% trans "Generate" %}" />
+      </td>
+    </tr>
+    <tr class="field">
+      <td>
+        {{ form.mode }}
+      </td>
+    </tr>
 
+    <tr class="byadmin label"><td>{% trans "City name:" %}</td></tr>
+    <tr class="byadmin field"><td>
+        {{ form.administrative_city }}
+        {{ form.administrative_city.errors }}
+    </td></tr>
+
+    <tr class="bybbox label"><td>{% trans "Title of the map:" %}</td></tr>
+    <tr class="bybbox field"><td>
+        {{ form.maptitle }}
+        {{ form.maptitle.errors }}
+    </td></tr>
+
+    <tr class="bybbox label"><td>{% trans "Bounding box:" %}</td></tr>
+    <tr class="bybbox field"><td style="text-align: center;">
+        <input type="text" name="lat_upper_left"
+               style="width: 100px; margin-bottom: 5px;" />
+        {{ form.lat_upper_left.errors }}<br />
+        <input type="text" name="lon_upper_left"
+               style="width: 100px; margin-bottom: 5px;" />
+        {{ form.lon_upper_left.errors }}
+        <input type="text" name="lon_bottom_right"
+               style="width: 100px" />
+        {{ form.lat_bottom_right.errors }}<br />
+        <input type="text" name="lat_bottom_right"
+               style="width: 100px" />
+        {{ form.lon_bottom_right.errors }}
+    </td></tr>
+  </table>
 </form>
 
 {% endblock %}

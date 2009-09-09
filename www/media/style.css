@@ -27,7 +27,7 @@ html,body {
 }
 
 body {
-    font: 100% sans-serif;
+    font: 90% sans-serif;
     text-align: left;
     background: #fff;
     padding-bottom:20px;
@@ -135,6 +135,9 @@ ul#nav li.activelink a,ul#nav li.activelink a:hover {
 	background : #FFF6BF;
 }
 
+p.randommap {
+  text-align: center;
+}
 
 #content {
     margin: 0 auto;
@@ -156,14 +159,51 @@ form ul {
     list-style-type: none;
 }
 
-.submitmap input {
+table#mapform
+{
+  margin: 2em auto 0 auto;
+  width: 70%;
+  border: 1px solid #CCC;
+  padding: 1em;
+}
+
+table#mapform td
+{
+  width: 50%;
+  padding: 3px;
+}
+
+table#mapform tr.label
+{
+  font-weight: bold;
+}
+
+table#mapform tr.field td
+{
+  padding-bottom: 10px !important;
+}
+
+table#mapform td.image
+{
+  text-align: right;
+  padding-right: 3em;
+  vertical-align: middle;
+}
+
+ul.errorlist
+{
+  margin-top: 5px;
+  color: red;
+}
+
+.submitmap input[type=text] {
     background: #FFF6BF;
     border: 3px solid #CCC;
     width: 300px;
     padding: 3px;
 }
 
-.submitmap input:hover {
+.submitmap input[type=text]:hover {
     border: 3px solid #AAA;
 }
 
@@ -233,18 +273,6 @@ table.list th
 div.pagination
 {
   text-align: center;
-}
-
-table#mapform td
-{
-  padding: 20px;
-  width: 50%;
-}
-
-ul.errorlist
-{
-  margin-top: 5px;
-  color: red;
 }
 
 #map{
