@@ -186,6 +186,7 @@ map.{%endblocktrans%}</p>
     <tr class="bybbox label"><td colspan="2">{% trans "Bounding box:" %}</td></tr>
     <tr class="bybbox field"><td colspan="2" style="text-align: center;">
         {{ form.bbox }}
+        {{ form.bbox.errors }}
     </td></tr>
   </table>
 </form>
