@@ -56,7 +56,7 @@ def render_job_process(job):
     if "png" in RENDERING_RESULT_FORMATS:
         mapimg = outfile_prefix + ".png"
         i = Image.open(mapimg)
-        i.thumbnail((200,200))
+        i.thumbnail((200,200), Image.ANTIALIAS)
         i.save(outfile_prefix + "_small.png")
 
     sys.exit(0)
