@@ -162,7 +162,7 @@ form ul {
 table#mapform
 {
   margin: 2em auto 0 auto;
-  width: 70%;
+  width: 650px;
   border: 1px solid #CCC;
   padding: 1em;
 }
@@ -172,6 +172,8 @@ table#mapform td
   width: 50%;
   padding: 3px;
 }
+
+tr.byadmin, tr.bybbox { display: none; vertical-align: top; }
 
 table#mapform tr.label
 {
@@ -275,13 +277,21 @@ div.pagination
   text-align: center;
 }
 
-#map{
-    border: 1px solid black;
-    width:450px;
-    height:350px;
+div#map
+{
+  border: 1px solid black;
+  width: 600px;
+  height: 350px;
 }
 
-#map_bb input{
-    width:100px;
-    margin:6px;
+#map_bb
+{
+  margin-top: 1em;
 }
+
+#map_bb input
+{
+    width: 100px;
+    margin: 6px;
+}
+

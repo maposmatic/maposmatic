@@ -37,10 +37,15 @@ function area_selection_mode_switch(mode)
 {
   var arr = document.getElementById('mapform').getElementsByTagName('tr');
   for (i=0; i < arr.length; i++) {
-    arr[i].style.display = '';
-    if ((arr[i].className.startsWith('byadmin') && mode != 'admin-mode') ||
-        (arr[i].className.startsWith('bybbox') && mode != 'bbox-mode')) {
+    if (arr[i].className.startsWith('byadmin')) {
       arr[i].style.display = 'none';
+      if (mode == 'admin-mode')
+        arr[i].style.display = 'table-row';
+    }
+    if (arr[i].className.startsWith('bybbox')) {
+      arr[i].style.display = 'none';
+      if (mode == 'bbox-mode')
+        arr[i].style.display = 'table-row';
     }
   }
 }
@@ -155,7 +160,7 @@ map.{%endblocktrans%}</p>
   <table id="mapform">
     <tr class="label">
       <td>{% trans "Area selection mode:" %}</td>
-      <td rowspan="6" class="image">
+      <td rowspan="4" class="image">
         <input type="image" src="/smedia/Go-next.png" value="{% trans "Generate" %}"
                title="{% trans "Generate" %}" />
       </td>
@@ -178,20 +183,9 @@ map.{%endblocktrans%}</p>
         {{ form.maptitle.errors }}
     </td></tr>
 
-    <tr class="bybbox label"><td>{% trans "Bounding box:" %}</td></tr>
-    <tr class="bybbox field"><td style="text-align: center;">
-        <input type="text" name="lat_upper_left"
-               style="width: 100px; margin-bottom: 5px;" />
-        {{ form.lat_upper_left.errors }}<br />
-        <input type="text" name="lon_upper_left"
-               style="width: 100px; margin-bottom: 5px;" />
-        {{ form.lon_upper_left.errors }}
-        <input type="text" name="lon_bottom_right"
-               style="width: 100px" />
-        {{ form.lat_bottom_right.errors }}<br />
-        <input type="text" name="lat_bottom_right"
-               style="width: 100px" />
-        {{ form.lon_bottom_right.errors }}
+    <tr class="bybbox label"><td colspan="2">{% trans "Bounding box:" %}</td></tr>
+    <tr class="bybbox field"><td colspan="2" style="text-align: center;">
+        {{ form.bbox }}
     </td></tr>
   </table>
 </form>

@@ -21,56 +21,66 @@ var update_lock = 0;
 var epsg_display_projection = new OpenLayers.Projection('EPSG:4326');
 var epsg_projection = new OpenLayers.Projection('EPSG:900913');
 
+function getUpperLeftLat() { return document.getElementById('lat_upper_left'); }
+function getUpperLeftLon() { return document.getElementById('lon_upper_left'); }
+function getBottomRightLat() { return document.getElementById('lat_bottom_right'); }
+function getBottomRightLon() { return document.getElementById('lon_bottom_right'); }
 
 /* update form fields on zoom action */
-function updateForm(){
-    if (update_lock) return;
+function updateForm()
+{
+    if (update_lock)
+      return;
+
     var bounds = map.getExtent();
+
     var topleft = new OpenLayers.LonLat(bounds.left, bounds.top);
     topleft = topleft.transform(epsg_projection, epsg_display_projection);
+
     var bottomright = new OpenLayers.LonLat(bounds.right, bounds.bottom);
     bottomright = bottomright.transform(epsg_projection, epsg_display_projection);
-    document.getElementById('lat_upper_left').value = topleft.lat;
-    document.getElementById('lon_upper_left').value = topleft.lon;
-    document.getElementById('lat_bottom_right').value = bottomright.lat;
-    document.getElementById('lon_bottom_right').value = bottomright.lon;
+
+    getUpperLeftLat().value = topleft.lat;
+    getUpperLeftLon().value = topleft.lon;
+    getBottomRightLat().value = bottomright.lat;
+    getBottomRightLon().value = bottomright.lon;
 }
 
 /* update map on form field modification */
-function updateMap(){
-    var bounds = new OpenLayers.Bounds();
-    var topleft = new OpenLayers.LonLat(document.getElementById('lon_upper_left').value,
-                                        document.getElementById('lat_upper_left').value);
-    topleft = topleft.transform(epsg_display_projection, epsg_projection);
-    var bottomright = new OpenLayers.LonLat(document.getElementById('lon_bottom_right').value,
-                                            document.getElementById('lat_bottom_right').value);
-    bottomright = bottomright.transform(epsg_display_projection, epsg_projection);
-    bounds.extend(topleft);
-    bounds.extend(bottomright);
+function updateMap()
+{
+    var bounds = new OpenLayers.Bounds(getUpperLeftLon().value,
+                                       getUpperLeftLat().value,
+                                       getBottomRightLon().value,
+                                       getBottomRightLat().value);
+    bounds.transform(epsg_display_projection, epsg_projection);
+
     update_lock = 1;
     map.zoomToExtent(bounds);
-    // force the zoom is necessary when initializing the page (OL bug ?)
-    map.zoomTo(map.getZoomForExtent(bounds));
     update_lock = 0;
 }
 
 /* main initialisation function */
-function init(){
+function init()
+{
     map = new OpenLayers.Map ('map', {
         controls:[new OpenLayers.Control.Navigation(),
-                    new OpenLayers.Control.PanZoomBar(),
-                    new OpenLayers.Control.Attribution()],
-        maxExtent: new OpenLayers.Bounds(-20037508,-20037508,20037508,20037508),
+                  new OpenLayers.Control.PanZoomBar(),
+                  new OpenLayers.Control.Attribution()],
+        maxExtent: new OpenLayers.Bounds(-20037508.34,-20037508.34,20037508.34,20037508.34),
         numZoomLevels: 18,
-        maxResolution: 156543,
+        maxResolution: 156543.0399,
         units: 'm',
         projection: epsg_projection,
         displayProjection: epsg_display_projection
     } );
+
     layerTilesMapnik = new OpenLayers.Layer.OSM.Mapnik("Mapnik");
     map.addLayer(layerTilesMapnik);
+
     map.events.register('zoomend', map, updateForm);
     map.events.register('moveend', map, updateForm);
+    updateMap();
+    map.zoomTo(5);
 }
-
 
