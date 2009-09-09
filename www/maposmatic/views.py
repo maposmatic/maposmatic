@@ -112,6 +112,10 @@ class MapRenderingJobForm(ModelForm):
                 del cleaned_data["administrative_city"]
 
             cleaned_data["maptitle"] = city
+            cleaned_data["lat_upper_left"] = None
+            cleaned_data["lon_upper_left"] = None
+            cleaned_data["lat_bottom_right"] = None
+            cleaned_data["lon_bottom_right"] = None
 
         if mode == 'bbox':
             if title == '':
