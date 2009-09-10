@@ -22,7 +22,7 @@
 # You should have received a copy of the GNU Affero General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-import time, os , sys, select, signal
+import time, os , sys, select, signal, traceback
 from datetime import datetime, timedelta
 
 from www.maposmatic.models import MapRenderingJob
@@ -59,7 +59,7 @@ def render_job_process(job):
         i.thumbnail((200,200), Image.ANTIALIAS)
         i.save(outfile_prefix + "_small.png")
 
-    sys.exit(0)
+    return 0
 
 def render_job(job):
     LOG.info("[job %d] starting rendering, title '%s'" % (job.id, job.maptitle))
@@ -70,12 +70,44 @@ def render_job(job):
     pid = os.fork()
     if pid == 0:
         # Son
-        render_job_process(job)
+        tell_dad = os.fdopen(pipe_write, 'w')
+        retval = 1
+        try:
+            retval = render_job_process(job)
+        except KeyboardInterrupt:
+            # Catch Ctrl-C  ~ gracefully
+            tell_dad.write('Ctrl-C pressed. Bailing out.')
+        except SystemExit, rv:
+            # Pass-through any sys.exit() done from deep inside
+            retval = rv
+        except:
+            # Tell the father what happened
+            traceback.print_exc(file=tell_dad)
+        finally:
+            # And always return the proper exit code
+            sys.exit(retval)
+
     else:
         # Father
+        child_message = ""
         try:
             (rlist, wlist, xlist) = select.select([pipe_read], [], [], 20*60)
-            if rlist == [] and wlist == [] and xlist == []:
+            if pipe_read in rlist:
+                try:
+                    child_endpoint = os.fdopen(pipe_read, 'r')
+                    child_message  = child_endpoint.read()
+                except Exception:
+                    child_message = "(Could not retrieve error details)"
+                    traceback.print_exc() # Dump this on stderr too
+                else:
+                    # Ignore exceptions when closing the pipe (child endpoint
+                    # already closed, etc.)
+                    try:
+                        child_endpoint.close()
+                    except:
+                        pass
+                return
+            elif rlist == [] and wlist == [] and xlist == []:
                 os.kill(pid, signal.SIGTERM)
                 time.sleep(2)
                 os.kill(pid, signal.SIGKILL)
@@ -93,8 +125,11 @@ def render_job(job):
                     resultmsg = "ok"
                 else:
                     resultmsg = "rendering failed with %d" % error_code
+                    LOG.error("Failure in rendering child process:\n%s" \
+                                  % child_message)
             elif os.WIFSIGNALED(status):
-                resultmsg = "rendering killed by signal %d" % os.WTERMSIG(status)
+                resultmsg = "rendering killed by signal %d" \
+                    % os.WTERMSIG(status)
             LOG.info("[job %d] %s" % (job.id, resultmsg))
             job.end_rendering(resultmsg)
             return
