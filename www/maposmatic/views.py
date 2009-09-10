@@ -141,6 +141,17 @@ class MapRenderingJobForm(ModelForm):
                 msg = _(u"Bounding Box too big")
                 self._errors['bbox'] = ErrorList([msg])
 
+            lat_upper_left = cleaned_data.get("lat_upper_left")
+            lon_upper_left = cleaned_data.get("lon_upper_left")
+            lat_bottom_right = cleaned_data.get("lat_bottom_right")
+            lon_bottom_right = cleaned_data.get("lon_bottom_right")
+            if (lat_upper_left > 51.956 or
+                lon_upper_left < -7.838 or
+                lat_bottom_right < 41.458 or
+                lon_bottom_right > 11.937):
+                msg = _(u"Sorry, only cities in France can be rendered for the moment")
+                self._errors['bbox'] = ErrorList([msg])
+
         return cleaned_data
 
 def rendering_already_exists(city):
