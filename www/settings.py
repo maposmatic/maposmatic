@@ -109,7 +109,8 @@ LANGUAGES = (("fr", u"Français"),
 
 LOG = logging.getLogger(os.environ.get("MAPOSMATIC_LOG_TARGET",
                                        "maposmatic"))
-LOG.setLevel(os.environ.get("MAPOSMATIC_LOG_LEVEL", DEFAULT_MAPOSMATIC_LOG_LEVEL))
+LOG.setLevel(os.environ.get("MAPOSMATIC_LOG_LEVEL",
+                            DEFAULT_MAPOSMATIC_LOG_LEVEL))
 try:
     _fh = logging.FileHandler(os.environ.get('MAPOSMATIC_LOG_FILE',
                                              DEFAULT_MAPOSMATIC_LOG_FILE))
