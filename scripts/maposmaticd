@@ -22,7 +22,7 @@
 # You should have received a copy of the GNU Affero General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-import time, os , sys, select, signal, traceback
+import time, os , sys, select, signal, traceback, logging
 from datetime import datetime, timedelta
 
 from www.maposmatic.models import MapRenderingJob
@@ -159,6 +159,7 @@ if not os.path.isdir(RENDERING_RESULT_PATH):
                         RENDERING_RESULT_PATH)
     sys.exit(1)
 
+logging.basicConfig()
 LOG.info("started")
 
 # Reset the job that might have been left into the "rendering" state
@@ -171,6 +172,7 @@ for job in jobs:
     job.save()
 
 last_file_cleanup = None
+
 
 while True:
     # Test each 20 seconds if we need to cleanup files
