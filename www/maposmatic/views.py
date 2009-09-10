@@ -143,6 +143,28 @@ class MapRenderingJobForm(ModelForm):
 
         return cleaned_data
 
+def rendering_already_exists(city):
+    # First try to find rendered items
+    rendered_items = (MapRenderingJob.objects.
+                      filter(administrative_city=city).
+                      filter(status=2).order_by("-submission_time")[:1])
+
+    if len(rendered_items):
+        rendered_item = rendered_items[0]
+        if rendered_item.output_files() != []:
+            return '/jobs/%d' % rendered_item.id
+
+    # Then try to find items being rendered or waiting for rendering
+    rendered_items = (MapRenderingJob.objects.
+                      filter(administrative_city=city).
+                      order_by("-submission_time")[:1])
+
+    if len(rendered_items):
+        rendered_item = rendered_items[0]
+        return '/jobs/%d' % rendered_item.id
+
+    return None
+
 def index(request):
     if request.method == 'POST':
         form = MapRenderingJobForm(request.POST)
@@ -150,6 +172,12 @@ def index(request):
             job = MapRenderingJob()
             job.maptitle = form.cleaned_data['maptitle']
             job.administrative_city = form.cleaned_data['administrative_city']
+
+            if job.administrative_city:
+                url = rendering_already_exists(job.administrative_city)
+                if url:
+                    return HttpResponseRedirect(url)
+
             job.lat_upper_left = form.cleaned_data['lat_upper_left']
             job.lon_upper_left = form.cleaned_data['lon_upper_left']
             job.lat_bottom_right = form.cleaned_data['lat_bottom_right']
