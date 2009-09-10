@@ -20,7 +20,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: mapOSMatic 0.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-09-10 09:24+0200\n"
+"POT-Creation-Date: 2009-09-10 09:34+0200\n"
 "PO-Revision-Date: 2009-09-10 09:16+0100\n"
 "Last-Translator: Thomas Petazzoni <thomas.petazzoni@enix.org>\n"
 "Language-Team: FR <LL@li.org>\n"
@@ -152,35 +152,10 @@ msgstr ""
 "\">AGPLv3</a>."
 
 #: templates/maposmatic/about.html:54
-msgid "Generated maps"
-msgstr "Cartes générées"
-
-#: templates/maposmatic/about.html:56
-msgid ""
-"The generated maps are available in PNG, PDF and\n"
-"SVG formats and are ready to be printed."
-msgstr ""
-"Les cartes générées sont disponibles aux formats PNG, PDF et SVG et sont "
-"prêtes à être imprimées."
-
-#: templates/maposmatic/about.html:59
-msgid ""
-"As the data used to generate maps is coming from\n"
-"OpenStreetMap, you can freely (under the <a\n"
-"href=\"http://wiki.openstreetmap.org/wiki/License\">terms of\n"
-"OpenStreetMap license</a>) reuse, sell, modify, ... the generated\n"
-"maps."
-msgstr ""
-"Les données utilisées pour la génération des cartes provenant "
-"d'OpenStreetMap, vous pouvez librement réutiliser, vendre, modifier, ... les "
-"cartes générées (en respectant la <a href=\"http://wiki.openstreetmap.org/"
-"wiki/License\">licence OpenStreetMap</a>)."
-
-#: templates/maposmatic/about.html:65
 msgid "How does it work?"
 msgstr "Comment est-ce que ça fonctionne&nbsp;?"
 
-#: templates/maposmatic/about.html:67
+#: templates/maposmatic/about.html:56
 msgid ""
 "On our server, we run\n"
 "a <a href=\"http://www.postgresql.org\">PostgreSQL</a> server, with the\n"
@@ -201,7 +176,7 @@ msgstr ""
 "l'outil <a\n"
 "href=\"http://wiki.openstreetmap.org/wiki/Osm2pgsql\">osm2pgsql</a>."
 
-#: templates/maposmatic/about.html:77
+#: templates/maposmatic/about.html:66
 msgid ""
 "For the map rendering, we use the\n"
 "famous <a href=\"http://www.mapnik.org\">Mapnik</a> with the OpenStreetMap\n"
@@ -220,7 +195,7 @@ msgstr ""
 "\"http://cairographics.org/pycairo/\">Cairo</a>, nous avons développé "
 "<i>OCitySMap</i>, un module Python qui :"
 
-#: templates/maposmatic/about.html:87
+#: templates/maposmatic/about.html:76
 msgid ""
 "Renders the map using OpenStreetMap data and the\n"
 "  OpenStreetMap Mapnik stylesheet;"
@@ -228,7 +203,7 @@ msgstr ""
 "Effectue le rendu de la carte en utilisant les données OpenStreetMap et la "
 "feuille de style OpenStreetMap pour Mapnik&nbsp;;"
 
-#: templates/maposmatic/about.html:90
+#: templates/maposmatic/about.html:79
 msgid ""
 "Renders on top of the map, using Mapnik, the grid\n"
 "  of 500 meters squares, the labels of the squares, and a few other\n"
@@ -239,7 +214,7 @@ msgstr ""
 "grille de carrés de 500 mètres de coté, des légendes de ces carrés et de "
 "quelques autres informations (droits d'auteur, échelle, etc.)&nbsp;;"
 
-#: templates/maposmatic/about.html:95
+#: templates/maposmatic/about.html:84
 msgid ""
 "Greys out all the area outside the city if we find\n"
 "  its administrative boundary;"
@@ -247,7 +222,7 @@ msgstr ""
 "Ajoute un pourtour gris autour de la ville si nous avons ses limites "
 "administratives&nbsp;;"
 
-#: templates/maposmatic/about.html:98
+#: templates/maposmatic/about.html:87
 msgid ""
 "Renders an index of the streets, based on\n"
 "  OpenStreetMap data and the intersection of the streets with the\n"
@@ -256,7 +231,7 @@ msgstr ""
 "Génère un index des rues basé sur les données OpenStreetMap et leur "
 "intersection avec les carrés de la carte."
 
-#: templates/maposmatic/about.html:104
+#: templates/maposmatic/about.html:93
 msgid ""
 "This Python module can be used through a command-line\n"
 "tool provided with OCitySMap, so everyone can run its own city-map\n"
@@ -272,7 +247,7 @@ msgstr ""
 "été créé pour permettre aux utilisateurs finaux de générer et d'utiliser "
 "facilement des cartes de ville OpenStreetMap."
 
-#: templates/maposmatic/about.html:111
+#: templates/maposmatic/about.html:100
 msgid ""
 "This web service has been called <i>MapOSMatic</i>,\n"
 "like <i>map-o-matic</i> but with a reference to OpenStreetMap (OSM). The\n"
@@ -293,11 +268,11 @@ msgstr ""
 "un instant donné, ce qui est très important étant donné la nature très "
 "intensive en charge processeur et d'entrées-sorties du processus de rendu."
 
-#: templates/maposmatic/about.html:121
+#: templates/maposmatic/about.html:110
 msgid "Contributing"
 msgstr "Contribuer"
 
-#: templates/maposmatic/about.html:123
+#: templates/maposmatic/about.html:112
 msgid ""
 "As stated above, both <i>OCitySMap</i> and\n"
 "<i>MapOSMatic</i> are fully free software, so you're invited to\n"
@@ -308,7 +283,7 @@ msgstr ""
 "Logiciels Libres, vous êtes donc invités à y contribuer. Voici quelques "
 "points de départ pour nous aider&nbsp;:"
 
-#: templates/maposmatic/about.html:130
+#: templates/maposmatic/about.html:119
 msgid ""
 "The <a\n"
 "  href=\"https://savannah.nongnu.org/projects/maposmatic/\">project on\n"
@@ -318,7 +293,7 @@ msgstr ""
 "  href=\"https://savannah.nongnu.org/projects/maposmatic/\">projet sur\n"
 "  Savannah</a>&nbsp;;"
 
-#: templates/maposmatic/about.html:134
+#: templates/maposmatic/about.html:123
 msgid ""
 "The <a\n"
 "  href=\"http://lists.nongnu.org/mailman/listinfo/maposmatic-dev"
@@ -329,13 +304,13 @@ msgstr ""
 "  href=\"http://lists.nongnu.org/mailman/listinfo/maposmatic-dev\">liste de "
 "diffusion pour le développement (en langue anglaise)</a>&nbsp;;"
 
-#: templates/maposmatic/about.html:138
+#: templates/maposmatic/about.html:127
 msgid ""
 "The IRC channel <code>#maposmatic</code> on\n"
 "  Freenode;"
 msgstr "Le canal IRC <code>#maposmatic</code> sur le réseau Freenode&nbsp;;"
 
-#: templates/maposmatic/about.html:141
+#: templates/maposmatic/about.html:130
 msgid ""
 "The <a\n"
 "  href=\"http://git.savannah.gnu.org/cgit/maposmatic/ocitysmap.git"
@@ -348,7 +323,7 @@ msgstr ""
 "Git OCitySMap</a>, qui peut être cloné via « <code>git clone git://git.sv.gnu."
 "org/maposmatic/ocitysmap.git</code> »&nbsp;;"
 
-#: templates/maposmatic/about.html:146
+#: templates/maposmatic/about.html:135
 msgid ""
 "The <a\n"
 "  href=\"http://git.savannah.gnu.org/cgit/maposmatic.git\">MapOSMatic\n"
@@ -359,7 +334,7 @@ msgstr ""
 "MapOSMatic</a>, qui peut être cloné via « <code>git clone git://git.sv.gnu."
 "org/maposmatic.git</code> »&nbsp;;"
 
-#: templates/maposmatic/about.html:151
+#: templates/maposmatic/about.html:140
 msgid ""
 "<a\n"
 "  href=\"https://savannah.nongnu.org/task/?group=maposmatic\">TODO-list\n"
@@ -369,7 +344,7 @@ msgstr ""
 "  href=\"https://savannah.nongnu.org/task/?group=maposmatic\">TODO-list\n"
 "  et idées</a>."
 
-#: templates/maposmatic/about.html:157
+#: templates/maposmatic/about.html:146
 msgid "Authors"
 msgstr "Auteurs"
 
@@ -508,15 +483,15 @@ msgstr "Langue&nbsp;:"
 msgid "Introduction"
 msgstr "Introduction"
 
-#: templates/maposmatic/index.html:87
+#: templates/maposmatic/index.html:88
 msgid "City Map"
 msgstr "Carte de la ville"
 
-#: templates/maposmatic/index.html:98
+#: templates/maposmatic/index.html:94
 msgid "Streets index"
 msgstr "Index des rues "
 
-#: templates/maposmatic/index.html:107
+#: templates/maposmatic/index.html:103
 msgid ""
 "MapOSMatic is a free software web service that\n"
 "allows you to generate maps of cities using\n"
@@ -528,46 +503,67 @@ msgstr ""
 "openstreetmap.org\">OpenStreetMap</a>. La carte d'une ville est constituée "
 "de deux pages :"
 
-#: templates/maposmatic/index.html:113
+#: templates/maposmatic/index.html:109
 msgid ""
 "The map itself, splitted in squares allowing to easily look for streets;"
 msgstr ""
 "la carte elle-même, découpée en carrés pour faciliter la recherche de "
 "rues&nbsp;;"
 
-#: templates/maposmatic/index.html:114
+#: templates/maposmatic/index.html:110
 msgid "An index of the streets with references to the squares on the map."
 msgstr "un index des rues référencées selon les carrés de la carte."
 
-#: templates/maposmatic/index.html:117
+#: templates/maposmatic/index.html:113
+msgid ""
+"The generated maps are available in PNG, PDF and\n"
+"SVG formats and are ready to be printed."
+msgstr ""
+"Les cartes générées sont disponibles aux formats PNG, PDF et SVG et sont "
+"prêtes à être imprimées."
+
+#: templates/maposmatic/index.html:116
+msgid ""
+"As the data used to generate maps is coming from\n"
+"OpenStreetMap, you can freely (under the <a\n"
+"href=\"http://wiki.openstreetmap.org/wiki/License\">terms of\n"
+"OpenStreetMap license</a>) reuse, sell, modify, ... the generated\n"
+"maps."
+msgstr ""
+"Les données utilisées pour la génération des cartes provenant "
+"d'OpenStreetMap, vous pouvez librement réutiliser, vendre, modifier, ... les "
+"cartes générées (en respectant la <a href=\"http://wiki.openstreetmap.org/"
+"wiki/License\">licence OpenStreetMap</a>)."
+
+#: templates/maposmatic/index.html:122
 msgid "More details"
 msgstr "Plus d'informations"
 
-#: templates/maposmatic/index.html:119
+#: templates/maposmatic/index.html:124
 msgid "Generate your own map"
 msgstr "Générer votre carte"
 
-#: templates/maposmatic/index.html:126
+#: templates/maposmatic/index.html:131
 msgid "Area selection mode:"
 msgstr "Mode de sélection :"
 
-#: templates/maposmatic/index.html:128 templates/maposmatic/index.html:129
+#: templates/maposmatic/index.html:133 templates/maposmatic/index.html:134
 msgid "Generate"
 msgstr "Générer..."
 
-#: templates/maposmatic/index.html:138
+#: templates/maposmatic/index.html:143
 msgid "City name:"
 msgstr "Nom de la ville :"
 
-#: templates/maposmatic/index.html:144
+#: templates/maposmatic/index.html:149
 msgid "Title of the map:"
 msgstr "Titre de la carte :"
 
-#: templates/maposmatic/index.html:150
+#: templates/maposmatic/index.html:155
 msgid "Bounding box:"
 msgstr "Zone géographique :"
 
-#: templates/maposmatic/index.html:158
+#: templates/maposmatic/index.html:163
 msgid ""
 "Right now <em>MapOSMatic</em> is only available for the\n"
 "metropolitan France area. We need contributors to translate and adapt\n"
@@ -579,13 +575,13 @@ msgstr ""
 "les quelques parties de <em>MapOSMatic</em> qui sont spécifiques à un pays "
 "donné."
 
-#: templates/maposmatic/index.html:163
+#: templates/maposmatic/index.html:168
 msgid ""
 "To select the city to be rendered, two modes are\n"
 "available:"
 msgstr "Pour sélectionner la ville, deux modes sont disponibles&nbsp;:"
 
-#: templates/maposmatic/index.html:168
+#: templates/maposmatic/index.html:173
 msgid ""
 "Using an administrative boundary. It allows to get a\n"
 "  map with precise boundaries of the city, but they are for the moment\n"
@@ -605,13 +601,13 @@ msgstr ""
 "fonctionnels sont&nbsp;: <code>Chavagne</code>, <code>Bénodet</code> et "
 "<code>Sanguinet</code>."
 
-#: templates/maposmatic/index.html:177
+#: templates/maposmatic/index.html:182
 msgid ""
 "Using a traditional bounding\n"
 "  box."
 msgstr "En utilisant une <em>bounding box</em> traditionnelle."
 
-#: templates/maposmatic/index.html:182
+#: templates/maposmatic/index.html:187
 msgid ""
 "Once the rendering is submitted, you will be brought\n"
 "to a page giving the status of your rendering request. As soon as the\n"
@@ -680,6 +676,9 @@ msgstr "Temps estimé avant rendu"
 #: templates/maposmatic/job.html:122
 msgid "Result files"
 msgstr "Fichiers générés"
+
+#~ msgid "Generated maps"
+#~ msgstr "Cartes générées"
 
 #~ msgid ""
 #~ "Contact us by email at <a href=\"mailto:contact@maposmatic.org"

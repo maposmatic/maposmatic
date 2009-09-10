@@ -81,6 +81,7 @@ onload='pageinit()'
   <table style="text-align: center">
     <tr>
       <td><a href="/smedia/chavagne.png"><img style="width: 200px;" src="/smedia/chavagne-small.png"></td></a>
+      <td><a href="/smedia/chavagne_index.png"><img style="width: 200px;" src="/smedia/chavagne_index-small.png"></a></td>
     </tr>
     <tr>
       <td>
@@ -89,11 +90,6 @@ onload='pageinit()'
 	<a href="/smedia/chavagne.pdf">PDF</a>&nbsp;-&nbsp;
 	<a href="/smedia/chavagne.svg">SVG</a>
       </td>
-    </tr>
-    <tr>
-      <td><a href="/smedia/chavagne_index.png"><img style="width: 200px;" src="/smedia/chavagne_index-small.png"></a></td>
-    </tr>
-    <tr>
       <td>
 	{% trans "Streets index" %}<br/>
 	<a href="/smedia/chavagne_index.png">PNG</a>&nbsp;-&nbsp;
@@ -114,9 +110,18 @@ is made of two pages:{% endblocktrans %}</p>
   <li>{% blocktrans %}An index of the streets with references to the squares on the map.{% endblocktrans %}</li>
 </ul>
 
+<p>{% blocktrans %}The generated maps are available in PNG, PDF and
+SVG formats and are ready to be printed.{% endblocktrans %}</p>
+
+<p>{% blocktrans %}As the data used to generate maps is coming from
+OpenStreetMap, you can freely (under the <a
+href="http://wiki.openstreetmap.org/wiki/License">terms of
+OpenStreetMap license</a>) reuse, sell, modify, ... the generated
+maps.{% endblocktrans %}</p>
+
 <p><a href="/about/">{% trans "More details" %} &raquo;</a></p>
 
-<h2>{% trans "Generate your own map" %}</h2>
+<h2 style="clear: right">{% trans "Generate your own map" %}</h2>
 
 <a name="submitmapform"></a>
 <form method="post" action="/#submitmapform" class="submitmap">
