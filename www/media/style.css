@@ -54,6 +54,10 @@ h2 {
     margin: 0;
 }
 
+h2 a {
+    color: black;
+}
+
 div#header {
     width:100%;
     overflow:hidden;
