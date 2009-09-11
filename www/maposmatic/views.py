@@ -168,6 +168,7 @@ def rendering_already_exists(city):
     # Then try to find items being rendered or waiting for rendering
     rendered_items = (MapRenderingJob.objects.
                       filter(administrative_city=city).
+                      filter(status__in=[0,1]).
                       order_by("-submission_time")[:1])
 
     if len(rendered_items):
