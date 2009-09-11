@@ -158,7 +158,7 @@ def rendering_already_exists(city):
     # First try to find rendered items
     rendered_items = (MapRenderingJob.objects.
                       filter(administrative_city=city).
-                      filter(status=2).order_by("-submission_time")[:1])
+                      filter(status=2).filter(resultmsg="ok").order_by("-submission_time")[:1])
 
     if len(rendered_items):
         rendered_item = rendered_items[0]
