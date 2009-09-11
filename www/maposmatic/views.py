@@ -156,7 +156,7 @@ class MapRenderingJobForm(ModelForm):
                 self._errors['bbox'] = ErrorList([msg])
 
             # Make sure that bbox and admin modes are exclusive
-            cleaned_data["administrative_city"] = None
+            cleaned_data["administrative_city"] = ''
 
         return cleaned_data
 
