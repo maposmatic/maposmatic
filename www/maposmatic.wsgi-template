@@ -24,6 +24,7 @@
 import os, sys
 
 sys.path.append("/path/to/our/parent/directory")
+sys.path.append("/path/to/our/ocitysmap/top/directory")
 
 os.environ["DJANGO_SETTINGS_MODULE"] = 'www.settings'
 os.environ["MAPOSMATIC_LOG_FILE"] = "/tmp/maposmatic-www.log"
