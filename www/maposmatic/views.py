@@ -111,7 +111,10 @@ class MapRenderingJobForm(ModelForm):
                 self._errors["administrative_city"] = ErrorList([msg])
                 del cleaned_data["administrative_city"]
 
+            # No choice, the map title is always the name of the city
             cleaned_data["maptitle"] = city
+
+            # Make sure that bbox and admin modes are exclusive
             cleaned_data["lat_upper_left"] = None
             cleaned_data["lon_upper_left"] = None
             cleaned_data["lat_bottom_right"] = None
@@ -151,6 +154,9 @@ class MapRenderingJobForm(ModelForm):
                 lon_bottom_right > 11.937):
                 msg = _(u"Sorry, only cities in France can be rendered for the moment")
                 self._errors['bbox'] = ErrorList([msg])
+
+            # Make sure that bbox and admin modes are exclusive
+            cleaned_data["administrative_city"] = None
 
         return cleaned_data
 
