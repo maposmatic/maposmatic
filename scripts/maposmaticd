@@ -27,7 +27,8 @@ from datetime import datetime, timedelta
 
 from www.maposmatic.models import MapRenderingJob
 from www.settings import RENDERING_RESULT_PATH, LOG, RENDERING_RESULT_FORMATS, RENDERING_RESULT_MAX_SIZE_GB
-import ocitysmap
+from ocitysmap.coords import BoundingBox as OCMBoundingBox
+from ocitysmap.street_index import OCitySMap 
 import Image
 
 def handler(signum, frame, pipe_write):
@@ -37,13 +38,11 @@ def handler(signum, frame, pipe_write):
 def render_job_process(job):
 
     if job.administrative_city == "":
-        bbox = ocitysmap.coords.BoundingBox(job.lat_upper_left,
-                                            job.lon_upper_left,
-                                            job.lat_bottom_right,
-                                            job.lon_bottom_right)
-        renderer = ocitysmap.OCitySMap(boundingbox=bbox)
+        bbox = OCMBoundingBox(job.lat_upper_left, job.lon_upper_left,
+                              job.lat_bottom_right, job.lon_bottom_right)
+        renderer = OCitySMap(boundingbox=bbox)
     else:
-        renderer = ocitysmap.OCitySMap(city_name=job.administrative_city)
+        renderer = OCitySMap(city_name=job.administrative_city)
 
     outfile_prefix = os.path.join(RENDERING_RESULT_PATH, job.files_prefix())
 
