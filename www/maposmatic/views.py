@@ -38,20 +38,7 @@ import psycopg2
 import www.settings
 import math
 from www.maposmatic.widgets import AreaField
-
-EARTH_RADIUS = 6370986 # meters
-
-# FIXME: we copy the ocitysmap BoundingBox.spheric_sizes() here
-# because importing ocitysmap requires mapnik for the webservice.
-def spheric_sizes(lat1, long1, lat2, long2):
-    """Metric distances at the bounding box top latitude.
-    Returns the tuple (metric_size_lat, metric_size_long)
-    """
-    delta_lat = abs(lat1 - lat2)
-    delta_long = abs(long1 - long2)
-    radius_lat = EARTH_RADIUS * math.cos(math.radians(lat1))
-    return (EARTH_RADIUS * math.radians(delta_lat),
-            radius_lat * math.radians(delta_long))
+from ocitysmap.coords import BoundingBox as OCMBoundingBox
 
 # Test if a given city has its administrative boundaries inside the
 # OpenStreetMap database. We don't go through the Django ORM but
@@ -134,20 +121,21 @@ class MapRenderingJobForm(ModelForm):
                     self._errors[f] = ErrorList([msg])
                     del cleaned_data[f]
 
-            (metric_size_lat, metric_size_long) = \
-                spheric_sizes(cleaned_data.get("lat_upper_left"),
-                              cleaned_data.get("lon_upper_left"),
-                              cleaned_data.get("lat_bottom_right"),
-                              cleaned_data.get("lon_bottom_right"))
+            lat_upper_left = cleaned_data.get("lat_upper_left")
+            lon_upper_left = cleaned_data.get("lon_upper_left")
+            lat_bottom_right = cleaned_data.get("lat_bottom_right")
+            lon_bottom_right = cleaned_data.get("lon_bottom_right")
+
+            boundingbox = OCMBoundingBox(lat_upper_left,
+                                         lon_upper_left,
+                                         lat_bottom_right,
+                                         lon_bottom_right)
+            (metric_size_lat, metric_size_long) = boundingbox.spheric_sizes()
             if metric_size_lat > www.settings.BBOX_MAXIMUM_LENGTH_IN_METERS or \
                     metric_size_long > www.settings.BBOX_MAXIMUM_LENGTH_IN_METERS:
                 msg = _(u"Bounding Box too big")
                 self._errors['bbox'] = ErrorList([msg])
 
-            lat_upper_left = cleaned_data.get("lat_upper_left")
-            lon_upper_left = cleaned_data.get("lon_upper_left")
-            lat_bottom_right = cleaned_data.get("lat_bottom_right")
-            lon_bottom_right = cleaned_data.get("lon_bottom_right")
             if (lat_upper_left > 51.956 or
                 lon_upper_left < -7.838 or
                 lat_bottom_right < 41.458 or
