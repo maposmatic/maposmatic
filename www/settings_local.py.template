@@ -38,6 +38,9 @@ DATABASE_PASSWORD = 'test'         # Not used with sqlite3.
 DATABASE_HOST = 'localhost'             # Set to empty string for localhost. Not used with sqlite3.
 DATABASE_PORT = ''             # Set to empty string for default. Not used with sqlite3.
 
+# Path to ocitysmap's config file to use, or None for the default in ~/
+OCITYSMAP_CFG_PATH = None
+
 RENDERING_RESULT_PATH = '/tmp/direc/tory'
 RENDERING_RESULT_URL = 'http://host.name/dir/ec/tory'
 RENDERING_RESULT_FORMATS = ['png', 'svg', 'pdf']
