@@ -20,8 +20,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: mapOSMatic 0.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-09-10 16:25+0200\n"
-"PO-Revision-Date: 2009-09-10 16:25+0100\n"
+"POT-Creation-Date: 2009-09-28 20:21+0200\n"
+"PO-Revision-Date: 2009-09-28 20:21+0100\n"
 "Last-Translator: Thomas Petazzoni <thomas.petazzoni@enix.org>\n"
 "Language-Team: FR <LL@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -38,39 +38,39 @@ msgstr "Carte pour %(title)s (format %(format)s)"
 msgid "%(title)s %(format)s Index"
 msgstr "Index des rues pour %(title)s (format %(format)s)"
 
-#: maposmatic/views.py:90
+#: maposmatic/views.py:77
 msgid "Administrative boundary"
 msgstr "Limites administratives (nom de ville)"
 
-#: maposmatic/views.py:91
+#: maposmatic/views.py:78
 msgid "Bounding box"
 msgstr "Zone géographique"
 
-#: maposmatic/views.py:94
+#: maposmatic/views.py:81
 msgid "Area"
 msgstr "Zone"
 
-#: maposmatic/views.py:106
+#: maposmatic/views.py:93
 msgid "Administrative city required"
 msgstr "Nom de ville obligatoire"
 
-#: maposmatic/views.py:110
+#: maposmatic/views.py:97
 msgid "No administrative boundaries found for this city. Try with proper casing."
 msgstr "Aucune limite administrative disponible pour cette ville. Essayez en corrigeant la casse (majuscule sur la première lettre)"
 
-#: maposmatic/views.py:122
+#: maposmatic/views.py:112
 msgid "Map title required"
 msgstr "Titre de la carte obligatoire"
 
-#: maposmatic/views.py:130
+#: maposmatic/views.py:120
 msgid "Required"
 msgstr "Obligatoire"
 
-#: maposmatic/views.py:141
+#: maposmatic/views.py:136
 msgid "Bounding Box too big"
 msgstr "Zone géographique trop grande"
 
-#: maposmatic/views.py:152
+#: maposmatic/views.py:143
 msgid "Sorry, only cities in France can be rendered for the moment"
 msgstr "Désolé, seules les villes en France peuvent être rendues pour le moment"
 
@@ -91,10 +91,27 @@ msgstr "Rendu terminé avec succès"
 msgid "Rendering failed, reason: <i>%(errmsg)s</i>"
 msgstr "Rendu échoué, raison : <i>%(errmsg)s</i>"
 
+#: templates/404.html:3
 #: templates/500.html:3
 #: templates/maposmatic/base.html:48
 msgid "Home"
 msgstr "Accueil"
+
+#: templates/404.html:3
+msgid "Not Found"
+msgstr "Non trouvé"
+
+#: templates/404.html:5
+msgid "Not Found (404)"
+msgstr "Non trouvé (404)"
+
+#: templates/404.html:8
+msgid "Not Found <em>(404)</em>"
+msgstr "Non trouvé <em>(404)</em>"
+
+#: templates/404.html:9
+msgid "Not Found."
+msgstr "Non trouvé."
 
 #: templates/500.html:3
 msgid "Server error"
@@ -113,7 +130,7 @@ msgid "There's been an error."
 msgstr "Une erreur est apparue."
 
 #: templates/maposmatic/about.html:35
-#: templates/maposmatic/base.html:51
+#: templates/maposmatic/base.html:52
 msgid "About"
 msgstr "À propos..."
 
@@ -402,31 +419,35 @@ msgstr "Vos cartes de ville libres&nbsp;!"
 msgid "Jobs"
 msgstr "Rendus"
 
-#: templates/maposmatic/base.html:63
+#: templates/maposmatic/base.html:51
+msgid "News"
+msgstr "Actualités"
+
+#: templates/maposmatic/base.html:64
 msgid "Random map"
 msgstr "Carte au hasard"
 
-#: templates/maposmatic/base.html:73
+#: templates/maposmatic/base.html:74
 msgid "No random map found."
 msgstr "Aucune carte trouvée."
 
-#: templates/maposmatic/base.html:79
+#: templates/maposmatic/base.html:80
 msgid "Contact"
 msgstr "Contact"
 
-#: templates/maposmatic/base.html:81
+#: templates/maposmatic/base.html:82
 msgid "Mail:"
 msgstr "Email :"
 
-#: templates/maposmatic/base.html:82
+#: templates/maposmatic/base.html:83
 msgid "IRC:"
 msgstr "IRC :"
 
-#: templates/maposmatic/base.html:82
+#: templates/maposmatic/base.html:83
 msgid "on"
 msgstr "sur"
 
-#: templates/maposmatic/base.html:88
+#: templates/maposmatic/base.html:89
 msgid "Language:"
 msgstr "Langue&nbsp;:"
 
