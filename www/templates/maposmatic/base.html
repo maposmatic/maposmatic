@@ -32,6 +32,7 @@
  <title>MapOSMatic</title>
  <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
  <link rel="stylesheet" type="text/css" href="/smedia/style.css" media="screen" />
+ <link rel="alternate" href="http://news.maposmatic.org/?feed=rss2" title="MapOSMatic news" type="application/rss+xml" />
  {% block extralink %}{% endblock %}
  <script language="JavaScript" type="text/javascript">
  {% block extrajs %}{% endblock %}
@@ -48,7 +49,7 @@
    <li {% block menu-home %}{% endblock %}><a href="/">{% trans "Home" %}</a></li>
    <li {% block menu-jobs %}{% endblock %}><a href="/jobs">{% trans "Jobs" %}</a></li>
    <li {% block menu-maps %}{% endblock %}><a href="/maps">{% trans "Maps" %}</a></li>
-   <li><a href="http://blog.maposmatic.org">{% trans "News" %}</a></li>
+   <li><a href="http://news.maposmatic.org">{% trans "News" %}</a></li>
    <li {% block menu-about %}{% endblock %}><a href="/about">{% trans "About" %}</a></li>
   </ul>
  </div>
