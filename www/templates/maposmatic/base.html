@@ -24,6 +24,8 @@
 {% endcomment %}
 
 {% load i18n %}
+{% load extratags %}
+
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
@@ -75,6 +77,21 @@
   <p>{% trans "No random map found." %}</p>
   {% endif %}
   </p>
+</div>
+
+<div class="box">
+  <h2>{% trans "Latest news" %}</h2>
+  <ul>
+    {% for entry in blogposts %}
+    <li><a href="{{ entry.link }}">{{ entry.title }}</a><br/>
+    <span style="font-size: 80%">
+    {% blocktrans with entry.updated_parsed|feedparsed|timesince as date %}
+    published {{ date }} ago
+    {% endblocktrans %}
+    </span>
+    </li>
+    {% endfor %}
+  </ul>
 </div>
 
 <div class="box">

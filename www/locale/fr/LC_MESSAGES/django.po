@@ -20,8 +20,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: mapOSMatic 0.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-09-28 20:21+0200\n"
-"PO-Revision-Date: 2009-09-28 20:21+0100\n"
+"POT-Creation-Date: 2009-10-07 09:14+0200\n"
+"PO-Revision-Date: 2009-10-07 09:15+0100\n"
 "Last-Translator: Thomas Petazzoni <thomas.petazzoni@enix.org>\n"
 "Language-Team: FR <LL@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -74,26 +74,26 @@ msgstr "Zone géographique trop grande"
 msgid "Sorry, only cities in France can be rendered for the moment"
 msgstr "Désolé, seules les villes en France peuvent être rendues pour le moment"
 
-#: maposmatic/templatetags/extratags.py:39
+#: maposmatic/templatetags/extratags.py:40
 msgid "Waiting rendering"
 msgstr "Attente de début du rendu"
 
-#: maposmatic/templatetags/extratags.py:41
+#: maposmatic/templatetags/extratags.py:42
 msgid "Rendering in progress"
 msgstr "Rendu en cours..."
 
-#: maposmatic/templatetags/extratags.py:44
+#: maposmatic/templatetags/extratags.py:45
 msgid "Rendering successful"
 msgstr "Rendu terminé avec succès"
 
-#: maposmatic/templatetags/extratags.py:46
+#: maposmatic/templatetags/extratags.py:47
 #, python-format
 msgid "Rendering failed, reason: <i>%(errmsg)s</i>"
 msgstr "Rendu échoué, raison : <i>%(errmsg)s</i>"
 
 #: templates/404.html:3
 #: templates/500.html:3
-#: templates/maposmatic/base.html:48
+#: templates/maposmatic/base.html:51
 msgid "Home"
 msgstr "Accueil"
 
@@ -130,7 +130,7 @@ msgid "There's been an error."
 msgstr "Une erreur est apparue."
 
 #: templates/maposmatic/about.html:35
-#: templates/maposmatic/base.html:52
+#: templates/maposmatic/base.html:55
 msgid "About"
 msgstr "À propos..."
 
@@ -393,7 +393,7 @@ msgid ""
 msgstr "Pas de demande de rendu de carte durant les dernières 24 heures."
 
 #: templates/maposmatic/all_maps.html:35
-#: templates/maposmatic/base.html:50
+#: templates/maposmatic/base.html:53
 msgid "Maps"
 msgstr "Cartes"
 
@@ -411,43 +411,57 @@ msgstr "Fichiers"
 msgid "The generated files are no longer available"
 msgstr "Les fichiers générés ne sont plus disponibles"
 
-#: templates/maposmatic/base.html:44
+#: templates/maposmatic/base.html:47
 msgid "Your free city maps!"
 msgstr "Vos cartes de ville libres&nbsp;!"
 
-#: templates/maposmatic/base.html:49
+#: templates/maposmatic/base.html:52
 msgid "Jobs"
 msgstr "Rendus"
 
-#: templates/maposmatic/base.html:51
+#: templates/maposmatic/base.html:54
 msgid "News"
 msgstr "Actualités"
 
-#: templates/maposmatic/base.html:64
+#: templates/maposmatic/base.html:67
 msgid "Random map"
 msgstr "Carte au hasard"
 
-#: templates/maposmatic/base.html:74
+#: templates/maposmatic/base.html:77
 msgid "No random map found."
 msgstr "Aucune carte trouvée."
 
-#: templates/maposmatic/base.html:80
+#: templates/maposmatic/base.html:83
+msgid "Latest news"
+msgstr "Dernières actualités"
+
+#: templates/maposmatic/base.html:88
+#, python-format
+msgid ""
+"\n"
+"    published %(date)s ago\n"
+"    "
+msgstr ""
+"\n"
+"publié il y a %(date)s"
+
+#: templates/maposmatic/base.html:98
 msgid "Contact"
 msgstr "Contact"
 
-#: templates/maposmatic/base.html:82
+#: templates/maposmatic/base.html:100
 msgid "Mail:"
 msgstr "Email :"
 
-#: templates/maposmatic/base.html:83
+#: templates/maposmatic/base.html:101
 msgid "IRC:"
 msgstr "IRC :"
 
-#: templates/maposmatic/base.html:83
+#: templates/maposmatic/base.html:101
 msgid "on"
 msgstr "sur"
 
-#: templates/maposmatic/base.html:89
+#: templates/maposmatic/base.html:107
 msgid "Language:"
 msgstr "Langue&nbsp;:"
 

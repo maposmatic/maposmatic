@@ -22,8 +22,14 @@
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 from models import MapRenderingJob
+import feedparser
+
+def get_latest_blog_posts():
+    f = feedparser.parse("http://news.maposmatic.org/?feed=rss2")
+    return f.entries[:5]
 
 def all(request):
     d = {}
     d['randommap'] = MapRenderingJob.objects.get_random_with_thumbnail()
+    d['blogposts'] = get_latest_blog_posts()
     return d

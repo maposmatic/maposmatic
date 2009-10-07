@@ -25,6 +25,7 @@ from django import template
 from django.utils.html import conditional_escape
 from django.utils.safestring import mark_safe
 from django.utils.translation import ugettext_lazy as _
+import datetime
 
 register = template.Library()
 
@@ -52,4 +53,9 @@ def job_status_to_str(value, arg, autoescape=None):
 
 job_status_to_str.needs_autoescape = True
 
+def feedparsed(value):
+    print value
+    return datetime.datetime(*value[:6])
+
 register.filter('job_status_to_str', job_status_to_str)
+register.filter('feedparsed', feedparsed)
