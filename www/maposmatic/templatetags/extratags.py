@@ -54,7 +54,6 @@ def job_status_to_str(value, arg, autoescape=None):
 job_status_to_str.needs_autoescape = True
 
 def feedparsed(value):
-    print value
     return datetime.datetime(*value[:6])
 
 register.filter('job_status_to_str', job_status_to_str)
