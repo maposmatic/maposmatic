@@ -4,9 +4,22 @@ INSTALLATION NOTES
 Dependencies
 ------------
 
-MapOSMatic depends on Python, Django and python-psycodg2. You will also most
-likely need a working PostGIS installation for the entire pipeline to run.
+MapOSMatic depends on :
 
+ * Python, the programming language
+
+ * Django, the Web framework used to develop the Web front-end, but
+   also used for the maposmaticd daemon to conveniently access the
+   database through Django's ORM
+
+ * python-psycodg2, to let Django access the PostgreSQL database
+
+ * python-feedparser, to parse the MapOSMatic blog feed and display
+   the latest entries on the main MapOSMatic website
+
+You will also most likely need a working PostGIS installation for the
+entire pipeline to run. See the INSTALL documentation of OcitySMap for
+more details.
 
 Setup
 -----
