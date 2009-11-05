@@ -37,6 +37,13 @@ class="activelink"
 {% block page %}
 <h1>{% blocktrans with job.maptitle as job_t %}Map <i>{{ job_t }}</i> Status{% endblocktrans %}</h1>
 
+{% if redirected %}
+<p class="infobox">
+  <img src="/smedia/info.png"/>
+  <span>{% trans "You have been redirected to a similar map, rendered less than 24 hours ago."%}</span>
+</p>
+{% endif %}
+
 <table class="list">
 {% if not job.is_done %}
   <tr class="even">

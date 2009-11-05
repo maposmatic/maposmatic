@@ -301,3 +301,24 @@ div#map
 {
   bottom: 3px !important;
 }
+
+p.infobox
+{
+  margin-right: 1em;
+  margin-left: 1em;
+  background: #FFF6BF;
+  padding: 1em;
+}
+
+p.infobox img
+{
+  margin-right: 1em;
+  vertical-align: middle;
+  display: inline-block;
+}
+
+p.infobox span
+{
+  vertical-align: middle;
+  display: inline-block;
+}

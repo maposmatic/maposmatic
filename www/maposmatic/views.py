@@ -151,6 +151,7 @@ class MapRenderingJobForm(ModelForm):
 def rendering_already_exists(city):
     # First try to find rendered items
     rendered_items = (MapRenderingJob.objects.
+                      filter(submission_time__gte=datetime.datetime.now() - datetime.timedelta(1)).
                       filter(administrative_city=city).
                       filter(status=2).filter(resultmsg="ok").order_by("-submission_time")[:1])
 
@@ -161,6 +162,7 @@ def rendering_already_exists(city):
 
     # Then try to find items being rendered or waiting for rendering
     rendered_items = (MapRenderingJob.objects.
+                      filter(submission_time__gte=datetime.datetime.now() - datetime.timedelta(1)).
                       filter(administrative_city=city).
                       filter(status__in=[0,1]).
                       order_by("-submission_time")[:1])
@@ -182,6 +184,7 @@ def index(request):
             if job.administrative_city:
                 url = rendering_already_exists(job.administrative_city)
                 if url:
+                    request.session['redirected'] = True
                     return HttpResponseRedirect(url)
 
             job.lat_upper_left = form.cleaned_data['lat_upper_left']
@@ -202,8 +205,14 @@ def index(request):
 
 def job(request, job_id):
     job = get_object_or_404(MapRenderingJob, id=job_id)
+    if request.session.has_key("redirected"):
+        isredirected = request.session['redirected']
+        del request.session['redirected']
+    else:
+        isredirected = False
     return render_to_response('maposmatic/job.html',
-                              { 'job' : job },
+                              { 'job' : job ,
+                                'redirected' : isredirected },
                               context_instance=RequestContext(request))
 
 def all_jobs(request):
