@@ -42,7 +42,7 @@ def render_job_process(job):
                               job.lat_bottom_right, job.lon_bottom_right)
         renderer = OCitySMap(config_file=OCITYSMAP_CFG_PATH, boundingbox=bbox)
     else:
-        renderer = OCitySMap(city_name=job.administrative_city)
+        renderer = OCitySMap(config_file=OCITYSMAP_CFG_PATH, city_name=job.administrative_city)
 
     outfile_prefix = os.path.join(RENDERING_RESULT_PATH, job.files_prefix())
 
