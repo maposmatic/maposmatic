@@ -69,6 +69,7 @@ def render_job(job):
     if pid == 0:
         # Son
         tell_dad = os.fdopen(pipe_write, 'w')
+	os.close(pipe_read)
         retval = 1
         try:
             retval = render_job_process(job)
@@ -119,7 +120,14 @@ def render_job(job):
                 job.end_rendering(resultmsg)
                 return
         finally:
-            print "end of process %d" % pid
+            LOG.debug("end of process %d" % pid)
+
+            for fd in (pipe_read, pipe_write):
+                try:
+                    os.close(fd)
+                except OSError:
+                    pass
+
             (pid, status) = os.waitpid(pid, 0)
             resultmsg = "unknown error"
             if os.WIFEXITED(status):
