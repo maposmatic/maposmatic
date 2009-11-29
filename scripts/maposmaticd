@@ -31,7 +31,7 @@ from ocitysmap.coords import BoundingBox as OCMBoundingBox
 from ocitysmap.street_index import OCitySMap 
 import Image
 
-def handler(signum, frame, pipe_write):
+def sigcld_handler(signum, frame, pipe_write):
     f = os.fdopen(pipe_write, 'w')
     f.write("end")
 
@@ -61,11 +61,10 @@ def render_job_process(job):
     return 0
 
 def render_job(job):
-    LOG.info("[job %d] starting rendering, title '%s'" % (job.id, job.maptitle))
+    LOG.info("[job %d] starting rendering, title '%s'" \
+                 % (job.id, job.maptitle))
     job.start_rendering()
     (pipe_read, pipe_write) = os.pipe()
-    signal.signal(signal.SIGCHLD,
-                  lambda signal, frame: handler(signal, frame, pipe_write))
     pid = os.fork()
     if pid == 0:
         # Son
@@ -88,6 +87,11 @@ def render_job(job):
 
     else:
         # Father
+        signal.signal(signal.SIGCHLD,
+                      lambda signal, frame: sigcld_handler(signal, frame,
+                                                           pipe_write))
+        LOG.debug("start of process %d" % pid)
+	# Don't close pipe_write here because the sigcld handler depends on it
         child_message = ""
         try:
             (rlist, wlist, xlist) = select.select([pipe_read], [], [], 20*60)
