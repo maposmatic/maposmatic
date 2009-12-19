@@ -105,7 +105,8 @@ INSTALLED_APPS = (
 formatter = logging.Formatter("%(name)s - %(asctime)s - %(levelname)s - %(message)s")
 
 LANGUAGES = (("fr", u"Français"),
-             ("en", u"English"))
+             ("en", u"English"),
+             ("de", u"Deutsch"))
 
 LOG = logging.getLogger(os.environ.get("MAPOSMATIC_LOG_TARGET",
                                        "maposmatic"))
