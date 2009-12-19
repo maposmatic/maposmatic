@@ -20,9 +20,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: mapOSMatic 0.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-11-06 08:48+0100\n"
-"PO-Revision-Date: 2009-12-04 21:25+0100\n"
-"Last-Translator: malenki <osm@malenki.ch>\n"
+"POT-Creation-Date: 2009-12-19 16:53+0100\n"
+"PO-Revision-Date: 2009-12-19 16:56+0100\n"
+"Last-Translator: Thomas Petazzoni <thomas.petazzoni@enix.org>\n"
 "Language-Team:  <osm@malenki.ch>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -46,7 +46,6 @@ msgid "Administrative boundary"
 msgstr "Limites administratives (nom de ville)"
 
 #: maposmatic/views.py:78
-#, fuzzy
 msgid "Bounding box"
 msgstr "Begrenzungsrahmen"
 
@@ -73,7 +72,6 @@ msgid "Required"
 msgstr "Benötigt"
 
 #: maposmatic/views.py:136
-#, fuzzy
 msgid "Bounding Box too big"
 msgstr "Begrenzungsrahmen zu groß"
 
@@ -148,7 +146,6 @@ msgid "History"
 msgstr "Chronik"
 
 #: templates/maposmatic/about.html:39
-#, fuzzy
 msgid ""
 "MapOSMatic has been started thanks to an idea of\n"
 "Gilles Lamiral, an <a\n"
@@ -183,7 +180,6 @@ msgid "How does it work?"
 msgstr "Wie funktioniert das?"
 
 #: templates/maposmatic/about.html:56
-#, fuzzy
 msgid ""
 "On our server, we run\n"
 "a <a href=\"http://www.postgresql.org\">PostgreSQL</a> server, with the\n"
@@ -265,7 +261,6 @@ msgstr ""
 "so dass Endnutzer OpenStreetMap-Stadtpläne einfach erstellen und benutzen können."
 
 #: templates/maposmatic/about.html:100
-#, fuzzy
 msgid ""
 "This web service has been called <i>MapOSMatic</i>,\n"
 "like <i>map-o-matic</i> but with a reference to OpenStreetMap (OSM). The\n"
@@ -289,7 +284,6 @@ msgid "Contributing"
 msgstr "Contribuer"
 
 #: templates/maposmatic/about.html:112
-#, fuzzy
 msgid ""
 "As stated above, both <i>OCitySMap</i> and\n"
 "<i>MapOSMatic</i> are fully free software, so you're invited to\n"
@@ -595,7 +589,6 @@ msgid "Title of the map:"
 msgstr "Titel des Plans:"
 
 #: templates/maposmatic/index.html:155
-#, fuzzy
 msgid "Bounding box:"
 msgstr "Begrenzungsrahmen:"
 
@@ -681,7 +674,6 @@ msgid "Administrative city"
 msgstr "Limite administrative"
 
 #: templates/maposmatic/job.html:68
-#, fuzzy
 msgid "Bounding-box coordinates"
 msgstr "Koordinaten des Begrenzungsrahmens (long/lat)"
 
