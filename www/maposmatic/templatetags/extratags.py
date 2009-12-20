@@ -41,7 +41,7 @@ def job_status_to_str(value, arg, autoescape=None):
     elif value == 1:
         result = _("Rendering in progress")
     elif value == 2:
-        if arg == "okx":
+        if arg == "ok":
             result = _("Rendering successful")
         else:
             result = _("Rendering failed, please contact " \
