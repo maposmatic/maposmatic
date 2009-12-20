@@ -39,14 +39,8 @@ import www.settings
 import math
 from www.maposmatic.widgets import AreaField
 from ocitysmap.coords import BoundingBox as OCMBoundingBox
+from www.maposmatic import nominatim
 
-# Nominatim parsing + json export
-# Note: we query nominatim in XML format because otherwise we cannot
-# access the osm_id tag. Then we format it as json back to the
-# javascript routines
-from urllib import urlencode
-import urllib2
-from xml.etree.ElementTree import parse as XMLTree
 try:
     from json import dumps as json_encode
 except ImportError:
@@ -269,22 +263,6 @@ def all_maps(request):
                               context_instance=RequestContext(request))
 
 
-def _parse_nominatim_xml(squery,
-                         nominatim_url="http://nominatim.openstreetmap.org/search/",
-                         with_polygons = False):
-    """
-    Return a list of entries for the given squery (eg. "Paris"). Each entry
-    is a dictionary key -> value.
-    """
-    query_tags = dict(q=squery, format='xml')
-    if with_polygons:
-        query_tags['polygon']=1
-
-    qdata = urlencode(query_tags)
-    f = urllib2.urlopen(url="%s?%s" % (nominatim_url, qdata))
-    return [dict(place.items()) for place in XMLTree(f).getroot().getchildren()]
-
-
 def query_nominatim(request, format, squery):
     if not format:
         format = "json"
@@ -295,8 +273,7 @@ def query_nominatim(request, format, squery):
         return HttpResponseBadRequest("Invalid format: %s" % format)
 
     try:
-        contents = _parse_nominatim_xml(squery,
-                                        with_polygons=False)
+        contents = nominatim.query(squery, with_polygons=False)
     except:
         contents = []
 
