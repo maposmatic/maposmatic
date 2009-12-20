@@ -49,6 +49,15 @@ function area_selection_mode_switch(mode)
         arr[i].style.display = 'table-row';
     }
   }
+  if (mode == 'bbox-mode')
+  {
+    reset_osmid_field();
+  }
+}
+
+function reset_osmid_field()
+{
+    document.getElementById("id_administrative_osmid").value = "";
 }
 
 function pageinit()
@@ -62,6 +71,8 @@ function pageinit()
     area_selection_mode_switch('bbox-mode');
   else
     area_selection_mode_switch('admin-mode');
+
+  document.getElementById('id_administrative_city').setAttribute('onchange','reset_osmid_field()');
 }
 
 function validate_city_search()
@@ -75,13 +86,15 @@ function validate_city_search()
 		if (typeof item.ocitysmap_params == "undefined")
 		{
 		  $("#result_nominatim_search").append("<li><img src=\"/smedia/icon_alert.png\" alt=\"Work In Progress\" />&nbsp;<label class=\"place_unavailable\""
-		    + ">" +item.display_name + "\"</label></li>");
+		    + ">" +item.display_name + "</label></li>");
                 }
 		else
                 {
                   $("#result_nominatim_search").append("<li><input onchange=\"javascript:update_hidden(this,'"
 		     +item.display_name+"');\" type=\"radio\" name=\"administrative_tmp_osmid\" value=\""
-		     +item.ocitysmap_params['id']+"\" />"+item.display_name+"</li>");
+		     +item.ocitysmap_params['id']+"\" id=\"rd"+item.ocitysmap_params['id']+"\"/><label for=\"rd"+
+		     item.ocitysmap_params['id']+"\">"
+		     +item.display_name+"</label></li>");
                 }
               }
             );
