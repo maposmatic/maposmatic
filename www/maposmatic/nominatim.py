@@ -139,6 +139,9 @@ def _retrieve_missing_data_from_GIS(entries):
                 except KeyError:
                     # Will ignore all the other place tags
                     continue
+            else:
+                # We ignore all the other classes
+                continue
 
             for table_name in ("polygon", "line"):
                 # Lookup the polygon/line table for both osm_id and
