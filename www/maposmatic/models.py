@@ -64,8 +64,7 @@ class MapRenderingJob(models.Model):
     # When rendering through administrative city is selected, the
     # following three fields must be non empty
     administrative_city = models.CharField(max_length=256, blank=True)
-    administrative_osmid = models.IntergerField(blank=True, null=True)
-    administrative_table = models.CharField(max_length=16, blank=True)
+    administrative_osmid = models.IntegerField(blank=True, null=True)
 
     # When rendering through bounding box is selected, the following
     # four fields must be non empty
