@@ -156,13 +156,6 @@ class MapRenderingJobForm(ModelForm):
                 msg = _(u"Bounding Box too big")
                 self._errors['bbox'] = ErrorList([msg])
 
-            if (lat_upper_left > 51.956 or
-                lon_upper_left < -7.838 or
-                lat_bottom_right < 41.458 or
-                lon_bottom_right > 11.937):
-                msg = _(u"Sorry, only cities in France can be rendered for the moment")
-                self._errors['bbox'] = ErrorList([msg])
-
             # Make sure that bbox and admin modes are exclusive
             cleaned_data["administrative_city"] = ''
 
