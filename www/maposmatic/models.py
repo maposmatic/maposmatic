@@ -60,11 +60,20 @@ class MapRenderingJob(models.Model):
         )
 
     maptitle = models.CharField(max_length=256)
+
+    # When rendering through administrative city is selected, the
+    # following three fields must be non empty
     administrative_city = models.CharField(max_length=256, blank=True)
+    administrative_osmid = models.IntergerField(blank=True, null=True)
+    administrative_table = models.CharField(max_length=16, blank=True)
+
+    # When rendering through bounding box is selected, the following
+    # four fields must be non empty
     lat_upper_left = models.FloatField(blank=True, null=True)
     lon_upper_left = models.FloatField(blank=True, null=True)
     lat_bottom_right = models.FloatField(blank=True, null=True)
     lon_bottom_right = models.FloatField(blank=True, null=True)
+
     status = models.IntegerField(choices=STATUS_LIST)
     submission_time = models.DateTimeField(auto_now_add=True)
     startofrendering_time = models.DateTimeField(null=True)
