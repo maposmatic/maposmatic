@@ -88,8 +88,14 @@ msgstr "Rendu terminé avec succès"
 
 #: maposmatic/templatetags/extratags.py:47
 #, python-format
-msgid "Rendering failed, reason: <i>%(errmsg)s</i>"
-msgstr "Rendu échoué, raison : <i>%(errmsg)s</i>"
+msgid ""
+"Rendering failed, please contact "
+"<a href=\"mailto:contact@maposmatic.org\">"
+"contact@maposmatic.org</a>"
+msgstr ""
+ "Le rendu a échoué, merci de contacter "
+"<a href=\"mailto:contact@maposmatic.org\">"
+"contact@maposmatic.org</a>"
 
 #: templates/404.html:3
 #: templates/500.html:3

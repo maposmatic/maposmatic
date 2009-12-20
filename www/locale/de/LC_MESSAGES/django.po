@@ -95,11 +95,6 @@ msgstr "Plan wird gerendert"
 msgid "Rendering successful"
 msgstr "Rendern erfolgreich"
 
-#: maposmatic/templatetags/extratags.py:47
-#, python-format
-msgid "Rendering failed, reason: <i>%(errmsg)s</i>"
-msgstr "Rendern aus folgendem Grund fehlgeschlagen : <i>%(errmsg)s</i>"
-
 #: templates/404.html:3 templates/500.html:3 templates/maposmatic/base.html:51
 #, fuzzy
 msgid "Home"

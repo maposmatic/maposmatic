@@ -41,11 +41,12 @@ def job_status_to_str(value, arg, autoescape=None):
     elif value == 1:
         result = _("Rendering in progress")
     elif value == 2:
-        if arg == "ok":
+        if arg == "okx":
             result = _("Rendering successful")
         else:
-            result = _("Rendering failed, reason: <i>%(errmsg)s</i>") \
-                % dict(errmsg=esc(arg))
+            result = _("Rendering failed, please contact " \
+                       "<a href=\"mailto:contact@maposmatic.org\">" \
+                       "contact@maposmatic.org</a>")
     else:
         result = ""
 
