@@ -44,6 +44,11 @@ The scripts/maposmaticd daemon should be run in the background. It will fetch
 rendering jobs from the database and put the results in a directory, as
 specified in the settings_local.py file.
 
+Web server configuration
+------------------------
+
+For Apache, you can adapt the configuration file given in
+example/apache/maposmatic.
 
 Internationalization
 --------------------

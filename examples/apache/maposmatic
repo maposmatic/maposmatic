@@ -1,0 +1,25 @@
+<VirtualHost *:80>
+        ServerAdmin postmaster@your.domain
+        ServerName maposmatic
+
+        DocumentRoot /path/to/maposmatic/www
+        WSGIScriptAlias / /path/to/maposmatic/www/maposmatic.wsgi
+        
+        <Directory />
+                Options FollowSymLinks
+                AllowOverride None
+        </Directory>
+
+        Alias /smedia /path/to/maposmatic/www/media/
+        <Directory /path/to/maposmatic/www/media/>
+          Options FollowSymlinks +Indexes
+          Order allow,deny
+          Allow from all
+        </Directory>
+
+        LogLevel warn
+        ServerSignature On
+
+        CustomLog /path/to/maposmatic-logs/access.log combined
+        ErrorLog /path/to/maposmatic-logs/error.log
+</VirtualHost>
