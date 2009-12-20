@@ -27,6 +27,7 @@
 {% load i18n %}
 
 {% block extralink %}
+<script type="text/javascript" src="/smedia/jquery.js"></script>
 {{ form.media }}
 {% endblock %}
 
@@ -62,6 +63,20 @@ function pageinit()
   else
     area_selection_mode_switch('admin-mode');
 }
+
+function validate_city_search()
+{
+  var searchPat = document.getElementById("id_administrative_city").value ;
+  $.getJSON("/nominatim/" + searchPat,
+            function(data){
+              $("#result_nominatim_search").empty();
+              $.each(data, function(i,item){
+                $("#result_nominatim_search").append("<li><input type=\"radio\" name=\"nom_search_grp\" value=\""+item.place_id+"\" />"+item.display_name+"</li>");
+              }
+            );
+           });
+}
+
 {% endblock %}
 
 {% block menu-home %}
@@ -143,6 +158,7 @@ maps.{% endblocktrans %}</p>
     <tr class="byadmin label"><td>{% trans "City name:" %}</td></tr>
     <tr class="byadmin field"><td>
         {{ form.administrative_city }}
+	<input type="button" onclick="javascript:validate_city_search();" value="{% trans "search" %}" />
         {{ form.administrative_city.errors }}
     </td></tr>
 
@@ -157,6 +173,13 @@ maps.{% endblocktrans %}</p>
         {{ form.bbox }}
         {{ form.bbox.errors }}
     </td></tr>
+    <tr class="byadmin field">
+      <td colspan="2">
+	<ul id="result_nominatim_search">
+	</ul>
+      </td>
+    </tr>
+
   </table>
 </form>
 
