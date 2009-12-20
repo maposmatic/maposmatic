@@ -151,7 +151,7 @@ class MapRenderingJob(models.Model):
             return None
 
     def current_position_in_queue(self):
-        return MapRenderingJob.objects.filter(status=0).filter(index_queue_at_submission__lte=self.index_queue_at_submission).count()
+        return MapRenderingJob.objects.filter(status=0).filter(id__lte=self.id).count()
 
     # Estimate the date at which the rendering will be started
     def rendering_estimated_start_time(self):
