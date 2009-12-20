@@ -59,14 +59,18 @@ def city_exists(city):
     except psycopg2.OperationalError:
         return False
 
-    cursor = conn.cursor()
-    cursor.execute("""select count(*) from planet_osm_line where
+    try:
+        cursor = conn.cursor()
+        cursor.execute("""select count(*) from planet_osm_line where
                         boundary='administrative' and
                         admin_level='8' and
                         name=%s""",
-                   (city,))
-    result = cursor.fetchall()
-    return (result[0][0] == 1)
+                       (city,))
+        result = cursor.fetchall()
+        return (result[0][0] == 1)
+    finally:
+        conn.close()
+
 
 class MapRenderingJobForm(ModelForm):
     class Meta:
