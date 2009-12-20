@@ -115,6 +115,7 @@ def _retrieve_missing_data_from_GIS(entries):
     # Will sort the entries so that the admin boundaries appear
     # fdirst, then cities, towns, etc.
     unsorted_entries = []
+    admin_boundary_names = set()
     PLACE_PRIORITIES = { 'city': 20, 'town': 30, 'municipality': 40,
                          'village': 50, 'hamlet': 60, 'suburb': 70,
                          'island': 80, 'islet': 90, 'locality': 100}
@@ -128,6 +129,7 @@ def _retrieve_missing_data_from_GIS(entries):
             if entry.get("class") == "boundary":
                 if entry.get("type") == "administrative":
                     entry_priority = 10
+                    admin_boundary_names.add(entry.get("display_name", 42))
                 else:
                     # Just don't try to lookup any additional
                     # information from OSM when the nominatim entry is
@@ -168,4 +170,16 @@ def _retrieve_missing_data_from_GIS(entries):
         conn.close()
 
     # Sort the entries according to their priority
-    return [e for prio,e in sorted(unsorted_entries, key=lambda kv: kv[0])]
+    sorted_entries = [e for prio,e in sorted(unsorted_entries,
+                                             key=lambda kv: kv[0])]
+
+    # Remove those non-admin-boundaries having the same name as an
+    # admin boundary
+    retval = []
+    for e in sorted_entries:
+        if e.get("class") != "boundary" or e.get("type") != "administrative":
+            if e.get("display_name") in admin_boundary_names:
+                continue
+        retval.append(e)
+
+    return retval
