@@ -86,7 +86,8 @@ class MapRenderingJobForm(ModelForm):
     class Meta:
         model = MapRenderingJob
         fields = ('maptitle', 'administrative_city', 'lat_upper_left',
-                  'lon_upper_left', 'lat_bottom_right', 'lon_bottom_right')
+                  'lon_upper_left', 'lat_bottom_right', 'lon_bottom_right',
+                  'administrative_osmid')
 
     modes = (('admin', _('Administrative boundary')),
              ('bbox', _('Bounding box')))
