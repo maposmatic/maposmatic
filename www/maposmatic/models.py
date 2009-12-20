@@ -80,6 +80,7 @@ class MapRenderingJob(models.Model):
     resultmsg = models.CharField(max_length=256, null=True)
     submitterip = models.IPAddressField()
     index_queue_at_submission = models.IntegerField()
+    map_language = models.CharField(max_length=16)
 
     objects = MapRenderingJobManager()
 

@@ -108,6 +108,12 @@ LANGUAGES = (("fr", u"Français"),
              ("en", u"English"),
              ("de", u"Deutsch"))
 
+MAP_LANGUAGES = (("fr_FR.UTF-8", u"France"),
+                 ("en_GB.UTF-8", u"United Kingdom"),
+                 ("fr_BE.UTF-8", u"Royaume de Belgique (FR)"),
+                 ("de_BE.UTF-8", u"Königreich Belgien (DE)"),
+                 ("nl_BE.UTF-8", u"Koninkrijk België (NL)"))
+
 LOG = logging.getLogger(os.environ.get("MAPOSMATIC_LOG_TARGET",
                                        "maposmatic"))
 LOG.setLevel(os.environ.get("MAPOSMATIC_LOG_LEVEL",

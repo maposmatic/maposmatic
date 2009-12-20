@@ -40,9 +40,12 @@ def render_job_process(job):
     if job.administrative_city == "":
         bbox = OCMBoundingBox(job.lat_upper_left, job.lon_upper_left,
                               job.lat_bottom_right, job.lon_bottom_right)
-        renderer = OCitySMap(config_file=OCITYSMAP_CFG_PATH, boundingbox=bbox)
+        renderer = OCitySMap(config_file=OCITYSMAP_CFG_PATH, boundingbox=bbox,
+                             language=job.map_language)
     else:
-        renderer = OCitySMap(config_file=OCITYSMAP_CFG_PATH, city_name=job.administrative_city)
+        renderer = OCitySMap(config_file=OCITYSMAP_CFG_PATH,
+                             city_name=job.administrative_city,
+                             language=job.map_language)
 
     outfile_prefix = os.path.join(RENDERING_RESULT_PATH, job.files_prefix())
 

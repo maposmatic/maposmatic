@@ -94,6 +94,7 @@ class MapRenderingJobForm(ModelForm):
     maptitle = CharField(max_length=256, required=False)
     bbox = AreaField(label=_("Area"), fields=(FloatField(), FloatField(),
                                               FloatField(), FloatField()))
+    map_language = ChoiceField(choices=www.settings.MAP_LANGUAGES)
 
     def clean(self):
         cleaned_data = self.cleaned_data
@@ -201,6 +202,7 @@ def index(request):
             job.status = 0 # Submitted
             job.submitterip = request.META['REMOTE_ADDR']
             job.index_queue_at_submission = MapRenderingJob.objects.queue_size()
+            job.map_language = form.cleaned_data['map_language']
             job.save()
 
             return HttpResponseRedirect('/jobs/%d' % job.id)
