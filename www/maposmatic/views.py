@@ -28,7 +28,7 @@ from django.forms.util import ErrorList
 from django.forms import CharField, ChoiceField, FloatField, RadioSelect, \
                          ModelForm, ValidationError
 from django.shortcuts import get_object_or_404, render_to_response
-from django.http import HttpResponseRedirect, HttpResponseBadRequest
+from django.http import HttpResponseRedirect, HttpResponseBadRequest, HttpResponse
 from django.utils.translation import ugettext_lazy as _
 from django.template import RequestContext
 
@@ -47,7 +47,13 @@ from ocitysmap.coords import BoundingBox as OCMBoundingBox
 from urllib import urlencode
 import urllib2
 from xml.etree.ElementTree import parse as XMLTree
-import json
+try:
+    from json import dumps as json_encode
+except ImportError:
+    try:
+        from cjson import encode as json_encode
+    except ImportError:
+        from json import write as json_encode
 
 
 # Test if a given city has its administrative boundaries inside the
@@ -302,9 +308,7 @@ def query_nominatim(request, format, squery):
         contents = []
 
     if format == "json":
-        return render_to_response('maposmatic/query_nominatim.html',
-                                  { 'contents': json.dumps(contents) },
-                                  context_instance=RequestContext(request))
+        return HttpResponse(content = json_encode(contents), mimetype = 'text/json')
 
 def about(request):
     return render_to_response('maposmatic/about.html',
