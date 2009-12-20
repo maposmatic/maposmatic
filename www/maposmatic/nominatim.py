@@ -111,15 +111,34 @@ def _retrieve_missing_data_from_GIS(entries):
     # the "relation" items by osm2pgsql, which assigns to that ID the
     # opposite of osm_id... But we still consider that it could be the
     # real osm_id (not its opposite). Let's have fun...
+
+    # Will sort the entries so that the admin boundaries appear
+    # fdirst, then cities, towns, etc.
+    unsorted_entries = []
+    PLACE_PRIORITIES = { 'city': 20, 'town': 30, 'municipality': 40,
+                         'village': 50, 'hamlet': 60, 'suburb': 70,
+                         'island': 80, 'islet': 90, 'locality': 100}
     try:
         cursor = conn.cursor()
         for entry in entries:
-            # Just don't try to lookup any additional information from
-            # OSM when the nominatim entry is not an administrative
-            # boundary
-            if ( (entry.get("class", None) != "boundary")
-                 or (entry.get("type", None) != "administrative") ):
-                continue
+            # Highest priority index = last in the output
+            entry_priority = 1000
+
+            # Try to determine the order in which this entry should appear
+            if entry.get("class") == "boundary":
+                if entry.get("type") == "administrative":
+                    entry_priority = 10
+                else:
+                    # Just don't try to lookup any additional
+                    # information from OSM when the nominatim entry is
+                    # not an administrative boundary
+                    continue
+            elif entry.get("class") == "place":
+                try:
+                    entry_priority = PLACE_PRIORITIES[entry.get("type")]
+                except KeyError:
+                    # Will ignore all the other place tags
+                    continue
 
             for table_name in ("polygon", "line"):
                 # Lookup the polygon/line table for both osm_id and
@@ -134,11 +153,16 @@ def _retrieve_missing_data_from_GIS(entries):
                     entry["ocitysmap_params"] = dict(table=table_name,
                                                      id=result[0][0],
                                                      admin_level=result[0][1])
+                    entry_priority = 0 # Make these first in list
                     break
+
+            # Register this entry for the results
+            unsorted_entries.append((entry_priority, entry))
 
         # Some cleanup
         cursor.close()
     finally:
         conn.close()
 
-    return entries
+    # Sort the entries according to their priority
+    return [e for prio,e in sorted(unsorted_entries, key=lambda kv: kv[0])]
