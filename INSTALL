@@ -29,10 +29,11 @@ Setup
 -----
 
 The www/ directory contains the Django web application. The file
-www/settings_local.py.template must be copied to www/settings_local.py and
+www/settings_local.py-template must be copied to www/settings_local.py and
 modified to match your installation configuration.
 
-Likewise for www/maposmatic.wsgi-template and scripts/maposmaticd.sh.
+Likewise for www/maposmatic.wsgi-template and
+scripts/maposmaticd.sh-template.
 
 The database must then be initialized with the tables needed for MapOSMatic,
 using :
@@ -43,6 +44,23 @@ The scripts/maposmaticd daemon should be run in the background. It will fetch
 rendering jobs from the database and put the results in a directory, as
 specified in the settings_local.py file.
 
+You can adapt the example of init script given in
+examples/init-maposmaticd-template:
+
+  cp examples/init-maposmaticd-template /etc/init.d/maposmaticd
+  vi /etc/init.d/maposmaticd
+
+notice the --chuid option to start-stop-daemon, adapt it to your
+settings and once done:
+
+  sudo chmod 755 /etc/init.d/maposmaticd
+  sudo update-rc.d maposmaticd defaults
+
+Web server configuration
+------------------------
+
+For Apache, you can adapt the configuration file given in
+example/apache/maposmatic.
 
 Internationalization
 --------------------
