@@ -70,11 +70,27 @@ function validate_city_search()
   $.getJSON("/nominatim/" + searchPat,
             function(data){
               $("#result_nominatim_search").empty();
+
               $.each(data, function(i,item){
-                $("#result_nominatim_search").append("<li><input type=\"radio\" name=\"nom_search_grp\" value=\""+item.place_id+"\" />"+item.display_name+"</li>");
+		if (typeof item.ocitysmap_params == "undefined")
+		{
+		  $("#result_nominatim_search").append("<li><img src=\"/smedia/icon_alert.png\" alt=\"Work In Progress\" />&nbsp;<label class=\"place_unavailable\""
+		    + ">" +item.display_name + "\"</label></li>");
+                }
+		else
+                {
+                  $("#result_nominatim_search").append("<li><input onchange=\"javascript:update_hidden(this,'"
+		     +item.display_name+"');\" type=\"radio\" name=\"administrative_tmp_osmid\" value=\""
+		     +item.ocitysmap_params['id']+"\" />"+item.display_name+"</li>");
+                }
               }
             );
            });
+}
+function update_hidden(obj, nloc)
+{
+  document.getElementById("id_administrative_osmid").value = obj.value;
+  document.getElementById("id_administrative_city").value = nloc;
 }
 
 {% endblock %}
@@ -159,13 +175,14 @@ maps.{% endblocktrans %}</p>
     <tr class="byadmin field"><td>
         {{ form.administrative_city }}
 	<input type="button" onclick="javascript:validate_city_search();" value="{% trans "search" %}" />
+	{{ form.administrative_osmid }}
+	{{ form.administrative_osmid.errors }}
         {{ form.administrative_city.errors }}
     </td></tr>
 
     <tr class="bybbox label"><td>{% trans "Title of the map:" %}</td></tr>
     <tr class="bybbox field"><td>
         {{ form.maptitle }}
-	{{ form.administrative_osmid }}
         {{ form.maptitle.errors }}
     </td></tr>
 

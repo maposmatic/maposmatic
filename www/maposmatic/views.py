@@ -26,7 +26,7 @@
 from django.core.paginator import Paginator
 from django.forms.util import ErrorList
 from django.forms import CharField, ChoiceField, FloatField, RadioSelect, \
-                         ModelForm, ValidationError
+                         ModelForm, ValidationError, IntegerField, HiddenInput
 from django.shortcuts import get_object_or_404, render_to_response
 from django.http import HttpResponseRedirect, HttpResponseBadRequest, HttpResponse
 from django.utils.translation import ugettext_lazy as _
@@ -49,45 +49,11 @@ except ImportError:
     except ImportError:
         from json import write as json_encode
 
-
-# Test if a given city has its administrative boundaries inside the
-# OpenStreetMap database. We don't go through the Django ORM but
-# directly to the database for simplicity reasons.
-def city_exists(city):
-
-    # If not GIS database is configured, bypass the city_exists check by
-    # returning True.
-    if not www.settings.has_gis_database():
-        return True
-
-    try:
-        conn = psycopg2.connect("dbname='%s' user='%s' host='%s' password='%s'" %
-                                (www.settings.GIS_DATABASE_NAME,
-                                 www.settings.DATABASE_USER,
-                                 www.settings.DATABASE_HOST,
-                                 www.settings.DATABASE_PASSWORD))
-    except psycopg2.OperationalError:
-        return False
-
-    try:
-        cursor = conn.cursor()
-        cursor.execute("""select count(*) from planet_osm_line where
-                        boundary='administrative' and
-                        admin_level='8' and
-                        name=%s""",
-                       (city,))
-        result = cursor.fetchall()
-        return (result[0][0] == 1)
-    finally:
-        conn.close()
-
-
 class MapRenderingJobForm(ModelForm):
     class Meta:
         model = MapRenderingJob
         fields = ('maptitle', 'administrative_city', 'lat_upper_left',
-                  'lon_upper_left', 'lat_bottom_right', 'lon_bottom_right',
-                  'administrative_osmid')
+                  'lon_upper_left', 'lat_bottom_right', 'lon_bottom_right')
 
     modes = (('admin', _('Administrative boundary')),
              ('bbox', _('Bounding box')))
@@ -96,6 +62,8 @@ class MapRenderingJobForm(ModelForm):
     bbox = AreaField(label=_("Area"), fields=(FloatField(), FloatField(),
                                               FloatField(), FloatField()))
     map_language = ChoiceField(choices=www.settings.MAP_LANGUAGES)
+
+    administrative_osmid = IntegerField(widget=HiddenInput)
 
     def clean(self):
         cleaned_data = self.cleaned_data
@@ -107,10 +75,6 @@ class MapRenderingJobForm(ModelForm):
         if mode == 'admin':
             if city == "":
                 msg = _(u"Administrative city required")
-                self._errors["administrative_city"] = ErrorList([msg])
-                del cleaned_data["administrative_city"]
-            elif not city_exists(city):
-                msg = _(u"No administrative boundaries found for this city. Try with proper casing.")
                 self._errors["administrative_city"] = ErrorList([msg])
                 del cleaned_data["administrative_city"]
 
@@ -157,11 +121,11 @@ class MapRenderingJobForm(ModelForm):
 
         return cleaned_data
 
-def rendering_already_exists(city):
+def rendering_already_exists(osmid):
     # First try to find rendered items
     rendered_items = (MapRenderingJob.objects.
                       filter(submission_time__gte=datetime.datetime.now() - datetime.timedelta(1)).
-                      filter(administrative_city=city).
+                      filter(administrative_osmid=osmid).
                       filter(status=2).filter(resultmsg="ok").order_by("-submission_time")[:1])
 
     if len(rendered_items):
@@ -172,7 +136,7 @@ def rendering_already_exists(city):
     # Then try to find items being rendered or waiting for rendering
     rendered_items = (MapRenderingJob.objects.
                       filter(submission_time__gte=datetime.datetime.now() - datetime.timedelta(1)).
-                      filter(administrative_city=city).
+                      filter(administrative_osmid=osmid).
                       filter(status__in=[0,1]).
                       order_by("-submission_time")[:1])
 
@@ -189,9 +153,10 @@ def index(request):
             job = MapRenderingJob()
             job.maptitle = form.cleaned_data['maptitle']
             job.administrative_city = form.cleaned_data['administrative_city']
+            job.administrative_osmid = form.cleaned_data['administrative_osmid']
 
-            if job.administrative_city:
-                url = rendering_already_exists(job.administrative_city)
+            if job.administrative_osmid:
+                url = rendering_already_exists(job.administrative_osmid)
                 if url:
                     request.session['redirected'] = True
                     return HttpResponseRedirect(url)
