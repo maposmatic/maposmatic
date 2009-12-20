@@ -66,26 +66,29 @@ def _retrieve_missing_data_from_GIS(entries):
                                  www.settings.DATABASE_USER,
                                  www.settings.DATABASE_HOST,
                                  www.settings.DATABASE_PASSWORD))
-        cursor = conn.cursor()
     except psycopg2.OperationalError:
         return entries
 
-    for entry in entries:
-        if ( (entry.get("class", None) != "boundary")
-             or (entry.get("type", None) != "administrative") ):
-            continue
+    try:
+        cursor = conn.cursor()
+        for entry in entries:
+            if ( (entry.get("class", None) != "boundary")
+                 or (entry.get("type", None) != "administrative") ):
+                continue
 
-        for table_name in ("polygon", "line"):
-            cursor.execute("""select osm_id, admin_level
-                              from planet_osm_%s
-                              where osm_id in (%s,-%s)""" \
-                               % (table_name,
-                                  entry["osm_id"],entry["osm_id"]))
-            result = tuple(set(cursor.fetchall()))
-            if len(result) == 1:
-                entry["ocitysmap_params"] = dict(table=table_name,
-                                                 id=result[0][0],
-                                                 admin_level=result[0][1])
-                break
+            for table_name in ("polygon", "line"):
+                cursor.execute("""select osm_id, admin_level
+                                  from planet_osm_%s
+                                  where osm_id in (%s,-%s)""" \
+                                   % (table_name,
+                                      entry["osm_id"],entry["osm_id"]))
+                result = tuple(set(cursor.fetchall()))
+                if len(result) == 1:
+                    entry["ocitysmap_params"] = dict(table=table_name,
+                                                     id=result[0][0],
+                                                     admin_level=result[0][1])
+                    break
+    finally:
+        conn.close()
 
     return entries
