@@ -17,6 +17,10 @@ MapOSMatic depends on :
  * python-feedparser, to parse the MapOSMatic blog feed and display
    the latest entries on the main MapOSMatic website
 
+ * python-imaging, to render PNG maps.
+
+ * gettext, for internationalization.
+
 You will also most likely need a working PostGIS installation for the
 entire pipeline to run. See the INSTALL documentation of OcitySMap for
 more details.
