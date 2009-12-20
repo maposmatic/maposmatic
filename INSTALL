@@ -21,6 +21,8 @@ MapOSMatic depends on :
 
  * gettext, for internationalization.
 
+ * JSON (any python-*json should work).
+
 You will also most likely need a working PostGIS installation for the
 entire pipeline to run. See the INSTALL documentation of OcitySMap for
 more details.
