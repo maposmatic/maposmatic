@@ -70,7 +70,6 @@ def _retrieve_missing_data_from_GIS(entries):
     except psycopg2.OperationalError:
         return entries
 
-    retval = []
     for entry in entries:
         if ( (entry.get("class", None) != "boundary")
              or (entry.get("type", None) != "administrative") ):
@@ -87,7 +86,6 @@ def _retrieve_missing_data_from_GIS(entries):
                 entry["ocitysmap_params"] = dict(table=table_name,
                                                  id=result[0][0],
                                                  admin_level=result[0][1])
-                retval.append(entry)
                 break
 
-    return retval
+    return entries
