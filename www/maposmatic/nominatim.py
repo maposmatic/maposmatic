@@ -26,26 +26,49 @@
 # access the osm_id tag. Then we format it as json back to the
 # javascript routines
 
+
+"""
+Simple API to query http://nominatim.openstreetmap.org
+"""
+
 import www.settings
 import psycopg2
 from urllib import urlencode
 import urllib2
 from xml.etree.ElementTree import parse as XMLTree
 
-
 NOMINATIM_BASE_URL = "http://nominatim.openstreetmap.org/search/"
 
-
 def query(query_text, with_polygons = False):
+    """
+    Query the nominatim service for the given city query and return a
+    (python) list of entries for the given squery (eg. "Paris"). Each
+    entry is a dictionary key -> value (value is always a
+    string). When possible, we also try to uncover the OSM database
+    IDs associated with the entries; in that case, an
+    "ocitysmap_params" key is provided, which maps to a dictionary
+    containing:
+      - key "table": when "line" -> refers to table "planet_osm_line";
+        when "polygon" -> "planet_osm_polygon"
+      - key "id": ID of the OSM database entry
+      - key "admin_level": The value stored in the OSM table for admin_level
+    """
     entries = _fetch_entries(query_text, with_polygons)
     return _retrieve_missing_data_from_GIS(entries)
 
 
 def _fetch_entries(query_text, with_polygons):
     """
-    Return a list of entries for the given squery (eg. "Paris"). Each entry
-    is a dictionary key -> value.
+    Query the nominatim service for the given city query and return a
+    (python) list of entries for the given squery (eg. "Paris"). Each
+    entry is a dictionary key -> value (value is always a
+    string).
     """
+    # For some reason, the "xml" nominatim output is ALWAYS used, even
+    # though we will later (in views.py) transform this into
+    # json. This is because we know that this xml output is correct
+    # and complete (at least the "osm_id" field is missing from the
+    # json output)
     query_tags = dict(q=query_text, format='xml')
     if with_polygons:
         query_tags['polygon']=1
@@ -57,6 +80,17 @@ def _fetch_entries(query_text, with_polygons):
 
 
 def _retrieve_missing_data_from_GIS(entries):
+    """
+    Try to retrieve additional OSM information for the given nominatim
+    entries. Among the information, we try to determine the real ID in
+    an OSM table for each of these entries. All these additional data
+    are stored in the "ocitysmap_params" key of the entry, which maps
+    to a dictionary containing:
+      - key "table": when "line" -> refers to table "planet_osm_line";
+        when "polygon" -> "planet_osm_polygon"
+      - key "id": ID of the OSM database entry
+      - key "admin_level": The value stored in the OSM table for admin_level
+    """
     if not www.settings.has_gis_database():
         return entries
 
@@ -69,14 +103,27 @@ def _retrieve_missing_data_from_GIS(entries):
     except psycopg2.OperationalError:
         return entries
 
+    # Nominatim returns a field "osm_id" for each result
+    # entry. Depending on the type of the entry, it can point to
+    # various database entries. For admin boundaries, osm_id is
+    # supposed to point to either the 'polygon' or the 'line'
+    # table. Usually, the database entry ID in the table is derived by
+    # the "relation" items by osm2pgsql, which assigns to that ID the
+    # opposite of osm_id... But we still consider that it could be the
+    # real osm_id (not its opposite). Let's have fun...
     try:
         cursor = conn.cursor()
         for entry in entries:
+            # Just don't try to lookup any additional information from
+            # OSM when the nominatim entry is not an administrative
+            # boundary
             if ( (entry.get("class", None) != "boundary")
                  or (entry.get("type", None) != "administrative") ):
                 continue
 
             for table_name in ("polygon", "line"):
+                # Lookup the polygon/line table for both osm_id and
+                # the opposite of osm_id
                 cursor.execute("""select osm_id, admin_level
                                   from planet_osm_%s
                                   where osm_id in (%s,-%s)""" \
@@ -88,6 +135,9 @@ def _retrieve_missing_data_from_GIS(entries):
                                                      id=result[0][0],
                                                      admin_level=result[0][1])
                     break
+
+        # Some cleanup
+        cursor.close()
     finally:
         conn.close()
 
