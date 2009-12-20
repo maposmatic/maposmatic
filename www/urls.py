@@ -40,6 +40,7 @@ urlpatterns = patterns('',
     (r'^jobs/$', maposmatic.views.all_jobs),
     (r'^maps/$', maposmatic.views.all_maps),
     (r'^about/$', maposmatic.views.about),
+    (r'^nominatim/([^/]*/)?(.*)$', maposmatic.views.query_nominatim),
     (r'^i18n/', include('django.conf.urls.i18n')),
 
     (r'^results/(?P<path>.*)$',

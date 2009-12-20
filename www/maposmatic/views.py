@@ -28,7 +28,7 @@ from django.forms.util import ErrorList
 from django.forms import CharField, ChoiceField, FloatField, RadioSelect, \
                          ModelForm, ValidationError
 from django.shortcuts import get_object_or_404, render_to_response
-from django.http import HttpResponseRedirect
+from django.http import HttpResponseRedirect, HttpResponseBadRequest
 from django.utils.translation import ugettext_lazy as _
 from django.template import RequestContext
 
@@ -39,6 +39,16 @@ import www.settings
 import math
 from www.maposmatic.widgets import AreaField
 from ocitysmap.coords import BoundingBox as OCMBoundingBox
+
+# Nominatim parsing + json export
+# Note: we query nominatim in XML format because otherwise we cannot
+# access the osm_id tag. Then we format it as json back to the
+# javascript routines
+from urllib import urlencode
+import urllib2
+from xml.etree.ElementTree import parse as XMLTree
+import json
+
 
 # Test if a given city has its administrative boundaries inside the
 # OpenStreetMap database. We don't go through the Django ORM but
@@ -258,6 +268,43 @@ def all_maps(request):
     return render_to_response('maposmatic/all_maps.html',
                               { 'maps': maps },
                               context_instance=RequestContext(request))
+
+
+def _parse_nominatim_xml(squery,
+                         nominatim_url="http://nominatim.openstreetmap.org/search/",
+                         with_polygons = False):
+    """
+    Return a list of entries for the given squery (eg. "Paris"). Each entry
+    is a dictionary key -> value.
+    """
+    query_tags = dict(q=squery, format='xml')
+    if with_polygons:
+        query_tags['polygon']=1
+
+    qdata = urlencode(query_tags)
+    f = urllib2.urlopen(url="%s?%s" % (nominatim_url, qdata))
+    return [dict(place.items()) for place in XMLTree(f).getroot().getchildren()]
+
+
+def query_nominatim(request, format, squery):
+    if not format:
+        format = "json"
+    else:
+        format = format[:-1]
+
+    if format not in ("json",):
+        return HttpResponseBadRequest("Invalid format: %s" % format)
+
+    try:
+        contents = _parse_nominatim_xml(squery,
+                                        with_polygons=False)
+    except:
+        contents = []
+
+    if format == "json":
+        return render_to_response('maposmatic/query_nominatim.html',
+                                  { 'contents': json.dumps(contents) },
+                                  context_instance=RequestContext(request))
 
 def about(request):
     return render_to_response('maposmatic/about.html',
