@@ -20,8 +20,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: mapOSMatic 0.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-12-21 18:56+0100\n"
-"PO-Revision-Date: 2009-12-21 19:08+0100\n"
+"POT-Creation-Date: 2009-12-21 19:15+0100\n"
+"PO-Revision-Date: 2009-12-21 19:15+0100\n"
 "Last-Translator: David MENTRÉ <dmentre@linux-france.org>\n"
 "Language-Team: FR <LL@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -546,19 +546,18 @@ msgstr "Langue de l'index de la carte&nbsp;:"
 
 #: templates/maposmatic/index.html:273
 msgid ""
-"Right now <em>MapOSMatic</em> is only available for the\n"
-"metropolitan France area. We need contributors to translate and adapt\n"
-"the few parts of <em>MapOSMatic</em> that are country\n"
-"specific."
-msgstr "Pour le moment, <em>MapOSMatic</em> est uniquement disponible pour la France métropolitaine. Nous avons besoin de contributeurs pour traduire et adapter les quelques parties de <em>MapOSMatic</em> qui sont spécifiques à un pays donné."
+"<em>MapOSMatic</em> covers the whole world but we need\n"
+"contributors to translate and adapt the few parts of <em>MapOSMatic</em>\n"
+"that are country specific."
+msgstr "<em>MapOSMatic</em> couvre le monde entier mais nous avons besoin de contributeurs pour traduire et adapter les quelques parties de <em>MapOSMatic</em> qui sont spécifiques à un pays donné."
 
-#: templates/maposmatic/index.html:278
+#: templates/maposmatic/index.html:277
 msgid ""
 "To select the city to be rendered, two modes are\n"
 "available:"
 msgstr "Pour sélectionner la ville, deux modes sont disponibles&nbsp;:"
 
-#: templates/maposmatic/index.html:283
+#: templates/maposmatic/index.html:282
 msgid ""
 "<em>Using an administrative boundary</em>. It allows\n"
 "  to get a map with precise boundaries of the city when such limits are\n"
@@ -566,13 +565,13 @@ msgid ""
 "  box."
 msgstr "<em>En utilisant les Limites administratives</em>. Cela permet d'avoir une carte avec une limite précise de la ville quand celle-ci est disponible dans la base. Sinon il faut utiliser une Zone géographique."
 
-#: templates/maposmatic/index.html:288
+#: templates/maposmatic/index.html:287
 msgid ""
 "<em>Using a traditional bounding\n"
 "  box</em>."
 msgstr "<em>En utilisant une bounding box traditionnelle</em>."
 
-#: templates/maposmatic/index.html:293
+#: templates/maposmatic/index.html:292
 msgid ""
 "Once the rendering is submitted, you will be brought\n"
 "to a page giving the status of your rendering request. As soon as the\n"
