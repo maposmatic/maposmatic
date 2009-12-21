@@ -27,7 +27,7 @@
 
 /* OSM slippy map management. */
 
-var map;
+var map = null;
 var update_lock = 0;
 var epsg_display_projection = new OpenLayers.Projection('EPSG:4326');
 var epsg_projection = new OpenLayers.Projection('EPSG:900913');
@@ -91,6 +91,5 @@ function init()
     map.events.register('zoomend', map, updateForm);
     map.events.register('moveend', map, updateForm);
     updateMap();
-    updateForm();
 }
 

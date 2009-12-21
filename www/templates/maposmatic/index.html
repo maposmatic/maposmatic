@@ -49,9 +49,10 @@ function area_selection_mode_switch(mode)
         arr[i].style.display = 'table-row';
     }
   }
-  if (mode == 'bbox-mode')
-  {
+
+  if (mode == 'bbox-mode') {
     reset_osmid_field();
+    if (map == null) init();
   }
 }
 

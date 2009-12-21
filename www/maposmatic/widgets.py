@@ -66,22 +66,16 @@ class AreaWidget(forms.TextInput):
                 lower_right_lat, lower_right_lon = settings.BASE_BOUNDING_BOX
 
         tpl = u"""<div id="map"></div>
-<div id="map_bb">
-    <input type="text" name="lat_upper_left" id="lat_upper_left"
-           onchange="updateMap();" value="%s" /><br />
-    <input type="text" name="lon_upper_left" id="lon_upper_left"
-           onchange="updateMap();" value="%s" />
-    <input type="text" name="lon_bottom_right" id="lon_bottom_right"
-           onchange="updateMap();" value="%s" /><br />
-    <input type="text" name="lat_bottom_right" id="lat_bottom_right"
-           onchange="updateMap();" value="%s" />
-</div>
-""" % (upper_left_lat, upper_left_lon, lower_right_lon, lower_right_lat)
-        tpl += u"""<script type='text/javascript'><!--
-init();
-// -->
-</script>
-"""
+        <div id="map_bb">
+            <input type="text" name="lat_upper_left" id="lat_upper_left"
+                   onchange="updateMap();" value="%s" /><br />
+            <input type="text" name="lon_upper_left" id="lon_upper_left"
+                   onchange="updateMap();" value="%s" />
+            <input type="text" name="lon_bottom_right" id="lon_bottom_right"
+                   onchange="updateMap();" value="%s" /><br />
+            <input type="text" name="lat_bottom_right" id="lat_bottom_right"
+                   onchange="updateMap();" value="%s" />
+        </div>""" % (upper_left_lat, upper_left_lon, lower_right_lon, lower_right_lat)
         return mark_safe(tpl)
 
     def value_from_datadict(self, data, files, name):
