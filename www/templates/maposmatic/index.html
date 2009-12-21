@@ -58,8 +58,11 @@ function area_selection_mode_switch(mode)
   }
   else
   {
-    /* re-activate form */
+    /* de-activate form */
     toggle_form_validation("false");
+    /* and empty list of previous Nominatim results */
+    $("#result_nominatim_search").empty();
+    $("#id_administrative_city").attr("value", "");
   }
 }
 
