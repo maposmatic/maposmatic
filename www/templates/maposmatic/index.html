@@ -153,7 +153,7 @@ function validate_city_search()
 		else
                 {
 		    $("#result_nominatim_search").append("<li><img src=\"/smedia/icon_alert.png\" "+
- 	              "alt=\"Work In Progress\" title=\"{% trans "This place could not be rendered by MapOSMatic, see help to figure out why." %}\" />"+
+ 	              "alt=\"Work In Progress\" title=\"{% trans "This place cannot be rendered by MapOSMatic, administrative boundary missing. Please contribute !" %}\" />"+
 		      "&nbsp;<label class=\"place_unavailable\""
 		      + ">" +item.display_name + "</label></li>");
 		      unusableToken = unusableToken + 1;
