@@ -108,7 +108,8 @@ LANGUAGES = (("fr", u"Français"),
              ("en", u"English"),
              ("de", u"Deutsch"))
 
-MAP_LANGUAGES = [("fr_FR.UTF-8", u"France"),
+MAP_LANGUAGES = [("C", u"Unsupported"),
+                 ("fr_FR.UTF-8", u"France"),
                  ("fr_CA.UTF-8", u"Canada (FR)"),
                  ("fr_CH.UTF-8", u"Suisse (FR)"),
                  ("fr_LU.UTF-8", u"Luxembourg (FR)"),
