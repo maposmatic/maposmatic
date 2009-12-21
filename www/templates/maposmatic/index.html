@@ -58,7 +58,7 @@ function area_selection_mode_switch(mode)
 
 function reset_osmid_field()
 {
-    document.getElementById("id_administrative_osmid").value = "";
+    $("#id_administrative_osmid").attr("value", "");
 }
 
 function pageinit()
@@ -73,7 +73,16 @@ function pageinit()
   else
     area_selection_mode_switch('admin-mode');
 
-  document.getElementById('id_administrative_city').setAttribute('onchange','reset_osmid_field()');
+  $('#id_administrative_city').attr('onchange','javascript:reset_osmid_field()');
+  $('#id_administrative_city').keypress(function (e)
+					{
+					  /* disable autoposting - doing a search instead */
+					  if (e.which == 13)
+					  {
+					    validate_city_search();
+					    return false;
+					  }
+					});
 }
 
 var elemFound = 0 ;
@@ -83,7 +92,7 @@ function toggle_form_validation(enableForm)
 
   if (enableForm == "true")
     {
-       $("#id-go-next-btn").attr("disabled", "false");
+       $("#id-go-next-btn").removeAttr("disabled");
        $("#id-go-next-btn").attr("src", "/smedia/Go-next.png");
     }
   else
@@ -92,13 +101,18 @@ function toggle_form_validation(enableForm)
        $("#id-go-next-btn").attr("src", "/smedia/Go-next-disabled.png");
     }
 }
+function dummy_validate()
+{
+  alert("blah");
+  return false;
+}
 
 function validate_city_search()
 {
   $("#result_nominatim_search").empty();
   $("#result_nominatim_search").append("<li><img src=\"/smedia/loading.gif\" alt=\"Loading\" /></li>");
 
-  var searchPat = document.getElementById("id_administrative_city").value ;
+  var searchPat = $("#id_administrative_city").attr("value") ;
 
   elemFound = 0;
 
@@ -119,8 +133,7 @@ function validate_city_search()
                   $("#result_nominatim_search").append("<li><input onchange=\"javascript:update_hidden(this,'"
 		     +item.display_name+"');\" type=\"radio\" name=\"administrative_tmp_osmid\" value=\""
 		     +item.ocitysmap_params['id']+"\" id=\"rd"+item.ocitysmap_params['id']+"\"/><label for=\"rd"+
-		     item.ocitysmap_params['id']+"\">"
-		     +item.display_name+"</label></li>");
+		     item.ocitysmap_params['id']+"\">" +item.display_name+"</label></li>");
 		  elemFound = elemFound + 1;
                 }
 	      });
@@ -138,8 +151,8 @@ function update_hidden(obj, nloc)
 {
   toggle_form_validation("true");
 
-  document.getElementById("id_administrative_osmid").value = obj.value;
-  document.getElementById("id_administrative_city").value = nloc;
+  $("#id_administrative_osmid").attr("value", obj.value);
+  $("#id_administrative_city").attr("value", nloc);
 }
 
 {% endblock %}
@@ -204,14 +217,14 @@ maps.{% endblocktrans %}</p>
 <h2 style="clear: right"><a href="#submitmapform">{% trans "Generate your own map" %}</a></h2>
 
 <a name="submitmapform"></a>
-<form method="post" action="/#submitmapform" class="submitmap">
+<form id="id-mainfrm" method="post" action="/#submitmapform" class="submitmap">
 
   <table id="mapform">
     <tr class="label">
       <td>{% trans "Area selection mode:" %}</td>
       <td rowspan="4" class="image">
         <input id="id-go-next-btn" type="image" src="/smedia/Go-next-disabled.png" value="{% trans "Generate" %}"
-               title="{% trans "Generate" %}" />
+               title="{% trans "Generate" %}" disabled="true" />
       </td>
     </tr>
     <tr class="field">
