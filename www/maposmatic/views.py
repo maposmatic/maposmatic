@@ -25,7 +25,7 @@
 
 from django.core.paginator import Paginator
 from django.forms.util import ErrorList
-from django.forms import CharField, ChoiceField, FloatField, RadioSelect, \
+from django.forms import CharField, ChoiceField, FloatField, Select, RadioSelect, \
                          ModelForm, ValidationError, IntegerField, HiddenInput
 from django.shortcuts import get_object_or_404, render_to_response
 from django.http import HttpResponseRedirect, HttpResponseBadRequest, HttpResponse
@@ -61,7 +61,8 @@ class MapRenderingJobForm(ModelForm):
     maptitle = CharField(max_length=256, required=False)
     bbox = AreaField(label=_("Area"), fields=(FloatField(), FloatField(),
                                               FloatField(), FloatField()))
-    map_language = ChoiceField(choices=www.settings.MAP_LANGUAGES)
+    map_language = ChoiceField(choices=www.settings.MAP_LANGUAGES,
+                               widget=Select(attrs={'style': "min-width: 200px"}))
 
     administrative_osmid = IntegerField(widget=HiddenInput, required=False)
 
