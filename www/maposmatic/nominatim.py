@@ -118,7 +118,7 @@ def _retrieve_missing_data_from_GIS(entries):
     admin_boundary_names = set()
     PLACE_PRIORITIES = { 'city': 20, 'town': 30, 'municipality': 40,
                          'village': 50, 'hamlet': 60, 'suburb': 70,
-                         'island': 80, 'islet': 90, 'locality': 100}
+                         'island': 80, 'islet': 90, 'locality': 100 }
     try:
         cursor = conn.cursor()
         for entry in entries:
@@ -161,9 +161,9 @@ def _retrieve_missing_data_from_GIS(entries):
                                        % (table_name,entry["osm_id"]))
                     result = tuple(set(cursor.fetchall()))
                     if len(result) == 1:
-                        entry["ocitysmap_params"] = dict(table=table_name,
-                                                         id=result[0][0],
-                                                         admin_level=result[0][1])
+                        entry["ocitysmap_params"] \
+                            = dict(table=table_name, id=result[0][0],
+                                   admin_level=result[0][1])
                         entry_priority = 0 # Make these first in list
                         break
 
@@ -189,3 +189,13 @@ def _retrieve_missing_data_from_GIS(entries):
         retval.append(e)
 
     return retval
+
+
+
+if __name__ == "__main__":
+    import pprint, sys
+    pp = pprint.PrettyPrinter(indent=4)
+
+    for city in sys.argv[1:]:
+        print "###### %s:" % city
+        pp.pprint(query(city))
