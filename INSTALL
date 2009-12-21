@@ -47,9 +47,9 @@ rendering jobs from the database and put the results in a directory, as
 specified in the settings_local.py file.
 
 You can adapt the example of init script given in
-examples/init-maposmaticd-template:
+support/init-maposmaticd-template:
 
-  cp examples/init-maposmaticd-template /etc/init.d/maposmaticd
+  cp support/init-maposmaticd-template /etc/init.d/maposmaticd
   vi /etc/init.d/maposmaticd
 
 notice the --chuid option to start-stop-daemon, adapt it to your
@@ -62,7 +62,7 @@ Web server configuration
 ------------------------
 
 For Apache, you can adapt the configuration file given in
-example/apache/maposmatic.
+support/apache-maposmatic-template.
 
 Internationalization
 --------------------
