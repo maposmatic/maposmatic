@@ -63,7 +63,7 @@ class MapRenderingJobForm(ModelForm):
                                               FloatField(), FloatField()))
     map_language = ChoiceField(choices=www.settings.MAP_LANGUAGES)
 
-    administrative_osmid = IntegerField(widget=HiddenInput)
+    administrative_osmid = IntegerField(widget=HiddenInput, required=False)
 
     def clean(self):
         cleaned_data = self.cleaned_data
