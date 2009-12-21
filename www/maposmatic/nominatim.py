@@ -69,7 +69,8 @@ def _fetch_entries(query_text, with_polygons):
     # json. This is because we know that this xml output is correct
     # and complete (at least the "osm_id" field is missing from the
     # json output)
-    query_tags = dict(q=query_text, format='xml', addressdetails=1)
+    query_tags = dict(q=query_text.encode("UTF-8"),
+                      format='xml', addressdetails=1)
     if with_polygons:
         query_tags['polygon']=1
 
