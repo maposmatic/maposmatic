@@ -25,6 +25,7 @@
 
 import logging
 from settings_local import *
+from django.utils.translation import ugettext_lazy as _
 
 TEMPLATE_DEBUG = DEBUG
 
@@ -117,7 +118,7 @@ MAP_LANGUAGES = [("fr_FR.UTF-8", u"France"),
                  ("de_BE.UTF-8", u"Königreich Belgien (DE)"),
                  ("nl_BE.UTF-8", u"Koninkrijk België (NL)"),
                  # "C" must be the last entry
-                 ("C", u"Unsupported")]
+                 ("C", _(u"Unsupported"))]
 
 LOG = logging.getLogger(os.environ.get("MAPOSMATIC_LOG_TARGET",
                                        "maposmatic"))
