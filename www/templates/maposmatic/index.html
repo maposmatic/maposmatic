@@ -51,8 +51,15 @@ function area_selection_mode_switch(mode)
   }
 
   if (mode == 'bbox-mode') {
+    /* re-activate form */
+    toggle_form_validation("true");
     reset_osmid_field();
     if (map == null) init();
+  }
+  else
+  {
+    /* re-activate form */
+    toggle_form_validation("false");
   }
 }
 
@@ -127,7 +134,7 @@ function validate_city_search()
 		if (typeof item.ocitysmap_params == "undefined")
 		{
 		  $("#result_nominatim_search").append("<li><img src=\"/smedia/icon_alert.png\" "+
- 	          "alt=\"Work In Progress\" title=\"{% trans "This place could not be rendered by MapOSMatic, see help to figure out why." %}\" />"+
+ 	          "alt=\"Work In Progress\" title=\"{% trans "This place cannot be rendered by MapOSMatic, administrative boundary missing. Please contribute !" %}\" />"+
 		    "&nbsp;<label class=\"place_unavailable\""
 		    + ">" +item.display_name + "</label></li>");
                 }
@@ -283,7 +290,6 @@ maps.{% endblocktrans %}</p>
     </td></tr>
     <tr class="byadmin field">
       <td colspan="2">
-      {% trans "Did you mean : " %}
 	<ul id="result_nominatim_search">
 	</ul>
       </td>
