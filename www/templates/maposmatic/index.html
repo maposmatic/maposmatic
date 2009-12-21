@@ -131,7 +131,7 @@ function validate_city_search()
 		else
                 {
                   $("#result_nominatim_search").append("<li><input onchange=\"javascript:update_hidden(this,'"
-		     +item.display_name+"');\" type=\"radio\" name=\"administrative_tmp_osmid\" value=\""
+		     +item.display_name+"'); select_country('" + item.country_code + "');\" type=\"radio\" name=\"administrative_tmp_osmid\" value=\""
 		     +item.ocitysmap_params['id']+"\" id=\"rd"+item.ocitysmap_params['id']+"\"/><label for=\"rd"+
 		     item.ocitysmap_params['id']+"\">" +item.display_name+"</label></li>");
 		  elemFound = elemFound + 1;
@@ -145,6 +145,24 @@ function validate_city_search()
                  $("#result_nominatim_search").append("<li><b>{% trans 'No results found.' %}</b></li>");
               }
 	    });
+}
+
+function select_country(country)
+{
+  var nonhidden = null;
+  $('#id_map_language').find('option').each(function() {
+   var ischoosen = $(this).val().match(".._" + country.toUpperCase() + "\..*");
+   if (ischoosen == null) {
+     $(this).hide();
+   }
+   else {
+     $(this).show();
+     if (nonhidden == null)
+        nonhidden = $(this);
+   }
+   });
+
+   nonhidden.attr('selected', 'selected');
 }
 
 function update_hidden(obj, nloc)
