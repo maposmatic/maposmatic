@@ -148,22 +148,22 @@ def _retrieve_missing_data_from_GIS(entries):
     # fdirst, then cities, towns, etc.
     unsorted_entries = []
     admin_boundary_names = set()
-    PLACE_PRIORITIES = { 'city': 20, 'town': 30, 'municipality': 40,
-                         'village': 50, 'hamlet': 60, 'suburb': 70,
-                         'island': 80, 'islet': 90, 'locality': 100 }
+    PLACE_RANKS = { 'city': 20, 'town': 30, 'municipality': 40,
+                    'village': 50, 'hamlet': 60, 'suburb': 70,
+                    'island': 80, 'islet': 90, 'locality': 100 }
     try:
         cursor = conn.cursor()
         for entry in entries:
             # Should we try to lookup the id in the OSM DB ?
             lookup_OSM = False
 
-            # Highest priority index = last in the output
-            entry_priority = 1000
+            # Highest rank = last in the output
+            entry_rank = 1000
 
             # Try to determine the order in which this entry should appear
             if entry.get("class") == "boundary":
                 if entry.get("type") == "administrative":
-                    entry_priority = 10
+                    entry_rank = 10
                     admin_boundary_names.add(entry.get("display_name", 42))
                     lookup_OSM = True
                 else:
@@ -173,7 +173,7 @@ def _retrieve_missing_data_from_GIS(entries):
                     continue
             elif entry.get("class") == "place":
                 try:
-                    entry_priority = PLACE_PRIORITIES[entry.get("type")]
+                    entry_rank = PLACE_RANKS[entry.get("type")]
                 except KeyError:
                     # Will ignore all the other place tags
                     continue
@@ -196,20 +196,20 @@ def _retrieve_missing_data_from_GIS(entries):
                         entry["ocitysmap_params"] \
                             = dict(table=table_name, id=result[0][0],
                                    admin_level=result[0][1])
-                        entry_priority = 0 # Make these first in list
+                        entry_rank = 0 # Make these first in list
                         break
 
             # Register this entry for the results
-            unsorted_entries.append((entry_priority, entry))
+            unsorted_entries.append((entry_rank, entry))
 
         # Some cleanup
         cursor.close()
     finally:
         conn.close()
 
-    # Sort the entries according to their priority
-    sorted_entries = [e for prio,e in sorted(unsorted_entries,
-                                             key=lambda kv: kv[0])]
+    # Sort the entries according to their rank
+    sorted_entries = [entry for rank,entry in sorted(unsorted_entries,
+                                                     key=lambda kv: kv[0])]
 
     # Remove those non-admin-boundaries having the same name as an
     # admin boundary
