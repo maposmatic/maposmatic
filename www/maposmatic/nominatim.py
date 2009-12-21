@@ -149,16 +149,16 @@ def _retrieve_missing_data_from_GIS(entries):
                 # We ignore all the other classes
                 continue
 
-            # Try to lookup in the OSM DB, when needed
-            if lookup_OSM:
+            # Try to lookup in the OSM DB, when needed and when it
+            # makes sense (ie. the data is coming from a relation)
+            if lookup_OSM and (entry.get('osm_type') == "relation"):
                 for table_name in ("polygon", "line"):
                     # Lookup the polygon/line table for both osm_id and
                     # the opposite of osm_id
                     cursor.execute("""select osm_id, admin_level
                                       from planet_osm_%s
-                                      where osm_id in (%s,-%s)""" \
-                                       % (table_name,
-                                          entry["osm_id"],entry["osm_id"]))
+                                      where osm_id = -%s""" \
+                                       % (table_name,entry["osm_id"]))
                     result = tuple(set(cursor.fetchall()))
                     if len(result) == 1:
                         entry["ocitysmap_params"] = dict(table=table_name,
