@@ -164,8 +164,8 @@ function languages_select(country)
 {
   var nonhidden = null;
   $('#id_map_language').find('option').each(function() {
-   var ischoosen = $(this).val().match(".._" + country.toUpperCase() + "\..*");
-   if (ischoosen == null) {
+   var ischoosen = $(this).val().match(".._" + country.toUpperCase() + "\..*") != null || $(this).val() == 'C';
+   if (! ischoosen) {
      $(this).hide();
    }
    else {
