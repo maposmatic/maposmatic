@@ -1,20 +1,31 @@
-/* Copyright (C) 2009  Étienne Loks  <etienne.loks_AT_peacefrogsDOTnet>
+/* coding: utf-8
+ *
+ * maposmatic, the web front-end of the MapOSMatic city map generation system
+ * Copyright (C) 2009 David Decotigny
+ * Copyright (C) 2009 Frédéric Lehobey
+ * Copyright (C) 2009 David Mentré
+ * Copyright (C) 2009 Maxime Petazzoni
+ * Copyright (C) 2009 Thomas Petazzoni
+ * Copyright (C) 2009 Gaël Utard
+ * Copyright (C) 2009 Étienne Loks
+ *
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as
+ * published by the Free Software Foundation, either version 3 of the
+ * License, or (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program.  If not, see <http://www.gnu.org/licenses/>.
+ *
+ * See the file COPYING for details.
+ */
 
-This program is free software: you can redistribute it and/or modify
-it under the terms of the GNU General Public License as
-published by the Free Software Foundation, either version 3 of the
-License, or (at your option) any later version.
-
-This program is distributed in the hope that it will be useful,
-but WITHOUT ANY WARRANTY; without even the implied warranty of
-MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-GNU General Public License for more details.
-
-You should have received a copy of the GNU General Public License
-along with this program.  If not, see <http://www.gnu.org/licenses/>.
-
-See the file COPYING for details.
-*/
+/* OSM slippy map management. */
 
 var map;
 var update_lock = 0;
@@ -26,7 +37,7 @@ function getUpperLeftLon() { return document.getElementById('lon_upper_left'); }
 function getBottomRightLat() { return document.getElementById('lat_bottom_right'); }
 function getBottomRightLon() { return document.getElementById('lon_bottom_right'); }
 
-/* update form fields on zoom action */
+/** Map Zoom/Move events callback: update form fields on zoom action. */
 function updateForm()
 {
     if (update_lock)
@@ -46,7 +57,7 @@ function updateForm()
     getBottomRightLon().value = bottomright.lon.toFixed(4);
 }
 
-/* update map on form field modification */
+/* Update the map on form field modification. */
 function updateMap()
 {
     var bounds = new OpenLayers.Bounds(getUpperLeftLon().value,
@@ -60,7 +71,7 @@ function updateMap()
     update_lock = 0;
 }
 
-/* main initialisation function */
+/* Main initialisation function. Must be called before the map is manipulated. */
 function init()
 {
     map = new OpenLayers.Map ('map', {
