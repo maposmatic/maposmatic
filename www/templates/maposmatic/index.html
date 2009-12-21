@@ -97,7 +97,8 @@ function pageinit()
 					});
 }
 
-var elemFound = 0 ;
+var elemFound = 0;
+var unusableToken = 0;
 
 function toggle_form_validation(enableForm)
 {
@@ -129,6 +130,7 @@ function validate_city_search()
   var searchPat = $("#id_administrative_city").attr("value") ;
 
   elemFound = 0;
+  unusableToken = 0;
 
   $.getJSON("/nominatim/" + searchPat,
             function(data){
@@ -136,28 +138,33 @@ function validate_city_search()
 
 
               $.each(data, function(i,item){
-		if (typeof item.ocitysmap_params == "undefined")
+		if (typeof item.ocitysmap_params != "undefined")
 		{
-		  $("#result_nominatim_search").append("<li><img src=\"/smedia/icon_alert.png\" "+
- 	          "alt=\"Work In Progress\" title=\"{% trans "This place cannot be rendered by MapOSMatic, administrative boundary missing. Please contribute !" %}\" />"+
-		    "&nbsp;<label class=\"place_unavailable\""
-		    + ">" +item.display_name + "</label></li>");
+		  if (item.ocitysmap_params['admin_level'] == 8)
+		  {
+                    $("#result_nominatim_search").append("<li><input onchange=\"javascript:update_hidden(this,'"
+		       +item.display_name+"'); select_country('" + item.country_code + "');\" type=\"radio\" name=\"administrative_tmp_osmid\" value=\""
+		       +item.ocitysmap_params['id']+"\" id=\"rd"+item.ocitysmap_params['id']+"\"/><label for=\"rd"+
+		       item.ocitysmap_params['id']+"\">" +item.display_name+"</label></li>");
+
+		    elemFound = elemFound + 1;
+		  }
                 }
 		else
                 {
-                  $("#result_nominatim_search").append("<li><input onchange=\"javascript:update_hidden(this,'"
-		     +item.display_name+"'); languages_select('" + item.country_code + "');\" type=\"radio\" name=\"administrative_tmp_osmid\" value=\""
-		     +item.ocitysmap_params['id']+"\" id=\"rd"+item.ocitysmap_params['id']+"\"/><label for=\"rd"+
-		     item.ocitysmap_params['id']+"\">" +item.display_name+"</label></li>");
-		  elemFound = elemFound + 1;
+		    $("#result_nominatim_search").append("<li><img src=\"/smedia/icon_alert.png\" "+
+ 	              "alt=\"Work In Progress\" title=\"{% trans "This place could not be rendered by MapOSMatic, see help to figure out why." %}\" />"+
+		      "&nbsp;<label class=\"place_unavailable\""
+		      + ">" +item.display_name + "</label></li>");
+		      unusableToken = unusableToken + 1;
                 }
 	      });
 
 	      if (elemFound == 0)
               {
 	 	 toggle_form_validation("false");
-	         $("#result_nominatim_search").empty();
-                 $("#result_nominatim_search").append("<li><b>{% trans 'No results found.' %}</b></li>");
+		 if (unusableToken == 0)
+                    $("#result_nominatim_search").append("<li><b>{% trans 'No results found.' %}</b></li>");
               }
 	    });
 }
