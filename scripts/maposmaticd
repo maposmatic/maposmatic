@@ -37,14 +37,14 @@ def sigcld_handler(signum, frame, pipe_write):
 
 def render_job_process(job):
 
-    if job.administrative_city == "":
+    if job.administrative_osmid is None:
         bbox = OCMBoundingBox(job.lat_upper_left, job.lon_upper_left,
                               job.lat_bottom_right, job.lon_bottom_right)
         renderer = OCitySMap(config_file=OCITYSMAP_CFG_PATH, boundingbox=bbox,
                              language=job.map_language)
     else:
         renderer = OCitySMap(config_file=OCITYSMAP_CFG_PATH,
-                             city_name=job.administrative_city,
+                             osmid=job.administrative_osmid,
                              language=job.map_language)
 
     outfile_prefix = os.path.join(RENDERING_RESULT_PATH, job.files_prefix())
