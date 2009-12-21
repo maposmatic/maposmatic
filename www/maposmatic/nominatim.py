@@ -39,6 +39,7 @@ from xml.etree.ElementTree import parse as XMLTree
 
 NOMINATIM_BASE_URL = "http://nominatim.openstreetmap.org/search/"
 
+
 def query(query_text, with_polygons = False):
     """
     Query the nominatim service for the given city query and return a
