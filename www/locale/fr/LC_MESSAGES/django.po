@@ -20,59 +20,51 @@ msgid ""
 msgstr ""
 "Project-Id-Version: mapOSMatic 0.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-12-19 17:07+0100\n"
-"PO-Revision-Date: 2009-12-19 17:08+0100\n"
-"Last-Translator: Thomas Petazzoni <thomas.petazzoni@enix.org>\n"
+"POT-Creation-Date: 2009-12-21 18:56+0100\n"
+"PO-Revision-Date: 2009-12-21 19:08+0100\n"
+"Last-Translator: David MENTRÉ <dmentre@linux-france.org>\n"
 "Language-Team: FR <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: maposmatic/models.py:135
+#: maposmatic/models.py:144
 #, python-format
 msgid "%(title)s %(format)s Map"
 msgstr "Carte pour %(title)s (format %(format)s)"
 
-#: maposmatic/models.py:140
+#: maposmatic/models.py:149
 #, python-format
 msgid "%(title)s %(format)s Index"
 msgstr "Index des rues pour %(title)s (format %(format)s)"
 
-#: maposmatic/views.py:77
+#: maposmatic/views.py:58
 msgid "Administrative boundary"
 msgstr "Limites administratives (nom de ville)"
 
-#: maposmatic/views.py:78
+#: maposmatic/views.py:59
 msgid "Bounding box"
 msgstr "Zone géographique"
 
-#: maposmatic/views.py:81
+#: maposmatic/views.py:62
 msgid "Area"
 msgstr "Zone"
 
-#: maposmatic/views.py:93
+#: maposmatic/views.py:77
 msgid "Administrative city required"
 msgstr "Nom de ville obligatoire"
 
-#: maposmatic/views.py:97
-msgid "No administrative boundaries found for this city. Try with proper casing."
-msgstr "Aucune limite administrative disponible pour cette ville. Essayez en corrigeant la casse (majuscule sur la première lettre)"
-
-#: maposmatic/views.py:112
+#: maposmatic/views.py:92
 msgid "Map title required"
 msgstr "Titre de la carte obligatoire"
 
-#: maposmatic/views.py:120
+#: maposmatic/views.py:100
 msgid "Required"
 msgstr "Obligatoire"
 
-#: maposmatic/views.py:136
+#: maposmatic/views.py:116
 msgid "Bounding Box too big"
 msgstr "Zone géographique trop grande"
-
-#: maposmatic/views.py:143
-msgid "Sorry, only cities in France can be rendered for the moment"
-msgstr "Désolé, seules les villes en France peuvent être rendues pour le moment"
 
 #: maposmatic/templatetags/extratags.py:40
 msgid "Waiting rendering"
@@ -87,15 +79,8 @@ msgid "Rendering successful"
 msgstr "Rendu terminé avec succès"
 
 #: maposmatic/templatetags/extratags.py:47
-#, python-format
-msgid ""
-"Rendering failed, please contact "
-"<a href=\"mailto:contact@maposmatic.org\">"
-"contact@maposmatic.org</a>"
-msgstr ""
- "Le rendu a échoué, merci de contacter "
-"<a href=\"mailto:contact@maposmatic.org\">"
-"contact@maposmatic.org</a>"
+msgid "Rendering failed, please contact <a href=\"mailto:contact@maposmatic.org\">contact@maposmatic.org</a>"
+msgstr "Le rendu a échoué, merci de contacter <a href=\"mailto:contact@maposmatic.org\">contact@maposmatic.org</a>"
 
 #: templates/404.html:3
 #: templates/500.html:3
@@ -441,11 +426,11 @@ msgstr "Carte au hasard"
 msgid "No random map found."
 msgstr "Aucune carte trouvée."
 
-#: templates/maposmatic/base.html:83
+#: templates/maposmatic/base.html:82
 msgid "Latest news"
 msgstr "Dernières actualités"
 
-#: templates/maposmatic/base.html:88
+#: templates/maposmatic/base.html:87
 #, python-format
 msgid ""
 "\n"
@@ -455,39 +440,43 @@ msgstr ""
 "\n"
 "publié il y a %(date)s"
 
-#: templates/maposmatic/base.html:98
+#: templates/maposmatic/base.html:97
 msgid "Contact"
 msgstr "Contact"
 
-#: templates/maposmatic/base.html:100
+#: templates/maposmatic/base.html:99
 msgid "Mail:"
 msgstr "Email :"
 
-#: templates/maposmatic/base.html:101
+#: templates/maposmatic/base.html:100
 msgid "IRC:"
 msgstr "IRC :"
 
-#: templates/maposmatic/base.html:101
+#: templates/maposmatic/base.html:100
 msgid "on"
 msgstr "sur"
 
-#: templates/maposmatic/base.html:107
+#: templates/maposmatic/base.html:106
 msgid "Language:"
 msgstr "Langue&nbsp;:"
 
-#: templates/maposmatic/index.html:78
+#: templates/maposmatic/index.html:145
+msgid "No results found."
+msgstr "Aucun résultat."
+
+#: templates/maposmatic/index.html:171
 msgid "Introduction"
 msgstr "Introduction"
 
-#: templates/maposmatic/index.html:88
+#: templates/maposmatic/index.html:181
 msgid "City Map"
 msgstr "Carte de la ville"
 
-#: templates/maposmatic/index.html:94
+#: templates/maposmatic/index.html:187
 msgid "Streets index"
 msgstr "Index des rues "
 
-#: templates/maposmatic/index.html:103
+#: templates/maposmatic/index.html:196
 msgid ""
 "MapOSMatic is a free software web service that\n"
 "allows you to generate maps of cities using\n"
@@ -495,21 +484,21 @@ msgid ""
 "is made of two pages:"
 msgstr "MapOSMatic est un service Web en Logiciel Libre qui vous permet de générer des cartes de villes en utilisant les données <a href=\"http://www.openstreetmap.org\">OpenStreetMap</a>. La carte d'une ville est constituée de deux pages :"
 
-#: templates/maposmatic/index.html:109
+#: templates/maposmatic/index.html:202
 msgid "The map itself, splitted in squares allowing to easily look for streets;"
 msgstr "la carte elle-même, découpée en carrés pour faciliter la recherche de rues&nbsp;;"
 
-#: templates/maposmatic/index.html:110
+#: templates/maposmatic/index.html:203
 msgid "An index of the streets with references to the squares on the map."
 msgstr "un index des rues référencées selon les carrés de la carte."
 
-#: templates/maposmatic/index.html:113
+#: templates/maposmatic/index.html:206
 msgid ""
 "The generated maps are available in PNG, PDF and\n"
 "SVG formats and are ready to be printed."
 msgstr "Les cartes générées sont disponibles aux formats PNG, PDF et SVG et sont prêtes à être imprimées."
 
-#: templates/maposmatic/index.html:116
+#: templates/maposmatic/index.html:209
 msgid ""
 "As the data used to generate maps is coming from\n"
 "OpenStreetMap, you can freely (under the <a\n"
@@ -518,36 +507,44 @@ msgid ""
 "maps."
 msgstr "Les données utilisées pour la génération des cartes provenant d'OpenStreetMap, vous pouvez librement réutiliser, vendre, modifier, ... les cartes générées (en respectant la <a href=\"http://wiki.openstreetmap.org/wiki/License\">licence OpenStreetMap</a>)."
 
-#: templates/maposmatic/index.html:122
+#: templates/maposmatic/index.html:215
 msgid "More details"
 msgstr "Plus d'informations"
 
-#: templates/maposmatic/index.html:124
+#: templates/maposmatic/index.html:217
 msgid "Generate your own map"
 msgstr "Générer votre carte"
 
-#: templates/maposmatic/index.html:131
+#: templates/maposmatic/index.html:224
 msgid "Area selection mode:"
 msgstr "Mode de sélection :"
 
-#: templates/maposmatic/index.html:133
-#: templates/maposmatic/index.html:134
+#: templates/maposmatic/index.html:226
+#: templates/maposmatic/index.html:227
 msgid "Generate"
 msgstr "Générer..."
 
-#: templates/maposmatic/index.html:143
+#: templates/maposmatic/index.html:236
 msgid "City name:"
 msgstr "Nom de la ville :"
 
-#: templates/maposmatic/index.html:149
+#: templates/maposmatic/index.html:239
+msgid "search"
+msgstr "Recherche"
+
+#: templates/maposmatic/index.html:245
 msgid "Title of the map:"
 msgstr "Titre de la carte :"
 
-#: templates/maposmatic/index.html:155
+#: templates/maposmatic/index.html:251
 msgid "Bounding box:"
 msgstr "Zone géographique :"
 
-#: templates/maposmatic/index.html:163
+#: templates/maposmatic/index.html:263
+msgid "Map Index Language:"
+msgstr "Langue de l'index de la carte&nbsp;:"
+
+#: templates/maposmatic/index.html:273
 msgid ""
 "Right now <em>MapOSMatic</em> is only available for the\n"
 "metropolitan France area. We need contributors to translate and adapt\n"
@@ -555,31 +552,27 @@ msgid ""
 "specific."
 msgstr "Pour le moment, <em>MapOSMatic</em> est uniquement disponible pour la France métropolitaine. Nous avons besoin de contributeurs pour traduire et adapter les quelques parties de <em>MapOSMatic</em> qui sont spécifiques à un pays donné."
 
-#: templates/maposmatic/index.html:168
+#: templates/maposmatic/index.html:278
 msgid ""
 "To select the city to be rendered, two modes are\n"
 "available:"
 msgstr "Pour sélectionner la ville, deux modes sont disponibles&nbsp;:"
 
-#: templates/maposmatic/index.html:173
+#: templates/maposmatic/index.html:283
 msgid ""
-"Using an administrative boundary. It allows to get a\n"
-"  map with precise boundaries of the city, but they are for the moment\n"
-"  only available for part of the metropolitan French cities (about a\n"
-"  third). The name of the provided city must <em>exactly match</em> the\n"
-"  one available in the OpenStreetMap database (no case or accent\n"
-"  difference is allowed). Working examples\n"
-"  are: <code>Chavagne</code>, <code>Bénodet</code> or\n"
-"  <code>Sanguinet</code>."
-msgstr "En utilisant une limite administrative. Ces limites permettent d'avoir une carte avec les limites précises de la ville, mais ces limites ne sont pour le moment disponibles que pour une partie des villes de France métropolitaine (environ un tiers). Le nom de la ville donné ici doit correspondre exactement à celui de la base de données OpenStreetMap (aucune différence d'accent ou de majuscule n'est possible). Quelques exemples fonctionnels sont&nbsp;: <code>Chavagne</code>, <code>Bénodet</code> et <code>Sanguinet</code>."
-
-#: templates/maposmatic/index.html:182
-msgid ""
-"Using a traditional bounding\n"
+"<em>Using an administrative boundary</em>. It allows\n"
+"  to get a map with precise boundaries of the city when such limits are\n"
+"  available in the database. Otherwise, you need to use a bounding\n"
 "  box."
-msgstr "En utilisant une <em>bounding box</em> traditionnelle."
+msgstr "<em>En utilisant les Limites administratives</em>. Cela permet d'avoir une carte avec une limite précise de la ville quand celle-ci est disponible dans la base. Sinon il faut utiliser une Zone géographique."
 
-#: templates/maposmatic/index.html:187
+#: templates/maposmatic/index.html:288
+msgid ""
+"<em>Using a traditional bounding\n"
+"  box</em>."
+msgstr "<em>En utilisant une bounding box traditionnelle</em>."
+
+#: templates/maposmatic/index.html:293
 msgid ""
 "Once the rendering is submitted, you will be brought\n"
 "to a page giving the status of your rendering request. As soon as the\n"
@@ -649,18 +642,4 @@ msgstr "Temps estimé avant rendu"
 #: templates/maposmatic/job.html:129
 msgid "Result files"
 msgstr "Fichiers générés"
-
-#~ msgid "Generated maps"
-#~ msgstr "Cartes générées"
-#~ msgid ""
-#~ "Contact us by email at <a href=\"mailto:contact@maposmatic.org"
-#~ "\">contact@maposmatic.org</a> or on IRC, <tt>#maposmatic</tt> on Freenode."
-#~ msgstr ""
-#~ "Contactez nous par email à <a href=\"mailto:contact+fr@maposmatic.org"
-#~ "\">contact@maposmatic.org</a> ou sur IRC, <tt>#maposmatic</tt> sur "
-#~ "Freenode."
-#~ msgid "Links:"
-#~ msgstr "Liens :"
-#~ msgid "Design by"
-#~ msgstr "Style :"
 

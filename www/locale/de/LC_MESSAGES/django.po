@@ -20,7 +20,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: mapOSMatic 0.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-12-19 17:07+0100\n"
+"POT-Creation-Date: 2009-12-21 18:56+0100\n"
 "PO-Revision-Date: 2009-12-19 16:56+0100\n"
 "Last-Translator: Thomas Petazzoni <thomas.petazzoni@enix.org>\n"
 "Language-Team:  <osm@malenki.ch>\n"
@@ -30,57 +30,46 @@ msgstr ""
 "X-Poedit-Language: German\n"
 "X-Poedit-Country: GERMANY\n"
 
-#: maposmatic/models.py:135
+#: maposmatic/models.py:144
 #, python-format
 msgid "%(title)s %(format)s Map"
 msgstr "Plan von %(title)s (format %(format)s)"
 
-#: maposmatic/models.py:140
+#: maposmatic/models.py:149
 #, python-format
 msgid "%(title)s %(format)s Index"
 msgstr "Straßenverzeichnis von %(title)s (format %(format)s)"
 
-#: maposmatic/views.py:77
+#: maposmatic/views.py:58
 #, fuzzy
 msgid "Administrative boundary"
 msgstr "Limites administratives (nom de ville)"
 
-#: maposmatic/views.py:78
+#: maposmatic/views.py:59
 msgid "Bounding box"
 msgstr "Begrenzungsrahmen"
 
-#: maposmatic/views.py:81
+#: maposmatic/views.py:62
 #, fuzzy
 msgid "Area"
 msgstr "Zone"
 
-#: maposmatic/views.py:93
+#: maposmatic/views.py:77
 #, fuzzy
 msgid "Administrative city required"
 msgstr "Nom de ville obligatoire"
 
-#: maposmatic/views.py:97
-msgid ""
-"No administrative boundaries found for this city. Try with proper casing."
-msgstr ""
-"Keine administrativen Grenzen für diese Stadt gefunden. Versuchen Sie es mit "
-"korrekter Groß-/Kleinschreibung."
-
-#: maposmatic/views.py:112
+#: maposmatic/views.py:92
 msgid "Map title required"
 msgstr "Titel des Plans benötigt"
 
-#: maposmatic/views.py:120
+#: maposmatic/views.py:100
 msgid "Required"
 msgstr "Benötigt"
 
-#: maposmatic/views.py:136
+#: maposmatic/views.py:116
 msgid "Bounding Box too big"
 msgstr "Begrenzungsrahmen zu groß"
-
-#: maposmatic/views.py:143
-msgid "Sorry, only cities in France can be rendered for the moment"
-msgstr "Leider können derzeit nur französische Städte gerendert werden."
 
 #: maposmatic/templatetags/extratags.py:40
 #, fuzzy
@@ -94,6 +83,15 @@ msgstr "Plan wird gerendert"
 #: maposmatic/templatetags/extratags.py:45
 msgid "Rendering successful"
 msgstr "Rendern erfolgreich"
+
+#: maposmatic/templatetags/extratags.py:47
+#, fuzzy
+msgid ""
+"Rendering failed, please contact <a href=\"mailto:contact@maposmatic.org"
+"\">contact@maposmatic.org</a>"
+msgstr ""
+"Contactez nous par email à <a href=\"mailto:contact+fr@maposmatic.org"
+"\">contact@maposmatic.org</a> ou sur IRC, <tt>#maposmatic</tt> sur Freenode."
 
 #: templates/404.html:3 templates/500.html:3 templates/maposmatic/base.html:51
 #, fuzzy
@@ -508,11 +506,11 @@ msgstr "Zufälliger Plan"
 msgid "No random map found."
 msgstr "Keinen zufälligen Plan gefunden."
 
-#: templates/maposmatic/base.html:83
+#: templates/maposmatic/base.html:82
 msgid "Latest news"
 msgstr "Letzte Neuigkeiten"
 
-#: templates/maposmatic/base.html:88
+#: templates/maposmatic/base.html:87
 #, fuzzy, python-format
 msgid ""
 "\n"
@@ -522,39 +520,44 @@ msgstr ""
 "\n"
 "publié il y a %(date)s"
 
-#: templates/maposmatic/base.html:98
+#: templates/maposmatic/base.html:97
 msgid "Contact"
 msgstr "Kontakt"
 
-#: templates/maposmatic/base.html:100
+#: templates/maposmatic/base.html:99
 msgid "Mail:"
 msgstr "Email:"
 
-#: templates/maposmatic/base.html:101
+#: templates/maposmatic/base.html:100
 msgid "IRC:"
 msgstr "IRC:"
 
-#: templates/maposmatic/base.html:101
+#: templates/maposmatic/base.html:100
 msgid "on"
 msgstr "auf"
 
-#: templates/maposmatic/base.html:107
+#: templates/maposmatic/base.html:106
 msgid "Language:"
 msgstr "Sprache:"
 
-#: templates/maposmatic/index.html:78
+#: templates/maposmatic/index.html:145
+#, fuzzy
+msgid "No results found."
+msgstr "Nicht gefunden."
+
+#: templates/maposmatic/index.html:171
 msgid "Introduction"
 msgstr "Einleitung"
 
-#: templates/maposmatic/index.html:88
+#: templates/maposmatic/index.html:181
 msgid "City Map"
 msgstr "Stadtplan"
 
-#: templates/maposmatic/index.html:94
+#: templates/maposmatic/index.html:187
 msgid "Streets index"
 msgstr "Straßenverzeichnis"
 
-#: templates/maposmatic/index.html:103
+#: templates/maposmatic/index.html:196
 msgid ""
 "MapOSMatic is a free software web service that\n"
 "allows you to generate maps of cities using\n"
@@ -567,25 +570,25 @@ msgstr ""
 "erzeugen.\n"
 "Ein Statplan besteht aus zwei Seiten:"
 
-#: templates/maposmatic/index.html:109
+#: templates/maposmatic/index.html:202
 msgid ""
 "The map itself, splitted in squares allowing to easily look for streets;"
 msgstr ""
 "Der Plan selbst, aufgeteilt in Quadrate, um leicht nach Straßen suchen zu "
 "können;"
 
-#: templates/maposmatic/index.html:110
+#: templates/maposmatic/index.html:203
 msgid "An index of the streets with references to the squares on the map."
 msgstr "Ein Straßenverzeichnis, das sich auf die Planquadrate bezieht."
 
-#: templates/maposmatic/index.html:113
+#: templates/maposmatic/index.html:206
 msgid ""
 "The generated maps are available in PNG, PDF and\n"
 "SVG formats and are ready to be printed."
 msgstr ""
 "Die erzeugten Pläne sind als PNG, PDF und SVG verfügbar und druckfertig."
 
-#: templates/maposmatic/index.html:116
+#: templates/maposmatic/index.html:209
 msgid ""
 "As the data used to generate maps is coming from\n"
 "OpenStreetMap, you can freely (under the <a\n"
@@ -599,35 +602,44 @@ msgstr ""
 "a>\n"
 "benutzen, verkaufen, verändern..."
 
-#: templates/maposmatic/index.html:122
+#: templates/maposmatic/index.html:215
 msgid "More details"
 msgstr "Mehr Informationen"
 
-#: templates/maposmatic/index.html:124
+#: templates/maposmatic/index.html:217
 msgid "Generate your own map"
 msgstr "Erzeugen Sie Ihren eigenen Plan"
 
-#: templates/maposmatic/index.html:131
+#: templates/maposmatic/index.html:224
 msgid "Area selection mode:"
 msgstr "Mode de sélection :"
 
-#: templates/maposmatic/index.html:133 templates/maposmatic/index.html:134
+#: templates/maposmatic/index.html:226 templates/maposmatic/index.html:227
 msgid "Generate"
 msgstr "Erzeugen"
 
-#: templates/maposmatic/index.html:143
+#: templates/maposmatic/index.html:236
 msgid "City name:"
 msgstr "Name des Ortes"
 
-#: templates/maposmatic/index.html:149
+#: templates/maposmatic/index.html:239
+msgid "search"
+msgstr ""
+
+#: templates/maposmatic/index.html:245
 msgid "Title of the map:"
 msgstr "Titel des Plans:"
 
-#: templates/maposmatic/index.html:155
+#: templates/maposmatic/index.html:251
 msgid "Bounding box:"
 msgstr "Begrenzungsrahmen:"
 
-#: templates/maposmatic/index.html:163
+#: templates/maposmatic/index.html:263
+#, fuzzy
+msgid "Map Index Language:"
+msgstr "Sprache:"
+
+#: templates/maposmatic/index.html:273
 msgid ""
 "Right now <em>MapOSMatic</em> is only available for the\n"
 "metropolitan France area. We need contributors to translate and adapt\n"
@@ -639,40 +651,28 @@ msgstr ""
 "Wir benötigen Helfer, die die wenigen länderspezifischen\n"
 " Teile von <em>MapOSMatic</em> übersetzen und anpassen."
 
-#: templates/maposmatic/index.html:168
+#: templates/maposmatic/index.html:278
 msgid ""
 "To select the city to be rendered, two modes are\n"
 "available:"
 msgstr "Es gibt zwei Arten, die zu rendernde Stadt auszuwählen:"
 
-#: templates/maposmatic/index.html:173
+#: templates/maposmatic/index.html:283
 msgid ""
-"Using an administrative boundary. It allows to get a\n"
-"  map with precise boundaries of the city, but they are for the moment\n"
-"  only available for part of the metropolitan French cities (about a\n"
-"  third). The name of the provided city must <em>exactly match</em> the\n"
-"  one available in the OpenStreetMap database (no case or accent\n"
-"  difference is allowed). Working examples\n"
-"  are: <code>Chavagne</code>, <code>Bénodet</code> or\n"
-"  <code>Sanguinet</code>."
-msgstr ""
-"Unter Benutzung einer administrativen Grenze.\n"
-"Dies erlaubt einen Plan mit präzisen Stadtgrenzen,\n"
-"die momentan aber nur für etwa ein Drittel der französischen Großstädte "
-"verfügbar sind.\n"
-"Der Name der gewünschten Stadt muss <em>exakt</em>\n"
-"mit dem in der OpenStreetMap-Datenbank übereinstimmen\n"
-"(keine abweichende Großschreibung und diakritische Zeichen erlaubt).\n"
-"Funktionierende Beispiele sind:\n"
-"<code>Chavagne</code>, <code>Bénodet</code> or <code>Sanguinet</code>."
-
-#: templates/maposmatic/index.html:182
-msgid ""
-"Using a traditional bounding\n"
+"<em>Using an administrative boundary</em>. It allows\n"
+"  to get a map with precise boundaries of the city when such limits are\n"
+"  available in the database. Otherwise, you need to use a bounding\n"
 "  box."
+msgstr ""
+
+#: templates/maposmatic/index.html:288
+#, fuzzy
+msgid ""
+"<em>Using a traditional bounding\n"
+"  box</em>."
 msgstr "Unter Benutzung eines tradtionellen <em>Begrenzungsrahmens</em>."
 
-#: templates/maposmatic/index.html:187
+#: templates/maposmatic/index.html:293
 msgid ""
 "Once the rendering is submitted, you will be brought\n"
 "to a page giving the status of your rendering request. As soon as the\n"
@@ -752,16 +752,37 @@ msgstr "Temps estimé avant rendu"
 msgid "Result files"
 msgstr "Erzeugte Dateien:"
 
-#~ msgid "Generated maps"
-#~ msgstr "Cartes générées"
+#~ msgid ""
+#~ "No administrative boundaries found for this city. Try with proper casing."
+#~ msgstr ""
+#~ "Keine administrativen Grenzen für diese Stadt gefunden. Versuchen Sie es "
+#~ "mit korrekter Groß-/Kleinschreibung."
+
+#~ msgid "Sorry, only cities in France can be rendered for the moment"
+#~ msgstr "Leider können derzeit nur französische Städte gerendert werden."
 
 #~ msgid ""
-#~ "Contact us by email at <a href=\"mailto:contact@maposmatic.org"
-#~ "\">contact@maposmatic.org</a> or on IRC, <tt>#maposmatic</tt> on Freenode."
+#~ "Using an administrative boundary. It allows to get a\n"
+#~ "  map with precise boundaries of the city, but they are for the moment\n"
+#~ "  only available for part of the metropolitan French cities (about a\n"
+#~ "  third). The name of the provided city must <em>exactly match</em> the\n"
+#~ "  one available in the OpenStreetMap database (no case or accent\n"
+#~ "  difference is allowed). Working examples\n"
+#~ "  are: <code>Chavagne</code>, <code>Bénodet</code> or\n"
+#~ "  <code>Sanguinet</code>."
 #~ msgstr ""
-#~ "Contactez nous par email à <a href=\"mailto:contact+fr@maposmatic.org"
-#~ "\">contact@maposmatic.org</a> ou sur IRC, <tt>#maposmatic</tt> sur "
-#~ "Freenode."
+#~ "Unter Benutzung einer administrativen Grenze.\n"
+#~ "Dies erlaubt einen Plan mit präzisen Stadtgrenzen,\n"
+#~ "die momentan aber nur für etwa ein Drittel der französischen Großstädte "
+#~ "verfügbar sind.\n"
+#~ "Der Name der gewünschten Stadt muss <em>exakt</em>\n"
+#~ "mit dem in der OpenStreetMap-Datenbank übereinstimmen\n"
+#~ "(keine abweichende Großschreibung und diakritische Zeichen erlaubt).\n"
+#~ "Funktionierende Beispiele sind:\n"
+#~ "<code>Chavagne</code>, <code>Bénodet</code> or <code>Sanguinet</code>."
+
+#~ msgid "Generated maps"
+#~ msgstr "Cartes générées"
 
 #~ msgid "Links:"
 #~ msgstr "Liens :"
