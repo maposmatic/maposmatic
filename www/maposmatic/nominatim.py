@@ -54,7 +54,7 @@ def query(query_text, with_polygons = False):
       - key "admin_level": The value stored in the OSM table for admin_level
     """
     entries = _fetch_entries(query_text, with_polygons)
-    return _retrieve_missing_data_from_GIS(entries)
+    return _canonicalize_data(_retrieve_missing_data_from_GIS(entries))
 
 
 def _fetch_entries(query_text, with_polygons):
@@ -69,14 +69,44 @@ def _fetch_entries(query_text, with_polygons):
     # json. This is because we know that this xml output is correct
     # and complete (at least the "osm_id" field is missing from the
     # json output)
-    query_tags = dict(q=query_text, format='xml')
+    query_tags = dict(q=query_text, format='xml', addressdetails=1)
     if with_polygons:
         query_tags['polygon']=1
 
     qdata = urlencode(query_tags)
     f = urllib2.urlopen(url="%s?%s" % (NOMINATIM_BASE_URL, qdata))
-    return [dict(place.items())
-            for place in XMLTree(f).getroot().getchildren()]
+
+    result = []
+    for place in XMLTree(f).getroot().getchildren():
+        attribs = dict(place.attrib)
+        for elt in place.getchildren():
+            attribs[elt.tag] = elt.text
+        result.append(attribs)
+
+    return result
+
+
+def _canonicalize_data(data):
+    """
+    Take a structure containing strings (dict, list, scalars, ...)
+    and convert it into the same structure with the proper conversions
+    to float or integers, etc.
+    """
+    if type(data) is tuple:
+        return tuple(_canonicalize_data(x) for x in data)
+    elif type(data) is list:
+        return [_canonicalize_data(x) for x in data]
+    elif type(data) is dict:
+        return dict([(_canonicalize_data(k),
+                      _canonicalize_data(v)) for k,v in data.iteritems()])
+    try:
+        return int(data)
+    except ValueError:
+        try:
+            return float(data)
+        except ValueError:
+            pass
+    return data
 
 
 def _retrieve_missing_data_from_GIS(entries):
