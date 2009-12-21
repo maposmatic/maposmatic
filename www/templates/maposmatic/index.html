@@ -75,17 +75,42 @@ function pageinit()
   document.getElementById('id_administrative_city').setAttribute('onchange','reset_osmid_field()');
 }
 
+var elemFound = 0 ;
+
+function toggle_form_validation(enableForm)
+{
+
+  if (enableForm == "true")
+    {
+       $("#id-go-next-btn").attr("disabled", "false");
+       $("#id-go-next-btn").attr("src", "/smedia/Go-next.png");
+    }
+  else
+    {
+       $("#id-go-next-btn").attr("disabled", "true");
+       $("#id-go-next-btn").attr("src", "/smedia/Go-next-disabled.png");
+    }
+}
+
 function validate_city_search()
 {
+  $("#result_nominatim_search").empty();
+  $("#result_nominatim_search").append("<li><img src=\"/smedia/loading.gif\" alt=\"Loading\" /></li>");
+
   var searchPat = document.getElementById("id_administrative_city").value ;
+
+  elemFound = 0;
+
   $.getJSON("/nominatim/" + searchPat,
             function(data){
               $("#result_nominatim_search").empty();
 
+
               $.each(data, function(i,item){
 		if (typeof item.ocitysmap_params == "undefined")
 		{
-		  $("#result_nominatim_search").append("<li><img src=\"/smedia/icon_alert.png\" alt=\"Work In Progress\" />&nbsp;<label class=\"place_unavailable\""
+		  $("#result_nominatim_search").append("<li><img src=\"/smedia/icon_alert.png\" "+
+		    "alt=\"Work In Progress\" />&nbsp;<label class=\"place_unavailable\""
 		    + ">" +item.display_name + "</label></li>");
                 }
 		else
@@ -95,13 +120,23 @@ function validate_city_search()
 		     +item.ocitysmap_params['id']+"\" id=\"rd"+item.ocitysmap_params['id']+"\"/><label for=\"rd"+
 		     item.ocitysmap_params['id']+"\">"
 		     +item.display_name+"</label></li>");
+		  elemFound = elemFound + 1;
                 }
+	      });
+
+	      if (elemFound == 0)
+              {
+	 	 toggle_form_validation("false");
+	         $("#result_nominatim_search").empty();
+                 $("#result_nominatim_search").append("<li><b>{% trans 'No results found.' %}</b></li>");
               }
-            );
-           });
+	    });
 }
+
 function update_hidden(obj, nloc)
 {
+  toggle_form_validation("true");
+
   document.getElementById("id_administrative_osmid").value = obj.value;
   document.getElementById("id_administrative_city").value = nloc;
 }
@@ -174,7 +209,7 @@ maps.{% endblocktrans %}</p>
     <tr class="label">
       <td>{% trans "Area selection mode:" %}</td>
       <td rowspan="4" class="image">
-        <input type="image" src="/smedia/Go-next.png" value="{% trans "Generate" %}"
+        <input id="id-go-next-btn" type="image" src="/smedia/Go-next-disabled.png" value="{% trans "Generate" %}"
                title="{% trans "Generate" %}" />
       </td>
     </tr>
