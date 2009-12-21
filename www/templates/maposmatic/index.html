@@ -143,7 +143,7 @@ function validate_city_search()
 		  if (item.ocitysmap_params['admin_level'] == 8)
 		  {
                     $("#result_nominatim_search").append("<li><input onchange=\"javascript:update_hidden(this,'"
-		       +item.display_name+"'); select_country('" + item.country_code + "');\" type=\"radio\" name=\"administrative_tmp_osmid\" value=\""
+		       +item.display_name+"'); languages_select('" + item.country_code + "');\" type=\"radio\" name=\"administrative_tmp_osmid\" value=\""
 		       +item.ocitysmap_params['id']+"\" id=\"rd"+item.ocitysmap_params['id']+"\"/><label for=\"rd"+
 		       item.ocitysmap_params['id']+"\">" +item.display_name+"</label></li>");
 
