@@ -73,10 +73,10 @@ function pageinit()
   else
     area_selection_mode_switch('admin-mode');
 
-  $('#id_administrative_city').attr('onchange','javascript:reset_osmid_field()');
   $('#id_administrative_city').keypress(function (e)
 					{
-					  /* disable autoposting - doing a search instead */
+					  /* disable autoposting (keypress on return(13))
+					   *  doing a search instead */
 					  if (e.which == 13)
 					  {
 					    validate_city_search();
@@ -93,22 +93,23 @@ function toggle_form_validation(enableForm)
   if (enableForm == "true")
     {
        $("#id-go-next-btn").removeAttr("disabled");
+       $("#id-go-next-btn").attr("class", "btn-enabled");
+       $("#id-go-next-btn").attr("title", "{% trans "Generate" %}");
        $("#id-go-next-btn").attr("src", "/smedia/Go-next.png");
     }
   else
     {
        $("#id-go-next-btn").attr("disabled", "true");
+       $("#id-go-next-btn").attr("class", "btn-disabled");
+       $("#id-go-next-btn").attr("title", "{% trans "Please fill in the form before trying to proceed" %}");
        $("#id-go-next-btn").attr("src", "/smedia/Go-next-disabled.png");
     }
-}
-function dummy_validate()
-{
-  alert("blah");
-  return false;
 }
 
 function validate_city_search()
 {
+
+  toggle_form_validation('false');
   $("#result_nominatim_search").empty();
   $("#result_nominatim_search").append("<li><img src=\"/smedia/loading.gif\" alt=\"Loading\" /></li>");
 
@@ -125,7 +126,8 @@ function validate_city_search()
 		if (typeof item.ocitysmap_params == "undefined")
 		{
 		  $("#result_nominatim_search").append("<li><img src=\"/smedia/icon_alert.png\" "+
-		    "alt=\"Work In Progress\" />&nbsp;<label class=\"place_unavailable\""
+ 	          "alt=\"Work In Progress\" title=\"{% trans "This place could not be rendered by MapOSMatic, see help to figure out why." %}\" />"+
+		    "&nbsp;<label class=\"place_unavailable\""
 		    + ">" +item.display_name + "</label></li>");
                 }
 		else
@@ -242,7 +244,7 @@ maps.{% endblocktrans %}</p>
       <td>{% trans "Area selection mode:" %}</td>
       <td rowspan="4" class="image">
         <input id="id-go-next-btn" type="image" src="/smedia/Go-next-disabled.png" value="{% trans "Generate" %}"
-               title="{% trans "Generate" %}" disabled="true" />
+               title="{% trans "Please fill in the form before trying to proceed" %}" disabled="true" class="btn-disabled" />
       </td>
     </tr>
     <tr class="field">
@@ -273,6 +275,7 @@ maps.{% endblocktrans %}</p>
     </td></tr>
     <tr class="byadmin field">
       <td colspan="2">
+      {% trans "Did you mean : " %}
 	<ul id="result_nominatim_search">
 	</ul>
       </td>

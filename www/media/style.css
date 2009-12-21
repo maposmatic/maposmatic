@@ -192,6 +192,15 @@ table#mapform td.image
   padding-right: 3em;
   vertical-align: middle;
 }
+#mapform input[type=image].btn-enabled:hover
+{
+  cursor: auto;
+}
+
+#mapform input[type=image].btn-disabled:hover
+{
+  cursor: default;
+}
 
 ul.errorlist
 {
