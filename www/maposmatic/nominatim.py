@@ -122,6 +122,9 @@ def _retrieve_missing_data_from_GIS(entries):
     try:
         cursor = conn.cursor()
         for entry in entries:
+            # Should we try to lookup the id in the OSM DB ?
+            lookup_OSM = False
+
             # Highest priority index = last in the output
             entry_priority = 1000
 
@@ -130,6 +133,7 @@ def _retrieve_missing_data_from_GIS(entries):
                 if entry.get("type") == "administrative":
                     entry_priority = 10
                     admin_boundary_names.add(entry.get("display_name", 42))
+                    lookup_OSM = True
                 else:
                     # Just don't try to lookup any additional
                     # information from OSM when the nominatim entry is
@@ -145,21 +149,23 @@ def _retrieve_missing_data_from_GIS(entries):
                 # We ignore all the other classes
                 continue
 
-            for table_name in ("polygon", "line"):
-                # Lookup the polygon/line table for both osm_id and
-                # the opposite of osm_id
-                cursor.execute("""select osm_id, admin_level
-                                  from planet_osm_%s
-                                  where osm_id in (%s,-%s)""" \
-                                   % (table_name,
-                                      entry["osm_id"],entry["osm_id"]))
-                result = tuple(set(cursor.fetchall()))
-                if len(result) == 1:
-                    entry["ocitysmap_params"] = dict(table=table_name,
-                                                     id=result[0][0],
-                                                     admin_level=result[0][1])
-                    entry_priority = 0 # Make these first in list
-                    break
+            # Try to lookup in the OSM DB, when needed
+            if lookup_OSM:
+                for table_name in ("polygon", "line"):
+                    # Lookup the polygon/line table for both osm_id and
+                    # the opposite of osm_id
+                    cursor.execute("""select osm_id, admin_level
+                                      from planet_osm_%s
+                                      where osm_id in (%s,-%s)""" \
+                                       % (table_name,
+                                          entry["osm_id"],entry["osm_id"]))
+                    result = tuple(set(cursor.fetchall()))
+                    if len(result) == 1:
+                        entry["ocitysmap_params"] = dict(table=table_name,
+                                                         id=result[0][0],
+                                                         admin_level=result[0][1])
+                        entry_priority = 0 # Make these first in list
+                        break
 
             # Register this entry for the results
             unsorted_entries.append((entry_priority, entry))
