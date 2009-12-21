@@ -151,6 +151,7 @@ def _retrieve_missing_data_from_GIS(entries):
     PLACE_RANKS = { 'city': 20, 'town': 30, 'municipality': 40,
                     'village': 50, 'hamlet': 60, 'suburb': 70,
                     'island': 80, 'islet': 90, 'locality': 100 }
+    ADMIN_LEVEL_RANKS = { '8': 0, '7': 1, '6': 2, '5':3 } # level 8 is best !
     try:
         cursor = conn.cursor()
         for entry in entries:
@@ -193,10 +194,12 @@ def _retrieve_missing_data_from_GIS(entries):
                                        % (table_name,entry["osm_id"]))
                     result = tuple(set(cursor.fetchall()))
                     if len(result) == 1:
+                        osm_id, admin_level = result[0]
                         entry["ocitysmap_params"] \
-                            = dict(table=table_name, id=result[0][0],
-                                   admin_level=result[0][1])
-                        entry_rank = 0 # Make these first in list
+                            = dict(table=table_name, id=osm_id,
+                                   admin_level=admin_level)
+                        # Make these first in list, priviledging level 8
+                        entry_rank = ADMIN_LEVEL_RANKS.get(admin_level,9)
                         break
 
             # Register this entry for the results
