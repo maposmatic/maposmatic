@@ -136,7 +136,7 @@ function update_hidden(obj)
 {
   toggle_form_validation("true");
 
-  $("#id_administrative_osmid").attr("value", obj.value);
+  $("#id_administrative_osmid").attr("value", obj.attr("value"));
   $("#id_administrative_city").attr("value", obj.attr("display_name"));
 }
 
