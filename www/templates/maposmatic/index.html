@@ -36,6 +36,7 @@
 
 var elemFound = 0;
 var unusableToken = 0;
+var languageList;
 
 function pageinit()
 {
@@ -63,6 +64,7 @@ function pageinit()
 					  {
 					    $("#result_nominatim_search").empty();
 					    toggle_form_validation("false");
+                                            language_selector_hide();
 					  }
 					});
 
@@ -78,6 +80,9 @@ function pageinit()
 					    return false;
 					  }
 					});
+
+  language_selector_hide();
+  languageList = $('#id_map_language').html();
 }
 
 
@@ -101,18 +106,21 @@ function area_selection_mode_switch(mode)
     /* re-activate form */
     toggle_form_validation("true");
     reset_osmid_field();
+    language_selector_cancel_filter();
+    language_selector_show();
     if (map == null) init();
   }
   else
   {
     /* de-activate form */
     toggle_form_validation("false");
+    language_selector_hide();
     /* and empty list of previous Nominatim results */
     $("#result_nominatim_search").empty();
     $("#id_administrative_city").attr("value", "");
   }
 
-  languages_show_all();
+  language_selector_cancel_filter();
 }
 
 function reset_osmid_field()
@@ -120,22 +128,16 @@ function reset_osmid_field()
     $("#id_administrative_osmid").attr("value", "");
 }
 
-
-
-
-
-
-
-function languages_select(country)
+function language_selector_filter(country)
 {
   var nonhidden = null;
+  $('#id_map_language').html(languageList);
   $('#id_map_language').find('option').each(function() {
    var ischoosen = $(this).val().match(".._" + country.toUpperCase() + "\..*") != null || $(this).val() == 'C';
    if (! ischoosen) {
-     $(this).hide();
+     $(this).remove();
    }
    else {
-     $(this).show();
      if (nonhidden == null)
         nonhidden = $(this);
    }
@@ -144,10 +146,26 @@ function languages_select(country)
    nonhidden.attr('selected', 'selected');
 }
 
-function languages_show_all()
+function language_selector_show()
 {
+  $('#map_language_label').show();
+  $('#map_language_entry').show();
+}
+
+function language_selector_hide()
+{
+  $('#map_language_label').hide();
+  $('#map_language_entry').hide();
+}
+
+function language_selector_cancel_filter()
+{
+  $('#id_map_language').html(languageList);
+
   $('#id_map_language').find('option').each(function() {
-    $(this).show();
+   if ($(this).val() == 'C') {
+    $(this).attr('selected', 'selected');
+   }
   });
 }
 
@@ -166,7 +184,7 @@ function validate_city_search()
 {
 
   toggle_form_validation('false');
-  languages_show_all();
+  language_selector_cancel_filter();
   $("#result_nominatim_search").empty();
   $("#result_nominatim_search").append("<tr><td colspan=\"2\"><img src=\"/smedia/loading.gif\" alt=\"Loading\"/></td></tr>");
 
@@ -195,7 +213,8 @@ function validate_city_search()
 		    $("#" + rad_identifier).click(function ()
 		    	    			   {
 							update_hidden($(this));
-							languages_select(item.country_code);
+							language_selector_filter(item.country_code);
+		                                        language_selector_show();
 						   });
 
 		    elemFound = elemFound + 1;
@@ -342,10 +361,10 @@ maps.{% endblocktrans %}</p>
 	</table>
       </td>
     </tr>
-    <tr class="label">
+    <tr class="label" id="map_language_label">
       <td>{% trans "Map Index Language:" %}</td>
     </tr>
-    <tr class="field">
+    <tr class="field" id="map_language_entry">
       <td>
 	{{ form.map_language }}
       </td>
