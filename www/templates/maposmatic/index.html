@@ -169,7 +169,7 @@ function validate_city_search()
 		    var rad_identifier = "radio" + item.ocitysmap_params["id"];
 		    $("#result_nominatim_search").append("<li><input type=\"radio\" id=\""+ rad_identifier + "\" /><label for=\""+rad_identifier +"\">"+item.display_name+"</label></li>");
 		    $("#" + rad_identifier).attr("name","administrative_tmp_osmid");
-		    $("#" + rad_identifier).attr("value",'"'+item.ocitysmap_params['id'] +'"');
+		    $("#" + rad_identifier).attr("value",item.ocitysmap_params['id']);
 
 		    $("#" + rad_identifier).attr("display_name", item.display_name);
 
