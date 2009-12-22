@@ -212,6 +212,23 @@ table#mapform td.image
   display: block;
 }
 
+ul#result_nominatim_search li
+{
+    display: table;
+}
+ul#result_nominatim_search li input
+{
+    display: table-cell;
+}
+ul#result_nominatim_search li label
+{
+    display: table-cell;
+}
+ul#result_nominatim_search li img
+{
+    display: table-cell;
+}
+
 ul.errorlist
 {
   margin-top: 5px;
