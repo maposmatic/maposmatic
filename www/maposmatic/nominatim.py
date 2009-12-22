@@ -201,7 +201,8 @@ def _retrieve_missing_data_from_GIS(entries):
                                    admin_level=admin_level,
                                    way_area=way_area)
                         # Make these first in list, priviledging level 8
-                        entry_rank = (ADMIN_LEVEL_RANKS.get(admin_level,9),-way_area)
+                        entry_rank = (ADMIN_LEVEL_RANKS.get(admin_level,9),
+                                      -way_area)
                         break
 
             # Register this entry for the results
