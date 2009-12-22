@@ -144,8 +144,9 @@ def _retrieve_missing_data_from_GIS(entries):
     # opposite of osm_id... But we still consider that it could be the
     # real osm_id (not its opposite). Let's have fun...
 
-    # Will sort the entries so that the admin boundaries appear
-    # fdirst, then cities, towns, etc.
+    # Will sort the entries so that the admin boundaries appear first,
+    # then cities, towns, etc. Second order: larger cities
+    # (ie. greater way_area) are listed first
     unsorted_entries = []
     admin_boundary_names = set()
     PLACE_RANKS = { 'city': 20, 'town': 30, 'municipality': 40,
@@ -159,12 +160,12 @@ def _retrieve_missing_data_from_GIS(entries):
             lookup_OSM = False
 
             # Highest rank = last in the output
-            entry_rank = 1000
+            entry_rank = (1000,0) # tuple (sort rank, -area)
 
             # Try to determine the order in which this entry should appear
             if entry.get("class") == "boundary":
                 if entry.get("type") == "administrative":
-                    entry_rank = 10
+                    entry_rank = (10,0)
                     admin_boundary_names.add(entry.get("display_name", 42))
                     lookup_OSM = True
                 else:
@@ -174,7 +175,7 @@ def _retrieve_missing_data_from_GIS(entries):
                     continue
             elif entry.get("class") == "place":
                 try:
-                    entry_rank = PLACE_RANKS[entry.get("type")]
+                    entry_rank = (PLACE_RANKS[entry.get("type")],0)
                 except KeyError:
                     # Will ignore all the other place tags
                     continue
@@ -188,18 +189,19 @@ def _retrieve_missing_data_from_GIS(entries):
                 for table_name in ("polygon", "line"):
                     # Lookup the polygon/line table for both osm_id and
                     # the opposite of osm_id
-                    cursor.execute("""select osm_id, admin_level
+                    cursor.execute("""select osm_id, admin_level, way_area
                                       from planet_osm_%s
                                       where osm_id = -%s""" \
                                        % (table_name,entry["osm_id"]))
                     result = tuple(set(cursor.fetchall()))
                     if len(result) == 1:
-                        osm_id, admin_level = result[0]
+                        osm_id, admin_level, way_area = result[0]
                         entry["ocitysmap_params"] \
                             = dict(table=table_name, id=osm_id,
-                                   admin_level=admin_level)
+                                   admin_level=admin_level,
+                                   way_area=way_area)
                         # Make these first in list, priviledging level 8
-                        entry_rank = ADMIN_LEVEL_RANKS.get(admin_level,9)
+                        entry_rank = (ADMIN_LEVEL_RANKS.get(admin_level,9),-way_area)
                         break
 
             # Register this entry for the results
