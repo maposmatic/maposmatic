@@ -48,9 +48,7 @@ class="activelink"
 {% if not job.is_done %}
   <tr class="even">
     <td colspan="2">
-      <a href="javascript:location.reload(true)">
-      {% trans "Refresh the status" %}
-      </a>
+      <a href="/jobs/{{job.id}}">{% trans "Refresh the status" %}</a>
     </td>
   </tr>
 {% endif %}
