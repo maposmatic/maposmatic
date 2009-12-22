@@ -192,7 +192,7 @@ function validate_city_search()
 
 		    $("#" + rad_identifier).attr("display_name", item.display_name);
 
-		    $("#" + rad_identifier).change(function ()
+		    $("#" + rad_identifier).click(function ()
 		    	    			   {
 							update_hidden($(this));
 							languages_select(item.country_code);
