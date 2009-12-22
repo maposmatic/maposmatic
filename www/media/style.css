@@ -202,6 +202,16 @@ table#mapform td.image
   cursor: default;
 }
 
+#mapform input[type=image].btn-disabled
+{
+  display: none;
+}
+
+#mapform input[type=image].btn-enabled
+{
+  display: block;
+}
+
 ul.errorlist
 {
   margin-top: 5px;
