@@ -163,12 +163,42 @@ form ul {
     list-style-type: none;
 }
 
+table#mapform table#result_nominatim_search
+{
+  margin: 0px;
+  padding: 0px;
+  border-collapse: collapse;
+  border-spacing: 0px;
+}
+
+table#mapform table#result_nominatim_search tr td.nomsrch_bullet
+{
+  margin: 2px;
+  padding: 0px;
+  padding-top: 2px;
+  width: 10px;
+  text-align: center;
+  vertical-align: text-top;
+}
+
+table#mapform table#result_nominatim_search tr td.nomsrch_entry
+{
+  margin: 2px;
+  padding: 0px;
+  padding-left: 3px;
+}
+
 table#mapform
 {
   margin: 2em 2em 2em 2em;
   width: 650px;
   border: 1px solid #CCC;
   padding: 1em;
+}
+
+table#mapform tr.field td
+{
+  padding-bottom: 10px;
 }
 
 table#mapform td
@@ -179,11 +209,6 @@ table#mapform td
 table#mapform tr.label
 {
   font-weight: bold;
-}
-
-table#mapform tr.field td
-{
-  padding-bottom: 10px !important;
 }
 
 table#mapform td.image
@@ -210,23 +235,6 @@ table#mapform td.image
 #mapform input[type=image].btn-enabled
 {
   display: block;
-}
-
-ul#result_nominatim_search li
-{
-    display: table;
-}
-ul#result_nominatim_search li input
-{
-    display: table-cell;
-}
-ul#result_nominatim_search li label
-{
-    display: table-cell;
-}
-ul#result_nominatim_search li img
-{
-    display: table-cell;
 }
 
 ul.errorlist

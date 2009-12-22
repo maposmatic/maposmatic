@@ -168,7 +168,7 @@ function validate_city_search()
   toggle_form_validation('false');
   languages_show_all();
   $("#result_nominatim_search").empty();
-  $("#result_nominatim_search").append("<li><img src=\"/smedia/loading.gif\" alt=\"Loading\" /></li>");
+  $("#result_nominatim_search").append("<tr><td colspan=\"2\"><img src=\"/smedia/loading.gif\" alt=\"Loading\"/></td></tr>");
 
   var searchPat = $("#id_administrative_city").attr("value") ;
 
@@ -186,7 +186,7 @@ function validate_city_search()
 		  if (item.ocitysmap_params['admin_level'] == 8)
 		  {
 		    var rad_identifier = "radio" + item.ocitysmap_params["id"];
-		    $("#result_nominatim_search").append("<li><input type=\"radio\" id=\""+ rad_identifier + "\" /><label for=\""+rad_identifier +"\">"+item.display_name+"</label></li>");
+		    $("#result_nominatim_search").append("<tr><td class=\"nomsrch_bullet\"><input type=\"radio\" id=\""+ rad_identifier + "\" /></td><td class=\"nomsrch_entry\"><label for=\""+rad_identifier +"\">"+item.display_name+"</label></td></tr>");
 		    $("#" + rad_identifier).attr("name","administrative_tmp_osmid");
 		    $("#" + rad_identifier).attr("value",item.ocitysmap_params['id']);
 
@@ -203,10 +203,10 @@ function validate_city_search()
                 }
 		else
                 {
-		    $("#result_nominatim_search").append("<li><img src=\"/smedia/icon_alert.png\" "+
+		    $("#result_nominatim_search").append("<tr><td class=\"nomsrch_bullet\"><img src=\"/smedia/icon_alert.png\" "+
  	              "alt=\"Work In Progress\" title=\"{% trans "This place cannot be rendered by MapOSMatic, administrative boundary missing. Please contribute !" %}\" />"+
-		      "&nbsp;<label class=\"place_unavailable\""
-		      + ">" +item.display_name + "</label></li>");
+		      "</td><td class=\"nomsrch_entry\"><label class=\"place_unavailable\""
+		      + ">" +item.display_name + "</label></td></tr>");
 		      unusableToken = unusableToken + 1;
                 }
 	      });
@@ -215,7 +215,7 @@ function validate_city_search()
               {
 	 	 toggle_form_validation("false");
 		 if (unusableToken == 0)
-                    $("#result_nominatim_search").append("<li><b>{% trans 'No results found.' %}</b></li>");
+                    $("#result_nominatim_search").append("<tr><td colspan=\"2\"><b>{% trans 'No results found.' %}</b></td></tr>");
               }
 	    });
 }
@@ -338,8 +338,8 @@ maps.{% endblocktrans %}</p>
     </td></tr>
     <tr class="byadmin field">
       <td>
-	<ul id="result_nominatim_search">
-	</ul>
+	<table id="result_nominatim_search">
+	</table>
       </td>
     </tr>
     <tr class="label">
