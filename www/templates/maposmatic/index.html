@@ -59,6 +59,19 @@ function pageinit()
 					    return false;
 					  }
 					});
+
+  /* the keypress event is responsible of posting our form. We need to
+   * catch this too in order to avoid submission. (issue encountered
+   * with Chrome browser)
+   */
+
+  $('#id_administrative_city').keypress(function (e)
+					{
+					  if (e.which == 13)
+					  {
+					    return false;
+					  }
+					});
 }
 
 
