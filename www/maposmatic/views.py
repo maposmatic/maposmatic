@@ -234,12 +234,15 @@ def all_maps(request):
 
 def query_nominatim(request, format, squery):
     if not format:
-        format = "json"
+        format = request.GET.get("format", "json")
     else:
         format = format[:-1]
 
     if format not in ("json",):
-        return HttpResponseBadRequest("Invalid format: %s" % format)
+        return HttpResponseBadRequest("ERROR: Invalid format")
+
+    if not squery:
+        squery = request.GET.get("q")
 
     try:
         contents = nominatim.query(squery, with_polygons=False)

@@ -175,7 +175,7 @@ function validate_city_search()
   elemFound = 0;
   unusableToken = 0;
 
-  $.getJSON("/nominatim/" + searchPat,
+  $.getJSON("/nominatim", {'q': searchPat},
             function(data){
               $("#result_nominatim_search").empty();
 
