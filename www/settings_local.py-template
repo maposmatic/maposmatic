@@ -47,7 +47,7 @@ RENDERING_RESULT_FORMATS = ['png', 'svg', 'pdf']
 RENDERING_RESULT_MAX_SIZE_GB = 30
 
 # Default output log file when the env variable MAPOSMATIC_LOG_FILE is not set
-DEFAULT_MAPOSMATIC_LOG_FILE = '/tmp/maposmatic.log'
+DEFAULT_MAPOSMATIC_LOG_FILE = '/path/to/maposmatic/logs/maposmatic.log'
 
 # Default log level when the env variable DEFAULT_MAPOSMATIC_LOG_LEVEL
 # is not set

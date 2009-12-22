@@ -29,6 +29,6 @@
         LogLevel warn
         ServerSignature On
 
-        CustomLog /path/to/maposmatic-logs/access.log combined
-        ErrorLog /path/to/maposmatic-logs/error.log
+        CustomLog /path/to/maposmatic/logs/access.log combined
+        ErrorLog /path/to/maposmatic/logs/error.log
 </VirtualHost>
