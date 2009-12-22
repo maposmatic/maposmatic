@@ -49,9 +49,9 @@ function pageinit()
   else
     area_selection_mode_switch('admin-mode');
 
-  $('#id_administrative_city').keypress(function (e)
+  $('#id_administrative_city').keyup(function (e)
 					{
-					  /* disable autoposting (keypress on return(13))
+					  /* disable autoposting (keycode '13' ==  return)
 					   *  doing a search instead */
 					  if (e.which == 13)
 					  {
