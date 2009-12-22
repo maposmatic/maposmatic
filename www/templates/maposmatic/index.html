@@ -28,11 +28,39 @@
 
 {% block extralink %}
 <script type="text/javascript" src="/smedia/jquery.js"></script>
+
 {{ form.media }}
 {% endblock %}
 
 {% block extrajs %}
-String.prototype.startsWith = function(str) { return this.indexOf(str) === 0; }
+
+var elemFound = 0;
+var unusableToken = 0;
+
+function pageinit()
+{
+  document.getElementById('id_mode_0').setAttribute('onclick',
+    "area_selection_mode_switch('admin-mode')");
+  document.getElementById('id_mode_1').setAttribute('onclick',
+    "area_selection_mode_switch('bbox-mode')");
+
+  if (document.getElementById('id_mode_1').checked)
+    area_selection_mode_switch('bbox-mode');
+  else
+    area_selection_mode_switch('admin-mode');
+
+  $('#id_administrative_city').keypress(function (e)
+					{
+					  /* disable autoposting (keypress on return(13))
+					   *  doing a search instead */
+					  if (e.which == 13)
+					  {
+					    validate_city_search();
+					    return false;
+					  }
+					});
+}
+
 
 function area_selection_mode_switch(mode)
 {
@@ -73,101 +101,11 @@ function reset_osmid_field()
     $("#id_administrative_osmid").attr("value", "");
 }
 
-function pageinit()
-{
-  document.getElementById('id_mode_0').setAttribute('onclick',
-    "area_selection_mode_switch('admin-mode')");
-  document.getElementById('id_mode_1').setAttribute('onclick',
-    "area_selection_mode_switch('bbox-mode')");
-
-  if (document.getElementById('id_mode_1').checked)
-    area_selection_mode_switch('bbox-mode');
-  else
-    area_selection_mode_switch('admin-mode');
-
-  $('#id_administrative_city').keypress(function (e)
-					{
-					  /* disable autoposting (keypress on return(13))
-					   *  doing a search instead */
-					  if (e.which == 13)
-					  {
-					    validate_city_search();
-					    return false;
-					  }
-					});
-}
-
-var elemFound = 0;
-var unusableToken = 0;
-
-function toggle_form_validation(enableForm)
-{
-
-  if (enableForm == "true")
-    {
-       $("#id-go-next-btn").removeAttr("disabled");
-       $("#id-go-next-btn").attr("class", "btn-enabled");
-       $("#id-go-next-btn").attr("title", "{% trans "Generate" %}");
-       $("#id-go-next-btn").attr("src", "/smedia/Go-next.png");
-    }
-  else
-    {
-       $("#id-go-next-btn").attr("disabled", "true");
-       $("#id-go-next-btn").attr("class", "btn-disabled");
-       $("#id-go-next-btn").attr("title", "{% trans "Please fill in the form before trying to proceed" %}");
-       $("#id-go-next-btn").attr("src", "/smedia/Go-next-disabled.png");
-    }
-}
-
-function validate_city_search()
-{
-
-  toggle_form_validation('false');
-  languages_show_all();
-  $("#result_nominatim_search").empty();
-  $("#result_nominatim_search").append("<li><img src=\"/smedia/loading.gif\" alt=\"Loading\" /></li>");
-
-  var searchPat = $("#id_administrative_city").attr("value") ;
-
-  elemFound = 0;
-  unusableToken = 0;
-
-  $.getJSON("/nominatim/" + searchPat,
-            function(data){
-              $("#result_nominatim_search").empty();
 
 
-              $.each(data, function(i,item){
-		if (typeof item.ocitysmap_params != "undefined")
-		{
-		  if (item.ocitysmap_params['admin_level'] == 8)
-		  {
-                    $("#result_nominatim_search").append("<li><input onchange=\"javascript:update_hidden(this,'"
-		       +item.display_name+"'); languages_select('" + item.country_code + "');\" type=\"radio\" name=\"administrative_tmp_osmid\" value=\""
-		       +item.ocitysmap_params['id']+"\" id=\"rd"+item.ocitysmap_params['id']+"\"/><label for=\"rd"+
-		       item.ocitysmap_params['id']+"\">" +item.display_name+"</label></li>");
 
-		    elemFound = elemFound + 1;
-		  }
-                }
-		else
-                {
-		    $("#result_nominatim_search").append("<li><img src=\"/smedia/icon_alert.png\" "+
- 	              "alt=\"Work In Progress\" title=\"{% trans "This place cannot be rendered by MapOSMatic, administrative boundary missing. Please contribute !" %}\" />"+
-		      "&nbsp;<label class=\"place_unavailable\""
-		      + ">" +item.display_name + "</label></li>");
-		      unusableToken = unusableToken + 1;
-                }
-	      });
 
-	      if (elemFound == 0)
-              {
-	 	 toggle_form_validation("false");
-		 if (unusableToken == 0)
-                    $("#result_nominatim_search").append("<li><b>{% trans 'No results found.' %}</b></li>");
-              }
-	    });
-}
+
 
 function languages_select(country)
 {
@@ -194,14 +132,93 @@ function languages_show_all()
   });
 }
 
-function update_hidden(obj, nloc)
+function update_hidden(obj)
 {
   toggle_form_validation("true");
 
   $("#id_administrative_osmid").attr("value", obj.value);
-  $("#id_administrative_city").attr("value", nloc);
+  $("#id_administrative_city").attr("value", obj.attr("display_name"));
 }
 
+String.prototype.startsWith = function(str) { return this.indexOf(str) === 0; }
+
+
+function validate_city_search()
+{
+
+  toggle_form_validation('false');
+  languages_show_all();
+  $("#result_nominatim_search").empty();
+  $("#result_nominatim_search").append("<li><img src=\"/smedia/loading.gif\" alt=\"Loading\" /></li>");
+
+  var searchPat = $("#id_administrative_city").attr("value") ;
+
+  elemFound = 0;
+  unusableToken = 0;
+
+  $.getJSON("/nominatim/" + searchPat,
+            function(data){
+              $("#result_nominatim_search").empty();
+
+
+              $.each(data, function(i,item){
+		if (typeof item.ocitysmap_params != "undefined")
+		{
+		  if (item.ocitysmap_params['admin_level'] == 8)
+		  {
+		    var rad_identifier = "radio" + item.ocitysmap_params["id"];
+		    $("#result_nominatim_search").append("<li><input type=\"radio\" id=\""+ rad_identifier + "\" /><label for=\""+rad_identifier +"\">"+item.display_name+"</label></li>");
+		    $("#" + rad_identifier).attr("name","administrative_tmp_osmid");
+		    $("#" + rad_identifier).attr("value",'"'+item.ocitysmap_params['id'] +'"');
+
+		    $("#" + rad_identifier).attr("display_name", item.display_name);
+
+		    $("#" + rad_identifier).change(function ()
+		    	    			   {
+							update_hidden($(this));
+							languages_select(item.country_code);
+						   });
+
+		    elemFound = elemFound + 1;
+		  }
+                }
+		else
+                {
+		    $("#result_nominatim_search").append("<li><img src=\"/smedia/icon_alert.png\" "+
+ 	              "alt=\"Work In Progress\" title=\"{% trans "This place cannot be rendered by MapOSMatic, administrative boundary missing. Please contribute !" %}\" />"+
+		      "&nbsp;<label class=\"place_unavailable\""
+		      + ">" +item.display_name + "</label></li>");
+		      unusableToken = unusableToken + 1;
+                }
+	      });
+
+	      if (elemFound == 0)
+              {
+	 	 toggle_form_validation("false");
+		 if (unusableToken == 0)
+                    $("#result_nominatim_search").append("<li><b>{% trans 'No results found.' %}</b></li>");
+              }
+	    });
+}
+
+function toggle_form_validation(enableForm)
+{
+
+  if (enableForm == "true")
+    {
+       $("#id-go-next-btn").removeAttr("disabled");
+       $("#id-go-next-btn").attr("class", "btn-enabled");
+       $("#id-go-next-btn").attr("title", "{% trans "Generate" %}");
+       $("#id-go-next-btn").attr("src", "/smedia/Go-next.png");
+    }
+  else
+    {
+       $("#id-go-next-btn").attr("disabled", "true");
+       $("#id-go-next-btn").attr("class", "btn-disabled");
+       $("#id-go-next-btn").attr("title", "{% trans "Please fill in the form before trying to proceed" %}");
+       $("#id-go-next-btn").attr("src", "/smedia/Go-next-disabled.png");
+    }
+}
 {% endblock %}
 
 {% block menu-home %}
