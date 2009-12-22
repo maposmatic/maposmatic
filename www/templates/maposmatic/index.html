@@ -58,6 +58,12 @@ function pageinit()
 					    validate_city_search();
 					    return false;
 					  }
+					  /* reset form */
+					  else
+					  {
+					    $("#result_nominatim_search").empty();
+					    toggle_form_validation("false");
+					  }
 					});
 
   /* the keypress event is responsible of posting our form. We need to
