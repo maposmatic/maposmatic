@@ -133,7 +133,7 @@ MAP_LANGUAGES = [("fr_BE.UTF-8", u"Royaume de Belgique (FR)"),
                  ("de_BE.UTF-8", u"Königreich Belgien (DE)"),
                  ("nl_BE.UTF-8", u"Koninkrijk België (NL)"),
                  # "C" must be the last entry
-                 ("C", _(u"Unsupported"))]
+                 ("C", _(u"No localization"))]
 
 LOG = logging.getLogger(os.environ.get("MAPOSMATIC_LOG_TARGET",
                                        "maposmatic"))
