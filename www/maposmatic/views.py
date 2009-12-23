@@ -68,7 +68,8 @@ def _check_osm_id(osm_id, table="polygon"):
 
     try:
         cursor = conn.cursor()
-        cursor.execute("""select osm_id,st_astext(st_envelope(way))
+        cursor.execute("""select osm_id,st_astext(st_transform(st_envelope(way),
+                                                               4002))
                           from planet_osm_%s where
                           osm_id=%d""" % (table,int(osm_id)))
         result = cursor.fetchall()
