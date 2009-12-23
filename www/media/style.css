@@ -171,6 +171,24 @@ table#mapform table#result_nominatim_search
   border-spacing: 0px;
 }
 
+table#mapform table#result_nominatim_search tr td span
+{
+ display:none;
+ padding:2px 3px;
+ margin-left:8px;
+ margin-top: 1em;
+ width: 15em;
+}
+
+table#mapform table#result_nominatim_search tr td:hover span
+{
+ display:inline;
+ position:absolute;
+ background:#ffffff;
+ border:1px solid #cccccc;
+ color:#6c6c6c;
+}
+
 table#mapform table#result_nominatim_search tr td.nomsrch_bullet
 {
   margin: 2px;

@@ -224,10 +224,11 @@ function validate_city_search()
                 }
 		else
                 {
-		    $("#result_nominatim_search").append("<tr><td class=\"nomsrch_bullet\"><img src=\"/smedia/icon_alert.png\" "+
- 	              "alt=\"Work In Progress\" title=\"{% trans "This place cannot be rendered by MapOSMatic, administrative boundary missing. Please contribute !" %}\" />"+
+		    var msg = "{% trans "This place cannot be rendered by MapOSMatic, administrative boundary missing. Please contribute !" %}";
+		    $("#result_nominatim_search").append("<tr class=\"nomsrch\"><td class=\"nomsrch_bullet\"><img src=\"/smedia/icon_alert.png\" "+
+ 	              "alt=\"Work In Progress\"/><span>"+ msg + "</span>" +
 		      "</td><td class=\"nomsrch_entry\"><label class=\"place_unavailable\""
-		      + ">" +item.display_name + "</label></td></tr>");
+		      + ">" +item.display_name + "</label><span>" + msg + "</span></td></tr>");
 		      unusableToken = unusableToken + 1;
                 }
 	      });
