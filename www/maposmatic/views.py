@@ -3,6 +3,7 @@
 # maposmatic, the web front-end of the MapOSMatic city map generation system
 # Copyright (C) 2009  David Decotigny
 # Copyright (C) 2009  Frédéric Lehobey
+# Copyright (C) 2009  Pierre Mauduit
 # Copyright (C) 2009  David Mentré
 # Copyright (C) 2009  Maxime Petazzoni
 # Copyright (C) 2009  Thomas Petazzoni
