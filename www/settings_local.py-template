@@ -41,13 +41,13 @@ DATABASE_PORT = ''             # Set to empty string for default. Not used with 
 # Path to ocitysmap's config file to use, or None for the default in ~/
 OCITYSMAP_CFG_PATH = None
 
-RENDERING_RESULT_PATH = '/tmp/direc/tory'
-RENDERING_RESULT_URL = 'http://host.name/dir/ec/tory'
+RENDERING_RESULT_PATH = '/path/to/rendering/results/'
+RENDERING_RESULT_URL = 'http://host.name/rendered/'
 RENDERING_RESULT_FORMATS = ['png', 'svg', 'pdf']
 RENDERING_RESULT_MAX_SIZE_GB = 30
 
 # Default output log file when the env variable MAPOSMATIC_LOG_FILE is not set
-DEFAULT_MAPOSMATIC_LOG_FILE = '/tmp/maposmatic.log'
+DEFAULT_MAPOSMATIC_LOG_FILE = '/path/to/maposmatic/logs/maposmatic.log'
 
 # Default log level when the env variable DEFAULT_MAPOSMATIC_LOG_LEVEL
 # is not set

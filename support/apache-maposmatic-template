@@ -17,9 +17,18 @@
           Allow from all
         </Directory>
 
+	# Alias RENDERING_RESULT_URL RENDERING_RESULT_PATH
+	# as defined in www/settings_local.py
+	Alias /rendered /path/to/rendering/results/
+        <Directory /path/to/rendering/results/>
+          Options FollowSymlinks +Indexes
+          Order allow,deny
+          Allow from all
+        </Directory>
+
         LogLevel warn
         ServerSignature On
 
-        CustomLog /path/to/maposmatic-logs/access.log combined
-        ErrorLog /path/to/maposmatic-logs/error.log
+        CustomLog /path/to/maposmatic/logs/access.log combined
+        ErrorLog /path/to/maposmatic/logs/error.log
 </VirtualHost>
