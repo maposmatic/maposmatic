@@ -29,6 +29,8 @@
 
 """
 Simple API to query http://nominatim.openstreetmap.org
+
+Most of the credits should go to gthe Nominatim team.
 """
 
 import www.settings
@@ -36,6 +38,7 @@ import psycopg2
 from urllib import urlencode
 import urllib2
 from xml.etree.ElementTree import parse as XMLTree
+
 
 NOMINATIM_BASE_URL = "http://nominatim.openstreetmap.org/search/"
 
