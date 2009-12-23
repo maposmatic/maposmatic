@@ -50,6 +50,46 @@ except ImportError:
     except ImportError:
         from json import write as json_encode
 
+
+# Make sure that the supplied OSM Id is valid and can be accepted for
+# rendering (bounding box not too large, etc.). Raise an exception in
+# case of error.
+def _check_osm_id(osm_id, table="polygon"):
+    # If no GIS database is configured, bypass the city_exists check by
+    # returning True.
+    if not www.settings.has_gis_database():
+        raise ValueError("No GIS database available")
+
+    conn = psycopg2.connect("dbname='%s' user='%s' host='%s' password='%s'" %
+                            (www.settings.GIS_DATABASE_NAME,
+                             www.settings.DATABASE_USER,
+                             www.settings.DATABASE_HOST,
+                             www.settings.DATABASE_PASSWORD))
+
+    try:
+        cursor = conn.cursor()
+        cursor.execute("""select osm_id,st_astext(st_envelope(way))
+                          from planet_osm_%s where
+                          osm_id=%d""" % (table,int(osm_id)))
+        result = cursor.fetchall()
+        try:
+            ((ret_osm_id, envlp),) = result
+        except ValueError:
+            raise ValueError("Cannot lookup OSM ID in table %s" % table)
+
+        assert ret_osm_id == osm_id
+
+        # Check bbox size
+        bbox = OCMBoundingBox.parse_wkt(envlp)
+        (metric_size_lat, metric_size_long) = bbox.spheric_sizes()
+        if metric_size_lat > www.settings.BBOX_MAXIMUM_LENGTH_IN_METERS or \
+                metric_size_long > www.settings.BBOX_MAXIMUM_LENGTH_IN_METERS:
+            raise ValueError("Area too large")
+
+    finally:
+        conn.close()
+
+
 class MapRenderingJobForm(ModelForm):
     class Meta:
         model = MapRenderingJob
@@ -89,7 +129,13 @@ class MapRenderingJobForm(ModelForm):
             cleaned_data["lat_bottom_right"] = None
             cleaned_data["lon_bottom_right"] = None
 
-        if mode == 'bbox':
+            try:
+                _check_osm_id(cleaned_data.get("administrative_osmid"))
+            except Exception,ex:
+                msg = _(u"Error with osm city: %s" % ex)
+                self._errors['administrative_osmid'] = ErrorList([msg])
+
+        elif mode == 'bbox':
             if title == '':
                 msg = _(u"Map title required")
                 self._errors["maptitle"] = ErrorList([msg])
@@ -115,7 +161,7 @@ class MapRenderingJobForm(ModelForm):
             (metric_size_lat, metric_size_long) = boundingbox.spheric_sizes()
             if metric_size_lat > www.settings.BBOX_MAXIMUM_LENGTH_IN_METERS or \
                     metric_size_long > www.settings.BBOX_MAXIMUM_LENGTH_IN_METERS:
-                msg = _(u"Bounding Box too big")
+                msg = _(u"Bounding Box too large")
                 self._errors['bbox'] = ErrorList([msg])
 
             # Make sure that bbox and admin modes are exclusive
