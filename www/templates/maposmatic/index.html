@@ -248,14 +248,12 @@ function toggle_form_validation(enableForm)
        $("#id-go-next-btn").removeAttr("disabled");
        $("#id-go-next-btn").attr("class", "btn-enabled");
        $("#id-go-next-btn").attr("title", "{% trans "Generate" %}");
-       $("#id-go-next-btn").attr("src", "/smedia/Go-next.png");
     }
   else
     {
        $("#id-go-next-btn").attr("disabled", "true");
        $("#id-go-next-btn").attr("class", "btn-disabled");
        $("#id-go-next-btn").attr("title", "{% trans "Please fill in the form before trying to proceed" %}");
-       $("#id-go-next-btn").attr("src", "/smedia/Go-next-disabled.png");
     }
 }
 {% endblock %}
@@ -326,7 +324,7 @@ maps.{% endblocktrans %}</p>
     <tr class="label">
       <td>{% trans "Area selection mode:" %}</td>
       <td style="vertical-align: bottom" rowspan="8" class="image">
-        <input id="id-go-next-btn" type="image" src="/smedia/Go-next-disabled.png" value="{% trans "Generate" %}"
+        <input id="id-go-next-btn" type="image" src="/smedia/Go-next.png" value="{% trans "Generate" %}"
                title="{% trans "Please fill in the form before trying to proceed" %}" disabled="true" class="btn-disabled" />
       </td>
     </tr>
