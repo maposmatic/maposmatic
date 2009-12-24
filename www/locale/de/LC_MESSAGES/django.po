@@ -20,7 +20,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: mapOSMatic 0.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-12-23 10:51+0100\n"
+"POT-Creation-Date: 2009-12-24 16:25+0100\n"
 "PO-Revision-Date: 2009-12-23 00:47+0100\n"
 "Last-Translator: Pierre Mauduit <pierre.mauduit@gmail.com>\n"
 "Language-Team:  <osm@malenki.ch>\n"
@@ -30,7 +30,7 @@ msgstr ""
 "X-Poedit-Language: German\n"
 "X-Poedit-Country: GERMANY\n"
 
-#: settings.py:136
+#: settings.py:138
 msgid "No localization"
 msgstr "Keine Übersetzung"
 
@@ -44,36 +44,36 @@ msgstr "Plan von %(title)s (format %(format)s)"
 msgid "%(title)s %(format)s Index"
 msgstr "Straßenverzeichnis von %(title)s (format %(format)s)"
 
-#: maposmatic/views.py:99
+#: maposmatic/views.py:100
 msgid "Administrative boundary"
 msgstr "Verwaltungsgrenze (Name der Stadt)"
 
-#: maposmatic/views.py:100
+#: maposmatic/views.py:101
 msgid "Bounding box"
 msgstr "Begrenzungsrahmen"
 
-#: maposmatic/views.py:103
+#: maposmatic/views.py:104
 msgid "Area"
 msgstr "Gebiet"
 
-#: maposmatic/views.py:119
+#: maposmatic/views.py:120
 msgid "Administrative city required"
 msgstr "Name der Stadt erforderlich"
 
-#: maposmatic/views.py:135
+#: maposmatic/views.py:136
 #, python-format
 msgid "Error with osm city: %s"
 msgstr ""
 
-#: maposmatic/views.py:140
+#: maposmatic/views.py:141
 msgid "Map title required"
 msgstr "Name des Stadtplans benötigt"
 
-#: maposmatic/views.py:148
+#: maposmatic/views.py:149
 msgid "Required"
 msgstr "Benötigt"
 
-#: maposmatic/views.py:164
+#: maposmatic/views.py:165
 #, fuzzy
 msgid "Bounding Box too large"
 msgstr "Begrenzungsrahmen zu groß"
@@ -557,31 +557,31 @@ msgstr ""
 "Dieser Platz kann nicht von MapOSMatic herausgerückt werden, weil fehlen die "
 "Amtsgrezen. Bitte beitragen Sie !"
 
-#: templates/maposmatic/index.html:238
+#: templates/maposmatic/index.html:240
 msgid "No results found."
 msgstr "Kein Ort gefunden."
 
-#: templates/maposmatic/index.html:250 templates/maposmatic/index.html:327
+#: templates/maposmatic/index.html:252 templates/maposmatic/index.html:329
 msgid "Generate"
 msgstr "Erzeugen"
 
-#: templates/maposmatic/index.html:256 templates/maposmatic/index.html:328
+#: templates/maposmatic/index.html:258 templates/maposmatic/index.html:330
 msgid "Please fill in the form before trying to proceed"
 msgstr "Bitte ausfüllen Sie das Formular bevor probieren zu fortfahren"
 
-#: templates/maposmatic/index.html:272
+#: templates/maposmatic/index.html:274
 msgid "Introduction"
 msgstr "Einleitung"
 
-#: templates/maposmatic/index.html:282
+#: templates/maposmatic/index.html:284
 msgid "City Map"
 msgstr "Stadtplan"
 
-#: templates/maposmatic/index.html:288
+#: templates/maposmatic/index.html:290
 msgid "Streets index"
 msgstr "Straßenverzeichnis"
 
-#: templates/maposmatic/index.html:297
+#: templates/maposmatic/index.html:299
 msgid ""
 "MapOSMatic is a free software web service that\n"
 "allows you to generate maps of cities using\n"
@@ -594,25 +594,25 @@ msgstr ""
 "erzeugen.\n"
 "Ein Stadtplan besteht aus zwei Seiten:"
 
-#: templates/maposmatic/index.html:303
+#: templates/maposmatic/index.html:305
 msgid ""
 "The map itself, splitted in squares allowing to easily look for streets;"
 msgstr ""
 "Dem Plan selbst, aufgeteilt in Quadrate, um leicht nach Straßen suchen zu "
 "können;"
 
-#: templates/maposmatic/index.html:304
+#: templates/maposmatic/index.html:306
 msgid "An index of the streets with references to the squares on the map."
 msgstr "Dem Straßenverzeichnis, das sich auf die Planquadrate bezieht."
 
-#: templates/maposmatic/index.html:307
+#: templates/maposmatic/index.html:309
 msgid ""
 "The generated maps are available in PNG, PDF and\n"
 "SVG formats and are ready to be printed."
 msgstr ""
 "Die erzeugten Pläne sind als PNG, PDF und SVG verfügbar und druckfertig."
 
-#: templates/maposmatic/index.html:310
+#: templates/maposmatic/index.html:312
 msgid ""
 "As the data used to generate maps is coming from\n"
 "OpenStreetMap, you can freely (under the <a\n"
@@ -626,39 +626,39 @@ msgstr ""
 "a>\n"
 "benutzen, verkaufen, verändern..."
 
-#: templates/maposmatic/index.html:316
+#: templates/maposmatic/index.html:318
 msgid "More details"
 msgstr "Mehr Informationen"
 
-#: templates/maposmatic/index.html:318
+#: templates/maposmatic/index.html:320
 msgid "Generate your own map"
 msgstr "Erzeugen Sie Ihren eigenen Plan"
 
-#: templates/maposmatic/index.html:325
+#: templates/maposmatic/index.html:327
 msgid "Area selection mode:"
 msgstr "Auswahlmodus"
 
-#: templates/maposmatic/index.html:337
+#: templates/maposmatic/index.html:339
 msgid "City name:"
 msgstr "Name des Ortes"
 
-#: templates/maposmatic/index.html:340
+#: templates/maposmatic/index.html:342
 msgid "search"
 msgstr "Suche"
 
-#: templates/maposmatic/index.html:346
+#: templates/maposmatic/index.html:348
 msgid "Title of the map:"
 msgstr "Name des Stadtplans:"
 
-#: templates/maposmatic/index.html:352
+#: templates/maposmatic/index.html:354
 msgid "Bounding box:"
 msgstr "Begrenzungsrahmen:"
 
-#: templates/maposmatic/index.html:364
+#: templates/maposmatic/index.html:366
 msgid "Map Index Language:"
 msgstr "Sprache des Zeigefinger der Karte:"
 
-#: templates/maposmatic/index.html:374
+#: templates/maposmatic/index.html:376
 msgid ""
 "<em>MapOSMatic</em> covers the whole world but we need\n"
 "contributors to translate and adapt the few parts of <em>MapOSMatic</em>\n"
@@ -668,13 +668,13 @@ msgstr ""
 "ganzen Welt aber brauchen wir Helfer, die die wenigen länderspezifischen\n"
 "Teile von <em>MapOSMatic</em> übersetzen und anpassen."
 
-#: templates/maposmatic/index.html:378
+#: templates/maposmatic/index.html:380
 msgid ""
 "To select the city to be rendered, two modes are\n"
 "available:"
 msgstr "Es gibt zwei Arten, die zu rendernde Stadt auszuwählen:"
 
-#: templates/maposmatic/index.html:383
+#: templates/maposmatic/index.html:385
 msgid ""
 "<em>Using an administrative boundary</em>. It allows\n"
 "  to get a map with precise boundaries of the city when such limits are\n"
@@ -685,13 +685,13 @@ msgstr ""
 "der Stadt zu bekommen, wenn  diese Grenzen erhältlich sind. Anderenfalls,\n"
 "brauchen Sie einen Begrenzungsrahmen."
 
-#: templates/maposmatic/index.html:388
+#: templates/maposmatic/index.html:390
 msgid ""
 "<em>Using a traditional bounding\n"
 "  box</em>."
 msgstr "Unter Benutzung eines tradtionellen <em>Begrenzungsrahmens</em>."
 
-#: templates/maposmatic/index.html:393
+#: templates/maposmatic/index.html:395
 msgid ""
 "Once the rendering is submitted, you will be brought\n"
 "to a page giving the status of your rendering request. As soon as the\n"
