@@ -21,7 +21,7 @@ msgstr ""
 "Project-Id-Version: mapOSMatic 0.1\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2009-12-24 16:25+0100\n"
-"PO-Revision-Date: 2009-12-24 16:36+0100\n"
+"PO-Revision-Date: 2009-12-25 11:49+0100\n"
 "Last-Translator: Thomas Petazzoni <thomas.petazzoni@enix.org>\n"
 "Language-Team: IT <talk-it@openstreetmap.org>\n"
 "MIME-Version: 1.0\n"
@@ -152,7 +152,7 @@ msgid ""
 "named the project <strong>MapOSMatic</strong>. The group of crazy\n"
 "hackers would like to thank Gilles for sharing his bright\n"
 "idea!"
-msgstr "MapOSMatic è un progetto nato da un'idea di Gilles Lamiral, un contributore di <a href=\"http://www.openstreetmap.org\">OpenStreetMap</a> e programmatore di  software libero, di Rennes, Francia. A partire dalla sua idea, un gruppo di <a href=\"http://it.wikipedia.org/wiki/Hacker\">hacker/a> pazzi si è riunito durante un <em>Hackfest</em> di una settimana nell'Agosto 2009 e ha trasformato l'idea di Gilles in realtà. Il gruppo di <em>hacker</em> pazzi vuole ringraziare Gilles di aver condiviso la sua brillante idea !"
+msgstr "MapOSMatic è un progetto nato da un'idea di Gilles Lamiral, un contributore di <a href=\"http://www.openstreetmap.org\">OpenStreetMap</a> e programmatore di  software libero, di Rennes, Francia. A partire dalla sua idea, un gruppo di <a href=\"http://it.wikipedia.org/wiki/Hacker\">hacker</a> pazzi si è riunito durante un <em>Hackfest</em> di una settimana nell'Agosto 2009 e ha trasformato l'idea di Gilles in realtà. Il gruppo di <em>hacker</em> pazzi vuole ringraziare Gilles di aver condiviso la sua brillante idea !"
 
 #: templates/maposmatic/about.html:51
 msgid ""
@@ -411,7 +411,7 @@ msgstr "Pas de demande de rendu de carte durant les dernières 24 heures."
 #: templates/maposmatic/all_maps.html:35
 #: templates/maposmatic/base.html:55
 msgid "Maps"
-msgstr "Cartes"
+msgstr "Mappe"
 
 #: templates/maposmatic/all_maps.html:42
 #: templates/maposmatic/job.html:119
@@ -433,11 +433,11 @@ msgstr "Vos cartes de ville libres !"
 
 #: templates/maposmatic/base.html:54
 msgid "Jobs"
-msgstr "Rendus"
+msgstr "Risultati"
 
 #: templates/maposmatic/base.html:56
 msgid "News"
-msgstr "Actualités"
+msgstr "Attualità"
 
 #: templates/maposmatic/base.html:69
 msgid "Random map"
@@ -525,7 +525,7 @@ msgstr ""
 
 #: templates/maposmatic/index.html:305
 msgid "The map itself, splitted in squares allowing to easily look for streets;"
-msgstr "La carta stessa con sovrepposta una griglia di riferimento per facilitare la ricerca delle strade ;"
+msgstr "La carta stessa con sovrapposta una griglia di riferimento per facilitare la ricerca delle strade ;"
 
 #: templates/maposmatic/index.html:306
 msgid "An index of the streets with references to the squares on the map."
@@ -628,7 +628,7 @@ msgstr ""
 "A processo di restituzione avviato sarete reindirizzati\n"
 "ad una pagina che mostrerà lo stato di avanzamento del processo. Appena il processo sarà\n"
 "completato (con tempi che dipendono dalla coda di processi),\n"
-"la pagina riportera il link alla mappa generata."
+"la pagina riporterà il link alla mappa generata."
 
 #: templates/maposmatic/job.html:38
 #, python-format
