@@ -73,12 +73,6 @@ OpenStreetMap Subversion repository</a>. Using Mapnik
 and <a href="http://cairographics.org/pycairo/">Cairo</a>, we
 built <i>OCitySMap</i>, a Python module that:{%endblocktrans%}</p>
 
-<p>{%blocktrans%}For the city search engine, we use the wonderful <a
-href="http://nominatim.openstreetmap.org">Nominatim</a> service. This
-service made really it really simple to provide a nice search engine
-that allows to select between multiple cities of the same name, by
-providing informations on the city location.{%endblocktrans%}</p>
-
 <ul>
 
   <li>{%blocktrans%}Renders the map using OpenStreetMap data and the
@@ -114,6 +108,12 @@ of these requests. The rendering itself takes place asynchronously
 through the <i>maposmaticd</i> daemon. This daemon does only one
 rendering at a time, which is very important because of the CPU and I/O
 intensive nature of the map rendering process.{%endblocktrans%}</p>
+
+<p>{%blocktrans%}For the city search engine, we use the wonderful <a
+href="http://nominatim.openstreetmap.org">Nominatim</a> service. This
+service made it really simple to provide a nice search engine that
+allows to select between multiple cities of the same name, by
+providing informations on the city location.{%endblocktrans%}</p>
 
 <h2>{% trans "Contributing" %}</h2>
 
