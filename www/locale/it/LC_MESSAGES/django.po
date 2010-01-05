@@ -20,7 +20,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: mapOSMatic 0.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-12-26 20:47+0100\n"
+"POT-Creation-Date: 2010-01-05 21:42+0100\n"
 "PO-Revision-Date: 2009-12-25 11:49+0100\n"
 "Last-Translator: Thomas Petazzoni <thomas.petazzoni@enix.org>\n"
 "Language-Team: IT <talk-it@openstreetmap.org>\n"
@@ -28,7 +28,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: settings.py:139
+#: settings.py:140
 msgid "No localization"
 msgstr "Nessuna traduzione"
 
@@ -381,39 +381,35 @@ msgstr ""
 msgid "Position in queue"
 msgstr ""
 
-#: templates/maposmatic/all_jobs.html:56
-msgid "ETA before rendering"
-msgstr ""
-
-#: templates/maposmatic/all_jobs.html:79
+#: templates/maposmatic/all_jobs.html:78
 msgid "not started"
 msgstr ""
 
-#: templates/maposmatic/all_jobs.html:88
+#: templates/maposmatic/all_jobs.html:87
 msgid "not finished"
 msgstr ""
 
-#: templates/maposmatic/all_jobs.html:109
+#: templates/maposmatic/all_jobs.html:103
 #: templates/maposmatic/all_maps.html:82
 msgid "Previous"
 msgstr ""
 
-#: templates/maposmatic/all_jobs.html:113
+#: templates/maposmatic/all_jobs.html:107
 #: templates/maposmatic/all_maps.html:86
 msgid "Page"
 msgstr ""
 
-#: templates/maposmatic/all_jobs.html:113
+#: templates/maposmatic/all_jobs.html:107
 #: templates/maposmatic/all_maps.html:86
 msgid "of"
 msgstr ""
 
-#: templates/maposmatic/all_jobs.html:117
+#: templates/maposmatic/all_jobs.html:111
 #: templates/maposmatic/all_maps.html:90
 msgid "Next"
 msgstr ""
 
-#: templates/maposmatic/all_jobs.html:123
+#: templates/maposmatic/all_jobs.html:117
 msgid ""
 "No map rendering request since the last 24\n"
 "hours."
@@ -423,7 +419,7 @@ msgstr ""
 msgid "Maps"
 msgstr "Mappe"
 
-#: templates/maposmatic/all_maps.html:42 templates/maposmatic/job.html:119
+#: templates/maposmatic/all_maps.html:42 templates/maposmatic/job.html:126
 msgid "Thumbnail"
 msgstr ""
 
@@ -431,7 +427,7 @@ msgstr ""
 msgid "Files"
 msgstr ""
 
-#: templates/maposmatic/all_maps.html:71 templates/maposmatic/job.html:134
+#: templates/maposmatic/all_maps.html:71 templates/maposmatic/job.html:141
 msgid "The generated files are no longer available"
 msgstr ""
 
@@ -650,61 +646,85 @@ msgstr ""
 msgid "Map <i>%(job_t)s</i> Status"
 msgstr "Status del processo di renderizzazione della mappa <i>%(job_t)s</i>"
 
-#: templates/maposmatic/job.html:43
+#: templates/maposmatic/job.html:44
 msgid ""
 "You have been redirected to a similar map, rendered less than 24 hours ago."
 msgstr ""
 "Sei stato reindirizzato ad un mappa simile a qella richiesta, generata più "
 "recentemente di 24 ore fa."
 
-#: templates/maposmatic/job.html:51
+#: templates/maposmatic/job.html:47
+msgid ""
+"You have been redirected to a similar rendering request, submitted less than "
+"24 hours ago. This request failed and we therefore prevent running the same "
+"request again. Please contact us at <a href="
+msgstr ""
+
+#: templates/maposmatic/job.html:50
+#, fuzzy
+msgid ""
+"You have been redirected to a similar rendering request, submitted less than "
+"24 hours ago, and currently waiting to be processed."
+msgstr ""
+"Sei stato reindirizzato ad un mappa simile a qella richiesta, generata più "
+"recentemente di 24 ore fa."
+
+#: templates/maposmatic/job.html:53
+#, fuzzy
+msgid ""
+"You have been redirected to a similar rendering request, submitted less than "
+"24 hours ago, and currently being processed."
+msgstr ""
+"Sei stato reindirizzato ad un mappa simile a qella richiesta, generata più "
+"recentemente di 24 ore fa."
+
+#: templates/maposmatic/job.html:62
 msgid "Refresh the status"
 msgstr "Aggiorna lo status"
 
-#: templates/maposmatic/job.html:56
+#: templates/maposmatic/job.html:67
 msgid "Map title"
 msgstr "Titolo della mappa"
 
-#: templates/maposmatic/job.html:61
+#: templates/maposmatic/job.html:72
 msgid "Administrative city"
 msgstr "Confini amministrativi"
 
-#: templates/maposmatic/job.html:66
+#: templates/maposmatic/job.html:77
 msgid "Bounding-box coordinates"
 msgstr "Coordinate dell'area geografica (long/lat)"
 
-#: templates/maposmatic/job.html:76
+#: templates/maposmatic/job.html:87
 msgid "Status"
 msgstr "Status"
 
-#: templates/maposmatic/job.html:80
+#: templates/maposmatic/job.html:91
 msgid "Submission time"
 msgstr "Data di sottomissione della richiesta"
 
-#: templates/maposmatic/job.html:84
+#: templates/maposmatic/job.html:95
 msgid "Start of rendering time"
 msgstr "Inizio del processo di renderizzazione"
 
-#: templates/maposmatic/job.html:87 templates/maposmatic/job.html.py:100
+#: templates/maposmatic/job.html:98 templates/maposmatic/job.html.py:111
 msgid "Rendering not started yet"
 msgstr "Renderizzazione non ancora iniziata"
 
-#: templates/maposmatic/job.html:94
+#: templates/maposmatic/job.html:105
 msgid "End of rendering time"
 msgstr "Fine stimata del processo di renderizzazione"
 
-#: templates/maposmatic/job.html:103
+#: templates/maposmatic/job.html:114
 msgid "Rendering not finished yet"
 msgstr "Renderizzazione non ancora terminata"
 
-#: templates/maposmatic/job.html:109
+#: templates/maposmatic/job.html:120
 msgid "Current position in queue"
 msgstr "Posizione attuale nella coda dei processi"
 
-#: templates/maposmatic/job.html:113
-msgid "Estimated rendering time completion"
-msgstr "Tempo stimato per il completamento"
-
-#: templates/maposmatic/job.html:127
+#: templates/maposmatic/job.html:134
 msgid "Result files"
 msgstr "File generati"
+
+#~ msgid "Estimated rendering time completion"
+#~ msgstr "Tempo stimato per il completamento"
