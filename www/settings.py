@@ -108,7 +108,8 @@ formatter = logging.Formatter("%(name)s - %(asctime)s - %(levelname)s - %(messag
 LANGUAGES = (("fr", u"Français"),
              ("en", u"English"),
              ("de", u"Deutsch"),
-             ("it", u"Italiano"))
+             ("it", u"Italiano"),
+             ("ca", u"Català"))
 
 MAP_LANGUAGES = [("fr_BE.UTF-8", u"Royaume de Belgique (FR)"),
                  ("fr_FR.UTF-8", u"France"),
