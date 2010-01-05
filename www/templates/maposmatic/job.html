@@ -109,10 +109,6 @@ class="activelink"
     <td>{% trans "Current position in queue" %}</td>
     <td>{{ job.current_position_in_queue }}
   </tr>
-  <tr>
-    <td>{% trans "Estimated rendering time completion" %}</td>
-    <td>{{ job.rendering_estimated_start_time|timeuntil }}</td>
-  </tr>
   {% endif %}
   {% if job.is_done_ok %}
   <tr class="odd">
