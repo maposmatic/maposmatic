@@ -516,7 +516,9 @@ msgid ""
 "\n"
 "    published %(date)s ago\n"
 "    "
-msgstr " %(date)s geleden gepubliceerd"
+msgstr ""
+"\n"
+"%(date)s geleden gepubliceerd"
 
 #: templates/maposmatic/base.html:99
 msgid "Contact"
