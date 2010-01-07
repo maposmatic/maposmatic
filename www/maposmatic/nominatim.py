@@ -135,7 +135,9 @@ def _retrieve_missing_data_from_GIS(entries):
                                  www.settings.DATABASE_USER,
                                  www.settings.DATABASE_HOST,
                                  www.settings.DATABASE_PASSWORD))
-    except psycopg2.OperationalError:
+    except psycopg2.OperationalError, e:
+        www.settings.LOG.warning("Could not connect to the PostGIS database: %s" %
+                                 str(e)[:-1])
         return entries
 
     # Nominatim returns a field "osm_id" for each result
