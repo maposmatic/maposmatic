@@ -146,6 +146,7 @@ MAP_LANGUAGES = [("fr_BE.UTF-8", u"Royaume de Belgique (FR)"),
                  ("es_ES.UTF-8", u"España (ES)"),
                  ("ca_ES.UTF-8", u"Espanya (CA)"),
                  ("pt_BR.UTF-8", u"Brasil (PT)"),
+                 ("da_DK.UTF-8", u"Danmark (DA)"),
                  # "C" must be the last entry
                  ("C", _(u"No localization"))]
 
