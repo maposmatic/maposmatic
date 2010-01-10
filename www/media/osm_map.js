@@ -203,7 +203,12 @@ function suggest(input, results, osm_id, button, options) {
   }
 
   function processKey(e) {
-    clearResult();
+    if (e.keyCode != 13) {
+      clearResult();
+    } else {
+      if ($osm_id.val() != '')
+        $button.click();
+    }
 
     switch (e.keyCode) {
       case 27:  // ESC
