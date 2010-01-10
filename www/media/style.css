@@ -39,6 +39,10 @@ a img {
   border: none;
 }
 
+img {
+  -ms-interpolation-mode: bicubic;
+}
+
 /* Header */
 #header {
   background-color: #cee5f6;
@@ -105,18 +109,23 @@ ul#nav li.activelink a {
   border-bottom: none;
 }
 
+#layout {
+  clear: both;
+  margin: 1em;
+  margin-top: 2em;
+}
 
 /* Main content */
 #content {
-  clear: both;
-  margin: 1em 0 2em 2em;
-  float: left;
-  width: 70%;
+  width: 75%;
+  vertical-align: top;
+  padding-right: 1em;
 }
 
 #content h1 {
   color: #0066b3;
   border-bottom: 1px black solid;
+  margin-top: 0;
 }
 
 #content h2 a {
@@ -159,11 +168,11 @@ p#more span {
 
 /* Meta informations */
 #meta {
-  float: right;
-  width: 22%;
-  margin: 3em 1em;
-  padding: 0 0 1em 1em;
+/*  float: right; */
+  width: 25%;
   border-left: 1px #ccc solid;
+  vertical-align: top;
+  padding-left: 1em;
 }
 
 #meta h3 {
@@ -181,6 +190,7 @@ p#more span {
 
 #bnews ul {
   padding-left: 1.5em;
+  margin: 0;
 }
 
 #bnews li {
@@ -204,7 +214,6 @@ p#more span {
 .job {
   margin: 1em 0;
   padding: 1em;
-  width: auto;
 
   border: 1px #ccc solid;
 }
@@ -228,7 +237,6 @@ h2.jobtitle a {
 }
 
 table.jobinfo {
-  width: 100%;
   margin-top: 1em;
 }
 
@@ -249,7 +257,7 @@ table.jobinfo td.info {
 
 div.mapsearch {
   float: right;
-  margin-top: 2em;
+  margin-top: 1em;
   font-style: italic;
 }
 
@@ -284,6 +292,7 @@ a.selectedletter {
 #mainfrm ul {
   list-style: none;
   padding: 0;
+  margin: 0;
 }
 
 #mainfrm tr.bybbox {
@@ -320,9 +329,9 @@ a.selectedletter {
 #suggest {
   margin: 0;
   margin-top: -3px;
-  position: absolute;
 
-  width: 600px;
+  width: 80%;
+  max-width: 600px;
   list-style: none;
   background: white;
   border: 1px black solid;

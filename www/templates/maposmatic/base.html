@@ -69,46 +69,48 @@
       </ul>
     </div>
 
-    <div id="content">
-      {% block page %}{% endblock %}
-    </div>
+    <table id="layout"><tbody><tr>
+      <td id="content">
+        {% block page %}{% endblock %}
+      </td>
 
-    <div id="meta">
-      <div id="bmap">
-        <h3>{% trans "Random map" %}</h3>
-        {% if randommap %}<p class="randommap">
-          <a href="{% url job-by-id randommap.id %}">
-            <img src="{{ randommap.get_thumbnail }}" /><br />
-            <i>{{ randommap.maptitle }}</i>
-          </a>
-        </p>
-        {% else %}<p>{% trans "No random map found." %}</p>
-        {% endif %}
-      </div>
+      <td id="meta">
+        <div id="bmap">
+          <h3>{% trans "Random map" %}</h3>
+          {% if randommap %}<p class="randommap">
+            <a href="{% url job-by-id randommap.id %}">
+              <img src="{{ randommap.get_thumbnail }}" /><br />
+              <i>{{ randommap.maptitle }}</i>
+            </a>
+          </p>
+          {% else %}<p>{% trans "No random map found." %}</p>
+          {% endif %}
+        </div>
 
-      <div id="bnews">
-        <h3>{% trans "Latest news" %}</h3>
-        <ul>
-          {% for entry in blogposts %}<li>
-            <a href="{{ entry.link }}">{{ entry.title }}</a><br />
-            <span class="newsinfo">
-              {% blocktrans with entry.updated_parsed|feedparsed|timesince as date %}published {{ date }} ago{% endblocktrans %}
-            </span>
-          </li>
-          {% endfor %}
-        </ul>
-      </div>
+        <div id="bnews">
+          <h3>{% trans "Latest news" %}</h3>
+          <ul>
+            {% for entry in blogposts %}<li>
+              <a href="{{ entry.link }}">{{ entry.title }}</a><br />
+              <span class="newsinfo">
+                {% blocktrans with entry.updated_parsed|feedparsed|timesince as date %}published {{ date }} ago{% endblocktrans %}
+              </span>
+            </li>
+            {% endfor %}
+          </ul>
+        </div>
 
-      <div id="bcontact">
-        <h3>{% trans "Contact" %}</h3>
-        <p>
-          {% trans "Mail:" %}
-          <a href="mailto:contact@maposmatic.org">contact@maposmatic.org</a><br />
-          {% trans "IRC:" %}
-          <tt>#maposmatic</tt> {% trans "on" %} <tt>irc.freenode.net</tt>
-        </p>
-      </div>
-    </div>
+        <div id="bcontact">
+          <h3>{% trans "Contact" %}</h3>
+          <p>
+            {% trans "Mail:" %}
+            <a href="mailto:contact@maposmatic.org">contact@maposmatic.org</a><br />
+            {% trans "IRC:" %}
+            <tt>#maposmatic</tt> {% trans "on" %} <tt>irc.freenode.net</tt>
+          </p>
+        </div>
+      </td>
+    </tr></tbody></table>
 
     <!-- Piwik statistics -->
     <script type="text/javascript">
