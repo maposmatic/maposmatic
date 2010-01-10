@@ -20,7 +20,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: mapOSMatic 0.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-01-07 13:05+0100\n"
+"POT-Creation-Date: 2010-01-08 16:33+0100\n"
 "PO-Revision-Date: 2009-12-26 20:47+0100\n"
 "Last-Translator: Thomas Petazzoni <thomas.petazzoni@enix.org>\n"
 "Language-Team: FR <LL@li.org>\n"
@@ -28,7 +28,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: settings.py:147
+#: settings.py:152
 msgid "No localization"
 msgstr "Pas de traduction"
 
@@ -91,7 +91,7 @@ msgstr "Rendu terminé avec succès"
 msgid "Rendering failed, please contact contact@maposmatic.org"
 msgstr "Le rendu a échoué, merci de contacter contact@maposmatic.org"
 
-#: templates/404.html:3 templates/500.html:3 templates/maposmatic/base.html:53
+#: templates/404.html:3 templates/500.html:3 templates/maposmatic/base.html:63
 msgid "Home"
 msgstr "Accueil"
 
@@ -127,11 +127,11 @@ msgstr "Erreur interne <em>500</em>"
 msgid "There's been an error."
 msgstr "Une erreur est apparue."
 
-#: templates/maposmatic/about.html:35 templates/maposmatic/base.html:57
+#: templates/maposmatic/about.html:35 templates/maposmatic/base.html:67
 msgid "About"
 msgstr "À propos..."
 
-#: templates/maposmatic/about.html:37
+#: templates/maposmatic/about.html:36
 msgid "History"
 msgstr "Historique"
 
@@ -158,21 +158,21 @@ msgstr ""
 "et a transformé l'idée de Gilles en réalité. Le groupe de <em>hackers</em> "
 "fous souhaite remercier Gilles d'avoir partagé cette brillante idée&nbsp;!"
 
-#: templates/maposmatic/about.html:51
+#: templates/maposmatic/about.html:53
 msgid ""
 "Of course, MapOSMatic is fully free software,\n"
-"licensed under the <a href=\"http://www.fsf.org/licensing/licenses/agpl-3.0."
-"html\">AGPLv3</a>."
+"licensed under the <a\n"
+"href=\"http://www.fsf.org/licensing/licenses/agpl-3.0.html\">AGPLv3</a>.\n"
 msgstr ""
 "Bien entendu, MapOSMatic est un Logiciel Libre, disponible sous les termes "
 "de la licence <a href=\"http://www.fsf.org/licensing/licenses/agpl-3.0.html"
-"\">AGPLv3</a>."
+"\">AGPLv3</a>.\n"
 
-#: templates/maposmatic/about.html:54
+#: templates/maposmatic/about.html:60
 msgid "How does it work?"
 msgstr "Comment est-ce que ça fonctionne&nbsp;?"
 
-#: templates/maposmatic/about.html:56
+#: templates/maposmatic/about.html:63
 msgid ""
 "On our server, we run a <a\n"
 "href=\"http://www.postgresql.org\">PostgreSQL</a> server, with the <a\n"
@@ -197,7 +197,7 @@ msgstr ""
 "de la base de données, ce qui nous permet de conserver celle-ci à jour avec "
 "les nouvelles contributions des utilisateurs OpenStreetMap."
 
-#: templates/maposmatic/about.html:68
+#: templates/maposmatic/about.html:77
 msgid ""
 "For the map rendering, we use the\n"
 "famous <a href=\"http://www.mapnik.org\">Mapnik</a> with the OpenStreetMap\n"
@@ -216,7 +216,7 @@ msgstr ""
 "\"http://cairographics.org/pycairo/\">Cairo</a>, nous avons développé "
 "<i>OCitySMap</i>, un module Python qui :"
 
-#: templates/maposmatic/about.html:78
+#: templates/maposmatic/about.html:87
 msgid ""
 "Renders the map using OpenStreetMap data and the\n"
 "  OpenStreetMap Mapnik stylesheet;"
@@ -224,7 +224,7 @@ msgstr ""
 "Effectue le rendu de la carte en utilisant les données OpenStreetMap et la "
 "feuille de style OpenStreetMap pour Mapnik&nbsp;;"
 
-#: templates/maposmatic/about.html:81
+#: templates/maposmatic/about.html:89
 msgid ""
 "Renders on top of the map, using Mapnik, the grid\n"
 "  of 500 meters squares, the labels of the squares, and a few other\n"
@@ -235,7 +235,7 @@ msgstr ""
 "grille de carrés de 500 mètres de coté, des légendes de ces carrés et de "
 "quelques autres informations (droits d'auteur, échelle, etc.)&nbsp;;"
 
-#: templates/maposmatic/about.html:86
+#: templates/maposmatic/about.html:93
 msgid ""
 "Greys out all the area outside the city if we find\n"
 "  its administrative boundary;"
@@ -243,7 +243,7 @@ msgstr ""
 "Ajoute un pourtour gris autour de la ville si nous avons ses limites "
 "administratives&nbsp;;"
 
-#: templates/maposmatic/about.html:89
+#: templates/maposmatic/about.html:95
 msgid ""
 "Renders an index of the streets, based on\n"
 "  OpenStreetMap data and the intersection of the streets with the\n"
@@ -252,7 +252,7 @@ msgstr ""
 "Génère un index des rues basé sur les données OpenStreetMap et leur "
 "intersection avec les carrés de la carte."
 
-#: templates/maposmatic/about.html:95
+#: templates/maposmatic/about.html:101
 msgid ""
 "This Python module can be used through a command-line\n"
 "tool provided with OCitySMap, so everyone can run its own city-map\n"
@@ -268,7 +268,7 @@ msgstr ""
 "été créé pour permettre aux utilisateurs finaux de générer et d'utiliser "
 "facilement des cartes de ville OpenStreetMap."
 
-#: templates/maposmatic/about.html:102
+#: templates/maposmatic/about.html:110
 msgid ""
 "This web service has been called <i>MapOSMatic</i>,\n"
 "like <i>map-o-matic</i> but with a reference to OpenStreetMap (OSM). The\n"
@@ -289,7 +289,7 @@ msgstr ""
 "un instant donné, ce qui est très important étant donné la nature très "
 "intensive en charge processeur et d'entrées-sorties du processus de rendu."
 
-#: templates/maposmatic/about.html:112
+#: templates/maposmatic/about.html:122
 msgid ""
 "For the city search engine, we use the wonderful <a\n"
 "href=\"http://nominatim.openstreetmap.org\">Nominatim</a> service. This\n"
@@ -304,11 +304,11 @@ msgstr ""
 "parmi plusieurs villes de même nom, en offrant des informations sur la "
 "localisation de la ville."
 
-#: templates/maposmatic/about.html:118
+#: templates/maposmatic/about.html:130
 msgid "Contributing"
 msgstr "Contribuer"
 
-#: templates/maposmatic/about.html:120
+#: templates/maposmatic/about.html:133
 msgid ""
 "As stated above, both <i>OCitySMap</i> and\n"
 "<i>MapOSMatic</i> are fully free software, so you're invited to\n"
@@ -319,7 +319,7 @@ msgstr ""
 "Logiciels Libres, vous êtes donc invités à y contribuer. Voici quelques "
 "points de départ pour nous aider&nbsp;:"
 
-#: templates/maposmatic/about.html:127
+#: templates/maposmatic/about.html:140
 msgid ""
 "The <a\n"
 "  href=\"https://savannah.nongnu.org/projects/maposmatic/\">project on\n"
@@ -329,7 +329,7 @@ msgstr ""
 "  href=\"https://savannah.nongnu.org/projects/maposmatic/\">projet sur\n"
 "  Savannah</a>&nbsp;;"
 
-#: templates/maposmatic/about.html:131
+#: templates/maposmatic/about.html:143
 msgid ""
 "The <a\n"
 "  href=\"http://lists.nongnu.org/mailman/listinfo/maposmatic-dev"
@@ -340,37 +340,37 @@ msgstr ""
 "  href=\"http://lists.nongnu.org/mailman/listinfo/maposmatic-dev\">liste de "
 "diffusion pour le développement (en langue anglaise)</a>&nbsp;;"
 
-#: templates/maposmatic/about.html:135
+#: templates/maposmatic/about.html:146
 msgid ""
-"The IRC channel <code>#maposmatic</code> on\n"
+"The IRC channel <tt>#maposmatic</tt> on\n"
 "  Freenode;"
-msgstr "Le canal IRC <code>#maposmatic</code> sur le réseau Freenode&nbsp;;"
+msgstr "Le canal IRC <tt>#maposmatic</tt> sur le réseau Freenode&nbsp;;"
 
-#: templates/maposmatic/about.html:138
+#: templates/maposmatic/about.html:148
 msgid ""
 "The <a\n"
 "  href=\"http://git.savannah.gnu.org/cgit/maposmatic/ocitysmap.git"
 "\">OCitySMap\n"
-"  Git repository</a>, which can be cloned using <code>git clone\n"
-"  git://git.sv.gnu.org/maposmatic/ocitysmap.git</code>;"
+"  Git repository</a>, which can be cloned using <tt>git clone\n"
+"  git://git.sv.gnu.org/maposmatic/ocitysmap.git</tt>;"
 msgstr ""
 "Le <a\n"
 "  href=\"http://git.savannah.gnu.org/cgit/maposmatic/ocitysmap.git\">dépôt "
-"Git OCitySMap</a>, qui peut être cloné via « <code>git clone git://git.sv.gnu."
-"org/maposmatic/ocitysmap.git</code> »&nbsp;;"
+"Git OCitySMap</a>, qui peut être cloné via « <tt>git clone git://git.sv.gnu."
+"org/maposmatic/ocitysmap.git</tt> »&nbsp;;"
 
-#: templates/maposmatic/about.html:143
+#: templates/maposmatic/about.html:152
 msgid ""
 "The <a\n"
 "  href=\"http://git.savannah.gnu.org/cgit/maposmatic.git\">MapOSMatic\n"
 "  Git repository</a>, which can be cloned using\n"
-"  <code>git clone git://git.sv.gnu.org/maposmatic.git</code>;"
+"  <tt>git clone git://git.sv.gnu.org/maposmatic.git</tt>;"
 msgstr ""
 "Le <a href=\"http://git.savannah.gnu.org/cgit/maposmatic.git\">dépôt Git "
-"MapOSMatic</a>, qui peut être cloné via « <code>git clone git://git.sv.gnu."
-"org/maposmatic.git</code> »&nbsp;;"
+"MapOSMatic</a>, qui peut être cloné via « <tt>git clone git://git.sv.gnu."
+"org/maposmatic.git</tt> »&nbsp;;"
 
-#: templates/maposmatic/about.html:148
+#: templates/maposmatic/about.html:156
 msgid ""
 "<a\n"
 "  href=\"https://savannah.nongnu.org/task/?group=maposmatic\">TODO-list\n"
@@ -380,11 +380,11 @@ msgstr ""
 "  href=\"https://savannah.nongnu.org/task/?group=maposmatic\">TODO-list\n"
 "  et idées</a>."
 
-#: templates/maposmatic/about.html:154
+#: templates/maposmatic/about.html:163
 msgid "Authors"
 msgstr "Auteurs"
 
-#: templates/maposmatic/about.html:166
+#: templates/maposmatic/about.html:174
 msgid "Contributors"
 msgstr "Contributeurs"
 
@@ -392,7 +392,7 @@ msgstr "Contributeurs"
 msgid "Job list"
 msgstr "Liste des rendus"
 
-#: templates/maposmatic/all_jobs.html:42
+#: templates/maposmatic/all_jobs.html:41
 msgid ""
 "This page gives the status of all the rendering\n"
 "requests received during the last 24 hours, starting from the most\n"
@@ -401,23 +401,23 @@ msgstr ""
 "Cette page donne l'état de toutes les demandes de rendu reçues durant les "
 "dernières 24 heures, de la plus récente à la plus ancienne."
 
-#: templates/maposmatic/all_jobs.html:57 templates/maposmatic/all_maps.html:57
+#: templates/maposmatic/all_jobs.html:54 templates/maposmatic/all_maps.html:57
 msgid "Previous"
 msgstr "Précédent"
 
-#: templates/maposmatic/all_jobs.html:61 templates/maposmatic/all_maps.html:61
+#: templates/maposmatic/all_jobs.html:55 templates/maposmatic/all_maps.html:61
 msgid "Page"
 msgstr "Page"
 
-#: templates/maposmatic/all_jobs.html:61 templates/maposmatic/all_maps.html:61
+#: templates/maposmatic/all_jobs.html:55 templates/maposmatic/all_maps.html:61
 msgid "of"
 msgstr "de"
 
-#: templates/maposmatic/all_jobs.html:65 templates/maposmatic/all_maps.html:65
+#: templates/maposmatic/all_jobs.html:56 templates/maposmatic/all_maps.html:65
 msgid "Next"
 msgstr "Suivant"
 
-#: templates/maposmatic/all_jobs.html:71
+#: templates/maposmatic/all_jobs.html:62
 msgid ""
 "No map rendering request since the last 24\n"
 "hours."
@@ -431,7 +431,7 @@ msgstr "Recherche"
 msgid "Search coming soon!"
 msgstr "Recherche bientôt disponible !"
 
-#: templates/maposmatic/all_maps.html:37 templates/maposmatic/base.html:55
+#: templates/maposmatic/all_maps.html:37 templates/maposmatic/base.html:65
 msgid "Maps"
 msgstr "Cartes"
 
@@ -445,61 +445,52 @@ msgid "No map starts with %(current_letter)s in our database!"
 msgstr ""
 "Aucune carte ne commence par %(current_letter)s dans notre base de données !"
 
-#: templates/maposmatic/base.html:49
+#: templates/maposmatic/base.html:53
 msgid "Your free city maps!"
 msgstr "Vos cartes de ville libres&nbsp;!"
 
-#: templates/maposmatic/base.html:54
+#: templates/maposmatic/base.html:64
 msgid "Jobs"
 msgstr "Rendus"
 
-#: templates/maposmatic/base.html:56
+#: templates/maposmatic/base.html:66
 msgid "News"
 msgstr "Actualités"
 
-#: templates/maposmatic/base.html:69
-msgid "Random map"
-msgstr "Carte au hasard"
-
-#: templates/maposmatic/base.html:79
-msgid "No random map found."
-msgstr "Aucune carte trouvée."
-
-#: templates/maposmatic/base.html:84
-msgid "Latest news"
-msgstr "Dernières actualités"
-
-#: templates/maposmatic/base.html:89
-#, python-format
-msgid ""
-"\n"
-"    published %(date)s ago\n"
-"    "
-msgstr ""
-"\n"
-"publié il y a %(date)s"
-
-#: templates/maposmatic/base.html:99
+#: templates/maposmatic/base.html:77
 msgid "Contact"
 msgstr "Contact"
 
-#: templates/maposmatic/base.html:101
+#: templates/maposmatic/base.html:79
 msgid "Mail:"
 msgstr "Email :"
 
-#: templates/maposmatic/base.html:102
+#: templates/maposmatic/base.html:80
 msgid "IRC:"
 msgstr "IRC :"
 
-#: templates/maposmatic/base.html:102
+#: templates/maposmatic/base.html:80
 msgid "on"
 msgstr "sur"
 
-#: templates/maposmatic/base.html:108
-msgid "Language:"
-msgstr "Langue&nbsp;:"
+#: templates/maposmatic/base.html:85
+msgid "Random map"
+msgstr "Carte au hasard"
 
-#: templates/maposmatic/index.html:227
+#: templates/maposmatic/base.html:92
+msgid "No random map found."
+msgstr "Aucune carte trouvée."
+
+#: templates/maposmatic/base.html:97
+msgid "Latest news"
+msgstr "Dernières actualités"
+
+#: templates/maposmatic/base.html:102
+#, python-format
+msgid "published %(date)s ago"
+msgstr "publié il y a %(date)s"
+
+#: templates/maposmatic/index.html:225
 msgid ""
 "This place cannot be rendered by MapOSMatic, administrative boundary "
 "missing. Please contribute !"
@@ -507,31 +498,31 @@ msgstr ""
 "Cette ville ne peut être rendue par MapOSMatic, la limite administrative est "
 "manquante. Veuillez contribuer !"
 
-#: templates/maposmatic/index.html:240
+#: templates/maposmatic/index.html:238
 msgid "No results found."
 msgstr "Aucun résultat."
 
-#: templates/maposmatic/index.html:252 templates/maposmatic/index.html:329
+#: templates/maposmatic/index.html:250 templates/maposmatic/index.html:323
 msgid "Generate"
 msgstr "Générer..."
 
-#: templates/maposmatic/index.html:258 templates/maposmatic/index.html:330
+#: templates/maposmatic/index.html:256 templates/maposmatic/index.html:324
 msgid "Please fill in the form before trying to proceed"
 msgstr "Veuillez remplir le formulaire avant de continuer"
 
-#: templates/maposmatic/index.html:274
+#: templates/maposmatic/index.html:267
 msgid "Introduction"
 msgstr "Introduction"
 
-#: templates/maposmatic/index.html:284
+#: templates/maposmatic/index.html:277
 msgid "City Map"
 msgstr "Carte de la ville"
 
-#: templates/maposmatic/index.html:290
+#: templates/maposmatic/index.html:281
 msgid "Streets index"
 msgstr "Index des rues "
 
-#: templates/maposmatic/index.html:299
+#: templates/maposmatic/index.html:289
 msgid ""
 "MapOSMatic is a free software web service that\n"
 "allows you to generate maps of cities using\n"
@@ -543,18 +534,18 @@ msgstr ""
 "openstreetmap.org\">OpenStreetMap</a>. La carte d'une ville est constituée "
 "de deux pages :"
 
-#: templates/maposmatic/index.html:305
+#: templates/maposmatic/index.html:296
 msgid ""
 "The map itself, splitted in squares allowing to easily look for streets;"
 msgstr ""
 "la carte elle-même, découpée en carrés pour faciliter la recherche de "
 "rues&nbsp;;"
 
-#: templates/maposmatic/index.html:306
+#: templates/maposmatic/index.html:297
 msgid "An index of the streets with references to the squares on the map."
 msgstr "un index des rues référencées selon les carrés de la carte."
 
-#: templates/maposmatic/index.html:309
+#: templates/maposmatic/index.html:301
 msgid ""
 "The generated maps are available in PNG, PDF and\n"
 "SVG formats and are ready to be printed."
@@ -562,7 +553,7 @@ msgstr ""
 "Les cartes générées sont disponibles aux formats PNG, PDF et SVG et sont "
 "prêtes à être imprimées."
 
-#: templates/maposmatic/index.html:312
+#: templates/maposmatic/index.html:306
 msgid ""
 "As the data used to generate maps is coming from\n"
 "OpenStreetMap, you can freely (under the <a\n"
@@ -575,39 +566,39 @@ msgstr ""
 "cartes générées (en respectant la <a href=\"http://wiki.openstreetmap.org/"
 "wiki/License\">licence OpenStreetMap</a>)."
 
-#: templates/maposmatic/index.html:318
+#: templates/maposmatic/index.html:313
 msgid "More details"
 msgstr "Plus d'informations"
 
-#: templates/maposmatic/index.html:320
+#: templates/maposmatic/index.html:316
 msgid "Generate your own map"
 msgstr "Générer votre carte"
 
-#: templates/maposmatic/index.html:327
+#: templates/maposmatic/index.html:320
 msgid "Area selection mode:"
 msgstr "Mode de sélection :"
 
-#: templates/maposmatic/index.html:339
+#: templates/maposmatic/index.html:334
 msgid "City name:"
 msgstr "Nom de la ville :"
 
-#: templates/maposmatic/index.html:342
+#: templates/maposmatic/index.html:338
 msgid "search"
 msgstr "Recherche"
 
-#: templates/maposmatic/index.html:348
+#: templates/maposmatic/index.html:344
 msgid "Title of the map:"
 msgstr "Titre de la carte :"
 
-#: templates/maposmatic/index.html:354
+#: templates/maposmatic/index.html:350
 msgid "Bounding box:"
 msgstr "Zone géographique :"
 
-#: templates/maposmatic/index.html:366
+#: templates/maposmatic/index.html:361
 msgid "Map Index Language:"
 msgstr "Langue de l'index de la carte&nbsp;:"
 
-#: templates/maposmatic/index.html:376
+#: templates/maposmatic/index.html:372
 msgid ""
 "<em>MapOSMatic</em> covers the whole world but we need\n"
 "contributors to translate and adapt the few parts of <em>MapOSMatic</em>\n"
@@ -617,13 +608,13 @@ msgstr ""
 "contributeurs pour traduire et adapter les quelques parties de "
 "<em>MapOSMatic</em> qui sont spécifiques à un pays donné."
 
-#: templates/maposmatic/index.html:380
+#: templates/maposmatic/index.html:378
 msgid ""
 "To select the city to be rendered, two modes are\n"
 "available:"
 msgstr "Pour sélectionner la ville, deux modes sont disponibles&nbsp;:"
 
-#: templates/maposmatic/index.html:385
+#: templates/maposmatic/index.html:383
 msgid ""
 "<em>Using an administrative boundary</em>. It allows\n"
 "  to get a map with precise boundaries of the city when such limits are\n"
@@ -634,13 +625,11 @@ msgstr ""
 "carte avec une limite précise de la ville quand celle-ci est disponible dans "
 "la base. Sinon il faut utiliser une Zone géographique."
 
-#: templates/maposmatic/index.html:390
-msgid ""
-"<em>Using a traditional bounding\n"
-"  box</em>."
+#: templates/maposmatic/index.html:387
+msgid "<em>Using a traditional bounding box</em>."
 msgstr "<em>En utilisant une bounding box traditionnelle</em>."
 
-#: templates/maposmatic/index.html:395
+#: templates/maposmatic/index.html:391
 msgid ""
 "Once the rendering is submitted, you will be brought\n"
 "to a page giving the status of your rendering request. As soon as the\n"
