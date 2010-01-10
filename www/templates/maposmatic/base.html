@@ -49,7 +49,7 @@
 
   <body {% block extrabody %}{% endblock %}>
     <div id="header">
-      <h1>MapOSMatic</h1>
+      <h1><a href="{% url main %}">MapOSMatic</a></h1>
       <h2>{% trans "Your free city maps!" %}</h2>
       <form name="langsel" action="/i18n/setlang/" method="post" id="langsel">
         <select name="language" onChange="document.langsel.submit();">

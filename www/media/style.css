@@ -56,6 +56,10 @@ a img {
   font-family: Georgia, serif;
 }
 
+#header h1 a {
+  color: black;
+}
+
 #header h2 {
   margin: 0;
   padding: 0 0 1em 1.5em;
