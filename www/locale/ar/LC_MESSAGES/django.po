@@ -6,28 +6,28 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-01-05 21:38+0100\n"
+"POT-Creation-Date: 2010-01-07 10:57+0100\n"
 "PO-Revision-Date: 2010-01-06 09:03+0300\n"
 "Last-Translator: Bassem JARKAS <jarkas@gmail.com>\n"
 "Language-Team: Arabic Translation\n"
-"Language: ar\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: ar\n"
 "Plural-Forms: nplurals=6; plural=n==0 ? 0 : n==1 ? 1 : n==2 ? 2 : n%100>=3 "
 "&& n%100<=10 ? 3 : n%100>=11 && n%100<=99 ? 4 : 5;\n"
 "X-Generator: Virtaal 0.5.0\n"
 
-#: settings.py:139
+#: settings.py:147
 msgid "No localization"
 msgstr "لا يوجد ترجمة"
 
-#: maposmatic/models.py:144
+#: maposmatic/models.py:146
 #, python-format
 msgid "%(title)s %(format)s Map"
 msgstr "خريطة %(title)s %(format)s"
 
-#: maposmatic/models.py:149
+#: maposmatic/models.py:150
 #, python-format
 msgid "%(title)s %(format)s Index"
 msgstr "فهرس %(title)s %(format)s"
@@ -78,9 +78,7 @@ msgid "Rendering successful"
 msgstr "نجح العرض"
 
 #: maposmatic/templatetags/extratags.py:47
-msgid ""
-"Rendering failed, please contact <a "
-"href=\"mailto:contact@maposmatic.org\">contact@maposmatic.org</a>"
+msgid "Rendering failed, please contact contact@maposmatic.org"
 msgstr ""
 
 #: templates/404.html:3 templates/500.html:3 templates/maposmatic/base.html:53
@@ -134,8 +132,8 @@ msgid ""
 "href=\"http://www.openstreetmap.org\">OpenStreetMap</a> and free\n"
 "software contributor of Rennes area, France. From his idea, a group of\n"
 "crazy <a\n"
-"href=\"http://en.wikipedia.org/wiki/Hacker_%28programmer_subculture%"
-"29\">hackers</a>\n"
+"href=\"http://en.wikipedia.org/wiki/Hacker_%28programmer_subculture%29"
+"\">hackers</a>\n"
 "met together during a one-week <em>Hackfest</em> in August 2009 and\n"
 "brought the idea of Gilles Lamiral to life by writing the code and\n"
 "named the project <strong>MapOSMatic</strong>. The group of crazy\n"
@@ -146,8 +144,8 @@ msgstr ""
 #: templates/maposmatic/about.html:51
 msgid ""
 "Of course, MapOSMatic is fully free software,\n"
-"licensed under the <a "
-"href=\"http://www.fsf.org/licensing/licenses/agpl-3.0.html\">AGPLv3</a>."
+"licensed under the <a href=\"http://www.fsf.org/licensing/licenses/agpl-3.0."
+"html\">AGPLv3</a>."
 msgstr ""
 
 #: templates/maposmatic/about.html:54
@@ -174,8 +172,8 @@ msgid ""
 "For the map rendering, we use the\n"
 "famous <a href=\"http://www.mapnik.org\">Mapnik</a> with the OpenStreetMap\n"
 "stylesheet\n"
-"available <a "
-"href=\"http://svn.openstreetmap.org/applications/rendering/mapnik\">in\n"
+"available <a href=\"http://svn.openstreetmap.org/applications/rendering/"
+"mapnik\">in\n"
 "OpenStreetMap Subversion repository</a>. Using Mapnik\n"
 "and <a href=\"http://cairographics.org/pycairo/\">Cairo</a>, we\n"
 "built <i>OCitySMap</i>, a Python module that:"
@@ -262,7 +260,8 @@ msgstr ""
 #: templates/maposmatic/about.html:131
 msgid ""
 "The <a\n"
-"  href=\"http://lists.nongnu.org/mailman/listinfo/maposmatic-dev\">development\n"
+"  href=\"http://lists.nongnu.org/mailman/listinfo/maposmatic-dev"
+"\">development\n"
 "  mailing-list</a>;"
 msgstr ""
 
@@ -275,7 +274,8 @@ msgstr ""
 #: templates/maposmatic/about.html:138
 msgid ""
 "The <a\n"
-"  href=\"http://git.savannah.gnu.org/cgit/maposmatic/ocitysmap.git\">OCitySMap\n"
+"  href=\"http://git.savannah.gnu.org/cgit/maposmatic/ocitysmap.git"
+"\">OCitySMap\n"
 "  Git repository</a>, which can be cloned using <code>git clone\n"
 "  git://git.sv.gnu.org/maposmatic/ocitysmap.git</code>;"
 msgstr ""
@@ -314,63 +314,23 @@ msgid ""
 "recent one."
 msgstr ""
 
-#: templates/maposmatic/all_jobs.html:49 templates/maposmatic/all_maps.html:40
-msgid "Title"
-msgstr "العنوان"
-
-#: templates/maposmatic/all_jobs.html:50 templates/maposmatic/all_maps.html:41
-msgid "Location"
-msgstr "الموقع"
-
-#: templates/maposmatic/all_jobs.html:51
-msgid "Job status"
-msgstr "حالة المهمة"
-
-#: templates/maposmatic/all_jobs.html:52
-msgid "Submission at"
-msgstr "أُرسل في"
-
-#: templates/maposmatic/all_jobs.html:53
-msgid "Rendering started at"
-msgstr "بدأ العرض في"
-
-#: templates/maposmatic/all_jobs.html:54
-msgid "Rendering finished at"
-msgstr "انتهي العرض في"
-
-#: templates/maposmatic/all_jobs.html:55
-msgid "Position in queue"
-msgstr "الموضع في الانتظار"
-
-#: templates/maposmatic/all_jobs.html:78
-msgid "not started"
-msgstr "لم يبدأ"
-
-#: templates/maposmatic/all_jobs.html:87
-msgid "not finished"
-msgstr "لم ينته"
-
-#: templates/maposmatic/all_jobs.html:103
-#: templates/maposmatic/all_maps.html:82
+#: templates/maposmatic/all_jobs.html:57 templates/maposmatic/all_maps.html:47
 msgid "Previous"
 msgstr "السابق"
 
-#: templates/maposmatic/all_jobs.html:107
-#: templates/maposmatic/all_maps.html:86
+#: templates/maposmatic/all_jobs.html:61 templates/maposmatic/all_maps.html:51
 msgid "Page"
 msgstr "الصفحة"
 
-#: templates/maposmatic/all_jobs.html:107
-#: templates/maposmatic/all_maps.html:86
+#: templates/maposmatic/all_jobs.html:61 templates/maposmatic/all_maps.html:51
 msgid "of"
 msgstr "من"
 
-#: templates/maposmatic/all_jobs.html:111
-#: templates/maposmatic/all_maps.html:90
+#: templates/maposmatic/all_jobs.html:65 templates/maposmatic/all_maps.html:55
 msgid "Next"
 msgstr "التالي"
 
-#: templates/maposmatic/all_jobs.html:117
+#: templates/maposmatic/all_jobs.html:71
 msgid ""
 "No map rendering request since the last 24\n"
 "hours."
@@ -379,18 +339,6 @@ msgstr ""
 #: templates/maposmatic/all_maps.html:35 templates/maposmatic/base.html:55
 msgid "Maps"
 msgstr "الخرائط"
-
-#: templates/maposmatic/all_maps.html:42 templates/maposmatic/job.html:126
-msgid "Thumbnail"
-msgstr "مصغرة"
-
-#: templates/maposmatic/all_maps.html:43
-msgid "Files"
-msgstr "الملفات"
-
-#: templates/maposmatic/all_maps.html:71 templates/maposmatic/job.html:141
-msgid "The generated files are no longer available"
-msgstr "الملفات التي تم إنشاؤها لم تعد متوفرة"
 
 #: templates/maposmatic/base.html:49
 msgid "Your free city maps!"
@@ -589,79 +537,137 @@ msgstr ""
 "اكتمال العرض (والذي قد يأخذ بعض الوقت اعتمادًا على طول طابور الانتظار) فإن "
 "هذه الصفحة ستحتوي على وصلات الخريطة المولّدة."
 
-#: templates/maposmatic/job.html:38
-#, python-format
-msgid "Map <i>%(job_t)s</i> Status"
-msgstr ""
-
-#: templates/maposmatic/job.html:44
+#: templates/maposmatic/job-page.html:43
 msgid ""
 "You have been redirected to a similar map, rendered less than 24 hours ago."
 msgstr ""
 
-#: templates/maposmatic/job.html:47
-msgid ""
-"You have been redirected to a similar rendering request, submitted less than "
-"24 hours ago. This request failed and we therefore prevent running the same "
-"request again. Please contact us at <a href="
-msgstr ""
-
-#: templates/maposmatic/job.html:50
-msgid ""
-"You have been redirected to a similar rendering request, submitted less than "
-"24 hours ago, and currently waiting to be processed."
-msgstr ""
-
-#: templates/maposmatic/job.html:53
-msgid ""
-"You have been redirected to a similar rendering request, submitted less than "
-"24 hours ago, and currently being processed."
-msgstr ""
-
-#: templates/maposmatic/job.html:62
+#: templates/maposmatic/job-page.html:51
 msgid "Refresh the status"
 msgstr "حدّث الحالة"
 
-#: templates/maposmatic/job.html:67
-msgid "Map title"
-msgstr "عنوان الخريطة"
+#: templates/maposmatic/job-page.html:51
+msgid ""
+"(the page will refresh automatically every 5 seconds until the rendering is "
+"completed)."
+msgstr ""
 
-#: templates/maposmatic/job.html:72
-msgid "Administrative city"
-msgstr "مدينة إدارية"
+#: templates/maposmatic/job.html:44
+#, fuzzy
+msgid "Rendering: "
+msgstr "نجح العرض"
 
-#: templates/maposmatic/job.html:77
-msgid "Bounding-box coordinates"
-msgstr "إحداثيات مربع الإحاطة"
+#: templates/maposmatic/job.html:45
+#, fuzzy
+msgid "Rendering submitted"
+msgstr "بدأ العرض في"
 
-#: templates/maposmatic/job.html:87
-msgid "Status"
-msgstr "الحالة"
+#: templates/maposmatic/job.html:47
+msgid "In queue, position"
+msgstr ""
 
-#: templates/maposmatic/job.html:91
-msgid "Submission time"
-msgstr "وقت الإرسال"
+#: templates/maposmatic/job.html:47
+msgid "estimated completion time"
+msgstr ""
 
-#: templates/maposmatic/job.html:95
-msgid "Start of rendering time"
-msgstr "وقت بدء العرض"
+#: templates/maposmatic/job.html:49
+msgid "Completed on"
+msgstr ""
 
-#: templates/maposmatic/job.html:98 templates/maposmatic/job.html.py:111
-msgid "Rendering not started yet"
-msgstr "العرض لم يبدأ بعد"
+#: templates/maposmatic/job.html:51
+msgid "Failed on"
+msgstr ""
 
-#: templates/maposmatic/job.html:105
-msgid "End of rendering time"
-msgstr "وقت نهاية العرض"
+#: templates/maposmatic/job.html:53
+#, python-format
+msgid "rendering took %(rendering)s"
+msgstr ""
 
-#: templates/maposmatic/job.html:114
-msgid "Rendering not finished yet"
-msgstr "العرض لم ينته بعد"
+#: templates/maposmatic/job.html:55
+#, fuzzy
+msgid "Rendering in progress..."
+msgstr "جاري العرض"
 
-#: templates/maposmatic/job.html:120
-msgid "Current position in queue"
-msgstr "الموضع الحالي في الانتظار"
+#: templates/maposmatic/job.html:61 templates/maposmatic/map.html:45
+#, fuzzy
+msgid "Files: "
+msgstr "الملفات"
 
-#: templates/maposmatic/job.html:134
-msgid "Result files"
-msgstr "ملفات النتيجة"
+#: templates/maposmatic/job.html:63 templates/maposmatic/map.html:47
+#, fuzzy
+msgid "Map: "
+msgstr "الخرائط"
+
+#: templates/maposmatic/job.html:64 templates/maposmatic/map.html:48
+msgid "Index: "
+msgstr ""
+
+#: templates/maposmatic/job.html:67 templates/maposmatic/map.html:51
+#, fuzzy
+msgid "The generated files are no longer available."
+msgstr "الملفات التي تم إنشاؤها لم تعد متوفرة"
+
+#: templates/maposmatic/map.html:42
+#, fuzzy
+msgid "Rendering completed on"
+msgstr "بدأ العرض في"
+
+#~ msgid "Title"
+#~ msgstr "العنوان"
+
+#~ msgid "Location"
+#~ msgstr "الموقع"
+
+#~ msgid "Job status"
+#~ msgstr "حالة المهمة"
+
+#~ msgid "Submission at"
+#~ msgstr "أُرسل في"
+
+#~ msgid "Rendering finished at"
+#~ msgstr "انتهي العرض في"
+
+#~ msgid "Position in queue"
+#~ msgstr "الموضع في الانتظار"
+
+#~ msgid "not started"
+#~ msgstr "لم يبدأ"
+
+#~ msgid "not finished"
+#~ msgstr "لم ينته"
+
+#~ msgid "Thumbnail"
+#~ msgstr "مصغرة"
+
+#~ msgid "Map title"
+#~ msgstr "عنوان الخريطة"
+
+#~ msgid "Administrative city"
+#~ msgstr "مدينة إدارية"
+
+#~ msgid "Bounding-box coordinates"
+#~ msgstr "إحداثيات مربع الإحاطة"
+
+#~ msgid "Status"
+#~ msgstr "الحالة"
+
+#~ msgid "Submission time"
+#~ msgstr "وقت الإرسال"
+
+#~ msgid "Start of rendering time"
+#~ msgstr "وقت بدء العرض"
+
+#~ msgid "Rendering not started yet"
+#~ msgstr "العرض لم يبدأ بعد"
+
+#~ msgid "End of rendering time"
+#~ msgstr "وقت نهاية العرض"
+
+#~ msgid "Rendering not finished yet"
+#~ msgstr "العرض لم ينته بعد"
+
+#~ msgid "Current position in queue"
+#~ msgstr "الموضع الحالي في الانتظار"
+
+#~ msgid "Result files"
+#~ msgstr "ملفات النتيجة"
