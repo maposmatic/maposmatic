@@ -259,65 +259,82 @@ a.selectedletter {
 
 #mainfrm tr.label {
   font-weight: bold;
-  padding-top: 1em;
 }
 
 #mainfrm input[type=text] {
-  background: #fff6bf;
-  border: 2px #ccc solid;
+  border: 1px black solid;
 }
 
-#mapfrm td.image
-{
-  text-align: right;
-  padding-right: 3em;
-  vertical-align: middle;
+#id_go_next_btn {
+  display: none;
+  margin-left: 3em;
 }
 
-#mapfrm input[type=image].btn-enabled {
-  display: block;
+#mainfrm input#id_maptitle,
+#mainfrm input#id_administrative_city {
+  width: 600px;
+  font-size: 13pt;
 }
 
-#mapfrm input[type=image].btn-enabled:hover {
-  cursor: auto;
-}
+/* Suggest */
+#suggest {
+  margin: 0;
+  margin-top: -3px;
+  position: absolute;
 
-#mapfrm input[type=image].btn-disabled {
+  width: 600px;
+  list-style: none;
+  background: white;
+  border: 1px black solid;
+  font-size: 13pt;
   display: none;
 }
 
-#mapfrm input[type=image].btn-disabled:hover {
-  cursor: default;
+#suggest li {
+  padding: 1px;
 }
 
-#mainfrm input.btn-disabled {
+#suggest li.selected {
+  background: #36c;
+  color: white;
+}
+
+#suggest li.suggestok:hover {
+  background: #36c;
+  color: white;
+  cursor: pointer;
+}
+
+#suggest li.suggestoff {
+  color: grey;
+}
+
+#suggest li.suggestoff:hover {
+  background: #dedede;
+  cursor: help;
+}
+
+#suggest span.suggestid {
   display: none;
-}
-
-#mainfrm input#id_maptitle {
-  width: 300px;
 }
 
 #mainfrm tr.bybbox {
   display: none;
 }
 
-#map_language_label, #map_language_entry {
+#map_language_label,
+#map_language_entry {
   display: none;
 }
 
 #map {
-  border: 1px solid black;
+  border: 1px black solid;
   width: 600px;
   height: 350px;
 }
 
 #map_bb {
-  margin-top: 1em;
-}
-
-#map_bb input {
-  width: 5em;
+  display: none;
 }
 
 #map .olControlAttribution {
