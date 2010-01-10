@@ -46,15 +46,22 @@
 </div>
 {% endifnotequal %}
 
+{% comment %}For Django 1.0.x compatibility. With Django >= 1.1 we should use the empty tag.{% endcomment %}
+{% if maps.object_list|length %}
 {% for job in maps.object_list %}
 <div class="job {% cycle jobodd,jobeven %}">
   {% include "maposmatic/map.html" %}
 </div>
-{% empty %}
-<p>
-  {% blocktrans %}No map starts with {{ current_letter }} in our database!{% endblocktrans %}
-</p>
 {% endfor %}
+{% else %}
+<p>
+{% if current_letter %}
+  {% blocktrans %}No map starts with {{ current_letter }} in our database!{% endblocktrans %}
+{% else %}
+  {% blocktrans %}Our database does not contain any rendered maps for the moment.{% endblocktrans %}
+{% endif %}
+</p>
+{% endif %}
 
 {% ifnotequal maps.paginator.num_pages 1 %}
 <div class="pagination">
