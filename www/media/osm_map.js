@@ -156,6 +156,13 @@ function suggest(input, results, osm_id, button, options) {
     return $('#rad' + id);
   }
 
+  /* Empty and close the suggestion box. */
+  function closeSuggest() {
+    $results.empty();
+    $results.hide();
+  }
+
+  /* Handle the JSON result. */
   function handleNominatimResults(data, textResult) {
     var unusable_token = false;
     closeSuggest();
@@ -190,7 +197,9 @@ function suggest(input, results, osm_id, button, options) {
         break;
       case 9:   // TAB
       case 13:  // OK
-        selectCurrentResult();
+        var elt = getCurrentResult();
+        if (elt)
+          setResult(elt);
         return false;
         break;
       case 38:  // UP
@@ -210,24 +219,12 @@ function suggest(input, results, osm_id, button, options) {
       }
   }
 
-  function clearResult() {
-    $osm_id.val('');
-    setFormActivation(false);
-  }
-
   /* Returns the currently selected result. */
   function getCurrentResult() {
     var children = $results.children('li.' + options.selectedClass);
     if (children.length)
       return children;
     return false;
-  }
-
-  /* Set the form to the currently selected result. */
-  function selectCurrentResult() {
-    var elt = getCurrentResult();
-    if (elt)
-      setResult(elt);
   }
 
   /* Set the form to the given result. */
@@ -238,12 +235,21 @@ function suggest(input, results, osm_id, button, options) {
     setFormActivation(true);
   }
 
+  function clearResult() {
+    $osm_id.val('');
+    setFormActivation(false);
+  }
+
+  /** Functions to manipulate the current selection. */
+
+  /* Set the currently selected item in the drop-down list. */
   function setSelectedResultTo(elt) {
     $results.children('li').removeClass(options.selectedClass);
     if (elt)
       elt.addClass(options.selectedClass);
   }
 
+  /* Move to the previous valid result. */
   function prevResult() {
     var current = getCurrentResult();
     var new_result;
@@ -259,6 +265,7 @@ function suggest(input, results, osm_id, button, options) {
     setSelectedResultTo(new_result);
   }
 
+  /* Move to the next valid result. */
   function nextResult() {
     var current = getCurrentResult();
     var new_result;
@@ -272,12 +279,6 @@ function suggest(input, results, osm_id, button, options) {
     }
 
     setSelectedResultTo(new_result);
-  }
-
-  /* Empty and close the suggestion box. */
-  function closeSuggest() {
-    $results.empty();
-    $results.hide();
   }
 }
 
