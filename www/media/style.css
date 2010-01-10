@@ -405,3 +405,6 @@ ul.errorlist {
   color: red;
 }
 
+#noadminlimitinfo {
+  display: none;
+}
