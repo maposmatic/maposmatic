@@ -341,6 +341,7 @@ a.selectedletter {
 
 #suggest li {
   padding: 1px;
+  display: block;
 }
 
 #suggest li.selected {
@@ -353,11 +354,11 @@ a.selectedletter {
 }
 
 #suggest li.suggestoff {
-  color: #ccc;
+  color: #bbb;
 }
 
 #suggest li.suggestoff:hover {
-  background: #f0f0f0;
+  background: #eee;
   cursor: help;
 }
 

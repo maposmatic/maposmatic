@@ -140,6 +140,7 @@ function suggest(input, results, osm_id, button, options) {
   var $osm_id = $(osm_id);
   var $button = $(button);
   var timeout = false;
+  var shown = false;
 
   closeSuggest();
 
@@ -163,6 +164,7 @@ function suggest(input, results, osm_id, button, options) {
   function closeSuggest() {
     $results.empty();
     $results.hide();
+    shown = false;
   }
 
   /* Handle the JSON result. */
@@ -171,8 +173,10 @@ function suggest(input, results, osm_id, button, options) {
     $(input).css('cursor', 'text');
     closeSuggest();
 
-    if (data.length)
+    if (data.length) {
       $results.show();
+      shown = true;
+    }
 
     $.each(data, function(i, item) {
       if (typeof item.ocitysmap_params != 'undefined' &&
@@ -187,6 +191,13 @@ function suggest(input, results, osm_id, button, options) {
 
     if (unusable_token)
       $results.append('<li class="info">' + $('#noadminlimitinfo').html() + '</li>');
+  }
+
+  function doQuery() {
+    if (!$input.val().length)
+      return;
+    $(input).css('cursor', 'wait');
+    $.getJSON("/nominatim/", { q: $input.val() }, handleNominatimResults);
   }
 
   function processKey(e) {
@@ -204,20 +215,19 @@ function suggest(input, results, osm_id, button, options) {
         return false;
         break;
       case 38:  // UP
+        if (!shown)
+          doQuery();
         prevResult();
         break;
       case 40:  // DOWN
+        if (!shown)
+          doQuery();
         nextResult();
         break;
       default:
-        if (timeout) {
+        if (timeout)
           clearTimeout(timeout);
-        }
-        timeout = setTimeout(function() {
-          $(input).css('cursor', 'wait');
-          $.getJSON("/nominatim/", {q: $input.val()},
-            handleNominatimResults);
-          }, options.timeout);
+        timeout = setTimeout(doQuery, options.timeout);
       }
   }
 
