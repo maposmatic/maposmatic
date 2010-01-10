@@ -20,7 +20,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: mapOSMatic 0.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-01-10 12:18+0100\n"
+"POT-Creation-Date: 2010-01-10 15:06+0100\n"
 "PO-Revision-Date: 2009-12-25 11:49+0100\n"
 "Last-Translator: Thomas Petazzoni <thomas.petazzoni@enix.org>\n"
 "Language-Team: IT <talk-it@openstreetmap.org>\n"
@@ -405,7 +405,7 @@ msgstr ""
 msgid "Your free city maps!"
 msgstr ""
 
-#: templates/maposmatic/base.html:64 templates/maposmatic/index.html:83
+#: templates/maposmatic/base.html:64 templates/maposmatic/index.html:78
 msgid "Create map"
 msgstr ""
 
@@ -450,19 +450,19 @@ msgstr ""
 msgid "on"
 msgstr ""
 
-#: templates/maposmatic/index.html:38
+#: templates/maposmatic/index.html:33
 msgid "Introduction"
 msgstr "Introduzione"
 
-#: templates/maposmatic/index.html:47
+#: templates/maposmatic/index.html:42
 msgid "City Map"
 msgstr "Mappa della città"
 
-#: templates/maposmatic/index.html:51
+#: templates/maposmatic/index.html:46
 msgid "Streets index"
 msgstr "Stradario "
 
-#: templates/maposmatic/index.html:58
+#: templates/maposmatic/index.html:53
 msgid ""
 "MapOSMatic is a free software web service that\n"
 "allows you to generate maps of cities using\n"
@@ -474,20 +474,20 @@ msgstr ""
 "openstreetmap.org\">OpenStreetMap</a>. Ogni mappa di città generata\n"
 " sarà costituita da due pagine:"
 
-#: templates/maposmatic/index.html:65
+#: templates/maposmatic/index.html:60
 msgid ""
 "The map itself, splitted in squares allowing to easily look for streets;"
 msgstr ""
 "La carta stessa con sovrapposta una griglia di riferimento per facilitare la "
 "ricerca delle strade ;"
 
-#: templates/maposmatic/index.html:66
+#: templates/maposmatic/index.html:61
 msgid "An index of the streets with references to the squares on the map."
 msgstr ""
 "Uno stradario con i riferimenti diretti alla cella della griglia di "
 "riferimento."
 
-#: templates/maposmatic/index.html:70
+#: templates/maposmatic/index.html:65
 msgid ""
 "The generated maps are available in PNG, PDF and\n"
 "SVG formats and are ready to be printed."
@@ -495,7 +495,7 @@ msgstr ""
 "Le mappe generate sono disponibili e pronte per la stampa\n"
 " in formato PNG, PDF e SVG."
 
-#: templates/maposmatic/index.html:75
+#: templates/maposmatic/index.html:70
 msgid ""
 "As the data used to generate maps is coming from\n"
 "OpenStreetMap, you can freely (under the <a\n"
@@ -509,7 +509,7 @@ msgstr ""
 "(nel rispetto della <a href=\"http://wiki.openstreetmap.org/wiki/License"
 "\">licenza OpenStreetMap</a>)."
 
-#: templates/maposmatic/index.html:84
+#: templates/maposmatic/index.html:79
 msgid "More details"
 msgstr "Maggiori dettagli"
 
@@ -665,8 +665,12 @@ msgstr "Area geografica :"
 msgid "Generate"
 msgstr ""
 
-#: templates/maposmatic/new.html:102
-msgid "Please fill in the form before trying to proceed"
+#: templates/maposmatic/new.html:105
+msgid ""
+"Wondering why you can't choose some of these results?<br />Their "
+"administrative boundaries are missing from the OSM database.<br />Look at "
+"the <a href=\"http://wiki.maposmatic.org/doku.php?id=faq\">FAQ</a> for more "
+"details."
 msgstr ""
 
 #~ msgid "search"

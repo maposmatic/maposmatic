@@ -20,7 +20,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: mapOSMatic 0.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-01-10 12:18+0100\n"
+"POT-Creation-Date: 2010-01-10 15:06+0100\n"
 "PO-Revision-Date: 2010-01-04 21:10+0100\n"
 "Last-Translator: malenki <osm@malenki.ch>\n"
 "Language-Team:  <osm@malenki.ch>\n"
@@ -473,7 +473,7 @@ msgstr ""
 msgid "Your free city maps!"
 msgstr "Ihre freien Stadtpläne!"
 
-#: templates/maposmatic/base.html:64 templates/maposmatic/index.html:83
+#: templates/maposmatic/base.html:64 templates/maposmatic/index.html:78
 #, fuzzy
 msgid "Create map"
 msgstr "Cartes générées"
@@ -521,19 +521,19 @@ msgstr "IRC:"
 msgid "on"
 msgstr "auf"
 
-#: templates/maposmatic/index.html:38
+#: templates/maposmatic/index.html:33
 msgid "Introduction"
 msgstr "Einleitung"
 
-#: templates/maposmatic/index.html:47
+#: templates/maposmatic/index.html:42
 msgid "City Map"
 msgstr "Stadtplan"
 
-#: templates/maposmatic/index.html:51
+#: templates/maposmatic/index.html:46
 msgid "Streets index"
 msgstr "Straßenverzeichnis"
 
-#: templates/maposmatic/index.html:58
+#: templates/maposmatic/index.html:53
 msgid ""
 "MapOSMatic is a free software web service that\n"
 "allows you to generate maps of cities using\n"
@@ -546,25 +546,25 @@ msgstr ""
 "erzeugen.\n"
 " Ein Stadtplan besteht aus zwei Seiten:"
 
-#: templates/maposmatic/index.html:65
+#: templates/maposmatic/index.html:60
 msgid ""
 "The map itself, splitted in squares allowing to easily look for streets;"
 msgstr ""
 "Dem Plan selbst, aufgeteilt in Quadrate, um leicht nach Straßen suchen zu "
 "können;"
 
-#: templates/maposmatic/index.html:66
+#: templates/maposmatic/index.html:61
 msgid "An index of the streets with references to the squares on the map."
 msgstr "Dem Straßenverzeichnis, das sich auf die Planquadrate bezieht."
 
-#: templates/maposmatic/index.html:70
+#: templates/maposmatic/index.html:65
 msgid ""
 "The generated maps are available in PNG, PDF and\n"
 "SVG formats and are ready to be printed."
 msgstr ""
 "Die erzeugten Pläne sind als PNG, PDF und SVG verfügbar und druckfertig."
 
-#: templates/maposmatic/index.html:75
+#: templates/maposmatic/index.html:70
 msgid ""
 "As the data used to generate maps is coming from\n"
 "OpenStreetMap, you can freely (under the <a\n"
@@ -578,7 +578,7 @@ msgstr ""
 "Lizenz</a>\n"
 " benutzen, verkaufen, verändern..."
 
-#: templates/maposmatic/index.html:84
+#: templates/maposmatic/index.html:79
 msgid "More details"
 msgstr "Mehr Informationen"
 
@@ -735,9 +735,17 @@ msgstr "Begrenzungsrahmen:"
 msgid "Generate"
 msgstr "Erzeugen"
 
-#: templates/maposmatic/new.html:102
-msgid "Please fill in the form before trying to proceed"
-msgstr "Bitte füllen Sie das Formular aus, bevor Sie versuchen fortzufahren."
+#: templates/maposmatic/new.html:105
+msgid ""
+"Wondering why you can't choose some of these results?<br />Their "
+"administrative boundaries are missing from the OSM database.<br />Look at "
+"the <a href=\"http://wiki.maposmatic.org/doku.php?id=faq\">FAQ</a> for more "
+"details."
+msgstr ""
+
+#~ msgid "Please fill in the form before trying to proceed"
+#~ msgstr ""
+#~ "Bitte füllen Sie das Formular aus, bevor Sie versuchen fortzufahren."
 
 #~ msgid ""
 #~ "This place cannot be rendered by MapOSMatic, administrative boundary "

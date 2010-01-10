@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-01-10 12:18+0100\n"
+"POT-Creation-Date: 2010-01-10 15:06+0100\n"
 "PO-Revision-Date: 2010-01-06 09:03+0300\n"
 "Last-Translator: Bassem JARKAS <jarkas@gmail.com>\n"
 "Language-Team: Arabic Translation\n"
@@ -366,7 +366,7 @@ msgstr ""
 msgid "Your free city maps!"
 msgstr "خرائط مدينتك الحرة!"
 
-#: templates/maposmatic/base.html:64 templates/maposmatic/index.html:83
+#: templates/maposmatic/base.html:64 templates/maposmatic/index.html:78
 msgid "Create map"
 msgstr ""
 
@@ -411,19 +411,19 @@ msgstr "أي أر سي:"
 msgid "on"
 msgstr "على"
 
-#: templates/maposmatic/index.html:38
+#: templates/maposmatic/index.html:33
 msgid "Introduction"
 msgstr "المقدمة"
 
-#: templates/maposmatic/index.html:47
+#: templates/maposmatic/index.html:42
 msgid "City Map"
 msgstr "خريطة المدينة"
 
-#: templates/maposmatic/index.html:51
+#: templates/maposmatic/index.html:46
 msgid "Streets index"
 msgstr "فهرس الشوارع"
 
-#: templates/maposmatic/index.html:58
+#: templates/maposmatic/index.html:53
 msgid ""
 "MapOSMatic is a free software web service that\n"
 "allows you to generate maps of cities using\n"
@@ -434,22 +434,22 @@ msgstr ""
 "<a href=\"http://www.openstreetmap.org\">خريطة الشارع المفتوحة</a>. خريطة "
 "المدينة تتكون من صفحتين:"
 
-#: templates/maposmatic/index.html:65
+#: templates/maposmatic/index.html:60
 msgid ""
 "The map itself, splitted in squares allowing to easily look for streets;"
 msgstr "الخريطة نفسها مقسمة إلى مربعات تسمح لك البحث بسهولة عن الشوارع؛"
 
-#: templates/maposmatic/index.html:66
+#: templates/maposmatic/index.html:61
 msgid "An index of the streets with references to the squares on the map."
 msgstr "فهرس الشوارع مع الإشارة إلى المربعات على الخريطة."
 
-#: templates/maposmatic/index.html:70
+#: templates/maposmatic/index.html:65
 msgid ""
 "The generated maps are available in PNG, PDF and\n"
 "SVG formats and are ready to be printed."
 msgstr "الخرائط المولّدة متاحة بالصيغ PNG، PDF و SVG وهي جاهزة للطباعة."
 
-#: templates/maposmatic/index.html:75
+#: templates/maposmatic/index.html:70
 msgid ""
 "As the data used to generate maps is coming from\n"
 "OpenStreetMap, you can freely (under the <a\n"
@@ -462,7 +462,7 @@ msgstr ""
 "href=\"http://wiki.openstreetmap.org/wiki/License\">شروط رخصة خريطة الشارع "
 "المفتوحة</a>) إعادة استخدام أو بيع أو تعديل أو... الخرائط المولّدة."
 
-#: templates/maposmatic/index.html:84
+#: templates/maposmatic/index.html:79
 msgid "More details"
 msgstr "المزيد من التفاصيل"
 
@@ -612,9 +612,16 @@ msgstr "مربع الإحاطة:"
 msgid "Generate"
 msgstr "توليد"
 
-#: templates/maposmatic/new.html:102
-msgid "Please fill in the form before trying to proceed"
-msgstr "يرجى ملء النموذج قبل محاولة التنفيذ"
+#: templates/maposmatic/new.html:105
+msgid ""
+"Wondering why you can't choose some of these results?<br />Their "
+"administrative boundaries are missing from the OSM database.<br />Look at "
+"the <a href=\"http://wiki.maposmatic.org/doku.php?id=faq\">FAQ</a> for more "
+"details."
+msgstr ""
+
+#~ msgid "Please fill in the form before trying to proceed"
+#~ msgstr "يرجى ملء النموذج قبل محاولة التنفيذ"
 
 #~ msgid "No results found."
 #~ msgstr "لم يتم العثور على نتائج."
