@@ -25,36 +25,34 @@
  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 {% endcomment %}
 
+
 {% load i18n %}
 
-{% block menu-maps %}
+{% load extratags %}
+
+{% block menu-jobs %}
 class="activelink"
 {% endblock %}
 
 {% block page %}
-<h1>{% trans "Maps" %}</h1>
+<h1>{{ job.maptitle }}</h1>
 
-{% for job in maps.object_list %}
-<div class="job {% cycle jobodd,jobeven %}">
-  {% include "maposmatic/map.html" %}
-</div>
-{% endfor %}
+{% if redirected %}
+<p class="infobox">
+  <img src="/smedia/info.png" />
+  <span>{% trans "You have been redirected to a similar map, rendered less than 24 hours ago." %}</span>
+</p>
+{% endif %}
 
-{% ifnotequal maps.paginator.num_pages 1 %}
-<div class="pagination">
-  <span class="step-links">
-    {% if maps.has_previous %}
-      <a href="?page={{ maps.previous_page_number }}">{% trans "Previous" %}</a>
-    {% endif %}
+{% include "maposmatic/job.html" %}
 
-    <span class="current">
-      {% trans "Page" %} {{ maps.number }} {% trans "of" %} {{ maps.paginator.num_pages }}
-    </span>
+{% if not job.is_done %}
+<p>
+&raquo; <a href="/jobs/{{job.id}}">{% trans "Refresh the status" %}</a> {% trans "(the page will refresh automatically every 5 seconds until the rendering is completed)." %}
+</p>
+<script type="text/javascript">
+  setTimeout("location.reload(true);", 5000);
+</script>
+{% endif %}
 
-    {% if maps.has_next %}
-      <a href="?page={{ maps.next_page_number }}">{% trans "Next" %}</a>
-    {% endif %}
-  </span>
-</div>
-{% endifnotequal %}
 {% endblock %}

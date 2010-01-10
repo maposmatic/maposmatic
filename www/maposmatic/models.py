@@ -137,19 +137,23 @@ class MapRenderingJob(models.Model):
         return os.path.join(www.settings.RENDERING_RESULT_PATH, self.files_prefix() + "_index." + format)
 
     def output_files(self):
-        allfiles = []
+        allfiles = {'maps': [], 'indeces': []}
+
         for format in www.settings.RENDERING_RESULT_FORMATS:
+            # Map files (all formats but CSV)
             if format != 'csv' and os.path.exists(self.get_map_filepath(format)):
-                allfiles.append((self.get_map_fileurl(format),
-                                 _("%(title)s %(format)s Map") \
-                                     % { 'title' : self.maptitle,
-                                         'format': format.upper() } ))
+                allfiles['maps'].append((format, self.get_map_fileurl(format),
+                    _("%(title)s %(format)s Map") % {'title': self.maptitle, 'format': format.upper()}))
+            # Index files
             if os.path.exists(self.get_index_filepath(format)):
-                allfiles.append((self.get_index_fileurl(format),
-                                 _("%(title)s %(format)s Index") % \
-                                     { 'title': self.maptitle,
-                                       'format': format.upper() }))
+                allfiles['indeces'].append((format, self.get_index_fileurl(format),
+                    _("%(title)s %(format)s Index") % {'title': self.maptitle, 'format': format.upper()}))
+
         return allfiles
+
+    def has_output_files(self):
+        files = self.output_files()
+        return len(files['maps']) + len(files['indeces'])
 
     def get_thumbnail(self):
         thumbnail_file = os.path.join(www.settings.RENDERING_RESULT_PATH, self.files_prefix() + "_small.png")

@@ -179,7 +179,7 @@ def rendering_already_exists(osmid):
 
     if len(rendered_items):
         rendered_item = rendered_items[0]
-        if rendered_item.output_files() != []:
+        if rendered_item.has_output_files():
             return '/jobs/%d' % rendered_item.id
 
     # Then try to find items being rendered or waiting for rendering
@@ -234,8 +234,8 @@ def job(request, job_id):
         del request.session['redirected']
     else:
         isredirected = False
-    return render_to_response('maposmatic/job.html',
-                              { 'job' : job ,
+    return render_to_response('maposmatic/job-page.html',
+                              { 'job' : job, 'single': True,
                                 'redirected' : isredirected },
                               context_instance=RequestContext(request))
 

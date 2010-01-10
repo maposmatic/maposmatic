@@ -45,12 +45,11 @@ def job_status_to_str(value, arg, autoescape=None):
             result = _("Rendering successful")
         else:
             result = _("Rendering failed, please contact " \
-                       "<a href=\"mailto:contact@maposmatic.org\">" \
-                       "contact@maposmatic.org</a>")
+                       "contact@maposmatic.org")
     else:
         result = ""
 
-    return mark_safe(result)
+    return result
 
 job_status_to_str.needs_autoescape = True
 
