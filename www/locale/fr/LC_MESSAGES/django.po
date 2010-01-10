@@ -657,7 +657,7 @@ msgstr ""
 msgid ""
 "You have been redirected to a similar map, rendered less than 24 hours ago."
 msgstr ""
-"Vous avez été redirigé vers une carte similaire, rendue il y a moins de 24 "
+"Vous avez été redirigé vers une carte similaire, créée il y a moins de 24 "
 "heures."
 
 #: templates/maposmatic/job-page.html:51
@@ -674,11 +674,11 @@ msgstr ""
 
 #: templates/maposmatic/job.html:44
 msgid "Rendering: "
-msgstr "Rendu : "
+msgstr "Traitement : "
 
 #: templates/maposmatic/job.html:45
 msgid "Rendering submitted"
-msgstr "Rendu soumis le"
+msgstr "Demande faite le"
 
 #: templates/maposmatic/job.html:47
 msgid "In queue, position"
