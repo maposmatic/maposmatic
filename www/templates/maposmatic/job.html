@@ -28,7 +28,7 @@
 
 {% load extratags %}
 
-{% if not single %}<h2 class="jobtitle"><a href="/jobs/{{ job.id }}">{{ job.maptitle }}</a></h2>{% endif %}
+{% if not single %}<h2 class="jobtitle"><a href="{% url job-by-id job.id %}">{{ job.maptitle }}</a></h2>{% endif %}
 <table class="jobinfo"><tbody><tr>
   <td class="status">
     <img {% if job.is_done_ok %}src="/smedia/job-done.png"{% else %}{% if job.is_done_failed %}src="/smedia/job-error.png"{% else %}{% if job.is_waiting %}src="/smedia/job-in-queue.png"{% else %}src="/smedia/job-in-progress.png"{% endif %}{% endif %}{% endif %} title="{{ job.status|job_status_to_str:job.resultmsg }}" />

@@ -32,19 +32,29 @@ class="activelink"
 {% endblock %}
 
 {% block page %}
-<h1>{% trans "Maps" %}</h1>
+<div class="mapsearch"><!-- <input type="text" name="map_search" /><input type="submit" value="{% trans "Search" %}" />-->{% trans "Search coming soon!" %}</div>
+
+<h1><a href="{% url maps %}">{% trans "Maps" %}</a></h1>
+
+<p id="letterpagination">
+  {% for l in letters %}<a href="{% url maps-by-letter l %}"{% ifequal l current_letter %} class="selectedletter"{% endifequal %}>{{ l }}</a>{% if not forloop.last %} - {% endif %}{% endfor %}
+</p>
 
 {% for job in maps.object_list %}
 <div class="job {% cycle jobodd,jobeven %}">
   {% include "maposmatic/map.html" %}
 </div>
+{% empty %}
+<p>
+  {% blocktrans %}No map starts with {{ current_letter }} in our database!{% endblocktrans %}
+</p>
 {% endfor %}
 
 {% ifnotequal maps.paginator.num_pages 1 %}
 <div class="pagination">
   <span class="step-links">
     {% if maps.has_previous %}
-      <a href="?page={{ maps.previous_page_number }}">{% trans "Previous" %}</a>
+      <a href="?page={{ maps.previous_page_number }}">&laquo; {% trans "Previous" %}</a>
     {% endif %}
 
     <span class="current">
@@ -52,7 +62,7 @@ class="activelink"
     </span>
 
     {% if maps.has_next %}
-      <a href="?page={{ maps.next_page_number }}">{% trans "Next" %}</a>
+      <a href="?page={{ maps.next_page_number }}">{% trans "Next" %} &raquo;</a>
     {% endif %}
   </span>
 </div>

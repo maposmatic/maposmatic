@@ -260,10 +260,15 @@ def all_jobs(request):
                               { 'jobs' : jobs },
                               context_instance=RequestContext(request))
 
+def get_letters():
+    # Should we improve this to differenciate letters that have maps from those
+    # who don't?
+    return [chr(i) for i in xrange(ord('A'), ord('Z')+1)]
+
 def all_maps(request):
     map_list = (MapRenderingJob.objects.filter(status=2)
             .filter(resultmsg="ok")
-            .order_by("-submission_time"))
+            .order_by("maptitle"))
     paginator = Paginator(map_list, www.settings.ITEMS_PER_PAGE)
 
     try:
@@ -276,9 +281,31 @@ def all_maps(request):
     except (EmptyPage, InvalidPage):
         maps = paginator.page(paginator.num_pages)
     return render_to_response('maposmatic/all_maps.html',
-                              { 'maps': maps },
+                              { 'maps': maps, 'letters': get_letters() },
                               context_instance=RequestContext(request))
 
+def all_maps_by_letter(request, letter):
+    letter = letter[:1].upper()
+    map_list = (MapRenderingJob.objects.filter(status=2)
+            .filter(resultmsg="ok")
+            .filter(maptitle__startswith=letter)
+            .order_by("maptitle"))
+
+    paginator = Paginator(map_list, www.settings.ITEMS_PER_PAGE)
+
+    try:
+        page = int(request.GET.get('page', '1'))
+    except ValueError:
+        page = 1
+
+    try:
+        maps = paginator.page(page)
+    except (EmptyPage, InvalidPage):
+        maps = paginator.page(paginator.num_pages)
+    return render_to_response('maposmatic/all_maps.html',
+                              { 'maps': maps, 'letters': get_letters(),
+                                'current_letter': letter},
+                              context_instance=RequestContext(request))
 
 def query_nominatim(request, format, squery):
     if not format:

@@ -32,19 +32,29 @@ import maposmatic.views
 import settings
 
 urlpatterns = patterns('',
-    (r'^$', maposmatic.views.index),
-    (r'^smedia/(?P<path>.*)$',
-     'django.views.static.serve',
-     {'document_root': settings.LOCAL_MEDIA_PATH}),
-    (r'^jobs/(?P<job_id>\d+)$', maposmatic.views.job),
-    (r'^jobs/$', maposmatic.views.all_jobs),
-    (r'^maps/$', maposmatic.views.all_maps),
-    (r'^about/$', maposmatic.views.about),
+    url(r'^$', maposmatic.views.index,
+        name='main'),
+    url(r'^about/$', maposmatic.views.about,
+        name='about'),
+
+    url(r'^jobs/(?P<job_id>\d+)$', maposmatic.views.job,
+        name='job-by-id'),
+    url(r'^jobs/$', maposmatic.views.all_jobs,
+        name='jobs'),
+
+    url(r'^maps/(?P<letter>[A-Z])$', maposmatic.views.all_maps_by_letter,
+        name='maps-by-letter'),
+    url(r'^maps/$', maposmatic.views.all_maps,
+        name='maps'),
+
     (r'^nominatim/([^/]*/)?(.*)$', maposmatic.views.query_nominatim),
+
+    # Internationalization
     (r'^i18n/', include('django.conf.urls.i18n')),
 
-    (r'^results/(?P<path>.*)$',
-     'django.views.static.serve',
+    # Static data
+    (r'^results/(?P<path>.*)$', 'django.views.static.serve',
      {'document_root': '/tmp/foo/'}),
-
+    (r'^smedia/(?P<path>.*)$', 'django.views.static.serve',
+     {'document_root': settings.LOCAL_MEDIA_PATH}),
 )

@@ -430,3 +430,21 @@ table.jobinfo h4
 {
   margin: 1em 0 0 0;
 }
+
+a.selectedletter
+{
+  font-weight: bold;
+}
+
+div.mapsearch
+{
+  float: right;
+  margin-top: 2em;
+  font-style: italic;
+}
+
+p#letterpagination
+{
+  margin-bottom: 2em;
+  text-align: center;
+}
