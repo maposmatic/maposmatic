@@ -47,6 +47,9 @@ urlpatterns = patterns('',
     url(r'^maps/$', maposmatic.views.all_maps,
         name='maps'),
 
+    url(r'^new/$', maposmatic.views.new,
+        name='new'),
+
     (r'^nominatim/([^/]*/)?(.*)$', maposmatic.views.query_nominatim),
 
     # Internationalization

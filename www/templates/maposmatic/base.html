@@ -61,6 +61,7 @@
 
       <ul id="nav">
         <li {% block menu-home %}{% endblock %}><a href="{% url main %}">{% trans "Home" %}</a></li>
+        <li {% block menu-new  %}{% endblock %}><a href="{% url new  %}">{% trans "Create map" %}</a></li>
         <li {% block menu-jobs %}{% endblock %}><a href="{% url jobs %}">{% trans "Jobs" %}</a></li>
         <li {% block menu-maps %}{% endblock %}><a href="{% url maps %}">{% trans "Maps" %}</a></li>
         <li><a href="http://news.maposmatic.org">{% trans "News" %}</a></li>

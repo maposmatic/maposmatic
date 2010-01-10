@@ -196,6 +196,10 @@ def rendering_already_exists(osmid):
     return None
 
 def index(request):
+    return render_to_response('maposmatic/index.html',
+                              context_instance=RequestContext(request))
+
+def new(request):
     if request.method == 'POST':
         form = MapRenderingJobForm(request.POST)
         if form.is_valid():
@@ -223,7 +227,7 @@ def index(request):
             return HttpResponseRedirect('/jobs/%d' % job.id)
     else:
         form = MapRenderingJobForm()
-    return render_to_response('maposmatic/index.html',
+    return render_to_response('maposmatic/new.html',
                               { 'form' : form },
                               context_instance=RequestContext(request))
 

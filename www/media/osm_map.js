@@ -96,15 +96,15 @@ function mapInit()
 function switchToAdminMode() {
   $('#mapform tbody').children('tr.bybbox').hide();
   $('#mapform tbody').children('tr.byadmin').show();
-  $('#map_language_label').hide();
-  $('#map_language_entry').hide();
+  $('#map_language').hide();
+  $('#id_go_next_btn').hide();
 }
 
 function switchToBBoxMode() {
   $('#mapform tbody').children('tr.byadmin').hide();
   $('#mapform tbody').children('tr.bybbox').show();
-  $('#map_language_label').show();
-  $('#map_language_entry').show();
+  $('#map_language').show();
+  $('#id_go_next_btn').show().removeAttr('disabled');
   if (map == null)
     mapInit();
 }
@@ -131,6 +131,8 @@ function suggest(input, results, osm_id, button, options) {
   var $osm_id = $(osm_id);
   var $button = $(button);
   var timeout = false;
+
+  closeSuggest();
 
   // Setup the keyup event.
   $input.keyup(processKey);

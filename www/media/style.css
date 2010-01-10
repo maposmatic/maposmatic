@@ -108,6 +108,7 @@ ul#nav li.activelink a {
 
 /* Main content */
 #content {
+  clear: both;
   margin: 1em 0 2em 2em;
   float: left;
   width: 70%;
@@ -130,11 +131,36 @@ table.authors td {
   vertical-align: top;
 }
 
+table#chavagne {
+  margin-left: 3em;
+  text-align: center;
+  float: right;
+}
+
+table#chavagne img {
+  width: 200px;
+}
+
+p#more {
+  margin: 2em 0 0 1em;
+  font-size: 13pt;
+}
+
+p#more img {
+  width: 32px;
+  vertical-align: middle;
+  margin-right: 0.5em;
+  margin-bottom: 0.5em;
+}
+
+p#more span {
+  font-weight: bold;
+}
 
 /* Meta informations */
 #meta {
   float: right;
-  width: 20%;
+  width: 22%;
   margin: 3em 1em;
   padding: 0 0 1em 1em;
   border-left: 1px #ccc solid;
@@ -245,7 +271,7 @@ a.selectedletter {
 
 /* Map form */
 #mainfrm {
-  padding: 1em;
+  padding: 0 0 1em 1em;
   margin: 1em 1em;
 
   border-left: 0.5em #ccc solid;
@@ -256,17 +282,26 @@ a.selectedletter {
   padding: 0;
 }
 
-#mainfrm tr.label {
+#mainfrm tr.bybbox {
+  display: none;
+}
+
+#mainfrm tr.label td {
   font-weight: bold;
+  padding-top: 10px;
 }
 
 #mainfrm input[type=text] {
   border: 1px black solid;
 }
 
+#mainfrm td.submit {
+  text-align: right;
+  padding-right: 1em;
+}
+
 #id_go_next_btn {
   display: none;
-  margin-left: 3em;
 }
 
 #mainfrm input#id_maptitle,
@@ -317,10 +352,6 @@ a.selectedletter {
   display: none;
 }
 
-#mainfrm tr.bybbox {
-  display: none;
-}
-
 #map_language_label,
 #map_language_entry {
   display: none;
@@ -340,58 +371,7 @@ a.selectedletter {
   bottom: 3px !important;
 }
 
-p.infobox {
-  margin-right: 1em;
-  margin-left: 1em;
-  background: #FFF6BF;
-  padding: 1em;
+ul.errorlist {
+  color: red;
 }
 
-p.infobox img {
-  margin-right: 1em;
-  vertical-align: middle;
-  display: inline-block;
-}
-
-p.infobox span {
-  vertical-align: middle;
-  display: inline-block;
-}
-
-table#result_nominatim_search {
-  margin: 0px;
-  padding: 0px;
-  border-collapse: collapse;
-  border-spacing: 0px;
-}
-
-table#result_nominatim_search td span {
-  display: none;
-  padding: 2px 3px;
-  margin-left: 8px;
-  margin-top: 1em;
-  width: 15em;
-}
-
-table#result_nominatim_search td:hover span {
-  display: inline;
-  position: absolute;
-  background: white;
-  border: 1px #ccc solid;
-  color: #6c6c6c;
-}
-
-table#result_nominatim_search td.nomsrch_bullet {
-  margin: 2px;
-  padding: 0px;
-  padding-top: 2px;
-  width: 10px;
-  text-align: center;
-  vertical-align: text-top;
-}
-
-table#result_nominatim_search td.nomsrch_entry {
-  margin: 2px;
-  padding: 0px;
-  padding-left: 3px;
-}
