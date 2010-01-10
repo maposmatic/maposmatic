@@ -167,6 +167,15 @@ p#more span {
   font-weight: bold;
 }
 
+p.infobox {
+  background: #eee;
+  padding: 0.5em;
+}
+
+p.infobox img {
+  vertical-align: middle;
+}
+
 /* Meta informations */
 #meta {
 /*  float: right; */
