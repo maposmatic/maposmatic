@@ -37,7 +37,7 @@ class="activelink"
 <h1><a href="{% url maps %}">{% trans "Maps" %}</a></h1>
 
 <p id="letterpagination">
-  {% for l in letters %}<a href="{% url maps-by-letter l %}"{% ifequal l current_letter %} class="selectedletter"{% endifequal %}>{{ l }}</a>{% if not forloop.last %} - {% endif %}{% endfor %}
+  <a href="{% url maps %}"{% if not current_letter %} class="selectedletter"{% endif %}>{% trans "All" %}</a> - {% for l in letters %}<a href="{% url maps-by-letter l %}"{% ifequal l current_letter %} class="selectedletter"{% endifequal %}>{{ l }}</a>{% if not forloop.last %} - {% endif %}{% endfor %}
 </p>
 
 {% for job in maps.object_list %}
