@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-01-10 15:06+0100\n"
+"POT-Creation-Date: 2010-01-10 23:02+0100\n"
 "PO-Revision-Date: 2010-01-06 09:03+0300\n"
 "Last-Translator: Bassem JARKAS <jarkas@gmail.com>\n"
 "Language-Team: Arabic Translation\n"
@@ -18,7 +18,7 @@ msgstr ""
 "&& n%100<=10 ? 3 : n%100>=11 && n%100<=99 ? 4 : 5;\n"
 "X-Generator: Virtaal 0.5.0\n"
 
-#: settings.py:152
+#: settings.py:153
 msgid "No localization"
 msgstr "لا يوجد ترجمة"
 
@@ -315,22 +315,22 @@ msgid ""
 msgstr ""
 
 #: templates/maposmatic/all_jobs.html:46 templates/maposmatic/all_jobs.html:60
-#: templates/maposmatic/all_maps.html:43 templates/maposmatic/all_maps.html:61
+#: templates/maposmatic/all_maps.html:43 templates/maposmatic/all_maps.html:68
 msgid "Previous"
 msgstr "السابق"
 
 #: templates/maposmatic/all_jobs.html:47 templates/maposmatic/all_jobs.html:61
-#: templates/maposmatic/all_maps.html:44 templates/maposmatic/all_maps.html:62
+#: templates/maposmatic/all_maps.html:44 templates/maposmatic/all_maps.html:69
 msgid "Page"
 msgstr "الصفحة"
 
 #: templates/maposmatic/all_jobs.html:47 templates/maposmatic/all_jobs.html:61
-#: templates/maposmatic/all_maps.html:44 templates/maposmatic/all_maps.html:62
+#: templates/maposmatic/all_maps.html:44 templates/maposmatic/all_maps.html:69
 msgid "of"
 msgstr "من"
 
 #: templates/maposmatic/all_jobs.html:48 templates/maposmatic/all_jobs.html:62
-#: templates/maposmatic/all_maps.html:45 templates/maposmatic/all_maps.html:63
+#: templates/maposmatic/all_maps.html:45 templates/maposmatic/all_maps.html:70
 msgid "Next"
 msgstr "التالي"
 
@@ -357,9 +357,13 @@ msgstr "الخرائط"
 msgid "All"
 msgstr ""
 
-#: templates/maposmatic/all_maps.html:55
+#: templates/maposmatic/all_maps.html:59
 #, python-format
 msgid "No map starts with %(current_letter)s in our database!"
+msgstr ""
+
+#: templates/maposmatic/all_maps.html:61
+msgid "Our database does not contain any rendered maps for the moment."
 msgstr ""
 
 #: templates/maposmatic/base.html:53
@@ -378,36 +382,36 @@ msgstr "المهام"
 msgid "News"
 msgstr "الأخبار"
 
-#: templates/maposmatic/base.html:78
+#: templates/maposmatic/base.html:79
 msgid "Random map"
 msgstr "خريطة عشوائية"
 
-#: templates/maposmatic/base.html:85
+#: templates/maposmatic/base.html:86
 msgid "No random map found."
 msgstr "لم يتم العثور على أي خريطة عشوائي."
 
-#: templates/maposmatic/base.html:90
+#: templates/maposmatic/base.html:91
 msgid "Latest news"
 msgstr "آخر الأخبار"
 
-#: templates/maposmatic/base.html:95
+#: templates/maposmatic/base.html:96
 #, python-format
 msgid "published %(date)s ago"
 msgstr ""
 
-#: templates/maposmatic/base.html:103
+#: templates/maposmatic/base.html:104
 msgid "Contact"
 msgstr "اتصال"
 
-#: templates/maposmatic/base.html:105
+#: templates/maposmatic/base.html:106
 msgid "Mail:"
 msgstr "البريد:"
 
-#: templates/maposmatic/base.html:107
+#: templates/maposmatic/base.html:108
 msgid "IRC:"
 msgstr "أي أر سي:"
 
-#: templates/maposmatic/base.html:108
+#: templates/maposmatic/base.html:109
 msgid "on"
 msgstr "على"
 
