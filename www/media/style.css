@@ -113,6 +113,7 @@ ul#nav li.activelink a {
   clear: both;
   margin: 1em;
   margin-top: 2em;
+  width: auto;
 }
 
 /* Main content */

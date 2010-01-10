@@ -194,8 +194,10 @@ function suggest(input, results, osm_id, button, options) {
   }
 
   function doQuery() {
-    if (!$input.val().length)
+    if (!$input.val().length) {
+      closeSuggest();
       return;
+    }
     $(input).css('cursor', 'wait');
     $.getJSON("/nominatim/", { q: $input.val() }, handleNominatimResults);
   }
