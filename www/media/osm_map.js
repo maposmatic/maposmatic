@@ -105,36 +105,35 @@ function setFormActivation(active) {
   }
 }
 
-function switchToAdminMode() {
-  $('#mapform tbody').children('tr.bybbox').hide();
-  $('#mapform tbody').children('tr.byadmin').show();
-  setFormActivation(false);
+
+/** Language list management. */
+var languages;
+
+function resetLanguages() {
+  $('#id_map_language').html(languages);
+  $('#id_map_language').children('option').each(function() {
+    if ($(this).val() == 'C')
+      $(this).attr('selected', 'selected');
+  });
 }
 
-function switchToBBoxMode() {
-  $('#mapform tbody').children('tr.byadmin').hide();
-  $('#mapform tbody').children('tr.bybbox').show();
-  setFormActivation(true);
-  if (map == null)
-    mapInit();
+function preselectLanguage(country) {
+  var seen = false;
+
+  $('#id_map_language').html(languages);
+  $('#id_map_language').children('option').each(function() {
+    if (! ($(this).val().match('.._' + country.toUpperCase() + '\..*') != null
+           || $(this).val() == 'C'))
+      $(this).remove();
+    else if (!seen) {
+      $(this).attr('selected', 'selected');
+      seen = true;
+    }
+  });
 }
 
-$(document).ready(function() {
-  $('#id_mode_0').bind('click', function(e) { switchToAdminMode(); });
-  $('#id_mode_1').bind('click', function(e) { switchToBBoxMode(); });
 
-  if ($('#id_mode_1').is(':checked'))
-    switchToBBoxMode();
-  else
-    switchToAdminMode();
-
-  suggest('#id_administrative_city', '#suggest',
-          '#id_administrative_osmid', '#id_go_next_btn',
-          { selectedClass: 'selected',
-            timeout: 150
-          });
-});
-
+/** Auto-suggest feature. */
 function suggest(input, results, osm_id, button, options) {
   var $input = $(input).attr('autocomplete', 'off');
   var $results = $(results);
@@ -150,10 +149,14 @@ function suggest(input, results, osm_id, button, options) {
   // Disable form validation via the Enter key
   $input.keypress(function(e) { if (e.keyCode == 13) return false; });
 
-  function appendValidResult(id, name) {
-    $results.append('<li class="suggestok" id="rad' + id + '">'
-       + name + '</span></li>');
-    return $('#rad' + id);
+  function appendValidResult(item) {
+    var id = 'rad_' + item.country_code + '_' + item.ocitysmap_params['id'];
+    $results.append('<li class="suggestok" id="' + id + '">'
+       + item.display_name + '</li>');
+
+    var e = $('#' + id)
+    e.bind('click', function(e) { setResult($(this)); });
+    e.bind('mouseover', function(e) { setSelectedResultTo($(this)); });
   }
 
   /* Empty and close the suggestion box. */
@@ -165,6 +168,7 @@ function suggest(input, results, osm_id, button, options) {
   /* Handle the JSON result. */
   function handleNominatimResults(data, textResult) {
     var unusable_token = false;
+    $(input).css('cursor', 'text');
     closeSuggest();
 
     if (data.length)
@@ -173,10 +177,7 @@ function suggest(input, results, osm_id, button, options) {
     $.each(data, function(i, item) {
       if (typeof item.ocitysmap_params != 'undefined' &&
           item.ocitysmap_params['admin_level'] == 8) {
-        var e = appendValidResult(item.ocitysmap_params['id'], item.display_name);
-
-        e.bind('click', function(e) { setResult($(this)); });
-        e.bind('onmouseover', function(e) { setSelectedResultTo($(this)); });
+        appendValidResult(item);
       } else {
         $results.append('<li class="suggestoff">'
           + item.display_name + '</li>');
@@ -213,6 +214,7 @@ function suggest(input, results, osm_id, button, options) {
           clearTimeout(timeout);
         }
         timeout = setTimeout(function() {
+          $(input).css('cursor', 'wait');
           $.getJSON("/nominatim/", {q: $input.val()},
             handleNominatimResults);
           }, options.timeout);
@@ -229,8 +231,12 @@ function suggest(input, results, osm_id, button, options) {
 
   /* Set the form to the given result. */
   function setResult(elt) {
-    $osm_id.val(elt.attr('id').substring(3));
+    var temp = elt.attr('id').split('_');
+
+    preselectLanguage(temp[1]);
+    $osm_id.val(temp[2]);
     $input.val(elt.html());
+
     closeSuggest();
     setFormActivation(true);
   }
@@ -282,3 +288,36 @@ function suggest(input, results, osm_id, button, options) {
   }
 }
 
+/** Page initialization. */
+$(document).ready(function() {
+  function switchToAdminMode() {
+    $('#mapform tbody').children('tr.bybbox').hide();
+    $('#mapform tbody').children('tr.byadmin').show();
+    setFormActivation(false);
+  }
+
+  function switchToBBoxMode() {
+    $('#mapform tbody').children('tr.byadmin').hide();
+    $('#mapform tbody').children('tr.bybbox').show();
+    setFormActivation(true);
+    if (map == null)
+      mapInit();
+    resetLanguages();
+  }
+
+  if ($('#id_mode_1').is(':checked'))
+    switchToBBoxMode();
+  else
+    switchToAdminMode();
+
+  $('#id_mode_0').bind('click', function(e) { switchToAdminMode(); });
+  $('#id_mode_1').bind('click', function(e) { switchToBBoxMode(); });
+
+  suggest('#id_administrative_city', '#suggest',
+          '#id_administrative_osmid', '#id_go_next_btn',
+          { selectedClass: 'selected',
+            timeout: 150
+          });
+
+  languages = $('#id_map_language').html();
+});

@@ -340,8 +340,6 @@ a.selectedletter {
 }
 
 #suggest li.suggestok:hover {
-  background: #36c;
-  color: white;
   cursor: pointer;
 }
 
