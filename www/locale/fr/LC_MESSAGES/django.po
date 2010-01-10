@@ -20,7 +20,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: mapOSMatic 0.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-01-07 10:57+0100\n"
+"POT-Creation-Date: 2010-01-07 13:05+0100\n"
 "PO-Revision-Date: 2009-12-26 20:47+0100\n"
 "Last-Translator: Thomas Petazzoni <thomas.petazzoni@enix.org>\n"
 "Language-Team: FR <LL@li.org>\n"
@@ -401,19 +401,19 @@ msgstr ""
 "Cette page donne l'état de toutes les demandes de rendu reçues durant les "
 "dernières 24 heures, de la plus récente à la plus ancienne."
 
-#: templates/maposmatic/all_jobs.html:57 templates/maposmatic/all_maps.html:47
+#: templates/maposmatic/all_jobs.html:57 templates/maposmatic/all_maps.html:57
 msgid "Previous"
 msgstr "Précédent"
 
-#: templates/maposmatic/all_jobs.html:61 templates/maposmatic/all_maps.html:51
+#: templates/maposmatic/all_jobs.html:61 templates/maposmatic/all_maps.html:61
 msgid "Page"
 msgstr "Page"
 
-#: templates/maposmatic/all_jobs.html:61 templates/maposmatic/all_maps.html:51
+#: templates/maposmatic/all_jobs.html:61 templates/maposmatic/all_maps.html:61
 msgid "of"
 msgstr "de"
 
-#: templates/maposmatic/all_jobs.html:65 templates/maposmatic/all_maps.html:55
+#: templates/maposmatic/all_jobs.html:65 templates/maposmatic/all_maps.html:65
 msgid "Next"
 msgstr "Suivant"
 
@@ -423,9 +423,27 @@ msgid ""
 "hours."
 msgstr "Pas de demande de rendu de carte durant les dernières 24 heures."
 
-#: templates/maposmatic/all_maps.html:35 templates/maposmatic/base.html:55
+#: templates/maposmatic/all_maps.html:35
+msgid "Search"
+msgstr "Recherche"
+
+#: templates/maposmatic/all_maps.html:35
+msgid "Search coming soon!"
+msgstr "Recherche bientôt disponible !"
+
+#: templates/maposmatic/all_maps.html:37 templates/maposmatic/base.html:55
 msgid "Maps"
 msgstr "Cartes"
+
+#: templates/maposmatic/all_maps.html:40
+msgid "All"
+msgstr "Toutes"
+
+#: templates/maposmatic/all_maps.html:49
+#, python-format
+msgid "No map starts with %(current_letter)s in our database!"
+msgstr ""
+"Aucune carte ne commence par %(current_letter)s dans notre base de données !"
 
 #: templates/maposmatic/base.html:49
 msgid "Your free city maps!"
