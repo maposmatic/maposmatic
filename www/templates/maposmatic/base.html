@@ -72,15 +72,7 @@
       {% block page %}{% endblock %}
     </div>
 
-    <div id="bottom">
-      <div id="bcontact">
-        <h3>{% trans "Contact" %}</h3>
-        <p>
-          {% trans "Mail:" %} <a href="mailto:contact@maposmatic.org">contact@maposmatic.org</a><br />
-          {% trans "IRC:" %} <tt>#maposmatic</tt> {% trans "on" %} <tt>irc.freenode.net</tt>
-        </p>
-      </div>
-
+    <div id="meta">
       <div id="bmap">
         <h3>{% trans "Random map" %}</h3>
         {% if randommap %}<p class="randommap">
@@ -104,6 +96,16 @@
           </li>
           {% endfor %}
         </ul>
+      </div>
+
+      <div id="bcontact">
+        <h3>{% trans "Contact" %}</h3>
+        <p>
+          {% trans "Mail:" %}
+          <a href="mailto:contact@maposmatic.org">contact@maposmatic.org</a><br />
+          {% trans "IRC:" %}
+          <tt>#maposmatic</tt> {% trans "on" %} <tt>irc.freenode.net</tt>
+        </p>
       </div>
     </div>
 

@@ -45,6 +45,7 @@ a img {
   background-image: url('/smedia/header.png');
   background-position: top right;
   background-repeat: no-repeat;
+  border-bottom: 1px black solid;
 }
 
 #header h1 {
@@ -107,9 +108,9 @@ ul#nav li.activelink a {
 
 /* Main content */
 #content {
-  margin: 0;
-  padding: 2em;
-  border-top: 1px black solid;
+  margin: 1em 0 2em 2em;
+  float: left;
+  width: 70%;
 }
 
 #content h1 {
@@ -130,24 +131,26 @@ table.authors td {
 }
 
 
-/* Bottom */
-#bottom {
-  border-top: 1px #aaa solid;
-  margin: 1em 2em;
+/* Meta informations */
+#meta {
+  float: right;
+  width: 20%;
+  margin: 3em 1em;
+  padding: 0 0 1em 1em;
+  border-left: 1px #ccc solid;
 }
 
-#bottom h3 {
+#meta h3 {
   margin: 1em 0;
   padding: 0;
 }
 
 #bcontact {
-  float: left;
-  padding-left: 1em;
+  padding-top: 1em;
 }
 
 #bnews {
-  margin-left: 30%;
+  padding-top: 1em;
 }
 
 #bnews ul {
@@ -164,10 +167,6 @@ table.authors td {
 }
 
 #bmap {
-  float: right;
-  text-align: center;
-  padding-right: 1em;
-  width: 220px;
 }
 
 #bmap p.randommap {
