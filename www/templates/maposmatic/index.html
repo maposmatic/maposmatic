@@ -29,12 +29,10 @@
 
 {% block extralink %}
 <script type="text/javascript" src="/smedia/jquery.js"></script>
-
 {{ form.media }}
 {% endblock %}
 
 {% block extrajs %}
-
 var elemFound = 0;
 var unusableToken = 0;
 var languageList;
@@ -260,74 +258,71 @@ function toggle_form_validation(enableForm)
 }
 {% endblock %}
 
-{% block menu-home %}
-class="activelink"
-{% endblock %}
+{% block menu-home %}class="activelink"{% endblock %}
 
-{% block extrabody %}
-onload='pageinit()'
-{% endblock %}
+{% block extrabody %}onload='pageinit()'{% endblock %}
 
 {% block page %}
 <h1>MapOSMatic</h1>
-
 <h2>{% trans "Introduction" %}</h2>
 
 <div style="float: right; margin-left: 3em;">
-  <table style="text-align: center">
+  <table style="text-align: center"><tbody>
     <tr>
       <td><a href="/smedia/chavagne.png"><img style="width: 200px;" src="/smedia/chavagne-small.png"></a></td>
       <td><a href="/smedia/chavagne_index.png"><img style="width: 200px;" src="/smedia/chavagne_index-small.png"></a></td>
     </tr>
     <tr>
       <td>
-	{% trans "City Map" %}<br/>
-	<a href="/smedia/chavagne.png">PNG</a>&nbsp;-&nbsp;
-	<a href="/smedia/chavagne.pdf">PDF</a>&nbsp;-&nbsp;
-	<a href="/smedia/chavagne.svg">SVG</a>
+        {% trans "City Map" %}<br />
+        <a href="/smedia/chavagne.png">PNG</a>&nbsp;-&nbsp;<a href="/smedia/chavagne.pdf">PDF</a>&nbsp;-&nbsp;<a href="/smedia/chavagne.svg">SVG</a>
       </td>
       <td>
-	{% trans "Streets index" %}<br/>
-	<a href="/smedia/chavagne_index.png">PNG</a>&nbsp;-&nbsp;
-	<a href="/smedia/chavagne_index.pdf">PDF</a>&nbsp;-&nbsp;
-	<a href="/smedia/chavagne_index.svg">SVG</a>
+        {% trans "Streets index" %}<br />
+        <a href="/smedia/chavagne_index.png">PNG</a>&nbsp;-&nbsp;<a href="/smedia/chavagne_index.pdf">PDF</a>&nbsp;-&nbsp;<a href="/smedia/chavagne_index.svg">SVG</a>
       </td>
     </tr>
   </table>
 </div>
 
-<p>{% blocktrans %}MapOSMatic is a free software web service that
+<p>
+{% blocktrans %}MapOSMatic is a free software web service that
 allows you to generate maps of cities using
 <a href="http://www.openstreetmap.org">OpenStreetMap</a> data. A city map
-is made of two pages:{% endblocktrans %}</p>
+is made of two pages:{% endblocktrans %}
+</p>
 
 <ul>
   <li>{% blocktrans %}The map itself, splitted in squares allowing to easily look for streets;{% endblocktrans %}</li>
   <li>{% blocktrans %}An index of the streets with references to the squares on the map.{% endblocktrans %}</li>
 </ul>
 
-<p>{% blocktrans %}The generated maps are available in PNG, PDF and
-SVG formats and are ready to be printed.{% endblocktrans %}</p>
+<p>
+{% blocktrans %}The generated maps are available in PNG, PDF and
+SVG formats and are ready to be printed.{% endblocktrans %}
+</p>
 
-<p>{% blocktrans %}As the data used to generate maps is coming from
+<p>
+{% blocktrans %}As the data used to generate maps is coming from
 OpenStreetMap, you can freely (under the <a
 href="http://wiki.openstreetmap.org/wiki/License">terms of
 OpenStreetMap license</a>) reuse, sell, modify, ... the generated
-maps.{% endblocktrans %}</p>
+maps.{% endblocktrans %}
+</p>
 
 <p><a href="{% url about %}">{% trans "More details" %} &raquo;</a></p>
 
-<h2 style="clear: right"><a href="#submitmapform">{% trans "Generate your own map" %}</a></h2>
 
-<a name="submitmapform"></a>
-<form id="id-mainfrm" method="post" action="/#submitmapform" class="submitmap">
-
+<h2 style="margin-top: 3em;"><a name="submitmapform" href="#submitmapform">{% trans "Generate your own map" %}</a></h2>
+<form id="mainfrm" method="post" action="{% url main %}#submitmapform" class="submitmap">
   <table id="mapform">
     <tr class="label">
       <td>{% trans "Area selection mode:" %}</td>
       <td style="vertical-align: bottom" rowspan="8" class="image">
-        <input id="id-go-next-btn" type="image" src="/smedia/Go-next.png" value="{% trans "Generate" %}"
-               title="{% trans "Please fill in the form before trying to proceed" %}" disabled="true" class="btn-disabled" />
+        <input id="id-go-next-btn" type="image" src="/smedia/Go-next.png"
+               value="{% trans "Generate" %}" disabled="true"
+               title="{% trans "Please fill in the form before trying to proceed" %}"
+               class="btn-disabled" />
       </td>
     </tr>
     <tr class="field">
@@ -339,9 +334,10 @@ maps.{% endblocktrans %}</p>
     <tr class="byadmin label"><td>{% trans "City name:" %}</td></tr>
     <tr class="byadmin field"><td>
         {{ form.administrative_city }}
-	<input type="button" onclick="javascript:validate_city_search();" value="{% trans "search" %}" />
-	{{ form.administrative_osmid }}
-	{{ form.administrative_osmid.errors }}
+        <input type="button" onclick="javascript:validate_city_search();"
+               value="{% trans "search" %}" />
+        {{ form.administrative_osmid }}
+        {{ form.administrative_osmid.errors }}
         {{ form.administrative_city.errors }}
     </td></tr>
 
@@ -356,46 +352,47 @@ maps.{% endblocktrans %}</p>
         {{ form.bbox }}
         {{ form.bbox.errors }}
     </td></tr>
+
     <tr class="byadmin field">
-      <td>
-	<table id="result_nominatim_search">
-	</table>
-      </td>
+      <td><table id="result_nominatim_search"></table></td>
     </tr>
+
     <tr class="label" id="map_language_label">
       <td>{% trans "Map Index Language:" %}</td>
     </tr>
     <tr class="field" id="map_language_entry">
       <td>
-	{{ form.map_language }}
+{{ form.map_language }}
       </td>
     </tr>
   </table>
 </form>
 
-  <p>{%blocktrans%}<em>MapOSMatic</em> covers the whole world but we need
+<p>
+{% blocktrans %}<em>MapOSMatic</em> covers the whole world but we need
 contributors to translate and adapt the few parts of <em>MapOSMatic</em>
-that are country specific.{%endblocktrans%}</p>
+that are country specific.{% endblocktrans %}
+</p>
 
-<p>{%blocktrans%}To select the city to be rendered, two modes are
-available:{%endblocktrans%}</p>
+<p>
+{% blocktrans %}To select the city to be rendered, two modes are
+available:{% endblocktrans %}
+</p>
 
 <ul>
-
-  <li>{%blocktrans%}<em>Using an administrative boundary</em>. It allows
+  <li>{% blocktrans %}<em>Using an administrative boundary</em>. It allows
   to get a map with precise boundaries of the city when such limits are
   available in the database. Otherwise, you need to use a bounding
-  box.{%endblocktrans%}</li>
-
-  <li>{%blocktrans%}<em>Using a traditional bounding
-  box</em>.{%endblocktrans%}</li>
-
+  box.{% endblocktrans %}</li>
+  <li>{% blocktrans %}<em>Using a traditional bounding box</em>.{% endblocktrans %}</li>
 </ul>
 
-<p>{%blocktrans%}Once the rendering is submitted, you will be brought
+<p>
+{% blocktrans %}Once the rendering is submitted, you will be brought
 to a page giving the status of your rendering request. As soon as the
 rendering is completed (that might take some time depending on the queue
 length), this page will contain links to the generated
-map.{%endblocktrans%}</p>
+map.{% endblocktrans %}
+</p>
 
 {% endblock %}

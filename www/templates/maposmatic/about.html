@@ -33,10 +33,10 @@ class="activelink"
 
 {% block page %}
 <h1>{% trans "About" %}</h1>
-
 <h2>{% trans "History" %}</h2>
 
-<p>{%blocktrans%}MapOSMatic has been started thanks to an idea of
+<p>
+{% blocktrans %}MapOSMatic has been started thanks to an idea of
 Gilles Lamiral, an <a
 href="http://www.openstreetmap.org">OpenStreetMap</a> and free
 software contributor of Rennes area, France. From his idea, a group of
@@ -46,14 +46,21 @@ met together during a one-week <em>Hackfest</em> in August 2009 and
 brought the idea of Gilles Lamiral to life by writing the code and
 named the project <strong>MapOSMatic</strong>. The group of crazy
 hackers would like to thank Gilles for sharing his bright
-idea!{%endblocktrans%}</p>
+idea!{% endblocktrans %}
+</p>
 
-<p>{%blocktrans%}Of course, MapOSMatic is fully free software,
-licensed under the <a href="http://www.fsf.org/licensing/licenses/agpl-3.0.html">AGPLv3</a>.{%endblocktrans%}</p>
+<p>
+{% blocktrans %}Of course, MapOSMatic is fully free software,
+licensed under the <a
+href="http://www.fsf.org/licensing/licenses/agpl-3.0.html">AGPLv3</a>.
+{% endblocktrans %}
+</p>
+
 
 <h2>{% trans "How does it work?" %}</h2>
 
-<p>{%blocktrans%}On our server, we run a <a
+<p>
+{% blocktrans %}On our server, we run a <a
 href="http://www.postgresql.org">PostgreSQL</a> server, with the <a
 href="http://postgis.refractions.net">PostGIS</a> extension. In this
 PostgreSQL server, we have loaded the <a
@@ -63,43 +70,44 @@ href="http://wiki.openstreetmap.org/wiki/Osm2pgsql">osm2pgsql</a>
 tool. The same tool is also used to apply <a
 href="http://planet.openstreetmap.org/daily/">daily differences</a> of
 the database, which allows to keep it up to date with the new
-contributions of OpenStreetMap users.{%endblocktrans%}</p>
+contributions of OpenStreetMap users.{% endblocktrans %}
+</p>
 
-<p>{%blocktrans%}For the map rendering, we use the
+<p>
+{% blocktrans %}For the map rendering, we use the
 famous <a href="http://www.mapnik.org">Mapnik</a> with the OpenStreetMap
 stylesheet
 available <a href="http://svn.openstreetmap.org/applications/rendering/mapnik">in
 OpenStreetMap Subversion repository</a>. Using Mapnik
 and <a href="http://cairographics.org/pycairo/">Cairo</a>, we
-built <i>OCitySMap</i>, a Python module that:{%endblocktrans%}</p>
+built <i>OCitySMap</i>, a Python module that:{% endblocktrans %}
+</p>
 
 <ul>
-
-  <li>{%blocktrans%}Renders the map using OpenStreetMap data and the
-  OpenStreetMap Mapnik stylesheet;{%endblocktrans%}</li>
-
-  <li>{%blocktrans%}Renders on top of the map, using Mapnik, the grid
+  <li>{% blocktrans %}Renders the map using OpenStreetMap data and the
+  OpenStreetMap Mapnik stylesheet;{% endblocktrans %}</li>
+  <li>{% blocktrans %}Renders on top of the map, using Mapnik, the grid
   of 500 meters squares, the labels of the squares, and a few other
   informations on the map (copyright, scale,
-  etc.);{%endblocktrans%}</li>
-
-  <li>{%blocktrans%}Greys out all the area outside the city if we find
-  its administrative boundary;{%endblocktrans%}</li>
-
-  <li>{%blocktrans%}Renders an index of the streets, based on
+  etc.);{% endblocktrans %}</li>
+  <li>{% blocktrans %}Greys out all the area outside the city if we find
+  its administrative boundary;{% endblocktrans %}</li>
+  <li>{% blocktrans %}Renders an index of the streets, based on
   OpenStreetMap data and the intersection of the streets with the
-  squares on the map.{%endblocktrans%}</li>
-
+  squares on the map.{% endblocktrans %}</li>
 </ul>
 
-<p>{%blocktrans%}This Python module can be used through a command-line
+<p>
+{% blocktrans %}This Python module can be used through a command-line
 tool provided with OCitySMap, so everyone can run its own city-map
 rendering suite. However, as the installation of the different
 components is quite complicated, a small web service has been created
 on top of it so that end-users can easily generate and use
-OpenStreetMap city maps.{%endblocktrans%}</p>
+OpenStreetMap city maps.{% endblocktrans %}
+</p>
 
-<p>{%blocktrans%}This web service has been called <i>MapOSMatic</i>,
+<p>
+{% blocktrans %}This web service has been called <i>MapOSMatic</i>,
 like <i>map-o-matic</i> but with a reference to OpenStreetMap (OSM). The
 web service is written in Python
 using <a href="http://www.djangoproject.com">Django</a>. It is
@@ -107,75 +115,75 @@ responsible for storing the rendering requests and displaying the result
 of these requests. The rendering itself takes place asynchronously
 through the <i>maposmaticd</i> daemon. This daemon does only one
 rendering at a time, which is very important because of the CPU and I/O
-intensive nature of the map rendering process.{%endblocktrans%}</p>
+intensive nature of the map rendering process.{% endblocktrans %}
+</p>
 
-<p>{%blocktrans%}For the city search engine, we use the wonderful <a
+<p>
+{% blocktrans %}For the city search engine, we use the wonderful <a
 href="http://nominatim.openstreetmap.org">Nominatim</a> service. This
 service made it really simple to provide a nice search engine that
 allows to select between multiple cities of the same name, by
-providing informations on the city location.{%endblocktrans%}</p>
+providing informations on the city location.{% endblocktrans %}
+</p>
+
 
 <h2>{% trans "Contributing" %}</h2>
 
-<p>{%blocktrans%}As stated above, both <i>OCitySMap</i> and
+<p>
+{% blocktrans %}As stated above, both <i>OCitySMap</i> and
 <i>MapOSMatic</i> are fully free software, so you're invited to
 contribute. Here are the few starting points to help
-us:{%endblocktrans%}</p>
+us:{% endblocktrans %}
+</p>
 
 <ul>
-
-  <li>{%blocktrans%}The <a
+  <li>{% blocktrans %}The <a
   href="https://savannah.nongnu.org/projects/maposmatic/">project on
-  Savannah</a>;{%endblocktrans%}</li>
-
-  <li>{%blocktrans%}The <a
+  Savannah</a>;{% endblocktrans %}</li>
+  <li>{% blocktrans %}The <a
   href="http://lists.nongnu.org/mailman/listinfo/maposmatic-dev">development
-  mailing-list</a>;{%endblocktrans%}</li>
-
-  <li>{%blocktrans%}The IRC channel <code>#maposmatic</code> on
-  Freenode;{%endblocktrans%}</li>
-
-  <li>{%blocktrans%}The <a
+  mailing-list</a>;{% endblocktrans %}</li>
+  <li>{% blocktrans %}The IRC channel <tt>#maposmatic</tt> on
+  Freenode;{% endblocktrans %}</li>
+  <li>{% blocktrans %}The <a
   href="http://git.savannah.gnu.org/cgit/maposmatic/ocitysmap.git">OCitySMap
-  Git repository</a>, which can be cloned using <code>git clone
-  git://git.sv.gnu.org/maposmatic/ocitysmap.git</code>;{%endblocktrans%}</li>
-
-  <li>{%blocktrans%}The <a
+  Git repository</a>, which can be cloned using <tt>git clone
+  git://git.sv.gnu.org/maposmatic/ocitysmap.git</tt>;{% endblocktrans %}</li>
+  <li>{% blocktrans %}The <a
   href="http://git.savannah.gnu.org/cgit/maposmatic.git">MapOSMatic
   Git repository</a>, which can be cloned using
-  <code>git clone git://git.sv.gnu.org/maposmatic.git</code>;{%endblocktrans%}</li>
-
-  <li>{%blocktrans%}<a
+  <tt>git clone git://git.sv.gnu.org/maposmatic.git</tt>;{% endblocktrans %}</li>
+  <li>{% blocktrans %}<a
   href="https://savannah.nongnu.org/task/?group=maposmatic">TODO-list
-  and ideas</a>.{%endblocktrans%}</li>
-
+  and ideas</a>.{% endblocktrans %}</li>
 </ul>
 
-<h2>{% trans "Authors" %}</h2>
-
-<ul>
-  <li>David Decotigny</li>
-  <li>Frédéric Lehobey</li>
-  <li>Pierre Mauduit</li>
-  <li>David Mentré</li>
-  <li>Maxime Petazzoni</li>
-  <li>Thomas Petazzoni</li>
-  <li>Gaël Utard</li>
-</ul>
-
-<h2>{% trans "Contributors" %}</h2>
-
-<ul>
-  <li>Étienne Loks (slippy map)</li>
-  <li>Malenki (german translation)</li>
-  <li>Simone Cortesi (italian translation)</li>
-  <li>Joan Montané (catalan translation)</li>
-  <li>Konstantin Mochalov (russian translation)</li>
-  <li>Bassem Jarkas (arabic translation)</li>
-  <li>Arlindo Pereira (brasilian portuguese translation)</li>
-  <li>Rodrigo de Avila (brasilian portuguese translation)</li>
-  <li>Esben Damgaard (danish translation)</li>
-  <li>Jeroen van Rijn (dutch translation)</li>
-</ul>
-
+<table class="authors"><tbody><tr>
+  <td width="50%">
+    <h2>{% trans "Authors" %}</h2>
+    <ul>
+      <li>David Decotigny</li>
+      <li>Frédéric Lehobey</li>
+      <li>Pierre Mauduit</li>
+      <li>David Mentré</li>
+      <li>Maxime Petazzoni</li>
+      <li>Thomas Petazzoni</li>
+      <li>Gaël Utard</li>
+    </ul>
+  </td><td width="50%">
+    <h2>{% trans "Contributors" %}</h2>
+    <ul>
+      <li>Étienne Loks (slippy map)</li>
+      <li>Malenki (german translation)</li>
+      <li>Simone Cortesi (italian translation)</li>
+      <li>Joan Montané (catalan translation)</li>
+      <li>Konstantin Mochalov (russian translation)</li>
+      <li>Bassem Jarkas (arabic translation)</li>
+      <li>Arlindo Pereira (brasilian portuguese translation)</li>
+      <li>Rodrigo de Avila (brasilian portuguese translation)</li>
+      <li>Esben Damgaard (danish translation)</li>
+      <li>Jeroen van Rijn (dutch translation)</li>
+    </ul>
+  </td>
+</tr></tbody></table>
 {% endblock %}

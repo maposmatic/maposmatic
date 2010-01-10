@@ -21,176 +21,347 @@
  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
-html,body {
-    margin:0;
-    padding:0;
+html, body {
+  margin: 0;
+  padding: 0;
 }
 
 body {
-    font: 90% sans-serif;
-    text-align: left;
-    background: #fff;
-    padding-bottom:20px;
+  font: 90% sans-serif;
 }
 
 a {
-    color: #0066B3;
-    background: inherit;
-    text-decoration: none;
+  color: #0066b3;
+  text-decoration: none;
 }
 
 a img {
-    border-style: none;
+  border: none;
 }
 
-h1 {
-    font: bold 2.1em Sans-Serif;
-    color: #036DA7;
+/* Header */
+#header {
+  background-color: #cee5f6;
+  background-image: url('/smedia/header.png');
+  background-position: top right;
+  background-repeat: no-repeat;
 }
 
-h2 {
-    font: bold 1.1em Sans-Serif;
-    padding: 0;
-    margin: 0;
+#header h1 {
+  margin: 0;
+  padding: 0.5em 0 0 0.5em;
+
+  font-size: 30pt;
+  font-weight: bold;
+  font-family: Georgia, serif;
 }
 
-h2 a {
-    color: black;
+#header h2 {
+  margin: 0;
+  padding: 0 0 1em 1.5em;
+
+  font-size: 10pt;
+  font-weight: normal;
+  font-style: italic;
 }
 
-div#header {
-    width:100%;
-    overflow:hidden;
-    background: #BBD9EE;
-}
-
-div#header h1, div#header h2, div#menu {
-    margin:0 auto;
-    text-align:center;
-}
-
-div#header h1 {
-    padding: 10px 0 5px;
-    color: #fff;
-}
-
-div#header h2 {
-    padding: 5px 0 5px;
-    color: #fff;
-}
-
-ul#nav,ul#nav li {
-    list-style-type:none;
-    margin:0;
-    padding:0;
+form#langsel {
+  float: right;
+  margin-right: 1em;
 }
 
 ul#nav {
-    margin-left: 5em;
-    font-size: 90%;
+  margin: 0;
+  padding: 2px 0;
+  padding-left: 2em;
+
+  list-style: none;
+  height: 2em;
 }
 
 ul#nav li {
-    float:left;
-    margin-left: 3px;
-    text-align: center;
+  display: block;
+  float: left;
 }
 
 ul#nav a {
-    float: left;
-    width: 110px;
-    padding: 5px 0;
-    background: #E7F1F8;
-    text-decoration:none;
-    color: #666;
-    border-top : 1px solid #fff;
-    border-left : 1px solid #fff;
-    border-right : 1px solid #fff;
+  display: block;
+  padding: 0.5em 1em;
 }
 
 ul#nav a:hover {
-    background: #fff;
-    color: #000;
+  background: white;
+  border-bottom: 1px black solid;
 }
 
-ul#nav li.activelink a,ul#nav li.activelink a:hover {
-    background: #FFF;
-    color: #003;
+ul#nav li.activelink a {
+  background: white;
+  border: 1px black solid;
+  border-bottom: none;
 }
 
-#right {
-	float: left;
-	width: 76%;
-	padding: 1em;
-	margin-bottom: 1.2em;
-	background: #eee;
-	text-align: justify;
+
+/* Main content */
+#content {
+  margin: 0;
+  padding: 2em;
+  border-top: 1px black solid;
 }
 
-#left {
-	float: right;
-	width: 20%;
-	margin: 0 0 10px 0;
+#content h1 {
+  color: #0066b3;
+  border-bottom: 1px black solid;
 }
 
-#left .box {
-	padding: 1em;
-	margin: 0 0 1em 0;
-	background : #FFF6BF;
+#content h2 a {
+  color: black;
 }
 
-p.randommap {
+#content table.authors {
+  width: 80%;
+}
+
+table.authors td {
+  vertical-align: top;
+}
+
+
+/* Bottom */
+#bottom {
+  border-top: 1px #aaa solid;
+  margin: 1em 2em;
+}
+
+#bottom h3 {
+  margin: 1em 0;
+  padding: 0;
+}
+
+#bcontact {
+  float: left;
+  padding-left: 1em;
+}
+
+#bnews {
+  margin-left: 30%;
+}
+
+#bnews ul {
+  padding-left: 1.5em;
+}
+
+#bnews li {
+  padding-bottom: 0.5em;
+}
+
+#bnews span.newsinfo {
+  font-size: smaller;
+  font-style: italic;
+}
+
+#bmap {
+  float: right;
+  text-align: center;
+  padding-right: 1em;
+  width: 220px;
+}
+
+#bmap p.randommap {
   text-align: center;
 }
 
-#content {
-    margin: 0 auto;
-    padding: 15px;
-    background: #fff;
+
+/* Jobs and maps */
+.job {
+  margin: 1em 0;
+  padding: 1em;
+  width: auto;
+
+  border: 1px #ccc solid;
 }
 
-div#content h1 {
-    border-bottom: 2px solid #036DA7;
+.jobodd {
+  background: #fff6bf;
 }
 
-div#content h2 {
-    font-size: 140%;
+h2.jobtitle {
+  margin: 0;
+  padding: 0;
 }
 
-form ul {
-    padding: 0;
-    margin: 0;
-    list-style-type: none;
+h2.jobtitle a {
+  color: #0066b3 !important;
 }
 
-table#mapform table#result_nominatim_search
+.job h4 {
+  margin: 1em 0 0.5em 0;
+  padding: 0;
+}
+
+table.jobinfo {
+  width: 100%;
+  margin-top: 1em;
+}
+
+table.jobinfo td.status {
+  width: 130px;
+  text-align: center;
+}
+
+table.jobinfo td.thumb {
+  width: 220px;
+  text-align: center;
+  vertical-align: top;
+}
+
+table.jobinfo td.info {
+  vertical-align: top;
+}
+
+div.mapsearch {
+  float: right;
+  margin-top: 2em;
+  font-style: italic;
+}
+
+
+/* Navigation links */
+div.pagination {
+  margin-top: 1em;
+  text-align: center;
+}
+
+p#letterpagination {
+  text-align: center;
+}
+
+a.selectedletter {
+  font-weight: bold;
+}
+
+
+/* Map form */
+#mainfrm {
+  padding: 1em;
+  margin: 1em 1em;
+
+  border-left: 0.5em #ccc solid;
+}
+
+#mainfrm ul {
+  list-style: none;
+  padding: 0;
+}
+
+#mainfrm tr.label {
+  font-weight: bold;
+  padding-top: 1em;
+}
+
+#mainfrm input[type=text] {
+  background: #fff6bf;
+  border: 2px #ccc solid;
+}
+
+#mapfrm td.image
 {
+  text-align: right;
+  padding-right: 3em;
+  vertical-align: middle;
+}
+
+#mapfrm input[type=image].btn-enabled {
+  display: block;
+}
+
+#mapfrm input[type=image].btn-enabled:hover {
+  cursor: auto;
+}
+
+#mapfrm input[type=image].btn-disabled {
+  display: none;
+}
+
+#mapfrm input[type=image].btn-disabled:hover {
+  cursor: default;
+}
+
+#mainfrm input.btn-disabled {
+  display: none;
+}
+
+#mainfrm input#id_maptitle {
+  width: 300px;
+}
+
+#mainfrm tr.bybbox {
+  display: none;
+}
+
+#map_language_label, #map_language_entry {
+  display: none;
+}
+
+#map {
+  border: 1px solid black;
+  width: 600px;
+  height: 350px;
+}
+
+#map_bb {
+  margin-top: 1em;
+}
+
+#map_bb input {
+  width: 5em;
+}
+
+#map .olControlAttribution {
+  bottom: 3px !important;
+}
+
+p.infobox {
+  margin-right: 1em;
+  margin-left: 1em;
+  background: #FFF6BF;
+  padding: 1em;
+}
+
+p.infobox img {
+  margin-right: 1em;
+  vertical-align: middle;
+  display: inline-block;
+}
+
+p.infobox span {
+  vertical-align: middle;
+  display: inline-block;
+}
+
+table#result_nominatim_search {
   margin: 0px;
   padding: 0px;
   border-collapse: collapse;
   border-spacing: 0px;
 }
 
-table#mapform table#result_nominatim_search tr td span
-{
- display:none;
- padding:2px 3px;
- margin-left:8px;
- margin-top: 1em;
- width: 15em;
+table#result_nominatim_search td span {
+  display: none;
+  padding: 2px 3px;
+  margin-left: 8px;
+  margin-top: 1em;
+  width: 15em;
 }
 
-table#mapform table#result_nominatim_search tr td:hover span
-{
- display:inline;
- position:absolute;
- background:#ffffff;
- border:1px solid #cccccc;
- color:#6c6c6c;
+table#result_nominatim_search td:hover span {
+  display: inline;
+  position: absolute;
+  background: white;
+  border: 1px #ccc solid;
+  color: #6c6c6c;
 }
 
-table#mapform table#result_nominatim_search tr td.nomsrch_bullet
-{
+table#result_nominatim_search td.nomsrch_bullet {
   margin: 2px;
   padding: 0px;
   padding-top: 2px;
@@ -199,252 +370,8 @@ table#mapform table#result_nominatim_search tr td.nomsrch_bullet
   vertical-align: text-top;
 }
 
-table#mapform table#result_nominatim_search tr td.nomsrch_entry
-{
+table#result_nominatim_search td.nomsrch_entry {
   margin: 2px;
   padding: 0px;
   padding-left: 3px;
-}
-
-table#mapform
-{
-  margin: 2em 2em 2em 2em;
-  width: 650px;
-  border: 1px solid #CCC;
-  padding: 1em;
-}
-
-table#mapform tr.field td
-{
-  padding-bottom: 10px;
-}
-
-table#mapform td
-{
-  padding: 3px;
-}
-
-table#mapform tr.label
-{
-  font-weight: bold;
-}
-
-table#mapform td.image
-{
-  text-align: right;
-  padding-right: 3em;
-  vertical-align: middle;
-}
-#mapform input[type=image].btn-enabled:hover
-{
-  cursor: auto;
-}
-
-#mapform input[type=image].btn-disabled:hover
-{
-  cursor: default;
-}
-
-#mapform input[type=image].btn-disabled
-{
-  display: none;
-}
-
-#mapform input[type=image].btn-enabled
-{
-  display: block;
-}
-
-ul.errorlist
-{
-  margin-top: 5px;
-  color: red;
-}
-
-.submitmap input[type=text] {
-    background: #FFF6BF;
-    border: 3px solid #CCC;
-    width: 300px;
-    padding: 3px;
-}
-
-.submitmap input[type=text]:hover {
-    border: 3px solid #AAA;
-}
-
-.submitmap input[type="submit"]
-{
-    width: 300px;
-}
-
-.langsel {
-    text-align: right;
-}
-
-.langsel input {
-    background: #FFF6BF;
-    border: 3px solid #CCC;
-    padding: 3px;
-}
-
-.langsel select {
-    background: #FFF6BF;
-    border: 3px solid #CCC;
-    width: 100px;
-    padding: 3px;
-}
-
-.langsel select:hover {
-    border: 3px solid #AAA
-}
-
-.langsel input:hover {
-    border: 3px solid #AAA;
-}
-
-.langsel input[type="submit"]
-{
-}
-
-div.pagination
-{
-  text-align: center;
-}
-
-.bybbox
-{
-  display: none;
-}
-
-div#map
-{
-  border: 1px solid black;
-  width: 600px;
-  height: 350px;
-}
-
-#map_bb
-{
-  margin-top: 1em;
-}
-
-#map_bb input
-{
-    width: 100px;
-    margin: 6px;
-}
-
-#map .olControlAttribution
-{
-  bottom: 3px !important;
-}
-
-p.infobox
-{
-  margin-right: 1em;
-  margin-left: 1em;
-  background: #FFF6BF;
-  padding: 1em;
-}
-
-p.infobox img
-{
-  margin-right: 1em;
-  vertical-align: middle;
-  display: inline-block;
-}
-
-p.infobox span
-{
-  vertical-align: middle;
-  display: inline-block;
-}
-
-div.job
-{
-  border: 1px #ccc solid;
-  margin: 1em 0;
-  padding: 1em;
-}
-
-div.jobodd
-{
-  background: #FFF6BF;
-}
-
-div.jobeven
-{
-  background: white;
-}
-
-table.jobinfo
-{
-  width: 100%;
-  margin: 2em 0 1em 0;
-}
-
-table.jobinfo td
-{
-  vertical-align: top;
-}
-
-table.jobinfo td.thumb
-{
-  width: 220px;
-  text-align: center;
-}
-
-table.jobinfo td.info
-{
-  padding-left: 2em;
-}
-
-table.jobinfo td.status
-{
-  width: 15%;
-  text-align: center;
-  vertical-align: middle;
-}
-
-td.status img
-{
-  width: 64px;
-}
-
-h2.jobtitle
-{
-  border-bottom: 1px black solid;
-}
-
-h2.jobtitle a
-{
-  color: #0066B3;
-}
-
-table.jobinfo h3
-{
-  margin-top: 0;
-}
-
-table.jobinfo h4
-{
-  margin: 1em 0 0 0;
-}
-
-a.selectedletter
-{
-  font-weight: bold;
-}
-
-div.mapsearch
-{
-  float: right;
-  margin-top: 2em;
-  font-style: italic;
-}
-
-p#letterpagination
-{
-  margin-bottom: 2em;
-  text-align: center;
 }

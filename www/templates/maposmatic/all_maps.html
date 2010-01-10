@@ -27,18 +27,24 @@
 
 {% load i18n %}
 
-{% block menu-maps %}
-class="activelink"
-{% endblock %}
+{% block menu-maps %}class="activelink"{% endblock %}
 
 {% block page %}
 <div class="mapsearch"><!-- <input type="text" name="map_search" /><input type="submit" value="{% trans "Search" %}" />-->{% trans "Search coming soon!" %}</div>
 
 <h1><a href="{% url maps %}">{% trans "Maps" %}</a></h1>
 
-<p id="letterpagination">
+<p id="letterpagination" style="margin-bottom: 2em;">
   <a href="{% url maps %}"{% if not current_letter %} class="selectedletter"{% endif %}>{% trans "All" %}</a> - {% for l in letters %}<a href="{% url maps-by-letter l %}"{% ifequal l current_letter %} class="selectedletter"{% endifequal %}>{{ l }}</a>{% if not forloop.last %} - {% endif %}{% endfor %}
 </p>
+
+{% ifnotequal maps.paginator.num_pages 1 %}
+<div class="pagination">
+  {% if maps.has_previous %}<a href="?page={{ maps.previous_page_number }}">&laquo; {% trans "Previous" %}</a>{% endif %}
+  <span class="current">{% trans "Page" %} {{ maps.number }} {% trans "of" %} {{ maps.paginator.num_pages }}</span>
+  {% if maps.has_next %}<a href="?page={{ maps.next_page_number }}">{% trans "Next" %} &raquo;</a>{% endif %}
+</div>
+{% endifnotequal %}
 
 {% for job in maps.object_list %}
 <div class="job {% cycle jobodd,jobeven %}">
@@ -52,19 +58,10 @@ class="activelink"
 
 {% ifnotequal maps.paginator.num_pages 1 %}
 <div class="pagination">
-  <span class="step-links">
-    {% if maps.has_previous %}
-      <a href="?page={{ maps.previous_page_number }}">&laquo; {% trans "Previous" %}</a>
-    {% endif %}
-
-    <span class="current">
-      {% trans "Page" %} {{ maps.number }} {% trans "of" %} {{ maps.paginator.num_pages }}
-    </span>
-
-    {% if maps.has_next %}
-      <a href="?page={{ maps.next_page_number }}">{% trans "Next" %} &raquo;</a>
-    {% endif %}
-  </span>
+  {% if maps.has_previous %}<a href="?page={{ maps.previous_page_number }}">&laquo; {% trans "Previous" %}</a>{% endif %}
+  <span class="current">{% trans "Page" %} {{ maps.number }} {% trans "of" %} {{ maps.paginator.num_pages }}</span>
+  {% if maps.has_next %}<a href="?page={{ maps.next_page_number }}">{% trans "Next" %} &raquo;</a>{% endif %}
 </div>
 {% endifnotequal %}
+
 {% endblock %}

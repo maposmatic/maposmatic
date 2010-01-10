@@ -29,19 +29,25 @@
 
 {% load extratags %}
 
-{% block menu-jobs %}
-class="activelink"
-{% endblock %}
+{% block menu-jobs %}class="activelink"{% endblock %}
 
 {% block page %}
-
 <h1>{% trans "Job list" %}</h1>
 
 {% if jobs %}
-
-<p>{%blocktrans%}This page gives the status of all the rendering
+<p style="margin-bottom: 2em;">
+{% blocktrans %}This page gives the status of all the rendering
 requests received during the last 24 hours, starting from the most
-recent one.{%endblocktrans%}</p>
+recent one.{% endblocktrans %}
+</p>
+
+{% ifnotequal jobs.paginator.num_pages 1 %}
+<div class="pagination">
+  {% if jobs.has_previous %}<a class="prevlink" href="?page={{ jobs.previous_page_number }}">&laquo; {% trans "Previous" %}</a>{% endif %}
+  <span class="current">{% trans "Page" %} {{ jobs.number }} {% trans "of" %} {{ jobs.paginator.num_pages }}</span>
+  {% if jobs.has_next %}<a class="nextlink" href="?page={{ jobs.next_page_number }}">{% trans "Next" %} &raquo;</a>{% endif %}
+</div>
+{% endifnotequal %}
 
 {% for job in jobs.object_list %}
 <div class="job {% cycle jobodd,jobeven %}">
@@ -52,24 +58,17 @@ recent one.{%endblocktrans%}</p>
 
 {% ifnotequal jobs.paginator.num_pages 1 %}
 <div class="pagination">
-  <span class="step-links">
-    {% if jobs.has_previous %}
-      <a href="?page={{ jobs.previous_page_number }}">&laquo; {% trans "Previous" %}</a>
-    {% endif %}
-
-    <span class="current">
-      {% trans "Page" %} {{ jobs.number }} {% trans "of" %} {{ jobs.paginator.num_pages }}
-    </span>
-
-    {% if jobs.has_next %}
-      <a href="?page={{ jobs.next_page_number }}">{% trans "Next" %} &raquo;</a>
-    {% endif %}
-  </span>
+  {% if jobs.has_previous %}<a class="prevlink" href="?page={{ jobs.previous_page_number }}">&laquo; {% trans "Previous" %}</a>{% endif %}
+  <span class="current">{% trans "Page" %} {{ jobs.number }} {% trans "of" %} {{ jobs.paginator.num_pages }}</span>
+  {% if jobs.has_next %}<a class="nextlink" href="?page={{ jobs.next_page_number }}">{% trans "Next" %} &raquo;</a>{% endif %}
 </div>
 {% endifnotequal %}
+
 {% else %}
-<p>{%blocktrans%}No map rendering request since the last 24
-hours.{%endblocktrans%}</p>
+<p>
+{% blocktrans %}No map rendering request since the last 24
+hours.{% endblocktrans %}
+</p>
 {% endif %}
 
 {% endblock %}

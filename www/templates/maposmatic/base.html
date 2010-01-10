@@ -29,115 +29,99 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+  <head>
+    <title>MapOSMatic</title>
+    <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+    <link rel="stylesheet"    type="text/css" media="screen"
+          href="/smedia/style.css" />
+    <link rel="alternate"     type="application/rss+xml" title="MapOSMatic news"
+          href="http://news.maposmatic.org/?feed=rss2" />
+    <link rel="icon"          type="image/x-icon"
+          href="/smedia/favicon.ico" />
+    <link rel="shortcut icon" type="image/x-icon"
+          href="/smedia/favicon.ico" />
+    {% block extralink %}{% endblock %}
 
-<head>
- <title>MapOSMatic</title>
- <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
- <link rel="stylesheet" type="text/css" href="/smedia/style.css" media="screen" />
- <link rel="alternate" href="http://news.maposmatic.org/?feed=rss2" title="MapOSMatic news" type="application/rss+xml" />
- <link rel="icon" href="/smedia/favicon.ico" type="image/x-icon">
- <link rel="shortcut icon" href="/smedia/favicon.ico" type="image/x-icon">
- {% block extralink %}{% endblock %}
- <script language="JavaScript" type="text/javascript">
- {% block extrajs %}{% endblock %}
- </script>
-</head>
+    <script language="JavaScript" type="text/javascript">
+      {% block extrajs %}{% endblock %}
+    </script>
+  </head>
 
-<body {% block extrabody %}{% endblock %}>
-<div id="header">
-<h1>MapOSMatic</h1>
-<h2>{% trans "Your free city maps!" %}</h2>
+  <body {% block extrabody %}{% endblock %}>
+    <div id="header">
+      <h1>MapOSMatic</h1>
+      <h2>{% trans "Your free city maps!" %}</h2>
+      <form name="langsel" action="/i18n/setlang/" method="post" id="langsel">
+        <select name="language" onChange="document.langsel.submit();">
+          {% for lang in LANGUAGES %}<option{% ifequal lang.0 LANGUAGE_CODE %} selected{% endifequal %} value="{{ lang.0 }}">{{ lang.1 }}</option>
+          {% endfor %}
+        </select>
+        <noscript><input type="submit" value="Go" /></noscript>
+      </form>
 
- <div id="menu">
-  <ul id="nav">
-   <li {% block menu-home %}{% endblock %}><a href="{% url main %}">{% trans "Home" %}</a></li>
-   <li {% block menu-jobs %}{% endblock %}><a href="{% url jobs %}">{% trans "Jobs" %}</a></li>
-   <li {% block menu-maps %}{% endblock %}><a href="{% url maps %}">{% trans "Maps" %}</a></li>
-   <li><a href="http://news.maposmatic.org">{% trans "News" %}</a></li>
-   <li {% block menu-about %}{% endblock %}><a href="{% url about %}">{% trans "About" %}</a></li>
-  </ul>
- </div>
-</div>
-<div id="content">
-<div id="right">
-{% block page %}{% endblock %}
-</div>
+      <ul id="nav">
+        <li {% block menu-home %}{% endblock %}><a href="{% url main %}">{% trans "Home" %}</a></li>
+        <li {% block menu-jobs %}{% endblock %}><a href="{% url jobs %}">{% trans "Jobs" %}</a></li>
+        <li {% block menu-maps %}{% endblock %}><a href="{% url maps %}">{% trans "Maps" %}</a></li>
+        <li><a href="http://news.maposmatic.org">{% trans "News" %}</a></li>
+        <li {% block menu-about %}{% endblock %}><a href="{% url about %}">{% trans "About" %}</a></li>
+      </ul>
+    </div>
 
-<div id="left">
+    <div id="content">
+      {% block page %}{% endblock %}
+    </div>
 
-<div class="box">
-  <h2>{% trans "Random map" %}</h2>
-  {% if randommap %}
-  <p class="randommap">
-    <a href="{% url job-by-id randommap.id %}">
-      <img src="{{ randommap.get_thumbnail }}"
-           style="margin-top: 20px; margin-bottom: 20px"/><br />
-      <i>{{randommap.maptitle}}</i>
-    </a>
-  </p>
-  {% else %}
-  <p>{% trans "No random map found." %}</p>
-  {% endif %}
-</div>
+    <div id="bottom">
+      <div id="bcontact">
+        <h3>{% trans "Contact" %}</h3>
+        <p>
+          {% trans "Mail:" %} <a href="mailto:contact@maposmatic.org">contact@maposmatic.org</a><br />
+          {% trans "IRC:" %} <tt>#maposmatic</tt> {% trans "on" %} <tt>irc.freenode.net</tt>
+        </p>
+      </div>
 
-<div class="box">
-  <h2>{% trans "Latest news" %}</h2>
-  <ul>
-    {% for entry in blogposts %}
-    <li><a href="{{ entry.link }}">{{ entry.title }}</a><br/>
-    <span style="font-size: 80%">
-    {% blocktrans with entry.updated_parsed|feedparsed|timesince as date %}
-    published {{ date }} ago
-    {% endblocktrans %}
-    </span>
-    </li>
-    {% endfor %}
-  </ul>
-</div>
+      <div id="bmap">
+        <h3>{% trans "Random map" %}</h3>
+        {% if randommap %}<p class="randommap">
+          <a href="{% url job-by-id randommap.id %}">
+            <img src="{{ randommap.get_thumbnail }}" /><br />
+            <i>{{ randommap.maptitle }}</i>
+          </a>
+        </p>
+        {% else %}<p>{% trans "No random map found." %}</p>
+        {% endif %}
+      </div>
 
-<div class="box">
-  <h2>{% trans "Contact" %}</h2>
-  <p>
-  {% trans "Mail:" %} <a href="mailto:contact@maposmatic.org">contact@maposmatic.org</a><br />
-  {% trans "IRC:" %} <tt>#maposmatic</tt> {% trans "on" %} <tt>irc.freenode.net</tt>
-  </p>
-</div>
+      <div id="bnews">
+        <h3>{% trans "Latest news" %}</h3>
+        <ul>
+          {% for entry in blogposts %}<li>
+            <a href="{{ entry.link }}">{{ entry.title }}</a><br />
+            <span class="newsinfo">
+              {% blocktrans with entry.updated_parsed|feedparsed|timesince as date %}published {{ date }} ago{% endblocktrans %}
+            </span>
+          </li>
+          {% endfor %}
+        </ul>
+      </div>
+    </div>
 
-<div class="box">
-  <form name="langsel" action="/i18n/setlang/" method="post" class="langsel">
-    <label for="language">{%trans "Language:" %}</label>
-    <select name="language" onChange="document.langsel.submit();">
-    {% for lang in LANGUAGES %}
-    <option
-       {% ifequal lang.0 LANGUAGE_CODE %}
-       selected
-       {% endifequal %}
-       value="{{ lang.0 }}">
-      {{ lang.1 }}
-    </option>
-    {% endfor %}
-    </select>
+    <!-- Piwik statistics -->
+    <script type="text/javascript">
+      var pkBaseURL = (("https:" == document.location.protocol) ? "https://stats.maposmatic.org/piwik/" : "http://stats.maposmatic.org/piwik/");
+      document.write(unescape("%3Cscript src='" + pkBaseURL
+            + "piwik.js' type='text/javascript'%3E%3C/script%3E"));
+    </script><script type="text/javascript">
+      try {
+        var piwikTracker = Piwik.getTracker(pkBaseURL + "piwik.php", 2);
+        piwikTracker.trackPageView();
+        piwikTracker.enableLinkTracking();
+      } catch (err) {}
+    </script>
     <noscript>
-      <input type="submit" value="Go" />
+      <img src="http://stats.maposmatic.org/piwik/piwik.php?idsite=2" />
     </noscript>
-  </form>
-</div>
-
-</div>
-</div>
-
-<!-- Piwik -->
-<script type="text/javascript">
-var pkBaseURL = (("https:" == document.location.protocol) ? "https://stats.maposmatic.org/piwik/" : "http://stats.maposmatic.org/piwik/");
-document.write(unescape("%3Cscript src='" + pkBaseURL + "piwik.js' type='text/javascript'%3E%3C/script%3E"));
-</script><script type="text/javascript">
-try {
-var piwikTracker = Piwik.getTracker(pkBaseURL + "piwik.php", 2);
-piwikTracker.trackPageView();
-piwikTracker.enableLinkTracking();
-} catch( err ) {}
-</script><noscript><p><img src="http://stats.maposmatic.org/piwik/piwik.php?idsite=2" style="border:0" alt=""/></p></noscript>
-<!-- End Piwik Tag -->
-
-</body>
+    <!-- End Piwik Tag -->
+  </body>
 </html>
