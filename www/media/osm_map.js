@@ -300,6 +300,8 @@ function suggest(input, results, osm_id, button, options) {
 
 /** Page initialization. */
 $(document).ready(function() {
+  languages = $('#id_map_language').html();
+
   function switchToAdminMode() {
     $('#mapform tbody').children('tr.bybbox').hide();
     $('#mapform tbody').children('tr.byadmin').show();
@@ -328,6 +330,4 @@ $(document).ready(function() {
           { selectedClass: 'selected',
             timeout: 150
           });
-
-  languages = $('#id_map_language').html();
 });
