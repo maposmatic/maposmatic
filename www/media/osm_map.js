@@ -93,18 +93,28 @@ function mapInit()
     updateMap();
 }
 
+function setFormActivation(active) {
+  if (active) {
+    $('#map_language').show();
+    $('#id_go_next_btn').show()
+      .removeAttr('disabled');
+  } else {
+    $('#map_language').hide();
+    $('#id_go_next_btn').hide()
+      .attr('disabled', 'disabled');
+  }
+}
+
 function switchToAdminMode() {
   $('#mapform tbody').children('tr.bybbox').hide();
   $('#mapform tbody').children('tr.byadmin').show();
-  $('#map_language').hide();
-  $('#id_go_next_btn').hide();
+  setFormActivation(false);
 }
 
 function switchToBBoxMode() {
   $('#mapform tbody').children('tr.byadmin').hide();
   $('#mapform tbody').children('tr.bybbox').show();
-  $('#map_language').show();
-  $('#id_go_next_btn').show().removeAttr('disabled');
+  setFormActivation(true);
   if (map == null)
     mapInit();
 }
@@ -147,6 +157,7 @@ function suggest(input, results, osm_id, button, options) {
   }
 
   function handleNominatimResults(data, textResult) {
+    var unusable_token = false;
     closeSuggest();
 
     if (data.length)
@@ -162,8 +173,12 @@ function suggest(input, results, osm_id, button, options) {
       } else {
         $results.append('<li class="suggestoff">'
           + item.display_name + '</li>');
+        unusable_token = true;
       }
     });
+
+    if (unusable_token)
+      $results.append('<li class="info">' + $('#noadminlimitinfo').html() + '</li>');
   }
 
   function processKey(e) {
@@ -197,8 +212,7 @@ function suggest(input, results, osm_id, button, options) {
 
   function clearResult() {
     $osm_id.val('');
-    $button.attr('disabled', 'disabled');
-    $button.hide();
+    setFormActivation(false);
   }
 
   /* Returns the currently selected result. */
@@ -221,8 +235,7 @@ function suggest(input, results, osm_id, button, options) {
     $osm_id.val(elt.attr('id').substring(3));
     $input.val(elt.html());
     closeSuggest();
-    $button.removeAttr('disabled');
-    $button.show();
+    setFormActivation(true);
   }
 
   function setSelectedResultTo(elt) {

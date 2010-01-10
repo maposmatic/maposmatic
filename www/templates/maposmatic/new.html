@@ -97,12 +97,12 @@ map.{% endblocktrans %}
     </td></tr>
 
     <tr><td class="submit">
-      <input id="id_go_next_btn" type="image" src="/smedia/go-next.png"
-             value="{% trans "Generate" %}" disabled="disabled"
-             title="{% trans "Please fill in the form before trying to proceed" %}" />
+      <input id="id_go_next_btn" type="submit"
+             value="{% trans "Generate" %}" disabled="disabled" />
     </td></tr>
   </table>
 </form>
+<span id="noadminlimitinfo">{% blocktrans %}Wondering why you can't choose some of these results?<br />Their administrative boundaries are missing from the OSM database.<br />Look at the <a href="http://wiki.maposmatic.org/doku.php?id=faq">FAQ</a> for more details.{% endblocktrans %}</span>
 
 {% endblock %}
 
