@@ -532,7 +532,7 @@ msgstr ""
 "MapOSMatic est un service Web en Logiciel Libre qui vous permet de générer "
 "des cartes de villes en utilisant les données <a href=\"http://www."
 "openstreetmap.org\">OpenStreetMap</a>. La carte d'une ville est constituée "
-"de deux pages :"
+"de deux pages&nbsp;:"
 
 #: templates/maposmatic/index.html:296
 msgid ""
