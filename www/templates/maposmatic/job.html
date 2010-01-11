@@ -44,7 +44,7 @@
     <h4>{% trans "Rendering: " %}</h4>
     {% trans "Rendering submitted" %} {{ job.submission_time|date:"l d M Y\, H:i:s" }}.<br />
     {% if job.is_waiting %}
-      {% trans "In queue, position" %} {{ job.current_position_in_queue }} ({% trans "estimated completion time" %} {{ job.rendering_estimated_start_time|timeuntil }}).
+      {% trans "In queue, position" %} {{ job.current_position_in_queue }}.
     {% else %}{% if job.is_done %}{% if job.is_done_ok %}
       {% trans "Completed on" %}
     {% else %}
