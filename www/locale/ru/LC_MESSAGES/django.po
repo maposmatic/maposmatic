@@ -20,7 +20,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: mapOSMatic 0.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-01-11 21:44+0100\n"
+"POT-Creation-Date: 2010-01-11 22:28+0100\n"
 "PO-Revision-Date: 2010-01-06 00:28+0300\n"
 "Last-Translator: Konstantin Mochalov <incredible.angst@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -94,7 +94,7 @@ msgstr ""
 "Отрисовка завершилась неудачно, пожалуйста сообщите на <a href=\"mailto:"
 "contact@maposmatic.org\">contact@maposmatic.org</a>"
 
-#: templates/404.html:3 templates/500.html:3 templates/maposmatic/base.html:63
+#: templates/404.html:3 templates/500.html:3 templates/maposmatic/base.html:67
 msgid "Home"
 msgstr "Домой"
 
@@ -130,7 +130,7 @@ msgstr "Ошибка сервера <em>(500)</em>"
 msgid "There's been an error."
 msgstr "Произошла ошибка."
 
-#: templates/maposmatic/about.html:35 templates/maposmatic/base.html:68
+#: templates/maposmatic/about.html:35 templates/maposmatic/base.html:72
 msgid "About"
 msgstr "О сервисе"
 
@@ -422,6 +422,42 @@ msgstr "Авторы"
 msgid "Contributors"
 msgstr "Соавторы"
 
+#: templates/maposmatic/about.html:180
+msgid "slippy map"
+msgstr ""
+
+#: templates/maposmatic/about.html:181
+msgid "german translation"
+msgstr ""
+
+#: templates/maposmatic/about.html:182
+msgid "italian translation"
+msgstr ""
+
+#: templates/maposmatic/about.html:183
+msgid "catalan translation"
+msgstr ""
+
+#: templates/maposmatic/about.html:184
+msgid "russian translation"
+msgstr ""
+
+#: templates/maposmatic/about.html:185
+msgid "arabic translation"
+msgstr ""
+
+#: templates/maposmatic/about.html:186 templates/maposmatic/about.html:187
+msgid "brasilian portuguese translation"
+msgstr ""
+
+#: templates/maposmatic/about.html:188
+msgid "danish translation"
+msgstr ""
+
+#: templates/maposmatic/about.html:189
+msgid "dutch translation"
+msgstr ""
+
 #: templates/maposmatic/all_jobs.html:35
 msgid "Job list"
 msgstr "Список заданий"
@@ -472,7 +508,7 @@ msgstr "поиск"
 msgid "Search coming soon!"
 msgstr ""
 
-#: templates/maposmatic/all_maps.html:35 templates/maposmatic/base.html:66
+#: templates/maposmatic/all_maps.html:35 templates/maposmatic/base.html:70
 msgid "Maps"
 msgstr "Карты"
 
@@ -489,35 +525,35 @@ msgstr ""
 msgid "Our database does not contain any rendered maps for the moment."
 msgstr ""
 
-#: templates/maposmatic/base.html:53
+#: templates/maposmatic/base.html:57
 msgid "Your free city maps!"
 msgstr "Ваши свободные карты городов!"
 
-#: templates/maposmatic/base.html:64 templates/maposmatic/index.html:78
+#: templates/maposmatic/base.html:68 templates/maposmatic/index.html:78
 msgid "Create map"
 msgstr ""
 
-#: templates/maposmatic/base.html:65
+#: templates/maposmatic/base.html:69
 msgid "Jobs"
 msgstr "Задания"
 
-#: templates/maposmatic/base.html:67
+#: templates/maposmatic/base.html:71
 msgid "News"
 msgstr "Новости"
 
-#: templates/maposmatic/base.html:79
+#: templates/maposmatic/base.html:83
 msgid "Random map"
 msgstr "Случайная карта"
 
-#: templates/maposmatic/base.html:86
+#: templates/maposmatic/base.html:90
 msgid "No random map found."
 msgstr "Не найдено случайной карты."
 
-#: templates/maposmatic/base.html:91
+#: templates/maposmatic/base.html:95
 msgid "Latest news"
 msgstr "Последние новости"
 
-#: templates/maposmatic/base.html:96
+#: templates/maposmatic/base.html:100
 #, fuzzy, python-format
 msgid "published %(date)s ago"
 msgstr ""
@@ -525,19 +561,19 @@ msgstr ""
 "    опубликовано %(date)s назад\n"
 "    "
 
-#: templates/maposmatic/base.html:104
+#: templates/maposmatic/base.html:108
 msgid "Contact"
 msgstr "Связаться"
 
-#: templates/maposmatic/base.html:106
+#: templates/maposmatic/base.html:110
 msgid "Mail:"
 msgstr "Почта:"
 
-#: templates/maposmatic/base.html:108
+#: templates/maposmatic/base.html:112
 msgid "IRC:"
 msgstr "IRC:"
 
-#: templates/maposmatic/base.html:109
+#: templates/maposmatic/base.html:113
 msgid "on"
 msgstr "вкл"
 
@@ -632,10 +668,6 @@ msgstr "Отрисовка запущена"
 
 #: templates/maposmatic/job.html:47
 msgid "In queue, position"
-msgstr ""
-
-#: templates/maposmatic/job.html:47
-msgid "estimated completion time"
 msgstr ""
 
 #: templates/maposmatic/job.html:49

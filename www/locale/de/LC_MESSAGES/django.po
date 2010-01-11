@@ -20,7 +20,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: mapOSMatic 0.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-01-11 21:44+0100\n"
+"POT-Creation-Date: 2010-01-11 22:28+0100\n"
 "PO-Revision-Date: 2010-01-04 21:10+0100\n"
 "Last-Translator: malenki <osm@malenki.ch>\n"
 "Language-Team:  <osm@malenki.ch>\n"
@@ -96,7 +96,7 @@ msgstr ""
 "Rendern fehlgeschlagen, bitte kontaktieren Sie <a href=\"mailto:"
 "contact@maposmatic.org\">contact@maposmatic.org</a>"
 
-#: templates/404.html:3 templates/500.html:3 templates/maposmatic/base.html:63
+#: templates/404.html:3 templates/500.html:3 templates/maposmatic/base.html:67
 msgid "Home"
 msgstr "Start"
 
@@ -132,7 +132,7 @@ msgstr "Interner Serverfehler <em>500</em>"
 msgid "There's been an error."
 msgstr "Ein Fehler ist aufgetreten."
 
-#: templates/maposmatic/about.html:35 templates/maposmatic/base.html:68
+#: templates/maposmatic/about.html:35 templates/maposmatic/base.html:72
 msgid "About"
 msgstr "Über"
 
@@ -416,6 +416,42 @@ msgstr "Autoren"
 msgid "Contributors"
 msgstr "Mitwirkende"
 
+#: templates/maposmatic/about.html:180
+msgid "slippy map"
+msgstr ""
+
+#: templates/maposmatic/about.html:181
+msgid "german translation"
+msgstr ""
+
+#: templates/maposmatic/about.html:182
+msgid "italian translation"
+msgstr ""
+
+#: templates/maposmatic/about.html:183
+msgid "catalan translation"
+msgstr ""
+
+#: templates/maposmatic/about.html:184
+msgid "russian translation"
+msgstr ""
+
+#: templates/maposmatic/about.html:185
+msgid "arabic translation"
+msgstr ""
+
+#: templates/maposmatic/about.html:186 templates/maposmatic/about.html:187
+msgid "brasilian portuguese translation"
+msgstr ""
+
+#: templates/maposmatic/about.html:188
+msgid "danish translation"
+msgstr ""
+
+#: templates/maposmatic/about.html:189
+msgid "dutch translation"
+msgstr ""
+
 #: templates/maposmatic/all_jobs.html:35
 msgid "Job list"
 msgstr "Liste der Rendervorgänge"
@@ -464,7 +500,7 @@ msgstr "Suche"
 msgid "Search coming soon!"
 msgstr ""
 
-#: templates/maposmatic/all_maps.html:35 templates/maposmatic/base.html:66
+#: templates/maposmatic/all_maps.html:35 templates/maposmatic/base.html:70
 msgid "Maps"
 msgstr "Pläne"
 
@@ -482,55 +518,55 @@ msgstr ""
 msgid "Our database does not contain any rendered maps for the moment."
 msgstr "Leider können derzeit nur französische Städte gerendert werden."
 
-#: templates/maposmatic/base.html:53
+#: templates/maposmatic/base.html:57
 msgid "Your free city maps!"
 msgstr "Ihre freien Stadtpläne!"
 
-#: templates/maposmatic/base.html:64 templates/maposmatic/index.html:78
+#: templates/maposmatic/base.html:68 templates/maposmatic/index.html:78
 #, fuzzy
 msgid "Create map"
 msgstr "Cartes générées"
 
-#: templates/maposmatic/base.html:65
+#: templates/maposmatic/base.html:69
 msgid "Jobs"
 msgstr "Rendervorgänge"
 
-#: templates/maposmatic/base.html:67
+#: templates/maposmatic/base.html:71
 msgid "News"
 msgstr "Aktuelles"
 
-#: templates/maposmatic/base.html:79
+#: templates/maposmatic/base.html:83
 msgid "Random map"
 msgstr "Zufälliger Plan"
 
-#: templates/maposmatic/base.html:86
+#: templates/maposmatic/base.html:90
 msgid "No random map found."
 msgstr "Keinen zufälligen Plan gefunden."
 
-#: templates/maposmatic/base.html:91
+#: templates/maposmatic/base.html:95
 msgid "Latest news"
 msgstr "Aktuelles"
 
-#: templates/maposmatic/base.html:96
+#: templates/maposmatic/base.html:100
 #, fuzzy, python-format
 msgid "published %(date)s ago"
 msgstr ""
 "\n"
 "    vor %(date)s veröffentlicht"
 
-#: templates/maposmatic/base.html:104
+#: templates/maposmatic/base.html:108
 msgid "Contact"
 msgstr "Kontakt"
 
-#: templates/maposmatic/base.html:106
+#: templates/maposmatic/base.html:110
 msgid "Mail:"
 msgstr "E-Mail:"
 
-#: templates/maposmatic/base.html:108
+#: templates/maposmatic/base.html:112
 msgid "IRC:"
 msgstr "IRC:"
 
-#: templates/maposmatic/base.html:109
+#: templates/maposmatic/base.html:113
 msgid "on"
 msgstr "auf"
 
@@ -626,11 +662,6 @@ msgstr "Rendervorgang gestartet am"
 #: templates/maposmatic/job.html:47
 msgid "In queue, position"
 msgstr ""
-
-#: templates/maposmatic/job.html:47
-#, fuzzy
-msgid "estimated completion time"
-msgstr "Voraussichtliches Ende des Rendervorgangs"
 
 #: templates/maposmatic/job.html:49
 msgid "Completed on"
@@ -761,6 +792,10 @@ msgstr ""
 #, fuzzy
 msgid "No results."
 msgstr "Kein Ort gefunden."
+
+#, fuzzy
+#~ msgid "estimated completion time"
+#~ msgstr "Voraussichtliches Ende des Rendervorgangs"
 
 #~ msgid "Please fill in the form before trying to proceed"
 #~ msgstr ""
