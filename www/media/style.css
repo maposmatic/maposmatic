@@ -374,8 +374,7 @@ a.selectedletter {
 }
 
 #suggest li.info {
-  color: #ccc;
-  padding: 0.5em 0 2px 3px;
+  color: #bbb;
   font-size: 8pt;
 }
 
@@ -406,6 +405,8 @@ ul.errorlist {
   color: red;
 }
 
-#noadminlimitinfo {
+#noadminlimitinfo,
+#noresultsinfo {
   display: none;
 }
+

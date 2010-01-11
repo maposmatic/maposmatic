@@ -142,7 +142,7 @@ function suggest(input, results, osm_id, button, options) {
   var timeout = false;
   var shown = false;
 
-  closeSuggest();
+  closeSuggest(true);
 
   // Setup the keyup event.
   $input.keyup(processKey);
@@ -161,21 +161,26 @@ function suggest(input, results, osm_id, button, options) {
   }
 
   /* Empty and close the suggestion box. */
-  function closeSuggest() {
+  function closeSuggest(hide) {
     $results.empty();
-    $results.hide();
-    shown = false;
+
+    if (hide)
+      $results.hide();
+    else
+      $results.show();
+
+    shown = !hide;
   }
 
   /* Handle the JSON result. */
   function handleNominatimResults(data, textResult) {
     var unusable_token = false;
     $(input).css('cursor', 'text');
-    closeSuggest();
+    closeSuggest(false);
 
-    if (data.length) {
-      $results.show();
-      shown = true;
+    if (!data.length) {
+      $results.append('<li class="info">' + $('#noresultsinfo').html() + '</li>');
+      return;
     }
 
     $.each(data, function(i, item) {
@@ -195,7 +200,7 @@ function suggest(input, results, osm_id, button, options) {
 
   function doQuery() {
     if (!$input.val().length) {
-      closeSuggest();
+      closeSuggest(true);
       return;
     }
     $(input).css('cursor', 'wait');
@@ -212,7 +217,7 @@ function suggest(input, results, osm_id, button, options) {
 
     switch (e.keyCode) {
       case 27:  // ESC
-        closeSuggest();
+        closeSuggest(true);
         break;
       case 9:   // TAB
       case 13:  // OK
@@ -254,7 +259,7 @@ function suggest(input, results, osm_id, button, options) {
     $osm_id.val(temp[2]);
     $input.val(elt.html());
 
-    closeSuggest();
+    closeSuggest(true);
     setFormActivation(true);
   }
 
