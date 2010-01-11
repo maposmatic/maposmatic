@@ -57,7 +57,7 @@
       <h2>{% trans "Your free city maps!" %}</h2>
       <form name="langsel" action="/i18n/setlang/" method="post" id="langsel">
         <select name="language" onChange="document.langsel.submit();">
-          {% for lang in LANGUAGES %}<option{% ifequal lang.0 LANGUAGE_CODE %} selected{% endifequal %} value="{{ lang.0 }}">{{ lang.1 }}</option>
+          {% for lang in LANGUAGES %}<option{% ifequal lang.0 LANGUAGE_CODE %} selected{% endifequal %} value="{{ lang.0 }}" {% ifequal lang.0 "ar" %}dir="rtl"{% else %}dir="ltr"{% endifequal %}>{{ lang.1 }}</option>
           {% endfor %}
         </select>
         <noscript><input type="submit" value="Go" /></noscript>
