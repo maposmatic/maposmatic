@@ -20,7 +20,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: mapOSMatic 0.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-01-10 23:02+0100\n"
+"POT-Creation-Date: 2010-01-11 10:58+0100\n"
 "PO-Revision-Date: 2010-01-06 00:28+0300\n"
 "Last-Translator: Konstantin Mochalov <incredible.angst@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -594,21 +594,22 @@ msgstr ""
 msgid "More details"
 msgstr "Подробнее"
 
-#: templates/maposmatic/job-page.html:43
+#: templates/maposmatic/job-page.html:41
 msgid ""
 "You have been redirected to a similar map, rendered less than 24 hours ago."
 msgstr ""
 "Вы были перенаправлены на похожую карту, отрисованную менее чем 24 часа "
 "назад."
 
-#: templates/maposmatic/job-page.html:51
+#: templates/maposmatic/job-page.html:49
 msgid "Refresh the status"
 msgstr "Обновить состояние"
 
-#: templates/maposmatic/job-page.html:51
+#: templates/maposmatic/job-page.html:49
+#, python-format
 msgid ""
-"(the page will refresh automatically every 5 seconds until the rendering is "
-"completed)."
+"(the page will refresh automatically every %(refresh)s seconds until the "
+"rendering is completed)."
 msgstr ""
 
 #: templates/maposmatic/job.html:44
@@ -753,13 +754,18 @@ msgstr "Прямоугольная область:"
 msgid "Generate"
 msgstr "Создать"
 
-#: templates/maposmatic/new.html:105
+#: templates/maposmatic/new.html:106
 msgid ""
 "Wondering why you can't choose some of these results?<br />Their "
 "administrative boundaries are missing from the OSM database.<br />Look at "
 "the <a href=\"http://wiki.maposmatic.org/doku.php?id=faq\">FAQ</a> for more "
 "details."
 msgstr ""
+
+#: templates/maposmatic/new.html:107
+#, fuzzy
+msgid "No results."
+msgstr "Результатов не найдено."
 
 #~ msgid "Please fill in the form before trying to proceed"
 #~ msgstr "Пожалуйста, заполните форму"
@@ -770,9 +776,6 @@ msgstr ""
 #~ msgstr ""
 #~ "Это место не может быть отрисовано MapOSMatic, отсутствует "
 #~ "административная граница. Пожалуйста, отметьте ее на OpenStreetMap!"
-
-#~ msgid "No results found."
-#~ msgstr "Результатов не найдено."
 
 #~ msgid "search"
 #~ msgstr "поиск"

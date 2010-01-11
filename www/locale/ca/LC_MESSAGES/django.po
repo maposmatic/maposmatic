@@ -21,7 +21,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: mapOSMatic 0.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-01-10 23:02+0100\n"
+"POT-Creation-Date: 2010-01-11 10:58+0100\n"
 "PO-Revision-Date: 2010-01-05 22:00+0100\n"
 "Last-Translator: Thomas Petazzoni <thomas.petazzoni@enix.org>\n"
 "Language-Team: CA <>\n"
@@ -573,19 +573,20 @@ msgstr ""
 msgid "More details"
 msgstr "Més detalls"
 
-#: templates/maposmatic/job-page.html:43
+#: templates/maposmatic/job-page.html:41
 msgid ""
 "You have been redirected to a similar map, rendered less than 24 hours ago."
 msgstr "Heu estat redirigit a un mapa similar, generat fa menys de 24 hores."
 
-#: templates/maposmatic/job-page.html:51
+#: templates/maposmatic/job-page.html:49
 msgid "Refresh the status"
 msgstr "Actualitza l'estat"
 
-#: templates/maposmatic/job-page.html:51
+#: templates/maposmatic/job-page.html:49
+#, python-format
 msgid ""
-"(the page will refresh automatically every 5 seconds until the rendering is "
-"completed)."
+"(the page will refresh automatically every %(refresh)s seconds until the "
+"rendering is completed)."
 msgstr ""
 
 #: templates/maposmatic/job.html:44
@@ -724,13 +725,18 @@ msgstr "Àrea geogràfica:"
 msgid "Generate"
 msgstr "Genera"
 
-#: templates/maposmatic/new.html:105
+#: templates/maposmatic/new.html:106
 msgid ""
 "Wondering why you can't choose some of these results?<br />Their "
 "administrative boundaries are missing from the OSM database.<br />Look at "
 "the <a href=\"http://wiki.maposmatic.org/doku.php?id=faq\">FAQ</a> for more "
 "details."
 msgstr ""
+
+#: templates/maposmatic/new.html:107
+#, fuzzy
+msgid "No results."
+msgstr "No s'ha trobat cap resultat."
 
 #~ msgid "Please fill in the form before trying to proceed"
 #~ msgstr "Empleneu el formulari abans d'intentar continuar"
@@ -741,9 +747,6 @@ msgstr ""
 #~ msgstr ""
 #~ "Aquest lloc no és pot renderitzar amb el MapOSMatic, no hi ha cap límit "
 #~ "administratiu. Col·laboreu-hi!"
-
-#~ msgid "No results found."
-#~ msgstr "No s'ha trobat cap resultat."
 
 #~ msgid "search"
 #~ msgstr "cerca"
