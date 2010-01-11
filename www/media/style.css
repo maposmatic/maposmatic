@@ -248,6 +248,7 @@ h2.jobtitle a {
 
 table.jobinfo {
   margin-top: 1em;
+  width: 100%;
 }
 
 table.jobinfo td.status {
