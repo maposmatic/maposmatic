@@ -52,6 +52,7 @@ DEFAULT_MAPOSMATIC_LOG_FILE = '/path/to/maposmatic/logs/maposmatic.log'
 # Default log level when the env variable DEFAULT_MAPOSMATIC_LOG_LEVEL
 # is not set
 DEFAULT_MAPOSMATIC_LOG_LEVEL = logging.INFO
+DEFAULT_MAPOSMATIC_LOG_FORMAT = "%(asctime)s - %(name)s - %(levelname)s - %(message)s"
 
 # Base bounding box
 BASE_BOUNDING_BOX = (51.956, -7.838, 41.458, 11.937)

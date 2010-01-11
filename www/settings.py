@@ -154,13 +154,15 @@ MAP_LANGUAGES = [("fr_BE.UTF-8", u"Royaume de Belgique (FR)"),
 
 LOG = logging.getLogger(os.environ.get("MAPOSMATIC_LOG_TARGET",
                                        "maposmatic"))
-LOG.setLevel(os.environ.get("MAPOSMATIC_LOG_LEVEL",
-                            DEFAULT_MAPOSMATIC_LOG_LEVEL))
-try:
-    _fh = logging.FileHandler(os.environ.get('MAPOSMATIC_LOG_FILE',
-                                             DEFAULT_MAPOSMATIC_LOG_FILE))
-except KeyError:
-    _fh = logging.FileHandler('maposmatic.log')
+LOG.setLevel(int(os.environ.get("MAPOSMATIC_LOG_LEVEL",
+                                DEFAULT_MAPOSMATIC_LOG_LEVEL)))
+_log_dest = os.environ.get('MAPOSMATIC_LOG_FILE', DEFAULT_MAPOSMATIC_LOG_FILE)
+if _log_dest:
+    _fh = logging.FileHandler(_log_dest)
+else:
+    _fh = logging.StreamHandler()
+_fh.setFormatter(logging.Formatter(os.environ.get("MAPOSMATIC_LOG_FORMAT",
+                                                  DEFAULT_MAPOSMATIC_LOG_FORMAT)))
 
 LOG.addHandler(_fh)
 LOG.info("log restarted.")
