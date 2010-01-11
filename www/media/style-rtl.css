@@ -1,0 +1,112 @@
+/*
+ maposmatic, the web front-end of the MapOSMatic city map generation system
+ Copyright (C) 2009  David Decotigny
+ Copyright (C) 2009  Frédéric Lehobey
+ Copyright (C) 2009  David Mentré
+ Copyright (C) 2009  Maxime Petazzoni
+ Copyright (C) 2009  Thomas Petazzoni
+ Copyright (C) 2009  Gaël Utard
+
+ This program is free software: you can redistribute it and/or modify
+ it under the terms of the GNU Affero General Public License as
+ published by the Free Software Foundation, either version 3 of the
+ License, or any later version.
+
+ This program is distributed in the hope that it will be useful,
+ but WITHOUT ANY WARRANTY; without even the implied warranty of
+ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ GNU Affero General Public License for more details.
+
+ You should have received a copy of the GNU Affero General Public License
+ along with this program.  If not, see <http://www.gnu.org/licenses/>.
+*/
+
+body {
+  direction: rtl;
+}
+
+/* Header */
+#header {
+  /* background-image: url('/smedia/header-rtl.png') !important; */
+}
+
+#header h1 {
+  text-align: right !important;
+  padding: 0.5em 0.5em 0 0 !important;
+}
+
+#header h2 {
+  padding: 0 1.5em 1em 0 !important;
+}
+
+form#langsel {
+  float: left !important;
+  margin-left: 1em !important;
+  margin-right: 0 !important;
+}
+
+ul#nav {
+  padding-left: 0 !important;
+  padding-right: 2em !important;
+}
+
+ul#nav li {
+  float: right !important;
+}
+
+/* Content */
+#content {
+  padding-right: 0 !important;
+  padding-left: 1em !important;
+}
+
+table#chavagne {
+  margin-left: 0 !important;
+  margin-right: 3em !important;
+  float: left !important;
+}
+
+p#more {
+  margin: 2em 1em 0 0 !important;
+}
+
+p#more img {
+  margin-left: 0.5em !important;
+  margin-right: 0 !important;
+}
+
+/* Meta informations */
+#meta {
+  border-left: none !important;
+  border-right: 1px #ccc solid;
+  padding-left: 0 !important;
+  padding-right: 1em !important;
+}
+
+#meta h3 {
+  text-align: right !important;
+}
+
+#bnews ul {
+  padding-left: 0 !important;
+  padding-right: 1.5em !important;
+  margin: 0;
+}
+
+/* Jobs and maps */
+div.mapsearch {
+  float: left !important;
+}
+
+/* Map form */
+#mainfrm {
+  padding: 0 1em 1em 0 !important;
+
+  border-left: none !important;
+  border-right: 0.5em #ccc solid !important;
+}
+
+
+
+
+
