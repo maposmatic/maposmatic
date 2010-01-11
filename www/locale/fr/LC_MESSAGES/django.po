@@ -20,7 +20,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: mapOSMatic 0.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-01-11 10:58+0100\n"
+"POT-Creation-Date: 2010-01-11 21:44+0100\n"
 "PO-Revision-Date: 2009-12-26 20:47+0100\n"
 "Last-Translator: Thomas Petazzoni <thomas.petazzoni@enix.org>\n"
 "Language-Team: FR <LL@li.org>\n"
@@ -321,6 +321,16 @@ msgstr ""
 
 #: templates/maposmatic/about.html:140
 msgid ""
+"The\n"
+"  <a href=\"https://wiki.maposmatic.org\">MapOSMatic Wiki</a>,\n"
+"  which contains valuable technical information and documents about\n"
+"  MapOSMatic;"
+msgstr ""
+"Le <a href=\"https://wiki.maposmatic.org\">Wiki de MapOSMatic</a>, qui offre "
+"de nombreuses informations et documentations techniques sur MapOSMatic&nbsp;;"
+
+#: templates/maposmatic/about.html:144
+msgid ""
 "The <a\n"
 "  href=\"https://savannah.nongnu.org/projects/maposmatic/\">project on\n"
 "  Savannah</a>;"
@@ -329,7 +339,7 @@ msgstr ""
 "  href=\"https://savannah.nongnu.org/projects/maposmatic/\">projet sur\n"
 "  Savannah</a>&nbsp;;"
 
-#: templates/maposmatic/about.html:143
+#: templates/maposmatic/about.html:147
 msgid ""
 "The <a\n"
 "  href=\"http://lists.nongnu.org/mailman/listinfo/maposmatic-dev"
@@ -340,13 +350,13 @@ msgstr ""
 "  href=\"http://lists.nongnu.org/mailman/listinfo/maposmatic-dev\">liste de "
 "diffusion pour le développement (en langue anglaise)</a>&nbsp;;"
 
-#: templates/maposmatic/about.html:146
+#: templates/maposmatic/about.html:150
 msgid ""
 "The IRC channel <tt>#maposmatic</tt> on\n"
 "  Freenode;"
 msgstr "Le canal IRC <tt>#maposmatic</tt> sur le réseau Freenode&nbsp;;"
 
-#: templates/maposmatic/about.html:148
+#: templates/maposmatic/about.html:152
 msgid ""
 "The <a\n"
 "  href=\"http://git.savannah.gnu.org/cgit/maposmatic/ocitysmap.git"
@@ -359,7 +369,7 @@ msgstr ""
 "Git OCitySMap</a>, qui peut être cloné via « <tt>git clone git://git.sv.gnu."
 "org/maposmatic/ocitysmap.git</tt> »&nbsp;;"
 
-#: templates/maposmatic/about.html:152
+#: templates/maposmatic/about.html:156
 msgid ""
 "The <a\n"
 "  href=\"http://git.savannah.gnu.org/cgit/maposmatic.git\">MapOSMatic\n"
@@ -370,7 +380,7 @@ msgstr ""
 "MapOSMatic</a>, qui peut être cloné via « <tt>git clone git://git.sv.gnu.org/"
 "maposmatic.git</tt> »&nbsp;;"
 
-#: templates/maposmatic/about.html:156
+#: templates/maposmatic/about.html:160
 msgid ""
 "<a\n"
 "  href=\"https://savannah.nongnu.org/task/?group=maposmatic\">TODO-list\n"
@@ -380,11 +390,11 @@ msgstr ""
 "  href=\"https://savannah.nongnu.org/task/?group=maposmatic\">TODO-list\n"
 "  et idées</a>."
 
-#: templates/maposmatic/about.html:163
+#: templates/maposmatic/about.html:167
 msgid "Authors"
 msgstr "Auteurs"
 
-#: templates/maposmatic/about.html:174
+#: templates/maposmatic/about.html:178
 msgid "Contributors"
 msgstr "Contributeurs"
 
@@ -579,8 +589,8 @@ msgid ""
 "(the page will refresh automatically every %(refresh)s seconds until the "
 "rendering is completed)."
 msgstr ""
-"(la page se rechargera automatiquement toutes les %(refresh)s secondes jusqu'à ce que "
-"le rendu soit terminé)."
+"(la page se rechargera automatiquement toutes les %(refresh)s secondes "
+"jusqu'à ce que le rendu soit terminé)."
 
 #: templates/maposmatic/job.html:44
 msgid "Rendering: "

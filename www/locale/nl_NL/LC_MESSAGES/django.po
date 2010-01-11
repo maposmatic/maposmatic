@@ -19,7 +19,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: mapOSMatic 0.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-01-11 10:58+0100\n"
+"POT-Creation-Date: 2010-01-11 21:44+0100\n"
 "PO-Revision-Date: 2010-01-11 01:11+0100\n"
 "Last-Translator: Jeroen van Rijn <jvrnix@gmail.com>\n"
 "Language-Team: MapOSMatic Dutch Translation team\n"
@@ -340,6 +340,14 @@ msgstr ""
 
 #: templates/maposmatic/about.html:140
 msgid ""
+"The\n"
+"  <a href=\"https://wiki.maposmatic.org\">MapOSMatic Wiki</a>,\n"
+"  which contains valuable technical information and documents about\n"
+"  MapOSMatic;"
+msgstr ""
+
+#: templates/maposmatic/about.html:144
+msgid ""
 "The <a\n"
 "  href=\"https://savannah.nongnu.org/projects/maposmatic/\">project on\n"
 "  Savannah</a>;"
@@ -348,7 +356,7 @@ msgstr ""
 "  href=\"https://savannah.nongnu.org/projects/maposmatic/\">project op\n"
 "  Savannah</a>&nbsp;;"
 
-#: templates/maposmatic/about.html:143
+#: templates/maposmatic/about.html:147
 msgid ""
 "The <a\n"
 "  href=\"http://lists.nongnu.org/mailman/listinfo/maposmatic-dev"
@@ -359,7 +367,7 @@ msgstr ""
 "  href=\"http://lists.nongnu.org/mailman/listinfo/maposmatic-dev\">email "
 "distributielijst voor ontwikkelaars (de voertaal is Engels)</a>&nbsp;;"
 
-#: templates/maposmatic/about.html:146
+#: templates/maposmatic/about.html:150
 msgid ""
 "The IRC channel <tt>#maposmatic</tt> on\n"
 "  Freenode;"
@@ -367,7 +375,7 @@ msgstr ""
 "Het <tt>#maposmatic</tt> IRC-kanaal op\n"
 " Freenode;"
 
-#: templates/maposmatic/about.html:148
+#: templates/maposmatic/about.html:152
 msgid ""
 "The <a\n"
 "  href=\"http://git.savannah.gnu.org/cgit/maposmatic/ocitysmap.git"
@@ -381,7 +389,7 @@ msgstr ""
 " Git depot</a>, welke gekloond kan worden via &laquo; <tt>git clone\n"
 " git://git.sv.gnu.org/maposmatic/ocitysmap.git</tt> &raquo;&nbsp;;"
 
-#: templates/maposmatic/about.html:152
+#: templates/maposmatic/about.html:156
 msgid ""
 "The <a\n"
 "  href=\"http://git.savannah.gnu.org/cgit/maposmatic.git\">MapOSMatic\n"
@@ -393,7 +401,7 @@ msgstr ""
 " &laquo; <tt>git clone git://git.sv.gnu.org/maposmatic.git</tt> &raquo;"
 "&nbsp;;"
 
-#: templates/maposmatic/about.html:156
+#: templates/maposmatic/about.html:160
 msgid ""
 "<a\n"
 "  href=\"https://savannah.nongnu.org/task/?group=maposmatic\">TODO-list\n"
@@ -403,11 +411,11 @@ msgstr ""
 "  href=\"https://savannah.nongnu.org/task/?group=maposmatic\">Taken- en "
 "ideeenlijst</a>."
 
-#: templates/maposmatic/about.html:163
+#: templates/maposmatic/about.html:167
 msgid "Authors"
 msgstr "Auteurs"
 
-#: templates/maposmatic/about.html:174
+#: templates/maposmatic/about.html:178
 msgid "Contributors"
 msgstr "Bijdragers"
 

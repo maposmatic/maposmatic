@@ -21,7 +21,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: mapOSMatic 0.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-01-11 10:58+0100\n"
+"POT-Creation-Date: 2010-01-11 21:44+0100\n"
 "PO-Revision-Date: 2010-01-05 22:00+0100\n"
 "Last-Translator: Thomas Petazzoni <thomas.petazzoni@enix.org>\n"
 "Language-Team: CA <>\n"
@@ -327,6 +327,14 @@ msgstr ""
 
 #: templates/maposmatic/about.html:140
 msgid ""
+"The\n"
+"  <a href=\"https://wiki.maposmatic.org\">MapOSMatic Wiki</a>,\n"
+"  which contains valuable technical information and documents about\n"
+"  MapOSMatic;"
+msgstr ""
+
+#: templates/maposmatic/about.html:144
+msgid ""
 "The <a\n"
 "  href=\"https://savannah.nongnu.org/projects/maposmatic/\">project on\n"
 "  Savannah</a>;"
@@ -334,7 +342,7 @@ msgstr ""
 "El <a href=\"https://savannah.nongnu.org/projects/maposmatic/\">projecte a "
 "Savannah</a>;"
 
-#: templates/maposmatic/about.html:143
+#: templates/maposmatic/about.html:147
 msgid ""
 "The <a\n"
 "  href=\"http://lists.nongnu.org/mailman/listinfo/maposmatic-dev"
@@ -344,7 +352,7 @@ msgstr ""
 "La <a href=\"http://lists.nongnu.org/mailman/listinfo/maposmatic-dev"
 "\">llista de distribució de desenvolupament</a>;"
 
-#: templates/maposmatic/about.html:146
+#: templates/maposmatic/about.html:150
 #, fuzzy
 msgid ""
 "The IRC channel <tt>#maposmatic</tt> on\n"
@@ -353,7 +361,7 @@ msgstr ""
 "El canal IRC <code>#maposmatic</code> a\n"
 "  Freenode;"
 
-#: templates/maposmatic/about.html:148
+#: templates/maposmatic/about.html:152
 #, fuzzy
 msgid ""
 "The <a\n"
@@ -366,7 +374,7 @@ msgstr ""
 "\">repositori Git de l'OCitySMap</a>, que podeu clonar amb l'ordre <code>git "
 "clone  git://git.sv.gnu.org/maposmatic/ocitysmap.git</code>;"
 
-#: templates/maposmatic/about.html:152
+#: templates/maposmatic/about.html:156
 #, fuzzy
 msgid ""
 "The <a\n"
@@ -378,7 +386,7 @@ msgstr ""
 "Git del MapOSMatic</a>, que podeu clonar amb la comanda <code>git clone "
 "git://git.sv.gnu.org/maposmatic.git</code>;"
 
-#: templates/maposmatic/about.html:156
+#: templates/maposmatic/about.html:160
 msgid ""
 "<a\n"
 "  href=\"https://savannah.nongnu.org/task/?group=maposmatic\">TODO-list\n"
@@ -387,11 +395,11 @@ msgstr ""
 "<a href=\"https://savannah.nongnu.org/task/?group=maposmatic\">llista de "
 "temes per fer i idees</a>."
 
-#: templates/maposmatic/about.html:163
+#: templates/maposmatic/about.html:167
 msgid "Authors"
 msgstr "Autors"
 
-#: templates/maposmatic/about.html:174
+#: templates/maposmatic/about.html:178
 msgid "Contributors"
 msgstr "Col·laboradors"
 
