@@ -30,7 +30,23 @@ export PYTHONPATH
 DJANGO_SETTINGS_MODULE="www.settings"
 export DJANGO_SETTINGS_MODULE
 
+# Set this to the empty string for stderr
 MAPOSMATIC_LOG_FILE="/tmp/maposmaticd.log"
 export MAPOSMATIC_LOG_FILE
+
+### Log level (the higher, the quieter)
+# Critical: 50
+# Error: 40
+# Warning: 30
+# Info: 20
+# Debug: 10
+# NotSet: 0 (discouraged)
+MAPOSMATIC_LOG_LEVEL=20
+export MAPOSMATIC_LOG_LEVEL
+
+# To make sure ocitysmap + maposmatic are configured the same way: that
+# waym the logs for ocitysmap will go to the maposmatic logger
+MAPOSMATIC_LOG_TARGET="ocitysmap"
+export MAPOSMATIC_LOG_TARGET
 
 exec "$_here"/maposmaticd

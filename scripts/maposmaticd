@@ -25,8 +25,8 @@
 import time, os , sys, select, signal, traceback, logging
 from datetime import datetime, timedelta
 
-from www.maposmatic.models import MapRenderingJob
 from www.settings import RENDERING_RESULT_PATH, LOG, RENDERING_RESULT_FORMATS, RENDERING_RESULT_MAX_SIZE_GB, OCITYSMAP_CFG_PATH
+from www.maposmatic.models import MapRenderingJob
 from ocitysmap.coords import BoundingBox as OCMBoundingBox
 from ocitysmap.street_index import OCitySMap 
 import Image
@@ -173,7 +173,6 @@ if not os.path.isdir(RENDERING_RESULT_PATH):
                         RENDERING_RESULT_PATH)
     sys.exit(1)
 
-logging.basicConfig()
 LOG.info("started")
 
 # Reset the job that might have been left into the "rendering" state
