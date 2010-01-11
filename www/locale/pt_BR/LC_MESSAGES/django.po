@@ -169,7 +169,7 @@ msgid ""
 msgstr ""
 "Obviamente, o MapOSMatic é software livre,\n"
 " disponível nos termos da licença <a\n"
-" href=\"http://www.fsf.org/licensing/licenses/agpl-3.0.html\">AGPLv3</a>."
+" href=\"http://www.fsf.org/licensing/licenses/agpl-3.0.html\">AGPLv3</a>.\n"
 
 #: templates/maposmatic/about.html:60
 msgid "How does it work?"
@@ -460,7 +460,7 @@ msgstr "Todos"
 #: templates/maposmatic/all_maps.html:59
 #, python-format
 msgid "No map starts with %(current_letter)s in our database!"
-msgstr "Nenhum mapa em nossa base de dados inicia coom a letra %(current_letter)"
+msgstr "Nenhum mapa em nossa base de dados inicia coom a letra %(current_letter)s"
 
 #: templates/maposmatic/all_maps.html:61
 msgid "Our database does not contain any rendered maps for the moment."
