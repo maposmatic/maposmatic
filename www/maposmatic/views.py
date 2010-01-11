@@ -238,9 +238,15 @@ def job(request, job_id):
         del request.session['redirected']
     else:
         isredirected = False
+
+    refresh = www.settings.REFRESH_JOB_WAITING
+    if job.is_rendering():
+        refresh = www.settings.REFRESH_JOB_RENDERING
+
     return render_to_response('maposmatic/job-page.html',
                               { 'job' : job, 'single': True,
-                                'redirected' : isredirected },
+                                'redirected' : isredirected,
+                                'refresh': refresh, 'refresh_ms': (refresh*1000) },
                               context_instance=RequestContext(request))
 
 def all_jobs(request):

@@ -167,3 +167,9 @@ LOG.info("log restarted.")
 
 def has_gis_database():
     return GIS_DATABASE_NAME and GIS_DATABASE_NAME != ''
+
+# Job page refresh frequency, in seconds, for when the job is waiting in queue
+# and when the job is currently being rendered.
+REFRESH_JOB_WAITING = 10
+REFRESH_JOB_RENDERING = 20
+

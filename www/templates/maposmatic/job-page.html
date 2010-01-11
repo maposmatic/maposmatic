@@ -30,9 +30,7 @@
 
 {% load extratags %}
 
-{% block menu-jobs %}
-class="activelink"
-{% endblock %}
+{% block menu-jobs %}class="activelink"{% endblock %}
 
 {% block page %}
 <h1>{{ job.maptitle }}</h1>
@@ -48,10 +46,11 @@ class="activelink"
 
 {% if not job.is_done %}
 <p>
-&raquo; <a href="/jobs/{{job.id}}">{% trans "Refresh the status" %}</a> {% trans "(the page will refresh automatically every 5 seconds until the rendering is completed)." %}
+&raquo; <a href="{% url job-by-id job.id %}">{% trans "Refresh the status" %}</a> {% blocktrans %}(the page will refresh automatically every {{ refresh }} seconds until the rendering is completed).{% endblocktrans %}
 </p>
+
 <script type="text/javascript">
-  setTimeout("location.reload(true);", 5000);
+  setTimeout("location.reload(true);", {{ refresh_ms }});
 </script>
 {% endif %}
 
