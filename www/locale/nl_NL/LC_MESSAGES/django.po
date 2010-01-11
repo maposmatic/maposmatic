@@ -19,8 +19,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: mapOSMatic 0.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-01-11 22:28+0100\n"
-"PO-Revision-Date: 2010-01-11 01:11+0100\n"
+"POT-Creation-Date: 2010-01-11 23:06+0100\n"
+"PO-Revision-Date: 2010-01-11 22:28+0100\n"
 "Last-Translator: Jeroen van Rijn <jvrnix@gmail.com>\n"
 "Language-Team: MapOSMatic Dutch Translation team\n"
 "MIME-Version: 1.0\n"
@@ -345,6 +345,9 @@ msgid ""
 "  which contains valuable technical information and documents about\n"
 "  MapOSMatic;"
 msgstr ""
+"De\n"
+"  <a href=\"https://wiki.maposmatic.org\">MapOSMatic Wiki</a> bevat\n"
+"  waardevolle technische informatie en documenten over MapOSMatic;"
 
 #: templates/maposmatic/about.html:144
 msgid ""
@@ -537,7 +540,7 @@ msgstr "Nieuws"
 
 #: templates/maposmatic/base.html:83
 msgid "Random map"
-msgstr "Willekeurge kaart"
+msgstr "Willekeurige kaart"
 
 #: templates/maposmatic/base.html:90
 msgid "No random map found."
@@ -641,13 +644,13 @@ msgid "Refresh the status"
 msgstr "Ververs de status"
 
 #: templates/maposmatic/job-page.html:49
-#, fuzzy, python-format
+#, python-format
 msgid ""
 "(the page will refresh automatically every %(refresh)s seconds until the "
 "rendering is completed)."
 msgstr ""
-"(de pagina zal elke 5 seconden automatisch verversen tot de reproductie "
-"voltooid is)."
+"(de pagina zal elke %(refresh)s seconden automatisch verversen tot de "
+"reproductie voltooid is)."
 
 #: templates/maposmatic/job.html:44
 msgid "Rendering: "
@@ -785,7 +788,6 @@ msgstr ""
 "meer details."
 
 #: templates/maposmatic/new.html:107
-#, fuzzy
 msgid "No results."
 msgstr "Geen resultaten gevonden."
 
