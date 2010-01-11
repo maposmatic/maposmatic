@@ -36,7 +36,6 @@ def sigcld_handler(signum, frame, pipe_write):
     f.write("end")
 
 def render_job_process(job):
-
     if job.administrative_osmid is None:
         bbox = OCMBoundingBox(job.lat_upper_left, job.lon_upper_left,
                               job.lat_bottom_right, job.lon_bottom_right)
@@ -84,7 +83,8 @@ def render_job(job):
             retval = rv
         except:
             # Tell the father what happened
-            traceback.print_exc(file=tell_dad)
+            LOG.exception("Exception in worker process")
+            tell_dad.write('Exception occured')
         finally:
             # And always return the proper exit code
             sys.exit(retval)
@@ -139,7 +139,7 @@ def render_job(job):
                     resultmsg = "ok"
                 else:
                     resultmsg = "rendering failed with %d" % error_code
-                    LOG.error("Failure in rendering child process:\n%s" \
+                    LOG.error("Failure in rendering child process: %s." \
                                   % child_message)
             elif os.WIFSIGNALED(status):
                 resultmsg = "rendering killed by signal %d" \
