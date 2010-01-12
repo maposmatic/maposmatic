@@ -20,8 +20,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: mapOSMatic 0.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-01-11 22:28+0100\n"
-"PO-Revision-Date: 2010-01-11 14:48-0300\n"
+"POT-Creation-Date: 2010-01-12 18:11+0100\n"
+"PO-Revision-Date: 2010-01-12 09:16-0300\n"
 "Last-Translator: Rodrigo de Avila <rodrigo@avila.net.br>\n"
 "Language-Team: PT <LL@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -337,6 +337,10 @@ msgid ""
 "  which contains valuable technical information and documents about\n"
 "  MapOSMatic;"
 msgstr ""
+"O\n"
+"  <a href=\"https://wiki.maposmatic.org\">Wiki do MapOSMatic</a>,\n"
+"  que contém informações técnicas valiosas e outros documentos sobre\n"
+"  o MapOSMatic;"
 
 #: templates/maposmatic/about.html:144
 msgid ""
@@ -415,39 +419,39 @@ msgstr "Contribuintes"
 
 #: templates/maposmatic/about.html:180
 msgid "slippy map"
-msgstr ""
+msgstr "slippy map"
 
 #: templates/maposmatic/about.html:181
 msgid "german translation"
-msgstr ""
+msgstr "tradução para alemão"
 
 #: templates/maposmatic/about.html:182
 msgid "italian translation"
-msgstr ""
+msgstr "tradução para italiano"
 
 #: templates/maposmatic/about.html:183
 msgid "catalan translation"
-msgstr ""
+msgstr "tradução para o catalão"
 
 #: templates/maposmatic/about.html:184
 msgid "russian translation"
-msgstr ""
+msgstr "tradução para o russo"
 
 #: templates/maposmatic/about.html:185
 msgid "arabic translation"
-msgstr ""
+msgstr "tradução para o árabe"
 
 #: templates/maposmatic/about.html:186 templates/maposmatic/about.html:187
 msgid "brasilian portuguese translation"
-msgstr ""
+msgstr "tradução para o português brasileiro"
 
 #: templates/maposmatic/about.html:188
 msgid "danish translation"
-msgstr ""
+msgstr "tradução para o dinamarquês"
 
 #: templates/maposmatic/about.html:189
 msgid "dutch translation"
-msgstr ""
+msgstr "tradução para o holandês"
 
 #: templates/maposmatic/all_jobs.html:35
 msgid "Job list"
@@ -648,12 +652,10 @@ msgstr ""
 "que a renderização esteja completa)."
 
 #: templates/maposmatic/job.html:44
-#, fuzzy
 msgid "Rendering: "
 msgstr "Renderização: "
 
 #: templates/maposmatic/job.html:45
-#, fuzzy
 msgid "Rendering submitted"
 msgstr "Renderização enviada"
 
@@ -675,31 +677,26 @@ msgid "rendering took %(rendering)s"
 msgstr "renderização demorou %(rendering)s"
 
 #: templates/maposmatic/job.html:55
-#, fuzzy
 msgid "Rendering in progress..."
 msgstr "Renderização em andamento..."
 
 #: templates/maposmatic/job.html:61 templates/maposmatic/map.html:45
-#, fuzzy
 msgid "Files: "
-msgstr "Arquivos"
+msgstr "Arquivos:"
 
 #: templates/maposmatic/job.html:63 templates/maposmatic/map.html:47
-#, fuzzy
 msgid "Map: "
-msgstr "Mapas"
+msgstr "Mapas:"
 
 #: templates/maposmatic/job.html:64 templates/maposmatic/map.html:48
 msgid "Index: "
 msgstr "Índice:"
 
 #: templates/maposmatic/job.html:67 templates/maposmatic/map.html:51
-#, fuzzy
 msgid "The generated files are no longer available."
 msgstr "Os arquivos gerados não estão mais disponíveis."
 
 #: templates/maposmatic/map.html:42
-#, fuzzy
 msgid "Rendering completed on"
 msgstr "Renderização encerrada em"
 
@@ -792,7 +789,6 @@ msgstr ""
 "id=faq\">FAQ</a> para mais detalhes."
 
 #: templates/maposmatic/new.html:107
-#, fuzzy
 msgid "No results."
 msgstr "Nenhum resultado encontrado."
 
