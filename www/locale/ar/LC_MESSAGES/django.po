@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-01-11 22:28+0100\n"
-"PO-Revision-Date: 2010-01-06 09:03+0300\n"
+"POT-Creation-Date: 2010-01-12 18:14+0100\n"
+"PO-Revision-Date: 2010-01-12 17:29+0300\n"
 "Last-Translator: Bassem JARKAS <jarkas@gmail.com>\n"
 "Language-Team: Arabic Translation\n"
 "MIME-Version: 1.0\n"
@@ -79,7 +79,7 @@ msgstr "نجح العرض"
 
 #: maposmatic/templatetags/extratags.py:47
 msgid "Rendering failed, please contact contact@maposmatic.org"
-msgstr ""
+msgstr "فشل العرض، يرجى الاتصال contact@maposmatic.org"
 
 #: templates/404.html:3 templates/500.html:3 templates/maposmatic/base.html:67
 msgid "Home"
@@ -385,13 +385,12 @@ msgid ""
 msgstr ""
 
 #: templates/maposmatic/all_maps.html:33
-#, fuzzy
 msgid "Search"
 msgstr "ابحث"
 
 #: templates/maposmatic/all_maps.html:33
 msgid "Search coming soon!"
-msgstr ""
+msgstr "البحث سيتوفر قريبًا!"
 
 #: templates/maposmatic/all_maps.html:35 templates/maposmatic/base.html:70
 msgid "Maps"
@@ -399,7 +398,7 @@ msgstr "الخرائط"
 
 #: templates/maposmatic/all_maps.html:38
 msgid "All"
-msgstr ""
+msgstr "الكل"
 
 #: templates/maposmatic/all_maps.html:59
 #, python-format
@@ -416,7 +415,7 @@ msgstr "خرائط مدينتك الحرة!"
 
 #: templates/maposmatic/base.html:68 templates/maposmatic/index.html:78
 msgid "Create map"
-msgstr ""
+msgstr "أنشئ خريطة"
 
 #: templates/maposmatic/base.html:69
 msgid "Jobs"
@@ -531,60 +530,53 @@ msgid ""
 msgstr ""
 
 #: templates/maposmatic/job.html:44
-#, fuzzy
 msgid "Rendering: "
-msgstr "نجح العرض"
+msgstr "العرض:"
 
 #: templates/maposmatic/job.html:45
-#, fuzzy
 msgid "Rendering submitted"
-msgstr "بدأ العرض في"
+msgstr "تم إرسال العرض"
 
 #: templates/maposmatic/job.html:47
 msgid "In queue, position"
-msgstr ""
+msgstr "في قائمة الانتظار ، الموضع"
 
 #: templates/maposmatic/job.html:49
 msgid "Completed on"
-msgstr ""
+msgstr "اكتمل في"
 
 #: templates/maposmatic/job.html:51
 msgid "Failed on"
-msgstr ""
+msgstr "فشل في"
 
 #: templates/maposmatic/job.html:53
 #, python-format
 msgid "rendering took %(rendering)s"
-msgstr ""
+msgstr "العرض استغرق %(rendering)s"
 
 #: templates/maposmatic/job.html:55
-#, fuzzy
 msgid "Rendering in progress..."
-msgstr "جاري العرض"
+msgstr "جاري العرض..."
 
 #: templates/maposmatic/job.html:61 templates/maposmatic/map.html:45
-#, fuzzy
 msgid "Files: "
-msgstr "الملفات"
+msgstr "الملفات:"
 
 #: templates/maposmatic/job.html:63 templates/maposmatic/map.html:47
-#, fuzzy
 msgid "Map: "
-msgstr "الخرائط"
+msgstr "الخرائط:"
 
 #: templates/maposmatic/job.html:64 templates/maposmatic/map.html:48
 msgid "Index: "
-msgstr ""
+msgstr "الفهرس:"
 
 #: templates/maposmatic/job.html:67 templates/maposmatic/map.html:51
-#, fuzzy
 msgid "The generated files are no longer available."
-msgstr "الملفات التي تم إنشاؤها لم تعد متوفرة"
+msgstr "الملفات التي تم إنشاؤها لم تعد متوفرة."
 
 #: templates/maposmatic/map.html:42
-#, fuzzy
 msgid "Rendering completed on"
-msgstr "بدأ العرض في"
+msgstr "العرض اكتمل في"
 
 #: templates/maposmatic/new.html:38
 msgid "Generate your own map"
@@ -617,7 +609,6 @@ msgstr ""
 "إلى استخدام مربع الإحاطة."
 
 #: templates/maposmatic/new.html:56
-#, fuzzy
 msgid "<em>Using a traditional bounding box</em>."
 msgstr "<em>باستخدام مربع الإحاطة التقليدي</em>."
 
@@ -666,9 +657,8 @@ msgid ""
 msgstr ""
 
 #: templates/maposmatic/new.html:107
-#, fuzzy
 msgid "No results."
-msgstr "لم يتم العثور على نتائج."
+msgstr "لا يوجد نتائج."
 
 #~ msgid "Please fill in the form before trying to proceed"
 #~ msgstr "يرجى ملء النموذج قبل محاولة التنفيذ"
