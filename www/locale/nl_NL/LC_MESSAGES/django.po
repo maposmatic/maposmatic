@@ -424,39 +424,39 @@ msgstr "Bijdragers"
 
 #: templates/maposmatic/about.html:180
 msgid "slippy map"
-msgstr ""
+msgstr "slipkaart"
 
 #: templates/maposmatic/about.html:181
 msgid "german translation"
-msgstr ""
+msgstr "duitse vertaling"
 
 #: templates/maposmatic/about.html:182
 msgid "italian translation"
-msgstr ""
+msgstr "italiaanse vertaling"
 
 #: templates/maposmatic/about.html:183
 msgid "catalan translation"
-msgstr ""
+msgstr "catalaanse vertaling"
 
 #: templates/maposmatic/about.html:184
 msgid "russian translation"
-msgstr ""
+msgstr "russische vertaling"
 
 #: templates/maposmatic/about.html:185
 msgid "arabic translation"
-msgstr ""
+msgstr "arabische vertaling"
 
 #: templates/maposmatic/about.html:186 templates/maposmatic/about.html:187
 msgid "brasilian portuguese translation"
-msgstr ""
+msgstr "braziliaans portugese vertaling"
 
 #: templates/maposmatic/about.html:188
 msgid "danish translation"
-msgstr ""
+msgstr "deense vertaling"
 
 #: templates/maposmatic/about.html:189
 msgid "dutch translation"
-msgstr ""
+msgstr "nederlandse vertaling"
 
 #: templates/maposmatic/all_jobs.html:35
 msgid "Job list"
