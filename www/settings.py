@@ -111,7 +111,7 @@ LANGUAGES = (("fr", u"Français"),
              ("it", u"Italiano"),
              ("ca", u"Català"),
              ("ru", u"Русский"),
-             ("ar", u"عربية"),
+             ("ar", u"العربية"),
              ("pt_BR", u"Português do Brasil"),
              ("nl", u"Nederlands"))
 
