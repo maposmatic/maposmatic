@@ -491,7 +491,7 @@ msgstr "Tot"
 #, python-format
 msgid "No map starts with %(current_letter)s in our database!"
 msgstr ""
-"No hi ha cap mapa que comenci per %(current_letter) a la base de dades!"
+"No hi ha cap mapa que comenci per %(current_letter)s a la base de dades!"
 
 #: templates/maposmatic/all_maps.html:61
 msgid "Our database does not contain any rendered maps for the moment."
@@ -624,7 +624,7 @@ msgid ""
 "(the page will refresh automatically every %(refresh)s seconds until the "
 "rendering is completed)."
 msgstr ""
-"(la pàgina s'actualitzarà automàticament cada 5 segons fins que finalitzi la "
+"(la pàgina s'actualitzarà automàticament cada %(refresh)s segons fins que finalitzi la "
 "renderització)."
 
 #: templates/maposmatic/job.html:44
