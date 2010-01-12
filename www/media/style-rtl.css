@@ -27,7 +27,8 @@ body {
 
 /* Header */
 #header {
-  /* background-image: url('/smedia/header-rtl.png') !important; */
+  background-image: url('/smedia/header-rtl.png') !important;
+  background-position: top left !important;
 }
 
 #header h1 {
