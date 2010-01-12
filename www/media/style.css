@@ -240,6 +240,10 @@ h2.jobtitle a {
   color: #0066b3 !important;
 }
 
+.job h3 {
+  margin-top: 0;
+}
+
 .job h4 {
   margin: 1em 0 0.5em 0;
   padding: 0;
