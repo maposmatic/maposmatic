@@ -44,7 +44,7 @@
 
 {% include "maposmatic/job.html" %}
 
-{% if not job.is_done %}
+{% if job.needs_waiting %}
 <p>
 &raquo; <a href="{% url job-by-id job.id %}">{% trans "Refresh the status" %}</a> {% blocktrans %}(the page will refresh automatically every {{ refresh }} seconds until the rendering is completed).{% endblocktrans %}
 </p>

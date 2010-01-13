@@ -43,10 +43,27 @@ class MapRenderingJobManager(models.Manager):
     # has its thumbnail present.
     def get_random_with_thumbnail(self):
         fifteen_days_before = datetime.now() - timedelta(15)
-        maps = MapRenderingJob.objects.filter(status=2).filter(submission_time__gte=fifteen_days_before).order_by('?')[0:10]
+        maps = (MapRenderingJob.objects.filter(status=2)
+            .filter(submission_time__gte=fifteen_days_before)
+            .order_by('?')[0:10])
         for m in maps:
             if m.get_thumbnail():
                 return m
+        return None
+
+    def get_by_filename(self, name):
+        """Tries to find the parent MapRenderingJob of a given file from its
+        filename. Both the job ID found in the first part of the prefix and the
+        entire files_prefix is used to match a job."""
+
+        try:
+            jobid = int(name.split('_', 1)[0])
+            job = MapRenderingJob.objects.get(id=jobid)
+            if name.startswith(job.files_prefix()):
+                return job
+        except (ValueError, IndexError):
+            pass
+
         return None
 
 SPACE_REDUCE = re.compile(r"\s+")
@@ -58,6 +75,7 @@ class MapRenderingJob(models.Model):
         (0, 'Submitted'),
         (1, 'In progress'),
         (2, 'Done'),
+        (3, 'Done w/o files')
         )
 
     maptitle = models.CharField(max_length=256)
@@ -99,6 +117,7 @@ class MapRenderingJob(models.Model):
                              self.startofrendering_time.strftime("%Y-%m-%d_%H-%M"),
                              self.maptitle_computized())
 
+
     def start_rendering(self):
         self.status = 1
         self.startofrendering_time = datetime.now()
@@ -110,20 +129,26 @@ class MapRenderingJob(models.Model):
         self.resultmsg = resultmsg
         self.save()
 
-    def is_waiting(self):
-        return self.status == 0
+    def rendering_time_gt_1min(self):
+        if self.needs_waiting():
+            return False
 
-    def is_rendering(self):
-        return self.status == 1
+        delta = self.endofrendering_time - self.startofrendering_time
+        return delta.seconds > 60
 
-    def is_done(self):
-        return self.status == 2
+    def __is_ok(self):              return self.resultmsg == 'ok'
 
-    def is_done_ok(self):
-        return self.is_done() and self.resultmsg == "ok"
+    def is_waiting(self):           return self.status == 0
+    def is_rendering(self):         return self.status == 1
+    def needs_waiting(self):        return self.status  < 2
 
-    def is_done_failed(self):
-        return self.is_done() and self.resultmsg != "ok"
+    def is_done(self):              return self.status == 2
+    def is_done_ok(self):           return self.is_done() and self.__is_ok()
+    def is_done_failed(self):       return self.is_done() and not self.__is_ok()
+
+    def is_obsolete(self):          return self.status == 3
+    def is_obsolete_ok(self):       return self.is_obsolete() and self.__is_ok()
+    def is_obsolete_failed(self):   return self.is_obsolete() and not self.__is_ok()
 
     def get_map_fileurl(self, format):
         return www.settings.RENDERING_RESULT_URL + "/" + self.files_prefix() + "." + format
@@ -138,25 +163,60 @@ class MapRenderingJob(models.Model):
         return os.path.join(www.settings.RENDERING_RESULT_PATH, self.files_prefix() + "_index." + format)
 
     def output_files(self):
+        """Returns a structured dictionary of the output files for this job.
+        The result contains two lists, 'maps' and 'indeces', listing the output
+        files. Each file is reported by a tuple (format, path, title, size)."""
+
         allfiles = {'maps': [], 'indeces': []}
 
         for format in www.settings.RENDERING_RESULT_FORMATS:
             # Map files (all formats but CSV)
-            if format != 'csv' and os.path.exists(self.get_map_filepath(format)):
-                allfiles['maps'].append((format, self.get_map_fileurl(format),
-                    _("%(title)s %(format)s Map") % {'title': self.maptitle, 'format': format.upper()},
-                    os.stat(self.get_map_filepath(format)).st_size))
+            map_path = self.get_map_filepath(format)
+            if format != 'csv' and os.path.exists(map_path):
+                allfiles['maps'].append((format, map_path,
+                    _("%(title)s %(format)s Map") % {'title': self.maptitle,
+                                                     'format': format.upper()},
+                    os.stat(map_path).st_size))
+
             # Index files
-            if os.path.exists(self.get_index_filepath(format)):
-                allfiles['indeces'].append((format, self.get_index_fileurl(format),
-                    _("%(title)s %(format)s Index") % {'title': self.maptitle, 'format': format.upper()},
-                    os.stat(self.get_index_filepath(format)).st_size))
+            index_path = self.get_index_filepath(format)
+            if os.path.exists(index_path):
+                allfiles['indeces'].append((format, index_path,
+                    _("%(title)s %(format)s Index") % {'title': self.maptitle,
+                                                       'format': format.upper()},
+                    os.stat(index_path).st_size))
 
         return allfiles
 
     def has_output_files(self):
+        """This function tells whether this job still has its output files
+        available on the rendering storage.
+
+        Their actual presence is checked if the job is considered done and not
+        yet obsolete."""
+
+        if self.is_done():
+            files = self.output_files()
+            return len(files['maps']) + len(files['indeces'])
+
+        return False
+
+    def remove_all_files(self):
+        """Removes all the output files from this job, and returns the space
+        saved in bytes (Note: the thumbnail is not removed)."""
+
         files = self.output_files()
-        return len(files['maps']) + len(files['indeces'])
+        saved = 0
+        removed = 0
+
+        for f in (files['maps'] + files['indeces']):
+            saved += f[3]
+            removed += 1
+            os.remove(f[1])
+
+        self.status = 3
+        self.save()
+        return removed, saved
 
     def get_thumbnail(self):
         thumbnail_file = os.path.join(www.settings.RENDERING_RESULT_PATH, self.files_prefix() + "_small.png")

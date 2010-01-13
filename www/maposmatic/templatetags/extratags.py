@@ -21,40 +21,49 @@
 # You should have received a copy of the GNU Affero General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
+import datetime
+
 from django import template
-from django.utils.html import conditional_escape
 from django.utils.safestring import mark_safe
 from django.utils.translation import ugettext_lazy as _
-import datetime
 
 register = template.Library()
 
 def job_status_to_str(value, arg, autoescape=None):
-
-    if autoescape:
-        esc = conditional_escape
-    else:
-        esc = lambda x: x
-
     if value == 0:
-        result = _("Waiting rendering")
+        return _("Waiting rendering")
     elif value == 1:
-        result = _("Rendering in progress")
+        return _("Rendering in progress")
     elif value == 2:
-        if arg == "ok":
-            result = _("Rendering successful")
+        if arg == 'ok':
+            return _("Rendering successful")
         else:
-            result = _("Rendering failed, please contact " \
-                       "contact@maposmatic.org")
-    else:
-        result = ""
+            return _("Rendering failed, please contact contact@maposmatic.org")
+    elif value == 3:
+        if arg == 'ok':
+            return _("Rendering was successful, but the files are no longer "
+                     "available")
+        else:
+            return _("Rendering failed, and the incomplete files were "
+                      "removed")
 
-    return result
+    return ''
 
-job_status_to_str.needs_autoescape = True
+def job_status_to_icon_name(value, arg, autoescape=None):
+    if value == 0:          return 'job-in-queue'
+    if value == 1:          return 'job-in-progress'
+    if value == 2:
+        if arg == 'ok':     return 'job-done'
+        else:               return 'job-error'
+    if value == 3:
+        if arg == 'ok':     return 'job-done-obsolete'
+        else:               return 'job-error-obsolete'
+
+    return 'job-error'
 
 def feedparsed(value):
     return datetime.datetime(*value[:6])
 
 register.filter('job_status_to_str', job_status_to_str)
+register.filter('job_status_to_icon_name', job_status_to_icon_name)
 register.filter('feedparsed', feedparsed)

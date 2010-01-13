@@ -28,7 +28,7 @@ from datetime import datetime, timedelta
 from www.settings import RENDERING_RESULT_PATH, LOG, RENDERING_RESULT_FORMATS, RENDERING_RESULT_MAX_SIZE_GB, OCITYSMAP_CFG_PATH
 from www.maposmatic.models import MapRenderingJob
 from ocitysmap.coords import BoundingBox as OCMBoundingBox
-from ocitysmap.street_index import OCitySMap 
+from ocitysmap.street_index import OCitySMap
 import Image
 
 def sigcld_handler(signum, frame, pipe_write):
@@ -148,25 +148,71 @@ def render_job(job):
             job.end_rendering(resultmsg)
             return
 
-# This function checks that the total size of the files in
-# RENDERING_RESULT_PATH does not exceed 80% of
-# RENDERING_RESULT_MAX_SIZE_GB. If it does, the function removes as
-# many files as needed, oldest first
 def cleanup_files():
-    files = [ os.path.join(RENDERING_RESULT_PATH, f) for f in os.listdir(RENDERING_RESULT_PATH)]
-    files = [(f, os.stat(f).st_ctime, os.stat(f).st_size) for f in files]
+    """This cleanup function checks that the total size of the files in
+    RENDERING_RESULT_PATH does not exceed 80% of the defined threshold
+    RENDERING_RESULT_MAX_SIZE_GB. If it does, files are removed until the
+    constraint is met again, oldest first, and grouped by job."""
+
+    def get_formatted_value(v):
+        return '%.2f MiB' % (v/1024.0/1024.0)
+    def get_formatted_details(saved, size, threshold):
+        return 'saved %s, now %s/%s' % \
+                (get_formatted_value(saved),
+                 get_formatted_value(size),
+                 get_formatted_value(threshold))
+
+    files = [os.path.join(RENDERING_RESULT_PATH, f)
+                for f in os.listdir(RENDERING_RESULT_PATH)
+                if not (f.startswith('.') or f.endswith('_small.png'))]
+    files = map(lambda f: (f, os.stat(f).st_mtime, os.stat(f).st_size), files)
+
+    # Compute the total size occupied by the renderings, and the actual 80%
+    # threshold, in bytes
     size = reduce(lambda x, y: x + y[2], files, 0)
     threshold = 0.8 * RENDERING_RESULT_MAX_SIZE_GB * 1024 * 1024 * 1024
+
+    # Stop here if we are below the threshold
     if size < threshold:
         return
-    files.sort(lambda x, y: cmp(x[1], y[1]))
-    for f in files:
-        os.remove(os.path.join(RENDERING_RESULT_PATH, f[0]))
-        size -= f[2]
-        LOG.debug("remove '%s', %f GB consumed over a %f GB threshold" % \
-                            (f[0], (size / 1024 / 1024 / 1024), (threshold / 1024 / 1024 / 1024)))
-        if size < threshold:
-            break
+
+    LOG.info("%s consumed for a %s threshold. Cleaning..." %
+            (get_formatted_value(size), get_formatted_value(threshold)))
+
+    # Sort files by timestamp, oldest last, and start removing them by
+    # pop()-ing the list
+    files.sort(lambda x, y: cmp(y[1], x[1]))
+
+    while size > threshold:
+        if not len(files):
+            LOG.error("No files to remove and still above threshold! Something's wrong!")
+            return
+
+        # Get the next file to remove, and try to identify the job it comes
+        # from
+        f = files.pop()
+        name = os.path.basename(f[0])
+        job = MapRenderingJob.objects.get_by_filename(name)
+        if job:
+            removed, saved = job.remove_all_files()
+            size -= saved
+
+            # If files were removed, log it. If not, it only means only the
+            # thumbnail remained, and that's good.
+            if removed:
+                LOG.info("Removed %d files from job #%d (%s)." %
+                         (removed, job.id, get_formatted_details(saved, size, threshold)))
+
+
+        else:
+            # If we didn't find a parent job, it means this is an orphaned
+            # file, and we can safely remove it to get back some disk space.
+            os.remove(f[0])
+            saved = f[2]
+            size -= saved
+            LOG.info("Removed orphan file %s (%s)." %
+                     (name, get_formatted_details(saved, size, threshold)))
+
 
 if not os.path.isdir(RENDERING_RESULT_PATH):
     LOG.error("ERROR: please set RENDERING_RESULT_PATH ('%s') to an existing directory" % \

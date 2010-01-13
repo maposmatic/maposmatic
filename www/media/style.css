@@ -273,6 +273,10 @@ table.jobinfo td.info {
   vertical-align: top;
 }
 
+p.nofiles {
+  font-style: italic;
+}
+
 div.mapsearch {
   float: right;
   font-style: italic;

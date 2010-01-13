@@ -31,7 +31,7 @@
 {% if not single %}<h2 class="jobtitle"><a href="{% url job-by-id job.id %}">{{ job.maptitle }}</a></h2>{% endif %}
 <table class="jobinfo"><tbody><tr>
   <td class="status">
-    <img {% if job.is_done_ok %}src="/smedia/job-done.png"{% else %}{% if job.is_done_failed %}src="/smedia/job-error.png"{% else %}{% if job.is_waiting %}src="/smedia/job-in-queue.png"{% else %}src="/smedia/job-in-progress.png"{% endif %}{% endif %}{% endif %} title="{{ job.status|job_status_to_str:job.resultmsg }}" />
+    <img src="/smedia/{{ job.status|job_status_to_icon_name:job.resultmsg }}.png" title="{{ job.status|job_status_to_str:job.resultmsg }} ({{ job.status }})" />
   </td>
   <td class="info">
     {% if job.administrative_city %}
@@ -43,20 +43,13 @@
 
     <h4>{% trans "Rendering: " %}</h4>
     {% trans "Rendering submitted" %} {{ job.submission_time|date:"l d M Y\, H:i:s" }}.<br />
-    {% if job.is_waiting %}
-      {% trans "In queue, position" %} {{ job.current_position_in_queue }}.
-    {% else %}{% if job.is_done %}{% if job.is_done_ok %}
-      {% trans "Completed on" %}
-    {% else %}
-      {% trans "Failed on" %}
-    {% endif %}
-    {{ job.endofrendering_time|date:"l d M Y\, H:i:s" }} ({% blocktrans with job.startofrendering_time|timesince:job.endofrendering_time as rendering %}rendering took {{ rendering }}{% endblocktrans %}).
-    {% else %}
-      {% trans "Rendering in progress..." %}
-    {% endif %}
-    {% endif %}
+    {% if job.is_waiting %}{% trans "In queue, position" %} {{ job.current_position_in_queue }}.{% endif %}
+    {% if job.is_rendering %}{% trans "Rendering in progress..." %}{% endif %}
+    {% if not job.needs_waiting %}
+      {% if job.is_done_ok or job.is_obsolete_ok %}{% trans "Completed on" %}{% endif %}
+      {% if job.is_done_failed or job.is_obsolete_failed %}{% trans "Failed on" %}{% endif %}
+      {{ job.endofrendering_time|date:"l d M Y\, H:i:s" }}{% if job.rendering_time_gt_1min %} ({% blocktrans with job.startofrendering_time|timesince:job.endofrendering_time as rendering %}rendering took {{ rendering }}{% endblocktrans %}){% endif %}.
 
-    {% if job.is_done_ok %}
     {% if job.has_output_files %}
     <h4>{% trans "Files: " %}</h4>
     <ul>
@@ -64,7 +57,7 @@
       <li>{% trans "Index: " %} {% for file in job.output_files.indeces %}<a href="{{ file.1 }}" title="{{ file.2 }}">{{ file.0|upper }}</a> ({{ file.3|filesizeformat }}){% if not forloop.last %}, {% endif %}{% endfor %}.</li>
     </ul>
     {% else %}
-      {% trans "The generated files are no longer available." %}
+      <p class="nofiles">{% trans "The generated files are no longer available." %}</p>
     {% endif %}
     {% endif %}
   </td>
