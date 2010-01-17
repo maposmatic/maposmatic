@@ -169,7 +169,7 @@ msgid ""
 msgstr ""
 "Natürlich ist MapOSMatic völlig freie Software,\n"
 " lizenziert unter den Bedingungen der\n"
-" <a href=\"http://www.fsf.org/licensing/licenses/agpl-3.0.html\">AGPLv3</a>."
+" <a href=\"http://www.fsf.org/licensing/licenses/agpl-3.0.html\">AGPLv3</a>.\n"
 
 #: templates/maposmatic/about.html:60
 msgid "How does it work?"
