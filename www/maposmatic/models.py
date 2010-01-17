@@ -61,7 +61,7 @@ class MapRenderingJobManager(models.Manager):
             job = MapRenderingJob.objects.get(id=jobid)
             if name.startswith(job.files_prefix()):
                 return job
-        except (ValueError, IndexError):
+        except (ValueError, IndexError, MapRenderingJob.DoesNotExist):
             pass
 
         return None

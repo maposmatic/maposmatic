@@ -1,0 +1,228 @@
+#!/usr/bin/python
+# coding: utf-8
+
+# maposmatic, the web front-end of the MapOSMatic city map generation system
+# Copyright (C) 2009  David Decotigny
+# Copyright (C) 2009  Frédéric Lehobey
+# Copyright (C) 2009  David Mentré
+# Copyright (C) 2009  Maxime Petazzoni
+# Copyright (C) 2009  Thomas Petazzoni
+# Copyright (C) 2009  Gaël Utard
+
+# This program is free software: you can redistribute it and/or modify
+# it under the terms of the GNU Affero General Public License as
+# published by the Free Software Foundation, either version 3 of the
+# License, or any later version.
+
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU Affero General Public License for more details.
+
+# You should have received a copy of the GNU Affero General Public License
+# along with this program.  If not, see <http://www.gnu.org/licenses/>.
+
+import os
+import time
+import sys
+import threading
+
+import render
+from www.maposmatic.models import MapRenderingJob
+from www.settings import LOG
+from www.settings import RENDERING_RESULT_PATH, RENDERING_RESULT_MAX_SIZE_GB
+
+RESULT_SUCCESSFULL = 'ok'
+RESULT_INTERRUPTED = 'rendering interrupted'
+RESULT_FAILED      = 'rendering failed'
+RESULT_CANCELED    = 'rendering took too long, canceled'
+
+class MapOSMaticDaemon:
+    """
+    This is a basic rendering daemon, base class for the different
+    implementations of rendering scheduling. By default, it acts as a
+    standalone, single-process MapOSMatic rendering daemon.
+    """
+
+    def __init__(self, frequency):
+        self.frequency = 10
+        LOG.info("MapOSMatic rendering daemon started.")
+        self.rollback_orphaned_jobs()
+
+    def rollback_orphaned_jobs(self):
+        """Reset all jobs left in the "rendering" state back to the "waiting"
+        state to process them correctly."""
+        MapRenderingJob.objects.filter(status=1).update(status=0)
+
+    def serve(self):
+        """Implement a basic service loop, looking every self.frequency seconds
+        for a new job to render and dispatch it if one's available. This method
+        can of course be overloaded by subclasses of MapOSMaticDaemon depending
+        on their needs."""
+
+        while True:
+            try:
+                job = MapRenderingJob.objects.to_render()[0]
+                self.dispatch(job)
+            except IndexError:
+                try:
+                    time.sleep(self.frequency)
+                except KeyboardInterrupt:
+                    break
+
+        LOG.info("MapOSMatic rendering daemon terminating.")
+
+    def dispatch(self, job):
+        """Dispatch the given job. In this simple single-process daemon, this
+        is as simple as rendering it."""
+        self.render(job)
+
+    def render(self, job):
+        """Render the given job, handling the different rendering outcomes
+        (success or failures)."""
+
+        LOG.info("Rendering job #%d '%s'..." %
+                 (job.id, job.maptitle))
+        job.start_rendering()
+
+        ret = render.render_job(job)
+        if ret == 0:
+            msg = RESULT_SUCCESSFULL
+            LOG.info("Finished rendering of job #%d." % job.id)
+        elif ret == 1:
+            msg = RESULT_INTERRUPTED
+            LOG.info("Rendering of job #%d interrupted!" % job.id)
+        else:
+            msg = RESULT_FAILED
+            LOG.info("Rendering of job #%d failed (exception occurred)!" %
+                     job.id)
+
+        job.end_rendering(msg)
+
+
+class RenderingsGarbageCollector(threading.Thread):
+    """
+    A garbage collector thread that removes old rendering from
+    RENDERING_RESULT_PATH when the total size of the directory goes about 80%
+    of RENDERING_RESULT_MAX_SIZE_GB.
+    """
+
+    def __init__(self, frequency=20):
+        threading.Thread.__init__(self)
+
+        self.frequency = frequency
+        self.setDaemon(True)
+
+    def run(self):
+        """Run the main garbage collector thread loop, cleaning files every
+        self.frequency seconds until the program is stopped."""
+
+        LOG.info("Cleanup thread started.")
+
+        while True:
+            self.cleanup()
+            time.sleep(self.frequency)
+
+    def get_file_info(self, path):
+        """Returns a dictionary of information on the given file.
+
+        Args:
+            path (string): the full path to the file.
+        Returns a dictionary containing:
+            * name: the file base name;
+            * path: its full path;
+            * size: its size;
+            * time: the last time the file contents were changed."""
+
+        s = os.stat(path)
+        return {'name': os.path.basename(path),
+                'path': path,
+                'size': s.st_size,
+                'time': s.st_mtime}
+
+    def get_formatted_value(self, value):
+        """Returns the given value in bytes formatted for display, with its
+        unit."""
+        return '%.1f MiB' % (value/1024.0/1024.0)
+
+    def get_formatted_details(self, saved, size, threshold):
+        """Returns the given saved space, size and threshold details, formatted
+        for display by get_formatted_value()."""
+
+        return 'saved %s, now %s/%s' % \
+                (self.get_formatted_value(saved),
+                 self.get_formatted_value(size),
+                 self.get_formatted_value(threshold))
+
+    def cleanup(self):
+        """Run one iteration of the cleanup loop. A sorted list of files from
+        the renderings directory is first created, oldest files last. Files are
+        then pop()-ed out of the list and removed by cleanup_files() until
+        we're back below the size threshold."""
+
+        files = map(lambda f: self.get_file_info(f),
+                    [os.path.join(RENDERING_RESULT_PATH, f)
+                        for f in os.listdir(RENDERING_RESULT_PATH)
+                        if not f.startswith('.')])
+
+        # Compute the total size occupied by the renderings, and the actual 80%
+        # threshold, in bytes.
+        size = reduce(lambda x,y: x+y['size'], files, 0)
+        threshold = 0.8 * RENDERING_RESULT_MAX_SIZE_GB * 1024 * 1024 * 1024
+
+        # Stop here if we are below the threshold
+        if size < threshold:
+            return
+
+        LOG.info("%s consumed for a %s threshold. Cleaning..." %
+                 (self.get_formatted_value(size),
+                  self.get_formatted_value(threshold)))
+
+        # Sort files by timestamp, oldest last, and start removing them by
+        # pop()-ing the list.
+        files.sort(lambda x,y: cmp(y['time'], x['time']))
+
+        while size > threshold:
+            if not len(files):
+                LOG.error("No files to remove and still above threshold! "
+                          "Something's wrong!")
+                return
+
+            f = files.pop()
+            LOG.debug("Considering file %s..." % f['name'])
+            job = MapRenderingJob.objects.get_by_filename(f['name'])
+            if job:
+                LOG.debug("Found matching parent job #%d." % job.id)
+                removed, saved = job.remove_all_files()
+                size -= saved
+                if removed:
+                    LOG.info("Removed %d files for job #%d (%s)." %
+                             (removed, job.id,
+                              self.get_formatted_details(saved, size,
+                                                         threshold)))
+
+            else:
+                # If we didn't find a parent job, it means this is an orphaned
+                # file, we can safely remove it to get back some disk space.
+                LOG.debug("No parent job found.")
+                os.remove(f['path'])
+                size -= f['size']
+                LOG.info("Removed orphan file %s (%s)." %
+                         (f['name'], self.get_formatted_details(f['size'],
+                                                                size,
+                                                                threshold)))
+
+
+if __name__ == '__main__':
+    if (not os.path.exists(RENDERING_RESULT_PATH)
+        or not os.path.isdir(RENDERING_RESULT_PATH)):
+        LOG.error("%s does not exist or is not a directory! "
+                  "Please use a valid RENDERING_RESULT_PATH.")
+        sys.exit(1)
+
+    daemon = MapOSMaticDaemon(10)
+    cleaner = RenderingsGarbageCollector(20)
+
+    cleaner.start()
+    daemon.serve()
+

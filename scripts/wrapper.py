@@ -1,4 +1,5 @@
-#! /bin/sh
+#!/usr/bin/env python
+# coding: utf-8
 
 # maposmatic, the web front-end of the MapOSMatic city map generation system
 # Copyright (C) 2009  David Decotigny
@@ -21,32 +22,19 @@
 # You should have received a copy of the GNU Affero General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-_here=`dirname "$0"`
-_pydir=`cd "$_here"/.. && /bin/pwd`
+import os
+import sys
 
-PYTHONPATH="$PYTHONPATH:/path/to/ocitysmap:$_pydir"
-export PYTHONPATH
+from config import *
 
-DJANGO_SETTINGS_MODULE="www.settings"
-export DJANGO_SETTINGS_MODULE
+if __name__ == '__main__':
+    here = os.path.dirname(os.path.abspath(__file__))
+    root = os.path.abspath(os.path.join(here, '..'))
 
-# Set this to the empty string for stderr
-MAPOSMATIC_LOG_FILE="/tmp/maposmaticd.log"
-export MAPOSMATIC_LOG_FILE
+    os.environ['PYTHONPATH'] = '%s:%s:%s' % (OCITYSMAP_PATH, root,
+                                             os.environ.get('PYTHONPATH', ''))
+    os.environ['DJANGO_SETTINGS_MODULE'] = 'www.settings'
+    os.environ['MAPOSMATIC_LOG_FILE'] = MAPOSMATIC_LOG
+    os.environ['MAPOSMATIC_LOG_LEVEL'] = str(MAPOSMATIC_LVL)
 
-### Log level (the higher, the quieter)
-# Critical: 50
-# Error: 40
-# Warning: 30
-# Info: 20
-# Debug: 10
-# NotSet: 0 (discouraged)
-MAPOSMATIC_LOG_LEVEL=20
-export MAPOSMATIC_LOG_LEVEL
-
-# To make sure ocitysmap + maposmatic are configured the same way: that
-# waym the logs for ocitysmap will go to the maposmatic logger
-MAPOSMATIC_LOG_TARGET="ocitysmap"
-export MAPOSMATIC_LOG_TARGET
-
-exec "$_here"/maposmaticd
+    os.execv(os.path.join(root, sys.argv[1]), sys.argv[1:])
