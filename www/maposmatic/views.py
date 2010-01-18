@@ -22,26 +22,19 @@
 # You should have received a copy of the GNU Affero General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-# Create your views here.
+# Views for MapOSMatic
+
+import datetime
 
 from django.core.paginator import Paginator
-from django.forms.util import ErrorList
-from django.forms import CharField, ChoiceField, FloatField, Select, RadioSelect, \
-                         ModelForm, ValidationError, IntegerField, HiddenInput, \
-                         Form
-from django.shortcuts import get_object_or_404, render_to_response
+from django.core.urlresolvers import reverse
 from django.http import HttpResponseRedirect, HttpResponseBadRequest, HttpResponse
-from django.utils.translation import ugettext_lazy as _
+from django.shortcuts import get_object_or_404, render_to_response
 from django.template import RequestContext
+from django.utils.translation import ugettext_lazy as _
 
-from www.maposmatic.models import MapRenderingJob
-import datetime
-import psycopg2
+from www.maposmatic import helpers, forms, nominatim, models
 import www.settings
-import math
-from www.maposmatic.widgets import AreaField
-from ocitysmap.coords import BoundingBox as OCMBoundingBox
-from www.maposmatic import nominatim
 
 try:
     from json import dumps as json_encode
@@ -52,193 +45,57 @@ except ImportError:
         from json import write as json_encode
 
 
-# Make sure that the supplied OSM Id is valid and can be accepted for
-# rendering (bounding box not too large, etc.). Raise an exception in
-# case of error.
-def _check_osm_id(osm_id, table="polygon"):
-    # If no GIS database is configured, bypass the city_exists check by
-    # returning True.
-    if not www.settings.has_gis_database():
-        raise ValueError("No GIS database available")
-
-    conn = psycopg2.connect("dbname='%s' user='%s' host='%s' password='%s'" %
-                            (www.settings.GIS_DATABASE_NAME,
-                             www.settings.DATABASE_USER,
-                             www.settings.DATABASE_HOST,
-                             www.settings.DATABASE_PASSWORD))
-
-    try:
-        cursor = conn.cursor()
-        cursor.execute("""select osm_id,st_astext(st_transform(st_envelope(way),
-                                                               4002))
-                          from planet_osm_%s where
-                          osm_id=%d""" % (table,int(osm_id)))
-        result = cursor.fetchall()
-        try:
-            ((ret_osm_id, envlp),) = result
-        except ValueError:
-            raise ValueError("Cannot lookup OSM ID in table %s" % table)
-
-        assert ret_osm_id == osm_id
-
-        # Check bbox size
-        bbox = OCMBoundingBox.parse_wkt(envlp)
-        (metric_size_lat, metric_size_long) = bbox.spheric_sizes()
-        if metric_size_lat > www.settings.BBOX_MAXIMUM_LENGTH_IN_METERS or \
-                metric_size_long > www.settings.BBOX_MAXIMUM_LENGTH_IN_METERS:
-            raise ValueError("Area too large")
-
-    finally:
-        conn.close()
-
-
-class MapRenderingJobForm(ModelForm):
-    class Meta:
-        model = MapRenderingJob
-        fields = ('maptitle', 'administrative_city', 'lat_upper_left',
-                  'lon_upper_left', 'lat_bottom_right', 'lon_bottom_right')
-
-    modes = (('admin', _('Administrative boundary')),
-             ('bbox', _('Bounding box')))
-    mode = ChoiceField(choices=modes, initial='admin', widget=RadioSelect)
-    maptitle = CharField(max_length=256, required=False)
-    bbox = AreaField(label=_("Area"), fields=(FloatField(), FloatField(),
-                                              FloatField(), FloatField()))
-    map_language = ChoiceField(choices=www.settings.MAP_LANGUAGES,
-                               widget=Select(attrs={'style': "min-width: 200px"}))
-
-    administrative_osmid = IntegerField(widget=HiddenInput, required=False)
-
-    def clean(self):
-        cleaned_data = self.cleaned_data
-
-        mode = cleaned_data.get("mode")
-        city = cleaned_data.get("administrative_city")
-        title = cleaned_data.get("maptitle")
-
-        if mode == 'admin':
-            if city == "":
-                msg = _(u"Administrative city required")
-                self._errors["administrative_city"] = ErrorList([msg])
-                del cleaned_data["administrative_city"]
-
-            # No choice, the map title is always the name of the city
-            cleaned_data["maptitle"] = city
-
-            # Make sure that bbox and admin modes are exclusive
-            cleaned_data["lat_upper_left"] = None
-            cleaned_data["lon_upper_left"] = None
-            cleaned_data["lat_bottom_right"] = None
-            cleaned_data["lon_bottom_right"] = None
-
-            try:
-                _check_osm_id(cleaned_data.get("administrative_osmid"))
-            except Exception,ex:
-                msg = _(u"Error with osm city: %s" % ex)
-                self._errors['administrative_osmid'] = ErrorList([msg])
-
-        elif mode == 'bbox':
-            if title == '':
-                msg = _(u"Map title required")
-                self._errors["maptitle"] = ErrorList([msg])
-                del cleaned_data["maptitle"]
-
-            for f in [ "lat_upper_left", "lon_upper_left",
-                       "lat_bottom_right", "lon_bottom_right" ]:
-                val = cleaned_data.get(f)
-                if val is None:
-                    msg = _(u"Required")
-                    self._errors[f] = ErrorList([msg])
-                    del cleaned_data[f]
-
-            lat_upper_left = cleaned_data.get("lat_upper_left")
-            lon_upper_left = cleaned_data.get("lon_upper_left")
-            lat_bottom_right = cleaned_data.get("lat_bottom_right")
-            lon_bottom_right = cleaned_data.get("lon_bottom_right")
-
-            boundingbox = OCMBoundingBox(lat_upper_left,
-                                         lon_upper_left,
-                                         lat_bottom_right,
-                                         lon_bottom_right)
-            (metric_size_lat, metric_size_long) = boundingbox.spheric_sizes()
-            if metric_size_lat > www.settings.BBOX_MAXIMUM_LENGTH_IN_METERS or \
-                    metric_size_long > www.settings.BBOX_MAXIMUM_LENGTH_IN_METERS:
-                msg = _(u"Bounding Box too large")
-                self._errors['bbox'] = ErrorList([msg])
-
-            # Make sure that bbox and admin modes are exclusive
-            cleaned_data["administrative_city"] = ''
-
-        return cleaned_data
-
-def rendering_already_exists(osmid):
-    # First try to find rendered items
-    rendered_items = (MapRenderingJob.objects.
-                      filter(submission_time__gte=datetime.datetime.now() - datetime.timedelta(1)).
-                      filter(administrative_osmid=osmid).
-                      filter(status=2).filter(resultmsg="ok").order_by("-submission_time")[:1])
-
-    if len(rendered_items):
-        rendered_item = rendered_items[0]
-        if rendered_item.has_output_files():
-            return '/jobs/%d' % rendered_item.id
-
-    # Then try to find items being rendered or waiting for rendering
-    rendered_items = (MapRenderingJob.objects.
-                      filter(submission_time__gte=datetime.datetime.now() - datetime.timedelta(1)).
-                      filter(administrative_osmid=osmid).
-                      filter(status__in=[0,1]).
-                      order_by("-submission_time")[:1])
-
-    if len(rendered_items):
-        rendered_item = rendered_items[0]
-        return '/jobs/%d' % rendered_item.id
-
-    return None
-
 def index(request):
+    """The main page."""
     return render_to_response('maposmatic/index.html',
                               context_instance=RequestContext(request))
 
+def about(request):
+    """The about page."""
+    return render_to_response('maposmatic/about.html',
+                              context_instance=RequestContext(request))
+
 def new(request):
+    """The map creation page and form."""
+
     if request.method == 'POST':
-        form = MapRenderingJobForm(request.POST)
+        form = forms.MapRenderingJobForm(request.POST)
         if form.is_valid():
-            job = MapRenderingJob()
-            job.maptitle = form.cleaned_data['maptitle']
-            job.administrative_city = form.cleaned_data['administrative_city']
-            job.administrative_osmid = form.cleaned_data['administrative_osmid']
+            job = form.save(commit=False)
+            job.administrative_osmid = form.cleaned_data.get('administrative_osmid')
 
             if job.administrative_osmid:
-                url = rendering_already_exists(job.administrative_osmid)
-                if url:
+                existing = helpers.rendering_already_exists(job.administrative_osmid)
+                if existing:
                     request.session['redirected'] = True
-                    return HttpResponseRedirect(url)
+                    return HttpResponseRedirect(reverse('job-by-id',
+                                                        args=[existing]))
 
-            job.lat_upper_left = form.cleaned_data['lat_upper_left']
-            job.lon_upper_left = form.cleaned_data['lon_upper_left']
-            job.lat_bottom_right = form.cleaned_data['lat_bottom_right']
-            job.lon_bottom_right = form.cleaned_data['lon_bottom_right']
             job.status = 0 # Submitted
             job.submitterip = request.META['REMOTE_ADDR']
-            job.index_queue_at_submission = MapRenderingJob.objects.queue_size()
-            job.map_language = form.cleaned_data['map_language']
+            job.index_queue_at_submission = (models.MapRenderingJob.objects
+                                             .queue_size())
             job.save()
 
-            return HttpResponseRedirect('/jobs/%d' % job.id)
+            return HttpResponseRedirect(reverse('job-by-id',
+                                                args=[job.id]))
     else:
-        form = MapRenderingJobForm()
+        form = forms.MapRenderingJobForm()
+
     return render_to_response('maposmatic/new.html',
                               { 'form' : form },
                               context_instance=RequestContext(request))
 
 def job(request, job_id):
-    job = get_object_or_404(MapRenderingJob, id=job_id)
-    if request.session.has_key("redirected"):
-        isredirected = request.session['redirected']
-        del request.session['redirected']
-    else:
-        isredirected = False
+    """The job details page.
+
+    Args:
+        job_id (int): the job ID in the database.
+    """
+
+    job = get_object_or_404(models.MapRenderingJob, id=job_id)
+    isredirected = request.session.get('redirected', False)
+    request.session.pop('redirected', None)
 
     refresh = www.settings.REFRESH_JOB_WAITING
     if job.is_rendering():
@@ -251,10 +108,12 @@ def job(request, job_id):
                               context_instance=RequestContext(request))
 
 def all_jobs(request):
+    """Displays all jobs from the last 24 hours."""
+
     one_day_before = datetime.datetime.now() - datetime.timedelta(1)
-    job_list = (MapRenderingJob.objects.all()
-            .order_by('-submission_time')
-            .filter(submission_time__gte=one_day_before))
+    job_list = (models.MapRenderingJob.objects.all()
+                .order_by('-submission_time')
+                .filter(submission_time__gte=one_day_before))
     paginator = Paginator(job_list, www.settings.ITEMS_PER_PAGE)
 
     try:
@@ -271,39 +130,32 @@ def all_jobs(request):
                               { 'jobs' : jobs },
                               context_instance=RequestContext(request))
 
-def get_letters():
-    # Should we improve this to differenciate letters that have maps from those
-    # who don't?
-    return [chr(i) for i in xrange(ord('A'), ord('Z')+1)]
-
-class MapSearchForm(Form):
-    query = CharField(min_length=1, required=True)
-
 def all_maps(request):
+    """Displays all maps, sorted alphabetically, eventually matching the search
+    terms, when provided."""
+
     map_list = None
 
     if request.method == 'POST':
-        form = MapSearchForm(request.POST)
+        form = forms.MapSearchForm(request.POST)
         if form.is_valid():
-            map_list = (MapRenderingJob.objects
-                        .filter(status=2)
-                        .filter(resultmsg='ok')
-                        .filter(maptitle__icontains=form.cleaned_data['query'])
-                        .order_by('maptitle')
-                        .order_by('-submission_time'))
+            map_list = (models.MapRenderingJob.objects
+                    .order_by('maptitle')
+                    .filter(status=2)
+                    .filter(maptitle__icontains=form.cleaned_data['query']))
             if len(map_list) == 1:
-                return HttpResponseRedirect('/jobs/%d' % map_list[0].id)
+                return HttpResponseRedirect(reverse('job-by-id',
+                                                    args=[map_list[0].id]))
 
-            # TODO: find a way to have a working paginator with search. For
-            # now, just make sure we don't have more than ITEMS_PER_PAGE
-            # results.
+            # TODO: find a way to have a working paginator. For now, limit to
+            # ITEMS_PER_PAGE results.
             map_list = map_list[:www.settings.ITEMS_PER_PAGE]
     else:
-        form = MapSearchForm()
+        form = forms.MapSearchForm()
 
-    map_list = map_list or (MapRenderingJob.objects.filter(status=2)
-            .filter(resultmsg="ok")
-            .order_by("maptitle"))
+    map_list = map_list or (models.MapRenderingJob.objects.filter(status=2)
+                            .filter(resultmsg="ok")
+                            .order_by('maptitle'))
     paginator = Paginator(map_list, www.settings.ITEMS_PER_PAGE)
 
     try:
@@ -315,18 +167,20 @@ def all_maps(request):
         maps = paginator.page(page)
     except (EmptyPage, InvalidPage):
         maps = paginator.page(paginator.num_pages)
+
     return render_to_response('maposmatic/all_maps.html',
-                              { 'maps': maps, 'letters': get_letters(),
+                              { 'maps': maps, 'letters': helpers.get_letters(),
                                 'form': form },
                               context_instance=RequestContext(request))
 
 def all_maps_by_letter(request, letter):
+    """Displays all maps for the given first-letter."""
+
     letter = letter[:1].upper()
-    map_list = (MapRenderingJob.objects.filter(status=2)
+    map_list = (models.MapRenderingJob.objects.filter(status=2)
             .filter(resultmsg="ok")
             .filter(maptitle__startswith=letter)
-            .order_by("maptitle"))
-
+            .order_by('maptitle'))
     paginator = Paginator(map_list, www.settings.ITEMS_PER_PAGE)
 
     try:
@@ -339,31 +193,27 @@ def all_maps_by_letter(request, letter):
     except (EmptyPage, InvalidPage):
         maps = paginator.page(paginator.num_pages)
     return render_to_response('maposmatic/all_maps.html',
-                              { 'maps': maps, 'letters': get_letters(),
+                              { 'maps': maps, 'letters': helpers.get_letters(),
                                 'current_letter': letter,
-                                'form': MapSearchForm() },
+                                'form': forms.MapSearchForm() },
                               context_instance=RequestContext(request))
 
 def query_nominatim(request, format, squery):
-    if not format:
-        format = request.GET.get("format", "json")
-    else:
-        format = format[:-1]
+    """Nominatim query gateway."""
 
-    if format not in ("json",):
+    format = format or request.GET.get('format', 'json')
+    if format not in ['json']:
         return HttpResponseBadRequest("ERROR: Invalid format")
 
-    if not squery:
-        squery = request.GET.get("q")
+    squery = squery or request.GET.get('q', '')
 
     try:
         contents = nominatim.query(squery, with_polygons=False)
     except:
         contents = []
 
-    if format == "json":
-        return HttpResponse(content = json_encode(contents), mimetype = 'text/json')
+    if format == 'json':
+        return HttpResponse(content=json_encode(contents),
+                            mimetype='text/json')
+    # Support other formats here.
 
-def about(request):
-    return render_to_response('maposmatic/about.html',
-                              context_instance=RequestContext(request))
