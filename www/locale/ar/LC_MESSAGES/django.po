@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-01-12 18:14+0100\n"
+"POT-Creation-Date: 2010-01-19 16:31+0100\n"
 "PO-Revision-Date: 2010-01-12 17:29+0300\n"
 "Last-Translator: Bassem JARKAS <jarkas@gmail.com>\n"
 "Language-Team: Arabic Translation\n"
@@ -18,7 +18,7 @@ msgstr ""
 "&& n%100<=10 ? 3 : n%100>=11 && n%100<=99 ? 4 : 5;\n"
 "X-Generator: Virtaal 0.5.0\n"
 
-#: settings.py:153
+#: settings.py:155
 msgid "No localization"
 msgstr "لا يوجد ترجمة"
 
@@ -32,36 +32,36 @@ msgstr "خريطة %(title)s %(format)s"
 msgid "%(title)s %(format)s Index"
 msgstr "فهرس %(title)s %(format)s"
 
-#: maposmatic/views.py:100
+#: maposmatic/views.py:101
 msgid "Administrative boundary"
 msgstr "حدود إدارية"
 
-#: maposmatic/views.py:101
+#: maposmatic/views.py:102
 msgid "Bounding box"
 msgstr "مربع إحاطة"
 
-#: maposmatic/views.py:104
+#: maposmatic/views.py:105
 msgid "Area"
 msgstr "منطقة"
 
-#: maposmatic/views.py:120
+#: maposmatic/views.py:121
 msgid "Administrative city required"
 msgstr "مدينة إدارية مطلوبة"
 
-#: maposmatic/views.py:136
+#: maposmatic/views.py:137
 #, python-format
 msgid "Error with osm city: %s"
 msgstr "خطأ بمدينة أو إس إم: %s"
 
-#: maposmatic/views.py:141
+#: maposmatic/views.py:142
 msgid "Map title required"
 msgstr "عنوان الخريطة مطلوب"
 
-#: maposmatic/views.py:149
+#: maposmatic/views.py:150
 msgid "Required"
 msgstr "مطلوب"
 
-#: maposmatic/views.py:165
+#: maposmatic/views.py:166
 msgid "Bounding Box too large"
 msgstr "مربع الإحاطة كبير جدًا"
 
@@ -359,22 +359,22 @@ msgid ""
 msgstr ""
 
 #: templates/maposmatic/all_jobs.html:46 templates/maposmatic/all_jobs.html:60
-#: templates/maposmatic/all_maps.html:43 templates/maposmatic/all_maps.html:68
+#: templates/maposmatic/all_maps.html:45 templates/maposmatic/all_maps.html:70
 msgid "Previous"
 msgstr "السابق"
 
 #: templates/maposmatic/all_jobs.html:47 templates/maposmatic/all_jobs.html:61
-#: templates/maposmatic/all_maps.html:44 templates/maposmatic/all_maps.html:69
+#: templates/maposmatic/all_maps.html:46 templates/maposmatic/all_maps.html:71
 msgid "Page"
 msgstr "الصفحة"
 
 #: templates/maposmatic/all_jobs.html:47 templates/maposmatic/all_jobs.html:61
-#: templates/maposmatic/all_maps.html:44 templates/maposmatic/all_maps.html:69
+#: templates/maposmatic/all_maps.html:46 templates/maposmatic/all_maps.html:71
 msgid "of"
 msgstr "من"
 
 #: templates/maposmatic/all_jobs.html:48 templates/maposmatic/all_jobs.html:62
-#: templates/maposmatic/all_maps.html:45 templates/maposmatic/all_maps.html:70
+#: templates/maposmatic/all_maps.html:47 templates/maposmatic/all_maps.html:72
 msgid "Next"
 msgstr "التالي"
 
@@ -384,28 +384,24 @@ msgid ""
 "hours."
 msgstr ""
 
-#: templates/maposmatic/all_maps.html:33
+#: templates/maposmatic/all_maps.html:34
 msgid "Search"
 msgstr "ابحث"
 
-#: templates/maposmatic/all_maps.html:33
-msgid "Search coming soon!"
-msgstr "البحث سيتوفر قريبًا!"
-
-#: templates/maposmatic/all_maps.html:35 templates/maposmatic/base.html:70
+#: templates/maposmatic/all_maps.html:37 templates/maposmatic/base.html:70
 msgid "Maps"
 msgstr "الخرائط"
 
-#: templates/maposmatic/all_maps.html:38
+#: templates/maposmatic/all_maps.html:40
 msgid "All"
 msgstr "الكل"
 
-#: templates/maposmatic/all_maps.html:59
+#: templates/maposmatic/all_maps.html:61
 #, python-format
 msgid "No map starts with %(current_letter)s in our database!"
 msgstr ""
 
-#: templates/maposmatic/all_maps.html:61
+#: templates/maposmatic/all_maps.html:63
 msgid "Our database does not contain any rendered maps for the moment."
 msgstr ""
 
@@ -659,6 +655,9 @@ msgstr ""
 #: templates/maposmatic/new.html:107
 msgid "No results."
 msgstr "لا يوجد نتائج."
+
+#~ msgid "Search coming soon!"
+#~ msgstr "البحث سيتوفر قريبًا!"
 
 #~ msgid "Please fill in the form before trying to proceed"
 #~ msgstr "يرجى ملء النموذج قبل محاولة التنفيذ"

@@ -20,7 +20,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: mapOSMatic 0.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-01-11 22:28+0100\n"
+"POT-Creation-Date: 2010-01-19 16:31+0100\n"
 "PO-Revision-Date: 2009-12-25 11:49+0100\n"
 "Last-Translator: Thomas Petazzoni <thomas.petazzoni@enix.org>\n"
 "Language-Team: IT <talk-it@openstreetmap.org>\n"
@@ -28,7 +28,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: settings.py:153
+#: settings.py:155
 msgid "No localization"
 msgstr "Nessuna traduzione"
 
@@ -42,36 +42,36 @@ msgstr "Mappa di %(title)s (format %(format)s)"
 msgid "%(title)s %(format)s Index"
 msgstr "Stradario di %(title)s (format %(format)s)"
 
-#: maposmatic/views.py:100
+#: maposmatic/views.py:101
 msgid "Administrative boundary"
 msgstr "Territorio comunale (nome della città)"
 
-#: maposmatic/views.py:101
+#: maposmatic/views.py:102
 msgid "Bounding box"
 msgstr "Rettangolo di selezione"
 
-#: maposmatic/views.py:104
+#: maposmatic/views.py:105
 msgid "Area"
 msgstr "Area"
 
-#: maposmatic/views.py:120
+#: maposmatic/views.py:121
 msgid "Administrative city required"
 msgstr "E' richiesto il nome della città"
 
-#: maposmatic/views.py:136
+#: maposmatic/views.py:137
 #, python-format
 msgid "Error with osm city: %s"
 msgstr ""
 
-#: maposmatic/views.py:141
+#: maposmatic/views.py:142
 msgid "Map title required"
 msgstr "E' richiesto il titolo della mappa"
 
-#: maposmatic/views.py:149
+#: maposmatic/views.py:150
 msgid "Required"
 msgstr "Richiesto"
 
-#: maposmatic/views.py:165
+#: maposmatic/views.py:166
 #, fuzzy
 msgid "Bounding Box too large"
 msgstr "Rettangolo di selezione troppo ampio"
@@ -398,22 +398,22 @@ msgid ""
 msgstr ""
 
 #: templates/maposmatic/all_jobs.html:46 templates/maposmatic/all_jobs.html:60
-#: templates/maposmatic/all_maps.html:43 templates/maposmatic/all_maps.html:68
+#: templates/maposmatic/all_maps.html:45 templates/maposmatic/all_maps.html:70
 msgid "Previous"
 msgstr ""
 
 #: templates/maposmatic/all_jobs.html:47 templates/maposmatic/all_jobs.html:61
-#: templates/maposmatic/all_maps.html:44 templates/maposmatic/all_maps.html:69
+#: templates/maposmatic/all_maps.html:46 templates/maposmatic/all_maps.html:71
 msgid "Page"
 msgstr ""
 
 #: templates/maposmatic/all_jobs.html:47 templates/maposmatic/all_jobs.html:61
-#: templates/maposmatic/all_maps.html:44 templates/maposmatic/all_maps.html:69
+#: templates/maposmatic/all_maps.html:46 templates/maposmatic/all_maps.html:71
 msgid "of"
 msgstr ""
 
 #: templates/maposmatic/all_jobs.html:48 templates/maposmatic/all_jobs.html:62
-#: templates/maposmatic/all_maps.html:45 templates/maposmatic/all_maps.html:70
+#: templates/maposmatic/all_maps.html:47 templates/maposmatic/all_maps.html:72
 msgid "Next"
 msgstr ""
 
@@ -423,29 +423,25 @@ msgid ""
 "hours."
 msgstr ""
 
-#: templates/maposmatic/all_maps.html:33
+#: templates/maposmatic/all_maps.html:34
 #, fuzzy
 msgid "Search"
 msgstr "Ricerca"
 
-#: templates/maposmatic/all_maps.html:33
-msgid "Search coming soon!"
-msgstr ""
-
-#: templates/maposmatic/all_maps.html:35 templates/maposmatic/base.html:70
+#: templates/maposmatic/all_maps.html:37 templates/maposmatic/base.html:70
 msgid "Maps"
 msgstr "Mappe"
 
-#: templates/maposmatic/all_maps.html:38
+#: templates/maposmatic/all_maps.html:40
 msgid "All"
 msgstr ""
 
-#: templates/maposmatic/all_maps.html:59
+#: templates/maposmatic/all_maps.html:61
 #, python-format
 msgid "No map starts with %(current_letter)s in our database!"
 msgstr ""
 
-#: templates/maposmatic/all_maps.html:61
+#: templates/maposmatic/all_maps.html:63
 msgid "Our database does not contain any rendered maps for the moment."
 msgstr ""
 

@@ -20,7 +20,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: mapOSMatic 0.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-01-12 18:11+0100\n"
+"POT-Creation-Date: 2010-01-19 16:31+0100\n"
 "PO-Revision-Date: 2010-01-12 09:16-0300\n"
 "Last-Translator: Rodrigo de Avila <rodrigo@avila.net.br>\n"
 "Language-Team: PT <LL@li.org>\n"
@@ -28,7 +28,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: settings.py:153
+#: settings.py:155
 msgid "No localization"
 msgstr "Sem tradução"
 
@@ -42,36 +42,36 @@ msgstr "Mapa de %(title)s (format %(format)s)"
 msgid "%(title)s %(format)s Index"
 msgstr "Índice de ruas pelo %(title)s (format %(format)s)"
 
-#: maposmatic/views.py:100
+#: maposmatic/views.py:101
 msgid "Administrative boundary"
 msgstr "Limites administrativos (nome da cidade)"
 
-#: maposmatic/views.py:101
+#: maposmatic/views.py:102
 msgid "Bounding box"
 msgstr "Bounding box"
 
-#: maposmatic/views.py:104
+#: maposmatic/views.py:105
 msgid "Area"
 msgstr "Área"
 
-#: maposmatic/views.py:120
+#: maposmatic/views.py:121
 msgid "Administrative city required"
 msgstr "Nome de cidade obrigatório"
 
-#: maposmatic/views.py:136
+#: maposmatic/views.py:137
 #, python-format
 msgid "Error with osm city: %s"
 msgstr "Erro com a cidade osm selecionada: %s"
 
-#: maposmatic/views.py:141
+#: maposmatic/views.py:142
 msgid "Map title required"
 msgstr "Título do mapa obrigatório"
 
-#: maposmatic/views.py:149
+#: maposmatic/views.py:150
 msgid "Required"
 msgstr "Obrigatório"
 
-#: maposmatic/views.py:165
+#: maposmatic/views.py:166
 msgid "Bounding Box too large"
 msgstr "Bounding Box muito grande"
 
@@ -468,22 +468,22 @@ msgstr ""
 "começando do mais recente."
 
 #: templates/maposmatic/all_jobs.html:46 templates/maposmatic/all_jobs.html:60
-#: templates/maposmatic/all_maps.html:43 templates/maposmatic/all_maps.html:68
+#: templates/maposmatic/all_maps.html:45 templates/maposmatic/all_maps.html:70
 msgid "Previous"
 msgstr "Anterior"
 
 #: templates/maposmatic/all_jobs.html:47 templates/maposmatic/all_jobs.html:61
-#: templates/maposmatic/all_maps.html:44 templates/maposmatic/all_maps.html:69
+#: templates/maposmatic/all_maps.html:46 templates/maposmatic/all_maps.html:71
 msgid "Page"
 msgstr "Página"
 
 #: templates/maposmatic/all_jobs.html:47 templates/maposmatic/all_jobs.html:61
-#: templates/maposmatic/all_maps.html:44 templates/maposmatic/all_maps.html:69
+#: templates/maposmatic/all_maps.html:46 templates/maposmatic/all_maps.html:71
 msgid "of"
 msgstr "de"
 
 #: templates/maposmatic/all_jobs.html:48 templates/maposmatic/all_jobs.html:62
-#: templates/maposmatic/all_maps.html:45 templates/maposmatic/all_maps.html:70
+#: templates/maposmatic/all_maps.html:47 templates/maposmatic/all_maps.html:72
 msgid "Next"
 msgstr "Próxima"
 
@@ -495,29 +495,25 @@ msgstr ""
 "Nenhum pedido de renderização de mapas desde\n"
 "as últimas 24 horas."
 
-#: templates/maposmatic/all_maps.html:33
+#: templates/maposmatic/all_maps.html:34
 msgid "Search"
 msgstr "Procurar"
 
-#: templates/maposmatic/all_maps.html:33
-msgid "Search coming soon!"
-msgstr "Busca: disponível em breve!"
-
-#: templates/maposmatic/all_maps.html:35 templates/maposmatic/base.html:70
+#: templates/maposmatic/all_maps.html:37 templates/maposmatic/base.html:70
 msgid "Maps"
 msgstr "Mapas"
 
-#: templates/maposmatic/all_maps.html:38
+#: templates/maposmatic/all_maps.html:40
 msgid "All"
 msgstr "Todos"
 
-#: templates/maposmatic/all_maps.html:59
+#: templates/maposmatic/all_maps.html:61
 #, python-format
 msgid "No map starts with %(current_letter)s in our database!"
 msgstr ""
 "Nenhum mapa em nossa base de dados inicia coom a letra %(current_letter)s"
 
-#: templates/maposmatic/all_maps.html:61
+#: templates/maposmatic/all_maps.html:63
 msgid "Our database does not contain any rendered maps for the moment."
 msgstr "Nossa base de dados não contém nenhum mapa neste momento."
 
@@ -791,6 +787,9 @@ msgstr ""
 #: templates/maposmatic/new.html:107
 msgid "No results."
 msgstr "Nenhum resultado encontrado."
+
+#~ msgid "Search coming soon!"
+#~ msgstr "Busca: disponível em breve!"
 
 #, fuzzy
 #~ msgid "estimated completion time"
