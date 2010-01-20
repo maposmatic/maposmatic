@@ -27,6 +27,7 @@
 from django import forms
 from django.utils.translation import ugettext_lazy as _
 
+from ocitysmap.coords import BoundingBox as OCMBoundingBox
 from www.maposmatic import helpers, models, widgets
 import www.settings
 
