@@ -131,6 +131,5 @@ class MapRenderingJobForm(forms.ModelForm):
             # Make sure that bbox and admin modes are exclusive
             cleaned_data["administrative_city"] = ''
 
-        print cleaned_data
         return cleaned_data
 
