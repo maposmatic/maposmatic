@@ -24,8 +24,14 @@
 # Django settings for www project.
 
 import logging
-from settings_local import *
+import os.path
+
+from django.conf.global_settings import TEMPLATE_CONTEXT_PROCESSORS
 from django.utils.translation import ugettext_lazy as _
+
+from settings_local import *
+
+PROJECT_PATH = os.path.dirname(os.path.abspath(__file__))
 
 TEMPLATE_DEBUG = DEBUG
 
@@ -72,7 +78,6 @@ TEMPLATE_LOADERS = (
 #     'django.template.loaders.eggs.load_template_source',
 )
 
-from django.conf.global_settings import TEMPLATE_CONTEXT_PROCESSORS
 
 TEMPLATE_CONTEXT_PROCESSORS += (
      'django.core.context_processors.request',
@@ -88,10 +93,6 @@ MIDDLEWARE_CLASSES = (
 
 ROOT_URLCONF = 'www.urls'
 
-import os.path
-
-PROJECT_PATH = os.path.dirname(os.path.abspath(__file__))
-
 TEMPLATE_DIRS = (
     os.path.join(PROJECT_PATH, 'templates'),
 )
@@ -102,8 +103,6 @@ INSTALLED_APPS = (
     'django.contrib.sessions',
     'www.maposmatic',
 )
-
-formatter = logging.Formatter("%(name)s - %(asctime)s - %(levelname)s - %(message)s")
 
 LANGUAGES = (("fr", u"Français"),
              ("en", u"English"),
@@ -156,6 +155,7 @@ MAP_LANGUAGES = [("fr_BE.UTF-8", u"Royaume de Belgique (FR)"),
                  # "C" must be the last entry
                  ("C", _(u"No localization"))]
 
+# Logging
 LOG = logging.getLogger(os.environ.get("MAPOSMATIC_LOG_TARGET",
                                        "maposmatic"))
 LOG.setLevel(int(os.environ.get("MAPOSMATIC_LOG_LEVEL",
@@ -170,6 +170,7 @@ _fh.setFormatter(logging.Formatter(os.environ.get("MAPOSMATIC_LOG_FORMAT",
 
 LOG.addHandler(_fh)
 LOG.info("log restarted.")
+
 
 def has_gis_database():
     return GIS_DATABASE_NAME and GIS_DATABASE_NAME != ''
