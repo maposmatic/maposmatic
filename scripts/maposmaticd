@@ -36,15 +36,15 @@ def sigcld_handler(signum, frame, pipe_write):
     f.write("end")
 
 def render_job_process(job):
+    prefix = 'maposmaticd_%d_' % os.getpid()
     if job.administrative_osmid is None:
         bbox = OCMBoundingBox(job.lat_upper_left, job.lon_upper_left,
                               job.lat_bottom_right, job.lon_bottom_right)
-        renderer = OCitySMap(config_file=OCITYSMAP_CFG_PATH, boundingbox=bbox,
-                             language=job.map_language)
+        renderer = OCitySMap(config_file=OCITYSMAP_CFG_PATH, map_areas_prefix=prefix,
+                             boundingbox=bbox, language=job.map_language)
     else:
-        renderer = OCitySMap(config_file=OCITYSMAP_CFG_PATH,
-                             osmid=job.administrative_osmid,
-                             language=job.map_language)
+        renderer = OCitySMap(config_file=OCITYSMAP_CFG_PATH, map_areas_prefix=prefix,
+                             osmid=job.administrative_osmid, language=job.map_language)
 
     outfile_prefix = os.path.join(RENDERING_RESULT_PATH, job.files_prefix())
 
