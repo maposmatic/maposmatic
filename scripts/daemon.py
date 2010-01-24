@@ -23,29 +23,38 @@
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 import os
-import time
 import sys
 import threading
+import time
 
 import render
 from www.maposmatic.models import MapRenderingJob
 from www.settings import LOG
 from www.settings import RENDERING_RESULT_PATH, RENDERING_RESULT_MAX_SIZE_GB
 
-RESULT_SUCCESSFULL = 'ok'
-RESULT_INTERRUPTED = 'rendering interrupted'
-RESULT_FAILED      = 'rendering failed'
-RESULT_CANCELED    = 'rendering took too long, canceled'
+_DEFAULT_CLEAN_FREQUENCY = 20       # Clean thread polling frequency, in
+                                    # seconds.
+_DEFAULT_POLL_FREQUENCY = 10        # Daemon job polling frequency, in seconds
+
+_RESULT_MSGS = {
+    render.RESULT_SUCCESS: 'ok',
+    render.RESULT_KEYBOARD_INTERRUPT: 'rendering interrupted',
+    render.RESULT_RENDERING_EXCEPTION: 'rendering failed',
+    render.RESULT_TIMEOUT_REACHED: 'rendering took too long, canceled'
+}
 
 class MapOSMaticDaemon:
     """
     This is a basic rendering daemon, base class for the different
     implementations of rendering scheduling. By default, it acts as a
     standalone, single-process MapOSMatic rendering daemon.
+
+    It of course uses the TimingOutJobRenderer to ensure no long-lasting job
+    stalls the queue.
     """
 
-    def __init__(self, frequency):
-        self.frequency = 10
+    def __init__(self, frequency=_DEFAULT_POLL_FREQUENCY):
+        self.frequency = frequency
         LOG.info("MapOSMatic rendering daemon started.")
         self.rollback_orphaned_jobs()
 
@@ -73,31 +82,32 @@ class MapOSMaticDaemon:
         LOG.info("MapOSMatic rendering daemon terminating.")
 
     def dispatch(self, job):
-        """Dispatch the given job. In this simple single-process daemon, this
-        is as simple as rendering it."""
-        self.render(job)
+        """In this simple single-process daemon, dispatching is as easy as
+        calling the render() method. Subclasses probably want to overload this
+        method too and implement a more clever dispatching mechanism.
 
-    def render(self, job):
-        """Render the given job, handling the different rendering outcomes
-        (success or failures)."""
+        Args:
+            job (MapRenderingJob): the job to process and render.
 
-        LOG.info("Rendering job #%d '%s'..." %
-                 (job.id, job.maptitle))
+        Returns True if the rendering was successful, False otherwise.
+        """
+
+        return self.render(job, 'maposmaticd_%d_' % os.getpid())
+
+    def render(self, job, prefix=None):
+        """Render the given job using a timing out job renderer.
+
+        Args:
+            job (MapRenderingJob): the job to process and render.
+
+        Returns True if the rendering was successful, False otherwise.
+        """
+
+        renderer = render.TimingOutJobRenderer(job, prefix=prefix)
         job.start_rendering()
-
-        ret = render.render_job(job)
-        if ret == 0:
-            msg = RESULT_SUCCESSFULL
-            LOG.info("Finished rendering of job #%d." % job.id)
-        elif ret == 1:
-            msg = RESULT_INTERRUPTED
-            LOG.info("Rendering of job #%d interrupted!" % job.id)
-        else:
-            msg = RESULT_FAILED
-            LOG.info("Rendering of job #%d failed (exception occurred)!" %
-                     job.id)
-
-        job.end_rendering(msg)
+        ret = renderer.run()
+        job.end_rendering(_RESULT_MSGS[ret])
+        return ret == 0
 
 
 class RenderingsGarbageCollector(threading.Thread):
@@ -107,7 +117,7 @@ class RenderingsGarbageCollector(threading.Thread):
     of RENDERING_RESULT_MAX_SIZE_GB.
     """
 
-    def __init__(self, frequency=20):
+    def __init__(self, frequency=_DEFAULT_CLEAN_FREQUENCY):
         threading.Thread.__init__(self)
 
         self.frequency = frequency
@@ -220,8 +230,8 @@ if __name__ == '__main__':
                   "Please use a valid RENDERING_RESULT_PATH.")
         sys.exit(1)
 
-    daemon = MapOSMaticDaemon(10)
-    cleaner = RenderingsGarbageCollector(20)
+    cleaner = RenderingsGarbageCollector()
+    daemon = MapOSMaticDaemon()
 
     cleaner.start()
     daemon.serve()

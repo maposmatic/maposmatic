@@ -25,77 +25,166 @@
 import Image
 import os
 import sys
+import threading
 
 from ocitysmap.coords import BoundingBox
 from ocitysmap.street_index import OCitySMap
 from www.maposmatic.models import MapRenderingJob
-from www.settings import RENDERING_RESULT_PATH, RENDERING_RESULT_FORMATS
+from www.settings import LOG
 from www.settings import OCITYSMAP_CFG_PATH
+from www.settings import RENDERING_RESULT_PATH, RENDERING_RESULT_FORMATS
 
-def render_job(job, prefix=None):
-    """Renders the given job, encapsulating all processing errors and
-    exceptions.
+RESULT_SUCCESS = 0
+RESULT_KEYBOARD_INTERRUPT = 1
+RESULT_RENDERING_EXCEPTION = 2
+RESULT_TIMEOUT_REACHED = 3
 
-    This does not affect the job entry in the database in any way. It's the
-    responsibility of the caller to do maintain the job status in the database.
+class TimingOutJobRenderer:
+    """
+    The TimingOutJobRenderer is a wrapper around JobRenderer implementing
+    timeout management. It uses JobRenderer as a thread, and tries to join it
+    for the given timeout. If the timeout is reached, the thread is suspended,
+    cleaned up and killed.
 
-    Returns:
-        * 0 on success;
-        * 1 on ^C;
-        * 2 on a rendering exception from OCitySMap.
+    The TimingOutJobRenderer has exactly the same API as the non-threading
+    JobRenderer, so it can be used in place of JobRenderer very easily.
     """
 
-    if job.administrative_city is None:
-        bbox = BoundingBox(job.lat_upper_left, job.lon_upper_left,
-                           job.lat_bottom_right, job.lon_bottom_right)
-        renderer = OCitySMap(config_file=OCITYSMAP_CFG_PATH,
-                             map_areas_prefix=prefix,
-                             boundingbox=bbox,
-                             language=job.map_language)
-    else:
-        renderer = OCitySMap(config_file=OCITYSMAP_CFG_PATH,
-                             map_areas_prefix=prefix,
-                             osmid=job.administrative_osmid,
-                             language=job.map_language)
+    def __init__(self, job, timeout=1200, prefix=None):
+        """Initializes this TimingOutJobRenderer with a given job and a timeout.
 
-    prefix = os.path.join(RENDERING_RESULT_PATH, job.files_prefix())
+        Args:
+            job (MapRenderingJob): the job to render.
+            timeout (int): a timeout, in seconds (defaults to 20 minutes).
+            prefix (string): renderer map_areas table prefix.
+        """
 
-    try:
-        # Render the map in all RENDERING_RESULT_FORMATS
-        result = renderer.render_map_into_files(job.maptitle, prefix,
-                                                RENDERING_RESULT_FORMATS,
-                                                'zoom:16')
+        self.__timeout = timeout
+        self.__thread = JobRenderer(job, prefix)
 
-        # Render the index in all RENDERING_RESULT_FORMATS, using the
-        # same map size.
-        renderer.render_index(job.maptitle, prefix, RENDERING_RESULT_FORMATS,
-                              result.width, result.height)
+    def run(self):
+        """Renders the job using a JobRendered, encapsulating all processing
+        errors and exceptions, with the addition here of a processing timeout.
 
-        # Create thumbnail
-        if 'png' in RENDERING_RESULT_FORMATS:
-            img = Image.open(prefix + '.png')
-            img.thumbnail((200, 200), Image.ANTIALIAS)
-            img.save(prefix + '_small.png')
+        Returns one of the RESULT_ constants.
+        """
 
-        return 0
-    except KeyboardInterrupt:
-        return 1
-    except:
-        return 2
+        self.__thread.start()
+        self.__thread.join(self.__timeout)
+
+        # If the thread is no longer alive, the timeout was not reached and all
+        # is well.
+        if not self.__thread.isAlive():
+            return self.__thread.result
+
+        LOG.info("Rendering of job #%d took too long (timeout reached)!" %
+                 self.__thread.job.id)
+
+        # Remove the job files
+        self.__thread.job.remove_all_files()
+
+        # Kill the thread and return TIMEOUT_REACHED
+        del self.__thread
+        return RESULT_TIMEOUT_REACHED
+
+class JobRenderer(threading.Thread):
+    """
+    A simple, blocking job rendered. It can be used as a thread, or directly in
+    the main processing path of the caller if it chooses to call run()
+    directly.
+    """
+
+    def __init__(self, job, prefix):
+        threading.Thread.__init__(self)
+        self.job = job
+        self.prefix = prefix
+        self.result = None
+
+    def run(self):
+        """Renders the given job, encapsulating all processing errors and
+        exceptions.
+
+        This does not affect the job entry in the database in any way. It's the
+        responsibility of the caller to do maintain the job status in the
+        database.
+
+        Returns one of the RESULT_ constants.
+        """
+
+        LOG.info("Rendering job #%d '%s'..." % (self.job.id, self.job.maptitle))
+
+        if not self.job.administrative_city:
+            bbox = BoundingBox(self.job.lat_upper_left,
+                               self.job.lon_upper_left,
+                               self.job.lat_bottom_right,
+                               self.job.lon_bottom_right)
+            renderer = OCitySMap(config_file=OCITYSMAP_CFG_PATH,
+                                 map_areas_prefix=self.prefix,
+                                 boundingbox=bbox,
+                                 language=self.job.map_language)
+        else:
+            renderer = OCitySMap(config_file=OCITYSMAP_CFG_PATH,
+                                 map_areas_prefix=self.prefix,
+                                 osmid=self.job.administrative_osmid,
+                                 language=self.job.map_language)
+
+        prefix = os.path.join(RENDERING_RESULT_PATH, self.job.files_prefix())
+
+        try:
+            # Render the map in all RENDERING_RESULT_FORMATS
+            result = renderer.render_map_into_files(self.job.maptitle, prefix,
+                                                    RENDERING_RESULT_FORMATS,
+                                                    'zoom:16')
+
+            # Render the index in all RENDERING_RESULT_FORMATS, using the
+            # same map size.
+            renderer.render_index(self.job.maptitle, prefix,
+                                  RENDERING_RESULT_FORMATS,
+                                  result.width, result.height)
+
+            # Create thumbnail
+            if 'png' in RENDERING_RESULT_FORMATS:
+                img = Image.open(prefix + '.png')
+                img.thumbnail((200, 200), Image.ANTIALIAS)
+                img.save(prefix + '_small.png')
+
+            self.result = RESULT_SUCCESS
+            LOG.info("Finished rendering of job #%d." % self.job.id)
+        except KeyboardInterrupt:
+            self.result = RESULT_KEYBOARD_INTERRUPT
+            LOG.info("Rendering of job #%d interrupted!" % self.job.id)
+        except:
+            self.result = RESULT_RENDERING_EXCEPTION
+            LOG.info("Rendering of job #%d failed (exception occurred)!" %
+                     self.job.id)
+
+        # Remove the job files if the rendering was not successful.
+        if self.result:
+            self.job.remove_all_files()
+
+        return self.result
+
 
 if __name__ == '__main__':
     def usage():
-        sys.stderr.write('usage: %s <jobid>' % sys.argv[0])
+        sys.stderr.write('usage: %s <jobid> [timeout]\n' % sys.argv[0])
 
-    if len(sys.argv) != 2:
+    if len(sys.argv) < 2 or len(sys.argv) > 3:
         usage()
         sys.exit(3)
 
     try:
         jobid = int(sys.argv[1])
         job = MapRenderingJob.objects.get(id=jobid)
+
         if job:
-            sys.exit(render_job(job, 'renderer_%d' % os.getpid()))
+            prefix = 'renderer_%d_' % os.getpid()
+            if len(sys.argv) == 3:
+                renderer = TimingOutJobRenderer(job, int(sys.argv[2]), prefix)
+            else:
+                renderer = JobRenderer(job, prefix)
+
+            sys.exit(renderer.run())
         else:
             sys.stderr.write('Job #%d not found!' % jobid)
             sys.exit(4)
