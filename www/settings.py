@@ -104,6 +104,9 @@ INSTALLED_APPS = (
     'www.maposmatic',
 )
 
+# Available website translations. Note that the language codes must be
+# specified in Django i18n location (all lowercase, with the language and
+# locale separated by a dash instead of an underscore: pt_BR -> pt-br)
 LANGUAGES = (("fr", u"Français"),
              ("en", u"English"),
              ("de", u"Deutsch"),
@@ -111,9 +114,9 @@ LANGUAGES = (("fr", u"Français"),
              ("ca", u"Català"),
              ("ru", u"Русский"),
              ("ar", u"العربية"),
-             ("pt_BR", u"Português do Brasil"),
+             ("pt-br", u"Português do Brasil"),
              ("nl", u"Nederlands"),
-             ("hr_HR", u"Hrvatski"))
+             ("hr-hr", u"Hrvatski"))
 
 MAP_LANGUAGES = [("fr_BE.UTF-8", u"Royaume de Belgique (FR)"),
                  ("fr_FR.UTF-8", u"France"),
