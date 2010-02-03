@@ -39,6 +39,8 @@ RESULT_KEYBOARD_INTERRUPT = 1
 RESULT_RENDERING_EXCEPTION = 2
 RESULT_TIMEOUT_REACHED = 3
 
+THUMBNAIL_SUFFIX = '_small.png'
+
 class TimingOutJobRenderer:
     """
     The TimingOutJobRenderer is a wrapper around JobRenderer implementing
@@ -146,7 +148,7 @@ class JobRenderer(threading.Thread):
             if 'png' in RENDERING_RESULT_FORMATS:
                 img = Image.open(prefix + '.png')
                 img.thumbnail((200, 200), Image.ANTIALIAS)
-                img.save(prefix + '_small.png')
+                img.save(prefix + THUMBNAIL_SUFFIX)
 
             self.result = RESULT_SUCCESS
             LOG.info("Finished rendering of job #%d." % self.job.id)

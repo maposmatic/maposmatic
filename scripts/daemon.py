@@ -173,7 +173,8 @@ class RenderingsGarbageCollector(threading.Thread):
         files = map(lambda f: self.get_file_info(f),
                     [os.path.join(RENDERING_RESULT_PATH, f)
                         for f in os.listdir(RENDERING_RESULT_PATH)
-                        if not f.startswith('.')])
+                        if not (f.startswith('.') or
+                                f.endswith(render.THUMBNAIL_SUFFIX))])
 
         # Compute the total size occupied by the renderings, and the actual 80%
         # threshold, in bytes.
