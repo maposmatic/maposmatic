@@ -21,6 +21,7 @@
 # You should have received a copy of the GNU Affero General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
+from django.core.urlresolvers import reverse
 from django.db import models
 from django.utils.translation import ugettext_lazy as _
 
@@ -177,3 +178,6 @@ class MapRenderingJob(models.Model):
         mean_job_rendering_time = waiting_time // progression
         estimated_time_left = mean_job_rendering_time * self.current_position_in_queue()
         return datetime.now() + estimated_time_left
+
+    def get_absolute_url(self):
+        return reverse('job-by-id', args=[self.id])

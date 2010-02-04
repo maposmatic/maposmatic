@@ -1,0 +1,55 @@
+{% comment %}
+ coding: utf-8
+
+ maposmatic, the web front-end of the MapOSMatic city map generation system
+ Copyright (C) 2010  David Decotigny
+ Copyright (C) 2010  Frédéric Lehobey
+ Copyright (C) 2010  David Mentré
+ Copyright (C) 2010  Maxime Petazzoni
+ Copyright (C) 2010  Thomas Petazzoni
+ Copyright (C) 2010  Gaël Utard
+
+ This program is free software: you can redistribute it and/or modify
+ it under the terms of the GNU Affero General Public License as
+ published by the Free Software Foundation, either version 3 of the
+ License, or any later version.
+
+ This program is distributed in the hope that it will be useful,
+ but WITHOUT ANY WARRANTY; without even the implied warranty of
+ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ GNU Affero General Public License for more details.
+
+ You should have received a copy of the GNU Affero General Public License
+ along with this program.  If not, see <http://www.gnu.org/licenses/>.
+{% endcomment %}
+
+
+{% load i18n %}
+
+{% load extratags %}
+
+<table style="width: 100%;"><tbody><tr>
+  <td style="width: 220px; vertical-align: top; text-align: center;">{% if obj.get_thumbnail %}<img src="{{ obj.get_thumbnail }}" />{% endif %}</td>
+  <td style="vertical-align: top;">
+    {% if obj.administrative_city %}
+      {% ifnotequal obj.administrative_city obj.maptitle %}<h3>{{ obj.administrative_city }}</h3>{% endifnotequal %}
+    {% else %}
+    <h3>({{ obj.lat_upper_left|floatformat:3 }}, {{ obj.lon_upper_left|floatformat:3 }}) &rarr;
+        ({{ obj.lat_bottom_right|floatformat:3 }}, {{ obj.lon_bottom_right|floatformat:3 }})</h3>
+    {% endif %}
+
+    <p>{% trans "Rendering completed on" %} {{ obj.endofrendering_time|date:"l d M Y\, H:i:s" }}.</p>
+
+    {% if obj.has_output_files %}
+    <h4>{% trans "Files: " %}</h4>
+    <ul>
+      <li>{% trans "Map: " %} {% for file in obj.output_files.maps %}<a href="{{ file.1 }}" title="{{ file.2 }}">{{ file.0|upper }}</a> ({{ file.3|filesizeformat }}){% if not forloop.last %}, {% endif %}{% endfor %}.</li>
+      <li>{% trans "Index: " %} {% for file in obj.output_files.indeces %}<a href="{{ file.1 }}" title="{{ file.2 }}">{{ file.0|upper }}</a> ({{ file.3|filesizeformat }}){% if not forloop.last %}, {% endif %}{% endfor %}.</li>
+    </ul>
+    {% else %}
+      {% trans "The generated files are no longer available." %}
+    {% endif %}
+  </td>
+</tr></tbody></table>
+
+

@@ -28,8 +28,13 @@ from django.conf.urls.defaults import *
 # from django.contrib import admin
 # admin.autodiscover()
 
+import maposmatic.feeds
 import maposmatic.views
 import settings
+
+feeds = {
+    'maps': maposmatic.feeds.MapsFeed,
+}
 
 urlpatterns = patterns('',
     url(r'^$', maposmatic.views.index,
@@ -54,6 +59,10 @@ urlpatterns = patterns('',
 
     # Internationalization
     (r'^i18n/', include('django.conf.urls.i18n')),
+
+    # Feeds
+    (r'^feeds/(?P<url>.*)/$', 'django.contrib.syndication.views.feed',
+     {'feed_dict': feeds}),
 
     # Static data
     (r'^results/(?P<path>.*)$', 'django.views.static.serve',

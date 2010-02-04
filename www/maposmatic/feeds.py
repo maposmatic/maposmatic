@@ -1,0 +1,69 @@
+# coding: utf-8
+
+# maposmatic, the web front-end of the MapOSMatic city map generation system
+# Copyright (C) 2010  David Decotigny
+# Copyright (C) 2010  Frédéric Lehobey
+# Copyright (C) 2010  Pierre Mauduit
+# Copyright (C) 2010  David Mentré
+# Copyright (C) 2010  Maxime Petazzoni
+# Copyright (C) 2010  Thomas Petazzoni
+# Copyright (C) 2010  Gaël Utard
+
+# This program is free software: you can redistribute it and/or modify
+# it under the terms of the GNU Affero General Public License as
+# published by the Free Software Foundation, either version 3 of the
+# License, or any later version.
+
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU Affero General Public License for more details.
+
+# You should have received a copy of the GNU Affero General Public License
+# along with this program.  If not, see <http://www.gnu.org/licenses/>.
+
+# Feeds for MapOSMatic
+
+import datetime
+
+from django.contrib.syndication.feeds import Feed
+from django.utils.translation import ugettext_lazy as _
+
+from www.maposmatic import models
+
+class MapsFeed(Feed):
+    """
+    This feeds syndicates the latest successful rendering jobs in MapOSMatic,
+    with their thumbnail, and links to the rendered files.
+    """
+
+    title = _('MapOSMatic maps')
+    link = '/maps/' # We can't use reverse here as the urlpatterns aren't
+                    # defined yet at this point.
+    description = _('The latest successfully rendered maps on MapOSMatic.')
+
+    description_template = 'maposmatic/map-feed.html'
+
+    def items(self):
+        """Returns the successfull rendering jobs from the last 24 hours, or
+        more to get at least 10 items in the feed, when possible."""
+
+
+        job_list = (models.MapRenderingJob.objects
+                    .filter(status=2)
+                    .filter(resultmsg='ok')
+                    .order_by('-endofrendering_time'))
+
+        one_day_before = datetime.datetime.now() - datetime.timedelta(1)
+        last_day_items = job_list.filter(endofrendering_time__gte=one_day_before)
+
+        # If there's less than 10 matching jobs in the last 24 hours, use the
+        # last 10 jobs.
+        if last_day_items.count() < 10:
+            return job_list[:10]
+        else:
+            return last_day_items
+
+    def item_title(self, item):
+        return item.maptitle
+
