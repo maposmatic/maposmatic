@@ -173,18 +173,18 @@ class MapRenderingJob(models.Model):
             # Map files (all formats but CSV)
             map_path = self.get_map_filepath(format)
             if format != 'csv' and os.path.exists(map_path):
-                allfiles['maps'].append((format, map_path,
+                allfiles['maps'].append((format, self.get_map_fileurl(format),
                     _("%(title)s %(format)s Map") % {'title': self.maptitle,
                                                      'format': format.upper()},
-                    os.stat(map_path).st_size))
+                    os.stat(map_path).st_size, map_path))
 
             # Index files
             index_path = self.get_index_filepath(format)
             if os.path.exists(index_path):
-                allfiles['indeces'].append((format, index_path,
+                allfiles['indeces'].append((format, self.get_index_fileurl(format),
                     _("%(title)s %(format)s Index") % {'title': self.maptitle,
                                                        'format': format.upper()},
-                    os.stat(index_path).st_size))
+                    os.stat(index_path).st_size, index_path))
 
         return allfiles
 
@@ -210,9 +210,12 @@ class MapRenderingJob(models.Model):
         removed = 0
 
         for f in (files['maps'] + files['indeces']):
-            saved += f[3]
-            removed += 1
-            os.remove(f[1])
+            try:
+                os.remove(f[4])
+                removed += 1
+                saved += f[3]
+            except OSError:
+                pass
 
         self.status = 3
         self.save()
