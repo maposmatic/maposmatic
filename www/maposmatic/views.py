@@ -73,6 +73,7 @@ def new(request):
 
             job.status = 0 # Submitted
             job.submitterip = request.META['REMOTE_ADDR']
+            job.map_language = form.cleaned_data.get('map_language')
             job.index_queue_at_submission = (models.MapRenderingJob.objects
                                              .queue_size())
             job.save()
