@@ -154,9 +154,11 @@ MAP_LANGUAGES = [("fr_BE.UTF-8", u"Royaume de Belgique (FR)"),
                  ("ca_FR.UTF-8", u"França (CA)"),
                  ("pt_BR.UTF-8", u"Brasil (PT)"),
                  ("da_DK.UTF-8", u"Danmark (DA)"),
-                 ("hr_HR.UTF-8", u"Republika Hrvatska"),
-                 # "C" must be the last entry
-                 ("C", _(u"No localization"))]
+                 ("hr_HR.UTF-8", u"Republika Hrvatska")]
+
+MAP_LANGUAGES.sort(lambda x, y: cmp(x[1], y[1]))
+# "C" must be the last entry
+MAP_LANGUAGES.append(("C", _(u"No localization")))
 
 # Logging
 LOG = logging.getLogger(os.environ.get("MAPOSMATIC_LOG_TARGET",
