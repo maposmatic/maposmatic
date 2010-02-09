@@ -324,6 +324,8 @@ $(document).ready(function() {
     $('#mapform tbody').children('tr.byadmin').hide();
     $('#mapform tbody').children('tr.bybbox').show();
     setFormActivation(true);
+    $('#id_administrative_city').empty();
+    $('#id_administrative_osmid').empty();
     if (map == null)
       mapInit();
     resetLanguages();
