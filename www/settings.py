@@ -116,7 +116,8 @@ LANGUAGES = (("fr", u"Français"),
              ("ar", u"العربية"),
              ("pt-br", u"Português do Brasil"),
              ("nl", u"Nederlands"),
-             ("hr-hr", u"Hrvatski"))
+             ("hr-hr", u"Hrvatski"),
+             ("pl", u"Polski"))
 
 MAP_LANGUAGES = [("fr_BE.UTF-8", u"Royaume de Belgique (FR)"),
                  ("fr_FR.UTF-8", u"France"),
