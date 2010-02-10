@@ -143,11 +143,13 @@ class MapRenderingJob(models.Model):
             # Map files (all formats but CSV)
             if format != 'csv' and os.path.exists(self.get_map_filepath(format)):
                 allfiles['maps'].append((format, self.get_map_fileurl(format),
-                    _("%(title)s %(format)s Map") % {'title': self.maptitle, 'format': format.upper()}))
+                    _("%(title)s %(format)s Map") % {'title': self.maptitle, 'format': format.upper()},
+                    os.stat(self.get_map_filepath(format)).st_size))
             # Index files
             if os.path.exists(self.get_index_filepath(format)):
                 allfiles['indeces'].append((format, self.get_index_fileurl(format),
-                    _("%(title)s %(format)s Index") % {'title': self.maptitle, 'format': format.upper()}))
+                    _("%(title)s %(format)s Index") % {'title': self.maptitle, 'format': format.upper()},
+                    os.stat(self.get_index_filepath(format)).st_size))
 
         return allfiles
 
