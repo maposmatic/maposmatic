@@ -45,24 +45,14 @@ class MapsFeed(Feed):
     description_template = 'maposmatic/map-feed.html'
 
     def items(self):
-        """Returns the successfull rendering jobs from the last 24 hours, or
-        more to get at least 10 items in the feed, when possible."""
-
-
-        job_list = (models.MapRenderingJob.objects
-                    .filter(status=2)
-                    .filter(resultmsg='ok')
-                    .order_by('-endofrendering_time'))
+        """Returns the successfull rendering jobs from the last 24 hours."""
 
         one_day_before = datetime.datetime.now() - datetime.timedelta(1)
-        last_day_items = job_list.filter(endofrendering_time__gte=one_day_before)
-
-        # If there's less than 10 matching jobs in the last 24 hours, use the
-        # last 10 jobs.
-        if last_day_items.count() < 10:
-            return job_list[:10]
-        else:
-            return last_day_items
+        return (models.MapRenderingJob.objects
+                .filter(status=2)
+                .filter(resultmsg='ok')
+                .filter(endofrendering_time__gte=one_day_before)
+                .order_by('-endofrendering_time'))
 
     def item_title(self, item):
         return item.maptitle
