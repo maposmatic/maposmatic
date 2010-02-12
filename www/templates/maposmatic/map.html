@@ -45,8 +45,11 @@
     <h4>{% trans "Files: " %}</h4>
     <ul>
       <li>{% trans "Map: " %} {% for file in job.output_files.maps %}<a href="{{ file.1 }}" title="{{ file.2 }}">{{ file.0|upper }}</a> ({{ file.3|filesizeformat }}){% if not forloop.last %}, {% endif %}{% endfor %}.</li>
-      <li>{% trans "Index: " %} {% for file in job.output_files.indeces %}<a href="{{ file.1 }}" title="{{ file.2 }}">{{ file.0|upper }}</a> ({{ file.3|filesizeformat }}){% if not forloop.last %}, {% endif %}{% endfor %}.</li>
+      {% if job.output_files.indeces|length %}<li>{% trans "Index: " %} {% for file in job.output_files.indeces %}<a href="{{ file.1 }}" title="{{ file.2 }}">{{ file.0|upper }}</a> ({{ file.3|filesizeformat }}){% if not forloop.last %}, {% endif %}{% endfor %}.</li>{% endif %}
     </ul>
+
+    {% if not job.output_files.indeces|length %}{% blocktrans %}No index was generated because no information was available in OpenStreetMap to create one!{% endblocktrans %}{% endif %}
+
     {% else %}
       {% trans "The generated files are no longer available." %}
     {% endif %}

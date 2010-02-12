@@ -20,7 +20,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: mapOSMatic 0.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-01-19 16:31+0100\n"
+"POT-Creation-Date: 2010-02-12 16:42+0100\n"
 "PO-Revision-Date: 2010-01-06 00:28+0300\n"
 "Last-Translator: Konstantin Mochalov <incredible.angst@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -28,71 +28,88 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: settings.py:155
+#: settings.py:163
 msgid "No localization"
 msgstr "Без локализации"
 
-#: maposmatic/models.py:146
-#, python-format
-msgid "%(title)s %(format)s Map"
-msgstr "Карта %(title)s %(format)s"
+#: maposmatic/feeds.py:40
+msgid "MapOSMatic maps"
+msgstr ""
 
-#: maposmatic/models.py:150
-#, python-format
-msgid "%(title)s %(format)s Index"
-msgstr "Указатель %(title)s %(format)s"
+#: maposmatic/feeds.py:43
+msgid "The latest successfully rendered maps on MapOSMatic."
+msgstr ""
 
-#: maposmatic/views.py:101
+#: maposmatic/forms.py:53
 msgid "Administrative boundary"
 msgstr "Административная граница"
 
-#: maposmatic/views.py:102
+#: maposmatic/forms.py:54
 msgid "Bounding box"
 msgstr "Прямоугольная область"
 
-#: maposmatic/views.py:105
+#: maposmatic/forms.py:59
 msgid "Area"
 msgstr "Область"
 
-#: maposmatic/views.py:121
+#: maposmatic/forms.py:84
 msgid "Administrative city required"
 msgstr "Требуется название города"
 
-#: maposmatic/views.py:137
+#: maposmatic/forms.py:100
 #, python-format
 msgid "Error with osm city: %s"
 msgstr "Ошибка с городом: %s"
 
-#: maposmatic/views.py:142
+#: maposmatic/forms.py:105
 msgid "Map title required"
 msgstr "Требуется название карты"
 
-#: maposmatic/views.py:150
+#: maposmatic/forms.py:113
 msgid "Required"
 msgstr "Требуется"
 
-#: maposmatic/views.py:166
+#: maposmatic/forms.py:129
 msgid "Bounding Box too large"
 msgstr "Прямоугольная область слишком большая"
 
-#: maposmatic/templatetags/extratags.py:40
+#: maposmatic/models.py:177
+#, python-format
+msgid "%(title)s %(format)s Map"
+msgstr "Карта %(title)s %(format)s"
+
+#: maposmatic/models.py:185
+#, python-format
+msgid "%(title)s %(format)s Index"
+msgstr "Указатель %(title)s %(format)s"
+
+#: maposmatic/templatetags/extratags.py:34
 msgid "Waiting rendering"
 msgstr "Ожидает отрисовки"
 
-#: maposmatic/templatetags/extratags.py:42
+#: maposmatic/templatetags/extratags.py:36
 msgid "Rendering in progress"
 msgstr "Выполняется отрисовка"
 
-#: maposmatic/templatetags/extratags.py:45
+#: maposmatic/templatetags/extratags.py:39
 msgid "Rendering successful"
 msgstr "Отрисовка завершена удачно"
 
-#: maposmatic/templatetags/extratags.py:47
+#: maposmatic/templatetags/extratags.py:41
 #, fuzzy
 msgid "Rendering failed, please contact contact@maposmatic.org"
 msgstr ""
 "Отрисовка завершилась неудачно, пожалуйста сообщите на <a href=\"mailto:"
 "contact@maposmatic.org\">contact@maposmatic.org</a>"
+
+#: maposmatic/templatetags/extratags.py:44
+#, fuzzy
+msgid "Rendering was successful, but the files are no longer available"
+msgstr "Сгенерированные файлы больше не доступны"
+
+#: maposmatic/templatetags/extratags.py:47
+msgid "Rendering failed, and the incomplete files were removed"
+msgstr ""
 
 #: templates/404.html:3 templates/500.html:3 templates/maposmatic/base.html:67
 msgid "Home"
@@ -458,6 +475,14 @@ msgstr ""
 msgid "dutch translation"
 msgstr ""
 
+#: templates/maposmatic/about.html:190
+msgid "croatian translation"
+msgstr ""
+
+#: templates/maposmatic/about.html:191
+msgid "polish translation"
+msgstr ""
+
 #: templates/maposmatic/all_jobs.html:35
 msgid "Job list"
 msgstr "Список заданий"
@@ -507,6 +532,10 @@ msgstr "поиск"
 #: templates/maposmatic/all_maps.html:37 templates/maposmatic/base.html:70
 msgid "Maps"
 msgstr "Карты"
+
+#: templates/maposmatic/all_maps.html:37
+msgid "MapOSMatic maps feed"
+msgstr ""
 
 #: templates/maposmatic/all_maps.html:40
 msgid "All"
@@ -662,48 +691,59 @@ msgstr "Отрисовка завершена удачно"
 msgid "Rendering submitted"
 msgstr "Отрисовка запущена"
 
-#: templates/maposmatic/job.html:47
+#: templates/maposmatic/job.html:46
 msgid "In queue, position"
 msgstr ""
+
+#: templates/maposmatic/job.html:47
+#, fuzzy
+msgid "Rendering in progress..."
+msgstr "Выполняется отрисовка"
 
 #: templates/maposmatic/job.html:49
 msgid "Completed on"
 msgstr ""
 
-#: templates/maposmatic/job.html:51
+#: templates/maposmatic/job.html:50
 msgid "Failed on"
 msgstr ""
 
-#: templates/maposmatic/job.html:53
+#: templates/maposmatic/job.html:51
 #, python-format
 msgid "rendering took %(rendering)s"
 msgstr ""
 
-#: templates/maposmatic/job.html:55
-#, fuzzy
-msgid "Rendering in progress..."
-msgstr "Выполняется отрисовка"
-
-#: templates/maposmatic/job.html:61 templates/maposmatic/map.html:45
+#: templates/maposmatic/job.html:54 templates/maposmatic/map-feed.html:44
+#: templates/maposmatic/map.html:45
 #, fuzzy
 msgid "Files: "
 msgstr "Файлы"
 
-#: templates/maposmatic/job.html:63 templates/maposmatic/map.html:47
+#: templates/maposmatic/job.html:56 templates/maposmatic/map-feed.html:46
+#: templates/maposmatic/map.html:47
 #, fuzzy
 msgid "Map: "
 msgstr "Карты"
 
-#: templates/maposmatic/job.html:64 templates/maposmatic/map.html:48
+#: templates/maposmatic/job.html:57 templates/maposmatic/map-feed.html:47
+#: templates/maposmatic/map.html:48
 msgid "Index: "
 msgstr ""
 
-#: templates/maposmatic/job.html:67 templates/maposmatic/map.html:51
+#: templates/maposmatic/job.html:60 templates/maposmatic/map-feed.html:50
+#: templates/maposmatic/map.html:51
+msgid ""
+"No index was generated because no information was available in OpenStreetMap "
+"to create one!"
+msgstr ""
+
+#: templates/maposmatic/job.html:63 templates/maposmatic/map-feed.html:53
+#: templates/maposmatic/map.html:54
 #, fuzzy
 msgid "The generated files are no longer available."
 msgstr "Сгенерированные файлы больше не доступны"
 
-#: templates/maposmatic/map.html:42
+#: templates/maposmatic/map-feed.html:41 templates/maposmatic/map.html:42
 #, fuzzy
 msgid "Rendering completed on"
 msgstr "Отрисовка запущена"
