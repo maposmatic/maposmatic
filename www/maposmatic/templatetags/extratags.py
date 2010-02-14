@@ -45,19 +45,17 @@ def job_status_to_str(value, arg, autoescape=None):
                      "available")
         else:
             return _("Rendering failed, and the incomplete files were "
-                      "removed")
+                      "removed. Please contact contact@maposmatic.org")
 
     return ''
 
 def job_status_to_icon_name(value, arg, autoescape=None):
     if value == 0:          return 'job-in-queue'
     if value == 1:          return 'job-in-progress'
-    if value == 2:
+    if value == 2 and arg == 'ok':
         if arg == 'ok':     return 'job-done'
-        else:               return 'job-error'
-    if value == 3:
+    if value == 3 and arg == 'ok':
         if arg == 'ok':     return 'job-done-obsolete'
-        else:               return 'job-error-obsolete'
 
     return 'job-error'
 
