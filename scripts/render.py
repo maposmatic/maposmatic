@@ -22,6 +22,7 @@
 # You should have received a copy of the GNU Affero General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
+import ctypes
 import Image
 import os
 import sys
@@ -86,7 +87,10 @@ class TimingOutJobRenderer:
         self.__thread.job.remove_all_files()
 
         # Kill the thread and return TIMEOUT_REACHED
+        self.__thread.kill()
         del self.__thread
+
+        LOG.debug("Thread removed.")
         return RESULT_TIMEOUT_REACHED
 
 class JobRenderer(threading.Thread):
@@ -101,6 +105,32 @@ class JobRenderer(threading.Thread):
         self.job = job
         self.prefix = prefix
         self.result = None
+
+    def __get_my_tid(self):
+        if not self.isAlive():
+            raise threading.ThreadError("the thread is not active")
+
+        # Do we have it cached?
+        if hasattr(self, '__thread_id'):
+            return self.__thread_id
+
+        # If not, look for it
+        for tid, tobj in threading._active.items():
+            if tobj is self:
+                self.__thread_id = tid
+                return self.__thread_id
+
+        raise AssertionError("Could not resolve the thread's ID")
+
+    def kill(self):
+        LOG.debug("Killing job #%d's worker thread..." % self.job.id)
+        res = ctypes.pythonapi.PyThreadState_SetAsyncExc(self.__get_my_tid(),
+                ctypes.py_object(SystemExit))
+        if res == 0:
+            raise ValueError("Invalid thread ID")
+        elif res != 1:
+            ctypes.pythonapi.PyThreadState_SetAsyncExc(self.__get_my_tid(), 0)
+            raise SystemError("PyThreadState_SetAsync failed")
 
     def run(self):
         """Renders the given job, encapsulating all processing errors and
