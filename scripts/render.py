@@ -185,10 +185,11 @@ class JobRenderer(threading.Thread):
         except KeyboardInterrupt:
             self.result = RESULT_KEYBOARD_INTERRUPT
             LOG.info("Rendering of job #%d interrupted!" % self.job.id)
-        except:
+        except Exception, e:
             self.result = RESULT_RENDERING_EXCEPTION
-            LOG.info("Rendering of job #%d failed (exception occurred)!" %
-                     self.job.id)
+            LOG.warning(e)
+            LOG.warning("Rendering of job #%d failed (exception occurred)!" %
+                        self.job.id)
 
         # Remove the job files if the rendering was not successful.
         if self.result:
