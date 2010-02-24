@@ -101,7 +101,7 @@ class JobRenderer(threading.Thread):
     """
 
     def __init__(self, job, prefix):
-        threading.Thread.__init__(self)
+        threading.Thread.__init__(self, name='renderer')
         self.job = job
         self.prefix = prefix
         self.result = None

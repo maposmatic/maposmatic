@@ -118,7 +118,7 @@ class RenderingsGarbageCollector(threading.Thread):
     """
 
     def __init__(self, frequency=_DEFAULT_CLEAN_FREQUENCY):
-        threading.Thread.__init__(self)
+        threading.Thread.__init__(self, name='cleanup')
 
         self.frequency = frequency
         self.setDaemon(True)
