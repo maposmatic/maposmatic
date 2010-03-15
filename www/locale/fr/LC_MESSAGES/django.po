@@ -20,7 +20,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: mapOSMatic 0.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-02-12 16:42+0100\n"
+"POT-Creation-Date: 2010-03-15 18:35+0100\n"
 "PO-Revision-Date: 2009-12-26 20:47+0100\n"
 "Last-Translator: Thomas Petazzoni <thomas.petazzoni@enix.org>\n"
 "Language-Team: FR <LL@li.org>\n"
@@ -28,7 +28,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: settings.py:163
+#: settings.py:182
 msgid "No localization"
 msgstr "Pas de traduction"
 
@@ -104,8 +104,11 @@ msgid "Rendering was successful, but the files are no longer available"
 msgstr "Les fichiers générés ne sont plus disponibles"
 
 #: maposmatic/templatetags/extratags.py:47
-msgid "Rendering failed, and the incomplete files were removed"
-msgstr "Le rendu a échoué, et les fichiers incomplets ont été supprimés"
+#, fuzzy
+msgid ""
+"Rendering failed, and the incomplete files were removed. Please contact "
+"contact@maposmatic.org"
+msgstr "Le rendu a échoué, merci de contacter contact@maposmatic.org"
 
 #: templates/404.html:3 templates/500.html:3 templates/maposmatic/base.html:67
 msgid "Home"
@@ -701,7 +704,8 @@ msgstr "Index : "
 msgid ""
 "No index was generated because no information was available in OpenStreetMap "
 "to create one!"
-msgstr "Aucun index n'a pû être généré car aucune information n'était disponible "
+msgstr ""
+"Aucun index n'a pû être généré car aucune information n'était disponible "
 "dans OpenStreetMap pour en créer un !"
 
 #: templates/maposmatic/job.html:63 templates/maposmatic/map-feed.html:53
@@ -781,11 +785,23 @@ msgstr "Langue de l'index de la carte&nbsp;:"
 msgid "Bounding box:"
 msgstr "Zone géographique :"
 
-#: templates/maposmatic/new.html:101
+#: templates/maposmatic/new.html:97
+msgid ""
+"You can use <tt>Shift+drag</tt> to zoom on a specific area of the map. If "
+"you only want to render part of what the slippy map shows, you can use "
+"<tt>Control+drag</tt> to draw the limits of the area to render."
+msgstr ""
+"Vous pouvez utiliser <tt>Shift+cliquer-déplacer</tt> pour zoomer sur une "
+"zone spécifique de la carte. Si vous ne souhaitez le rendu que d'une partie "
+"de ce qu'affiche la mini-carte, vous pouvez utiliser "
+"<tt>Contrôle+cliquer-déplacer</tt> pour tracer les limites de la zone à "
+"rendre."
+
+#: templates/maposmatic/new.html:102
 msgid "Generate"
 msgstr "Générer..."
 
-#: templates/maposmatic/new.html:106
+#: templates/maposmatic/new.html:107
 msgid ""
 "Wondering why you can't choose some of these results?<br />Their "
 "administrative boundaries are missing from the OSM database.<br />Look at "
@@ -797,6 +813,9 @@ msgstr ""
 "de données OSM.<br />Lisez la <a href=\"http://wiki.maposmatic.org/doku.php?"
 "id=faq\">FAQ</a> pour plus d'informations."
 
-#: templates/maposmatic/new.html:107
+#: templates/maposmatic/new.html:108
 msgid "No results."
 msgstr "Aucun résultat."
+
+#~ msgid "Rendering failed, and the incomplete files were removed"
+#~ msgstr "Le rendu a échoué, et les fichiers incomplets ont été supprimés"

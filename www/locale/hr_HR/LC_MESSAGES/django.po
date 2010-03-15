@@ -19,7 +19,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: mapOSMatic 0.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-02-12 16:42+0100\n"
+"POT-Creation-Date: 2010-03-15 18:35+0100\n"
 "PO-Revision-Date: 2010-02-09 20:43+0100\n"
 "Last-Translator: David MENTRÉ <dmentre@linux-france.org>\n"
 "Language-Team: FR <LL@li.org>\n"
@@ -27,7 +27,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: settings.py:163
+#: settings.py:182
 msgid "No localization"
 msgstr "Nema lokalizacije"
 
@@ -104,8 +104,11 @@ msgid "Rendering was successful, but the files are no longer available"
 msgstr "Izrađene datoteke više nisu dostupne."
 
 #: maposmatic/templatetags/extratags.py:47
-msgid "Rendering failed, and the incomplete files were removed"
-msgstr ""
+#, fuzzy
+msgid ""
+"Rendering failed, and the incomplete files were removed. Please contact "
+"contact@maposmatic.org"
+msgstr "Izrada nije uspjela, molim kontaktirajte contact@maposmatic.org"
 
 #: templates/404.html:3 templates/500.html:3 templates/maposmatic/base.html:67
 msgid "Home"
@@ -786,11 +789,18 @@ msgstr "Jezik kazala karte:"
 msgid "Bounding box:"
 msgstr "Granični okvir:"
 
-#: templates/maposmatic/new.html:101
+#: templates/maposmatic/new.html:97
+msgid ""
+"You can use <tt>Shift+drag</tt> to zoom on a specific area of the map. If "
+"you only want to render part of what the slippy map shows, you can use "
+"<tt>Control+drag</tt> to draw the limits of the area to render."
+msgstr ""
+
+#: templates/maposmatic/new.html:102
 msgid "Generate"
 msgstr "Izradi..."
 
-#: templates/maposmatic/new.html:106
+#: templates/maposmatic/new.html:107
 msgid ""
 "Wondering why you can't choose some of these results?<br />Their "
 "administrative boundaries are missing from the OSM database.<br />Look at "
@@ -801,6 +811,6 @@ msgstr ""
 "administrativne granice nedostaju u OSM bazi podataka.<br />Pogedajte <a "
 "href=\"http://wiki.maposmatic.org/doku.php?id=faq\">FAQ</a> za više detalja."
 
-#: templates/maposmatic/new.html:107
+#: templates/maposmatic/new.html:108
 msgid "No results."
 msgstr "Nema rezultata."

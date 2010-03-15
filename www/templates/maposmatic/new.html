@@ -91,9 +91,10 @@ map.{% endblocktrans %}
     </td></tr>
 
     <tr class="bybbox label"><td colspan="2">{% trans "Bounding box:" %}</td></tr>
-    <tr class="bybbox field"><td colspan="2" style="text-align: center;">
+    <tr class="bybbox field"><td colspan="2">
       {{ form.bbox }}
       {{ form.bbox.errors }}
+      <p id="bbox_select_help">{% blocktrans %}You can use <tt>Shift+drag</tt> to zoom on a specific area of the map. If you only want to render part of what the slippy map shows, you can use <tt>Control+drag</tt> to draw the limits of the area to render.{% endblocktrans %}</p>
     </td></tr>
 
     <tr><td class="submit">

@@ -37,6 +37,17 @@ function getUpperLeftLon() { return document.getElementById('lon_upper_left'); }
 function getBottomRightLat() { return document.getElementById('lat_bottom_right'); }
 function getBottomRightLon() { return document.getElementById('lon_bottom_right'); }
 
+function updateFormWithLonLats(topleft, bottomright)
+{
+    topleft = topleft.transform(epsg_projection, epsg_display_projection);
+    bottomright = bottomright.transform(epsg_projection, epsg_display_projection);
+
+    getUpperLeftLat().value = topleft.lat.toFixed(4);
+    getUpperLeftLon().value = topleft.lon.toFixed(4);
+    getBottomRightLat().value = bottomright.lat.toFixed(4);
+    getBottomRightLon().value = bottomright.lon.toFixed(4);
+}
+
 /** Map Zoom/Move events callback: update form fields on zoom action. */
 function updateForm()
 {
@@ -44,17 +55,8 @@ function updateForm()
       return;
 
     var bounds = map.getExtent();
-
-    var topleft = new OpenLayers.LonLat(bounds.left, bounds.top);
-    topleft = topleft.transform(epsg_projection, epsg_display_projection);
-
-    var bottomright = new OpenLayers.LonLat(bounds.right, bounds.bottom);
-    bottomright = bottomright.transform(epsg_projection, epsg_display_projection);
-
-    getUpperLeftLat().value = topleft.lat.toFixed(4);
-    getUpperLeftLon().value = topleft.lon.toFixed(4);
-    getBottomRightLat().value = bottomright.lat.toFixed(4);
-    getBottomRightLon().value = bottomright.lon.toFixed(4);
+    updateFormWithLonLats(new OpenLayers.LonLat(bounds.left, bounds.top),
+                          new OpenLayers.LonLat(bounds.right, bounds.bottom));
 }
 
 /* Update the map on form field modification. */
@@ -87,6 +89,22 @@ function mapInit()
 
     layerTilesMapnik = new OpenLayers.Layer.OSM.Mapnik("Mapnik");
     map.addLayer(layerTilesMapnik);
+
+    var selectControl = new OpenLayers.Control();
+    OpenLayers.Util.extend(selectControl, {
+      draw: function() {
+        this.box = new OpenLayers.Handler.Box(selectControl,
+          {'done': this.notice}, {keyMask: OpenLayers.Handler.MOD_CTRL});
+        this.box.activate();
+      },
+
+      notice: function(bounds) {
+        updateFormWithLonLats(
+          map.getLonLatFromPixel(new OpenLayers.Pixel(bounds.left, bounds.top)),
+          map.getLonLatFromPixel(new OpenLayers.Pixel(bounds.right, bounds.bottom)));
+      }
+    });
+    map.addControl(selectControl);
 
     map.events.register('zoomend', map, updateForm);
     map.events.register('moveend', map, updateForm);

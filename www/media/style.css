@@ -404,7 +404,26 @@ a.selectedletter {
 }
 
 #map_bb {
-  display: none;
+  text-align: left;
+  margin: 0.5em 0;
+  color: #444;
+}
+
+#map_bb input {
+  border: 1px #444 solid;
+  width: 4em;
+  display: inline;
+  color: #444;
+}
+
+#bbox_select_help {
+  font-style: italic;
+  font-size: smaller;
+  width: 600px;
+}
+
+#bbox_select_help tt {
+  font-size: normal;
 }
 
 #map .olControlAttribution {
