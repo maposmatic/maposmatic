@@ -597,7 +597,7 @@ msgid ""
 "<a href=\"http://www.openstreetmap.org\">OpenStreetMap</a> data. A city map\n"
 "is made of two pages:"
 msgstr ""
-"MapOSMatic es un servicio web de software libre que le permite de generar "
+"MapOSMatic es un servicio web de software libre que le permite generar "
 "planos de ciudad utilizando datos de <a href=\"http://www.openstreetmap.org"
 "\">OpenStreetMap</a>. Un plano de ciudad esta constituido de dos páginas:"
 
