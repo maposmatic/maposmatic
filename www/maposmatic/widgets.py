@@ -23,6 +23,7 @@ Extra widgets and fields
 
 from django import forms
 from django.utils.safestring import mark_safe
+from django.utils.translation import ugettext_lazy as _
 
 from www import settings
 
@@ -68,15 +69,25 @@ class AreaWidget(forms.TextInput):
         tpl = u"""<div id="map"></div>
         <div id="map_bb">
             <input type="text" name="lat_upper_left" id="lat_upper_left"
-                   onchange="updateMap();" value="%s" />,
+                   onchange="updateMap();" value="%(tl_lat)s"
+                   title="%(tl_lat_help)s" />,
             <input type="text" name="lon_upper_left" id="lon_upper_left"
-                   onchange="updateMap();" value="%s" />
-            &mdash;
-            <input type="text" name="lon_bottom_right" id="lon_bottom_right"
-                   onchange="updateMap();" value="%s" />,
-            <input type="text" name="lat_bottom_right" id="lat_bottom_right"
-                   onchange="updateMap();" value="%s" />
-        </div>""" % (upper_left_lat, upper_left_lon, lower_right_lon, lower_right_lat)
+                   onchange="updateMap();" value="%(tl_lon)s"
+                   title="%(tl_lon_help)s" />
+            &rarr;
+            <input type="text" name="lon_bottom_right" id="lat_bottom_right"
+                   onchange="updateMap();" value="%(br_lat)s"
+                   title="%(br_lat_help)s" />,
+            <input type="text" name="lat_bottom_right" id="lon_bottom_right"
+                   onchange="updateMap();" value="%(br_lon)s"
+                   title="%(br_lon_help)s" />
+        </div>""" % {'tl_lat': upper_left_lat, 'tl_lon': upper_left_lon,
+                     'br_lat': lower_right_lat, 'br_lon': lower_right_lon,
+                     'tl_lat_help': _("Latitude of the top left corner"),
+                     'tl_lon_help': _("Longitude of the top left corner"),
+                     'br_lat_help': _("Latitude of the bottom right corner"),
+                     'br_lon_help': _("Longitude of the bottom right corner")}
+
         return mark_safe(tpl)
 
     def value_from_datadict(self, data, files, name):

@@ -416,13 +416,13 @@ a.selectedletter {
   color: #444;
 }
 
-#bbox_select_help {
+p.bbox_select_help {
   font-style: italic;
   font-size: smaller;
   width: 600px;
 }
 
-#bbox_select_help tt {
+p.bbox_select_help tt {
   font-size: normal;
 }
 

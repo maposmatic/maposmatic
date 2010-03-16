@@ -19,7 +19,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: mapOSMatic 0.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-03-15 18:35+0100\n"
+"POT-Creation-Date: 2010-03-16 11:06+0100\n"
 "PO-Revision-Date: 2010-02-09 20:43+0100\n"
 "Last-Translator: David MENTRÉ <dmentre@linux-france.org>\n"
 "Language-Team: FR <LL@li.org>\n"
@@ -81,6 +81,22 @@ msgstr "%(title)s %(format)s"
 #, python-format
 msgid "%(title)s %(format)s Index"
 msgstr "%(title)s %(format)s - popis ulica"
+
+#: maposmatic/widgets.py:86
+msgid "Latitude of the top left corner"
+msgstr ""
+
+#: maposmatic/widgets.py:87
+msgid "Longitude of the top left corner"
+msgstr ""
+
+#: maposmatic/widgets.py:88
+msgid "Latitude of the bottom right corner"
+msgstr ""
+
+#: maposmatic/widgets.py:89
+msgid "Longitude of the bottom right corner"
+msgstr ""
 
 #: maposmatic/templatetags/extratags.py:34
 msgid "Waiting rendering"
@@ -791,16 +807,22 @@ msgstr "Granični okvir:"
 
 #: templates/maposmatic/new.html:97
 msgid ""
+"Latitude and longitude of the top left and bottom right corners of the area "
+"to render."
+msgstr ""
+
+#: templates/maposmatic/new.html:98
+msgid ""
 "You can use <tt>Shift+drag</tt> to zoom on a specific area of the map. If "
 "you only want to render part of what the slippy map shows, you can use "
 "<tt>Control+drag</tt> to draw the limits of the area to render."
 msgstr ""
 
-#: templates/maposmatic/new.html:102
+#: templates/maposmatic/new.html:103
 msgid "Generate"
 msgstr "Izradi..."
 
-#: templates/maposmatic/new.html:107
+#: templates/maposmatic/new.html:108
 msgid ""
 "Wondering why you can't choose some of these results?<br />Their "
 "administrative boundaries are missing from the OSM database.<br />Look at "
@@ -811,6 +833,6 @@ msgstr ""
 "administrativne granice nedostaju u OSM bazi podataka.<br />Pogedajte <a "
 "href=\"http://wiki.maposmatic.org/doku.php?id=faq\">FAQ</a> za više detalja."
 
-#: templates/maposmatic/new.html:108
+#: templates/maposmatic/new.html:109
 msgid "No results."
 msgstr "Nema rezultata."
