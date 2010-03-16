@@ -75,10 +75,10 @@ class AreaWidget(forms.TextInput):
                    onchange="updateMap();" value="%(tl_lon)s"
                    title="%(tl_lon_help)s" />
             &rarr;
-            <input type="text" name="lon_bottom_right" id="lat_bottom_right"
+            <input type="text" name="lat_bottom_right" id="lat_bottom_right"
                    onchange="updateMap();" value="%(br_lat)s"
                    title="%(br_lat_help)s" />,
-            <input type="text" name="lat_bottom_right" id="lon_bottom_right"
+            <input type="text" name="lon_bottom_right" id="lon_bottom_right"
                    onchange="updateMap();" value="%(br_lon)s"
                    title="%(br_lon_help)s" />
         </div>""" % {'tl_lat': upper_left_lat, 'tl_lon': upper_left_lon,
