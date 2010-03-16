@@ -37,8 +37,9 @@ from www.settings import RENDERING_RESULT_PATH, RENDERING_RESULT_FORMATS
 
 RESULT_SUCCESS = 0
 RESULT_KEYBOARD_INTERRUPT = 1
-RESULT_RENDERING_EXCEPTION = 2
-RESULT_TIMEOUT_REACHED = 3
+RESULT_PREPARATION_EXCEPTION = 2
+RESULT_RENDERING_EXCEPTION = 3
+RESULT_TIMEOUT_REACHED = 4
 
 THUMBNAIL_SUFFIX = '_small.png'
 
@@ -145,20 +146,29 @@ class JobRenderer(threading.Thread):
 
         LOG.info("Rendering job #%d '%s'..." % (self.job.id, self.job.maptitle))
 
-        if not self.job.administrative_city:
-            bbox = BoundingBox(self.job.lat_upper_left,
-                               self.job.lon_upper_left,
-                               self.job.lat_bottom_right,
-                               self.job.lon_bottom_right)
-            renderer = OCitySMap(config_file=OCITYSMAP_CFG_PATH,
-                                 map_areas_prefix=self.prefix,
-                                 boundingbox=bbox,
-                                 language=self.job.map_language)
-        else:
-            renderer = OCitySMap(config_file=OCITYSMAP_CFG_PATH,
-                                 map_areas_prefix=self.prefix,
-                                 osmid=self.job.administrative_osmid,
-                                 language=self.job.map_language)
+        try:
+            if not self.job.administrative_city:
+                bbox = BoundingBox(self.job.lat_upper_left,
+                                   self.job.lon_upper_left,
+                                   self.job.lat_bottom_right,
+                                   self.job.lon_bottom_right)
+                renderer = OCitySMap(config_file=OCITYSMAP_CFG_PATH,
+                                     map_areas_prefix=self.prefix,
+                                     boundingbox=bbox,
+                                     language=self.job.map_language)
+            else:
+                renderer = OCitySMap(config_file=OCITYSMAP_CFG_PATH,
+                                     map_areas_prefix=self.prefix,
+                                     osmid=self.job.administrative_osmid,
+                                     language=self.job.map_language)
+        except KeyboardInterrupt:
+            self.result = RESULT_KEYBOARD_INTERRUPT
+            LOG.info("Rendering of job #%d interrupted!" % self.job.id)
+        except Exception, e:
+            self.result = RESULT_PREPARATION_EXCEPTION
+            LOG.warning(e)
+            LOG.warning("Rendering of job #%d failed (exception occurred during"
+                        " data preparation)!" % self.job.id)
 
         prefix = os.path.join(RENDERING_RESULT_PATH, self.job.files_prefix())
 
@@ -188,8 +198,8 @@ class JobRenderer(threading.Thread):
         except Exception, e:
             self.result = RESULT_RENDERING_EXCEPTION
             LOG.warning(e)
-            LOG.warning("Rendering of job #%d failed (exception occurred)!" %
-                        self.job.id)
+            LOG.warning("Rendering of job #%d failed (exception occurred during"
+                        " rendering)!" % self.job.id)
 
         # Remove the job files if the rendering was not successful.
         if self.result:

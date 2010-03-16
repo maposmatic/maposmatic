@@ -39,6 +39,7 @@ _DEFAULT_POLL_FREQUENCY = 10        # Daemon job polling frequency, in seconds
 _RESULT_MSGS = {
     render.RESULT_SUCCESS: 'ok',
     render.RESULT_KEYBOARD_INTERRUPT: 'rendering interrupted',
+    render.RESULT_PREPARATION_EXCEPTION: 'data preparation failed',
     render.RESULT_RENDERING_EXCEPTION: 'rendering failed',
     render.RESULT_TIMEOUT_REACHED: 'rendering took too long, canceled'
 }
