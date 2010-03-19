@@ -1,19 +1,19 @@
 # Polish translation of the MapOSMatic web interface
-# Copyright (C) MapOSMatic
+# Copyright (C) 2010 MapOSMatic
 # This file is distributed under the same license as the MapOSMatic package.
 # Łukasz Jernaś <deejay1@srem.org>, 2010.
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-03-16 11:06+0100\n"
-"PO-Revision-Date: 2010-03-11 16:48+0200\n"
+"POT-Creation-Date: 2010-03-19 15:31+0100\n"
+"PO-Revision-Date: 2010-03-19 15:37+0200\n"
 "Last-Translator: Łukasz Jernaś <deejay1@srem.org>\n"
-"Language-Team: MapOSMatic <dev@maposmatic.org>\n"
+"Language-Team: Polish <pl@li.org>\n"
+"Language: pl\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: pl\n"
 "Plural-Forms: nplurals=3; plural=(n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 "
 "|| n%100>=20) ? 1 : 2);\n"
 "X-Generator: Virtaal 0.5.2\n"
@@ -77,19 +77,19 @@ msgstr "Indeks ulic: %(title)s Format: %(format)s"
 
 #: maposmatic/widgets.py:86
 msgid "Latitude of the top left corner"
-msgstr ""
+msgstr "Szerokość geograficzna lewego górnego rogu"
 
 #: maposmatic/widgets.py:87
 msgid "Longitude of the top left corner"
-msgstr ""
+msgstr "Wysokość geograficzna lewego górnego rogu"
 
 #: maposmatic/widgets.py:88
 msgid "Latitude of the bottom right corner"
-msgstr ""
+msgstr "Szerokość geograficzna prawego dolnego rogu"
 
 #: maposmatic/widgets.py:89
 msgid "Longitude of the bottom right corner"
-msgstr ""
+msgstr "Wysokość geograficzna prawego dolnego rogu"
 
 #: maposmatic/templatetags/extratags.py:34
 msgid "Waiting rendering"
@@ -796,6 +796,8 @@ msgid ""
 "Latitude and longitude of the top left and bottom right corners of the area "
 "to render."
 msgstr ""
+"Szerokość i wysokość geograficzna dla prawego dolnego i lewego górnego rogu "
+"obszaru do renderowania."
 
 #: templates/maposmatic/new.html:98
 msgid ""
@@ -803,6 +805,10 @@ msgid ""
 "you only want to render part of what the slippy map shows, you can use "
 "<tt>Control+drag</tt> to draw the limits of the area to render."
 msgstr ""
+"W celu powiększenia określonego obszaru mapy, można skorzystać z klawisza "
+"<tt>Shift</tt> i przeciągnięcia myszą. Aby wyrenderować tylko część obszaru "
+"na mapie, można skorzystać z klawisza <tt>Control</tt> i przeciągnąć myszą, "
+"by wybrać obszar."
 
 #: templates/maposmatic/new.html:103
 msgid "Generate"
