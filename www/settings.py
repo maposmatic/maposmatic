@@ -175,7 +175,24 @@ MAP_LANGUAGES = [("fr_BE.UTF-8", u"Royaume de Belgique (FR)"),
                  ("es_PR.UTF-8", u"Puerto Rico (ES)"),
                  ("es_US.UTF-8", u"Estados Unidos de América (ES)"),
                  ("es_UY.UTF-8", u"Uruguay (ES)"),
-                 ("es_VE.UTF-8", u"Venezuela (ES)")]
+                 ("es_VE.UTF-8", u"Venezuela (ES)"),
+                 ("ar_DZ.UTF-8", u"الجزائر (AR)"),
+                 ("ar_BH.UTF-8", u"البحرين (AR)"),
+                 ("ar_EG.UTF-8", u"مصر (AR)"),
+                 ("ar_IQ.UTF-8", u"العراق (AR)"),
+                 ("ar_JO.UTF-8", u"الأردنّ‎ (AR)"),
+                 ("ar_KW.UTF-8", u"الكويت (AR)"),
+                 ("ar_LB.UTF-8", u"لبنان (AR)"),
+                 ("ar_LY.UTF-8", u"ليبيا (AR)"),
+                 ("ar_MA.UTF-8", u"المملكة المغربية (AR)"),
+                 ("ar_OM.UTF-8", u"سلطنة عمان (AR)"),
+                 ("ar_QA.UTF-8", u"دولة قطر (AR)"),
+                 ("ar_SA.UTF-8", u"المملكة العربية السعودية (AR)"),
+                 ("ar_SD.UTF-8", u"السودان (AR)"),
+                 ("ar_SY.UTF-8", u"سوريا (AR)"),
+                 ("ar_TN.UTF-8", u"تونس (AR)"),
+                 ("ar_AE.UTF-8", u"دولة الإمارات العربية المتحدة (AR)"),
+                 ("ar_YE.UTF-8", u"اليَمَن (AR)")]
 
 MAP_LANGUAGES.sort(lambda x, y: cmp(x[1], y[1]))
 # "C" must be the last entry
