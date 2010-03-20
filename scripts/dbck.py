@@ -95,7 +95,7 @@ class MapOSMaticDbck:
     """
 
     def __init__(self, handler=None):
-        self.jobs = MapRenderingJob.objects.all()
+        self.jobs = MapRenderingJob.objects.all().order_by('id')
         self.handler = handler or DbckHandler()
 
         self.checks = [self.__check_obsolete,
@@ -129,7 +129,7 @@ class MapOSMaticDbck:
         """Checks the obsolete status of the given job.  If the job is in the
         done state (status=2) and does not have all its output files, it's
         obselete and should be cleaned."""
-        if not job.is_done():
+        if not job.is_done_ok():
             return
 
         files = job.output_files()
