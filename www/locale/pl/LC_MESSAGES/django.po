@@ -6,14 +6,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-03-19 15:31+0100\n"
+"POT-Creation-Date: 2010-03-20 15:29+0100\n"
 "PO-Revision-Date: 2010-03-19 15:37+0200\n"
 "Last-Translator: Łukasz Jernaś <deejay1@srem.org>\n"
 "Language-Team: Polish <pl@li.org>\n"
-"Language: pl\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: pl\n"
 "Plural-Forms: nplurals=3; plural=(n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 "
 "|| n%100>=20) ? 1 : 2);\n"
 "X-Generator: Virtaal 0.5.2\n"
@@ -547,36 +547,42 @@ msgstr "Zadania"
 msgid "News"
 msgstr "Aktualności"
 
-#: templates/maposmatic/base.html:83
+#: templates/maposmatic/base.html:79
+msgid ""
+"The MapOSMatic rendering daemon is not currently running! Jobs will be "
+"queued until the rendering daemon is back up."
+msgstr ""
+
+#: templates/maposmatic/base.html:90
 msgid "Random map"
 msgstr "Losowa mapa"
 
-#: templates/maposmatic/base.html:90
+#: templates/maposmatic/base.html:97
 msgid "No random map found."
 msgstr "Nie znaleziono żadnej mapy."
 
-#: templates/maposmatic/base.html:95
+#: templates/maposmatic/base.html:102
 msgid "Latest news"
 msgstr "Najnowsze aktualności"
 
-#: templates/maposmatic/base.html:100
+#: templates/maposmatic/base.html:107
 #, python-format
 msgid "published %(date)s ago"
 msgstr "opublikowano %(date)s temu"
 
-#: templates/maposmatic/base.html:108
+#: templates/maposmatic/base.html:115
 msgid "Contact"
 msgstr "Kontakt"
 
-#: templates/maposmatic/base.html:110
+#: templates/maposmatic/base.html:117
 msgid "Mail:"
 msgstr "E-mail:"
 
-#: templates/maposmatic/base.html:112
+#: templates/maposmatic/base.html:119
 msgid "IRC:"
 msgstr "IRC:"
 
-#: templates/maposmatic/base.html:113
+#: templates/maposmatic/base.html:120
 msgid "on"
 msgstr "na"
 

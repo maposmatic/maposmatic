@@ -63,3 +63,7 @@ BBOX_MAXIMUM_LENGTH_IN_METERS = 20000
 
 # Number of items displayed per page in the jobs and maps pages
 ITEMS_PER_PAGE = 25
+
+# PID file location for the rendering daemon associated with this
+# instance
+MAPOSMATIC_PID_FILE = '/var/run/maposmaticd.pid'

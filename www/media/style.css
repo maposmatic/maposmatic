@@ -113,6 +113,17 @@ ul#nav li.activelink a {
   border-bottom: none;
 }
 
+#status {
+  background-image: url('/smedia/info.png');
+  background-repeat: no-repeat;
+  background-position: 10px;
+  border-bottom: 1px black solid;
+  color: #eb2f43;
+  padding: 0.5em 3em 0.5em 50px;
+  font-weight: bold;
+}
+
+
 #layout {
   clear: both;
   margin: 2em auto;

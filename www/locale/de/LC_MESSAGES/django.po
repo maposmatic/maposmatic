@@ -20,7 +20,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: mapOSMatic 0.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-03-16 11:06+0100\n"
+"POT-Creation-Date: 2010-03-20 15:29+0100\n"
 "PO-Revision-Date: 2010-01-15 18:43+0100\n"
 "Last-Translator: malenki <osm@malenki.ch>\n"
 "Language-Team:  <osm@malenki.ch>\n"
@@ -580,36 +580,42 @@ msgstr "Rendervorgänge"
 msgid "News"
 msgstr "Aktuelles"
 
-#: templates/maposmatic/base.html:83
+#: templates/maposmatic/base.html:79
+msgid ""
+"The MapOSMatic rendering daemon is not currently running! Jobs will be "
+"queued until the rendering daemon is back up."
+msgstr ""
+
+#: templates/maposmatic/base.html:90
 msgid "Random map"
 msgstr "Zufälliger Plan"
 
-#: templates/maposmatic/base.html:90
+#: templates/maposmatic/base.html:97
 msgid "No random map found."
 msgstr "Keinen zufälligen Plan gefunden."
 
-#: templates/maposmatic/base.html:95
+#: templates/maposmatic/base.html:102
 msgid "Latest news"
 msgstr "Aktuelles"
 
-#: templates/maposmatic/base.html:100
+#: templates/maposmatic/base.html:107
 #, python-format
 msgid "published %(date)s ago"
 msgstr "vor %(date)s veröffentlicht"
 
-#: templates/maposmatic/base.html:108
+#: templates/maposmatic/base.html:115
 msgid "Contact"
 msgstr "Kontakt"
 
-#: templates/maposmatic/base.html:110
+#: templates/maposmatic/base.html:117
 msgid "Mail:"
 msgstr "E-Mail:"
 
-#: templates/maposmatic/base.html:112
+#: templates/maposmatic/base.html:119
 msgid "IRC:"
 msgstr "IRC:"
 
-#: templates/maposmatic/base.html:113
+#: templates/maposmatic/base.html:120
 msgid "on"
 msgstr "auf"
 

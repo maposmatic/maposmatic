@@ -206,3 +206,5 @@ def has_gis_database():
 REFRESH_JOB_WAITING = 10
 REFRESH_JOB_RENDERING = 20
 
+def is_daemon_running():
+    return os.path.exists(MAPOSMATIC_PID_FILE)

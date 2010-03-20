@@ -73,6 +73,12 @@
       </ul>
     </div>
 
+    {% if not MAPOSMATIC_DAEMON_RUNNING %}
+    <div id="status">
+      {% blocktrans %}The MapOSMatic rendering daemon is not currently running! Jobs will be queued until the rendering daemon is back up.{% endblocktrans %}
+    </div>
+    {% endif %}
+
     <table id="layout"><tbody><tr>
       <td id="content">
         {% block page %}{% endblock %}
