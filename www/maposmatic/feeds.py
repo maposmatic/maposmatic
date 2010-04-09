@@ -45,14 +45,26 @@ class MapsFeed(Feed):
     description_template = 'maposmatic/map-feed.html'
 
     def items(self):
-        """Returns the successfull rendering jobs from the last 24 hours."""
+        """Returns the successfull rendering jobs from the last 24 hours, or
+        the last 10 jobs if nothing happened recently."""
 
         one_day_before = datetime.datetime.now() - datetime.timedelta(1)
+        items = (models.MapRenderingJob.objects
+                 .filter(status=2)
+                 .filter(resultmsg='ok')
+                 .filter(endofrendering_time__gte=one_day_before)
+                 .order_by('-endofrendering_time'))
+
+        if items.count():
+            return items
+
+        # Fall back to the last 10 entries, regardless of time
         return (models.MapRenderingJob.objects
                 .filter(status=2)
                 .filter(resultmsg='ok')
-                .filter(endofrendering_time__gte=one_day_before)
                 .order_by('-endofrendering_time'))
+
+        # Not sure what to do if we still don't have any items at this point.
 
     def item_title(self, item):
         return item.maptitle
