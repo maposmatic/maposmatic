@@ -40,7 +40,7 @@ class MapsFeed(Feed):
     title = _('MapOSMatic maps')
     link = '/maps/' # We can't use reverse here as the urlpatterns aren't
                     # defined yet at this point.
-    description = _('The latest successfully rendered maps on MapOSMatic.')
+    description = _('The latest rendered maps on MapOSMatic.')
 
     description_template = 'maposmatic/map-feed.html'
 

@@ -19,7 +19,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: mapOSMatic 0.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-03-20 15:29+0100\n"
+"POT-Creation-Date: 2010-05-11 16:26+0200\n"
 "PO-Revision-Date: 2010-02-09 20:43+0100\n"
 "Last-Translator: David MENTRÉ <dmentre@linux-france.org>\n"
 "Language-Team: FR <LL@li.org>\n"
@@ -27,7 +27,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: settings.py:182
+#: settings.py:199
 msgid "No localization"
 msgstr "Nema lokalizacije"
 
@@ -36,7 +36,7 @@ msgid "MapOSMatic maps"
 msgstr ""
 
 #: maposmatic/feeds.py:43
-msgid "The latest successfully rendered maps on MapOSMatic."
+msgid "The latest rendered maps on MapOSMatic."
 msgstr ""
 
 #: maposmatic/forms.py:53
@@ -99,7 +99,8 @@ msgid "Longitude of the bottom right corner"
 msgstr ""
 
 #: maposmatic/templatetags/extratags.py:34
-msgid "Waiting rendering"
+#, fuzzy
+msgid "Waiting for rendering to begin"
 msgstr "Čekam na izradu (rendering)"
 
 #: maposmatic/templatetags/extratags.py:36
@@ -360,9 +361,10 @@ msgstr ""
 "doprinjeti. Ovdje je nekoliko početnih točaka za pomoć:"
 
 #: templates/maposmatic/about.html:140
+#, fuzzy
 msgid ""
 "The\n"
-"  <a href=\"https://wiki.maposmatic.org\">MapOSMatic Wiki</a>,\n"
+"  <a href=\"http://wiki.maposmatic.org\">MapOSMatic Wiki</a>,\n"
 "  which contains valuable technical information and documents about\n"
 "  MapOSMatic;"
 msgstr ""
@@ -566,42 +568,42 @@ msgstr "Zadaci"
 msgid "News"
 msgstr "Novosti"
 
-#: templates/maposmatic/base.html:79
+#: templates/maposmatic/base.html:78
 msgid ""
-"The MapOSMatic rendering daemon is not currently running! Jobs will be "
+"The MapOSMatic rendering daemon is currently not running! Jobs will be "
 "queued until the rendering daemon is back up."
 msgstr ""
 
-#: templates/maposmatic/base.html:90
+#: templates/maposmatic/base.html:89
 msgid "Random map"
 msgstr "Slučajno izabrana karta"
 
-#: templates/maposmatic/base.html:97
+#: templates/maposmatic/base.html:96
 msgid "No random map found."
 msgstr "Nije nađena slučajno izabrana karta."
 
-#: templates/maposmatic/base.html:102
+#: templates/maposmatic/base.html:101
 msgid "Latest news"
 msgstr "Zadnje novosti"
 
-#: templates/maposmatic/base.html:107
+#: templates/maposmatic/base.html:106
 #, python-format
 msgid "published %(date)s ago"
 msgstr "objavljeno prije %(date)s"
 
-#: templates/maposmatic/base.html:115
+#: templates/maposmatic/base.html:114
 msgid "Contact"
 msgstr "Kontakt"
 
-#: templates/maposmatic/base.html:117
+#: templates/maposmatic/base.html:116
 msgid "Mail:"
 msgstr "Email :"
 
-#: templates/maposmatic/base.html:119
+#: templates/maposmatic/base.html:118
 msgid "IRC:"
 msgstr "IRC :"
 
-#: templates/maposmatic/base.html:120
+#: templates/maposmatic/base.html:119
 msgid "on"
 msgstr "u"
 
@@ -729,7 +731,9 @@ msgstr "Kazalo: "
 #: templates/maposmatic/map.html:51
 msgid ""
 "No index was generated because no information was available in OpenStreetMap "
-"to create one!"
+"to create one. Feel free to contribute the missing data yourself. See the <a "
+"href=\"http://wiki.openstreetmap.org/wiki/Getting_Involved\">OSM Wiki</a> "
+"for a start. "
 msgstr ""
 
 #: templates/maposmatic/job.html:63 templates/maposmatic/map-feed.html:53

@@ -31,7 +31,7 @@ register = template.Library()
 
 def job_status_to_str(value, arg, autoescape=None):
     if value == 0:
-        return _("Waiting rendering")
+        return _("Waiting for rendering to begin")
     elif value == 1:
         return _("Rendering in progress")
     elif value == 2:
