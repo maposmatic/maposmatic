@@ -246,6 +246,18 @@ p.infobox img {
   background: #fff6bf;
 }
 
+form.recreate {
+  float: right;
+}
+
+.job form.recreate {
+  visibility: hidden;
+}
+
+.job:hover form.recreate {
+  visibility: visible;
+}
+
 h2.jobtitle {
   margin: 0;
   padding: 0;

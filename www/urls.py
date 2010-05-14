@@ -55,6 +55,9 @@ urlpatterns = patterns('',
     url(r'^new/$', maposmatic.views.new,
         name='new'),
 
+    url(r'^recreate/$', maposmatic.views.recreate,
+        name='recreate'),
+
     (r'^nominatim/([^/]*/)?(.*)$', maposmatic.views.query_nominatim),
 
     # Internationalization

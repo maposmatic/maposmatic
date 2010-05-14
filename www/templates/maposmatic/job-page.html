@@ -33,6 +33,13 @@
 {% block menu-jobs %}class="activelink"{% endblock %}
 
 {% block page %}
+{% if not job.needs_waiting %}
+<form method="post" action="{% url recreate %}" class="recreate">
+  <input type="hidden" name="jobid" value="{{ job.id }}" />
+  <input type="submit" value="{% trans "Recreate map" %}" />
+</form>
+{% endif %}
+
 <h1>{{ job.maptitle }}</h1>
 
 {% if redirected %}

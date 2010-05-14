@@ -223,3 +223,39 @@ def query_nominatim(request, format, squery):
                             mimetype='text/json')
     # Support other formats here.
 
+def recreate(request):
+    if request.method == 'POST':
+        form = forms.MapRecreateForm(request.POST)
+        if form.is_valid():
+            job = get_object_or_404(models.MapRenderingJob,
+                                    id=form.cleaned_data['jobid'])
+
+            existing = helpers.rendering_already_exists(job)
+            if existing:
+                request.session['redirected'] = True
+                return HttpResponseRedirect(reverse('job-by-id',
+                                                    args=[existing]))
+
+            newjob = models.MapRenderingJob()
+            newjob.maptitle = job.maptitle
+
+            newjob.administrative_city = job.administrative_city
+            newjob.administrative_osmid = job.administrative_osmid
+
+            newjob.lat_upper_left = job.lat_upper_left
+            newjob.lon_upper_left = job.lon_upper_left
+            newjob.lat_bottom_right = job.lat_bottom_right
+            newjob.lon_bottom_right = job.lon_bottom_right
+
+            newjob.status = 0 # Submitted
+            newjob.submitterip = request.META['REMOTE_ADDR']
+            newjob.map_language = job.map_language
+            newjob.index_queue_at_submission = (models.MapRenderingJob.objects
+                                               .queue_size())
+            newjob.save()
+
+            return HttpResponseRedirect(reverse('job-by-id',
+                                                args=[newjob.id]))
+
+    return HttpResponseBadRequest("ERROR: Invalid request")
+

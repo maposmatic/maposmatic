@@ -135,3 +135,19 @@ class MapRenderingJobForm(forms.ModelForm):
 
         return cleaned_data
 
+class MapRecreateForm(forms.Form):
+    """
+    The map recreate form, to reschedule an already processed job on the queue.
+    """
+
+    jobid = forms.IntegerField(widget=forms.HiddenInput, required=True)
+
+    def clean(self):
+        cleaned_data = self.cleaned_data
+
+        try:
+            cleaned_data["jobid"] = int(cleaned_data.get("jobid", 0))
+        except ValueError:
+            cleaned_data["jobid"] = 0
+
+        return cleaned_data

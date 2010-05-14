@@ -28,7 +28,18 @@
 
 {% load extratags %}
 
-{% if not single %}<h2 class="jobtitle"><a href="{% url job-by-id job.id %}">{{ job.maptitle }}</a></h2>{% endif %}
+{% if not single %}
+{% if not job.needs_waiting %}
+<form method="post" action="{% url recreate %}" class="recreate">
+  <input type="hidden" name="jobid" value="{{ job.id }}" />
+  <input type="submit" value="{% trans "Recreate map" %}" />
+</form>
+{% endif %}
+
+<h2 class="jobtitle">
+  <a href="{% url job-by-id job.id %}">{{ job.maptitle }}</a>
+</h2>
+{% endif %}
 <table class="jobinfo"><tbody><tr>
   <td class="status">
     <img src="/smedia/{{ job.status|job_status_to_icon_name:job.resultmsg }}.png" title="{{ job.status|job_status_to_str:job.resultmsg }} ({{ job.status }})" />
