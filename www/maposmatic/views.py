@@ -70,12 +70,11 @@ def new(request):
             job = form.save(commit=False)
             job.administrative_osmid = form.cleaned_data.get('administrative_osmid')
 
-            if job.administrative_osmid:
-                existing = helpers.rendering_already_exists(job.administrative_osmid)
-                if existing:
-                    request.session['redirected'] = True
-                    return HttpResponseRedirect(reverse('job-by-id',
-                                                        args=[existing]))
+            existing = helpers.rendering_already_exists(job)
+            if existing:
+                request.session['redirected'] = True
+                return HttpResponseRedirect(reverse('job-by-id',
+                                                    args=[existing]))
 
             job.status = 0 # Submitted
             job.submitterip = request.META['REMOTE_ADDR']

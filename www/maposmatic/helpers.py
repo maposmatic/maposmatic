@@ -69,7 +69,7 @@ def check_osm_id(osm_id, table='polygon'):
     finally:
         conn.close()
 
-def rendering_already_exists(osmid):
+def rendering_already_exists_by_osmid(osmid):
     """Returns the ID of a rendering matching the given OpenStreetMap city ID
     from the last 24 hours, or None if no rendering can be found matching this
     criteria."""
@@ -99,6 +99,52 @@ def rendering_already_exists(osmid):
 
     # No rendering found
     return None
+
+def rendering_already_exists_by_bbox(lat_upper_left, lon_upper_left,
+                                     lat_bottom_right, lon_bottom_right):
+    """Returns the ID of a rendering matching the given bounding box from the
+    last 24 hours, or None if no rendering can be found matching this
+    criteria."""
+
+    # First try to find rendered items
+    rendered_items = (MapRenderingJob.objects
+                      .filter(submission_time__gte=(datetime.datetime.now()
+                                                   - datetime.timedelta(1)))
+                      .filter(lat_upper_left=lat_upper_left)
+                      .filter(lon_upper_left=lon_upper_left)
+                      .filter(lat_bottom_right=lat_bottom_right)
+                      .filter(lon_bottom_right=lon_bottom_right)
+                      .filter(status=2)
+                      .filter(resultmsg="ok")
+                      .order_by("-submission_time")[:1])
+
+    if len(rendered_items) and rendered_items[0].has_output_files():
+        return rendered_items[0].id
+
+    # Then try to find items being rendered or waiting for rendering
+    rendered_items = (MapRenderingJob.objects
+                      .filter(submission_time__gte=(datetime.datetime.now()
+                                                   - datetime.timedelta(1)))
+                      .filter(lat_upper_left=lat_upper_left)
+                      .filter(lon_upper_left=lon_upper_left)
+                      .filter(lat_bottom_right=lat_bottom_right)
+                      .filter(lon_bottom_right=lon_bottom_right)
+                      .filter(status__in=[0,1])
+                      .order_by("-submission_time")[:1])
+
+    if len(rendered_items):
+        return rendered_items[0].id
+
+    # No rendering found
+    return None
+
+def rendering_already_exists(job):
+    if job.administrative_osmid:
+        return rendering_already_exists_by_osmid(job.administrative_osmid)
+    return rendering_already_exists_by_bbox(job.lat_upper_left,
+                                            job.lon_upper_left,
+                                            job.lat_bottom_right,
+                                            job.lon_bottom_right)
 
 def get_letters():
     """Returns the list of map first-letter selectors. For now, it only returns
