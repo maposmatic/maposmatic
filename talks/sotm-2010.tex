@@ -1,0 +1,93 @@
+% MapOSMatic - State of the map 2010 presentation
+% -*- coding: utf-8; mode: LaTeX -*-
+
+% Copyright (C) 2010 Maxime Petazzoni <maxime.petazzoni@bulix.org>
+%                    Thomas Petazzoni <thomas.petazzoni@enix.org>
+% Distributed under the terms of the Creative Commons CC-by-sa 3.0
+
+\documentclass{beamer}
+\usepackage[utf8]{inputenc}
+\usepackage[american]{babel}
+
+\mode<presentation>
+\usetheme{MapOSMatic}
+\setbeamercovered{dynamic}
+
+\title{MapOSMatic: city maps for the masses}
+\author{Thomas \& Maxime {\sc Petazzoni}}
+\institute{SOTM}
+\date{July 11th, 2010}
+
+\begin{document}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Introduction}
+\begin{frame}[t,plain]
+  \titlepage
+
+  \begin{center}
+  \includegraphics[height=2.5cm]{sotm.jpg}
+  \end{center}
+\end{frame}
+
+\begin{frame}[t]{Outline}
+  \setcounter{tocdepth}{1}
+  \tableofcontents
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{The story}
+
+\subsection{The story behing MapOSMatic}
+\begin{frame}[t]{From the idea to the code}
+  \begin{itemize}
+    \item<1-> An idea from Gilles Lamiral
+    \item<2-> The first hackfest in August 2009
+  \end{itemize}
+\end{frame}
+
+\subsection{Hackfests}
+\subsubsection{August 2009}
+\subsubsection{December 2009}
+\subsubsection{August 2010}
+
+\subsection{Features timeline}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{MapOSMatic}
+\subsection{The user experience: the MapOSMatic.org website}
+\subsubsection{A quick walkthrough}
+\subsubsection{Example renderings}
+\subsubsection{Some statistics}
+
+\subsection{Behind the web page}
+\subsubsection{Our server and infrastructure}
+\subsubsection{Rendering pipeline architecture}
+\subsubsection{Standing on the shoulders of giants}
+\subsubsection{Internationalization}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{OSM/Mapnik weak points}
+\subsection{OpenStreetMap administrative boundaries}
+\subsubsection{The {\tt admin\_level} problem}
+\subsubsection{Missing boundaries}
+\subsubsection{Incorrect polygons and {\tt osm2pgsql}}
+
+\subsection{Mapnik rendering}
+\subsubsection{Street labels and zoom level}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{The database}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Future work}
+\subsection{Semantics: make the most out of OSM data}
+\subsection{Map improvements}
+\subsection{Infrastructure improvements}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Conclusion}
+\begin{frame}[t]{Conclusion}
+\end{frame}
+
+\end{document}
