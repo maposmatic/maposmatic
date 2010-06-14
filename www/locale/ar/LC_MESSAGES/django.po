@@ -6,14 +6,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-05-11 16:26+0200\n"
+"POT-Creation-Date: 2010-06-14 12:59+0200\n"
 "PO-Revision-Date: 2010-01-12 17:29+0300\n"
 "Last-Translator: Bassem JARKAS <jarkas@gmail.com>\n"
 "Language-Team: Arabic Translation\n"
+"Language: ar\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: ar\n"
 "Plural-Forms: nplurals=6; plural=n==0 ? 0 : n==1 ? 1 : n==2 ? 2 : n%100>=3 "
 "&& n%100<=10 ? 3 : n%100>=11 && n%100<=99 ? 4 : 5;\n"
 "X-Generator: Virtaal 0.5.0\n"
@@ -169,8 +169,8 @@ msgid ""
 "href=\"http://www.openstreetmap.org\">OpenStreetMap</a> and free\n"
 "software contributor of Rennes area, France. From his idea, a group of\n"
 "crazy <a\n"
-"href=\"http://en.wikipedia.org/wiki/Hacker_%28programmer_subculture%29"
-"\">hackers</a>\n"
+"href=\"http://en.wikipedia.org/wiki/Hacker_%28programmer_subculture"
+"%29\">hackers</a>\n"
 "met together during a one-week <em>Hackfest</em> in August 2009 and\n"
 "brought the idea of Gilles Lamiral to life by writing the code and\n"
 "named the project <strong>MapOSMatic</strong>. The group of crazy\n"
@@ -564,68 +564,74 @@ msgstr ""
 msgid "More details"
 msgstr "المزيد من التفاصيل"
 
-#: templates/maposmatic/job-page.html:41
+#: templates/maposmatic/job-page.html:39 templates/maposmatic/job.html:35
+#: templates/maposmatic/map.html:35
+#, fuzzy
+msgid "Recreate map"
+msgstr "أنشئ خريطة"
+
+#: templates/maposmatic/job-page.html:48
 msgid ""
 "You have been redirected to a similar map, rendered less than 24 hours ago."
 msgstr ""
 
-#: templates/maposmatic/job-page.html:49
+#: templates/maposmatic/job-page.html:56
 msgid "Refresh the status"
 msgstr "حدّث الحالة"
 
-#: templates/maposmatic/job-page.html:49
+#: templates/maposmatic/job-page.html:56
 #, python-format
 msgid ""
 "(the page will refresh automatically every %(refresh)s seconds until the "
 "rendering is completed)."
 msgstr ""
 
-#: templates/maposmatic/job.html:44
+#: templates/maposmatic/job.html:55
 msgid "Rendering: "
 msgstr "العرض:"
 
-#: templates/maposmatic/job.html:45
+#: templates/maposmatic/job.html:56
 msgid "Rendering submitted"
 msgstr "تم إرسال العرض"
 
-#: templates/maposmatic/job.html:46
+#: templates/maposmatic/job.html:57
 msgid "In queue, position"
 msgstr "في قائمة الانتظار ، الموضع"
 
-#: templates/maposmatic/job.html:47
+#: templates/maposmatic/job.html:58
 msgid "Rendering in progress..."
 msgstr "جاري العرض..."
 
-#: templates/maposmatic/job.html:49
+#: templates/maposmatic/job.html:60
 msgid "Completed on"
 msgstr "اكتمل في"
 
-#: templates/maposmatic/job.html:50
+#: templates/maposmatic/job.html:61
 msgid "Failed on"
 msgstr "فشل في"
 
-#: templates/maposmatic/job.html:51
+#: templates/maposmatic/job.html:62
 #, python-format
 msgid "rendering took %(rendering)s"
 msgstr "العرض استغرق %(rendering)s"
 
-#: templates/maposmatic/job.html:54 templates/maposmatic/map-feed.html:44
-#: templates/maposmatic/map.html:45
+#: templates/maposmatic/job.html:65 templates/maposmatic/map-feed.html:44
+#: templates/maposmatic/map.html:57
 msgid "Files: "
 msgstr "الملفات:"
 
-#: templates/maposmatic/job.html:56 templates/maposmatic/map-feed.html:46
-#: templates/maposmatic/map.html:47
+#: templates/maposmatic/job.html:67 templates/maposmatic/map-feed.html:46
+#: templates/maposmatic/map.html:59
 msgid "Map: "
 msgstr "الخرائط:"
 
-#: templates/maposmatic/job.html:57 templates/maposmatic/map-feed.html:47
-#: templates/maposmatic/map.html:48
+#: templates/maposmatic/job.html:68 templates/maposmatic/map-feed.html:47
+#: templates/maposmatic/map.html:60
 msgid "Index: "
 msgstr "الفهرس:"
 
-#: templates/maposmatic/job.html:60 templates/maposmatic/map-feed.html:50
-#: templates/maposmatic/map.html:51
+#: templates/maposmatic/job.html:71 templates/maposmatic/map-feed.html:50
+#: templates/maposmatic/map.html:63
 msgid ""
 "No index was generated because no information was available in OpenStreetMap "
 "to create one. Feel free to contribute the missing data yourself. See the <a "
@@ -633,12 +639,12 @@ msgid ""
 "for a start. "
 msgstr ""
 
-#: templates/maposmatic/job.html:63 templates/maposmatic/map-feed.html:53
-#: templates/maposmatic/map.html:54
+#: templates/maposmatic/job.html:74 templates/maposmatic/map-feed.html:53
+#: templates/maposmatic/map.html:66
 msgid "The generated files are no longer available."
 msgstr "الملفات التي تم إنشاؤها لم تعد متوفرة."
 
-#: templates/maposmatic/map-feed.html:41 templates/maposmatic/map.html:42
+#: templates/maposmatic/map-feed.html:41 templates/maposmatic/map.html:54
 msgid "Rendering completed on"
 msgstr "العرض اكتمل في"
 

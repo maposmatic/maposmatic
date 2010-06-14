@@ -20,10 +20,11 @@ msgid ""
 msgstr ""
 "Project-Id-Version: mapOSMatic 0.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-05-11 16:26+0200\n"
+"POT-Creation-Date: 2010-06-14 12:59+0200\n"
 "PO-Revision-Date: 2009-12-26 20:47+0100\n"
 "Last-Translator: Thomas Petazzoni <thomas.petazzoni@enix.org>\n"
 "Language-Team: FR <LL@li.org>\n"
+"Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -37,7 +38,6 @@ msgid "MapOSMatic maps"
 msgstr "Cartes MapOSMatic"
 
 #: maposmatic/feeds.py:43
-#, fuzzy
 msgid "The latest rendered maps on MapOSMatic."
 msgstr "Les dernières cartes MapOSmatic."
 
@@ -101,7 +101,6 @@ msgid "Longitude of the bottom right corner"
 msgstr "Longitude du coin bas droit"
 
 #: maposmatic/templatetags/extratags.py:34
-#, fuzzy
 msgid "Waiting for rendering to begin"
 msgstr "Attente de début du rendu"
 
@@ -180,8 +179,8 @@ msgid ""
 "href=\"http://www.openstreetmap.org\">OpenStreetMap</a> and free\n"
 "software contributor of Rennes area, France. From his idea, a group of\n"
 "crazy <a\n"
-"href=\"http://en.wikipedia.org/wiki/Hacker_%28programmer_subculture%29"
-"\">hackers</a>\n"
+"href=\"http://en.wikipedia.org/wiki/Hacker_%28programmer_subculture"
+"%29\">hackers</a>\n"
 "met together during a one-week <em>Hackfest</em> in August 2009 and\n"
 "brought the idea of Gilles Lamiral to life by writing the code and\n"
 "named the project <strong>MapOSMatic</strong>. The group of crazy\n"
@@ -358,14 +357,13 @@ msgstr ""
 "points de départ pour nous aider&nbsp;:"
 
 #: templates/maposmatic/about.html:140
-#, fuzzy
 msgid ""
 "The\n"
 "  <a href=\"http://wiki.maposmatic.org\">MapOSMatic Wiki</a>,\n"
 "  which contains valuable technical information and documents about\n"
 "  MapOSMatic;"
 msgstr ""
-"Le <a href=\"https://wiki.maposmatic.org\">Wiki de MapOSMatic</a>, qui offre "
+"Le <a href=\"http://wiki.maposmatic.org\">Wiki de MapOSMatic</a>, qui offre "
 "de nombreuses informations et documentations techniques sur MapOSMatic&nbsp;;"
 
 #: templates/maposmatic/about.html:144
@@ -563,7 +561,6 @@ msgid "News"
 msgstr "Actualités"
 
 #: templates/maposmatic/base.html:78
-#, fuzzy
 msgid ""
 "The MapOSMatic rendering daemon is currently not running! Jobs will be "
 "queued until the rendering daemon is back up."
@@ -665,18 +662,23 @@ msgstr ""
 msgid "More details"
 msgstr "Plus d'informations"
 
-#: templates/maposmatic/job-page.html:41
+#: templates/maposmatic/job-page.html:39 templates/maposmatic/job.html:35
+#: templates/maposmatic/map.html:35
+msgid "Recreate map"
+msgstr "Regénérer la carte"
+
+#: templates/maposmatic/job-page.html:48
 msgid ""
 "You have been redirected to a similar map, rendered less than 24 hours ago."
 msgstr ""
 "Vous avez été redirigé vers une carte similaire, créée il y a moins de 24 "
 "heures."
 
-#: templates/maposmatic/job-page.html:49
+#: templates/maposmatic/job-page.html:56
 msgid "Refresh the status"
 msgstr "Rafraîchir l'état du rendu"
 
-#: templates/maposmatic/job-page.html:49
+#: templates/maposmatic/job-page.html:56
 #, python-format
 msgid ""
 "(the page will refresh automatically every %(refresh)s seconds until the "
@@ -685,52 +687,52 @@ msgstr ""
 "(la page se rechargera automatiquement toutes les %(refresh)s secondes "
 "jusqu'à ce que le rendu soit terminé)."
 
-#: templates/maposmatic/job.html:44
+#: templates/maposmatic/job.html:55
 msgid "Rendering: "
 msgstr "Traitement : "
 
-#: templates/maposmatic/job.html:45
+#: templates/maposmatic/job.html:56
 msgid "Rendering submitted"
 msgstr "Demande faite le"
 
-#: templates/maposmatic/job.html:46
+#: templates/maposmatic/job.html:57
 msgid "In queue, position"
 msgstr "Dans la file d'attente en position"
 
-#: templates/maposmatic/job.html:47
+#: templates/maposmatic/job.html:58
 msgid "Rendering in progress..."
 msgstr "Rendu en cours..."
 
-#: templates/maposmatic/job.html:49
+#: templates/maposmatic/job.html:60
 msgid "Completed on"
 msgstr "Terminé le"
 
-#: templates/maposmatic/job.html:50
+#: templates/maposmatic/job.html:61
 msgid "Failed on"
 msgstr "Échoué le"
 
-#: templates/maposmatic/job.html:51
+#: templates/maposmatic/job.html:62
 #, python-format
 msgid "rendering took %(rendering)s"
 msgstr "%(rendering)s de rendu"
 
-#: templates/maposmatic/job.html:54 templates/maposmatic/map-feed.html:44
-#: templates/maposmatic/map.html:45
+#: templates/maposmatic/job.html:65 templates/maposmatic/map-feed.html:44
+#: templates/maposmatic/map.html:57
 msgid "Files: "
 msgstr "Fichiers : "
 
-#: templates/maposmatic/job.html:56 templates/maposmatic/map-feed.html:46
-#: templates/maposmatic/map.html:47
+#: templates/maposmatic/job.html:67 templates/maposmatic/map-feed.html:46
+#: templates/maposmatic/map.html:59
 msgid "Map: "
 msgstr "Cartes : "
 
-#: templates/maposmatic/job.html:57 templates/maposmatic/map-feed.html:47
-#: templates/maposmatic/map.html:48
+#: templates/maposmatic/job.html:68 templates/maposmatic/map-feed.html:47
+#: templates/maposmatic/map.html:60
 msgid "Index: "
 msgstr "Index : "
 
-#: templates/maposmatic/job.html:60 templates/maposmatic/map-feed.html:50
-#: templates/maposmatic/map.html:51
+#: templates/maposmatic/job.html:71 templates/maposmatic/map-feed.html:50
+#: templates/maposmatic/map.html:63
 msgid ""
 "No index was generated because no information was available in OpenStreetMap "
 "to create one. Feel free to contribute the missing data yourself. See the <a "
@@ -738,12 +740,12 @@ msgid ""
 "for a start. "
 msgstr ""
 
-#: templates/maposmatic/job.html:63 templates/maposmatic/map-feed.html:53
-#: templates/maposmatic/map.html:54
+#: templates/maposmatic/job.html:74 templates/maposmatic/map-feed.html:53
+#: templates/maposmatic/map.html:66
 msgid "The generated files are no longer available."
 msgstr "Les fichiers générés ne sont plus disponibles."
 
-#: templates/maposmatic/map-feed.html:41 templates/maposmatic/map.html:42
+#: templates/maposmatic/map-feed.html:41 templates/maposmatic/map.html:54
 msgid "Rendering completed on"
 msgstr "Rendu terminé le"
 
