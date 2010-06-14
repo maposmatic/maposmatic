@@ -146,9 +146,9 @@ def all_maps(request):
         form = forms.MapSearchForm(request.POST)
         if form.is_valid():
             map_list = (models.MapRenderingJob.objects
-                    .order_by('maptitle')
-                    .filter(status=2)
-                    .filter(maptitle__icontains=form.cleaned_data['query']))
+                        .order_by('maptitle')
+                        .filter(status=2)
+                        .filter(maptitle__icontains=form.cleaned_data['query']))
             if len(map_list) == 1:
                 return HttpResponseRedirect(reverse('job-by-id',
                                                     args=[map_list[0].id]))
@@ -159,9 +159,10 @@ def all_maps(request):
     else:
         form = forms.MapSearchForm()
 
-    map_list = map_list or (models.MapRenderingJob.objects.filter(status=2)
-                            .filter(resultmsg="ok")
-                            .order_by('maptitle'))
+    if map_list is None:
+        map_list = (models.MapRenderingJob.objects.filter(status=2)
+                    .filter(resultmsg="ok")
+                    .order_by('maptitle'))
     paginator = Paginator(map_list, www.settings.ITEMS_PER_PAGE)
 
     try:
@@ -184,9 +185,9 @@ def all_maps_by_letter(request, letter):
 
     letter = letter[:1].upper()
     map_list = (models.MapRenderingJob.objects.filter(status=2)
-            .filter(resultmsg="ok")
-            .filter(maptitle__startswith=letter)
-            .order_by('maptitle'))
+                .filter(resultmsg="ok")
+                .filter(maptitle__startswith=letter)
+                .order_by('maptitle'))
     paginator = Paginator(map_list, www.settings.ITEMS_PER_PAGE)
 
     try:
