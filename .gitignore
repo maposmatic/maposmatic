@@ -1,4 +1,3 @@
 *~
-scripts/maposmaticd.sh
 www/maposmatic.wsgi
 www/locale/*/LC_MESSAGES/*.mo
