@@ -48,21 +48,22 @@ using :
 
   python www/manage.py syncdb
 
-The scripts/maposmaticd daemon should be run in the background. It will fetch
-rendering jobs from the database and put the results in a directory, as
-specified in the settings_local.py file.
+The rendering daemon should be run in the background. It will fetch rendering
+jobs from the database and put the results in a directory, as specified in the
+settings_local.py file.
 
-You can adapt the example of init script given in
-support/init-maposmaticd-template:
+To setup the daemon, you need to configure the wrapper in the scripts/
+directory by copying scripts/config.py-template to scripts/config.py and
+editing it to match your setup. The wrapper will set the necessary environment
+variables and paths for the daemon to run correctly.
 
-  cp support/init-maposmaticd-template /etc/init.d/maposmaticd
-  vi /etc/init.d/maposmaticd
+Then, you can run the rendering daemon through the wrapper with:
 
-notice the --chuid option to start-stop-daemon, adapt it to your
-own settings and once done:
+  .../scripts/wrapper.py scripts/daemon.py &
 
-  sudo chmod 755 /etc/init.d/maposmaticd
-  sudo update-rc.d maposmaticd defaults
+You'll find in support/init-maposmaticd-template an init script template that
+you can tweak and install on your machine to start the MapOSMatic rendering
+daemon automatically at boot time.
 
 Web server configuration
 ------------------------
