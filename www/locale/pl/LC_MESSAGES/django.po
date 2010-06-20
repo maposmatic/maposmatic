@@ -6,17 +6,17 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-06-14 12:59+0200\n"
-"PO-Revision-Date: 2010-05-11 15:41+0200\n"
+"POT-Creation-Date: 2010-06-20 22:46+0200\n"
+"PO-Revision-Date: 2010-06-20 22:49+0200\n"
 "Last-Translator: Łukasz Jernaś <deejay1@srem.org>\n"
 "Language-Team: Polish <dev@maposmatic.org>\n"
-"Language: pl\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: pl\n"
 "Plural-Forms: nplurals=3; plural=(n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 "
 "|| n%100>=20) ? 1 : 2);\n"
-"X-Generator: Virtaal 0.5.3-rc1\n"
+"X-Generator: Lokalize 1.0\n"
 "X-Poedit-Language: Polish\n"
 "X-Poedit-Country: Poland\n"
 
@@ -29,9 +29,8 @@ msgid "MapOSMatic maps"
 msgstr "Mapy MapOSMatic"
 
 #: maposmatic/feeds.py:43
-#, fuzzy
 msgid "The latest rendered maps on MapOSMatic."
-msgstr "Najnowsze poprawnie wygenerowany mapy w serwisie MapOSMatic."
+msgstr "Najnowsze utworzone mapy w serwisie MapOSMatic."
 
 #: maposmatic/forms.py:53
 msgid "Administrative boundary"
@@ -93,9 +92,8 @@ msgid "Longitude of the bottom right corner"
 msgstr "Wysokość geograficzna prawego dolnego rogu"
 
 #: maposmatic/templatetags/extratags.py:34
-#, fuzzy
 msgid "Waiting for rendering to begin"
-msgstr "Oczekiwanie na renderowanie"
+msgstr "Oczekiwanie na rozpoczęcie procesu renderowania"
 
 #: maposmatic/templatetags/extratags.py:36
 msgid "Rendering in progress"
@@ -176,8 +174,8 @@ msgid ""
 "href=\"http://www.openstreetmap.org\">OpenStreetMap</a> and free\n"
 "software contributor of Rennes area, France. From his idea, a group of\n"
 "crazy <a\n"
-"href=\"http://en.wikipedia.org/wiki/Hacker_%28programmer_subculture"
-"%29\">hackers</a>\n"
+"href=\"http://en.wikipedia.org/wiki/Hacker_%28programmer_subculture%29"
+"\">hackers</a>\n"
 "met together during a one-week <em>Hackfest</em> in August 2009 and\n"
 "brought the idea of Gilles Lamiral to life by writing the code and\n"
 "named the project <strong>MapOSMatic</strong>. The group of crazy\n"
@@ -187,8 +185,8 @@ msgstr ""
 "MapOSMatic powstało jako pomysł Gillesa Lamiral, współtwórcy projektu <a "
 "href=\"http://www.openstreetmap.org\">OpenStreetMap</a> i innych projektów "
 "na bazie wolnego oprogramowania, z okolice Rennes we Francji. Z powodu Jego "
-"pomysłu, grupa szalonych <a href=\"http://pl.wikipedia.org/wiki/Haker_"
-"%28slang_komputerowy%29\">hackerów</a> spotkała się ze sobą, podczas "
+"pomysłu, grupa szalonych <a href=\"http://pl.wikipedia.org/wiki/Haker_%"
+"28slang_komputerowy%29\">hackerów</a> spotkała się ze sobą, podczas "
 "jednotygodniowego <em>hackfestu</em> w sierpniu 2009 roku i pisząc kod "
 "sprawiła, że projekt nazwany <strong>MapOSMatic</strong> powstał do życia. "
 "Grupa tych hackerów chciałaby podziękować Gillesowi za podzielenie się tym "
@@ -349,7 +347,6 @@ msgstr ""
 "kilka informacji o tym, jak można nam pomóc:"
 
 #: templates/maposmatic/about.html:140
-#, fuzzy
 msgid ""
 "The\n"
 "  <a href=\"http://wiki.maposmatic.org\">MapOSMatic Wiki</a>,\n"
@@ -527,8 +524,8 @@ msgstr "Wszystkie"
 #, python-format
 msgid "No map starts with %(current_letter)s in our database!"
 msgstr ""
-"Nazwa żadnej z map w naszej bazie danych nie zaczyna się od "
-"%(current_letter)s."
+"Nazwa żadnej z map w naszej bazie danych nie zaczyna się od %(current_letter)"
+"s."
 
 #: templates/maposmatic/all_maps.html:63
 msgid "Our database does not contain any rendered maps for the moment."
@@ -652,9 +649,8 @@ msgstr "Więcej informacji"
 
 #: templates/maposmatic/job-page.html:39 templates/maposmatic/job.html:35
 #: templates/maposmatic/map.html:35
-#, fuzzy
 msgid "Recreate map"
-msgstr "Tworzenie mapy"
+msgstr "Utwórz ponownie mapę"
 
 #: templates/maposmatic/job-page.html:48
 msgid ""
