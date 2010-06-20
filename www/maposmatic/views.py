@@ -141,21 +141,16 @@ def all_maps(request):
     terms, when provided."""
 
     map_list = None
+    form = forms.MapSearchForm(request.GET)
 
-    if request.method == 'POST':
-        form = forms.MapSearchForm(request.POST)
-        if form.is_valid():
-            map_list = (models.MapRenderingJob.objects
-                        .order_by('maptitle')
-                        .filter(status=2)
-                        .filter(maptitle__icontains=form.cleaned_data['query']))
-            if len(map_list) == 1:
-                return HttpResponseRedirect(reverse('job-by-id',
-                                                    args=[map_list[0].id]))
-
-            # TODO: find a way to have a working paginator. For now, limit to
-            # ITEMS_PER_PAGE results.
-            map_list = map_list[:www.settings.ITEMS_PER_PAGE]
+    if form.is_valid():
+        map_list = (models.MapRenderingJob.objects
+                    .order_by('maptitle')
+                    .filter(status=2)
+                    .filter(maptitle__icontains=form.cleaned_data['query']))
+        if len(map_list) == 1:
+            return HttpResponseRedirect(reverse('job-by-id',
+                                                args=[map_list[0].id]))
     else:
         form = forms.MapSearchForm()
 
@@ -177,7 +172,7 @@ def all_maps(request):
 
     return render_to_response('maposmatic/all_maps.html',
                               { 'maps': maps, 'letters': helpers.get_letters(),
-                                'form': form },
+                                'form': form, 'is_search': form.is_valid() },
                               context_instance=MapOSMaticRequestContext(request))
 
 def all_maps_by_letter(request, letter):

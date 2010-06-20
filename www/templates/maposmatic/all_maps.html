@@ -31,7 +31,7 @@
 
 {% block page %}
 <div class="mapsearch">
-  <form action="{% url maps %}" method="post">{{ form.query }}<input type="submit" value="{% trans "Search" %}" /></form>
+  <form action="{% url maps %}" method="get">{{ form.query }}<input type="submit" value="{% trans "Search" %}" /></form>
 </div>
 
 <h1><a href="{% url maps %}">{% trans "Maps" %}</a> <a href="/feeds/maps/"><img src="/smedia/feed.png" class="feedicon" title="{% trans "MapOSMatic maps feed" %}" /></h1>
@@ -42,9 +42,9 @@
 
 {% ifnotequal maps.paginator.num_pages 1 %}
 <div class="pagination">
-  {% if maps.has_previous %}<a href="?page={{ maps.previous_page_number }}">&laquo; {% trans "Previous" %}</a>{% endif %}
+  {% if maps.has_previous %}<a href="?{% if is_search %}query={{ form.cleaned_data.query|urlencode }}&{% endif %}page={{ maps.previous_page_number }}">&laquo; {% trans "Previous" %}</a>{% endif %}
   <span class="current">{% trans "Page" %} {{ maps.number }} {% trans "of" %} {{ maps.paginator.num_pages }}</span>
-  {% if maps.has_next %}<a href="?page={{ maps.next_page_number }}">{% trans "Next" %} &raquo;</a>{% endif %}
+  {% if maps.has_next %}<a href="?{% if is_search %}query={{ form.cleaned_data.query|urlencode }}&{% endif %}page={{ maps.next_page_number }}">{% trans "Next" %} &raquo;</a>{% endif %}
 </div>
 {% endifnotequal %}
 
@@ -67,9 +67,9 @@
 
 {% ifnotequal maps.paginator.num_pages 1 %}
 <div class="pagination">
-  {% if maps.has_previous %}<a href="?page={{ maps.previous_page_number }}">&laquo; {% trans "Previous" %}</a>{% endif %}
+  {% if maps.has_previous %}<a href="?{% if is_search %}query={{ form.cleaned_data.query|urlencode }}&{% endif %}page={{ maps.previous_page_number }}">&laquo; {% trans "Previous" %}</a>{% endif %}
   <span class="current">{% trans "Page" %} {{ maps.number }} {% trans "of" %} {{ maps.paginator.num_pages }}</span>
-  {% if maps.has_next %}<a href="?page={{ maps.next_page_number }}">{% trans "Next" %} &raquo;</a>{% endif %}
+  {% if maps.has_next %}<a href="?{% if is_search %}query={{ form.cleaned_data.query|urlencode }}&{% endif %}page={{ maps.next_page_number }}">{% trans "Next" %} &raquo;</a>{% endif %}
 </div>
 {% endifnotequal %}
 
