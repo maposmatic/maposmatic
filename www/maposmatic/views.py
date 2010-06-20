@@ -81,10 +81,11 @@ def new(request):
             job.map_language = form.cleaned_data.get('map_language')
             job.index_queue_at_submission = (models.MapRenderingJob.objects
                                              .queue_size())
+            job.nonce = helpers.generate_nonce(models.MapRenderingJob.NONCE_SIZE)
             job.save()
 
-            return HttpResponseRedirect(reverse('job-by-id',
-                                                args=[job.id]))
+            return HttpResponseRedirect(reverse('job-by-id-and-nonce',
+                                                args=[job.id, job.nonce]))
     else:
         form = forms.MapRenderingJobForm()
 
@@ -92,7 +93,7 @@ def new(request):
                               { 'form' : form },
                               context_instance=MapOSMaticRequestContext(request))
 
-def job(request, job_id):
+def job(request, job_id, job_nonce=None):
     """The job details page.
 
     Args:
@@ -109,7 +110,7 @@ def job(request, job_id):
 
     return render_to_response('maposmatic/job-page.html',
                               { 'job': job, 'single': True,
-                                'redirected': isredirected,
+                                'redirected': isredirected, 'nonce': job_nonce,
                                 'refresh': refresh, 'refresh_ms': (refresh*1000) },
                               context_instance=MapOSMaticRequestContext(request))
 
@@ -225,10 +226,25 @@ def recreate(request):
             newjob.map_language = job.map_language
             newjob.index_queue_at_submission = (models.MapRenderingJob.objects
                                                .queue_size())
+            newjob.nonce = helpers.generate_nonce(models.MapRenderingJob.NONCE_SIZE)
             newjob.save()
 
-            return HttpResponseRedirect(reverse('job-by-id',
-                                                args=[newjob.id]))
+            return HttpResponseRedirect(reverse('job-by-id-and-nonce',
+                                                args=[newjob.id, newjob.nonce]))
+
+    return HttpResponseBadRequest("ERROR: Invalid request")
+
+def cancel(request):
+    if request.method == 'POST':
+        form = forms.MapCancelForm(request.POST)
+        if form.is_valid():
+            job = get_object_or_404(models.MapRenderingJob,
+                                    id=form.cleaned_data['jobid'],
+                                    nonce=form.cleaned_data['jobnonce'])
+            job.cancel()
+
+            return HttpResponseRedirect(reverse('job-by-id-and-nonce',
+                                                args=[job.id, job.nonce]))
 
     return HttpResponseBadRequest("ERROR: Invalid request")
 

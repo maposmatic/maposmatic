@@ -75,8 +75,11 @@ class MapRenderingJob(models.Model):
         (0, 'Submitted'),
         (1, 'In progress'),
         (2, 'Done'),
-        (3, 'Done w/o files')
+        (3, 'Done w/o files'),
+        (4, 'Cancelled'),
         )
+
+    NONCE_SIZE = 16
 
     maptitle = models.CharField(max_length=256)
 
@@ -100,6 +103,8 @@ class MapRenderingJob(models.Model):
     submitterip = models.IPAddressField()
     index_queue_at_submission = models.IntegerField()
     map_language = models.CharField(max_length=16)
+
+    nonce = models.CharField(max_length=NONCE_SIZE, blank=True)
 
     objects = MapRenderingJobManager()
 
@@ -149,6 +154,8 @@ class MapRenderingJob(models.Model):
     def is_obsolete(self):          return self.status == 3
     def is_obsolete_ok(self):       return self.is_obsolete() and self.__is_ok()
     def is_obsolete_failed(self):   return self.is_obsolete() and not self.__is_ok()
+
+    def is_cancelled(self):         return self.status == 4
 
     def get_map_fileurl(self, format):
         return www.settings.RENDERING_RESULT_URL + "/" + self.files_prefix() + "." + format
@@ -221,6 +228,12 @@ class MapRenderingJob(models.Model):
         self.save()
         return removed, saved
 
+    def cancel(self):
+        self.status = 4
+        self.endofrendering_time = datetime.now()
+        self.resultmsg = 'rendering cancelled'
+        self.save()
+
     def get_thumbnail(self):
         thumbnail_file = os.path.join(www.settings.RENDERING_RESULT_PATH, self.files_prefix() + "_small.png")
         thumbnail_url = www.settings.RENDERING_RESULT_URL + "/" + self.files_prefix() + "_small.png"
@@ -244,3 +257,4 @@ class MapRenderingJob(models.Model):
 
     def get_absolute_url(self):
         return reverse('job-by-id', args=[self.id])
+

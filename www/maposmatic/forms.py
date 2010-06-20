@@ -151,3 +151,22 @@ class MapRecreateForm(forms.Form):
             cleaned_data["jobid"] = 0
 
         return cleaned_data
+
+class MapCancelForm(forms.Form):
+    """
+    The map cancel form, to cancel a job (when the user has the matching
+    nonce).
+    """
+
+    jobid = forms.IntegerField(widget=forms.HiddenInput, required=True)
+    jobnonce = forms.CharField(widget=forms.HiddenInput, required=True)
+
+    def clean(self):
+        cleaned_data = self.cleaned_data
+
+        try:
+            cleaned_data["jobid"] = int(cleaned_data.get("jobid", 0))
+        except ValueError:
+            cleaned_data["jobid"] = 0
+
+        return cleaned_data

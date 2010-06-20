@@ -46,6 +46,8 @@ def job_status_to_str(value, arg, autoescape=None):
         else:
             return _("Rendering failed, and the incomplete files were "
                       "removed. Please contact contact@maposmatic.org")
+    elif value == 4:
+        return _("Rendering was cancelled by the user")
 
     return ''
 
@@ -56,6 +58,7 @@ def job_status_to_icon_name(value, arg, autoescape=None):
         if arg == 'ok':     return 'job-done'
     if value == 3 and arg == 'ok':
         if arg == 'ok':     return 'job-done-obsolete'
+    if value == 4:          return 'job-cancelled'
 
     return 'job-error'
 

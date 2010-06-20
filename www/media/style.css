@@ -263,6 +263,10 @@ form.recreate {
   visibility: visible;
 }
 
+form.jobcancel {
+  float: right;
+}
+
 h2.jobtitle {
   margin: 0;
   padding: 0;

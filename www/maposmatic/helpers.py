@@ -24,6 +24,8 @@
 
 import datetime
 import psycopg2
+import random
+import string
 
 from ocitysmap.coords import BoundingBox as OCMBoundingBox
 from www.maposmatic.models import MapRenderingJob
@@ -168,3 +170,5 @@ def get_pages_list(page, paginator):
             last = i
     return page_list
 
+def generate_nonce(length):
+    return ''.join(random.choice(string.letters) for i in xrange(length))

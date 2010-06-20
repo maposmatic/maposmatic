@@ -45,6 +45,13 @@
     <img src="/smedia/{{ job.status|job_status_to_icon_name:job.resultmsg }}.png" title="{{ job.status|job_status_to_str:job.resultmsg }} ({{ job.status }})" />
   </td>
   <td class="info">
+    {% if job.is_waiting and nonce == job.nonce %}
+    <form method="post" action="{% url cancel %}" class="jobcancel">
+      <input type="hidden" name="jobid" value="{{ job.id }}" />
+      <input type="hidden" name="jobnonce" value="{{ job.nonce }}" />
+      <input type="submit" value="{% trans "Cancel request" %}" />
+    </form>
+    {% endif %}
     {% if job.administrative_city %}
       {% ifnotequal job.administrative_city job.maptitle %}<h3>{{ job.administrative_city }}</h3>{% endifnotequal %}
     {% else %}
@@ -59,6 +66,7 @@
     {% if not job.needs_waiting %}
       {% if job.is_done_ok or job.is_obsolete_ok %}{% trans "Completed on" %}{% endif %}
       {% if job.is_done_failed or job.is_obsolete_failed %}{% trans "Failed on" %}{% endif %}
+      {% if job.is_cancelled %}{% trans "Cancelled on" %}{% endif %}
       {{ job.endofrendering_time|date:"l d M Y\, H:i:s" }}{% if job.rendering_time_gt_1min %} ({% blocktrans with job.startofrendering_time|timesince:job.endofrendering_time as rendering %}rendering took {{ rendering }}{% endblocktrans %}){% endif %}.
 
     {% if job.has_output_files %}
@@ -75,5 +83,6 @@
     {% endif %}
     {% endif %}
   </td>
-  <td class="thumb">{% if job.get_thumbnail %}<img src="{{ job.get_thumbnail }}" />{% endif %}</td>
+
+  {% if job.get_thumbnail %}<td class="thumb"><img src="{{ job.get_thumbnail }}" /></td>{% endif %}
 </tr></tbody></table>

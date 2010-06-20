@@ -53,7 +53,7 @@
 
 {% if job.needs_waiting %}
 <p>
-&raquo; <a href="{% url job-by-id job.id %}">{% trans "Refresh the status" %}</a> {% blocktrans %}(the page will refresh automatically every {{ refresh }} seconds until the rendering is completed).{% endblocktrans %}
+&raquo; <a href="{% if nonce == job.nonce %}{% url job-by-id-and-nonce job.id job.nonce %}{% else %}{% url job-by-id job.id %}{% endif %}">{% trans "Refresh the status" %}</a> {% blocktrans %}(the page will refresh automatically every {{ refresh }} seconds until the rendering is completed).{% endblocktrans %}
 </p>
 
 <script type="text/javascript">

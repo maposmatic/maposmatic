@@ -42,6 +42,9 @@ urlpatterns = patterns('',
     url(r'^about/$', maposmatic.views.about,
         name='about'),
 
+    url(r'^jobs/(?P<job_id>\d+)/(?P<job_nonce>[A-Za-z]{16})$',
+        maposmatic.views.job,
+        name='job-by-id-and-nonce'),
     url(r'^jobs/(?P<job_id>\d+)$', maposmatic.views.job,
         name='job-by-id'),
     url(r'^jobs/$', maposmatic.views.all_jobs,
@@ -55,6 +58,9 @@ urlpatterns = patterns('',
 
     url(r'^recreate/$', maposmatic.views.recreate,
         name='recreate'),
+
+    url(r'^cancel/$', maposmatic.views.cancel,
+        name='cancel'),
 
     (r'^nominatim/([^/]*/)?(.*)$', maposmatic.views.query_nominatim),
 
