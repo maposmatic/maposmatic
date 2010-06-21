@@ -172,34 +172,9 @@ def all_maps(request):
         maps = paginator.page(paginator.num_pages)
 
     return render_to_response('maposmatic/all_maps.html',
-                              { 'maps': maps, 'letters': helpers.get_letters(),
-                                'form': form, 'is_search': form.is_valid(),
+                              { 'maps': maps, 'form': form,
+                                'is_search': form.is_valid(),
                                 'pages': helpers.get_pages_list(maps, paginator) },
-                              context_instance=MapOSMaticRequestContext(request))
-
-def all_maps_by_letter(request, letter):
-    """Displays all maps for the given first-letter."""
-
-    letter = letter[:1].upper()
-    map_list = (models.MapRenderingJob.objects.filter(status=2)
-                .filter(resultmsg="ok")
-                .filter(maptitle__startswith=letter)
-                .order_by('maptitle'))
-    paginator = Paginator(map_list, www.settings.ITEMS_PER_PAGE)
-
-    try:
-        page = int(request.GET.get('page', '1'))
-    except ValueError:
-        page = 1
-
-    try:
-        maps = paginator.page(page)
-    except (EmptyPage, InvalidPage):
-        maps = paginator.page(paginator.num_pages)
-    return render_to_response('maposmatic/all_maps.html',
-                              { 'maps': maps, 'letters': helpers.get_letters(),
-                                'current_letter': letter,
-                                'form': forms.MapSearchForm() },
                               context_instance=MapOSMaticRequestContext(request))
 
 def query_nominatim(request, format, squery):

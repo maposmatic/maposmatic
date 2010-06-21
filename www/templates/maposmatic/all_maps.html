@@ -36,10 +36,6 @@
 
 <h1><a href="{% url maps %}">{% trans "Maps" %}</a> <a href="/feeds/maps/"><img src="/smedia/feed.png" class="feedicon" title="{% trans "MapOSMatic maps feed" %}" /></h1>
 
-<p id="letterpagination" style="margin-bottom: 2em;">
-  <a href="{% url maps %}"{% if not current_letter %} class="selectedletter"{% endif %}>{% trans "All" %}</a> - {% for l in letters %}<a href="{% url maps-by-letter l %}"{% ifequal l current_letter %} class="selectedletter"{% endifequal %}>{{ l }}</a>{% if not forloop.last %} - {% endif %}{% endfor %}
-</p>
-
 {% with maps as data %}{% with form.cleaned_data.query as query %}{% include "maposmatic/paginator.html" %}{% endwith %}{% endwith %}
 
 {% comment %}For Django 1.0.x compatibility. With Django >= 1.1 we should use the empty tag.{% endcomment %}

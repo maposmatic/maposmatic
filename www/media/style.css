@@ -317,15 +317,6 @@ div.pagination {
   text-align: center;
 }
 
-p#letterpagination {
-  text-align: center;
-}
-
-a.selectedletter {
-  font-weight: bold;
-}
-
-
 /* Map form */
 #mapform {
   width: 100%;

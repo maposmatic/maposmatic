@@ -47,8 +47,6 @@ urlpatterns = patterns('',
     url(r'^jobs/$', maposmatic.views.all_jobs,
         name='jobs'),
 
-    url(r'^maps/(?P<letter>[A-Z])$', maposmatic.views.all_maps_by_letter,
-        name='maps-by-letter'),
     url(r'^maps/$', maposmatic.views.all_maps,
         name='maps'),
 

@@ -146,15 +146,6 @@ def rendering_already_exists(job):
                                             job.lat_bottom_right,
                                             job.lon_bottom_right)
 
-def get_letters():
-    """Returns the list of map first-letter selectors. For now, it only returns
-    the ASCII letters of the latin alphabet. This should be improved for
-    different languages!"""
-
-    # Should we improve this to differenciate letters that have maps from those
-    # who don't?
-    return [chr(i) for i in xrange(ord('A'), ord('Z')+1)]
-
 def get_pages_list(page, paginator):
     """Returns a list of number.
     It contains the id of the pages to display for a page given."""
