@@ -1,5 +1,3 @@
-{% extends "maposmatic/base.html" %}
-
 {% comment %}
  coding: utf-8
 
@@ -25,37 +23,18 @@
  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 {% endcomment %}
 
+
 {% load i18n %}
 
 {% load extratags %}
 
-{% block menu-jobs %}class="activelink"{% endblock %}
-
-{% block page %}
-<h1>{% trans "Job list" %}</h1>
-
-{% if jobs %}
-<p style="margin-bottom: 2em;">
-{% blocktrans %}This page gives the status of all the rendering
-requests received during the last 24 hours, starting from the most
-recent one.{% endblocktrans %}
-</p>
-
-{% with jobs as data %}{% include "maposmatic/paginator.html" %}{% endwith %}
-
-{% for job in jobs.object_list %}
-<div class="job {% cycle jobodd,jobeven %}">
-  {% include "maposmatic/job.html" %}
+{% ifnotequal data.paginator.num_pages 1 %}
+<div class="pagination">
+  {% if data.has_previous %}<a href="?{% if is_search %}query={{ query|urlencode }}&{% endif %}page={{ data.previous_page_number }}">&laquo; {% trans "Previous" %}</a> &middot;{% endif %}
+  {% for num in pages %}
+    {% ifequal num "..." %}{{ num }}{% else %}<a href="?{% if is_search %}query={{ query|urlencode }}&{% endif %}page={{ num }}"{% ifequal num data.number %} class="current"{% endifequal %}>{{ num }}</a>{% endifequal %}
+  {% endfor %}
+  {% if data.has_next %}&middot; <a href="?{% if is_search %}query={{ query|urlencode }}&{% endif %}page={{ data.next_page_number }}">{% trans "Next" %} &raquo;</a>{% endif %}
 </div>
-{% endfor %}
+{% endifnotequal %}
 
-{% with jobs as data %}{% include "maposmatic/paginator.html" %}{% endwith %}
-
-{% else %}
-<p>
-{% blocktrans %}No map rendering request since the last 24
-hours.{% endblocktrans %}
-</p>
-{% endif %}
-
-{% endblock %}

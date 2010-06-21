@@ -40,13 +40,7 @@
   <a href="{% url maps %}"{% if not current_letter %} class="selectedletter"{% endif %}>{% trans "All" %}</a> - {% for l in letters %}<a href="{% url maps-by-letter l %}"{% ifequal l current_letter %} class="selectedletter"{% endifequal %}>{{ l }}</a>{% if not forloop.last %} - {% endif %}{% endfor %}
 </p>
 
-{% ifnotequal maps.paginator.num_pages 1 %}
-<div class="pagination">
-  {% if maps.has_previous %}<a href="?{% if is_search %}query={{ form.cleaned_data.query|urlencode }}&{% endif %}page={{ maps.previous_page_number }}">&laquo; {% trans "Previous" %}</a>{% endif %}
-  <span class="current">{% trans "Page" %} {{ maps.number }} {% trans "of" %} {{ maps.paginator.num_pages }}</span>
-  {% if maps.has_next %}<a href="?{% if is_search %}query={{ form.cleaned_data.query|urlencode }}&{% endif %}page={{ maps.next_page_number }}">{% trans "Next" %} &raquo;</a>{% endif %}
-</div>
-{% endifnotequal %}
+{% with maps as data %}{% with form.cleaned_data.query as query %}{% include "maposmatic/paginator.html" %}{% endwith %}{% endwith %}
 
 {% comment %}For Django 1.0.x compatibility. With Django >= 1.1 we should use the empty tag.{% endcomment %}
 {% if maps.object_list|length %}
@@ -65,12 +59,6 @@
 </p>
 {% endif %}
 
-{% ifnotequal maps.paginator.num_pages 1 %}
-<div class="pagination">
-  {% if maps.has_previous %}<a href="?{% if is_search %}query={{ form.cleaned_data.query|urlencode }}&{% endif %}page={{ maps.previous_page_number }}">&laquo; {% trans "Previous" %}</a>{% endif %}
-  <span class="current">{% trans "Page" %} {{ maps.number }} {% trans "of" %} {{ maps.paginator.num_pages }}</span>
-  {% if maps.has_next %}<a href="?{% if is_search %}query={{ form.cleaned_data.query|urlencode }}&{% endif %}page={{ maps.next_page_number }}">{% trans "Next" %} &raquo;</a>{% endif %}
-</div>
-{% endifnotequal %}
+{% with maps as data %}{% with form.cleaned_data.query as query %}{% include "maposmatic/paginator.html" %}{% endwith %}{% endwith %}
 
 {% endblock %}

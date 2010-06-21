@@ -108,8 +108,8 @@ def job(request, job_id):
         refresh = www.settings.REFRESH_JOB_RENDERING
 
     return render_to_response('maposmatic/job-page.html',
-                              { 'job' : job, 'single': True,
-                                'redirected' : isredirected,
+                              { 'job': job, 'single': True,
+                                'redirected': isredirected,
                                 'refresh': refresh, 'refresh_ms': (refresh*1000) },
                               context_instance=MapOSMaticRequestContext(request))
 
@@ -133,7 +133,8 @@ def all_jobs(request):
         jobs = paginator.page(paginator.num_pages)
 
     return render_to_response('maposmatic/all_jobs.html',
-                              { 'jobs' : jobs },
+                              { 'jobs': jobs,
+                                'pages': helpers.get_pages_list(jobs, paginator) },
                               context_instance=MapOSMaticRequestContext(request))
 
 def all_maps(request):
@@ -172,7 +173,8 @@ def all_maps(request):
 
     return render_to_response('maposmatic/all_maps.html',
                               { 'maps': maps, 'letters': helpers.get_letters(),
-                                'form': form, 'is_search': form.is_valid() },
+                                'form': form, 'is_search': form.is_valid(),
+                                'pages': helpers.get_pages_list(maps, paginator) },
                               context_instance=MapOSMaticRequestContext(request))
 
 def all_maps_by_letter(request, letter):

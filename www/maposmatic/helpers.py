@@ -155,3 +155,25 @@ def get_letters():
     # who don't?
     return [chr(i) for i in xrange(ord('A'), ord('Z')+1)]
 
+def get_pages_list(page, paginator):
+    """Returns a list of number.
+    It contains the id of the pages to display for a page given."""
+
+    # Navigation pages
+    nav = {}
+    page_list = []
+    last = False
+
+    for i in [1, 2,
+              page.number-1, page.number, page.number+1,
+              paginator.num_pages-1, paginator.num_pages]:
+        nav[i] = True
+
+    for i in xrange(1, paginator.num_pages+1):
+        if nav.has_key(i):
+            if last and i - last > 1:
+                page_list.append('...')
+            page_list.append(i)
+            last = i
+    return page_list
+

@@ -39,6 +39,11 @@ a img {
   border: none;
 }
 
+a.current {
+  font-weight: bold;
+  font-size: larger;
+}
+
 img {
   -ms-interpolation-mode: bicubic;
 }
