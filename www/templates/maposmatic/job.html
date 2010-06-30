@@ -79,7 +79,7 @@
     {% if not job.output_files.indeces|length %}{% blocktrans %}No index was generated because no information was available in OpenStreetMap to create one. Feel free to contribute the missing data yourself. See the <a href="http://wiki.openstreetmap.org/wiki/Getting_Involved">OSM Wiki</a> for a start. {% endblocktrans %}{% endif %}
 
     {% else %}
-      <p class="nofiles">{% trans "The generated files are no longer available." %}</p>
+      {% if not job.is_cancelled %}<p class="nofiles">{% trans "The generated files are no longer available." %}</p>{% endif %}
     {% endif %}
     {% endif %}
   </td>
