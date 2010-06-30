@@ -20,7 +20,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: mapOSMatic 0.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-06-14 12:59+0200\n"
+"POT-Creation-Date: 2010-06-30 16:32+0200\n"
 "PO-Revision-Date: 2009-12-26 20:47+0100\n"
 "Last-Translator: Thomas Petazzoni <thomas.petazzoni@enix.org>\n"
 "Language-Team: FR <LL@li.org>\n"
@@ -74,12 +74,12 @@ msgstr "Obligatoire"
 msgid "Bounding Box too large"
 msgstr "Zone géographique trop grande"
 
-#: maposmatic/models.py:177
+#: maposmatic/models.py:184
 #, python-format
 msgid "%(title)s %(format)s Map"
 msgstr "Carte pour %(title)s (format %(format)s)"
 
-#: maposmatic/models.py:185
+#: maposmatic/models.py:192
 #, python-format
 msgid "%(title)s %(format)s Index"
 msgstr "Index des rues pour %(title)s (format %(format)s)"
@@ -127,6 +127,10 @@ msgid ""
 msgstr ""
 "Le rendu a échoué et les fichiers incomplets ont été supprimés. Merci de "
 "contacter contact@maposmatic.org"
+
+#: maposmatic/templatetags/extratags.py:50
+msgid "Rendering was cancelled by the user"
+msgstr ""
 
 #: templates/404.html:3 templates/500.html:3 templates/maposmatic/base.html:67
 msgid "Home"
@@ -492,27 +496,7 @@ msgstr ""
 "Cette page donne l'état de toutes les demandes de rendu reçues durant les "
 "dernières 24 heures, de la plus récente à la plus ancienne."
 
-#: templates/maposmatic/all_jobs.html:46 templates/maposmatic/all_jobs.html:60
-#: templates/maposmatic/all_maps.html:45 templates/maposmatic/all_maps.html:70
-msgid "Previous"
-msgstr "Précédent"
-
-#: templates/maposmatic/all_jobs.html:47 templates/maposmatic/all_jobs.html:61
-#: templates/maposmatic/all_maps.html:46 templates/maposmatic/all_maps.html:71
-msgid "Page"
-msgstr "Page"
-
-#: templates/maposmatic/all_jobs.html:47 templates/maposmatic/all_jobs.html:61
-#: templates/maposmatic/all_maps.html:46 templates/maposmatic/all_maps.html:71
-msgid "of"
-msgstr "de"
-
-#: templates/maposmatic/all_jobs.html:48 templates/maposmatic/all_jobs.html:62
-#: templates/maposmatic/all_maps.html:47 templates/maposmatic/all_maps.html:72
-msgid "Next"
-msgstr "Suivant"
-
-#: templates/maposmatic/all_jobs.html:68
+#: templates/maposmatic/all_jobs.html:56
 msgid ""
 "No map rendering request since the last 24\n"
 "hours."
@@ -530,17 +514,13 @@ msgstr "Cartes"
 msgid "MapOSMatic maps feed"
 msgstr ""
 
-#: templates/maposmatic/all_maps.html:40
-msgid "All"
-msgstr "Toutes"
-
-#: templates/maposmatic/all_maps.html:61
+#: templates/maposmatic/all_maps.html:51
 #, python-format
 msgid "No map starts with %(current_letter)s in our database!"
 msgstr ""
 "Aucune carte ne commence par %(current_letter)s dans notre base de données !"
 
-#: templates/maposmatic/all_maps.html:63
+#: templates/maposmatic/all_maps.html:53
 msgid "Our database does not contain any rendered maps for the moment."
 msgstr ""
 
@@ -687,51 +667,60 @@ msgstr ""
 "(la page se rechargera automatiquement toutes les %(refresh)s secondes "
 "jusqu'à ce que le rendu soit terminé)."
 
-#: templates/maposmatic/job.html:55
+#: templates/maposmatic/job.html:52
+msgid "Cancel request"
+msgstr ""
+
+#: templates/maposmatic/job.html:62
 msgid "Rendering: "
 msgstr "Traitement : "
 
-#: templates/maposmatic/job.html:56
+#: templates/maposmatic/job.html:63
 msgid "Rendering submitted"
 msgstr "Demande faite le"
 
-#: templates/maposmatic/job.html:57
+#: templates/maposmatic/job.html:64
 msgid "In queue, position"
 msgstr "Dans la file d'attente en position"
 
-#: templates/maposmatic/job.html:58
+#: templates/maposmatic/job.html:65
 msgid "Rendering in progress..."
 msgstr "Rendu en cours..."
 
-#: templates/maposmatic/job.html:60
+#: templates/maposmatic/job.html:67
 msgid "Completed on"
 msgstr "Terminé le"
 
-#: templates/maposmatic/job.html:61
+#: templates/maposmatic/job.html:68
 msgid "Failed on"
 msgstr "Échoué le"
 
-#: templates/maposmatic/job.html:62
+#: templates/maposmatic/job.html:69
+#, fuzzy
+msgid "Cancelled on"
+msgstr "Échoué le"
+
+#: templates/maposmatic/job.html:70
 #, python-format
 msgid "rendering took %(rendering)s"
 msgstr "%(rendering)s de rendu"
 
-#: templates/maposmatic/job.html:65 templates/maposmatic/map-feed.html:44
+#: templates/maposmatic/job.html:73 templates/maposmatic/map-feed.html:44
 #: templates/maposmatic/map.html:57
 msgid "Files: "
 msgstr "Fichiers : "
 
-#: templates/maposmatic/job.html:67 templates/maposmatic/map-feed.html:46
+#: templates/maposmatic/job.html:75 templates/maposmatic/map-feed.html:46
 #: templates/maposmatic/map.html:59
 msgid "Map: "
 msgstr "Cartes : "
 
-#: templates/maposmatic/job.html:68 templates/maposmatic/map-feed.html:47
+#: templates/maposmatic/job.html:76 templates/maposmatic/map-feed.html:47
 #: templates/maposmatic/map.html:60
 msgid "Index: "
 msgstr "Index : "
 
-#: templates/maposmatic/job.html:71 templates/maposmatic/map-feed.html:50
+#: templates/maposmatic/job.html:79 templates/maposmatic/map-feed.html:50
 #: templates/maposmatic/map.html:63
 msgid ""
 "No index was generated because no information was available in OpenStreetMap "
@@ -740,7 +729,7 @@ msgid ""
 "for a start. "
 msgstr ""
 
-#: templates/maposmatic/job.html:74 templates/maposmatic/map-feed.html:53
+#: templates/maposmatic/job.html:82 templates/maposmatic/map-feed.html:53
 #: templates/maposmatic/map.html:66
 msgid "The generated files are no longer available."
 msgstr "Les fichiers générés ne sont plus disponibles."
@@ -853,6 +842,23 @@ msgstr ""
 #: templates/maposmatic/new.html:109
 msgid "No results."
 msgstr "Aucun résultat."
+
+#: templates/maposmatic/paginator.html:33
+msgid "Previous"
+msgstr "Précédent"
+
+#: templates/maposmatic/paginator.html:37
+msgid "Next"
+msgstr "Suivant"
+
+#~ msgid "Page"
+#~ msgstr "Page"
+
+#~ msgid "of"
+#~ msgstr "de"
+
+#~ msgid "All"
+#~ msgstr "Toutes"
 
 #~ msgid ""
 #~ "No index was generated because no information was available in "
