@@ -167,9 +167,8 @@ class JobRenderer(threading.Thread):
             return self.result
         except Exception, e:
             self.result = RESULT_PREPARATION_EXCEPTION
-            LOG.warning(e)
-            LOG.warning("Rendering of job #%d failed (exception occurred during"
-                        " data preparation)!" % self.job.id)
+            LOG.exception("Rendering of job #%d failed (exception occurred during"
+                          " data preparation)!" % self.job.id)
             return self.result
 
         prefix = os.path.join(RENDERING_RESULT_PATH, self.job.files_prefix())
