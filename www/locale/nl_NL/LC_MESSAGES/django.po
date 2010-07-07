@@ -19,7 +19,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: mapOSMatic 0.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-06-30 16:32+0200\n"
+"POT-Creation-Date: 2010-07-07 15:36+0200\n"
 "PO-Revision-Date: 2010-07-07 15:08+0100\n"
 "Last-Translator: Jeroen van Rijn <jvrnix@gmail.com>\n"
 "Language-Team: MapOSMatic Dutch Translation team\n"
@@ -116,7 +116,9 @@ msgstr "Reproductie is succesvol afgerond"
 
 #: maposmatic/templatetags/extratags.py:41
 msgid "Rendering failed, please contact contact@maposmatic.org"
-msgstr "De reproductie van uw kaart is mislukt, gelieve contact op te nemen met contact@maposmatic.org"
+msgstr ""
+"De reproductie van uw kaart is mislukt, gelieve contact op te nemen met "
+"contact@maposmatic.org"
 
 #: maposmatic/templatetags/extratags.py:44
 #, fuzzy
@@ -125,16 +127,18 @@ msgstr "De gegenereerde bestanden zijn niet langer beschikbaar."
 
 #: maposmatic/templatetags/extratags.py:47
 #, fuzzy
-msgid "Rendering failed, and the incomplete files were removed. Please contact contact@maposmatic.org"
-msgstr "De reproductie van uw kaart is mislukt, gelieve contact op te nemen met contact@maposmatic.org"
+msgid ""
+"Rendering failed, and the incomplete files were removed. Please contact "
+"contact@maposmatic.org"
+msgstr ""
+"De reproductie van uw kaart is mislukt, gelieve contact op te nemen met "
+"contact@maposmatic.org"
 
 #: maposmatic/templatetags/extratags.py:50
 msgid "Rendering was cancelled by the user"
 msgstr "Reproductie is door de gebruiker geannuleerd"
 
-#: templates/404.html:3
-#: templates/500.html:3
-#: templates/maposmatic/base.html:67
+#: templates/404.html:3 templates/500.html:3 templates/maposmatic/base.html:67
 msgid "Home"
 msgstr "Thuis"
 
@@ -170,8 +174,7 @@ msgstr "Interne fout <em>500</em>"
 msgid "There's been an error."
 msgstr "Er is een fout opgetreden."
 
-#: templates/maposmatic/about.html:35
-#: templates/maposmatic/base.html:72
+#: templates/maposmatic/about.html:35 templates/maposmatic/base.html:72
 msgid "About"
 msgstr "Over..."
 
@@ -186,7 +189,8 @@ msgid ""
 "href=\"http://www.openstreetmap.org\">OpenStreetMap</a> and free\n"
 "software contributor of Rennes area, France. From his idea, a group of\n"
 "crazy <a\n"
-"href=\"http://en.wikipedia.org/wiki/Hacker_%28programmer_subculture%29\">hackers</a>\n"
+"href=\"http://en.wikipedia.org/wiki/Hacker_%28programmer_subculture"
+"%29\">hackers</a>\n"
 "met together during a one-week <em>Hackfest</em> in August 2009 and\n"
 "brought the idea of Gilles Lamiral to life by writing the code and\n"
 "named the project <strong>MapOSMatic</strong>. The group of crazy\n"
@@ -194,10 +198,15 @@ msgid ""
 "idea!"
 msgstr ""
 "MapOSMatic is gestart naar een idee van\n"
-"Gilles Lamiral, een bijdrager aan <a href=\"http://www.openstreetmap.org\">OpenStreetMap</a>\n"
-"en Vrije Software uit de regio Rennes in Frankrijk. Tijdens een weeklang <em>Hackfest</em>\n"
-"gehouden in Augustus 2009, zijn een groep gekke <a href=\"http://nl.wikipedia.org/wiki/Hacker\">hackers</a>\n"
-"aan de slag gegaan met zijn idee; het idee van Gilles werd in broncode en realiteit omgezet, ze noemden het project <strong>MapOSMatic</strong>. De groep <em>hackers</em>\n"
+"Gilles Lamiral, een bijdrager aan <a href=\"http://www.openstreetmap.org"
+"\">OpenStreetMap</a>\n"
+"en Vrije Software uit de regio Rennes in Frankrijk. Tijdens een weeklang "
+"<em>Hackfest</em>\n"
+"gehouden in Augustus 2009, zijn een groep gekke <a href=\"http://nl."
+"wikipedia.org/wiki/Hacker\">hackers</a>\n"
+"aan de slag gegaan met zijn idee; het idee van Gilles werd in broncode en "
+"realiteit omgezet, ze noemden het project <strong>MapOSMatic</strong>. De "
+"groep <em>hackers</em>\n"
 "wenst Gilles te bedanken voor het delen van zijn briljant idee!"
 
 #: templates/maposmatic/about.html:53
@@ -232,26 +241,34 @@ msgstr ""
 "<a href=\"http://www.postgresql.org\">PostgreSQL</a> server met de\n"
 "<a href=\"http://postgis.refractions.net\">PostGIS</a> uitbreiding. In deze\n"
 "database hebben we de kaartgegevens van\n"
-"<a href=\"http://wiki.openstreetmap.org/wiki/Planet.osm\">OpenStreetMap voor de gehele wereld</a>\n"
+"<a href=\"http://wiki.openstreetmap.org/wiki/Planet.osm\">OpenStreetMap voor "
+"de gehele wereld</a>\n"
 "geladen met gebruik van het hulpprogramma <a\n"
 "href=\"http://wiki.openstreetmap.org/wiki/Osm2pgsql\">osm2pgsql</a>. Dit\n"
 "zelfde programma werkt de <a\n"
-"href=\"http://planet.openstreetmap.org/daily/\">dagelijkse verschillen</a> bij\n"
-", opdat we de nieuwe contributies aan OpenStreetMap door hun gebruikers kunnen volgen."
+"href=\"http://planet.openstreetmap.org/daily/\">dagelijkse verschillen</a> "
+"bij\n"
+", opdat we de nieuwe contributies aan OpenStreetMap door hun gebruikers "
+"kunnen volgen."
 
 #: templates/maposmatic/about.html:77
 msgid ""
 "For the map rendering, we use the\n"
 "famous <a href=\"http://www.mapnik.org\">Mapnik</a> with the OpenStreetMap\n"
 "stylesheet\n"
-"available <a href=\"http://svn.openstreetmap.org/applications/rendering/mapnik\">in\n"
+"available <a href=\"http://svn.openstreetmap.org/applications/rendering/"
+"mapnik\">in\n"
 "OpenStreetMap Subversion repository</a>. Using Mapnik\n"
 "and <a href=\"http://cairographics.org/pycairo/\">Cairo</a>, we\n"
 "built <i>OCitySMap</i>, a Python module that:"
 msgstr ""
 "Voor de reproductie van de kaart gebruiken we het beroemde <a\n"
-"href=\"http://www.mapnik.org\">Mapnik</a>, tezamen met de in OpenStreetMap's <a\n"
-"href=\"http://svn.openstreetmap.org/applications/rendering/mapnik\">SVN versiebeheer</a> verkrijgbare stylesheet</a>. Gebruikmakende van Mapnik en <a href=\"http://cairographics.org/pycairo/\">Cairo</a>, hebben we de <i>OCitySMap</i> Python module geschreven, deze:"
+"href=\"http://www.mapnik.org\">Mapnik</a>, tezamen met de in OpenStreetMap's "
+"<a\n"
+"href=\"http://svn.openstreetmap.org/applications/rendering/mapnik\">SVN "
+"versiebeheer</a> verkrijgbare stylesheet</a>. Gebruikmakende van Mapnik en "
+"<a href=\"http://cairographics.org/pycairo/\">Cairo</a>, hebben we de "
+"<i>OCitySMap</i> Python module geschreven, deze:"
 
 #: templates/maposmatic/about.html:87
 msgid ""
@@ -302,9 +319,11 @@ msgid ""
 "OpenStreetMap city maps."
 msgstr ""
 "Deze Python module kan gebruikt worden via een commandoregel\n"
-" geleverd bij OCitySMap, zodat een ieder zijn/haar eigen stadskaartproductie\n"
+" geleverd bij OCitySMap, zodat een ieder zijn/haar eigen "
+"stadskaartproductie\n"
 " kan voeren. Niettemin, het installeren van de verschillende modules\n"
-" is redelijk gecompliceerd, dus is er een kleine 'web service' opgezet zodat iedereen\n"
+" is redelijk gecompliceerd, dus is er een kleine 'web service' opgezet zodat "
+"iedereen\n"
 " gemakkelijk OpenStreetMap stadskaarten kan aanvragen en laten reproduceren."
 
 #: templates/maposmatic/about.html:110
@@ -320,11 +339,14 @@ msgid ""
 "intensive nature of the map rendering process."
 msgstr ""
 "Deze web service is <i>MapOSMatic</i> genoemd,\n"
-" naar <i>map-o-matic</i> maar met een verwijzing naar OpenStreetMap (OSM). Deze\n"
+" naar <i>map-o-matic</i> maar met een verwijzing naar OpenStreetMap (OSM). "
+"Deze\n"
 " web service is in Python geschreven\n"
 " met behulp van <a href=\"http://www.djangoproject.com\">Django</a>. Het is\n"
-" en is verantwoordelijk voor het verwerken en weergeven van aanvragen voor kaartproductie.\n"
-" Het reproduceren van de kaart zelf gebeurd asynschroon via de <i>maposmaticd</i> daemon;\n"
+" en is verantwoordelijk voor het verwerken en weergeven van aanvragen voor "
+"kaartproductie.\n"
+" Het reproduceren van de kaart zelf gebeurd asynschroon via de "
+"<i>maposmaticd</i> daemon;\n"
 " deze verwerkt de opdrachten een voor een, omdat het maken van een kaart\n"
 " een intensief proces is welke veel vraagt van de processor en harddisk."
 
@@ -338,9 +360,11 @@ msgid ""
 msgstr ""
 "Voor de zoekmachine om plaatsen te vinden gebruiken we de geweldige\n"
 " <a href=\"http://nominatim.openstreetmap.org\">Nominatim</a> service. Deze\n"
-" service heeft het erg gemakkelijk gemaakt om een fijne zoekmachine aan te bieden die\n"
+" service heeft het erg gemakkelijk gemaakt om een fijne zoekmachine aan te "
+"bieden die\n"
 " toestaat om te kiezen tussen meerdere plaatsen met dezelfde naam\n"
-" door informatie te verschaffen over de locatie waar deze plaatsen zich bevinden."
+" door informatie te verschaffen over de locatie waar deze plaatsen zich "
+"bevinden."
 
 #: templates/maposmatic/about.html:130
 msgid "Contributing"
@@ -382,11 +406,13 @@ msgstr ""
 #: templates/maposmatic/about.html:147
 msgid ""
 "The <a\n"
-"  href=\"http://lists.nongnu.org/mailman/listinfo/maposmatic-dev\">development\n"
+"  href=\"http://lists.nongnu.org/mailman/listinfo/maposmatic-dev"
+"\">development\n"
 "  mailing-list</a>;"
 msgstr ""
 "De <a\n"
-"  href=\"http://lists.nongnu.org/mailman/listinfo/maposmatic-dev\">email distributielijst voor ontwikkelaars (de voertaal is Engels)</a>&nbsp;;"
+"  href=\"http://lists.nongnu.org/mailman/listinfo/maposmatic-dev\">email "
+"distributielijst voor ontwikkelaars (de voertaal is Engels)</a>&nbsp;;"
 
 #: templates/maposmatic/about.html:150
 msgid ""
@@ -399,12 +425,14 @@ msgstr ""
 #: templates/maposmatic/about.html:152
 msgid ""
 "The <a\n"
-"  href=\"http://git.savannah.gnu.org/cgit/maposmatic/ocitysmap.git\">OCitySMap\n"
+"  href=\"http://git.savannah.gnu.org/cgit/maposmatic/ocitysmap.git"
+"\">OCitySMap\n"
 "  Git repository</a>, which can be cloned using <tt>git clone\n"
 "  git://git.sv.gnu.org/maposmatic/ocitysmap.git</tt>;"
 msgstr ""
 "De <a\n"
-"  href=\"http://git.savannah.gnu.org/cgit/maposmatic/ocitysmap.git\">OCitySMap\n"
+"  href=\"http://git.savannah.gnu.org/cgit/maposmatic/ocitysmap.git"
+"\">OCitySMap\n"
 " Git depot</a>, welke gekloond kan worden via &laquo; <tt>git clone\n"
 " git://git.sv.gnu.org/maposmatic/ocitysmap.git</tt> &raquo;&nbsp;;"
 
@@ -417,7 +445,8 @@ msgid ""
 msgstr ""
 "De <a href=\"http://git.savannah.gnu.org/cgit/maposmatic.git\">MapOSMatic\n"
 " Git depot</a>, welke gekloond kan worden via\n"
-" &laquo; <tt>git clone git://git.sv.gnu.org/maposmatic.git</tt> &raquo;&nbsp;;"
+" &laquo; <tt>git clone git://git.sv.gnu.org/maposmatic.git</tt> &raquo;"
+"&nbsp;;"
 
 #: templates/maposmatic/about.html:160
 msgid ""
@@ -426,7 +455,8 @@ msgid ""
 "  and ideas</a>."
 msgstr ""
 "<a\n"
-"  href=\"https://savannah.nongnu.org/task/?group=maposmatic\">Taken- en ideeenlijst</a>."
+"  href=\"https://savannah.nongnu.org/task/?group=maposmatic\">Taken- en "
+"ideeenlijst</a>."
 
 #: templates/maposmatic/about.html:167
 msgid "Authors"
@@ -460,8 +490,7 @@ msgstr "russische vertaling"
 msgid "arabic translation"
 msgstr "arabische vertaling"
 
-#: templates/maposmatic/about.html:186
-#: templates/maposmatic/about.html:187
+#: templates/maposmatic/about.html:186 templates/maposmatic/about.html:187
 msgid "brasilian portuguese translation"
 msgstr "braziliaans portugese vertaling"
 
@@ -506,8 +535,7 @@ msgstr "Geen aanvragen gedaan in de afgelopen 24 uur."
 msgid "Search"
 msgstr "Zoek"
 
-#: templates/maposmatic/all_maps.html:37
-#: templates/maposmatic/base.html:70
+#: templates/maposmatic/all_maps.html:37 templates/maposmatic/base.html:70
 msgid "Maps"
 msgstr "Kaarten"
 
@@ -528,8 +556,7 @@ msgstr "Onze database bevat op het moment geen gereproduceerde kaarten."
 msgid "Your free city maps!"
 msgstr "Uw vrije stadskaarten!"
 
-#: templates/maposmatic/base.html:68
-#: templates/maposmatic/index.html:78
+#: templates/maposmatic/base.html:68 templates/maposmatic/index.html:78
 msgid "Create map"
 msgstr "Maak kaart"
 
@@ -542,8 +569,12 @@ msgid "News"
 msgstr "Nieuws"
 
 #: templates/maposmatic/base.html:78
-msgid "The MapOSMatic rendering daemon is currently not running! Jobs will be queued until the rendering daemon is back up."
-msgstr "De MapOSMatic reproductie daemon draait op het moment niet! Opdrachten zullen in de wachtrij geplaatst worden tot deze terug is."
+msgid ""
+"The MapOSMatic rendering daemon is currently not running! Jobs will be "
+"queued until the rendering daemon is back up."
+msgstr ""
+"De MapOSMatic reproductie daemon draait op het moment niet! Opdrachten "
+"zullen in de wachtrij geplaatst worden tot deze terug is."
 
 #: templates/maposmatic/base.html:89
 msgid "Random map"
@@ -599,12 +630,15 @@ msgid ""
 msgstr ""
 "MapOSMatic is een web service en Vrije Software die u\n"
 " toestaat om kaarten van plaatsen te genereren met gebruikmaking\n"
-" van informatie van <a href=\"http://www.openstreetmap.org\">OpenStreetMap</a>. Een stadskaart\n"
+" van informatie van <a href=\"http://www.openstreetmap.org\">OpenStreetMap</"
+"a>. Een stadskaart\n"
 " bestaat uit twee paginas:"
 
 #: templates/maposmatic/index.html:60
-msgid "The map itself, splitted in squares allowing to easily look for streets;"
-msgstr "De kaart an sich, verdeeld in sectoren om gemakkelijk straten op te zoeken;"
+msgid ""
+"The map itself, splitted in squares allowing to easily look for streets;"
+msgstr ""
+"De kaart an sich, verdeeld in sectoren om gemakkelijk straten op te zoeken;"
 
 #: templates/maposmatic/index.html:61
 msgid "An index of the streets with references to the squares on the map."
@@ -628,23 +662,26 @@ msgid ""
 msgstr ""
 "De gegevens die gebruikt worden om de kaarten te maken komen van\n"
 " OpenStreetMap, het staat u vrij om (onder de\n"
-" voorwaarden van de <a href=\"http://wiki.openstreetmap.org/wiki/License\">OpenStreetMap licentie</a>)\n"
+" voorwaarden van de <a href=\"http://wiki.openstreetmap.org/wiki/License"
+"\">OpenStreetMap licentie</a>)\n"
 " de kaarten te hergebruiken, verkopen, dan wel aanpassen."
 
 #: templates/maposmatic/index.html:79
 msgid "More details"
 msgstr "Meer details"
 
-#: templates/maposmatic/job-page.html:39
-#: templates/maposmatic/job.html:35
+#: templates/maposmatic/job-page.html:39 templates/maposmatic/job.html:35
 #: templates/maposmatic/map.html:35
 #, fuzzy
 msgid "Recreate map"
 msgstr "Maak kaart"
 
 #: templates/maposmatic/job-page.html:48
-msgid "You have been redirected to a similar map, rendered less than 24 hours ago."
-msgstr "U bent naar een soortgelijke kaart omgeleid, deze is minder dan 24 uur geleden gemaakt."
+msgid ""
+"You have been redirected to a similar map, rendered less than 24 hours ago."
+msgstr ""
+"U bent naar een soortgelijke kaart omgeleid, deze is minder dan 24 uur "
+"geleden gemaakt."
 
 #: templates/maposmatic/job-page.html:56
 msgid "Refresh the status"
@@ -652,8 +689,12 @@ msgstr "Ververs de status"
 
 #: templates/maposmatic/job-page.html:56
 #, python-format
-msgid "(the page will refresh automatically every %(refresh)s seconds until the rendering is completed)."
-msgstr "(de pagina zal elke %(refresh)s seconden automatisch verversen tot de reproductie voltooid is)."
+msgid ""
+"(the page will refresh automatically every %(refresh)s seconds until the "
+"rendering is completed)."
+msgstr ""
+"(de pagina zal elke %(refresh)s seconden automatisch verversen tot de "
+"reproductie voltooid is)."
 
 #: templates/maposmatic/job.html:52
 msgid "Cancel request"
@@ -693,38 +734,40 @@ msgstr "Mislukt op"
 msgid "rendering took %(rendering)s"
 msgstr "reproductie duurde %(rendering)s"
 
-#: templates/maposmatic/job.html:73
-#: templates/maposmatic/map-feed.html:44
+#: templates/maposmatic/job.html:73 templates/maposmatic/map-feed.html:44
 #: templates/maposmatic/map.html:57
 msgid "Files: "
 msgstr "Bestanden:"
 
-#: templates/maposmatic/job.html:75
-#: templates/maposmatic/map-feed.html:46
+#: templates/maposmatic/job.html:75 templates/maposmatic/map-feed.html:46
 #: templates/maposmatic/map.html:59
 msgid "Map: "
 msgstr "Kaarten:"
 
-#: templates/maposmatic/job.html:76
-#: templates/maposmatic/map-feed.html:47
+#: templates/maposmatic/job.html:76 templates/maposmatic/map-feed.html:47
 #: templates/maposmatic/map.html:60
 msgid "Index: "
 msgstr "Index:"
 
-#: templates/maposmatic/job.html:79
-#: templates/maposmatic/map-feed.html:50
+#: templates/maposmatic/job.html:79 templates/maposmatic/map-feed.html:50
 #: templates/maposmatic/map.html:63
-msgid "No index was generated because no information was available in OpenStreetMap to create one. Feel free to contribute the missing data yourself. See the <a href=\"http://wiki.openstreetmap.org/wiki/Getting_Involved\">OSM Wiki</a> for a start. "
-msgstr "Er is geen index gegenereerd omdat er geen informatie beschikbaar was in OpenStreetMap om er een te maken. Het staat U vrij de missende informatie te contribueren. Zie de <a href=\"http://wiki.openstreetmap.org/wiki/Getting_Involved\">OSM Wiki</a> voor meer informatie. "
+msgid ""
+"No index was generated because no information was available in OpenStreetMap "
+"to create one. Feel free to contribute the missing data yourself. See the <a "
+"href=\"http://wiki.openstreetmap.org/wiki/Getting_Involved\">OSM Wiki</a> "
+"for a start. "
+msgstr ""
+"Er is geen index gegenereerd omdat er geen informatie beschikbaar was in "
+"OpenStreetMap om er een te maken. Het staat U vrij de missende informatie te "
+"contribueren. Zie de <a href=\"http://wiki.openstreetmap.org/wiki/"
+"Getting_Involved\">OSM Wiki</a> voor meer informatie. "
 
-#: templates/maposmatic/job.html:82
-#: templates/maposmatic/map-feed.html:53
+#: templates/maposmatic/job.html:82 templates/maposmatic/map-feed.html:53
 #: templates/maposmatic/map.html:66
 msgid "The generated files are no longer available."
 msgstr "De gegenereerde bestanden zijn niet langer beschikbaar."
 
-#: templates/maposmatic/map-feed.html:41
-#: templates/maposmatic/map.html:54
+#: templates/maposmatic/map-feed.html:41 templates/maposmatic/map.html:54
 msgid "Rendering completed on"
 msgstr "Reproductie beeindigd op"
 
@@ -737,13 +780,17 @@ msgid ""
 "<em>MapOSMatic</em> covers the whole world but we need\n"
 "contributors to translate and adapt the few parts of <em>MapOSMatic</em>\n"
 "that are country specific."
-msgstr "<em>MapOSMatic</em> beslaat de hele wereld, maar we hebben vrijwilligers nodig om een paar gedeeltes van <em>MapOSMatic</em> te vertalen en aan te passen die landsspecifiek zijn."
+msgstr ""
+"<em>MapOSMatic</em> beslaat de hele wereld, maar we hebben vrijwilligers "
+"nodig om een paar gedeeltes van <em>MapOSMatic</em> te vertalen en aan te "
+"passen die landsspecifiek zijn."
 
 #: templates/maposmatic/new.html:47
 msgid ""
 "To select the city to be rendered, two modes are\n"
 "available:"
-msgstr "Om een plaats te selecteren om te reproduceren zijn twee modi beschikbaar:"
+msgstr ""
+"Om een plaats te selecteren om te reproduceren zijn twee modi beschikbaar:"
 
 #: templates/maposmatic/new.html:52
 msgid ""
@@ -751,7 +798,10 @@ msgid ""
 "  to get a map with precise boundaries of the city when such limits are\n"
 "  available in the database. Otherwise, you need to use a bounding\n"
 "  box."
-msgstr "<em>Gebruikmakend van een administratieve grens</em>. Het staat toe een kaart te maken met een exacte grens van de plaats wanneer deze grens bekend is in de database. Anders zult u een omkaderd gebied moeten kiezen."
+msgstr ""
+"<em>Gebruikmakend van een administratieve grens</em>. Het staat toe een "
+"kaart te maken met een exacte grens van de plaats wanneer deze grens bekend "
+"is in de database. Anders zult u een omkaderd gebied moeten kiezen."
 
 #: templates/maposmatic/new.html:56
 msgid "<em>Using a traditional bounding box</em>."
@@ -764,7 +814,12 @@ msgid ""
 "rendering is completed (that might take some time depending on the queue\n"
 "length), this page will contain links to the generated\n"
 "map."
-msgstr "Nadat uw opdracht ingegeven is zal een pagina worden weergegeven waar de status van uw aanvraag te lezen is. Wanneer de reproductie van uw gekozen kaart voltooid is &mdash; dit kan enige tijd duren afhankelijk van de drukte &mdash; zal u na het verversen van de pagina koppelingen naar uw kaart aantreffen."
+msgstr ""
+"Nadat uw opdracht ingegeven is zal een pagina worden weergegeven waar de "
+"status van uw aanvraag te lezen is. Wanneer de reproductie van uw gekozen "
+"kaart voltooid is &mdash; dit kan enige tijd duren afhankelijk van de drukte "
+"&mdash; zal u na het verversen van de pagina koppelingen naar uw kaart "
+"aantreffen."
 
 #: templates/maposmatic/new.html:69
 msgid "Area selection mode:"
@@ -787,21 +842,40 @@ msgid "Bounding box:"
 msgstr "Omkaderd gebied:"
 
 #: templates/maposmatic/new.html:97
-msgid "Latitude and longitude of the top left and bottom right corners of the area to render."
-msgstr "Breedte- en lengtegraad van de hoeken linksboven en rechtsonder van het te reproduceren kader."
+msgid ""
+"Latitude and longitude of the top left and bottom right corners of the area "
+"to render."
+msgstr ""
+"Breedte- en lengtegraad van de hoeken linksboven en rechtsonder van het te "
+"reproduceren kader."
 
 #: templates/maposmatic/new.html:98
 #, fuzzy
-msgid "You can use <tt>Shift+drag</tt> to zoom on a specific area of the map. If you only want to render part of what the slippy map shows, you can use <tt>Control+drag</tt> to draw the limits of the area to render."
-msgstr "U kunt <tt>Shift+slepen<tt>Shift+drag</tt> gebruiken om in te zoomen op een specifiek gedeelte van de kaart. Als U alleen een bepaald gedeelte van de kaart wilt reproduceren, kunt U <tt>Control+slepen</tt> gebruiken om dit gedeelte te omkaderen."
+msgid ""
+"You can use <tt>Shift+drag</tt> to zoom on a specific area of the map. If "
+"you only want to render part of what the slippy map shows, you can use "
+"<tt>Control+drag</tt> to draw the limits of the area to render."
+msgstr ""
+"U kunt <tt>Shift+slepen<tt>Shift+drag</tt> gebruiken om in te zoomen op een "
+"specifiek gedeelte van de kaart. Als U alleen een bepaald gedeelte van de "
+"kaart wilt reproduceren, kunt U <tt>Control+slepen</tt> gebruiken om dit "
+"gedeelte te omkaderen."
 
 #: templates/maposmatic/new.html:103
 msgid "Generate"
 msgstr "Genereer"
 
 #: templates/maposmatic/new.html:108
-msgid "Wondering why you can't choose some of these results?<br />Their administrative boundaries are missing from the OSM database.<br />Look at the <a href=\"http://wiki.maposmatic.org/doku.php?id=faq\">FAQ</a> for more details."
-msgstr "Vraagt u zich af waarom sommige resultaten niet gekozen kunnen worden?<br />De administratieve grenzen missen in de OSM database.<br />Zie de <a href=\"http://wiki.maposmatic.org/doku.php?id=faq\">veelgestelde vragen</a> voor meer details."
+msgid ""
+"Wondering why you can't choose some of these results?<br />Their "
+"administrative boundaries are missing from the OSM database.<br />Look at "
+"the <a href=\"http://wiki.maposmatic.org/doku.php?id=faq\">FAQ</a> for more "
+"details."
+msgstr ""
+"Vraagt u zich af waarom sommige resultaten niet gekozen kunnen worden?<br /"
+">De administratieve grenzen missen in de OSM database.<br />Zie de <a href="
+"\"http://wiki.maposmatic.org/doku.php?id=faq\">veelgestelde vragen</a> voor "
+"meer details."
 
 #: templates/maposmatic/new.html:109
 msgid "No results."
@@ -817,66 +891,94 @@ msgstr "Volgende"
 
 #~ msgid "Page"
 #~ msgstr "Pagina"
+
 #~ msgid "of"
 #~ msgstr "van"
+
 #~ msgid "All"
 #~ msgstr "Alle"
+
 #~ msgid "Search coming soon!"
 #~ msgstr "Zoekmogelijkheid komt snel!"
+
 #~ msgid "estimated completion time"
 #~ msgstr "geschatte tijd voltooiing"
+
 #~ msgid "Please fill in the form before trying to proceed"
 #~ msgstr "Vul a.u.b. het formulier in alvorens verder te gaan"
+
 #~ msgid ""
 #~ "This place cannot be rendered by MapOSMatic, administrative boundary "
 #~ "missing. Please contribute !"
 #~ msgstr ""
 #~ "Deze plaats kan niet door MapOSMatic worden gereproduceerd, de "
 #~ "administratieve grens ontbreekt. Gelieve bij te dragen!"
+
 #~ msgid "search"
 #~ msgstr "Zoek"
+
 #~ msgid "Title"
 #~ msgstr "Titel"
+
 #~ msgid "Location"
 #~ msgstr "Locatie"
+
 #~ msgid "Job status"
 #~ msgstr "Opdracht status"
+
 #~ msgid "Submission at"
 #~ msgstr "Datum van aanvraag"
+
 #~ msgid "Rendering finished at"
 #~ msgstr "Reproductie beeindigd op"
+
 #~ msgid "Position in queue"
 #~ msgstr "Nummer in de wachtrij"
+
 #~ msgid "not started"
 #~ msgstr "niet gestart"
+
 #~ msgid "not finished"
 #~ msgstr "niet beeindigd"
+
 #~ msgid "Thumbnail"
 #~ msgstr "Miniatuur"
+
 #~ msgid "Language:"
 #~ msgstr "Taal:"
+
 #~ msgid "Map <i>%(job_t)s</i> Status"
 #~ msgstr "Status van de kaart <i>%(job_t)s</i>"
+
 #~ msgid "Map title"
 #~ msgstr "Kaarttitel"
+
 #~ msgid "Administrative city"
 #~ msgstr "Administratieve grens"
+
 #~ msgid "Bounding-box coordinates"
 #~ msgstr "Coordinaten van het omkaderd gebied (lengte/breedte)"
+
 #~ msgid "Status"
 #~ msgstr "Status"
+
 #~ msgid "Submission time"
 #~ msgstr "Datum van aanvraag"
+
 #~ msgid "Start of rendering time"
 #~ msgstr "Begintijd van de reproductie"
+
 #~ msgid "Rendering not started yet"
 #~ msgstr "Reproductie is nog niet begonnen"
+
 #~ msgid "End of rendering time"
 #~ msgstr "Eindtijd van de reproductie"
+
 #~ msgid "Rendering not finished yet"
 #~ msgstr "Reproductie is nog niet voltooid"
+
 #~ msgid "Current position in queue"
 #~ msgstr "Positie van uw aanvraag in de wachtrij"
+
 #~ msgid "Result files"
 #~ msgstr "Gegenereerde bestanden"
-
