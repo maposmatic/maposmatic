@@ -48,9 +48,9 @@
 {% else %}
 <p>
 {% ifequal form.cleaned_data.query "" %}
-  {% blocktrans %}No map matches your query.{% endblocktrans %}
-{% else %}
   {% blocktrans %}Our database does not contain any rendered maps for the moment.{% endblocktrans %}
+{% else %}
+  {% blocktrans %}No map matches your query.{% endblocktrans %}
 {% endifequal %}
 </p>
 {% endif %}
