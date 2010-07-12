@@ -34,7 +34,7 @@
   <form action="{% url maps %}" method="get">{{ form.query }}<input type="submit" value="{% trans "Search" %}" /></form>
 </div>
 
-<h1><a href="{% url maps %}">{% trans "Maps" %}</a> <a href="/feeds/maps/"><img src="/smedia/feed.png" class="feedicon" title="{% trans "MapOSMatic maps feed" %}" /></h1>
+<h1><a href="{% url maps %}">{% trans "Maps" %}</a> <a href="/feeds/maps/"><img src="/smedia/feed.png" class="feedicon" title="{% trans "MapOSMatic maps feed" %}" /></a></h1>
 
 {% with maps as data %}{% with form.cleaned_data.query as query %}{% include "maposmatic/paginator.html" %}{% endwith %}{% endwith %}
 
