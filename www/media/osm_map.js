@@ -27,6 +27,12 @@
 
 /* OSM slippy map management. */
 
+/* Maximum length of the bounding box to be rendered. This length is
+ * checked in both directions (longitude and latitude).
+ * Note: if you change this you should probably change
+ * BBOX_MAXIMUM_LENGTH_IN_METERS in settings_local.py too. */
+const BBOX_MAXIMUM_LENGTH_IN_KM = 20
+
 var map = null;
 var update_lock = 0;
 var epsg_display_projection = new OpenLayers.Projection('EPSG:4326');
@@ -52,6 +58,25 @@ function updateFormBbox(bounds)
     getUpperLeftLon().value = bounds.left.toFixed(4);
     getBottomRightLat().value = bounds.bottom.toFixed(4);
     getBottomRightLon().value = bounds.right.toFixed(4);
+
+    upper_left   = new OpenLayers.LonLat(bounds.left, bounds.top);
+    upper_right  = new OpenLayers.LonLat(bounds.right, bounds.top);
+    bottom_right = new OpenLayers.LonLat(bounds.right, bounds.bottom);
+
+    bbox_width  = OpenLayers.Util.distVincenty(upper_left, upper_right)
+    bbox_height = OpenLayers.Util.distVincenty(upper_right, bottom_right)
+
+    if (bbox_width > BBOX_MAXIMUM_LENGTH_IN_KM ||
+        bbox_height > BBOX_MAXIMUM_LENGTH_IN_KM)
+    {
+        document.getElementById('bboxtoolarge').style.display = 'block'
+        document.getElementById('id_go_next_btn').disabled = true
+    }
+    else
+    {
+        document.getElementById('bboxtoolarge').style.display = 'none'
+        document.getElementById('id_go_next_btn').disabled = false
+    }
 }
 
 /* Update the map on form field modification. */
