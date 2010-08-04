@@ -68,3 +68,4 @@ def feedparsed(value):
 register.filter('job_status_to_str', job_status_to_str)
 register.filter('job_status_to_icon_name', job_status_to_icon_name)
 register.filter('feedparsed', feedparsed)
+register.filter('abs', lambda x: abs(x))

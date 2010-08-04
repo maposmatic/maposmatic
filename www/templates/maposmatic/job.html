@@ -78,6 +78,10 @@
 
     {% if not job.output_files.indeces|length %}{% blocktrans %}No index was generated because no information was available in OpenStreetMap to create one. Feel free to contribute the missing data yourself. See the <a href="http://wiki.openstreetmap.org/wiki/Getting_Involved">OSM Wiki</a> for a start. {% endblocktrans %}{% endif %}
 
+
+    <a href="http://www.osm.org/?{% if job.administrative_city %}relation={{ job.administrative_osmid|abs }}{% else %}maxlat={{ job.lat_upper_left }}&amp;maxlon={{ job.lon_bottom_right }}&amp;minlat={{ job.lat_bottom_right  }}&amp;minlon={{ job.lon_upper_left  }}{% endif %}">{% trans "View on OpenStreetMap" %}</a>
+
+
     {% else %}
       {% if job.is_obsolete %}<p class="nofiles">{% trans "The generated files are no longer available." %}</p>{% endif %}
     {% endif %}
