@@ -111,9 +111,17 @@ class MapRenderingJobForm(forms.ModelForm):
                 val = cleaned_data.get(f)
                 if val is None:
                     msg = _(u"Required")
-                    self._errors[f] = forms.util.ErrorList([msg])
+                    self._errors['bbox'] = forms.util.ErrorList([msg])
                     del cleaned_data[f]
 
+            # Make sure that bbox and admin modes are exclusive
+            cleaned_data["administrative_city"] = ''
+            cleaned_data["administrative_osmid"] = None
+
+            # Don't try to instanciate a bounding box with empty coordinates
+            if self._errors:
+                return cleaned_data
+                
             lat_upper_left = cleaned_data.get("lat_upper_left")
             lon_upper_left = cleaned_data.get("lon_upper_left")
             lat_bottom_right = cleaned_data.get("lat_bottom_right")
@@ -128,10 +136,6 @@ class MapRenderingJobForm(forms.ModelForm):
                 or metric_size_long > www.settings.BBOX_MAXIMUM_LENGTH_IN_METERS):
                 msg = _(u"Bounding Box too large")
                 self._errors['bbox'] = forms.util.ErrorList([msg])
-
-            # Make sure that bbox and admin modes are exclusive
-            cleaned_data["administrative_city"] = ''
-            cleaned_data["administrative_osmid"] = None
 
         return cleaned_data
 

@@ -20,14 +20,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: mapOSMatic 0.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-07-07 15:36+0200\n"
+"POT-Creation-Date: 2010-08-04 15:56+0200\n"
 "PO-Revision-Date: 2009-12-26 20:47+0100\n"
 "Last-Translator: Thomas Petazzoni <thomas.petazzoni@enix.org>\n"
 "Language-Team: FR <LL@li.org>\n"
-"Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: \n"
 
 #: settings.py:199
 msgid "No localization"
@@ -70,7 +70,7 @@ msgstr "Titre de la carte obligatoire"
 msgid "Required"
 msgstr "Obligatoire"
 
-#: maposmatic/forms.py:129
+#: maposmatic/forms.py:137
 msgid "Bounding Box too large"
 msgstr "Zone géographique trop grande"
 
@@ -183,8 +183,8 @@ msgid ""
 "href=\"http://www.openstreetmap.org\">OpenStreetMap</a> and free\n"
 "software contributor of Rennes area, France. From his idea, a group of\n"
 "crazy <a\n"
-"href=\"http://en.wikipedia.org/wiki/Hacker_%28programmer_subculture"
-"%29\">hackers</a>\n"
+"href=\"http://en.wikipedia.org/wiki/Hacker_%28programmer_subculture%29"
+"\">hackers</a>\n"
 "met together during a one-week <em>Hackfest</em> in August 2009 and\n"
 "brought the idea of Gilles Lamiral to life by writing the code and\n"
 "named the project <strong>MapOSMatic</strong>. The group of crazy\n"
@@ -515,13 +515,11 @@ msgid "MapOSMatic maps feed"
 msgstr ""
 
 #: templates/maposmatic/all_maps.html:51
-#, python-format
-msgid "No map starts with %(current_letter)s in our database!"
+msgid "Our database does not contain any rendered maps for the moment."
 msgstr ""
-"Aucune carte ne commence par %(current_letter)s dans notre base de données !"
 
 #: templates/maposmatic/all_maps.html:53
-msgid "Our database does not contain any rendered maps for the moment."
+msgid "No map matches your query."
 msgstr ""
 
 #: templates/maposmatic/base.html:57
@@ -811,16 +809,16 @@ msgid ""
 "Latitude and longitude of the top left and bottom right corners of the area "
 "to render."
 msgstr ""
+"Latitude et longitude des coins supérieur gauche et inférieur droit de la "
+"zone à rendre."
 
 #: templates/maposmatic/new.html:98
 msgid ""
-"You can use <tt>Shift+drag</tt> to zoom on a specific area of the map. If "
-"you only want to render part of what the slippy map shows, you can use "
-"<tt>Control+drag</tt> to draw the limits of the area to render."
+"You can use <tt>Shift+drag</tt> to zoom on a specific area of the map. You "
+"can use <tt>Control+drag</tt> to draw the limits of the area to render."
 msgstr ""
 "Vous pouvez utiliser <tt>Shift+cliquer-déplacer</tt> pour zoomer sur une "
-"zone spécifique de la carte. Si vous ne souhaitez le rendu que d'une partie "
-"de ce qu'affiche la mini-carte, vous pouvez utiliser <tt>Contrôle+cliquer-"
+"zone spécifique de la carte. Vous pouvez utiliser <tt>Contrôle+cliquer-"
 "déplacer</tt> pour tracer les limites de la zone à rendre."
 
 #: templates/maposmatic/new.html:103
@@ -850,6 +848,11 @@ msgstr "Précédent"
 #: templates/maposmatic/paginator.html:37
 msgid "Next"
 msgstr "Suivant"
+
+#~ msgid "No map starts with %(current_letter)s in our database!"
+#~ msgstr ""
+#~ "Aucune carte ne commence par %(current_letter)s dans notre base de "
+#~ "données !"
 
 #~ msgid "Page"
 #~ msgstr "Page"

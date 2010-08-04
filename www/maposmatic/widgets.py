@@ -41,30 +41,20 @@ class AreaWidget(forms.TextInput):
 
     def render(self, name, value, attrs=None):
         """
-        Render a map
+        Render the bbox selection widget.
         """
-        upper_left_lat, upper_left_lon = 0, 0
-        lower_right_lat, lower_right_lon = 0, 0
-
+        # Initially the widget shows no bounding box and shows an area that
+        # contains the France
         if value:
-            if len(value) == 2:
-                upper_left = value[0]
-                lower_right = value[1]
-                if hasattr(upper_left, 'x') and hasattr(upper_left, 'y'):
-                    upper_left_lon = str(upper_left.x)
-                    upper_left_lat = str(upper_left.y)
-                elif len(upper_left) == 2:
-                    upper_left_lon = upper_left[1]
-                    upper_left_lat = upper_left[0]
-                if hasattr(lower_right, 'x') and hasattr(lower_right, 'y'):
-                    lower_right_lon = str(lower_right.x)
-                    lower_right_lat = str(lower_right.y)
-                elif len(lower_right) == 2:
-                    lower_right_lon = lower_right[1]
-                    lower_right_lat = lower_right[0]
+            upper_left_lat, upper_left_lon, \
+                lower_right_lat, lower_right_lon = value[0]
+            area_upper_left_lat, area_upper_left_lon, \
+                area_lower_right_lat, area_lower_right_lon = value[1]
         else:
             upper_left_lat, upper_left_lon, \
-                lower_right_lat, lower_right_lon = settings.BASE_BOUNDING_BOX
+                lower_right_lat, lower_right_lon = '', '', '', ''
+            area_upper_left_lat, area_upper_left_lon, \
+                area_lower_right_lat, area_lower_right_lon = settings.BASE_BOUNDING_BOX
 
         tpl = u"""<div id="map"></div>
         <div id="map_bb">
@@ -81,8 +71,20 @@ class AreaWidget(forms.TextInput):
             <input type="text" name="lon_bottom_right" id="lon_bottom_right"
                    onchange="updateMap();" value="%(br_lon)s"
                    title="%(br_lon_help)s" />
+            <input type="hidden" name="area_lat_upper_left"
+                   id="area_lat_upper_left" value="%(area_tl_lat)s">
+            <input type="hidden" name="area_lon_upper_left"
+                   id="area_lon_upper_left" value="%(area_tl_lon)s">
+            <input type="hidden" name="area_lat_bottom_right"
+                   id="area_lat_bottom_right" value="%(area_br_lat)s">
+            <input type="hidden" name="area_lon_bottom_right"
+                   id="area_lon_bottom_right" value="%(area_br_lon)s">
         </div>""" % {'tl_lat': upper_left_lat, 'tl_lon': upper_left_lon,
                      'br_lat': lower_right_lat, 'br_lon': lower_right_lon,
+                     'area_tl_lat': area_upper_left_lat,
+                     'area_tl_lon': area_upper_left_lon,
+                     'area_br_lat': area_lower_right_lat,
+                     'area_br_lon': area_lower_right_lon,
                      'tl_lat_help': _("Latitude of the top left corner"),
                      'tl_lon_help': _("Longitude of the top left corner"),
                      'br_lat_help': _("Latitude of the bottom right corner"),
@@ -94,17 +96,10 @@ class AreaWidget(forms.TextInput):
         """
         Return the appropriate values
         """
-        values = []
-        for keys in (('lat_upper_left', 'lon_upper_left',),
-                     ('lat_bottom_right', 'lon_bottom_right')):
-            value = []
-            for key in keys:
-                val = data.get(key, None)
-                if not val:
-                    return []
-                value.append(val)
-            values.append(value)
-        return values
+        return ((data['lat_upper_left'], data['lon_upper_left'],
+                 data['lat_bottom_right'], data['lon_bottom_right']),
+                (data['area_lat_upper_left'], data['area_lon_upper_left'],
+                 data['area_lat_bottom_right'], data['area_lon_bottom_right']))
 
 class AreaField(forms.MultiValueField):
     '''

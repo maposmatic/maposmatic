@@ -31,46 +31,72 @@ var map = null;
 var update_lock = 0;
 var epsg_display_projection = new OpenLayers.Projection('EPSG:4326');
 var epsg_projection = new OpenLayers.Projection('EPSG:900913');
+var bbox_style = {fill: true, fillColor: "#FFFFFF", fillOpacity: 0.5,
+    stroke: true, strokeOpacity: 0.8, strokeColor: "#FF0000", strokeWidth: 2};
 
 function getUpperLeftLat() { return document.getElementById('lat_upper_left'); }
 function getUpperLeftLon() { return document.getElementById('lon_upper_left'); }
 function getBottomRightLat() { return document.getElementById('lat_bottom_right'); }
 function getBottomRightLon() { return document.getElementById('lon_bottom_right'); }
+function getAreaUpperLeftLat() { return document.getElementById('area_lat_upper_left'); }
+function getAreaUpperLeftLon() { return document.getElementById('area_lon_upper_left'); }
+function getAreaBottomRightLat() { return document.getElementById('area_lat_bottom_right'); }
+function getAreaBottomRightLon() { return document.getElementById('area_lon_bottom_right'); }
 
-function updateFormWithLonLats(topleft, bottomright)
+/* Update form fields on bbox drawing. */
+function updateFormBbox(bounds)
 {
-    topleft = topleft.transform(epsg_projection, epsg_display_projection);
-    bottomright = bottomright.transform(epsg_projection, epsg_display_projection);
+    bounds = bounds.transform(epsg_projection, epsg_display_projection);
 
-    getUpperLeftLat().value = topleft.lat.toFixed(4);
-    getUpperLeftLon().value = topleft.lon.toFixed(4);
-    getBottomRightLat().value = bottomright.lat.toFixed(4);
-    getBottomRightLon().value = bottomright.lon.toFixed(4);
+    getUpperLeftLat().value = bounds.top.toFixed(4);
+    getUpperLeftLon().value = bounds.left.toFixed(4);
+    getBottomRightLat().value = bounds.bottom.toFixed(4);
+    getBottomRightLon().value = bounds.right.toFixed(4);
+}
+
+/* Update the map on form field modification. */
+function updateMap(vectorLayer)
+{
+    if (getUpperLeftLon().value!="" && getUpperLeftLat().value!="" &&
+        getBottomRightLon().value!="" && getBottomRightLat().value!="")
+    {
+        var bbox_bounds = new OpenLayers.Bounds(
+            getUpperLeftLon().value, getUpperLeftLat().value,
+            getBottomRightLon().value, getBottomRightLat().value);
+        bbox_bounds.transform(epsg_display_projection, epsg_projection);
+        var feature = new OpenLayers.Feature.Vector(
+            bbox_bounds.toGeometry(), {}, bbox_style);
+        vectorLayer.addFeatures(feature);
+        closest = true
+    }
+    else
+    {
+        closest = false
+    }
+
+    var bounds = new OpenLayers.Bounds(getAreaUpperLeftLon().value,
+                                       getAreaUpperLeftLat().value,
+                                       getAreaBottomRightLon().value,
+                                       getAreaBottomRightLat().value);
+    bounds.transform(epsg_display_projection, epsg_projection);
+
+    update_lock = 1;
+    map.zoomToExtent(bounds, closest);
+    update_lock = 0;
 }
 
 /** Map Zoom/Move events callback: update form fields on zoom action. */
-function updateForm()
+function updateFormArea()
 {
     if (update_lock)
       return;
 
     var bounds = map.getExtent();
-    updateFormWithLonLats(new OpenLayers.LonLat(bounds.left, bounds.top),
-                          new OpenLayers.LonLat(bounds.right, bounds.bottom));
-}
-
-/* Update the map on form field modification. */
-function updateMap()
-{
-    var bounds = new OpenLayers.Bounds(getUpperLeftLon().value,
-                                       getUpperLeftLat().value,
-                                       getBottomRightLon().value,
-                                       getBottomRightLat().value);
-    bounds.transform(epsg_display_projection, epsg_projection);
-
-    update_lock = 1;
-    map.zoomToExtent(bounds);
-    update_lock = 0;
+    bounds = bounds.transform(epsg_projection, epsg_display_projection);
+    getAreaUpperLeftLat().value = bounds.top.toFixed(4);
+    getAreaUpperLeftLon().value = bounds.left.toFixed(4);
+    getAreaBottomRightLat().value = bounds.bottom.toFixed(4);
+    getAreaBottomRightLon().value = bounds.right.toFixed(4);
 }
 
 /* Main initialisation function. Must be called before the map is manipulated. */
@@ -90,25 +116,37 @@ function mapInit()
     layerTilesMapnik = new OpenLayers.Layer.OSM.Mapnik("Mapnik");
     map.addLayer(layerTilesMapnik);
 
+    var vectorLayer = new OpenLayers.Layer.Vector("Overlay");
+    map.addLayer(vectorLayer);
+
     var selectControl = new OpenLayers.Control();
     OpenLayers.Util.extend(selectControl, {
-      draw: function() {
-        this.box = new OpenLayers.Handler.Box(selectControl,
-          {'done': this.notice}, {keyMask: OpenLayers.Handler.MOD_CTRL});
-        this.box.activate();
-      },
+        draw: function() {
+            this.box = new OpenLayers.Handler.Box(selectControl,
+                {'done': this.notice}, {keyMask: OpenLayers.Handler.MOD_CTRL});
+            this.box.activate();
+        },
 
-      notice: function(bounds) {
-        updateFormWithLonLats(
-          map.getLonLatFromPixel(new OpenLayers.Pixel(bounds.left, bounds.top)),
-          map.getLonLatFromPixel(new OpenLayers.Pixel(bounds.right, bounds.bottom)));
-      }
+        notice: function(pxbounds) {
+            ltpixel = map.getLonLatFromPixel(
+                new OpenLayers.Pixel(pxbounds.left, pxbounds.top));
+            rbpixel = map.getLonLatFromPixel(
+                new OpenLayers.Pixel(pxbounds.right, pxbounds.bottom));
+            bounds = new OpenLayers.Bounds();
+            bounds.extend(ltpixel);
+            bounds.extend(rbpixel);
+            var feature = new OpenLayers.Feature.Vector(
+                bounds.toGeometry(), {}, bbox_style);
+            vectorLayer.destroyFeatures()
+            vectorLayer.addFeatures(feature);
+            updateFormBbox(bounds);
+        }
     });
     map.addControl(selectControl);
 
-    map.events.register('zoomend', map, updateForm);
-    map.events.register('moveend', map, updateForm);
-    updateMap();
+    map.events.register('zoomend', map, updateFormArea);
+    map.events.register('moveend', map, updateFormArea);
+    updateMap(vectorLayer);
 }
 
 function setFormActivation(active) {
