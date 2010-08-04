@@ -157,6 +157,8 @@ function mapInit()
                 new OpenLayers.Pixel(pxbounds.left, pxbounds.top));
             rbpixel = map.getLonLatFromPixel(
                 new OpenLayers.Pixel(pxbounds.right, pxbounds.bottom));
+            if (ltpixel.equals(rbpixel))
+                return;
             bounds = new OpenLayers.Bounds();
             bounds.extend(ltpixel);
             bounds.extend(rbpixel);
