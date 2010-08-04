@@ -1,3 +1,4 @@
 *~
 www/maposmatic.wsgi
 www/locale/*/LC_MESSAGES/*.mo
+www/settings_local.py
