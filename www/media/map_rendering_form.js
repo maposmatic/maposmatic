@@ -1,13 +1,13 @@
 /* coding: utf-8 -*- mode: espresso; indent-tabs-mode: nil -*-
  *
  * maposmatic, the web front-end of the MapOSMatic city map generation system
- * Copyright (C) 2009 David Decotigny
- * Copyright (C) 2009 Frédéric Lehobey
- * Copyright (C) 2009 David Mentré
- * Copyright (C) 2009 Maxime Petazzoni
- * Copyright (C) 2009 Thomas Petazzoni
- * Copyright (C) 2009 Gaël Utard
- * Copyright (C) 2009 Étienne Loks
+ * Copyright (C) 2009-2010 David Decotigny
+ * Copyright (C) 2009-2010 Frédéric Lehobey
+ * Copyright (C) 2009-2010 David Mentré
+ * Copyright (C) 2009-2010 Maxime Petazzoni
+ * Copyright (C) 2009-2010 Thomas Petazzoni
+ * Copyright (C) 2009-2010 Gaël Utard
+ * Copyright (C) 2009-2010 Étienne Loks
  * Copyright (C) 2010 Pierre Mauduit
  *
  * This program is free software: you can redistribute it and/or modify
