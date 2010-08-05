@@ -19,7 +19,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: mapOSMatic 0.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-07-07 15:37+0200\n"
+"POT-Creation-Date: 2010-08-05 19:24+0200\n"
 "PO-Revision-Date: 2010-07-07 15:08+0100\n"
 "Last-Translator: Jeroen van Rijn <jvrnix@gmail.com>\n"
 "Language-Team: MapOSMatic Dutch Translation team\n"
@@ -30,7 +30,7 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Generator: Virtaal 0.5.0\n"
 
-#: settings.py:199
+#: settings.py:201
 msgid "No localization"
 msgstr "Geen vertaling"
 
@@ -71,7 +71,7 @@ msgstr "Kaartnaam is vereist"
 msgid "Required"
 msgstr "Vereist"
 
-#: maposmatic/forms.py:129
+#: maposmatic/forms.py:137 templates/maposmatic/new.html:98
 msgid "Bounding Box too large"
 msgstr "Het omkaderd gebied is te groot"
 
@@ -85,19 +85,19 @@ msgstr "Kaart voor %(title)s (bestandsindeling %(format)s)"
 msgid "%(title)s %(format)s Index"
 msgstr "Straatindex voor %(title)s (bestandsindeling %(format)s)"
 
-#: maposmatic/widgets.py:86
+#: maposmatic/widgets.py:88
 msgid "Latitude of the top left corner"
 msgstr "Breedtegraad van de hoek linksboven"
 
-#: maposmatic/widgets.py:87
+#: maposmatic/widgets.py:89
 msgid "Longitude of the top left corner"
 msgstr "Lengtegraad van de hoek linksboven"
 
-#: maposmatic/widgets.py:88
+#: maposmatic/widgets.py:90
 msgid "Latitude of the bottom right corner"
 msgstr "Breedtegraad van de hoek rechtsonder"
 
-#: maposmatic/widgets.py:89
+#: maposmatic/widgets.py:91
 msgid "Longitude of the bottom right corner"
 msgstr "Lengtegraad van de hoek rechtsonder"
 
@@ -544,13 +544,12 @@ msgid "MapOSMatic maps feed"
 msgstr "MapOSMatic kaarten webfeed"
 
 #: templates/maposmatic/all_maps.html:51
-#, python-format
-msgid "No map starts with %(current_letter)s in our database!"
-msgstr "Geen kaart begint met %(current_letter)s in onze database!"
-
-#: templates/maposmatic/all_maps.html:53
 msgid "Our database does not contain any rendered maps for the moment."
 msgstr "Onze database bevat op het moment geen gereproduceerde kaarten."
+
+#: templates/maposmatic/all_maps.html:53
+msgid "No map matches your query."
+msgstr ""
 
 #: templates/maposmatic/base.html:57
 msgid "Your free city maps!"
@@ -762,7 +761,11 @@ msgstr ""
 "contribueren. Zie de <a href=\"http://wiki.openstreetmap.org/wiki/"
 "Getting_Involved\">OSM Wiki</a> voor meer informatie. "
 
-#: templates/maposmatic/job.html:82 templates/maposmatic/map-feed.html:53
+#: templates/maposmatic/job.html:82
+msgid "View on OpenStreetMap"
+msgstr ""
+
+#: templates/maposmatic/job.html:86 templates/maposmatic/map-feed.html:53
 #: templates/maposmatic/map.html:66
 msgid "The generated files are no longer available."
 msgstr "De gegenereerde bestanden zijn niet langer beschikbaar."
@@ -841,7 +844,7 @@ msgstr "Taal van de kaart index:"
 msgid "Bounding box:"
 msgstr "Omkaderd gebied:"
 
-#: templates/maposmatic/new.html:97
+#: templates/maposmatic/new.html:100
 msgid ""
 "Latitude and longitude of the top left and bottom right corners of the area "
 "to render."
@@ -849,22 +852,22 @@ msgstr ""
 "Breedte- en lengtegraad van de hoeken linksboven en rechtsonder van het te "
 "reproduceren kader."
 
-#: templates/maposmatic/new.html:98
+#: templates/maposmatic/new.html:101
+#, fuzzy
 msgid ""
-"You can use <tt>Shift+drag</tt> to zoom on a specific area of the map. If "
-"you only want to render part of what the slippy map shows, you can use "
-"<tt>Control+drag</tt> to draw the limits of the area to render."
+"You can use <tt>Shift+drag</tt> to zoom on a specific area of the map. You "
+"can use <tt>Control+drag</tt> to draw the limits of the area to render."
 msgstr ""
 "U kunt <tt>Shift+drag</tt> gebruiken om in te zoomen op een specifiek "
 "gedeelte van de kaart. Als U alleen een bepaald gedeelte van de kaart wilt "
 "reproduceren, kunt U <tt>Control+slepen</tt> gebruiken om dit gedeelte te "
 "omkaderen."
 
-#: templates/maposmatic/new.html:103
+#: templates/maposmatic/new.html:106
 msgid "Generate"
 msgstr "Genereer"
 
-#: templates/maposmatic/new.html:108
+#: templates/maposmatic/new.html:111
 msgid ""
 "Wondering why you can't choose some of these results?<br />Their "
 "administrative boundaries are missing from the OSM database.<br />Look at "
@@ -876,7 +879,7 @@ msgstr ""
 "\"http://wiki.maposmatic.org/doku.php?id=faq\">veelgestelde vragen</a> voor "
 "meer details."
 
-#: templates/maposmatic/new.html:109
+#: templates/maposmatic/new.html:112
 msgid "No results."
 msgstr "Geen resultaten gevonden."
 
@@ -887,6 +890,9 @@ msgstr "Vorige"
 #: templates/maposmatic/paginator.html:37
 msgid "Next"
 msgstr "Volgende"
+
+#~ msgid "No map starts with %(current_letter)s in our database!"
+#~ msgstr "Geen kaart begint met %(current_letter)s in onze database!"
 
 #~ msgid "Page"
 #~ msgstr "Pagina"

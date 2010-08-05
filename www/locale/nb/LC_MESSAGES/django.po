@@ -8,15 +8,16 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-07-07 15:36+0200\n"
+"POT-Creation-Date: 2010-08-05 19:24+0200\n"
 "PO-Revision-Date: 2010-08-05 14:38+0100\n"
 "Last-Translator: Hans Fredrik Nordhaug <hans@nordhaug.priv.no>\n"
 "Language-Team: Norwegian Bokmål <i18n-nb@lister.ping.ui.no>\n"
+"Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: settings.py:199
+#: settings.py:201
 msgid "No localization"
 msgstr "Ingen språktilpassing"
 
@@ -57,7 +58,7 @@ msgstr "Tittel på kartet må oppgis"
 msgid "Required"
 msgstr "Må oppgis"
 
-#: maposmatic/forms.py:129
+#: maposmatic/forms.py:137 templates/maposmatic/new.html:98
 msgid "Bounding Box too large"
 msgstr "Avgrensingsboks for stor"
 
@@ -71,19 +72,19 @@ msgstr "%(title)s %(format)s kart"
 msgid "%(title)s %(format)s Index"
 msgstr "%(title)s %(format)s indeks"
 
-#: maposmatic/widgets.py:86
+#: maposmatic/widgets.py:88
 msgid "Latitude of the top left corner"
 msgstr "Breddegrad for hjørnet øverst til venstre"
 
-#: maposmatic/widgets.py:87
+#: maposmatic/widgets.py:89
 msgid "Longitude of the top left corner"
 msgstr "Lengdegrad for hjørnet øverst til venstre"
 
-#: maposmatic/widgets.py:88
+#: maposmatic/widgets.py:90
 msgid "Latitude of the bottom right corner"
 msgstr "Breddegrad for hjørnet nederst til høyre"
 
-#: maposmatic/widgets.py:89
+#: maposmatic/widgets.py:91
 msgid "Longitude of the bottom right corner"
 msgstr "Lengdegrad for hjørnet nederst til høyre"
 
@@ -108,16 +109,18 @@ msgid "Rendering was successful, but the files are no longer available"
 msgstr "Kartene ble vellykket tegnet, men filene er ikke lenger tilgjengelig"
 
 #: maposmatic/templatetags/extratags.py:47
-msgid "Rendering failed, and the incomplete files were removed. Please contact contact@maposmatic.org"
-msgstr "Klarte ikke tegne kartet, og de ufullstendige filene er fjernet. Kontakt contact@maposmatic.org"
+msgid ""
+"Rendering failed, and the incomplete files were removed. Please contact "
+"contact@maposmatic.org"
+msgstr ""
+"Klarte ikke tegne kartet, og de ufullstendige filene er fjernet. Kontakt "
+"contact@maposmatic.org"
 
 #: maposmatic/templatetags/extratags.py:50
 msgid "Rendering was cancelled by the user"
 msgstr "Tegning ble avbrutt av brukeren"
 
-#: templates/404.html:3
-#: templates/500.html:3
-#: templates/maposmatic/base.html:67
+#: templates/404.html:3 templates/500.html:3 templates/maposmatic/base.html:67
 msgid "Home"
 msgstr "Hjem"
 
@@ -153,8 +156,7 @@ msgstr "Tjenerfeil <em>(500)</em>"
 msgid "There's been an error."
 msgstr "Det har oppstått en feil."
 
-#: templates/maposmatic/about.html:35
-#: templates/maposmatic/base.html:72
+#: templates/maposmatic/about.html:35 templates/maposmatic/base.html:72
 msgid "About"
 msgstr "Om"
 
@@ -169,7 +171,8 @@ msgid ""
 "href=\"http://www.openstreetmap.org\">OpenStreetMap</a> and free\n"
 "software contributor of Rennes area, France. From his idea, a group of\n"
 "crazy <a\n"
-"href=\"http://en.wikipedia.org/wiki/Hacker_%28programmer_subculture%29\">hackers</a>\n"
+"href=\"http://en.wikipedia.org/wiki/Hacker_%28programmer_subculture"
+"%29\">hackers</a>\n"
 "met together during a one-week <em>Hackfest</em> in August 2009 and\n"
 "brought the idea of Gilles Lamiral to life by writing the code and\n"
 "named the project <strong>MapOSMatic</strong>. The group of crazy\n"
@@ -177,10 +180,14 @@ msgid ""
 "idea!"
 msgstr ""
 "MapOSMatic ble startet takket være en idé fra \n"
-"Gilles Lamiral, en <a href=\"http://www.openstreetmap.org\">OpenStreetMap</a>- og\n"
-"friprogramvare-bidragsyter fra Rennes-område i Frankrike. I løpet av en ukes <em>Hackfest</em> \n"
-"i august 2009 fikk en gruppe gale <a href=\"http://en.wikipedia.org/wiki/Hacker_%28programmer_subculture%29\">hackere</a>\n"
-"brakt idéen til Gilles Lamiral til live ved å skrive koden og kalle prosjektet <strong>MapOSMatic</strong>. \n"
+"Gilles Lamiral, en <a href=\"http://www.openstreetmap.org\">OpenStreetMap</"
+"a>- og\n"
+"friprogramvare-bidragsyter fra Rennes-område i Frankrike. I løpet av en ukes "
+"<em>Hackfest</em> \n"
+"i august 2009 fikk en gruppe gale <a href=\"http://en.wikipedia.org/wiki/"
+"Hacker_%28programmer_subculture%29\">hackere</a>\n"
+"brakt idéen til Gilles Lamiral til live ved å skrive koden og kalle "
+"prosjektet <strong>MapOSMatic</strong>. \n"
 "Gruppen med gale hackere vil takke Gilles for at han delte sin gode idé!"
 
 #: templates/maposmatic/about.html:53
@@ -190,7 +197,8 @@ msgid ""
 "href=\"http://www.fsf.org/licensing/licenses/agpl-3.0.html\">AGPLv3</a>.\n"
 msgstr ""
 "MapOSMatic er selvfølgelig friprogramvare,\n"
-"lisensiert under <a href=\"http://www.fsf.org/licensing/licenses/agpl-3.0.html\">AGPLv3</a>.\n"
+"lisensiert under <a href=\"http://www.fsf.org/licensing/licenses/agpl-3.0."
+"html\">AGPLv3</a>.\n"
 
 #: templates/maposmatic/about.html:60
 msgid "How does it work?"
@@ -210,26 +218,35 @@ msgid ""
 "the database, which allows to keep it up to date with the new\n"
 "contributions of OpenStreetMap users."
 msgstr ""
-"På tjeneren vår kjører vi en <a href=\"http://www.postgresql.org\">PostgreSQL</a>-tjener med \n"
-"<a href=\"http://postgis.refractions.net\">PostGIS</a>-utvidelsen. På denne PostgreSQL-tjeneren \n"
-"har vi lastet inn <a href=\"http://wiki.openstreetmap.org/wiki/Planet.osm\">OpenStreetMap-\n"
-"data for hele verden</a> ved hjelp av <a href=\"http://wiki.openstreetmap.org/wiki/Osm2pgsql\">osm2pgsql</a>\n"
+"På tjeneren vår kjører vi en <a href=\"http://www.postgresql.org"
+"\">PostgreSQL</a>-tjener med \n"
+"<a href=\"http://postgis.refractions.net\">PostGIS</a>-utvidelsen. På denne "
+"PostgreSQL-tjeneren \n"
+"har vi lastet inn <a href=\"http://wiki.openstreetmap.org/wiki/Planet.osm"
+"\">OpenStreetMap-\n"
+"data for hele verden</a> ved hjelp av <a href=\"http://wiki.openstreetmap."
+"org/wiki/Osm2pgsql\">osm2pgsql</a>\n"
 "-verktøyet. Det samme verktøyet brukes for å legge til de \n"
-"<a href=\"http://planet.openstreetmap.org/daily/\">daglige endringene</a> i \n"
-"databasen. Dette gjør det mulig for oss å være oppdatert med siste endringer fra OpenStreetMap."
+"<a href=\"http://planet.openstreetmap.org/daily/\">daglige endringene</a> "
+"i \n"
+"databasen. Dette gjør det mulig for oss å være oppdatert med siste endringer "
+"fra OpenStreetMap."
 
 #: templates/maposmatic/about.html:77
 msgid ""
 "For the map rendering, we use the\n"
 "famous <a href=\"http://www.mapnik.org\">Mapnik</a> with the OpenStreetMap\n"
 "stylesheet\n"
-"available <a href=\"http://svn.openstreetmap.org/applications/rendering/mapnik\">in\n"
+"available <a href=\"http://svn.openstreetmap.org/applications/rendering/"
+"mapnik\">in\n"
 "OpenStreetMap Subversion repository</a>. Using Mapnik\n"
 "and <a href=\"http://cairographics.org/pycairo/\">Cairo</a>, we\n"
 "built <i>OCitySMap</i>, a Python module that:"
 msgstr ""
-"For karttegning bruker vi <a href=\"http://www.mapnik.org\">Mapnik</a> med OpenStreetMap-\n"
-"stilark som er tilgjengelig <a href=\"http://svn.openstreetmap.org/applications/rendering/mapnik\">i \n"
+"For karttegning bruker vi <a href=\"http://www.mapnik.org\">Mapnik</a> med "
+"OpenStreetMap-\n"
+"stilark som er tilgjengelig <a href=\"http://svn.openstreetmap.org/"
+"applications/rendering/mapnik\">i \n"
 "OpenStreetMap sitt Subversion-kildekodelager</a>. Ved hjelp av Mapnik \n"
 "og <a href=\"http://cairographics.org/pycairo/\">Cairo</a> bygde vi\n"
 "<i>OCitySMap</i>, en Python-modul som:"
@@ -238,7 +255,8 @@ msgstr ""
 msgid ""
 "Renders the map using OpenStreetMap data and the\n"
 "  OpenStreetMap Mapnik stylesheet;"
-msgstr "Tegner kart med data fra OpenStreetMap og med OpenStreetMap Mapnik stilark."
+msgstr ""
+"Tegner kart med data fra OpenStreetMap og med OpenStreetMap Mapnik stilark."
 
 #: templates/maposmatic/about.html:89
 msgid ""
@@ -247,21 +265,27 @@ msgid ""
 "  informations on the map (copyright, scale,\n"
 "  etc.);"
 msgstr ""
-"Tegner opp på kartet, ved hjelp av Mapnik, rutenettet med 500 meter kvadrater, \n"
-"merkelapper på kvadratene og litt annen informasjon på kartet (opphavsrett, skala, osv)."
+"Tegner opp på kartet, ved hjelp av Mapnik, rutenettet med 500 meter "
+"kvadrater, \n"
+"merkelapper på kvadratene og litt annen informasjon på kartet (opphavsrett, "
+"skala, osv)."
 
 #: templates/maposmatic/about.html:93
 msgid ""
 "Greys out all the area outside the city if we find\n"
 "  its administrative boundary;"
-msgstr "Skyggelegger alle områder utenom byen hvis vi finner byens administrative grense."
+msgstr ""
+"Skyggelegger alle områder utenom byen hvis vi finner byens administrative "
+"grense."
 
 #: templates/maposmatic/about.html:95
 msgid ""
 "Renders an index of the streets, based on\n"
 "  OpenStreetMap data and the intersection of the streets with the\n"
 "  squares on the map."
-msgstr "Lager en indeks med gatene, basert på OpenStreetMap-data, og hvilket kvadrat de er plassert i på kartet."
+msgstr ""
+"Lager en indeks med gatene, basert på OpenStreetMap-data, og hvilket kvadrat "
+"de er plassert i på kartet."
 
 #: templates/maposmatic/about.html:101
 msgid ""
@@ -329,7 +353,8 @@ msgstr ""
 #: templates/maposmatic/about.html:147
 msgid ""
 "The <a\n"
-"  href=\"http://lists.nongnu.org/mailman/listinfo/maposmatic-dev\">development\n"
+"  href=\"http://lists.nongnu.org/mailman/listinfo/maposmatic-dev"
+"\">development\n"
 "  mailing-list</a>;"
 msgstr ""
 
@@ -342,7 +367,8 @@ msgstr "IRC-kanalen <tt>#maposmatic</tt> på Freenode;"
 #: templates/maposmatic/about.html:152
 msgid ""
 "The <a\n"
-"  href=\"http://git.savannah.gnu.org/cgit/maposmatic/ocitysmap.git\">OCitySMap\n"
+"  href=\"http://git.savannah.gnu.org/cgit/maposmatic/ocitysmap.git"
+"\">OCitySMap\n"
 "  Git repository</a>, which can be cloned using <tt>git clone\n"
 "  git://git.sv.gnu.org/maposmatic/ocitysmap.git</tt>;"
 msgstr ""
@@ -394,8 +420,7 @@ msgstr "russisk oversettelse"
 msgid "arabic translation"
 msgstr "arabisk oversettelse"
 
-#: templates/maposmatic/about.html:186
-#: templates/maposmatic/about.html:187
+#: templates/maposmatic/about.html:186 templates/maposmatic/about.html:187
 msgid "brasilian portuguese translation"
 msgstr "brasiliansk-portugisisk oversettelse"
 
@@ -438,8 +463,7 @@ msgstr "Ingen kartforespørsler siste 24 timer."
 msgid "Search"
 msgstr "Søk"
 
-#: templates/maposmatic/all_maps.html:37
-#: templates/maposmatic/base.html:70
+#: templates/maposmatic/all_maps.html:37 templates/maposmatic/base.html:70
 msgid "Maps"
 msgstr "Kart"
 
@@ -448,20 +472,18 @@ msgid "MapOSMatic maps feed"
 msgstr "MapOSMatic kart-feed"
 
 #: templates/maposmatic/all_maps.html:51
-#, python-format
-msgid "No map starts with %(current_letter)s in our database!"
-msgstr "Ingen kart i vår database starter med %(current_letter)s."
-
-#: templates/maposmatic/all_maps.html:53
 msgid "Our database does not contain any rendered maps for the moment."
 msgstr "Vår database inneholder ingen ferdigtegnede kart for øyeblikket."
+
+#: templates/maposmatic/all_maps.html:53
+msgid "No map matches your query."
+msgstr ""
 
 #: templates/maposmatic/base.html:57
 msgid "Your free city maps!"
 msgstr "Dine gratis bykart!"
 
-#: templates/maposmatic/base.html:68
-#: templates/maposmatic/index.html:78
+#: templates/maposmatic/base.html:68 templates/maposmatic/index.html:78
 msgid "Create map"
 msgstr "Opprett kart"
 
@@ -474,8 +496,12 @@ msgid "News"
 msgstr "Nyheter"
 
 #: templates/maposmatic/base.html:78
-msgid "The MapOSMatic rendering daemon is currently not running! Jobs will be queued until the rendering daemon is back up."
-msgstr "MapOSMatic tegne-tjenesten kjører for øyeblikket. Jobber vil bli plassert i køa til tjenesten er oppe igjen."
+msgid ""
+"The MapOSMatic rendering daemon is currently not running! Jobs will be "
+"queued until the rendering daemon is back up."
+msgstr ""
+"MapOSMatic tegne-tjenesten kjører for øyeblikket. Jobber vil bli plassert i "
+"køa til tjenesten er oppe igjen."
 
 #: templates/maposmatic/base.html:89
 msgid "Random map"
@@ -535,7 +561,8 @@ msgstr ""
 "Et bykart består av to sider:"
 
 #: templates/maposmatic/index.html:60
-msgid "The map itself, splitted in squares allowing to easily look for streets;"
+msgid ""
+"The map itself, splitted in squares allowing to easily look for streets;"
 msgstr "Selve kartet, delt i kvadrat for å gjøre det lettere å finne gatene."
 
 #: templates/maposmatic/index.html:61
@@ -546,7 +573,9 @@ msgstr "En indeks over gatene med referanse til kvadratene på kartet."
 msgid ""
 "The generated maps are available in PNG, PDF and\n"
 "SVG formats and are ready to be printed."
-msgstr "De genererte kartene er tilgjengelig i PNG-, PDF- og SVG-format og er klare til å bli skrevet ut."
+msgstr ""
+"De genererte kartene er tilgjengelig i PNG-, PDF- og SVG-format og er klare "
+"til å bli skrevet ut."
 
 #: templates/maposmatic/index.html:70
 msgid ""
@@ -565,15 +594,17 @@ msgstr ""
 msgid "More details"
 msgstr "Flere detaljer"
 
-#: templates/maposmatic/job-page.html:39
-#: templates/maposmatic/job.html:35
+#: templates/maposmatic/job-page.html:39 templates/maposmatic/job.html:35
 #: templates/maposmatic/map.html:35
 msgid "Recreate map"
 msgstr "Gjenopprett kart"
 
 #: templates/maposmatic/job-page.html:48
-msgid "You have been redirected to a similar map, rendered less than 24 hours ago."
-msgstr "Du har blitt videresendt til et lignende kart, tegnet mindre enn 24 timer siden."
+msgid ""
+"You have been redirected to a similar map, rendered less than 24 hours ago."
+msgstr ""
+"Du har blitt videresendt til et lignende kart, tegnet mindre enn 24 timer "
+"siden."
 
 #: templates/maposmatic/job-page.html:56
 msgid "Refresh the status"
@@ -581,8 +612,12 @@ msgstr "Oppfrisk statusen"
 
 #: templates/maposmatic/job-page.html:56
 #, python-format
-msgid "(the page will refresh automatically every %(refresh)s seconds until the rendering is completed)."
-msgstr "(siden vil oppdateres automatisk hvert %(refresh)s sekund inntil tegningen er fullført)."
+msgid ""
+"(the page will refresh automatically every %(refresh)s seconds until the "
+"rendering is completed)."
+msgstr ""
+"(siden vil oppdateres automatisk hvert %(refresh)s sekund inntil tegningen "
+"er fullført)."
 
 #: templates/maposmatic/job.html:52
 msgid "Cancel request"
@@ -621,38 +656,44 @@ msgstr "Avbrutt"
 msgid "rendering took %(rendering)s"
 msgstr "tegningen tok %(rendering)s"
 
-#: templates/maposmatic/job.html:73
-#: templates/maposmatic/map-feed.html:44
+#: templates/maposmatic/job.html:73 templates/maposmatic/map-feed.html:44
 #: templates/maposmatic/map.html:57
 msgid "Files: "
 msgstr "Filer:"
 
-#: templates/maposmatic/job.html:75
-#: templates/maposmatic/map-feed.html:46
+#: templates/maposmatic/job.html:75 templates/maposmatic/map-feed.html:46
 #: templates/maposmatic/map.html:59
 msgid "Map: "
 msgstr "Kart:"
 
-#: templates/maposmatic/job.html:76
-#: templates/maposmatic/map-feed.html:47
+#: templates/maposmatic/job.html:76 templates/maposmatic/map-feed.html:47
 #: templates/maposmatic/map.html:60
 msgid "Index: "
 msgstr "Indeks:"
 
-#: templates/maposmatic/job.html:79
-#: templates/maposmatic/map-feed.html:50
+#: templates/maposmatic/job.html:79 templates/maposmatic/map-feed.html:50
 #: templates/maposmatic/map.html:63
-msgid "No index was generated because no information was available in OpenStreetMap to create one. Feel free to contribute the missing data yourself. See the <a href=\"http://wiki.openstreetmap.org/wiki/Getting_Involved\">OSM Wiki</a> for a start. "
-msgstr "Indeksen ble ikke generert fordi ingen informasjon var tilgjengelig i OpenStreetMap. Du må gjerne bidra med de manglende dataene selv. Se <a href=\"http://wiki.openstreetmap.org/wiki/Getting_Involved\">OSM Wiki-en</a> for en start. "
+msgid ""
+"No index was generated because no information was available in OpenStreetMap "
+"to create one. Feel free to contribute the missing data yourself. See the <a "
+"href=\"http://wiki.openstreetmap.org/wiki/Getting_Involved\">OSM Wiki</a> "
+"for a start. "
+msgstr ""
+"Indeksen ble ikke generert fordi ingen informasjon var tilgjengelig i "
+"OpenStreetMap. Du må gjerne bidra med de manglende dataene selv. Se <a href="
+"\"http://wiki.openstreetmap.org/wiki/Getting_Involved\">OSM Wiki-en</a> for "
+"en start. "
 
 #: templates/maposmatic/job.html:82
-#: templates/maposmatic/map-feed.html:53
+msgid "View on OpenStreetMap"
+msgstr ""
+
+#: templates/maposmatic/job.html:86 templates/maposmatic/map-feed.html:53
 #: templates/maposmatic/map.html:66
 msgid "The generated files are no longer available."
 msgstr "De genererte filene er ikke lenger tilgjengelig."
 
-#: templates/maposmatic/map-feed.html:41
-#: templates/maposmatic/map.html:54
+#: templates/maposmatic/map-feed.html:41 templates/maposmatic/map.html:54
 msgid "Rendering completed on"
 msgstr "Tegning fullført"
 
@@ -665,7 +706,10 @@ msgid ""
 "<em>MapOSMatic</em> covers the whole world but we need\n"
 "contributors to translate and adapt the few parts of <em>MapOSMatic</em>\n"
 "that are country specific."
-msgstr "<em>MapOSMatic</em> dekker hele verden, men vi trenger bidragsytere for å oversette og tilpasse noen få deler av <em>MapOSMatic</em> som er landspesifikke."
+msgstr ""
+"<em>MapOSMatic</em> dekker hele verden, men vi trenger bidragsytere for å "
+"oversette og tilpasse noen få deler av <em>MapOSMatic</em> som er "
+"landspesifikke."
 
 #: templates/maposmatic/new.html:47
 msgid ""
@@ -679,7 +723,10 @@ msgid ""
 "  to get a map with precise boundaries of the city when such limits are\n"
 "  available in the database. Otherwise, you need to use a bounding\n"
 "  box."
-msgstr "<em>Ved hjelp av en administrativ grense</em>. Det gjør at kartet følger byens grense hvis de er tilgjengelig i databasen. Hvis ikke de er tilgjengelig, må du bruke en avgrensingsboks."
+msgstr ""
+"<em>Ved hjelp av en administrativ grense</em>. Det gjør at kartet følger "
+"byens grense hvis de er tilgjengelig i databasen. Hvis ikke de er "
+"tilgjengelig, må du bruke en avgrensingsboks."
 
 #: templates/maposmatic/new.html:56
 msgid "<em>Using a traditional bounding box</em>."
@@ -692,7 +739,11 @@ msgid ""
 "rendering is completed (that might take some time depending on the queue\n"
 "length), this page will contain links to the generated\n"
 "map."
-msgstr "Når forespørselen om tegning er sendt inn, blir du sendt til en side som gir deg statusen for forespørselen. Så snart som tegningen er ferdig (som kan ta litt tid avhengig av lengden på køa) så vil siden inneholde lenker til det genererte kartet."
+msgstr ""
+"Når forespørselen om tegning er sendt inn, blir du sendt til en side som gir "
+"deg statusen for forespørselen. Så snart som tegningen er ferdig (som kan ta "
+"litt tid avhengig av lengden på køa) så vil siden inneholde lenker til det "
+"genererte kartet."
 
 #: templates/maposmatic/new.html:69
 msgid "Area selection mode:"
@@ -714,23 +765,41 @@ msgstr "Språk for kartindeks:"
 msgid "Bounding box:"
 msgstr "Avgrensingsboks:"
 
-#: templates/maposmatic/new.html:97
-msgid "Latitude and longitude of the top left and bottom right corners of the area to render."
-msgstr "Bredde- og lengdegrad for det øverste venstre og nederste høyre hjørnet for området som skal tegnes."
+#: templates/maposmatic/new.html:100
+msgid ""
+"Latitude and longitude of the top left and bottom right corners of the area "
+"to render."
+msgstr ""
+"Bredde- og lengdegrad for det øverste venstre og nederste høyre hjørnet for "
+"området som skal tegnes."
 
-#: templates/maposmatic/new.html:98
-msgid "You can use <tt>Shift+drag</tt> to zoom on a specific area of the map. If you only want to render part of what the slippy map shows, you can use <tt>Control+drag</tt> to draw the limits of the area to render."
-msgstr "Du kan bruke <tt>Shift+dra</tt> for å zoom inn på et spesielt område på kartet. Hvis du bare ønsker å tegne en del av hva slippy-kartet viser, kan du bruke <tt>Control+dra</tt> for å markere grense for området som skal tegnes."
+#: templates/maposmatic/new.html:101
+#, fuzzy
+msgid ""
+"You can use <tt>Shift+drag</tt> to zoom on a specific area of the map. You "
+"can use <tt>Control+drag</tt> to draw the limits of the area to render."
+msgstr ""
+"Du kan bruke <tt>Shift+dra</tt> for å zoom inn på et spesielt område på "
+"kartet. Hvis du bare ønsker å tegne en del av hva slippy-kartet viser, kan "
+"du bruke <tt>Control+dra</tt> for å markere grense for området som skal "
+"tegnes."
 
-#: templates/maposmatic/new.html:103
+#: templates/maposmatic/new.html:106
 msgid "Generate"
 msgstr "Generer"
 
-#: templates/maposmatic/new.html:108
-msgid "Wondering why you can't choose some of these results?<br />Their administrative boundaries are missing from the OSM database.<br />Look at the <a href=\"http://wiki.maposmatic.org/doku.php?id=faq\">FAQ</a> for more details."
-msgstr "Lurer du på hvorfor du ikke kan velge noen av disse resultatene?<br />Deres administrative grenser mangler i OSM-databasen.<br />Les <a href=\"http://wiki.maposmatic.org/doku.php?id=faq\">FAQ-en</a> for flere detaljer."
+#: templates/maposmatic/new.html:111
+msgid ""
+"Wondering why you can't choose some of these results?<br />Their "
+"administrative boundaries are missing from the OSM database.<br />Look at "
+"the <a href=\"http://wiki.maposmatic.org/doku.php?id=faq\">FAQ</a> for more "
+"details."
+msgstr ""
+"Lurer du på hvorfor du ikke kan velge noen av disse resultatene?<br />Deres "
+"administrative grenser mangler i OSM-databasen.<br />Les <a href=\"http://"
+"wiki.maposmatic.org/doku.php?id=faq\">FAQ-en</a> for flere detaljer."
 
-#: templates/maposmatic/new.html:109
+#: templates/maposmatic/new.html:112
 msgid "No results."
 msgstr "Ingen resultater."
 
@@ -742,54 +811,64 @@ msgstr "Forrige"
 msgid "Next"
 msgstr "Neste"
 
-msgid ""
-"No index was generated because no information was available in OpenStreetMap to create one. \n"
-"    Feel free to contribute the missing data yourself. \n"
-"    See the <a href=\"http://wiki.openstreetmap.org/wiki/Getting_Involved\">OSM Wiki</a> for a start. "
-msgstr ""
-"Indeksen ble ikke generert fordi ingen informasjon var tilgjengelig i OpenStreetMap. \n"
-"   Du må gjerne bidra med de manglende dataene selv. \n"
-"   Se <a href=\"http://wiki.openstreetmap.org/wiki/Getting_Involved\">OSM Wiki-en</a> for en start. "
+#~ msgid "No map starts with %(current_letter)s in our database!"
+#~ msgstr "Ingen kart i vår database starter med %(current_letter)s."
 
-msgid ""
-"Using an administrative boundary. It allows to get a\n"
-"  map with precise boundaries of the city, but they are for the moment\n"
-"  only available for part of the metropolitan French cities (about a\n"
-"  third). The name of the provided city must <em>exactly match</em> the\n"
-"  one available in the OpenStreetMap database (no case or accent\n"
-"  difference is allowed). Working examples\n"
-"  are: <code>Chavagne</code>, <code>Bénodet</code> or\n"
-"  <code>Sanguinet</code>."
-msgstr ""
+#~ msgid ""
+#~ "No index was generated because no information was available in "
+#~ "OpenStreetMap to create one. \n"
+#~ "    Feel free to contribute the missing data yourself. \n"
+#~ "    See the <a href=\"http://wiki.openstreetmap.org/wiki/Getting_Involved"
+#~ "\">OSM Wiki</a> for a start. "
+#~ msgstr ""
+#~ "Indeksen ble ikke generert fordi ingen informasjon var tilgjengelig i "
+#~ "OpenStreetMap. \n"
+#~ "   Du må gjerne bidra med de manglende dataene selv. \n"
+#~ "   Se <a href=\"http://wiki.openstreetmap.org/wiki/Getting_Involved\">OSM "
+#~ "Wiki-en</a> for en start. "
 
 #~ msgid "Title"
 #~ msgstr "Tittel"
+
 #~ msgid "Location"
 #~ msgstr "Posisjon"
+
 #~ msgid "Job status"
 #~ msgstr "Jobbstatus"
+
 #~ msgid "Submission at"
 #~ msgstr "Innsending på"
+
 #~ msgid "Rendering finished at"
 #~ msgstr "Tegning ferdig"
+
 #~ msgid "Position in queue"
 #~ msgstr "Posisjon i køa"
+
 #~ msgid "not started"
 #~ msgstr "ikke startet"
+
 #~ msgid "not finished"
 #~ msgstr "ikke ferdig"
+
 #~ msgid "Page"
 #~ msgstr "Side"
+
 #~ msgid "of"
 #~ msgstr "av"
+
 #~ msgid "Thumbnail"
 #~ msgstr "Miniatyrbilde"
+
 #~ msgid "Language:"
 #~ msgstr "Språk:"
+
 #~ msgid "Please fill in the form before trying to proceed"
 #~ msgstr "Fyll ut skjemaet før du prøver å gå videre"
+
 #~ msgid "Map <i>%(job_t)s</i> Status"
 #~ msgstr "Status for kart <i>%(job_t)s</i>"
+
 #~ msgid ""
 #~ "You have been redirected to a similar rendering request, submitted less "
 #~ "than 24 hours ago. This request failed and we therefore prevent running "
@@ -798,38 +877,50 @@ msgstr ""
 #~ "Du har blitt videresendt til en lignende forespørsel, sendt inn mindre "
 #~ "enn 24 timer siden. Denne forespørselen feilet og vi hinder derfor at den "
 #~ "samme forespørselen kjører igjen. Kontakt oss."
+
 #~ msgid ""
 #~ "You have been redirected to a similar rendering request, submitted less "
 #~ "than 24 hours ago, and currently waiting to be processed."
 #~ msgstr ""
 #~ "Du har blitt videresendt til en lignende forespørsel, sendt inn mindre "
 #~ "enn 24 timer siden, som for øyeblikket venter på å bli behandlet."
+
 #~ msgid ""
 #~ "You have been redirected to a similar rendering request, submitted less "
 #~ "than 24 hours ago, and currently being processed."
 #~ msgstr ""
 #~ "Du har blitt videresendt til en lignende forespørsel, sendt inn mindre "
 #~ "enn 24 timer siden, som for øyeblikket blir behandlet."
+
 #~ msgid "Map title"
 #~ msgstr "Karttittel"
+
 #~ msgid "Administrative city"
 #~ msgstr "Administrasjonsby"
+
 #~ msgid "Bounding-box coordinates"
 #~ msgstr "Koordinater for avgrensingsboks"
+
 #~ msgid "Status"
 #~ msgstr "Status"
+
 #~ msgid "Submission time"
 #~ msgstr "Innsendingstidspunkt"
+
 #~ msgid "Start of rendering time"
 #~ msgstr "Starttidspunkt for tegning"
+
 #~ msgid "Rendering not started yet"
 #~ msgstr "Tegning ikke startet enda"
+
 #~ msgid "End of rendering time"
 #~ msgstr "Sluttidspunkt for tegning"
+
 #~ msgid "Rendering not finished yet"
 #~ msgstr "Tegning ikke ferdig enda"
+
 #~ msgid "Current position in queue"
 #~ msgstr "Nåværende posisjon i køa"
+
 #~ msgid "Result files"
 #~ msgstr "Resultatfiler"
-

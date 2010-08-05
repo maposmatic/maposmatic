@@ -20,16 +20,16 @@ msgid ""
 msgstr ""
 "Project-Id-Version: mapOSMatic 0.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-08-04 15:56+0200\n"
+"POT-Creation-Date: 2010-08-05 19:24+0200\n"
 "PO-Revision-Date: 2009-12-26 20:47+0100\n"
 "Last-Translator: Thomas Petazzoni <thomas.petazzoni@enix.org>\n"
 "Language-Team: FR <LL@li.org>\n"
+"Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: \n"
 
-#: settings.py:199
+#: settings.py:201
 msgid "No localization"
 msgstr "Pas de traduction"
 
@@ -70,7 +70,7 @@ msgstr "Titre de la carte obligatoire"
 msgid "Required"
 msgstr "Obligatoire"
 
-#: maposmatic/forms.py:137
+#: maposmatic/forms.py:137 templates/maposmatic/new.html:98
 msgid "Bounding Box too large"
 msgstr "Zone géographique trop grande"
 
@@ -84,19 +84,19 @@ msgstr "Carte pour %(title)s (format %(format)s)"
 msgid "%(title)s %(format)s Index"
 msgstr "Index des rues pour %(title)s (format %(format)s)"
 
-#: maposmatic/widgets.py:86
+#: maposmatic/widgets.py:88
 msgid "Latitude of the top left corner"
 msgstr "Latitude du coin haut gauche"
 
-#: maposmatic/widgets.py:87
+#: maposmatic/widgets.py:89
 msgid "Longitude of the top left corner"
 msgstr "Longitude du coin haut gauche"
 
-#: maposmatic/widgets.py:88
+#: maposmatic/widgets.py:90
 msgid "Latitude of the bottom right corner"
 msgstr "Latitude du coin bas droit"
 
-#: maposmatic/widgets.py:89
+#: maposmatic/widgets.py:91
 msgid "Longitude of the bottom right corner"
 msgstr "Longitude du coin bas droit"
 
@@ -183,8 +183,8 @@ msgid ""
 "href=\"http://www.openstreetmap.org\">OpenStreetMap</a> and free\n"
 "software contributor of Rennes area, France. From his idea, a group of\n"
 "crazy <a\n"
-"href=\"http://en.wikipedia.org/wiki/Hacker_%28programmer_subculture%29"
-"\">hackers</a>\n"
+"href=\"http://en.wikipedia.org/wiki/Hacker_%28programmer_subculture"
+"%29\">hackers</a>\n"
 "met together during a one-week <em>Hackfest</em> in August 2009 and\n"
 "brought the idea of Gilles Lamiral to life by writing the code and\n"
 "named the project <strong>MapOSMatic</strong>. The group of crazy\n"
@@ -727,7 +727,11 @@ msgid ""
 "for a start. "
 msgstr ""
 
-#: templates/maposmatic/job.html:82 templates/maposmatic/map-feed.html:53
+#: templates/maposmatic/job.html:82
+msgid "View on OpenStreetMap"
+msgstr "Voir sur OpenStreetMap"
+
+#: templates/maposmatic/job.html:86 templates/maposmatic/map-feed.html:53
 #: templates/maposmatic/map.html:66
 msgid "The generated files are no longer available."
 msgstr "Les fichiers générés ne sont plus disponibles."
@@ -804,7 +808,7 @@ msgstr "Langue de l'index de la carte&nbsp;:"
 msgid "Bounding box:"
 msgstr "Zone géographique :"
 
-#: templates/maposmatic/new.html:97
+#: templates/maposmatic/new.html:100
 msgid ""
 "Latitude and longitude of the top left and bottom right corners of the area "
 "to render."
@@ -812,7 +816,7 @@ msgstr ""
 "Latitude et longitude des coins supérieur gauche et inférieur droit de la "
 "zone à rendre."
 
-#: templates/maposmatic/new.html:98
+#: templates/maposmatic/new.html:101
 msgid ""
 "You can use <tt>Shift+drag</tt> to zoom on a specific area of the map. You "
 "can use <tt>Control+drag</tt> to draw the limits of the area to render."
@@ -821,11 +825,11 @@ msgstr ""
 "zone spécifique de la carte. Vous pouvez utiliser <tt>Contrôle+cliquer-"
 "déplacer</tt> pour tracer les limites de la zone à rendre."
 
-#: templates/maposmatic/new.html:103
+#: templates/maposmatic/new.html:106
 msgid "Generate"
 msgstr "Générer..."
 
-#: templates/maposmatic/new.html:108
+#: templates/maposmatic/new.html:111
 msgid ""
 "Wondering why you can't choose some of these results?<br />Their "
 "administrative boundaries are missing from the OSM database.<br />Look at "
@@ -837,7 +841,7 @@ msgstr ""
 "de données OSM.<br />Lisez la <a href=\"http://wiki.maposmatic.org/doku.php?"
 "id=faq\">FAQ</a> pour plus d'informations."
 
-#: templates/maposmatic/new.html:109
+#: templates/maposmatic/new.html:112
 msgid "No results."
 msgstr "Aucun résultat."
 

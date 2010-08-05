@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-07-07 18:27+0200\n"
+"POT-Creation-Date: 2010-08-05 19:24+0200\n"
 "PO-Revision-Date: 2010-07-07 18:32+0200\n"
 "Last-Translator: Łukasz Jernaś <deejay1@srem.org>\n"
 "Language-Team: Polish <dev@maposmatic.org>\n"
@@ -20,7 +20,7 @@ msgstr ""
 "X-Poedit-Language: Polish\n"
 "X-Poedit-Country: Poland\n"
 
-#: settings.py:199
+#: settings.py:201
 msgid "No localization"
 msgstr "Bez lokalizacji"
 
@@ -61,7 +61,7 @@ msgstr "Nazwa mapy jest wymagana"
 msgid "Required"
 msgstr "Wymagane"
 
-#: maposmatic/forms.py:129
+#: maposmatic/forms.py:137 templates/maposmatic/new.html:98
 msgid "Bounding Box too large"
 msgstr "Wybrany obszar zbyt rozległy"
 
@@ -75,19 +75,19 @@ msgstr "Mapa: %(title)s Format: %(format)s"
 msgid "%(title)s %(format)s Index"
 msgstr "Indeks ulic: %(title)s Format: %(format)s"
 
-#: maposmatic/widgets.py:86
+#: maposmatic/widgets.py:88
 msgid "Latitude of the top left corner"
 msgstr "Szerokość geograficzna lewego górnego rogu"
 
-#: maposmatic/widgets.py:87
+#: maposmatic/widgets.py:89
 msgid "Longitude of the top left corner"
 msgstr "Wysokość geograficzna lewego górnego rogu"
 
-#: maposmatic/widgets.py:88
+#: maposmatic/widgets.py:90
 msgid "Latitude of the bottom right corner"
 msgstr "Szerokość geograficzna prawego dolnego rogu"
 
-#: maposmatic/widgets.py:89
+#: maposmatic/widgets.py:91
 msgid "Longitude of the bottom right corner"
 msgstr "Wysokość geograficzna prawego dolnego rogu"
 
@@ -178,8 +178,8 @@ msgid ""
 "href=\"http://www.openstreetmap.org\">OpenStreetMap</a> and free\n"
 "software contributor of Rennes area, France. From his idea, a group of\n"
 "crazy <a\n"
-"href=\"http://en.wikipedia.org/wiki/Hacker_%28programmer_subculture%29"
-"\">hackers</a>\n"
+"href=\"http://en.wikipedia.org/wiki/Hacker_%28programmer_subculture"
+"%29\">hackers</a>\n"
 "met together during a one-week <em>Hackfest</em> in August 2009 and\n"
 "brought the idea of Gilles Lamiral to life by writing the code and\n"
 "named the project <strong>MapOSMatic</strong>. The group of crazy\n"
@@ -189,8 +189,8 @@ msgstr ""
 "MapOSMatic powstało jako pomysł Gillesa Lamiral, współtwórcy projektu <a "
 "href=\"http://www.openstreetmap.org\">OpenStreetMap</a> i innych projektów "
 "na bazie wolnego oprogramowania, z okolice Rennes we Francji. Z powodu Jego "
-"pomysłu, grupa szalonych <a href=\"http://pl.wikipedia.org/wiki/Haker_%"
-"28slang_komputerowy%29\">hackerów</a> spotkała się ze sobą, podczas "
+"pomysłu, grupa szalonych <a href=\"http://pl.wikipedia.org/wiki/Haker_"
+"%28slang_komputerowy%29\">hackerów</a> spotkała się ze sobą, podczas "
 "jednotygodniowego <em>hackfestu</em> w sierpniu 2009 roku i pisząc kod "
 "sprawiła, że projekt nazwany <strong>MapOSMatic</strong> powstał do życia. "
 "Grupa tych hackerów chciałaby podziękować Gillesowi za podzielenie się tym "
@@ -501,15 +501,12 @@ msgid "MapOSMatic maps feed"
 msgstr "Kanał MapOSMatic"
 
 #: templates/maposmatic/all_maps.html:51
-#, python-format
-msgid "No map starts with %(current_letter)s in our database!"
-msgstr ""
-"Nazwa żadnej z map w naszej bazie danych nie zaczyna się od %(current_letter)"
-"s."
-
-#: templates/maposmatic/all_maps.html:53
 msgid "Our database does not contain any rendered maps for the moment."
 msgstr "Nasza baza danych aktualnie nie zawiera żadnych utworzonych map."
+
+#: templates/maposmatic/all_maps.html:53
+msgid "No map matches your query."
+msgstr ""
 
 #: templates/maposmatic/base.html:57
 msgid "Your free city maps!"
@@ -714,10 +711,14 @@ msgid ""
 msgstr ""
 "Indeks ulic nie został wygenerowany, ponieważ w bazie danych OpenStreetMap "
 "brakuje potrzebnych informacji. Zapraszamy do samodzielnego wprowadzenia "
-"takich danych &mdash; więcej informacji znajduje się na stronach <a "
-"href=\"http://wiki.openstreetmap.org/wiki/Getting_Involved\">wiki OSM</a>."
+"takich danych &mdash; więcej informacji znajduje się na stronach <a href="
+"\"http://wiki.openstreetmap.org/wiki/Getting_Involved\">wiki OSM</a>."
 
-#: templates/maposmatic/job.html:82 templates/maposmatic/map-feed.html:53
+#: templates/maposmatic/job.html:82
+msgid "View on OpenStreetMap"
+msgstr ""
+
+#: templates/maposmatic/job.html:86 templates/maposmatic/map-feed.html:53
 #: templates/maposmatic/map.html:66
 msgid "The generated files are no longer available."
 msgstr "Wygenerowany pliki nie są już dostepne."
@@ -796,7 +797,7 @@ msgstr "Język indeksu mapy:"
 msgid "Bounding box:"
 msgstr "Obszar:"
 
-#: templates/maposmatic/new.html:97
+#: templates/maposmatic/new.html:100
 msgid ""
 "Latitude and longitude of the top left and bottom right corners of the area "
 "to render."
@@ -804,22 +805,22 @@ msgstr ""
 "Szerokość i wysokość geograficzna dla prawego dolnego i lewego górnego rogu "
 "obszaru do renderowania."
 
-#: templates/maposmatic/new.html:98
+#: templates/maposmatic/new.html:101
+#, fuzzy
 msgid ""
-"You can use <tt>Shift+drag</tt> to zoom on a specific area of the map. If "
-"you only want to render part of what the slippy map shows, you can use "
-"<tt>Control+drag</tt> to draw the limits of the area to render."
+"You can use <tt>Shift+drag</tt> to zoom on a specific area of the map. You "
+"can use <tt>Control+drag</tt> to draw the limits of the area to render."
 msgstr ""
 "W celu powiększenia określonego obszaru mapy, można skorzystać z klawisza "
 "<tt>Shift</tt> i przeciągnięcia myszą. Aby wyrenderować tylko część obszaru "
 "na mapie, można skorzystać z klawisza <tt>Control</tt> i przeciągnąć myszą, "
 "by wybrać obszar."
 
-#: templates/maposmatic/new.html:103
+#: templates/maposmatic/new.html:106
 msgid "Generate"
 msgstr "Wygeneruj"
 
-#: templates/maposmatic/new.html:108
+#: templates/maposmatic/new.html:111
 msgid ""
 "Wondering why you can't choose some of these results?<br />Their "
 "administrative boundaries are missing from the OSM database.<br />Look at "
@@ -831,7 +832,7 @@ msgstr ""
 "znajduje się w <a href=\"http://wiki.maposmatic.org/doku.php?id=faq\">FAQ</"
 "a>."
 
-#: templates/maposmatic/new.html:109
+#: templates/maposmatic/new.html:112
 msgid "No results."
 msgstr "Nie znaleziono."
 
@@ -842,6 +843,11 @@ msgstr "Poprzednia"
 #: templates/maposmatic/paginator.html:37
 msgid "Next"
 msgstr "Następna"
+
+#~ msgid "No map starts with %(current_letter)s in our database!"
+#~ msgstr ""
+#~ "Nazwa żadnej z map w naszej bazie danych nie zaczyna się od "
+#~ "%(current_letter)s."
 
 #~ msgid "Page"
 #~ msgstr "Strona"

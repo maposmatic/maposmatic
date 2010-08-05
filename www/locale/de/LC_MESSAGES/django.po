@@ -20,7 +20,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: mapOSMatic 0.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-07-07 15:36+0200\n"
+"POT-Creation-Date: 2010-08-05 19:24+0200\n"
 "PO-Revision-Date: 2010-04-10 13:35+0100\n"
 "Last-Translator: malenki <osm@malenki.ch>\n"
 "Language-Team:  <osm@malenki.ch>\n"
@@ -31,7 +31,7 @@ msgstr ""
 "X-Poedit-Language: German\n"
 "X-Poedit-Country: GERMANY\n"
 
-#: settings.py:199
+#: settings.py:201
 msgid "No localization"
 msgstr "Keine Übersetzung"
 
@@ -72,7 +72,7 @@ msgstr "Name des Stadtplans erforderlich"
 msgid "Required"
 msgstr "Benötigt"
 
-#: maposmatic/forms.py:129
+#: maposmatic/forms.py:137 templates/maposmatic/new.html:98
 msgid "Bounding Box too large"
 msgstr "Begrenzungsrahmen zu groß"
 
@@ -86,19 +86,19 @@ msgstr "Plan von %(title)s (format %(format)s)"
 msgid "%(title)s %(format)s Index"
 msgstr "Straßenverzeichnis von %(title)s (format %(format)s)"
 
-#: maposmatic/widgets.py:86
+#: maposmatic/widgets.py:88
 msgid "Latitude of the top left corner"
 msgstr "Geografische Breite der oberen linken Ecke"
 
-#: maposmatic/widgets.py:87
+#: maposmatic/widgets.py:89
 msgid "Longitude of the top left corner"
 msgstr "Geografische Länge der oberen linken Ecke"
 
-#: maposmatic/widgets.py:88
+#: maposmatic/widgets.py:90
 msgid "Latitude of the bottom right corner"
 msgstr "Geografische Breite der unteren rechten Ecke "
 
-#: maposmatic/widgets.py:89
+#: maposmatic/widgets.py:91
 msgid "Longitude of the bottom right corner"
 msgstr "Geografische Länge der unteren rechten Ecke"
 
@@ -536,13 +536,12 @@ msgid "MapOSMatic maps feed"
 msgstr "MapOSMatic Stadtplan-Feed"
 
 #: templates/maposmatic/all_maps.html:51
-#, python-format
-msgid "No map starts with %(current_letter)s in our database!"
-msgstr "Kein Plan in unserer Datenbank beginnt mit %(current_letter)s!"
-
-#: templates/maposmatic/all_maps.html:53
 msgid "Our database does not contain any rendered maps for the moment."
 msgstr "Momentan enthält unsere Datenbank keine gerenderten Pläne."
+
+#: templates/maposmatic/all_maps.html:53
+msgid "No map matches your query."
+msgstr ""
 
 #: templates/maposmatic/base.html:57
 msgid "Your free city maps!"
@@ -754,7 +753,11 @@ msgstr ""
 "Wiki an <a href=\"http://wiki.openstreetmap.org/wiki/DE:Getting_Involved"
 "\">dieser Stelle</a>."
 
-#: templates/maposmatic/job.html:82 templates/maposmatic/map-feed.html:53
+#: templates/maposmatic/job.html:82
+msgid "View on OpenStreetMap"
+msgstr ""
+
+#: templates/maposmatic/job.html:86 templates/maposmatic/map-feed.html:53
 #: templates/maposmatic/map.html:66
 msgid "The generated files are no longer available."
 msgstr "Die erzeugten Dateien sind nicht mehr verfügbar."
@@ -833,7 +836,7 @@ msgstr "Sprache des Stadtplanindex:"
 msgid "Bounding box:"
 msgstr "Begrenzungsrahmen:"
 
-#: templates/maposmatic/new.html:97
+#: templates/maposmatic/new.html:100
 msgid ""
 "Latitude and longitude of the top left and bottom right corners of the area "
 "to render."
@@ -841,21 +844,21 @@ msgstr ""
 "Geografische Koordinaten der oberen linken und unteren rechten Ecke des zu "
 "rendernden Gebietes."
 
-#: templates/maposmatic/new.html:98
+#: templates/maposmatic/new.html:101
+#, fuzzy
 msgid ""
-"You can use <tt>Shift+drag</tt> to zoom on a specific area of the map. If "
-"you only want to render part of what the slippy map shows, you can use "
-"<tt>Control+drag</tt> to draw the limits of the area to render."
+"You can use <tt>Shift+drag</tt> to zoom on a specific area of the map. You "
+"can use <tt>Control+drag</tt> to draw the limits of the area to render."
 msgstr ""
 "Sie können <tt>Shift+drag</tt> benutzen, um in ein Gebiet auf der Karte zu "
 "zoomen. Möchten Sie nur einen Teil der dargestellten Karte rendern lassen, "
 "zeichnen Sie mit <tt>Control+drag</tt> das zu rendernde Gebiet ein"
 
-#: templates/maposmatic/new.html:103
+#: templates/maposmatic/new.html:106
 msgid "Generate"
 msgstr "Erzeugen"
 
-#: templates/maposmatic/new.html:108
+#: templates/maposmatic/new.html:111
 msgid ""
 "Wondering why you can't choose some of these results?<br />Their "
 "administrative boundaries are missing from the OSM database.<br />Look at "
@@ -867,7 +870,7 @@ msgstr ""
 "Details finden Sie in der <a href=\"http://wiki.maposmatic.org/doku.php?"
 "id=faq\">FAQ</a>."
 
-#: templates/maposmatic/new.html:109
+#: templates/maposmatic/new.html:112
 msgid "No results."
 msgstr "Keine Ergebnisse."
 
@@ -878,6 +881,9 @@ msgstr "Vorherige"
 #: templates/maposmatic/paginator.html:37
 msgid "Next"
 msgstr "Nächste"
+
+#~ msgid "No map starts with %(current_letter)s in our database!"
+#~ msgstr "Kein Plan in unserer Datenbank beginnt mit %(current_letter)s!"
 
 #~ msgid "Page"
 #~ msgstr "Seite"

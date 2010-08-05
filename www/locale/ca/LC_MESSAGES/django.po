@@ -21,7 +21,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: mapOSMatic 0.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-07-07 15:36+0200\n"
+"POT-Creation-Date: 2010-08-05 19:24+0200\n"
 "PO-Revision-Date: 2010-01-12 18:32+0100\n"
 "Last-Translator: Joan Montané <joan---sense spam---montane.cat>\n"
 "Language-Team: CA <>\n"
@@ -30,7 +30,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: settings.py:199
+#: settings.py:201
 msgid "No localization"
 msgstr "Sense localització"
 
@@ -71,7 +71,7 @@ msgstr "Indiqueu un títol per al mapa"
 msgid "Required"
 msgstr "És necessari"
 
-#: maposmatic/forms.py:129
+#: maposmatic/forms.py:137 templates/maposmatic/new.html:98
 msgid "Bounding Box too large"
 msgstr "L'àrea seleccionada és massa gran"
 
@@ -85,19 +85,19 @@ msgstr "Mapa de %(title)s (format %(format)s)"
 msgid "%(title)s %(format)s Index"
 msgstr "Índex de %(title)s (format %(format)s)"
 
-#: maposmatic/widgets.py:86
+#: maposmatic/widgets.py:88
 msgid "Latitude of the top left corner"
 msgstr ""
 
-#: maposmatic/widgets.py:87
+#: maposmatic/widgets.py:89
 msgid "Longitude of the top left corner"
 msgstr ""
 
-#: maposmatic/widgets.py:88
+#: maposmatic/widgets.py:90
 msgid "Latitude of the bottom right corner"
 msgstr ""
 
-#: maposmatic/widgets.py:89
+#: maposmatic/widgets.py:91
 msgid "Longitude of the bottom right corner"
 msgstr ""
 
@@ -517,14 +517,12 @@ msgid "MapOSMatic maps feed"
 msgstr ""
 
 #: templates/maposmatic/all_maps.html:51
-#, python-format
-msgid "No map starts with %(current_letter)s in our database!"
-msgstr ""
-"No hi ha cap mapa que comenci per %(current_letter)s a la base de dades!"
-
-#: templates/maposmatic/all_maps.html:53
 msgid "Our database does not contain any rendered maps for the moment."
 msgstr "La base de dades, ara per ara, no conté cap mapa renderitzat."
+
+#: templates/maposmatic/all_maps.html:53
+msgid "No map matches your query."
+msgstr ""
 
 #: templates/maposmatic/base.html:57
 msgid "Your free city maps!"
@@ -730,7 +728,11 @@ msgid ""
 "for a start. "
 msgstr ""
 
-#: templates/maposmatic/job.html:82 templates/maposmatic/map-feed.html:53
+#: templates/maposmatic/job.html:82
+msgid "View on OpenStreetMap"
+msgstr ""
+
+#: templates/maposmatic/job.html:86 templates/maposmatic/map-feed.html:53
 #: templates/maposmatic/map.html:66
 msgid "The generated files are no longer available."
 msgstr "Els fitxer generats ja no són disponibles."
@@ -809,24 +811,23 @@ msgstr "Llengua de l'índex del mapa:"
 msgid "Bounding box:"
 msgstr "Àrea geogràfica:"
 
-#: templates/maposmatic/new.html:97
+#: templates/maposmatic/new.html:100
 msgid ""
 "Latitude and longitude of the top left and bottom right corners of the area "
 "to render."
 msgstr ""
 
-#: templates/maposmatic/new.html:98
+#: templates/maposmatic/new.html:101
 msgid ""
-"You can use <tt>Shift+drag</tt> to zoom on a specific area of the map. If "
-"you only want to render part of what the slippy map shows, you can use "
-"<tt>Control+drag</tt> to draw the limits of the area to render."
+"You can use <tt>Shift+drag</tt> to zoom on a specific area of the map. You "
+"can use <tt>Control+drag</tt> to draw the limits of the area to render."
 msgstr ""
 
-#: templates/maposmatic/new.html:103
+#: templates/maposmatic/new.html:106
 msgid "Generate"
 msgstr "Genera"
 
-#: templates/maposmatic/new.html:108
+#: templates/maposmatic/new.html:111
 msgid ""
 "Wondering why you can't choose some of these results?<br />Their "
 "administrative boundaries are missing from the OSM database.<br />Look at "
@@ -838,7 +839,7 @@ msgstr ""
 ">Llegiu les <a href=\"http://wiki.maposmatic.org/doku.php?id=faq\">PMF</a> "
 "per a més detalls."
 
-#: templates/maposmatic/new.html:109
+#: templates/maposmatic/new.html:112
 msgid "No results."
 msgstr "No s'ha trobat cap resultat."
 
@@ -849,6 +850,10 @@ msgstr "Enrere"
 #: templates/maposmatic/paginator.html:37
 msgid "Next"
 msgstr "Següent"
+
+#~ msgid "No map starts with %(current_letter)s in our database!"
+#~ msgstr ""
+#~ "No hi ha cap mapa que comenci per %(current_letter)s a la base de dades!"
 
 #~ msgid "Page"
 #~ msgstr "Pàgina"

@@ -19,7 +19,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: mapOSMatic 0.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-07-07 15:36+0200\n"
+"POT-Creation-Date: 2010-08-05 19:24+0200\n"
 "PO-Revision-Date: 2010-02-09 20:43+0100\n"
 "Last-Translator: David MENTRÉ <dmentre@linux-france.org>\n"
 "Language-Team: FR <LL@li.org>\n"
@@ -28,7 +28,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: settings.py:199
+#: settings.py:201
 msgid "No localization"
 msgstr "Nema lokalizacije"
 
@@ -69,7 +69,7 @@ msgstr "Naslov karte je obavezan"
 msgid "Required"
 msgstr "Obavezno"
 
-#: maposmatic/forms.py:129
+#: maposmatic/forms.py:137 templates/maposmatic/new.html:98
 msgid "Bounding Box too large"
 msgstr "Granični okvir je prevelik"
 
@@ -83,19 +83,19 @@ msgstr "%(title)s %(format)s"
 msgid "%(title)s %(format)s Index"
 msgstr "%(title)s %(format)s - popis ulica"
 
-#: maposmatic/widgets.py:86
+#: maposmatic/widgets.py:88
 msgid "Latitude of the top left corner"
 msgstr ""
 
-#: maposmatic/widgets.py:87
+#: maposmatic/widgets.py:89
 msgid "Longitude of the top left corner"
 msgstr ""
 
-#: maposmatic/widgets.py:88
+#: maposmatic/widgets.py:90
 msgid "Latitude of the bottom right corner"
 msgstr ""
 
-#: maposmatic/widgets.py:89
+#: maposmatic/widgets.py:91
 msgid "Longitude of the bottom right corner"
 msgstr ""
 
@@ -525,12 +525,11 @@ msgid "MapOSMatic maps feed"
 msgstr ""
 
 #: templates/maposmatic/all_maps.html:51
-#, python-format
-msgid "No map starts with %(current_letter)s in our database!"
-msgstr "Ni jedna karta ne počinje s %(current_letter)s u našoj bazi!"
+msgid "Our database does not contain any rendered maps for the moment."
+msgstr ""
 
 #: templates/maposmatic/all_maps.html:53
-msgid "Our database does not contain any rendered maps for the moment."
+msgid "No map matches your query."
 msgstr ""
 
 #: templates/maposmatic/base.html:57
@@ -732,7 +731,11 @@ msgid ""
 "for a start. "
 msgstr ""
 
-#: templates/maposmatic/job.html:82 templates/maposmatic/map-feed.html:53
+#: templates/maposmatic/job.html:82
+msgid "View on OpenStreetMap"
+msgstr ""
+
+#: templates/maposmatic/job.html:86 templates/maposmatic/map-feed.html:53
 #: templates/maposmatic/map.html:66
 msgid "The generated files are no longer available."
 msgstr "Izrađene datoteke više nisu dostupne."
@@ -811,24 +814,23 @@ msgstr "Jezik kazala karte:"
 msgid "Bounding box:"
 msgstr "Granični okvir:"
 
-#: templates/maposmatic/new.html:97
+#: templates/maposmatic/new.html:100
 msgid ""
 "Latitude and longitude of the top left and bottom right corners of the area "
 "to render."
 msgstr ""
 
-#: templates/maposmatic/new.html:98
+#: templates/maposmatic/new.html:101
 msgid ""
-"You can use <tt>Shift+drag</tt> to zoom on a specific area of the map. If "
-"you only want to render part of what the slippy map shows, you can use "
-"<tt>Control+drag</tt> to draw the limits of the area to render."
+"You can use <tt>Shift+drag</tt> to zoom on a specific area of the map. You "
+"can use <tt>Control+drag</tt> to draw the limits of the area to render."
 msgstr ""
 
-#: templates/maposmatic/new.html:103
+#: templates/maposmatic/new.html:106
 msgid "Generate"
 msgstr "Izradi..."
 
-#: templates/maposmatic/new.html:108
+#: templates/maposmatic/new.html:111
 msgid ""
 "Wondering why you can't choose some of these results?<br />Their "
 "administrative boundaries are missing from the OSM database.<br />Look at "
@@ -839,7 +841,7 @@ msgstr ""
 "administrativne granice nedostaju u OSM bazi podataka.<br />Pogedajte <a "
 "href=\"http://wiki.maposmatic.org/doku.php?id=faq\">FAQ</a> za više detalja."
 
-#: templates/maposmatic/new.html:109
+#: templates/maposmatic/new.html:112
 msgid "No results."
 msgstr "Nema rezultata."
 
@@ -850,6 +852,9 @@ msgstr "Prethodna"
 #: templates/maposmatic/paginator.html:37
 msgid "Next"
 msgstr "Slijedeća"
+
+#~ msgid "No map starts with %(current_letter)s in our database!"
+#~ msgstr "Ni jedna karta ne počinje s %(current_letter)s u našoj bazi!"
 
 #~ msgid "Page"
 #~ msgstr "Stranica"
