@@ -32,6 +32,7 @@ from django.http import HttpResponseRedirect, HttpResponseBadRequest, HttpRespon
 from django.shortcuts import get_object_or_404, render_to_response
 from django.template import RequestContext
 from django.utils.translation import ugettext_lazy as _
+import ocitysmap.coords
 
 from www.maposmatic import helpers, forms, nominatim, models
 import www.settings
@@ -196,6 +197,32 @@ def query_nominatim(request, format, squery):
         return HttpResponse(content=json_encode(contents),
                             mimetype='text/json')
     # Support other formats here.
+
+def query_papersize(request):
+    """Papersize selection Ajax request handler"""
+    if request.method == 'POST':
+        f = forms.MapPaperSizeForm(request.POST)
+        if f.is_valid():
+            osmid = f.cleaned_data.get('osmid')
+            layout = f.cleaned_data.get('layout')
+            if osmid is not None:
+                bbox = helpers.get_bbox_from_osm_id(osmid)
+            else:
+                lat_upper_left = f.cleaned_data.get("lat_upper_left")
+                lon_upper_left = f.cleaned_data.get("lon_upper_left")
+                lat_bottom_right = f.cleaned_data.get("lat_bottom_right")
+                lon_bottom_right = f.cleaned_data.get("lon_bottom_right")
+                bbox = coords.BoundingBox(lat_upper_left, lon_upper_left,
+                                          lat_bottom_right, lon_bottom_right)
+
+            # Do something with bbox, layout
+            print bbox, layout
+
+            contents = [ "US Letter", "A3", "A2" ]
+
+            return HttpResponse(content=json_encode(contents),
+                                mimetype='text/json')
+    return HttpResponseBadRequest("ERROR: Invalid arguments")
 
 def recreate(request):
     if request.method == 'POST':

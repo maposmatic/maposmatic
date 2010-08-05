@@ -139,6 +139,18 @@ class MapRenderingJobForm(forms.ModelForm):
 
         return cleaned_data
 
+class MapPaperSizeForm(forms.Form):
+    """
+    The map paper size form, which is only used to analyze the
+    arguments of the POST request to /apis/papersize/
+    """
+    osmid = forms.IntegerField(required=False)
+    layout = forms.CharField(max_length=256)
+    lat_upper_left = forms.FloatField(required=False)
+    lon_upper_left = forms.FloatField(required=False)
+    lat_bottom_right = forms.FloatField(required=False)
+    lon_bottom_right = forms.FloatField(required=False)
+
 class MapRecreateForm(forms.Form):
     """
     The map recreate form, to reschedule an already processed job on the queue.

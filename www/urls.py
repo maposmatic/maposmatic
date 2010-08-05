@@ -64,6 +64,8 @@ urlpatterns = patterns('',
 
     (r'^nominatim/([^/]*/)?(.*)$', maposmatic.views.query_nominatim),
 
+    (r'^papersize', maposmatic.views.query_papersize),
+
     # Internationalization
     (r'^i18n/', include('django.conf.urls.i18n')),
 
