@@ -82,6 +82,9 @@ class MapRenderingJob(models.Model):
     NONCE_SIZE = 16
 
     maptitle = models.CharField(max_length=256)
+    stylesheet = models.CharField(max_length=256)
+    layout = models.CharField(max_length=256)
+    papersize = models.CharField(max_length=256)
 
     # When rendering through administrative city is selected, the
     # following three fields must be non empty
