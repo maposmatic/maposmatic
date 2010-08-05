@@ -32,7 +32,7 @@ Simple API to query http://nominatim.openstreetmap.org
 
 Most of the credits should go to gthe Nominatim team.
 """
-
+from ocitysmap import coords
 import www.settings
 import psycopg2
 from urllib import urlencode
@@ -194,17 +194,30 @@ def _retrieve_missing_data_from_GIS(entries):
                 for table_name in ("polygon", "line"):
                     # Lookup the polygon/line table for both osm_id and
                     # the opposite of osm_id
-                    cursor.execute("""select osm_id, admin_level, way_area
+                    cursor.execute("""select osm_id, admin_level, way_area,
+                                      st_astext(st_envelope(st_transform(way,
+                                      4002))) AS bbox
                                       from planet_osm_%s
                                       where osm_id = -%s""" \
                                        % (table_name,entry["osm_id"]))
                     result = tuple(set(cursor.fetchall()))
                     if len(result) == 1:
-                        osm_id, admin_level, way_area = result[0]
+                        osm_id, admin_level, way_area, bboxtxt = result[0]
+
+                        bbox = coords.BoundingBox.parse_wkt(bboxtxt)
+
+                        # Convert the floats to string, since it has
+                        # to be rendered correctly by the JSON encoder
+                        minx = str(bbox.get_top_left()[1])
+                        miny = str(bbox.get_bottom_right()[0])
+                        maxy = str(bbox.get_top_left()[0])
+                        maxx = str(bbox.get_bottom_right()[1])
+
                         entry["ocitysmap_params"] \
                             = dict(table=table_name, id=osm_id,
                                    admin_level=admin_level,
-                                   way_area=way_area)
+                                   way_area=way_area, minx=minx, miny=miny,
+                                   maxx=maxx, maxy=maxy)
                         # Make these first in list, priviledging level 8
                         entry_rank = (ADMIN_LEVEL_RANKS.get(admin_level,9),
                                       -way_area)
