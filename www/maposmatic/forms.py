@@ -25,11 +25,21 @@
 # Forms for MapOSMatic
 
 from django import forms
+from django.utils.safestring import mark_safe
 from django.utils.translation import ugettext_lazy as _
 
 from ocitysmap.coords import BoundingBox as OCMBoundingBox
 from www.maposmatic import helpers, models, widgets
 import www.settings
+
+def get_layout_list():
+    return [("plain", "Sans index"), ("index", "With index"), ("booklet", "Booklet")]
+
+def get_stylesheet_list():
+    return [("default", "Mapnik par défaut"), ("nobuildings", "Mapnik no buildings")]
+
+def get_papersize_list():
+    return [("A4", 210, 297), ("A3", 297, 420), ("A2", 420, 594), ("US Letter", 216, 279)]
 
 class MapSearchForm(forms.Form):
     """
@@ -55,6 +65,9 @@ class MapRenderingJobForm(forms.ModelForm):
 
     mode = forms.ChoiceField(choices=MODES, initial='admin',
                              widget=forms.RadioSelect)
+    layout = forms.ChoiceField(choices=(), widget=forms.RadioSelect)
+    stylesheet = forms.ChoiceField(choices=(), widget=forms.RadioSelect)
+    papersize = forms.ChoiceField(choices=(), widget=forms.RadioSelect)
     maptitle = forms.CharField(max_length=256, required=False)
     bbox = widgets.AreaField(label=_("Area"),
                              fields=(forms.FloatField(), forms.FloatField(),
@@ -64,6 +77,16 @@ class MapRenderingJobForm(forms.ModelForm):
                                         attrs={'style': 'min-width: 200px'}))
     administrative_osmid = forms.IntegerField(widget=forms.HiddenInput,
                                               required=False)
+
+    def __init__(self, *args, **kwargs):
+        super(MapRenderingJobForm, self).__init__(*args, **kwargs)
+        self.fields['layout'].choices = get_layout_list()
+        self.fields['layout'].initial = 'index'
+        self.fields['stylesheet'].choices = get_stylesheet_list()
+        self.fields['stylesheet'].initial = 'default'
+        self.fields['papersize'].choices = \
+            [(p[0], mark_safe("%s <em class=\"papersize\">(%.1f &times; %.1f cm²)</em>" % \
+                                  (p[0], p[1] / 10., p[2] / 10.))) for p in get_papersize_list()]
 
     def clean(self):
         """Cleanup function for the map query form. Different checks are

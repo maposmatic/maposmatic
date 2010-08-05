@@ -369,6 +369,10 @@ div.pagination {
   font-size: 13pt;
 }
 
+#mainfrm em.papersize {
+  font-style: italic;
+}
+
 /* Suggest */
 #suggest {
   margin: 0;
