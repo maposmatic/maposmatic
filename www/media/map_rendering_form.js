@@ -69,7 +69,7 @@ function preparePaperSizePanel()
     $("#step-papersize ul").hide();
     if (getCurrentMode() == 'bbox')
     {
-      $.post("/papersize/", {
+      $.post("/apis/papersize/", {
                 lat_upper_left   : $("#lat_upper_left").val(),
                 lon_upper_left   : $("#lon_upper_left").val(),
                 lat_bottom_right : $("#lat_bottom_right").val(),
@@ -83,7 +83,7 @@ function preparePaperSizePanel()
     }
     else
     {
-      $.post("/papersize/", {
+      $.post("/apis/papersize/", {
                 osmid: $("#id_administrative_osmid").val(),
                 layout           : $("input[name='layout']:checked").val()
              },
@@ -319,7 +319,7 @@ function suggest(input, results, osm_id, options) {
       return;
     }
     $(input).css('cursor', 'wait');
-    $.getJSON("/nominatim/", { q: $input.val() }, handleNominatimResults);
+    $.getJSON("/apis/nominatim/", { q: $input.val() }, handleNominatimResults);
   }
 
   function processKey(e) {
