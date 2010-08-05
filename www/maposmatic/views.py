@@ -54,7 +54,9 @@ class MapOSMaticRequestContext(RequestContext):
 
 def index(request):
     """The main page."""
+    form = forms.MapSearchForm(request.GET)
     return render_to_response('maposmatic/index.html',
+                              { 'form': form },
                               context_instance=MapOSMaticRequestContext(request))
 
 def about(request):

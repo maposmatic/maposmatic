@@ -170,20 +170,16 @@ table#chavagne img {
   width: 200px;
 }
 
-p#more {
+div#more {
   margin: 2em 0 0 1em;
   font-size: 13pt;
 }
 
-p#more img {
+div#more img {
   width: 32px;
   vertical-align: middle;
   margin-right: 0.5em;
   margin-bottom: 0.5em;
-}
-
-p#more span {
-  font-weight: bold;
 }
 
 p.infobox {
