@@ -28,8 +28,8 @@ import os
 import sys
 import threading
 
-from ocitysmap.coords import BoundingBox
-from ocitysmap.street_index import OCitySMap
+from ocitysmap2 import OCitySMap, RenderingConfiguration, coords, renderers
+from www.maposmatic.helpers import get_bbox_from_osm_id
 from www.maposmatic.models import MapRenderingJob
 from www.settings import LOG
 from www.settings import OCITYSMAP_CFG_PATH
@@ -147,20 +147,28 @@ class JobRenderer(threading.Thread):
         LOG.info("Rendering job #%d '%s'..." % (self.job.id, self.job.maptitle))
 
         try:
-            if not self.job.administrative_city:
-                bbox = BoundingBox(self.job.lat_upper_left,
-                                   self.job.lon_upper_left,
-                                   self.job.lat_bottom_right,
-                                   self.job.lon_bottom_right)
-                renderer = OCitySMap(config_file=OCITYSMAP_CFG_PATH,
-                                     map_areas_prefix=self.prefix,
-                                     boundingbox=bbox,
-                                     language=self.job.map_language)
+            renderer = OCitySMap([OCITYSMAP_CFG_PATH], self.prefix)
+            config = RenderingConfiguration()
+            config.title = self.job.maptitle
+            config.osmid = self.job.administrative_osmid
+
+            if config.osmid:
+                config.bounding_box = get_bbox_from_osm_id(config.osmid)
             else:
-                renderer = OCitySMap(config_file=OCITYSMAP_CFG_PATH,
-                                     map_areas_prefix=self.prefix,
-                                     osmid=self.job.administrative_osmid,
-                                     language=self.job.map_language)
+                config.bounding_box = coords.BoundingBox(
+                        self.job.lat_upper_left,
+                        self.job.lon_upper_left,
+                        self.job.lat_bottom_right,
+                        self.job.lon_bottom_right)
+
+            config.language = self.job.map_language
+            config.stylesheet = renderer.get_stylesheet_by_name(self.job.stylesheet)
+
+            for paper in renderers.Renderer.PAPER_SIZES:
+                if paper[0] == self.job.papersize:
+                    config.paper_width_mm = paper[1]
+                    config.paper_height_mm = paper[2]
+                    break
         except KeyboardInterrupt:
             self.result = RESULT_KEYBOARD_INTERRUPT
             LOG.info("Rendering of job #%d interrupted!" % self.job.id)
@@ -174,23 +182,8 @@ class JobRenderer(threading.Thread):
         prefix = os.path.join(RENDERING_RESULT_PATH, self.job.files_prefix())
 
         try:
-            # Render the map in all RENDERING_RESULT_FORMATS
-            result = renderer.render_map_into_files(self.job.maptitle, prefix,
-                                                    RENDERING_RESULT_FORMATS,
-                                                    'zoom:16')
-
-            # Render the index in all RENDERING_RESULT_FORMATS, using the
-            # same map size.
-            renderer.render_index(self.job.maptitle, prefix,
-                                  RENDERING_RESULT_FORMATS,
-                                  result.width, result.height)
-
-            # Create thumbnail
-            if 'png' in RENDERING_RESULT_FORMATS:
-                img = Image.open(prefix + '.png')
-                img.thumbnail((200, 200), Image.ANTIALIAS)
-                img.save(prefix + THUMBNAIL_SUFFIX)
-
+            renderer.render(config, self.job.layout,
+                            RENDERING_RESULT_FORMATS, prefix)
             self.result = RESULT_SUCCESS
             LOG.info("Finished rendering of job #%d." % self.job.id)
         except KeyboardInterrupt:
@@ -198,9 +191,8 @@ class JobRenderer(threading.Thread):
             LOG.info("Rendering of job #%d interrupted!" % self.job.id)
         except Exception, e:
             self.result = RESULT_RENDERING_EXCEPTION
-            LOG.warning(e)
-            LOG.warning("Rendering of job #%d failed (exception occurred during"
-                        " rendering)!" % self.job.id)
+            LOG.exception("Rendering of job #%d failed (exception occurred during"
+                          " rendering)!" % self.job.id)
 
         # Remove the job files if the rendering was not successful.
         if self.result:

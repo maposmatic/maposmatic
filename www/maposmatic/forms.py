@@ -28,18 +28,9 @@ from django import forms
 from django.utils.safestring import mark_safe
 from django.utils.translation import ugettext_lazy as _
 
-from ocitysmap.coords import BoundingBox as OCMBoundingBox
+from ocitysmap2 import OCitySMap, coords, renderers
 from www.maposmatic import helpers, models, widgets
 import www.settings
-
-def get_layout_list():
-    return [("plain", "Sans index"), ("index", "With index"), ("booklet", "Booklet")]
-
-def get_stylesheet_list():
-    return [("default", "Mapnik par défaut"), ("nobuildings", "Mapnik no buildings")]
-
-def get_papersize_list():
-    return [("A4", 210, 297), ("A3", 297, 420), ("A2", 420, 594), ("US Letter", 216, 279)]
 
 class MapSearchForm(forms.Form):
     """
@@ -83,13 +74,25 @@ class MapRenderingJobForm(forms.ModelForm):
 
     def __init__(self, *args, **kwargs):
         super(MapRenderingJobForm, self).__init__(*args, **kwargs)
-        self.fields['layout'].choices = get_layout_list()
-        self.fields['layout'].initial = 'index'
-        self.fields['stylesheet'].choices = get_stylesheet_list()
-        self.fields['stylesheet'].initial = 'default'
-        self.fields['papersize'].choices = \
-            [(p[0], mark_safe("%s <em class=\"papersize\">(%.1f &times; %.1f cm²)</em>" % \
-                                  (p[0], p[1] / 10., p[2] / 10.))) for p in get_papersize_list()]
+
+        o = OCitySMap([www.settings.OCITYSMAP_CFG_PATH])
+
+        layout_renderers = renderers.get_renderers()
+        stylesheets = o.get_all_style_configurations()
+
+        self.fields['layout'].choices = [(r.name, r.description)
+                for r in layout_renderers]
+        self.fields['layout'].initial = layout_renderers[0].name
+
+        self.fields['stylesheet'].choices = [(s.name, s.description)
+                for s in stylesheets]
+        self.fields['stylesheet'].initial = stylesheets[0].name
+
+        self.fields['papersize'].choices = [
+                (p[0], mark_safe("%s <em class=\"papersize\">"
+                                 "(%.1f &times; %.1f cm²)</em>"
+                                  % (p[0], p[1] / 10., p[2] / 10.)))
+                for p in renderers.Renderer.PAPER_SIZES]
 
     def clean(self):
         """Cleanup function for the map query form. Different checks are
@@ -150,10 +153,10 @@ class MapRenderingJobForm(forms.ModelForm):
             lat_bottom_right = cleaned_data.get("lat_bottom_right")
             lon_bottom_right = cleaned_data.get("lon_bottom_right")
 
-            boundingbox = OCMBoundingBox(lat_upper_left,
-                                         lon_upper_left,
-                                         lat_bottom_right,
-                                         lon_bottom_right)
+            boundingbox = coords.BoundingBox(lat_upper_left,
+                                             lon_upper_left,
+                                             lat_bottom_right,
+                                             lon_bottom_right)
             (metric_size_lat, metric_size_long) = boundingbox.spheric_sizes()
             if (metric_size_lat > www.settings.BBOX_MAXIMUM_LENGTH_IN_METERS
                 or metric_size_long > www.settings.BBOX_MAXIMUM_LENGTH_IN_METERS):

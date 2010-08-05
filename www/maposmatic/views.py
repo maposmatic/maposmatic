@@ -32,8 +32,8 @@ from django.http import HttpResponseRedirect, HttpResponseBadRequest, HttpRespon
 from django.shortcuts import get_object_or_404, render_to_response
 from django.template import RequestContext
 from django.utils.translation import ugettext_lazy as _
-import ocitysmap.coords
 
+from ocitysmap2 import OCitySMap, coords, renderers
 from www.maposmatic import helpers, forms, nominatim, models
 import www.settings
 
@@ -197,7 +197,9 @@ def query_nominatim(request, format, squery):
     # Support other formats here.
 
 def query_papersize(request):
-    """Papersize selection Ajax request handler"""
+    """AJAX query handler to get the compatible paper sizes for the provided
+    layout and bounding box."""
+
     if request.method == 'POST':
         f = forms.MapPaperSizeForm(request.POST)
         if f.is_valid():
@@ -213,13 +215,14 @@ def query_papersize(request):
                 bbox = coords.BoundingBox(lat_upper_left, lon_upper_left,
                                           lat_bottom_right, lon_bottom_right)
 
-            # Do something with bbox, layout
-            print bbox, layout
+            renderer_cls = renderers.get_renderer_class_by_name(layout)
+            paper_sizes = renderer_cls.get_compatible_paper_sizes(
+                    bbox, OCitySMap.DEFAULT_ZOOM_LEVEL)
 
-            contents = [ "US Letter", "A3", "A2" ]
-
+            contents = map(lambda p: p[0], paper_sizes)
             return HttpResponse(content=json_encode(contents),
                                 mimetype='text/json')
+
     return HttpResponseBadRequest("ERROR: Invalid arguments")
 
 def recreate(request):

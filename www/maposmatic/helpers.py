@@ -27,7 +27,7 @@ import psycopg2
 import random
 import string
 
-from ocitysmap.coords import BoundingBox as OCMBoundingBox
+from ocitysmap2 import coords
 from www.maposmatic.models import MapRenderingJob
 import www.settings
 
@@ -58,7 +58,7 @@ def get_bbox_from_osm_id(osm_id, table='polygon'):
         assert ret_osm_id == osm_id
 
         # Check bbox size
-        bbox = OCMBoundingBox.parse_wkt(envlp)
+        bbox = coords.BoundingBox.parse_wkt(envlp)
     finally:
         conn.close()
 
