@@ -105,14 +105,16 @@ class MapRenderingJobForm(forms.ModelForm):
         city = cleaned_data.get("administrative_city")
         title = cleaned_data.get("maptitle")
 
+        if title == '':
+            msg = _(u"Map title required")
+            self._errors["maptitle"] = forms.util.ErrorList([msg])
+            del cleaned_data["maptitle"]
+
         if mode == 'admin':
             if city == "":
                 msg = _(u"Administrative city required")
                 self._errors["administrative_city"] = forms.util.ErrorList([msg])
                 del cleaned_data["administrative_city"]
-
-            # No choice, the map title is always the name of the city
-            cleaned_data["maptitle"] = city
 
             # Make sure that bbox and admin modes are exclusive
             cleaned_data["lat_upper_left"] = None
@@ -127,11 +129,6 @@ class MapRenderingJobForm(forms.ModelForm):
                 self._errors['administrative_osmid'] = forms.util.ErrorList([msg])
 
         elif mode == 'bbox':
-            if title == '':
-                msg = _(u"Map title required")
-                self._errors["maptitle"] = forms.util.ErrorList([msg])
-                del cleaned_data["maptitle"]
-
             for f in [ "lat_upper_left", "lon_upper_left",
                        "lat_bottom_right", "lon_bottom_right" ]:
                 val = cleaned_data.get(f)
