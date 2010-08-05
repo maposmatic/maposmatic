@@ -53,6 +53,9 @@ class MapRenderingJobForm(forms.ModelForm):
     The main map rendering form, displayed on the 'Create Map' page. It's a
     ModelForm based on the MapRenderingJob model.
     """
+    class Media:
+        css = { "all": ["/smedia/map_rendering_form.css"] }
+        js = ["/smedia/jquery.js", "/smedia/map_rendering_form.js"]
 
     class Meta:
         model = models.MapRenderingJob

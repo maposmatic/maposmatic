@@ -358,10 +358,6 @@ div.pagination {
   width: 150px;
 }
 
-#id_go_next_btn {
-  display: none;
-}
-
 #mainfrm input#id_maptitle,
 #mainfrm input#id_administrative_city {
   width: 80%;

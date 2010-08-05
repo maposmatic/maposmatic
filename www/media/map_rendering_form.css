@@ -1,0 +1,67 @@
+ul#steplist {
+  margin: 0;
+  padding: 10px 0;
+  list-style: none;
+  text-align: left;
+  background-color: #cccccc;
+}
+
+ul#steplist li {
+  margin: 0;
+  display: inline;
+  padding: 10px 2px;
+  background-color: #cccccc;
+}
+
+div#step-location-bbox, div#step-location-admin {
+  margin-top: 20px;
+}
+
+ul#steplist li.title-current-step {
+  background-color: #eeeeee;
+  font-weight: bold;
+}
+
+div#navlinks {
+  width: 100%;
+  font-size: 130%;
+}
+
+a#nextlink {
+  float: right;
+}
+
+a#prevlink {
+  float: left;
+}
+
+span#prevlinkdisabled {
+  color: grey;
+  float: left;
+}
+
+span#nextlinkdisabled {
+  color: grey;
+  float: right;
+}
+
+div.wizard {
+  width: 900px;
+}
+
+div.wizardstep {
+  width: 100%;
+  display: none;
+  padding: 20px;
+}
+
+div#step-location {
+  display: block;
+}
+
+table#summary td.summary-label {
+  width: 300px;
+  font-weight: bold;
+  padding-top: 5px;
+  padding-bottom: 5px;
+}

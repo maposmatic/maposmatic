@@ -70,13 +70,9 @@ def new(request):
         if form.is_valid():
             job = form.save(commit=False)
             job.administrative_osmid = form.cleaned_data.get('administrative_osmid')
-
-            existing = helpers.rendering_already_exists(job)
-            if existing:
-                request.session['redirected'] = True
-                return HttpResponseRedirect(reverse('job-by-id',
-                                                    args=[existing]))
-
+            job.stylesheet = form.cleaned_data.get('stylesheet')
+            job.layout = form.cleaned_data.get('layout')
+            job.papersize = form.cleaned_data.get('papersize')
             job.status = 0 # Submitted
             job.submitterip = request.META['REMOTE_ADDR']
             job.map_language = form.cleaned_data.get('map_language')
