@@ -50,7 +50,7 @@ function getAreaBottomRightLat() { return document.getElementById('area_lat_bott
 function getAreaBottomRightLon() { return document.getElementById('area_lon_bottom_right'); }
 
 /* Update form fields on bbox drawing. */
-function updateFormBbox(bounds)
+function updateFormBbox(bounds, areaSelectionNotifier)
 {
     bounds = bounds.transform(epsg_projection, epsg_display_projection);
 
@@ -68,15 +68,9 @@ function updateFormBbox(bounds)
 
     if (bbox_width > BBOX_MAXIMUM_LENGTH_IN_KM ||
         bbox_height > BBOX_MAXIMUM_LENGTH_IN_KM)
-    {
-        document.getElementById('bboxtoolarge').style.display = 'block'
-        document.getElementById('id_go_next_btn').disabled = true
-    }
+	areaSelectionNotifier(false);
     else
-    {
-        document.getElementById('bboxtoolarge').style.display = 'none'
-        document.getElementById('id_go_next_btn').disabled = false
-    }
+	areaSelectionNotifier(true);
 }
 
 /* Update the map on form field modification. */
@@ -168,8 +162,7 @@ function mapInit(areaSelectionNotifier)
                 bounds.toGeometry(), {}, bbox_style);
             vectorLayer.destroyFeatures()
             vectorLayer.addFeatures(feature);
-            updateFormBbox(bounds);
-            areaSelectionNotifier();
+            updateFormBbox(bounds, areaSelectionNotifier);
         }
     });
     map.addControl(selectControl);

@@ -61,6 +61,9 @@
       {{ form.bbox.errors }}
       <p class="bbox_select_help">{% blocktrans %}Latitude and longitude of the top left and bottom right corners of the area to render.{% endblocktrans %}</p>
       <p class="bbox_select_help">{% blocktrans %}You can use <tt>Shift+drag</tt> to zoom on a specific area of the map. If you only want to render part of what the slippy map shows, you can use <tt>Control+drag</tt> to draw the limits of the area to render.{% endblocktrans %}</p>
+      <ul id="toobigareaerror" class="errorlist" style="display: none;">
+	<li>{% blocktrans %}Area too big to be rendered. Please select a smaller area.{% endblocktrans %}</li>
+      </ul>
     </div>
 
     <div id="step-location-admin">

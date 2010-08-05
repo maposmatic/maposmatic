@@ -430,8 +430,18 @@ function getCurrentMode() {
      return 'admin';
 }
 
-function mapAreaSelectionNotifier() {
-  allowNextStep();
+/** Callback that the slippy map calls when a new area is defined. The
+ * boolean tells whether the area is valid (not too big) or not valid
+ * (too large to be rendered) */
+function mapAreaSelectionNotifier(isvalid) {
+    if (isvalid) {
+        allowNextStep();
+        $("#toobigareaerror").hide();
+    }
+    else {
+        disallowNextStep();
+        $("#toobigareaerror").show();
+    }
 }
 
 /** Page initialization. */
