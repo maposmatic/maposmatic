@@ -31,11 +31,7 @@ from ocitysmap.coords import BoundingBox as OCMBoundingBox
 from www.maposmatic.models import MapRenderingJob
 import www.settings
 
-def check_osm_id(osm_id, table='polygon'):
-    """Make sure that the supplied OSM Id is valid and can be accepted for
-    rendering (bounding box not too large, etc.). Raise an exception in
-    case of error."""
-
+def get_bbox_from_osm_id(osm_id, table='polygon'):
     # If no GIS database is configured, bypass the city_exists check by
     # returning True.
     if not www.settings.has_gis_database():
@@ -63,13 +59,22 @@ def check_osm_id(osm_id, table='polygon'):
 
         # Check bbox size
         bbox = OCMBoundingBox.parse_wkt(envlp)
-        (metric_size_lat, metric_size_long) = bbox.spheric_sizes()
-        if metric_size_lat > www.settings.BBOX_MAXIMUM_LENGTH_IN_METERS or \
-                metric_size_long > www.settings.BBOX_MAXIMUM_LENGTH_IN_METERS:
-            raise ValueError("Area too large")
-
     finally:
         conn.close()
+
+    return bbox
+
+def check_osm_id(osm_id, table='polygon'):
+    """Make sure that the supplied OSM Id is valid and can be accepted for
+    rendering (bounding box not too large, etc.). Raise an exception in
+    case of error."""
+
+    bbox = get_bbox_from_osm_id(osm_id, table)
+    (metric_size_lat, metric_size_long) = bbox.spheric_sizes()
+    if metric_size_lat > www.settings.BBOX_MAXIMUM_LENGTH_IN_METERS or \
+            metric_size_long > www.settings.BBOX_MAXIMUM_LENGTH_IN_METERS:
+        raise ValueError("Area too large")
+
 
 def rendering_already_exists_by_osmid(osmid):
     """Returns the ID of a rendering matching the given OpenStreetMap city ID
