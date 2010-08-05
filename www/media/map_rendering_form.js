@@ -98,17 +98,29 @@ function preparePaperSizePanel()
  * the location to render. */
 var selectedCountry;
 
+/** Variable in which the HTML code of the language list is saved so
+ * that we can remove items from this list and still be able to
+ * repopulate with all items later. This is due to the unfortunate
+ * fact that many browsers to do support .hide() and .show() on
+ * <option> elements. */
+var savedLanguageList;
+
+/* Filter the set of available languages according to the country in
+ * which the administrative boundary is. There is no filtering done
+ * when the area is given by bounding box. */
 function prepareLanguagePanel()
 {
     var seen = false;
+
+    $('#id_map_language').html(savedLanguageList);
+
     $('#id_map_language').children('option').each(function() {
         if (! ($(this).val().match('.._' + selectedCountry.toUpperCase() + '\..*') != null
                || $(this).val() == 'C'))
-        {
-            $(this).hide();
-        }
-        else {
-            $(this).show();
+	{
+	    $(this).remove();
+	}
+	else {
             if (! seen) {
                 $(this).attr("selected", "selected");
                 seen = true;
@@ -450,6 +462,8 @@ $(document).ready(function() {
 
   $('#id_mode_0').bind('click', function(e) { switchToAdminMode(); });
   $('#id_mode_1').bind('click', function(e) { switchToBBoxMode(); });
+
+  savedLanguageList = $('#id_map_language').html();
 
   suggest('#id_administrative_city', '#suggest',
           '#id_administrative_osmid',
