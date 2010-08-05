@@ -299,8 +299,7 @@ function suggest(input, results, osm_id, options) {
     }
 
     $.each(data, function(i, item) {
-      if (typeof item.ocitysmap_params != 'undefined' &&
-          item.ocitysmap_params['admin_level'] == 6) {
+      if (typeof item.ocitysmap_params != 'undefined') {
         appendValidResult(item);
       } else {
         $results.append('<li class="suggestoff">'
