@@ -201,21 +201,27 @@ MAP_LANGUAGES.sort(lambda x, y: cmp(x[1], y[1]))
 MAP_LANGUAGES.append(("C", _(u"No localization")))
 
 # Logging
+_log_level = int(os.environ.get("MAPOSMATIC_LOG_LEVEL",
+                                DEFAULT_MAPOSMATIC_LOG_LEVEL))
+
 LOG = logging.getLogger(os.environ.get("MAPOSMATIC_LOG_TARGET",
                                        "maposmatic"))
-LOG.setLevel(int(os.environ.get("MAPOSMATIC_LOG_LEVEL",
-                                DEFAULT_MAPOSMATIC_LOG_LEVEL)))
+LOG.setLevel(_log_level)
+
 _log_dest = os.environ.get('MAPOSMATIC_LOG_FILE', DEFAULT_MAPOSMATIC_LOG_FILE)
 if _log_dest:
     _fh = logging.FileHandler(_log_dest)
 else:
     _fh = logging.StreamHandler()
-_fh.setFormatter(logging.Formatter(os.environ.get("MAPOSMATIC_LOG_FORMAT",
-                                                  DEFAULT_MAPOSMATIC_LOG_FORMAT)))
+_fh.setFormatter(logging.Formatter(
+    os.environ.get("MAPOSMATIC_LOG_FORMAT", DEFAULT_MAPOSMATIC_LOG_FORMAT)))
 
 LOG.addHandler(_fh)
 LOG.info("log restarted.")
 
+_log_ocitysmap = logging.getLogger('ocitysmap')
+_log_ocitysmap.setLevel(_log_level)
+_log_ocitysmap.addHandler(_fh)
 
 def has_gis_database():
     return GIS_DATABASE_NAME and GIS_DATABASE_NAME != ''
