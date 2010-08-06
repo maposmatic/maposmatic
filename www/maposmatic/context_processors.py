@@ -21,15 +21,21 @@
 # You should have received a copy of the GNU Affero General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-from models import MapRenderingJob
+from django.core.urlresolvers import reverse
 import feedparser
+
+from models import MapRenderingJob
 
 def get_latest_blog_posts():
     f = feedparser.parse("http://news.maposmatic.org/?feed=rss2")
     return f.entries[:5]
 
 def all(request):
-    d = {}
-    d['randommap'] = MapRenderingJob.objects.get_random_with_thumbnail()
-    d['blogposts'] = get_latest_blog_posts()
-    return d
+    # Do not add the useless overhead of parsing blog entries when generating
+    # the rss feed
+    if request.path == reverse('rss-feed', args=['maps']):
+        return {}
+    return {
+        'randommap': = MapRenderingJob.objects.get_random_with_thumbnail(),
+        'blogposts': = get_latest_blog_posts()
+    }
