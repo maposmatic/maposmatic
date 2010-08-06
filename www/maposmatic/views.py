@@ -196,6 +196,13 @@ def query_nominatim(request, format, squery):
                             mimetype='text/json')
     # Support other formats here.
 
+def nominatim_reverse(request, lat, lon):
+    """Nominatim reverse geocoding query gateway."""
+    lat = float(lat)
+    lon = float(lon)
+    return HttpResponse(json_encode(nominatim.reverse_geo(lat, lon)),
+                        mimetype='text/json')
+
 def query_papersize(request):
     """AJAX query handler to get the compatible paper sizes for the provided
     layout and bounding box."""

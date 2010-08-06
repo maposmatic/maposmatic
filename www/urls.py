@@ -64,6 +64,8 @@ urlpatterns = patterns('',
 
     (r'^apis/nominatim/([^/]*/)?(.*)$', maposmatic.views.query_nominatim),
 
+    (r'^apis/reversegeo/([^/]*)/([^/]*)/$', maposmatic.views.nominatim_reverse),
+
     (r'^apis/papersize', maposmatic.views.query_papersize),
 
     # Internationalization

@@ -43,6 +43,24 @@ from xml.etree.ElementTree import parse as XMLTree
 
 NOMINATIM_BASE_URL = "http://nominatim.openstreetmap.org/search/"
 
+def reverse_geo(lat, lon):
+    """
+    Query the nominatim service for the given lat/long coordinates and
+    returns the reverse geocoded informations.
+    """
+
+    url = "http://nominatim.openstreetmap.org/reverse?"
+    url = url + ("lat=%f&lon=%f" % (lat, lon))
+
+    f = urllib2.urlopen(url=url)
+    result = []
+
+    for place in XMLTree(f).getroot().getchildren():
+        attribs = dict(place.attrib)
+        for elt in place.getchildren():
+            attribs[elt.tag] = elt.text
+        result.append(attribs)
+    return result
 
 def query(query_text, with_polygons = False):
     """
