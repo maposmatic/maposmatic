@@ -75,7 +75,7 @@ class MapRenderingJobForm(forms.ModelForm):
     def __init__(self, *args, **kwargs):
         super(MapRenderingJobForm, self).__init__(*args, **kwargs)
 
-        o = OCitySMap([www.settings.OCITYSMAP_CFG_PATH])
+        o = OCitySMap(www.settings.OCITYSMAP_CFG_PATH)
 
         layout_renderers = renderers.get_renderers()
         stylesheets = o.get_all_style_configurations()
