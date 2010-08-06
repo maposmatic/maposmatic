@@ -70,10 +70,13 @@ urlpatterns = patterns('',
     # Feeds
     (r'^feeds/(?P<url>.*)/$', 'django.contrib.syndication.views.feed',
      {'feed_dict': feeds}, 'rss-feed'),
-
-    # Static data
-    (r'^results/(?P<path>.*)$', 'django.views.static.serve',
-     {'document_root': '/tmp/foo/'}),
-    (r'^smedia/(?P<path>.*)$', 'django.views.static.serve',
-     {'document_root': settings.LOCAL_MEDIA_PATH}),
 )
+
+if settings.DEBUG:
+    urlpatterns.extend(patterns('',
+        (r'^results/(?P<path>.*)$', 'django.views.static.serve',
+         {'document_root': settings.RENDERING_RESULT_PATH}),
+
+        (r'^smedia/(?P<path>.*)$', 'django.views.static.serve',
+         {'document_root': settings.LOCAL_MEDIA_PATH}),
+    ))
