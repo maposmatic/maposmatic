@@ -32,7 +32,8 @@ Simple API to query http://nominatim.openstreetmap.org
 
 Most of the credits should go to gthe Nominatim team.
 """
-from ocitysmap import coords
+
+from ocitysmap2 import coords
 import www.settings
 import psycopg2
 from urllib import urlencode
