@@ -232,12 +232,6 @@ def recreate(request):
             job = get_object_or_404(models.MapRenderingJob,
                                     id=form.cleaned_data['jobid'])
 
-            existing = helpers.rendering_already_exists(job)
-            if existing:
-                request.session['redirected'] = True
-                return HttpResponseRedirect(reverse('job-by-id',
-                                                    args=[existing]))
-
             newjob = models.MapRenderingJob()
             newjob.maptitle = job.maptitle
 
@@ -248,6 +242,10 @@ def recreate(request):
             newjob.lon_upper_left = job.lon_upper_left
             newjob.lat_bottom_right = job.lat_bottom_right
             newjob.lon_bottom_right = job.lon_bottom_right
+
+            newjob.stylesheet = job.stylesheet
+            newjob.layout = job.layout
+            newjob.papersize = job.papersize
 
             newjob.status = 0 # Submitted
             newjob.submitterip = request.META['REMOTE_ADDR']
