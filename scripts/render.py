@@ -184,6 +184,13 @@ class JobRenderer(threading.Thread):
         try:
             renderer.render(config, self.job.layout,
                             RENDERING_RESULT_FORMATS, prefix)
+
+            # Create thumbnail
+            if 'png' in RENDERING_RESULT_FORMATS:
+                img = Image.open(prefix + '.png')
+                img.thumbnail((200, 200), Image.ANTIALIAS)
+                img.save(prefix + THUMBNAIL_SUFFIX)
+
             self.result = RESULT_SUCCESS
             LOG.info("Finished rendering of job #%d." % self.job.id)
         except KeyboardInterrupt:
