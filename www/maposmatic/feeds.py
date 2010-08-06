@@ -26,7 +26,7 @@
 
 import datetime
 
-from django.contrib.syndication.feeds import Feed
+from django.contrib.gis.feeds import Feed
 from django.utils.translation import ugettext_lazy as _
 
 from www.maposmatic import models
@@ -69,3 +69,9 @@ class MapsFeed(Feed):
     def item_title(self, item):
         return item.maptitle
 
+    def item_geometry(self, item):
+        if item.administrative_city:
+            return None
+        else:
+            return (item.lon_upper_left, item.lat_upper_left,
+                    item.lon_bottom_right, item.lat_bottom_right)
