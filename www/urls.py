@@ -69,7 +69,7 @@ urlpatterns = patterns('',
 
     # Feeds
     (r'^feeds/(?P<url>.*)/$', 'django.contrib.syndication.views.feed',
-     {'feed_dict': feeds}),
+     {'feed_dict': feeds}, 'rss-feed'),
 
     # Static data
     (r'^results/(?P<path>.*)$', 'django.views.static.serve',
