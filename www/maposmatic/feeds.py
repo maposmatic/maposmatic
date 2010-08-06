@@ -62,7 +62,7 @@ class MapsFeed(Feed):
         return (models.MapRenderingJob.objects
                 .filter(status=2)
                 .filter(resultmsg='ok')
-                .order_by('-endofrendering_time'))
+                .order_by('-endofrendering_time')[:10])
 
         # Not sure what to do if we still don't have any items at this point.
 
