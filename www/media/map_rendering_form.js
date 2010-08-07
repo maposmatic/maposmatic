@@ -127,32 +127,29 @@ function filterAllowedPaper(paperlist)
 
 function preparePaperPanel()
 {
+    /* Start the Ajax request to get the list of allowed paper
+     * sizes */
     $("#paperselection").hide();
     if (getCurrentMode() == 'bbox')
     {
-      $.post("/apis/papersize/", {
-                lat_upper_left   : $("#lat_upper_left").val(),
-                lon_upper_left   : $("#lon_upper_left").val(),
-                lat_bottom_right : $("#lat_bottom_right").val(),
-                lon_bottom_right : $("#lon_bottom_right").val(),
-                layout           : $("input[name='layout']:checked").val()
-             },
-             function(data) {
-                filterAllowedPaper(data);
-             }
-            );
+        args = {
+            lat_upper_left   : $("#lat_upper_left").val(),
+            lon_upper_left   : $("#lon_upper_left").val(),
+            lat_bottom_right : $("#lat_bottom_right").val(),
+            lon_bottom_right : $("#lon_bottom_right").val(),
+            layout           : $("input[name='layout']:checked").val()
+        };
     }
     else
     {
-      $.post("/apis/papersize/", {
-                osmid: $("#id_administrative_osmid").val(),
-                layout           : $("input[name='layout']:checked").val()
-             },
-             function(data) {
-                filterAllowedPaper(data);
-             }
-            );
+        args = {
+            osmid  : $("#id_administrative_osmid").val(),
+            layout : $("input[name='layout']:checked").val()
+        };
     }
+
+    $.post("/apis/papersize/", args,
+           function(data) { filterAllowedPaper(data); });
 }
 
 /** When using a by admin boundary area, contains the country code of
