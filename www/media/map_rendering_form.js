@@ -1,4 +1,4 @@
-/* coding: utf-8 -*- mode: espresso; indent-tabs-mode: nil -*-
+/* coding: utf-8 -*- mode: espresso; espresso-indent-level: 2; indent-tabs-mode: nil -*-
  *
  * maposmatic, the web front-end of the MapOSMatic city map generation system
  * Copyright (C) 2009-2010 David Decotigny
