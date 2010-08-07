@@ -181,23 +181,28 @@ function setSelectedCountryCallback(geoResults)
  * when the area is given by bounding box. */
 function prepareLanguagePanel()
 {
-  var seen = false;
+  var langlist = $('#id_map_language');
 
-  $('#id_map_language').html(savedLanguageList);
+  langlist.html(savedLanguageList);
 
-  $('#id_map_language').children('option').each(function() {
-    if (! ($(this).val().match('.._' + selectedCountry.toUpperCase() + '\..*') != null
-           || $(this).val() == 'C'))
-    {
-      $(this).remove();
-    }
-    else {
-      if (! seen) {
-        $(this).attr("selected", "selected");
-        seen = true;
-      }
+  /* The goal is to build a list of languages in which we have first
+   * the languages matching the current country code, then an empty
+   * disabled entry used as a separator and finally all other
+   * languages. To do so, we use prependTo(), which adds elements at
+   * the beginning of the list. So we start by prepending the
+   * separator, then the "no localization" special language, and
+   * finally the languages matching the current country code.
+   */
+  $('<option disabled="disabled"></option>').prependTo(langlist);
+  $('option[value=C]', langlist).prependTo(langlist);
+
+  langlist.children('option').each(function() {
+    if ($(this).val().match('.._' + selectedCountry.toUpperCase() + '\..*') != null) {
+      $(this).prependTo(langlist);
     }
   });
+
+  $('option:first', langlist).attr("selected", "selected");
 }
 
 function prepareSummaryPanel()
