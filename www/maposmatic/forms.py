@@ -57,11 +57,16 @@ class MapRenderingJobForm(forms.ModelForm):
     MODES = (('admin', _('Administrative boundary')),
              ('bbox', _('Bounding box')))
 
+    ORIENTATION = (('landscape', _('Landscape')),
+                   ('portrait', _('Portrait')))
+
     mode = forms.ChoiceField(choices=MODES, initial='admin',
                              widget=forms.RadioSelect)
     layout = forms.ChoiceField(choices=(), widget=forms.RadioSelect)
     stylesheet = forms.ChoiceField(choices=(), widget=forms.RadioSelect)
     papersize = forms.ChoiceField(choices=(), widget=forms.RadioSelect)
+    paperorientation = forms.ChoiceField(choices=ORIENTATION,
+                                         widget=forms.RadioSelect)
     maptitle = forms.CharField(max_length=256, required=False)
     bbox = widgets.AreaField(label=_("Area"),
                              fields=(forms.FloatField(), forms.FloatField(),
@@ -88,10 +93,16 @@ class MapRenderingJobForm(forms.ModelForm):
                 for s in stylesheets]
         self.fields['stylesheet'].initial = stylesheets[0].name
 
-        self.fields['papersize'].choices = [
-                (p[0], mark_safe("%s <em class=\"papersize\">"
+        def _build_papersize_description(p):
+            if p[1] is None or p[2] is None:
+                return mark_safe("%s <em class=\"papersize\"></em>" % p[0])
+            else:
+                return mark_safe("%s <em class=\"papersize\">"
                                  "(%.1f &times; %.1f cm²)</em>"
-                                  % (p[0], p[1] / 10., p[2] / 10.)))
+                                 % (p[0], p[1] / 10., p[2] / 10.))
+
+        self.fields['papersize'].choices = [
+                (p[0], _build_papersize_description(p))
                 for p in renderers.Renderer.PAPER_SIZES]
 
     def clean(self):

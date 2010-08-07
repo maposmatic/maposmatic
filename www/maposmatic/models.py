@@ -84,7 +84,8 @@ class MapRenderingJob(models.Model):
     maptitle = models.CharField(max_length=256)
     stylesheet = models.CharField(max_length=256)
     layout = models.CharField(max_length=256)
-    papersize = models.CharField(max_length=256)
+    paper_width_mm = models.IntegerField()
+    paper_height_mm = models.IntegerField()
 
     # When rendering through administrative city is selected, the
     # following three fields must be non empty

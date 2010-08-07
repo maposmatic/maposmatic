@@ -163,12 +163,8 @@ class JobRenderer(threading.Thread):
 
             config.language = self.job.map_language
             config.stylesheet = renderer.get_stylesheet_by_name(self.job.stylesheet)
-
-            for paper in renderers.Renderer.PAPER_SIZES:
-                if paper[0] == self.job.papersize:
-                    config.paper_width_mm = paper[1]
-                    config.paper_height_mm = paper[2]
-                    break
+            config.paper_width_mm = self.job.paper_width_mm
+            config.paper_height_mm = self.job.paper_height_mm
         except KeyboardInterrupt:
             self.result = RESULT_KEYBOARD_INTERRUPT
             LOG.info("Rendering of job #%d interrupted!" % self.job.id)

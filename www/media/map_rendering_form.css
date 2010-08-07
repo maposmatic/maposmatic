@@ -87,6 +87,18 @@ div#step-location {
   display: block;
 }
 
+table#paperselection {
+  width: 100%;
+}
+
+table#paperselection td {
+  width: 50%;
+}
+
+td#paperorientationselection li.disabled {
+  color: grey;
+}
+
 table#summary td.summary-label {
   width: 300px;
   font-weight: bold;
