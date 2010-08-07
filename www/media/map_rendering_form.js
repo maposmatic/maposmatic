@@ -316,6 +316,7 @@ function suggest(input, results, osm_id, options) {
   var $osm_id = $(osm_id);
   var timeout = false;
   var shown = false;
+  var ajaxSuggestQuery = null;
 
   closeSuggest(true);
 
@@ -413,6 +414,11 @@ function suggest(input, results, osm_id, options) {
       return;
     }
     $(input).css('cursor', 'wait');
+
+    if (ajaxSuggestQuery != null)
+      ajaxSuggestQuery.abort();
+
+    ajaxSuggestQuery =
       $.getJSON("/apis/nominatim/",
                 { q: $input.val(), exclude: excludes },
                 handleNominatimResults);
