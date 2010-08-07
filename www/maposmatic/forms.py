@@ -67,6 +67,8 @@ class MapRenderingJobForm(forms.ModelForm):
     papersize = forms.ChoiceField(choices=(), widget=forms.RadioSelect)
     paperorientation = forms.ChoiceField(choices=ORIENTATION,
                                          widget=forms.RadioSelect)
+    paper_width_mm = forms.IntegerField(widget=forms.HiddenInput)
+    paper_height_mm = forms.IntegerField(widget=forms.HiddenInput)
     maptitle = forms.CharField(max_length=256, required=False)
     bbox = widgets.AreaField(label=_("Area"),
                              fields=(forms.FloatField(), forms.FloatField(),
@@ -119,14 +121,9 @@ class MapRenderingJobForm(forms.ModelForm):
         city = cleaned_data.get("administrative_city")
         title = cleaned_data.get("maptitle")
 
-        for p in renderers.Renderer.PAPER_SIZES:
-            if p[0] == cleaned_data.get("papersize"):
-                w, h = p[2], p[1]
-                if cleaned_data.get("paperorientation") == 'landscape':
-                    w, h = p[2], p[1]
-                cleaned_data["paper_width_mm"] = w
-                cleaned_data["paper_height_mm"] = h
-                break
+        if cleaned_data.get("paperorientation") == 'landscape':
+            cleaned_data["paper_width_mm"], cleaned_data["paper_height_mm"] = \
+                cleaned_data.get("paper_height_mm"), cleaned_data.get("paper_width_mm")
 
         if title == '':
             msg = _(u"Map title required")

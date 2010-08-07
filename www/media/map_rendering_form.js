@@ -61,15 +61,18 @@ function getPaperDef(paperlist, paper)
   return null;
 }
 
-/* This function updates the landscape/portrait selectors according to
- * the portraitOk/landscapeOk booleans telling whether portrait and
- * landscape are possible. */
-function filterAllowedOrientations(portraitOk, landscapeOk)
+/* This function :
+ *   - updates the landscape/portrait selectors according to the
+ *     portraitOk/landscapeOk booleans telling whether portrait and
+ *     landscape are possible.
+ *   - updates the hidden fields paper_width_mm and paper_height_mm
+ */
+function handlePaperSizeClick(width_mm, height_mm, portrait_ok, landscape_ok)
 {
   landscape = $("input[value='landscape']");
   portrait  = $("input[value='portrait']");
 
-  if (landscapeOk) {
+  if (landscape_ok) {
     landscape.attr("disabled", "");
     landscape.attr("checked", "checked");
     landscape.parent().parent().removeClass("disabled");
@@ -79,9 +82,9 @@ function filterAllowedOrientations(portraitOk, landscapeOk)
     landscape.parent().parent().addClass("disabled");
   }
 
-  if (portraitOk) {
+  if (portrait_ok) {
     portrait.attr("disabled", "");
-    if (! landscapeOk)
+    if (! landscape_ok)
       portrait.attr("checked", "checked");
     portrait.parent().parent().removeClass("disabled");
   }
@@ -89,12 +92,15 @@ function filterAllowedOrientations(portraitOk, landscapeOk)
     portrait.attr("disabled", "disabled");
     portrait.parent().parent().addClass("disabled");
   }
+
+  $("#id_paper_width_mm").val(width_mm);
+  $("#id_paper_height_mm").val(height_mm);
 }
 
-function bindPaperClickCallback(fn, portraitOk, landscapeOk)
+function bindPaperClickCallback(fn, width_mm, height_mm, portrait_ok, landscape_ok)
 {
   return (function(e) {
-    fn(portraitOk, landscapeOk);
+    fn(width_mm, height_mm, portrait_ok, landscape_ok);
   });
 }
 
@@ -109,7 +115,8 @@ function filterAllowedPaper(paperlist)
     paperDef = getPaperDef(paperlist, paper);
     if (paperDef != null) {
       $('label', item).bind('click',
-                            bindPaperClickCallback(filterAllowedOrientations,
+                            bindPaperClickCallback(handlePaperSizeClick,
+                                                   paperDef[1], paperDef[2],
                                                    paperDef[3], paperDef[4]));
       $(item).show();
     }
