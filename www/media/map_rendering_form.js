@@ -28,37 +28,37 @@
 
 function mapTitleChange()
 {
-    if ($("#id_maptitle").val().length != 0)
-        allowNextStep();
-    else
-        disallowNextStep();
+  if ($("#id_maptitle").val().length != 0)
+    allowNextStep();
+  else
+    disallowNextStep();
 }
 
 function prepareTitlePanel()
 {
-    if (getCurrentMode() == 'bbox') {
-        $("#id_maptitle").val("");
-        disallowNextStep();
-    }
-    else {
-        $("#id_maptitle").val($("#id_administrative_city").val());
-        allowNextStep();
-    }
+  if (getCurrentMode() == 'bbox') {
+    $("#id_maptitle").val("");
+    disallowNextStep();
+  }
+  else {
+    $("#id_maptitle").val($("#id_administrative_city").val());
+    allowNextStep();
+  }
 
-    $('#id_maptitle').keyup(mapTitleChange);
+  $('#id_maptitle').keyup(mapTitleChange);
 }
 
 /* Given a list of allowed paper sizes (paperlist), find the element
  * that correspond to a given paper name (paper) */
 function getPaperDef(paperlist, paper)
 {
-    for each (var item in paperlist)
-    {
-        if (paper == item[0])
-            return item;
-    }
+  for (i in paperlist) {
+    item = paperlist[i];
+    if (paper == item[0])
+      return item;
+  }
 
-    return null;
+  return null;
 }
 
 /* This function updates the landscape/portrait selectors according to
@@ -66,100 +66,94 @@ function getPaperDef(paperlist, paper)
  * landscape are possible. */
 function filterAllowedOrientations(portraitOk, landscapeOk)
 {
-    landscape = $("input[value='landscape']");
-    portrait  = $("input[value='portrait']");
+  landscape = $("input[value='landscape']");
+  portrait  = $("input[value='portrait']");
 
-    if (landscapeOk) {
-        landscape.attr("disabled", "");
-        landscape.attr("checked", "checked");
-        landscape.parent().parent().removeClass("disabled");
-    }
-    else {
-        landscape.attr("disabled", "disabled");
-        landscape.parent().parent().addClass("disabled");
-    }
+  if (landscapeOk) {
+    landscape.attr("disabled", "");
+    landscape.attr("checked", "checked");
+    landscape.parent().parent().removeClass("disabled");
+  }
+  else {
+    landscape.attr("disabled", "disabled");
+    landscape.parent().parent().addClass("disabled");
+  }
 
-    if (portraitOk) {
-        portrait.attr("disabled", "");
-        if (! landscapeOk) {
-            portrait.attr("checked", "checked");
-        }
-        portrait.parent().parent().removeClass("disabled");
-    }
-    else {
-        portrait.attr("disabled", "disabled");
-        portrait.parent().parent().addClass("disabled");
-    }
+  if (portraitOk) {
+    portrait.attr("disabled", "");
+    if (! landscapeOk)
+      portrait.attr("checked", "checked");
+    portrait.parent().parent().removeClass("disabled");
+  }
+  else {
+    portrait.attr("disabled", "disabled");
+    portrait.parent().parent().addClass("disabled");
+  }
 }
 
 function bindPaperClickCallback(fn, portraitOk, landscapeOk)
 {
-    return (function(e) {
-        fn(portraitOk, landscapeOk);
-    });
+  return (function(e) {
+    fn(portraitOk, landscapeOk);
+  });
 }
 
 function filterAllowedPaper(paperlist)
 {
-    /* Iterate through all paper lists, and hide those that do not
-     * apply to the selected rendering, and bind click callbacks on
-     * those that are available. The callback is in charge of updating
-     * the available orientation for the choosen paper size */
-    $.each($("#papersizeselection ul li"), function(id, item) {
-        paper = $('label input[value]', item).val();
-        paperDef = getPaperDef(paperlist, paper);
-        if (paperDef != null) {
-            $('label', item).bind('click',
-                                  bindPaperClickCallback(filterAllowedOrientations,
-                                                         paperDef[3], paperDef[4]));
-            $(item).show();
-        }
-        else
-            $(item).hide();
+  /* Iterate through all paper lists, and hide those that do not
+   * apply to the selected rendering, and bind click callbacks on
+   * those that are available. The callback is in charge of updating
+   * the available orientation for the choosen paper size */
+  $.each($("#papersizeselection ul li"), function(id, item) {
+    paper = $('label input[value]', item).val();
+    paperDef = getPaperDef(paperlist, paper);
+    if (paperDef != null) {
+      $('label', item).bind('click',
+                            bindPaperClickCallback(filterAllowedOrientations,
+                                                   paperDef[3], paperDef[4]));
+      $(item).show();
+    }
+    else
+      $(item).hide();
 
-        if (paper == "Best fit") {
-            console.log(paperDef[0]);
-            console.log(paperDef[1]);
-            console.log(paperDef[2]);
-            paperSizeText = $("label em[class='papersize']", item);
-            width_cm = paperDef[1] / 10;
-            height_cm = paperDef[2] / 10;
-            paperSizeText.html("(" + width_cm.toFixed(1) + " &times; " + height_cm.toFixed(1) + " cm²)");
-        }
-    });
+    if (paper == "Best fit") {
+      paperSizeText = $("label em[class='papersize']", item);
+      width_cm = paperDef[1] / 10;
+      height_cm = paperDef[2] / 10;
+      paperSizeText.html("(" + width_cm.toFixed(1) + " &times; " + height_cm.toFixed(1) + " cm²)");
+    }
+  });
 
-    $("#paperselection").show();
+  $("#paperselection").show();
 
-    /* Make sure that default paper size and orientation are selected
-     * by simulating a click on the first available paper */
-    $("label input", $($("#papersizeselection ul li:visible")[0])).click();
+  /* Make sure that default paper size and orientation are selected
+   * by simulating a click on the first available paper */
+  $("label input", $($("#papersizeselection ul li:visible")[0])).click();
 }
 
 function preparePaperPanel()
 {
-    /* Start the Ajax request to get the list of allowed paper
-     * sizes */
-    $("#paperselection").hide();
-    if (getCurrentMode() == 'bbox')
-    {
-        args = {
-            lat_upper_left   : $("#lat_upper_left").val(),
-            lon_upper_left   : $("#lon_upper_left").val(),
-            lat_bottom_right : $("#lat_bottom_right").val(),
-            lon_bottom_right : $("#lon_bottom_right").val(),
-            layout           : $("input[name='layout']:checked").val()
-        };
-    }
-    else
-    {
-        args = {
-            osmid  : $("#id_administrative_osmid").val(),
-            layout : $("input[name='layout']:checked").val()
-        };
-    }
+  /* Start the Ajax request to get the list of allowed paper
+   * sizes */
+  $("#paperselection").hide();
+  if (getCurrentMode() == 'bbox') {
+    args = {
+      lat_upper_left   : $("#lat_upper_left").val(),
+      lon_upper_left   : $("#lon_upper_left").val(),
+      lat_bottom_right : $("#lat_bottom_right").val(),
+      lon_bottom_right : $("#lon_bottom_right").val(),
+      layout           : $("input[name='layout']:checked").val()
+    };
+  }
+  else {
+    args = {
+      osmid  : $("#id_administrative_osmid").val(),
+      layout : $("input[name='layout']:checked").val()
+    };
+  }
 
-    $.post("/apis/papersize/", args,
-           function(data) { filterAllowedPaper(data); });
+  $.post("/apis/papersize/", args,
+         function(data) { filterAllowedPaper(data); });
 }
 
 /** When using a by admin boundary area, contains the country code of
@@ -178,49 +172,47 @@ var savedLanguageList;
  * when the area is given by bounding box. */
 function prepareLanguagePanel()
 {
-    var seen = false;
+  var seen = false;
 
-    $('#id_map_language').html(savedLanguageList);
+  $('#id_map_language').html(savedLanguageList);
 
-    $('#id_map_language').children('option').each(function() {
-        if (! ($(this).val().match('.._' + selectedCountry.toUpperCase() + '\..*') != null
-               || $(this).val() == 'C'))
-	{
+  $('#id_map_language').children('option').each(function() {
+    if (! ($(this).val().match('.._' + selectedCountry.toUpperCase() + '\..*') != null
+           || $(this).val() == 'C'))
+	  {
 	    $(this).remove();
-	}
-	else {
-            if (! seen) {
-                $(this).attr("selected", "selected");
-                seen = true;
-            }
-        }
-    });
+	  }
+	  else {
+      if (! seen) {
+        $(this).attr("selected", "selected");
+        seen = true;
+      }
+    }
+  });
 }
 
 function prepareSummaryPanel()
 {
-    if (getCurrentMode() == 'bbox')
-    {
-        $("#summary-area").
-            html("(" +
-                 $("#lat_upper_left").val() + ","          +
-                 $("#lon_upper_left").val() + ") &rarr; (" +
-                 $("#lat_bottom_right").val() + ","        +
-                 $("#lon_bottom_right").val() + ")");
-    }
-    else
-    {
-        osmid = $("#id_administrative_osmid").val();
-        $("#summary-area").
-            html($("#id_administrative_city").val() +
-                 "<br/>(osm: <a href=\"http://www.openstreetmap.org/browse/relation/" +
-                 Math.abs(osmid) + "\">relation " + Math.abs(osmid) + "</a>)");
-    }
+  if (getCurrentMode() == 'bbox') {
+    $("#summary-area").
+      html("(" +
+           $("#lat_upper_left").val() + ","          +
+           $("#lon_upper_left").val() + ") &rarr; (" +
+           $("#lat_bottom_right").val() + ","        +
+           $("#lon_bottom_right").val() + ")");
+  }
+  else {
+    osmid = $("#id_administrative_osmid").val();
+    $("#summary-area").
+      html($("#id_administrative_city").val() +
+           "<br/>(osm: <a href=\"http://www.openstreetmap.org/browse/relation/" +
+           Math.abs(osmid) + "\">relation " + Math.abs(osmid) + "</a>)");
+  }
 
-    $("#summary-layout").html($("input[name='layout']:checked").parent().text().trim());
-    $("#summary-papersize").html($("input[name='papersize']:checked").parent().text().trim());
-    $("#summary-stylesheet").html($("input[name='stylesheet']:checked").parent().text().trim());
-    $("#summary-language").html($("#id_map_language :selected").text());
+  $("#summary-layout").html($("input[name='layout']:checked").parent().text().trim());
+  $("#summary-papersize").html($("input[name='papersize']:checked").parent().text().trim());
+  $("#summary-stylesheet").html($("input[name='stylesheet']:checked").parent().text().trim());
+  $("#summary-language").html($("#id_map_language :selected").text());
 }
 
 /** Function called *before* showing a given panel. It gives the
@@ -287,17 +279,17 @@ const VISIBLE_STEP_PANEL_SELECTOR = "div[id|=step][class=wizardstep]:visible";
     enabled/disabled as needed. */
 function loadNextStep()
 {
-    current = $(VISIBLE_STEP_PANEL_SELECTOR);
-    next = current.next(STEP_PANEL_SELECTOR);
-    hasafternext = (next.next(STEP_PANEL_SELECTOR).length != 0);
+  current = $(VISIBLE_STEP_PANEL_SELECTOR);
+  next = current.next(STEP_PANEL_SELECTOR);
+  hasafternext = (next.next(STEP_PANEL_SELECTOR).length != 0);
 
-    prepareNextPage(next.attr("id"));
-    hidePanel(current);
-    showPanel(next);
+  prepareNextPage(next.attr("id"));
+  hidePanel(current);
+  showPanel(next);
 
-    allowPrevStep();
-    if (! hasafternext)
-        disallowNextStep();
+  allowPrevStep();
+  if (! hasafternext)
+    disallowNextStep();
 }
 
 /** Replace the panel of the current step by the panel of the next
@@ -305,16 +297,16 @@ function loadNextStep()
     needed. */
 function loadPrevStep()
 {
-    current = $(VISIBLE_STEP_PANEL_SELECTOR);
-    prev = current.prev(STEP_PANEL_SELECTOR);
-    hasbeforeprev = (prev.prev(STEP_PANEL_SELECTOR).length != 0);
+  current = $(VISIBLE_STEP_PANEL_SELECTOR);
+  prev = current.prev(STEP_PANEL_SELECTOR);
+  hasbeforeprev = (prev.prev(STEP_PANEL_SELECTOR).length != 0);
 
-    hidePanel(current);
-    showPanel(prev);
+  hidePanel(current);
+  showPanel(prev);
 
-    allowNextStep();
-    if (! hasbeforeprev)
-        disallowPrevStep();
+  allowNextStep();
+  if (! hasbeforeprev)
+    disallowPrevStep();
 }
 
 /** Auto-suggest feature. */
