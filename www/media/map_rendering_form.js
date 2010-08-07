@@ -167,6 +167,15 @@ var selectedCountry;
  * <option> elements. */
 var savedLanguageList;
 
+function setSelectedCountryCallback(geoResults)
+{
+  $.each(geoResults, function(i, item) {
+    if (typeof item.country_code != 'undefined') {
+      selectedCountry = item.country_code;
+    }
+  });
+}
+
 /* Filter the set of available languages according to the country in
  * which the administrative boundary is. There is no filtering done
  * when the area is given by bounding box. */
@@ -535,18 +544,26 @@ function getCurrentMode() {
      return 'admin';
 }
 
+var bboxReverseGeoAjaxQuery = null;
+
 /** Callback that the slippy map calls when a new area is defined. The
  * boolean tells whether the area is valid (not too big) or not valid
  * (too large to be rendered) */
-function mapAreaSelectionNotifier(isvalid) {
-    if (isvalid) {
-        allowNextStep();
-        $("#toobigareaerror").hide();
-    }
-    else {
-        disallowNextStep();
-        $("#toobigareaerror").show();
-    }
+function mapAreaSelectionNotifier(isvalid, bounds) {
+  if (isvalid) {
+    center = bounds.getCenterLonLat();
+    if (bboxReverseGeoAjaxQuery != null)
+      bboxReverseGeoAjaxQuery.abort();
+    bboxReverseGeoAjaxQuery =
+      $.getJSON("/apis/reversegeo/" + center.lat + "/" + center.lon + "/",
+                { }, setSelectedCountryCallback);
+    allowNextStep();
+    $("#toobigareaerror").hide();
+  }
+  else {
+    disallowNextStep();
+    $("#toobigareaerror").show();
+  }
 }
 
 /** Page initialization. */

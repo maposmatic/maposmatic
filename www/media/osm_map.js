@@ -68,9 +68,9 @@ function updateFormBbox(bounds, areaSelectionNotifier)
 
     if (bbox_width > BBOX_MAXIMUM_LENGTH_IN_KM ||
         bbox_height > BBOX_MAXIMUM_LENGTH_IN_KM)
-	areaSelectionNotifier(false);
+	areaSelectionNotifier(false, bounds);
     else
-	areaSelectionNotifier(true);
+	areaSelectionNotifier(true, bounds);
 }
 
 /* Update the map on form field modification. */
