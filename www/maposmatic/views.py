@@ -177,24 +177,18 @@ def all_maps(request):
                                 'pages': helpers.get_pages_list(maps, paginator) },
                               context_instance=MapOSMaticRequestContext(request))
 
-def query_nominatim(request, format, squery):
+def query_nominatim(request):
     """Nominatim query gateway."""
-
-    format = format or request.GET.get('format', 'json')
-    if format not in ['json']:
-        return HttpResponseBadRequest("ERROR: Invalid format")
-
-    squery = squery or request.GET.get('q', '')
+    exclude = request.GET.get('exclude', '')
+    squery = request.GET.get('q', '')
 
     try:
-        contents = nominatim.query(squery, with_polygons=False)
+        contents = nominatim.query(squery, exclude, with_polygons=False)
     except:
         contents = []
 
-    if format == 'json':
-        return HttpResponse(content=json_encode(contents),
-                            mimetype='text/json')
-    # Support other formats here.
+    return HttpResponse(content=json_encode(contents),
+                        mimetype='text/json')
 
 def nominatim_reverse(request, lat, lon):
     """Nominatim reverse geocoding query gateway."""

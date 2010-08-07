@@ -333,18 +333,28 @@ function suggest(input, results, osm_id, options) {
   // Disable form validation via the Enter key
   $input.keypress(function(e) { if (e.keyCode == 13) return false; });
 
-  function appendValidResult(item) {
+  function appendValidResult(item)
+  {
     var id = 'rad_' + item.country_code + '_' + item.ocitysmap_params['id'];
-    $results.append('<li class="suggestok" id="' + id + '">'
-       + item.display_name + '</li>');
+    $results.append('<li style="list-style-type: disc; list-style-image: url('
+                    + item.icon + ');" class="suggestok" id="' + id + '">'
+                    + item.display_name + '</li>');
 
     var e = $('#' + id)
     e.bind('click', function(e) { setResult($(this)); });
     e.bind('mouseover', function(e) { setSelectedResultTo($(this)); });
   }
 
+  function appendInvalidResult(item)
+  {
+    $results.append('<li style="list-style-type: disc; list-style-image: url('
+                    + item.icon + ');" class="suggestoff">'
+                    + item.display_name + ' (' + item.ocitysmap_params["reason_text"] + ')</li>');
+  }
+
   /* Empty and close the suggestion box. */
-  function closeSuggest(hide) {
+  function closeSuggest(hide)
+  {
     $results.empty();
 
     if (hide)
@@ -355,38 +365,65 @@ function suggest(input, results, osm_id, options) {
     shown = !hide;
   }
 
+  function bindDoQuery(excludes)
+  {
+    return (function(e) {
+      closeSuggest(true);
+      doQuery(excludes);
+    });
+  }
+
   /* Handle the JSON result. */
-  function handleNominatimResults(data, textResult) {
+  function handleNominatimResults(data, textResult)
+  {
     var unusable_token = false;
+    var entries = data.entries
     $(input).css('cursor', 'text');
     closeSuggest(false);
 
-    if (!data.length) {
+    if (!entries.length) {
       $results.append('<li class="info">' + $('#noresultsinfo').html() + '</li>');
       return;
     }
 
-    $.each(data, function(i, item) {
-      if (typeof item.ocitysmap_params != 'undefined') {
+    $.each(entries, function(i, item) {
+      if (item.ocitysmap_params["valid"] == 1) {
         appendValidResult(item);
-      } else {
-        $results.append('<li class="suggestoff">'
-          + item.display_name + '</li>');
+      }
+      else {
+        appendInvalidResult(item);
         unusable_token = true;
       }
     });
+
+    if (data.hasprev != "" || data.hasnext != "")
+    {
+      $results.append('<li class="info">');
+      if (data.hasprev != "") {
+        $results.append('<input type="submit" id="suggestprev" value="Previous"/>');
+        $("#suggestprev").bind('click', bindDoQuery(data.prevexcludes));
+      }
+
+      if (data.hasnext != "") {
+        $results.append('<input type="submit" id="suggestnext" value="Next"/>');
+        $("#suggestnext").bind('click', bindDoQuery(data.nextexcludes));
+      }
+      $results.append('</li>');
+    }
 
     if (unusable_token)
       $results.append('<li class="info">' + $('#noadminlimitinfo').html() + '</li>');
   }
 
-  function doQuery() {
+  function doQuery(excludes) {
     if (!$input.val().length) {
       closeSuggest(true);
       return;
     }
     $(input).css('cursor', 'wait');
-    $.getJSON("/apis/nominatim/", { q: $input.val() }, handleNominatimResults);
+      $.getJSON("/apis/nominatim/",
+                { q: $input.val(), exclude: excludes },
+                handleNominatimResults);
   }
 
   function processKey(e) {
@@ -407,12 +444,12 @@ function suggest(input, results, osm_id, options) {
         break;
       case 38:  // UP
         if (!shown)
-          doQuery();
+          doQuery('');
         prevResult();
         break;
       case 40:  // DOWN
         if (!shown)
-          doQuery();
+          doQuery('');
         nextResult();
         break;
       default:

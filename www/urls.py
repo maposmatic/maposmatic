@@ -62,7 +62,7 @@ urlpatterns = patterns('',
     url(r'^cancel/$', maposmatic.views.cancel,
         name='cancel'),
 
-    (r'^apis/nominatim/([^/]*/)?(.*)$', maposmatic.views.query_nominatim),
+    (r'^apis/nominatim/$', maposmatic.views.query_nominatim),
 
     (r'^apis/reversegeo/([^/]*)/([^/]*)/$', maposmatic.views.nominatim_reverse),
 
