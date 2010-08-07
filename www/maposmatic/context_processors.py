@@ -25,6 +25,7 @@ from django.core.urlresolvers import reverse
 import feedparser
 
 from models import MapRenderingJob
+import www.settings
 
 def get_latest_blog_posts():
     f = feedparser.parse("http://news.maposmatic.org/?feed=rss2")
@@ -36,6 +37,7 @@ def all(request):
     if request.path == reverse('rss-feed', args=['maps']):
         return {}
     return {
-        'randommap': = MapRenderingJob.objects.get_random_with_thumbnail(),
-        'blogposts': = get_latest_blog_posts()
+        'randommap': MapRenderingJob.objects.get_random_with_thumbnail(),
+        'blogposts': get_latest_blog_posts(),
+        'MAPOSMATIC_DAEMON_RUNNING': www.settings.is_daemon_running(),
     }

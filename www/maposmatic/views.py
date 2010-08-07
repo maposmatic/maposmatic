@@ -45,24 +45,17 @@ except ImportError:
     except ImportError:
         from json import write as json_encode
 
-def rc_add_status(context):
-    return {'MAPOSMATIC_DAEMON_RUNNING': www.settings.is_daemon_running()}
-
-class MapOSMaticRequestContext(RequestContext):
-    def __init__(self, request):
-        RequestContext.__init__(self, request, {}, [rc_add_status])
-
 def index(request):
     """The main page."""
     form = forms.MapSearchForm(request.GET)
     return render_to_response('maposmatic/index.html',
                               { 'form': form },
-                              context_instance=MapOSMaticRequestContext(request))
+                              context_instance=RequestContext(request))
 
 def about(request):
     """The about page."""
     return render_to_response('maposmatic/about.html',
-                              context_instance=MapOSMaticRequestContext(request))
+                              context_instance=RequestContext(request))
 
 def new(request):
     """The map creation page and form."""
@@ -90,7 +83,7 @@ def new(request):
 
     return render_to_response('maposmatic/new.html',
                               { 'form' : form },
-                              context_instance=MapOSMaticRequestContext(request))
+                              context_instance=RequestContext(request))
 
 def job(request, job_id, job_nonce=None):
     """The job details page.
@@ -111,7 +104,7 @@ def job(request, job_id, job_nonce=None):
                               { 'job': job, 'single': True,
                                 'redirected': isredirected, 'nonce': job_nonce,
                                 'refresh': refresh, 'refresh_ms': (refresh*1000) },
-                              context_instance=MapOSMaticRequestContext(request))
+                              context_instance=RequestContext(request))
 
 def all_jobs(request):
     """Displays all jobs from the last 24 hours."""
@@ -135,7 +128,7 @@ def all_jobs(request):
     return render_to_response('maposmatic/all_jobs.html',
                               { 'jobs': jobs,
                                 'pages': helpers.get_pages_list(jobs, paginator) },
-                              context_instance=MapOSMaticRequestContext(request))
+                              context_instance=RequestContext(request))
 
 def all_maps(request):
     """Displays all maps, sorted alphabetically, eventually matching the search
@@ -175,7 +168,7 @@ def all_maps(request):
                               { 'maps': maps, 'form': form,
                                 'is_search': form.is_valid(),
                                 'pages': helpers.get_pages_list(maps, paginator) },
-                              context_instance=MapOSMaticRequestContext(request))
+                              context_instance=RequestContext(request))
 
 def query_nominatim(request, format, squery):
     """Nominatim query gateway."""
