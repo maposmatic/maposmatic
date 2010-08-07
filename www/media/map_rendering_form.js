@@ -109,9 +109,9 @@ function filterAllowedPaper(paperlist)
         paper = $('label input[value]', item).val();
         paperDef = getPaperDef(paperlist, paper);
         if (paperDef != null) {
-            $(item).bind('click',
-                         bindPaperClickCallback(filterAllowedOrientations,
-                                                paperDef[3], paperDef[4]));
+            $('label', item).bind('click',
+                                  bindPaperClickCallback(filterAllowedOrientations,
+                                                         paperDef[3], paperDef[4]));
             $(item).show();
         }
         else
