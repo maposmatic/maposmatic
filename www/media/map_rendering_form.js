@@ -188,10 +188,10 @@ function prepareLanguagePanel()
   $('#id_map_language').children('option').each(function() {
     if (! ($(this).val().match('.._' + selectedCountry.toUpperCase() + '\..*') != null
            || $(this).val() == 'C'))
-	  {
-	    $(this).remove();
-	  }
-	  else {
+    {
+      $(this).remove();
+    }
+    else {
       if (! seen) {
         $(this).attr("selected", "selected");
         seen = true;
