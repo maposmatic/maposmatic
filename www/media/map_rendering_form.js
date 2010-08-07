@@ -116,6 +116,16 @@ function filterAllowedPaper(paperlist)
         }
         else
             $(item).hide();
+
+        if (paper == "Best fit") {
+            console.log(paperDef[0]);
+            console.log(paperDef[1]);
+            console.log(paperDef[2]);
+            paperSizeText = $("label em[class='papersize']", item);
+            width_cm = paperDef[1] / 10;
+            height_cm = paperDef[2] / 10;
+            paperSizeText.html("(" + width_cm.toFixed(1) + " &times; " + height_cm.toFixed(1) + " cm²)");
+        }
     });
 
     $("#paperselection").show();
