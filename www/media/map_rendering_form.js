@@ -546,6 +546,7 @@ $(document).ready(function() {
   function switchToAdminMode() {
     $('#step-location-bbox').hide();
     $('#step-location-admin').show();
+    $('#id_administrative_city').focus();
     disallowNextStep();
     selectedCountry = "";
   }
