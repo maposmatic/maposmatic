@@ -120,7 +120,9 @@ function filterAllowedPaper(paperlist)
       paperSizeText = $("label em[class='papersize']", item);
       width_cm = paperDef[1] / 10;
       height_cm = paperDef[2] / 10;
-      paperSizeText.html("(" + width_cm.toFixed(1) + " &times; " + height_cm.toFixed(1) + " cm²)");
+      paperSizeText.html("(" +
+                         width_cm.toFixed(1) + " &times; " +
+                         height_cm.toFixed(1) + " cm²)");
     }
   });
 
