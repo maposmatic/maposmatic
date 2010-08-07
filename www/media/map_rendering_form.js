@@ -444,6 +444,9 @@ function suggest(input, results, osm_id, options) {
           doQuery('');
         nextResult();
         break;
+      case 37: //LEFT
+      case 39: //RIGHT
+        break;
       default:
         if (timeout)
           clearTimeout(timeout);
