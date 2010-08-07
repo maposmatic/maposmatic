@@ -213,7 +213,6 @@ def query_papersize(request):
             renderer_cls = renderers.get_renderer_class_by_name(layout)
             paper_sizes = renderer_cls.get_compatible_paper_sizes(
                     bbox, OCitySMap.DEFAULT_ZOOM_LEVEL)
-            print 'here:', paper_sizes
 
             return HttpResponse(content=json_encode(paper_sizes),
                                 mimetype='text/json')
