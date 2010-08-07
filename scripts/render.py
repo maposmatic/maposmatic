@@ -24,6 +24,7 @@
 
 import ctypes
 import Image
+import logging
 import os
 import sys
 import threading
@@ -31,7 +32,6 @@ import threading
 from ocitysmap2 import OCitySMap, RenderingConfiguration, coords, renderers
 from www.maposmatic.helpers import get_bbox_from_osm_id
 from www.maposmatic.models import MapRenderingJob
-from www.settings import LOG
 from www.settings import OCITYSMAP_CFG_PATH
 from www.settings import RENDERING_RESULT_PATH, RENDERING_RESULT_FORMATS
 
@@ -42,6 +42,8 @@ RESULT_RENDERING_EXCEPTION = 3
 RESULT_TIMEOUT_REACHED = 4
 
 THUMBNAIL_SUFFIX = '_small.png'
+
+l = logging.getLogger('maposmatic')
 
 class TimingOutJobRenderer:
     """
@@ -81,8 +83,8 @@ class TimingOutJobRenderer:
         if not self.__thread.isAlive():
             return self.__thread.result
 
-        LOG.info("Rendering of job #%d took too long (timeout reached)!" %
-                 self.__thread.job.id)
+        l.info("Rendering of job #%d took too long (timeout reached)!" %
+               self.__thread.job.id)
 
         # Remove the job files
         self.__thread.job.remove_all_files()
@@ -91,7 +93,7 @@ class TimingOutJobRenderer:
         self.__thread.kill()
         del self.__thread
 
-        LOG.debug("Thread removed.")
+        l.debug("Thread removed.")
         return RESULT_TIMEOUT_REACHED
 
 class JobRenderer(threading.Thread):
@@ -124,7 +126,7 @@ class JobRenderer(threading.Thread):
         raise AssertionError("Could not resolve the thread's ID")
 
     def kill(self):
-        LOG.debug("Killing job #%d's worker thread..." % self.job.id)
+        l.debug("Killing job #%d's worker thread..." % self.job.id)
         res = ctypes.pythonapi.PyThreadState_SetAsyncExc(self.__get_my_tid(),
                 ctypes.py_object(SystemExit))
         if res == 0:
@@ -144,7 +146,7 @@ class JobRenderer(threading.Thread):
         Returns one of the RESULT_ constants.
         """
 
-        LOG.info("Rendering job #%d '%s'..." % (self.job.id, self.job.maptitle))
+        l.info("Rendering job #%d '%s'..." % (self.job.id, self.job.maptitle))
 
         try:
             renderer = OCitySMap([OCITYSMAP_CFG_PATH], self.prefix)
@@ -167,12 +169,12 @@ class JobRenderer(threading.Thread):
             config.paper_height_mm = self.job.paper_height_mm
         except KeyboardInterrupt:
             self.result = RESULT_KEYBOARD_INTERRUPT
-            LOG.info("Rendering of job #%d interrupted!" % self.job.id)
+            l.info("Rendering of job #%d interrupted!" % self.job.id)
             return self.result
         except Exception, e:
             self.result = RESULT_PREPARATION_EXCEPTION
-            LOG.exception("Rendering of job #%d failed (exception occurred during"
-                          " data preparation)!" % self.job.id)
+            l.exception("Rendering of job #%d failed (exception occurred during"
+                        " data preparation)!" % self.job.id)
             return self.result
 
         prefix = os.path.join(RENDERING_RESULT_PATH, self.job.files_prefix())
@@ -188,14 +190,14 @@ class JobRenderer(threading.Thread):
                 img.save(prefix + THUMBNAIL_SUFFIX)
 
             self.result = RESULT_SUCCESS
-            LOG.info("Finished rendering of job #%d." % self.job.id)
+            l.info("Finished rendering of job #%d." % self.job.id)
         except KeyboardInterrupt:
             self.result = RESULT_KEYBOARD_INTERRUPT
-            LOG.info("Rendering of job #%d interrupted!" % self.job.id)
+            l.info("Rendering of job #%d interrupted!" % self.job.id)
         except Exception, e:
             self.result = RESULT_RENDERING_EXCEPTION
-            LOG.exception("Rendering of job #%d failed (exception occurred during"
-                          " rendering)!" % self.job.id)
+            l.exception("Rendering of job #%d failed (exception occurred during"
+                        " rendering)!" % self.job.id)
 
         # Remove the job files if the rendering was not successful.
         if self.result:

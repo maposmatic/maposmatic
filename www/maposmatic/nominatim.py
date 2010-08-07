@@ -33,24 +33,26 @@ Simple API to query http://nominatim.openstreetmap.org
 Most of the credits should go to gthe Nominatim team.
 """
 
-from ocitysmap2 import coords
-import www.settings
+from django.utils.translation import ugettext
+import logging
 import psycopg2
 from urllib import urlencode
 import urllib2
 from xml.etree.ElementTree import parse as XMLTree
-from django.utils.translation import ugettext
 
-NOMINATIM_BASE_URL = "http://nominatim.openstreetmap.org/search/"
+from ocitysmap2 import coords
+import www.settings
+
+NOMINATIM_BASE_URL = 'http://nominatim.openstreetmap.org'
 NOMINATIM_MAX_RESULTS_PER_RESPONSE = 10
 
-def reverse_geo(lat, lon):
-    """
-    Query the nominatim service for the given lat/long coordinates and
-    returns the reverse geocoded informations.
-    """
+l = logging.getLogger('maposmatic')
 
-    url = "http://nominatim.openstreetmap.org/reverse?"
+def reverse_geo(lat, lon):
+    """Query the nominatim service for the given lat/long coordinates and
+    returns the reverse geocoded informations."""
+
+    url = '%s/reverse?' % NOMINATIM_BASE_URL
     url = url + ("lat=%f&lon=%f" % (lat, lon))
 
     f = urllib2.urlopen(url=url)
@@ -63,9 +65,8 @@ def reverse_geo(lat, lon):
         result.append(attribs)
     return result
 
-def query(query_text, exclude, with_polygons = False):
-    """
-    Query the nominatim service for the given city query and return a
+def query(query_text, exclude, with_polygons=False):
+    """Query the nominatim service for the given city query and return a
     (python) list of entries for the given squery (eg. "Paris"). Each
     entry is a dictionary key -> value (value is always a
     string). When possible, we also try to uncover the OSM database
@@ -81,20 +82,17 @@ def query(query_text, exclude, with_polygons = False):
     (hasprev, prevexcludes, hasnext, nextexcludes) = _compute_prev_next_excludes(xml)
     entries = _extract_entries(xml)
     entries = _prepare_and_filter_entries(entries)
-    result = {
+    return _canonicalize_data({
         'hasprev'     : hasprev,
         'prevexcludes': prevexcludes,
         'hasnext'     : hasnext,
         'nextexcludes': nextexcludes,
         'entries'     : entries
-        }
-    return _canonicalize_data(result)
+        })
 
 def _fetch_xml(query_text, exclude, with_polygons):
-    """
-    Query the nominatim service for the given city query and return a
-    XMLTree object.
-    """
+    """Query the nominatim service for the given city query and return a
+    XMLTree object."""
     # For some reason, the "xml" nominatim output is ALWAYS used, even
     # though we will later (in views.py) transform this into
     # json. This is because we know that this xml output is correct
@@ -110,15 +108,13 @@ def _fetch_xml(query_text, exclude, with_polygons):
         query_tags['exclude_place_ids'] = exclude
 
     qdata = urlencode(query_tags)
-    f = urllib2.urlopen(url="%s?%s" % (NOMINATIM_BASE_URL, qdata))
+    f = urllib2.urlopen(url="%s/search/?%s" % (NOMINATIM_BASE_URL, qdata))
     return XMLTree(f)
 
 def _extract_entries(xml):
-    """
-    Given a XMLTree object of a Nominatim result, return a (python)
+    """Given a XMLTree object of a Nominatim result, return a (python)
     list of entries for the given squery (eg. "Paris"). Each entry is
-    a dictionary key -> value (value is always a string).
-    """
+    a dictionary key -> value (value is always a string)."""
     result = []
     for place in xml.getroot().getchildren():
         attribs = dict(place.attrib)
@@ -129,8 +125,7 @@ def _extract_entries(xml):
     return result
 
 def _compute_prev_next_excludes(xml):
-    """
-    Given a XML response from Nominatim, determines the set of
+    """Given a XML response from Nominatim, determines the set of
     "exclude_place_ids" that should be used to get the next set of
     entries and the previous set of entries. We also determine
     booleans saying whether there are or not previous or next entries
@@ -142,12 +137,12 @@ def _compute_prev_next_excludes(xml):
 
     Returns a (hasprev, prevexcludes, hasnext, nextexcludes) tuple,
     where:
-         hasprev (boolean): Whether there are or not previous entries
+         hasprev (boolean): Whether there are or not previous entries.
          prevexcludes (string): String to pass as exclude_place_ids to
-         get the previous entries
-         hasnext (boolean): Whether there are or not next entries
+            get the previous entries.
+         hasnext (boolean): Whether there are or not next entries.
          nextexcludes (string): String to pass as exclude_place_ids to
-         get the next entries
+             get the next entries.
     """
     excludes = xml.getroot().get("exclude_place_ids", None)
 
@@ -165,20 +160,19 @@ def _compute_prev_next_excludes(xml):
     if excludes is not None:
         excludes_list = excludes.split(',')
         hasprev = len(excludes_list) > NOMINATIM_MAX_RESULTS_PER_RESPONSE
-        prevexcludes_count = (len(excludes_list) / NOMINATIM_MAX_RESULTS_PER_RESPONSE) * \
-            NOMINATIM_MAX_RESULTS_PER_RESPONSE - 2 * NOMINATIM_MAX_RESULTS_PER_RESPONSE
+        prevexcludes_count = (len(excludes_list) /
+                              NOMINATIM_MAX_RESULTS_PER_RESPONSE) *
+                              NOMINATIM_MAX_RESULTS_PER_RESPONSE -
+                              2 * NOMINATIM_MAX_RESULTS_PER_RESPONSE
         if prevexcludes_count >= 0:
             prevexcludes = ','.join(excludes_list[:prevexcludes_count])
-
 
     return (hasprev, prevexcludes, hasnext, nextexcludes)
 
 def _canonicalize_data(data):
-    """
-    Take a structure containing strings (dict, list, scalars, ...)
+    """Take a structure containing strings (dict, list, scalars, ...)
     and convert it into the same structure with the proper conversions
-    to float or integers, etc.
-    """
+    to float or integers, etc."""
     if type(data) is tuple:
         return tuple(_canonicalize_data(x) for x in data)
     elif type(data) is list:
@@ -196,15 +190,14 @@ def _canonicalize_data(data):
     return data
 
 def _get_admin_boundary_info_from_GIS(cursor, osm_id):
-    """
-    Lookup additional data for the administrative boundary of given
+    """Lookup additional data for the administrative boundary of given
     relation osm_id.
 
     Args:
           osm_id (int) : the OSM id of the relation to lookup
 
     Returns a tuple (osm_id, admin_level, table_name, valid,
-    reason, reason_text)
+    reason, reason_text).
     """
     # Nominatim returns a field "osm_id" for each result
     # entry. Depending on the type of the entry, it can point to
@@ -248,8 +241,7 @@ def _get_admin_boundary_info_from_GIS(cursor, osm_id):
     return None
 
 def _prepare_entry(cursor, entry):
-    """
-    Prepare an entry by adding additional informations to it, in the
+    """Prepare an entry by adding additional informations to it, in the
     form of a ocitysmap_params dictionary.
 
     Args:
@@ -309,12 +301,11 @@ def _prepare_entry(cursor, entry):
                    reason_text=ugettext("No administrative boundary"))
 
 def _prepare_and_filter_entries(entries):
-    """
-    Try to retrieve additional OSM information for the given nominatim
+    """Try to retrieve additional OSM information for the given nominatim
     entries. Among the information, we try to determine the real ID in
     an OSM table for each of these entries. All these additional data
-    are stored in the "ocitysmap_params" key of the entry.
-    """
+    are stored in the "ocitysmap_params" key of the entry."""
+
     if not www.settings.has_gis_database():
         return entries
 
@@ -325,8 +316,8 @@ def _prepare_and_filter_entries(entries):
                                  www.settings.DATABASE_HOST,
                                  www.settings.DATABASE_PASSWORD))
     except psycopg2.OperationalError, e:
-        www.settings.LOG.warning("Could not connect to the PostGIS database: %s" %
-                                 str(e)[:-1])
+        l.warning("Could not connect to the PostGIS database: %s" %
+                  str(e)[:-1])
         return entries
 
     place_tags = [ 'city', 'town', 'municipality',
