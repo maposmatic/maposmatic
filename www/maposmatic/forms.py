@@ -57,11 +57,16 @@ class MapRenderingJobForm(forms.ModelForm):
     MODES = (('admin', _('Administrative boundary')),
              ('bbox', _('Bounding box')))
 
+    ORIENTATION = (('landscape', _('Landscape')),
+                   ('portrait', _('Portrait')))
+
     mode = forms.ChoiceField(choices=MODES, initial='admin',
                              widget=forms.RadioSelect)
     layout = forms.ChoiceField(choices=(), widget=forms.RadioSelect)
     stylesheet = forms.ChoiceField(choices=(), widget=forms.RadioSelect)
     papersize = forms.ChoiceField(choices=(), widget=forms.RadioSelect)
+    paperorientation = forms.ChoiceField(choices=ORIENTATION,
+                                         widget=forms.RadioSelect)
     maptitle = forms.CharField(max_length=256, required=False)
     bbox = widgets.AreaField(label=_("Area"),
                              fields=(forms.FloatField(), forms.FloatField(),

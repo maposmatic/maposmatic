@@ -43,7 +43,7 @@
    <li id="step-location-title" class="title-current-step">{% trans "Location" %}</li>
    <li id="step-title-title">{% trans "Title" %}</li>
    <li id="step-layout-title">{% trans "Layout" %}</li>
-   <li id="step-papersize-title">{% trans "Paper size" %}</li>
+   <li id="step-paper-title">{% trans "Paper size" %}</li>
    <li id="step-stylesheet-title">{% trans "Stylesheet" %}</li>
    <li id="step-language-title">{% trans "Language" %}</li>
    <li id="step-summary-title">{% trans "Summary" %}</li>
@@ -88,9 +88,13 @@
     {{form.layout}}
   </div>
 
-  <div id="step-papersize"  class="wizardstep">
-    <h3>{% trans "Paper size" %}</h3>
-    {{ form.papersize }}
+  <div id="step-paper"  class="wizardstep">
+    <h3>{% trans "Paper" %}</h3>
+    <table id="paperselection">
+      <tr>
+	<td id="papersizeselection">{{ form.papersize }}</td>
+	<td id="paperorientationselection">{{ form.paperorientation }}</td></tr>
+    </table>
   </div>
 
   <div id="step-stylesheet"  class="wizardstep">

@@ -26,8 +26,6 @@
  * See the file COPYING for details.
  */
 
-var currentPanel = 1;
-
 function mapTitleChange()
 {
     if ($("#id_maptitle").val().length != 0)
@@ -50,23 +48,86 @@ function prepareTitlePanel()
     $('#id_maptitle').keyup(mapTitleChange);
 }
 
-function filterAllowedPaperSizes(papersizelist)
+/* Given a list of allowed paper sizes (paperlist), find the element
+ * that correspond to a given paper name (paper) */
+function getPaperDef(paperlist, paper)
 {
-  $.each($("#step-papersize ul li"), function(id, item) {
-     papersize = $('label input[value]', item).val();
-     if (jQuery.inArray(papersize, papersizelist) < 0)
-       $(item).hide();
-     else
-       $(item).show();
-  });
+    for each (var item in paperlist)
+    {
+        if (paper == item[0])
+            return item;
+    }
 
-  $("#step-papersize ul").show();
-  $("label input", $($("#step-papersize ul li:visible")[0])).attr("checked", "true");
+    return null;
 }
 
-function preparePaperSizePanel()
+/* This function updates the landscape/portrait selectors according to
+ * the portraitOk/landscapeOk booleans telling whether portrait and
+ * landscape are possible. */
+function filterAllowedOrientations(portraitOk, landscapeOk)
 {
-    $("#step-papersize ul").hide();
+    landscape = $("input[value='landscape']");
+    portrait  = $("input[value='portrait']");
+
+    if (landscapeOk) {
+        landscape.attr("disabled", "");
+        landscape.attr("checked", "checked");
+        landscape.parent().parent().removeClass("disabled");
+    }
+    else {
+        landscape.attr("disabled", "disabled");
+        landscape.parent().parent().addClass("disabled");
+    }
+
+    if (portraitOk) {
+        portrait.attr("disabled", "");
+        if (! landscapeOk) {
+            portrait.attr("checked", "checked");
+        }
+        portrait.parent().parent().removeClass("disabled");
+    }
+    else {
+        portrait.attr("disabled", "disabled");
+        portrait.parent().parent().addClass("disabled");
+    }
+}
+
+function bindPaperClickCallback(fn, portraitOk, landscapeOk)
+{
+    return (function(e) {
+        fn(portraitOk, landscapeOk);
+    });
+}
+
+function filterAllowedPaper(paperlist)
+{
+    /* Iterate through all paper lists, and hide those that do not
+     * apply to the selected rendering, and bind click callbacks on
+     * those that are available. The callback is in charge of updating
+     * the available orientation for the choosen paper size */
+    $.each($("#papersizeselection ul li"), function(id, item) {
+        paper = $('label input[value]', item).val();
+        paperDef = getPaperDef(paperlist, paper);
+        if (paperDef != null) {
+            $(item).bind('click',
+                         bindPaperClickCallback(filterAllowedOrientations,
+                                                paperDef[3], paperDef[4]));
+            $(item).show();
+        }
+        else
+            $(item).hide();
+    });
+
+    $("#paperselection").show();
+
+    /* Make sure that default paper size and orientation are selected
+     * by simulating a click on the first available paper */
+    $("label input", $($("#papersizeselection ul li:visible")[0])).click();
+}
+
+function preparePaperPanel()
+{
+    $("#paperselection").hide();
     if (getCurrentMode() == 'bbox')
     {
       $.post("/apis/papersize/", {
@@ -77,7 +138,7 @@ function preparePaperSizePanel()
                 layout           : $("input[name='layout']:checked").val()
              },
              function(data) {
-                filterAllowedPaperSizes(data);
+                filterAllowedPaper(data);
              }
             );
     }
@@ -88,7 +149,7 @@ function preparePaperSizePanel()
                 layout           : $("input[name='layout']:checked").val()
              },
              function(data) {
-                filterAllowedPaperSizes(data);
+                filterAllowedPaper(data);
              }
             );
     }
@@ -161,8 +222,8 @@ function prepareNextPage(next)
 {
     if (next == "step-title")
         prepareTitlePanel();
-    else if (next == "step-papersize")
-        preparePaperSizePanel();
+    else if (next == "step-paper")
+        preparePaperPanel();
     else if (next == "step-summary")
         prepareSummaryPanel();
     else if (next == "step-language")
