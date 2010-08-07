@@ -67,7 +67,8 @@ def new(request):
             job.administrative_osmid = form.cleaned_data.get('administrative_osmid')
             job.stylesheet = form.cleaned_data.get('stylesheet')
             job.layout = form.cleaned_data.get('layout')
-            job.papersize = form.cleaned_data.get('papersize')
+            job.paper_width_mm = form.cleaned_data.get('paper_width_mm')
+            job.paper_height_mm = form.cleaned_data.get('paper_height_mm')
             job.status = 0 # Submitted
             job.submitterip = request.META['REMOTE_ADDR']
             job.map_language = form.cleaned_data.get('map_language')
@@ -239,7 +240,8 @@ def recreate(request):
 
             newjob.stylesheet = job.stylesheet
             newjob.layout = job.layout
-            newjob.papersize = job.papersize
+            newjob.paper_width_mm = job.paper_width_mm
+            newjob.paper_height_mm = job.paper_height_mm
 
             newjob.status = 0 # Submitted
             newjob.submitterip = request.META['REMOTE_ADDR']

@@ -119,6 +119,15 @@ class MapRenderingJobForm(forms.ModelForm):
         city = cleaned_data.get("administrative_city")
         title = cleaned_data.get("maptitle")
 
+        for p in renderers.Renderer.PAPER_SIZES:
+            if p[0] == cleaned_data.get("papersize"):
+                w, h = p[2], p[1]
+                if cleaned_data.get("paperorientation") == 'landscape':
+                    w, h = p[2], p[1]
+                cleaned_data["paper_width_mm"] = w
+                cleaned_data["paper_height_mm"] = h
+                break
+
         if title == '':
             msg = _(u"Map title required")
             self._errors["maptitle"] = forms.util.ErrorList([msg])
@@ -158,7 +167,7 @@ class MapRenderingJobForm(forms.ModelForm):
             # Don't try to instanciate a bounding box with empty coordinates
             if self._errors:
                 return cleaned_data
-                
+
             lat_upper_left = cleaned_data.get("lat_upper_left")
             lon_upper_left = cleaned_data.get("lon_upper_left")
             lat_bottom_right = cleaned_data.get("lat_bottom_right")
