@@ -28,7 +28,7 @@ from django import forms
 from django.utils.safestring import mark_safe
 from django.utils.translation import ugettext_lazy as _
 
-from ocitysmap2 import OCitySMap, coords, renderers
+from ocitysmap2 import OCitySMap, coords
 from www.maposmatic import helpers, models, widgets
 import www.settings
 
@@ -82,10 +82,10 @@ class MapRenderingJobForm(forms.ModelForm):
     def __init__(self, *args, **kwargs):
         super(MapRenderingJobForm, self).__init__(*args, **kwargs)
 
-        o = OCitySMap(www.settings.OCITYSMAP_CFG_PATH)
+        ocitysmap = OCitySMap(www.settings.OCITYSMAP_CFG_PATH)
 
-        layout_renderers = renderers.get_renderers()
-        stylesheets = o.get_all_style_configurations()
+        layout_renderers = ocitysmap.get_all_renderers()
+        stylesheets = ocitysmap.get_all_style_configurations()
 
         self.fields['layout'].choices = [(r.name, r.description)
                 for r in layout_renderers]
@@ -105,7 +105,7 @@ class MapRenderingJobForm(forms.ModelForm):
 
         self.fields['papersize'].choices = [
                 (p[0], _build_papersize_description(p))
-                for p in renderers.Renderer.PAPER_SIZES]
+                for p in ocitysmap.get_all_paper_sizes()]
 
     def clean(self):
         """Cleanup function for the map query form. Different checks are

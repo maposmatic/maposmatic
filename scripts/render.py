@@ -29,7 +29,8 @@ import os
 import sys
 import threading
 
-from ocitysmap2 import OCitySMap, RenderingConfiguration, coords, renderers
+import ocitysmap2
+import ocitysmap2.coords
 from www.maposmatic.helpers import get_bbox_from_osm_id
 from www.maposmatic.models import MapRenderingJob
 from www.settings import OCITYSMAP_CFG_PATH
@@ -149,15 +150,15 @@ class JobRenderer(threading.Thread):
         l.info("Rendering job #%d '%s'..." % (self.job.id, self.job.maptitle))
 
         try:
-            renderer = OCitySMap([OCITYSMAP_CFG_PATH], self.prefix)
-            config = RenderingConfiguration()
+            renderer = ocitysmap2.OCitySMap([OCITYSMAP_CFG_PATH], self.prefix)
+            config = ocitysmap2.RenderingConfiguration()
             config.title = self.job.maptitle
             config.osmid = self.job.administrative_osmid
 
             if config.osmid:
                 config.bounding_box = get_bbox_from_osm_id(config.osmid)
             else:
-                config.bounding_box = coords.BoundingBox(
+                config.bounding_box = ocitysmap2.coords.BoundingBox(
                         self.job.lat_upper_left,
                         self.job.lon_upper_left,
                         self.job.lat_bottom_right,
@@ -185,6 +186,7 @@ class JobRenderer(threading.Thread):
 
             # Create thumbnail
             if 'png' in RENDERING_RESULT_FORMATS:
+                l.info('Creating map thumbnail...')
                 img = Image.open(prefix + '.png')
                 img.thumbnail((200, 200), Image.ANTIALIAS)
                 img.save(prefix + THUMBNAIL_SUFFIX)
