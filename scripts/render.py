@@ -150,7 +150,7 @@ class JobRenderer(threading.Thread):
         l.info("Rendering job #%d '%s'..." % (self.job.id, self.job.maptitle))
 
         try:
-            renderer = ocitysmap2.OCitySMap([OCITYSMAP_CFG_PATH], self.prefix)
+            renderer = ocitysmap2.OCitySMap(OCITYSMAP_CFG_PATH, self.prefix)
             config = ocitysmap2.RenderingConfiguration()
             config.title = self.job.maptitle
             config.osmid = self.job.administrative_osmid
