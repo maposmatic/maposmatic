@@ -228,10 +228,12 @@ function prepareSummaryPanel()
     osmid = $("#id_administrative_osmid").val();
     $("#summary-area").
       html($("#id_administrative_city").val() +
-           "<br/>(osm: <a href=\"http://www.openstreetmap.org/browse/relation/" +
-           Math.abs(osmid) + "\">relation " + Math.abs(osmid) + "</a>)");
+           ' (<a href="http://www.openstreetmap.org/browse/relation/' +
+           Math.abs(osmid) + '" title="OSM ID: ' + Math.abs(osmid) + '">' +
+           'OpenStreetMap</a>)');
   }
 
+  $("#summary-title").html($("#id_maptitle").val().trim());
   $("#summary-layout").html($("input[name='layout']:checked").parent().text().trim());
   $("#summary-papersize").html($("input[name='papersize']:checked").parent().text().trim());
   $("#summary-stylesheet").html($("input[name='stylesheet']:checked").parent().text().trim());
@@ -257,23 +259,19 @@ function prepareNextPage(next)
  */
 
 function allowPrevStep() {
-  $("#prevlinkdisabled").hide();
-  $("#prevlink").show();
+  $('#prevlink').attr('href', 'javascript:loadPrevStep();').addClass('allowed');
 }
 
 function disallowPrevStep() {
-  $("#prevlinkdisabled").show();
-  $("#prevlink").hide();
+  $("#prevlink").attr('href', 'javascript:return false;').removeClass('allowed');
 }
 
 function allowNextStep() {
-  $("#nextlinkdisabled").hide();
-  $("#nextlink").show();
+  $("#nextlink").attr('href', 'javascript:loadNextStep();').addClass('allowed');
 }
 
 function disallowNextStep() {
-  $("#nextlinkdisabled").show();
-  $("#nextlink").hide();
+  $("#nextlink").attr('href', 'javascript:return false;').removeClass('allowed');
 }
 
 /** Hide a panel and un-highlight the corresponding title in the
@@ -352,8 +350,8 @@ function suggest(input, results, osm_id, options) {
   function appendValidResult(item)
   {
     var id = 'rad_' + item.country_code + '_' + item.ocitysmap_params['id'];
-    $results.append('<li style="list-style-type: disc; list-style-image: url('
-                    + item.icon + ');" class="suggestok" id="' + id + '">'
+    $results.append('<li class="suggestok" id="' + id + '"><img src="'
+                    + item.icon + '" />'
                     + item.display_name + '</li>');
 
     var e = $('#' + id)
@@ -363,9 +361,10 @@ function suggest(input, results, osm_id, options) {
 
   function appendInvalidResult(item)
   {
-    $results.append('<li style="list-style-type: disc; list-style-image: url('
-                    + item.icon + ');" class="suggestoff">'
-                    + item.display_name + ' (' + item.ocitysmap_params["reason_text"] + ')</li>');
+    $results.append('<li class="suggestoff" title="'
+                    + item.ocitysmap_params["reason_text"] + '">'
+                    + '<img src="' + item.icon + '" />'
+                    + item.display_name + '</li>');
   }
 
   /* Empty and close the suggestion box. */
@@ -428,7 +427,7 @@ function suggest(input, results, osm_id, options) {
     }
 
     if (unusable_token)
-      $results.append('<li class="info">' + $('#noadminlimitinfo').html() + '</li>');
+      $results.append('<li class="info">TODO</li>');
   }
 
   function doQuery(excludes) {
@@ -497,7 +496,7 @@ function suggest(input, results, osm_id, options) {
 
     selectedCountry = temp[1];
     $osm_id.val(temp[2]);
-    $input.val(elt.html());
+    $input.val(elt.text());
 
     closeSuggest(true);
     allowNextStep();
@@ -615,6 +614,8 @@ $(document).ready(function() {
   suggest('#id_administrative_city', '#suggest',
           '#id_administrative_osmid',
           { selectedClass: 'selected',
-            timeout: 150
+            timeout: 250
           });
+
+  $('#step-location').show();
 });

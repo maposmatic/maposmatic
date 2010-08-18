@@ -37,7 +37,7 @@ class AreaWidget(forms.TextInput):
     """
     class Media:
         css = {"all": URL_OSM_CSS}
-        js = URL_OSM_JS + ["/smedia/osm_map.js"]
+        js = URL_OSM_JS + ["/smedia/js/osm.js"]
 
     def render(self, name, value, attrs=None):
         """

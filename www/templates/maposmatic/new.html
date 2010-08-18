@@ -39,30 +39,57 @@
 <form id="mainfrm" method="post" action="{% url new %}#submitmapform" class="submitmap">
 <div class="wizard">
   {{ form.errors }}
-  <ul id="steplist">
-   <li id="step-location-title" class="title-current-step">{% trans "Location" %}</li>
-   <li id="step-title-title">{% trans "Title" %}</li>
-   <li id="step-layout-title">{% trans "Layout" %}</li>
-   <li id="step-paper-title">{% trans "Paper size" %}</li>
-   <li id="step-stylesheet-title">{% trans "Stylesheet" %}</li>
-   <li id="step-language-title">{% trans "Language" %}</li>
-   <li id="step-summary-title">{% trans "Summary" %}</li>
-  </ul>
+
+  <table>
+    <thead>
+      <tr><th colspan="3">
+        <ul id="steplist">
+         <li id="step-location-title" class="title-current-step">{% trans "Location" %}</li>
+         <li id="step-title-title">{% trans "Title" %}</li>
+         <li id="step-layout-title">{% trans "Layout" %}</li>
+         <li id="step-paper-title">{% trans "Paper size" %}</li>
+         <li id="step-stylesheet-title">{% trans "Stylesheet" %}</li>
+         <li id="step-language-title">{% trans "Language" %}</li>
+         <li id="step-summary-title">{% trans "Summary" %}</li>
+        </ul>
+      </th></tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td class="prev">
+          <a id="prevlink" class="navlink" href="javascript:return false;"
+             title="{% trans "Previous" %}">«</a>
+        </td>
+        <td class="step">
 
   <div id="step-location" class="wizardstep">
-
-    <p>{% blocktrans %}To select the city to be rendered, two modes are
-      available:{% endblocktrans %}</p>
+    <h3>{% trans "Geographic area selection" %}</h3>
+    <p>
+      {% blocktrans %}To select the city to be rendered, two modes are
+      available:{% endblocktrans %}
+    </p>
 
     {{ form.mode }}
 
     <div id="step-location-bbox" style="display: none";>
       {{ form.bbox }}
       {{ form.bbox.errors }}
-      <p class="bbox_select_help">{% blocktrans %}Latitude and longitude of the top left and bottom right corners of the area to render.{% endblocktrans %}</p>
-      <p class="bbox_select_help">{% blocktrans %}You can use <tt>Shift+drag</tt> to zoom on a specific area of the map. If you only want to render part of what the slippy map shows, you can use <tt>Control+drag</tt> to draw the limits of the area to render.{% endblocktrans %}</p>
+      <p class="bbox_info">
+        {% blocktrans %}Latitude and longitude of the top left and bottom right
+        corners of the area to render.{% endblocktrans %}
+      </p>
+
+      <p class="bbox_select_help">
+        <img src="/smedia/tip.png" />
+        {% blocktrans %}You can use <tt>Shift+drag</tt> to zoom on a specific
+        area of the map. If you only want to render part of what the slippy map
+        shows, you can use <tt>Control+drag</tt> to draw the limits of the area
+        to render.{% endblocktrans %}
+      </p>
+
       <ul id="toobigareaerror" class="errorlist" style="display: none;">
-	<li>{% blocktrans %}Area too big to be rendered. Please select a smaller area.{% endblocktrans %}</li>
+        <li>{% blocktrans %}Area too big to be rendered. Please select a
+        smaller area.{% endblocktrans %}</li>
       </ul>
     </div>
 
@@ -72,10 +99,8 @@
       {{ form.administrative_osmid }}
       {{ form.administrative_osmid.errors }}
       {{ form.administrative_city.errors }}
-      <span id="noadminlimitinfo">{% blocktrans %}Wondering why you can't choose some of these results?<br />Their administrative boundaries are missing from the OSM database.<br />Look at the <a href="http://wiki.maposmatic.org/doku.php?id=faq">FAQ</a> for more details.{% endblocktrans %}</span>
       <span id="noresultsinfo">{% trans "No results." %}</span>
     </div>
-
   </div>
 
   <div id="step-title" class="wizardstep">
@@ -83,64 +108,62 @@
     {{ form.maptitle }}
   </div>
 
-  <div id="step-layout"  class="wizardstep">
+  <div id="step-layout" class="wizardstep">
     <h3>{% trans "Layout" %}</h3>
-    {{form.layout}}
+    {{ form.layout }}
   </div>
 
-  <div id="step-paper"  class="wizardstep">
+  <div id="step-paper" class="wizardstep">
     <h3>{% trans "Paper" %}</h3>
     <table id="paperselection">
       <tr>
-	<td id="papersizeselection">{{ form.papersize }}</td>
-	<td id="paperorientationselection">{{ form.paperorientation }}</td></tr>
+        <td id="papersizeselection">{{ form.papersize }}</td>
+        <td id="paperorientationselection">{{ form.paperorientation }}</td>
+      </tr>
     </table>
-    {{ form.paper_width_mm }}{{ form.paper_height_mm }}
+    {{ form.paper_width_mm }}
+    {{ form.paper_height_mm }}
   </div>
 
-  <div id="step-stylesheet"  class="wizardstep">
+  <div id="step-stylesheet" class="wizardstep">
     <h3>{% trans "Stylesheet" %}</h3>
     {{ form.stylesheet }}
   </div>
 
-  <div id="step-language"  class="wizardstep">
+  <div id="step-language" class="wizardstep">
     <h3>{% trans "Language" %}</h3>
       {% trans "Map Index Language:" %} {{ form.map_language }}
   </div>
-  <div id="step-summary"  class="wizardstep">
+  <div id="step-summary" class="wizardstep">
     <h3>{% trans "Summary" %}</h3>
-    <table id="summary">
-      <tr>
-	<td class="summary-label">{% trans "Area" %}</td>
-	<td id="summary-area"></td>
-      </tr>
-      <tr>
-	<td class="summary-label">{% trans "Layout" %}</td>
-	<td id="summary-layout"></td>
-      </tr>
-      <tr>
-	<td class="summary-label">{% trans "Paper size" %}</td>
-	<td id="summary-papersize"></td>
-      </tr>
-      <tr>
-	<td class="summary-label">{% trans "Stylesheet" %}</td>
-	<td id="summary-stylesheet"></td>
-      </tr>
-      <tr>
-	<td class="summary-label">{% trans "Language" %}</td>
-	<td id="summary-language"></td>
-      </tr>
-    </table>
-  <input id="id_go_next_btn" type="submit" value="{% trans "Generate" %}" />
+    <ol id="summary">
+      <dt>{% trans "Location" %}</dt>
+      <dd id="summary-area"></dd>
+      <dt>{% trans "Title" %}</dt>
+      <dd id="summary-title"></dd>
+      <dt>{% trans "Layout" %}</dt>
+      <dd id="summary-layout"></dd>
+      <dt>{% trans "Paper size" %}</dt>
+      <dd id="summary-papersize"></dd>
+      <dt>{% trans "Stylesheet" %}</dt>
+      <dd id="summary-stylesheet"></dd>
+      <dt>{% trans "Language" %}</dt>
+      <dd id="summary-language"></dd>
+    </ol>
+
+    <input id="id_go_next_btn" type="submit" value="{% trans "Generate" %}" />
   </div>
 
-  <div id="navlinks">
-    <span id="prevlinkdisabled">Back</span>
-    <a id="prevlink" style="display: none;" href="javascript:loadPrevStep()">{% trans "Previous" %}</a>
-    <span id="nextlinkdisabled">Next</span>
-    <a id="nextlink" style="display: none"; href="javascript:loadNextStep()">{% trans "Next" %}</a>
-    <span style="clear: both;">&nbsp;</span>
-  </div>
+        </td>
+
+        <td class="next">
+          <a id="nextlink" class="navlink" href="javascript:return false;"
+             title="{% trans "Next" %}">»</a>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
 </div>
 </form>
 

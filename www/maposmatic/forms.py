@@ -45,8 +45,8 @@ class MapRenderingJobForm(forms.ModelForm):
     ModelForm based on the MapRenderingJob model.
     """
     class Media:
-        css = { "all": ["/smedia/map_rendering_form.css"] }
-        js = ["/smedia/jquery.js", "/smedia/map_rendering_form.js"]
+        css = {'all': ['/smedia/css/newmap.css']}
+        js = ['/smedia/js/jquery.js', '/smedia/js/newmap.js']
 
     class Meta:
         model = models.MapRenderingJob

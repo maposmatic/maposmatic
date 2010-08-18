@@ -19,7 +19,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: mapOSMatic 0.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-08-05 19:24+0200\n"
+"POT-Creation-Date: 2010-08-18 01:59+0200\n"
 "PO-Revision-Date: 2010-07-07 15:08+0100\n"
 "Last-Translator: Jeroen van Rijn <jvrnix@gmail.com>\n"
 "Language-Team: MapOSMatic Dutch Translation team\n"
@@ -30,7 +30,7 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Generator: Virtaal 0.5.0\n"
 
-#: settings.py:201
+#: settings.py:202
 msgid "No localization"
 msgstr "Geen vertaling"
 
@@ -42,48 +42,66 @@ msgstr "MapOSMatic kaarten"
 msgid "The latest rendered maps on MapOSMatic."
 msgstr "De nieuwst gereproduceerde kaarten op MapOSMatic."
 
-#: maposmatic/forms.py:53
+#: maposmatic/forms.py:57
 msgid "Administrative boundary"
 msgstr "Administratieve grens"
 
-#: maposmatic/forms.py:54
+#: maposmatic/forms.py:58
 msgid "Bounding box"
 msgstr "Kader"
 
-#: maposmatic/forms.py:59
+#: maposmatic/forms.py:60
+msgid "Landscape"
+msgstr ""
+
+#: maposmatic/forms.py:61
+msgid "Portrait"
+msgstr ""
+
+#: maposmatic/forms.py:73
 msgid "Area"
 msgstr "Gebied"
 
-#: maposmatic/forms.py:84
+#: maposmatic/forms.py:129
+msgid "Map title required"
+msgstr "Kaartnaam is vereist"
+
+#: maposmatic/forms.py:135
 msgid "Administrative city required"
 msgstr "Plaatsnaam is vereist"
 
-#: maposmatic/forms.py:100
+#: maposmatic/forms.py:148
 #, python-format
 msgid "Error with osm city: %s"
 msgstr "Er is een fout met de gekozen plaats: %s"
 
-#: maposmatic/forms.py:105
-msgid "Map title required"
-msgstr "Kaartnaam is vereist"
-
-#: maposmatic/forms.py:113
+#: maposmatic/forms.py:156
 msgid "Required"
 msgstr "Vereist"
 
-#: maposmatic/forms.py:137 templates/maposmatic/new.html:98
+#: maposmatic/forms.py:180
 msgid "Bounding Box too large"
 msgstr "Het omkaderd gebied is te groot"
 
-#: maposmatic/models.py:184
+#: maposmatic/models.py:188
 #, python-format
 msgid "%(title)s %(format)s Map"
 msgstr "Kaart voor %(title)s (bestandsindeling %(format)s)"
 
-#: maposmatic/models.py:192
+#: maposmatic/models.py:196
 #, python-format
 msgid "%(title)s %(format)s Index"
 msgstr "Straatindex voor %(title)s (bestandsindeling %(format)s)"
+
+#: maposmatic/nominatim.py:231
+#, fuzzy
+msgid "Administrative area too big for rendering"
+msgstr "Administratieve grens"
+
+#: maposmatic/nominatim.py:287 maposmatic/nominatim.py:301
+#, fuzzy
+msgid "No administrative boundary"
+msgstr "Administratieve grens"
 
 #: maposmatic/widgets.py:88
 msgid "Latitude of the top left corner"
@@ -535,19 +553,19 @@ msgstr "Geen aanvragen gedaan in de afgelopen 24 uur."
 msgid "Search"
 msgstr "Zoek"
 
-#: templates/maposmatic/all_maps.html:37 templates/maposmatic/base.html:70
+#: templates/maposmatic/all_maps.html:38 templates/maposmatic/base.html:70
 msgid "Maps"
 msgstr "Kaarten"
 
-#: templates/maposmatic/all_maps.html:37
+#: templates/maposmatic/all_maps.html:38
 msgid "MapOSMatic maps feed"
 msgstr "MapOSMatic kaarten webfeed"
 
-#: templates/maposmatic/all_maps.html:51
+#: templates/maposmatic/all_maps.html:52
 msgid "Our database does not contain any rendered maps for the moment."
 msgstr "Onze database bevat op het moment geen gereproduceerde kaarten."
 
-#: templates/maposmatic/all_maps.html:53
+#: templates/maposmatic/all_maps.html:54
 msgid "No map matches your query."
 msgstr ""
 
@@ -666,6 +684,10 @@ msgstr ""
 " de kaarten te hergebruiken, verkopen, dan wel aanpassen."
 
 #: templates/maposmatic/index.html:79
+msgid "Go"
+msgstr ""
+
+#: templates/maposmatic/index.html:80
 msgid "More details"
 msgstr "Meer details"
 
@@ -774,122 +796,170 @@ msgstr "De gegenereerde bestanden zijn niet langer beschikbaar."
 msgid "Rendering completed on"
 msgstr "Reproductie beeindigd op"
 
-#: templates/maposmatic/new.html:38
+#: templates/maposmatic/new.html:37
 msgid "Generate your own map"
 msgstr "Genereer uw eigen kaart"
 
-#: templates/maposmatic/new.html:41
-msgid ""
-"<em>MapOSMatic</em> covers the whole world but we need\n"
-"contributors to translate and adapt the few parts of <em>MapOSMatic</em>\n"
-"that are country specific."
-msgstr ""
-"<em>MapOSMatic</em> beslaat de hele wereld, maar we hebben vrijwilligers "
-"nodig om een paar gedeeltes van <em>MapOSMatic</em> te vertalen en aan te "
-"passen die landsspecifiek zijn."
+#: templates/maposmatic/new.html:47 templates/maposmatic/new.html.py:140
+msgid "Location"
+msgstr "Locatie"
 
-#: templates/maposmatic/new.html:47
+#: templates/maposmatic/new.html:48
+msgid "Title"
+msgstr "Titel"
+
+#: templates/maposmatic/new.html:49 templates/maposmatic/new.html.py:112
+#: templates/maposmatic/new.html:143
+msgid "Layout"
+msgstr ""
+
+#: templates/maposmatic/new.html:50 templates/maposmatic/new.html.py:145
+msgid "Paper size"
+msgstr ""
+
+#: templates/maposmatic/new.html:51 templates/maposmatic/new.html.py:129
+#: templates/maposmatic/new.html:147
+msgid "Stylesheet"
+msgstr ""
+
+#: templates/maposmatic/new.html:52 templates/maposmatic/new.html.py:134
+#: templates/maposmatic/new.html:149
+#, fuzzy
+msgid "Language"
+msgstr "Taal:"
+
+#: templates/maposmatic/new.html:53 templates/maposmatic/new.html.py:138
+msgid "Summary"
+msgstr ""
+
+#: templates/maposmatic/new.html:61 templates/maposmatic/paginator.html:33
+msgid "Previous"
+msgstr "Vorige"
+
+#: templates/maposmatic/new.html:66
+#, fuzzy
+msgid "Geographic area selection"
+msgstr "arabische vertaling"
+
+#: templates/maposmatic/new.html:68
+#, fuzzy
 msgid ""
 "To select the city to be rendered, two modes are\n"
-"available:"
+"      available:"
 msgstr ""
 "Om een plaats te selecteren om te reproduceren zijn twee modi beschikbaar:"
 
-#: templates/maposmatic/new.html:52
+#: templates/maposmatic/new.html:78
+#, fuzzy
 msgid ""
-"<em>Using an administrative boundary</em>. It allows\n"
-"  to get a map with precise boundaries of the city when such limits are\n"
-"  available in the database. Otherwise, you need to use a bounding\n"
-"  box."
-msgstr ""
-"<em>Gebruikmakend van een administratieve grens</em>. Het staat toe een "
-"kaart te maken met een exacte grens van de plaats wanneer deze grens bekend "
-"is in de database. Anders zult u een omkaderd gebied moeten kiezen."
-
-#: templates/maposmatic/new.html:56
-msgid "<em>Using a traditional bounding box</em>."
-msgstr "<em>Gebruik een traditioneel omkaderd gebied</em>."
-
-#: templates/maposmatic/new.html:60
-msgid ""
-"Once the rendering is submitted, you will be brought\n"
-"to a page giving the status of your rendering request. As soon as the\n"
-"rendering is completed (that might take some time depending on the queue\n"
-"length), this page will contain links to the generated\n"
-"map."
-msgstr ""
-"Nadat uw opdracht ingegeven is zal een pagina worden weergegeven waar de "
-"status van uw aanvraag te lezen is. Wanneer de reproductie van uw gekozen "
-"kaart voltooid is &mdash; dit kan enige tijd duren afhankelijk van de drukte "
-"&mdash; zal u na het verversen van de pagina koppelingen naar uw kaart "
-"aantreffen."
-
-#: templates/maposmatic/new.html:69
-msgid "Area selection mode:"
-msgstr "Gebied selectie methode:"
-
-#: templates/maposmatic/new.html:74
-msgid "City name:"
-msgstr "Plaatsnaam:"
-
-#: templates/maposmatic/new.html:83
-msgid "Title of the map:"
-msgstr "Kaarttitel:"
-
-#: templates/maposmatic/new.html:90
-msgid "Map Index Language:"
-msgstr "Taal van de kaart index:"
-
-#: templates/maposmatic/new.html:93
-msgid "Bounding box:"
-msgstr "Omkaderd gebied:"
-
-#: templates/maposmatic/new.html:100
-msgid ""
-"Latitude and longitude of the top left and bottom right corners of the area "
-"to render."
+"Latitude and longitude of the top left and bottom right\n"
+"        corners of the area to render."
 msgstr ""
 "Breedte- en lengtegraad van de hoeken linksboven en rechtsonder van het te "
 "reproduceren kader."
 
-#: templates/maposmatic/new.html:101
+#: templates/maposmatic/new.html:84
 #, fuzzy
 msgid ""
-"You can use <tt>Shift+drag</tt> to zoom on a specific area of the map. You "
-"can use <tt>Control+drag</tt> to draw the limits of the area to render."
+"You can use <tt>Shift+drag</tt> to zoom on a specific\n"
+"        area of the map. If you only want to render part of what the slippy "
+"map\n"
+"        shows, you can use <tt>Control+drag</tt> to draw the limits of the "
+"area\n"
+"        to render."
 msgstr ""
 "U kunt <tt>Shift+drag</tt> gebruiken om in te zoomen op een specifiek "
 "gedeelte van de kaart. Als U alleen een bepaald gedeelte van de kaart wilt "
 "reproduceren, kunt U <tt>Control+slepen</tt> gebruiken om dit gedeelte te "
 "omkaderen."
 
-#: templates/maposmatic/new.html:106
-msgid "Generate"
-msgstr "Genereer"
-
-#: templates/maposmatic/new.html:111
+#: templates/maposmatic/new.html:91
 msgid ""
-"Wondering why you can't choose some of these results?<br />Their "
-"administrative boundaries are missing from the OSM database.<br />Look at "
-"the <a href=\"http://wiki.maposmatic.org/doku.php?id=faq\">FAQ</a> for more "
-"details."
+"Area too big to be rendered. Please select a\n"
+"        smaller area."
 msgstr ""
-"Vraagt u zich af waarom sommige resultaten niet gekozen kunnen worden?<br /"
-">De administratieve grenzen missen in de OSM database.<br />Zie de <a href="
-"\"http://wiki.maposmatic.org/doku.php?id=faq\">veelgestelde vragen</a> voor "
-"meer details."
 
-#: templates/maposmatic/new.html:112
+#: templates/maposmatic/new.html:102
 msgid "No results."
 msgstr "Geen resultaten gevonden."
 
-#: templates/maposmatic/paginator.html:33
-msgid "Previous"
-msgstr "Vorige"
+#: templates/maposmatic/new.html:107
+msgid "Map title"
+msgstr "Kaarttitel"
 
-#: templates/maposmatic/paginator.html:37
+#: templates/maposmatic/new.html:117
+msgid "Paper"
+msgstr ""
+
+#: templates/maposmatic/new.html:135
+msgid "Map Index Language:"
+msgstr "Taal van de kaart index:"
+
+#: templates/maposmatic/new.html:153
+msgid "Generate"
+msgstr "Genereer"
+
+#: templates/maposmatic/new.html:160 templates/maposmatic/paginator.html:37
 msgid "Next"
 msgstr "Volgende"
+
+#~ msgid ""
+#~ "<em>MapOSMatic</em> covers the whole world but we need\n"
+#~ "contributors to translate and adapt the few parts of <em>MapOSMatic</em>\n"
+#~ "that are country specific."
+#~ msgstr ""
+#~ "<em>MapOSMatic</em> beslaat de hele wereld, maar we hebben vrijwilligers "
+#~ "nodig om een paar gedeeltes van <em>MapOSMatic</em> te vertalen en aan te "
+#~ "passen die landsspecifiek zijn."
+
+#~ msgid ""
+#~ "<em>Using an administrative boundary</em>. It allows\n"
+#~ "  to get a map with precise boundaries of the city when such limits are\n"
+#~ "  available in the database. Otherwise, you need to use a bounding\n"
+#~ "  box."
+#~ msgstr ""
+#~ "<em>Gebruikmakend van een administratieve grens</em>. Het staat toe een "
+#~ "kaart te maken met een exacte grens van de plaats wanneer deze grens "
+#~ "bekend is in de database. Anders zult u een omkaderd gebied moeten kiezen."
+
+#~ msgid "<em>Using a traditional bounding box</em>."
+#~ msgstr "<em>Gebruik een traditioneel omkaderd gebied</em>."
+
+#~ msgid ""
+#~ "Once the rendering is submitted, you will be brought\n"
+#~ "to a page giving the status of your rendering request. As soon as the\n"
+#~ "rendering is completed (that might take some time depending on the queue\n"
+#~ "length), this page will contain links to the generated\n"
+#~ "map."
+#~ msgstr ""
+#~ "Nadat uw opdracht ingegeven is zal een pagina worden weergegeven waar de "
+#~ "status van uw aanvraag te lezen is. Wanneer de reproductie van uw gekozen "
+#~ "kaart voltooid is &mdash; dit kan enige tijd duren afhankelijk van de "
+#~ "drukte &mdash; zal u na het verversen van de pagina koppelingen naar uw "
+#~ "kaart aantreffen."
+
+#~ msgid "Area selection mode:"
+#~ msgstr "Gebied selectie methode:"
+
+#~ msgid "City name:"
+#~ msgstr "Plaatsnaam:"
+
+#~ msgid "Title of the map:"
+#~ msgstr "Kaarttitel:"
+
+#~ msgid "Bounding box:"
+#~ msgstr "Omkaderd gebied:"
+
+#~ msgid ""
+#~ "Wondering why you can't choose some of these results?<br />Their "
+#~ "administrative boundaries are missing from the OSM database.<br />Look at "
+#~ "the <a href=\"http://wiki.maposmatic.org/doku.php?id=faq\">FAQ</a> for "
+#~ "more details."
+#~ msgstr ""
+#~ "Vraagt u zich af waarom sommige resultaten niet gekozen kunnen worden?"
+#~ "<br />De administratieve grenzen missen in de OSM database.<br />Zie de "
+#~ "<a href=\"http://wiki.maposmatic.org/doku.php?id=faq\">veelgestelde "
+#~ "vragen</a> voor meer details."
 
 #~ msgid "No map starts with %(current_letter)s in our database!"
 #~ msgstr "Geen kaart begint met %(current_letter)s in onze database!"
@@ -922,12 +992,6 @@ msgstr "Volgende"
 #~ msgid "search"
 #~ msgstr "Zoek"
 
-#~ msgid "Title"
-#~ msgstr "Titel"
-
-#~ msgid "Location"
-#~ msgstr "Locatie"
-
 #~ msgid "Job status"
 #~ msgstr "Opdracht status"
 
@@ -949,14 +1013,8 @@ msgstr "Volgende"
 #~ msgid "Thumbnail"
 #~ msgstr "Miniatuur"
 
-#~ msgid "Language:"
-#~ msgstr "Taal:"
-
 #~ msgid "Map <i>%(job_t)s</i> Status"
 #~ msgstr "Status van de kaart <i>%(job_t)s</i>"
-
-#~ msgid "Map title"
-#~ msgstr "Kaarttitel"
 
 #~ msgid "Administrative city"
 #~ msgstr "Administratieve grens"
