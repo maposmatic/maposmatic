@@ -40,25 +40,36 @@
 <div class="wizard">
   {{ form.errors }}
 
+  <ul id="steplist">
+    <li id="step-location-title" class="title-current-step">
+      <span class="step-number">1.</span> {% trans "Location" %}
+    </li>
+    <li id="step-title-title">
+      <span class="step-number">2.</span> {% trans "Title" %}
+    </li>
+    <li id="step-layout-title">
+      <span class="step-number">3.</span> {% trans "Layout" %}
+    </li>
+    <li id="step-paper-title">
+      <span class="step-number">4.</span> {% trans "Paper size" %}
+    </li>
+    <li id="step-stylesheet-title">
+      <span class="step-number">5.</span> {% trans "Stylesheet" %}
+    </li>
+    <li id="step-language-title">
+      <span class="step-number">6.</span> {% trans "Language" %}
+    </li>
+    <li id="step-summary-title">
+      <span class="step-number">7.</span> {% trans "Summary" %}
+    </li>
+  </ul>
+
   <table>
-    <thead>
-      <tr><th colspan="3">
-        <ul id="steplist">
-         <li id="step-location-title" class="title-current-step">{% trans "Location" %}</li>
-         <li id="step-title-title">{% trans "Title" %}</li>
-         <li id="step-layout-title">{% trans "Layout" %}</li>
-         <li id="step-paper-title">{% trans "Paper size" %}</li>
-         <li id="step-stylesheet-title">{% trans "Stylesheet" %}</li>
-         <li id="step-language-title">{% trans "Language" %}</li>
-         <li id="step-summary-title">{% trans "Summary" %}</li>
-        </ul>
-      </th></tr>
-    </thead>
     <tbody>
       <tr>
         <td class="prev">
-          <a id="prevlink" class="navlink" href="javascript:return false;"
-             title="{% trans "Previous" %}">«</a>
+          <a id="prevlink" class="navlink" href="javascript:loadPrevStep();"
+             title="{% trans "Back" %}">«</a>
         </td>
         <td class="step">
 
@@ -79,12 +90,11 @@
         corners of the area to render.{% endblocktrans %}
       </p>
 
+      <img src="/smedia/tip.png" class="tip" />
       <p class="bbox_select_help">
-        <img src="/smedia/tip.png" />
         {% blocktrans %}You can use <tt>Shift+drag</tt> to zoom on a specific
-        area of the map. If you only want to render part of what the slippy map
-        shows, you can use <tt>Control+drag</tt> to draw the limits of the area
-        to render.{% endblocktrans %}
+        area of the map. Then, you must select with <tt>Control+drag</tt> the
+        limits of the area you wish to render.{% endblocktrans %}
       </p>
 
       <ul id="toobigareaerror" class="errorlist" style="display: none;">
@@ -135,19 +145,19 @@
       {% trans "Map Index Language:" %} {{ form.map_language }}
   </div>
   <div id="step-summary" class="wizardstep">
-    <h3>{% trans "Summary" %}</h3>
+    <h3>{% trans "Summary:" %}</h3>
     <ol id="summary">
-      <dt>{% trans "Location" %}</dt>
+      <dt>{% trans "Location:" %}</dt>
       <dd id="summary-area"></dd>
-      <dt>{% trans "Title" %}</dt>
+      <dt>{% trans "Title:" %}</dt>
       <dd id="summary-title"></dd>
-      <dt>{% trans "Layout" %}</dt>
+      <dt>{% trans "Layout:" %}</dt>
       <dd id="summary-layout"></dd>
-      <dt>{% trans "Paper size" %}</dt>
+      <dt>{% trans "Paper size:" %}</dt>
       <dd id="summary-papersize"></dd>
-      <dt>{% trans "Stylesheet" %}</dt>
+      <dt>{% trans "Stylesheet:" %}</dt>
       <dd id="summary-stylesheet"></dd>
-      <dt>{% trans "Language" %}</dt>
+      <dt>{% trans "Language:" %}</dt>
       <dd id="summary-language"></dd>
     </ol>
 
@@ -157,8 +167,8 @@
         </td>
 
         <td class="next">
-          <a id="nextlink" class="navlink" href="javascript:return false;"
-             title="{% trans "Next" %}">»</a>
+          <a id="nextlink" class="navlink" href="javascript:loadNextStep();"
+             title="{% trans "Continue" %}">&rarr;</a>
         </td>
       </tr>
     </tbody>

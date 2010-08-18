@@ -46,9 +46,14 @@ ul#steplist {
 
 ul#steplist li {
   margin: 0;
+  margin-right: 0.25em;
   padding: 0.5em 0.25em;
   display: inline;
   font-weight: normal;
+}
+
+ul#steplist span.step-number {
+  font-weight: bold;
 }
 
 ul#steplist li.title-current-step {
@@ -78,22 +83,34 @@ ul#steplist li.title-current-step {
   margin-top: 0;
 }
 
-td.prev {
-  text-align: right;
+
+/* Navigation links */
+a.navlink {
+  font-size: 25pt;
+  color: #ccc;
+  cursor: default;
+  visibility: hidden;
+}
+
+a.allowed {
+  visibility: visible !important;
+  cursor: pointer !important;
+  color: #0066b3 !important;
+}
+
+td.prev, td.next {
   padding-top: 2em;
-  padding-right: 0.5em;
   vertical-align: top;
+}
+
+td.next {
+  font-weight: bold;
 }
 
 td.step {
   width: 100%;
 }
 
-td.next {
-  padding-top: 2em;
-  padding-left: 0.5em;
-  vertical-align: top;
-}
 
 .wizardstep {
   width: auto;
@@ -106,19 +123,6 @@ td.next {
   width: 80%;
   max-width: 600px;
   font-size: 13pt;
-}
-
-/* Navigation links */
-a.navlink {
-  font-size: 25pt;
-  color: #ccc;
-  cursor: default;
-}
-
-a.allowed {
-  cursor: pointer !important;
-  color: #0066b3 !important;
-  font-weight: bold;
 }
 
 /* Auto-suggest box */
@@ -140,6 +144,7 @@ a.allowed {
 }
 
 #suggest img {
+  float: left;
   vertical-align: middle;
   margin-right: 3px;
 }
@@ -199,25 +204,24 @@ a.allowed {
 
 p.bbox_info {
   margin: 0.5em 0 0;
+  font-size: smaller;
 }
 
 p.bbox_info,
 p.bbox_select_help {
   font-style: italic;
-  font-size: smaller;
   width: 600px;
 }
 
-p.bbox_select_help tt {
-  font-size: normal;
+p.bbox_select_help {
+  padding-left: 40px;
 }
 
-p.bbox_select_help img {
+img.tip {
+  clear: both;
+  margin-top: 1.5em;
   float: left;
-  vertical-align: middle;
-  margin-right: 3px;
 }
-
 
 /* Paper selection */
 em.papersize {
@@ -255,6 +259,3 @@ input#id_go_next_btn {
   font-size: 14pt;
   padding: 3px 1em;
 }
-
-
-

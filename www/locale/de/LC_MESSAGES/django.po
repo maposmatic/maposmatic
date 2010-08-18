@@ -20,7 +20,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: mapOSMatic 0.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-08-18 01:59+0200\n"
+"POT-Creation-Date: 2010-08-18 16:18+0200\n"
 "PO-Revision-Date: 2010-08-06 15:04+0100\n"
 "Last-Translator: Claudius Henrichs <claudius.h@gmx.de>\n"
 "Language-Team:  <osm@malenki.ch>\n"
@@ -541,7 +541,7 @@ msgid ""
 "hours."
 msgstr "Keine Renderanfragen innerhalb der letzten 24 Stunden."
 
-#: templates/maposmatic/all_maps.html:34
+#: templates/maposmatic/all_maps.html:34 templates/maposmatic/index.html:79
 msgid "Search"
 msgstr "Suche"
 
@@ -561,11 +561,16 @@ msgstr "Momentan enthält unsere Datenbank keine gerenderten Pläne."
 msgid "No map matches your query."
 msgstr "Keinen Pläne zu Ihrem Suchbegriff gefunden."
 
+#: templates/maposmatic/all_maps.html:54
+#, fuzzy
+msgid "Create a new map!"
+msgstr "Plan erstellen"
+
 #: templates/maposmatic/base.html:57
 msgid "Your free city maps!"
 msgstr "Ihre freien Stadtpläne!"
 
-#: templates/maposmatic/base.html:68 templates/maposmatic/index.html:78
+#: templates/maposmatic/base.html:68
 msgid "Create map"
 msgstr "Plan erstellen"
 
@@ -675,9 +680,15 @@ msgstr ""
 "Lizenz</a>\n"
 " benutzen, verkaufen, verändern..."
 
+#: templates/maposmatic/index.html:78
+#, fuzzy
+msgid "Create a map"
+msgstr "Plan erstellen"
+
 #: templates/maposmatic/index.html:79
-msgid "Go"
-msgstr ""
+#, fuzzy
+msgid "Find map"
+msgstr "Zufälliger Plan"
 
 #: templates/maposmatic/index.html:80
 msgid "More details"
@@ -790,7 +801,7 @@ msgstr "Rendervorgang beendet am"
 msgid "Generate your own map"
 msgstr "Erzeugen Sie Ihren eigenen Plan"
 
-#: templates/maposmatic/new.html:47 templates/maposmatic/new.html.py:140
+#: templates/maposmatic/new.html:45
 msgid "Location"
 msgstr "Ort"
 
@@ -798,47 +809,44 @@ msgstr "Ort"
 msgid "Title"
 msgstr "Name"
 
-#: templates/maposmatic/new.html:49 templates/maposmatic/new.html.py:112
-#: templates/maposmatic/new.html:143
+#: templates/maposmatic/new.html:51 templates/maposmatic/new.html.py:122
 msgid "Layout"
 msgstr ""
 
-#: templates/maposmatic/new.html:50 templates/maposmatic/new.html.py:145
+#: templates/maposmatic/new.html:54
 msgid "Paper size"
 msgstr ""
 
-#: templates/maposmatic/new.html:51 templates/maposmatic/new.html.py:129
-#: templates/maposmatic/new.html:147
+#: templates/maposmatic/new.html:57 templates/maposmatic/new.html.py:139
 msgid "Stylesheet"
 msgstr ""
 
-#: templates/maposmatic/new.html:52 templates/maposmatic/new.html.py:134
-#: templates/maposmatic/new.html:149
+#: templates/maposmatic/new.html:60 templates/maposmatic/new.html.py:144
 #, fuzzy
 msgid "Language"
 msgstr "Sprache:"
 
-#: templates/maposmatic/new.html:53 templates/maposmatic/new.html.py:138
+#: templates/maposmatic/new.html:63
 msgid "Summary"
 msgstr ""
 
-#: templates/maposmatic/new.html:61 templates/maposmatic/paginator.html:33
-msgid "Previous"
-msgstr "Vorherige"
+#: templates/maposmatic/new.html:72
+msgid "Back"
+msgstr ""
 
-#: templates/maposmatic/new.html:66
+#: templates/maposmatic/new.html:77
 #, fuzzy
 msgid "Geographic area selection"
 msgstr "arabische Übersetzung"
 
-#: templates/maposmatic/new.html:68
+#: templates/maposmatic/new.html:79
 #, fuzzy
 msgid ""
 "To select the city to be rendered, two modes are\n"
 "      available:"
 msgstr "Es gibt zwei Arten, die zu rendernde Stadt auszuwählen:"
 
-#: templates/maposmatic/new.html:78
+#: templates/maposmatic/new.html:89
 #, fuzzy
 msgid ""
 "Latitude and longitude of the top left and bottom right\n"
@@ -847,47 +855,85 @@ msgstr ""
 "Geografische Koordinaten der oberen linken und unteren rechten Ecke des zu "
 "rendernden Gebietes."
 
-#: templates/maposmatic/new.html:84
+#: templates/maposmatic/new.html:95
 #, fuzzy
 msgid ""
 "You can use <tt>Shift+drag</tt> to zoom on a specific\n"
-"        area of the map. If you only want to render part of what the slippy "
-"map\n"
-"        shows, you can use <tt>Control+drag</tt> to draw the limits of the "
-"area\n"
-"        to render."
+"        area of the map. Then, you must select with <tt>Control+drag</tt> "
+"the\n"
+"        limits of the area you wish to render."
 msgstr ""
 "Sie können <tt>Umsch+Ziehen</tt> benutzen, um in ein Gebiet auf der Karte zu "
 "zoomen. Möchten Sie nur einen Teil der dargestellten Karte rendern lassen, "
 "markieren Sie mit <tt>Strg+Ziehen</tt> das gewünschte Gebiet."
 
-#: templates/maposmatic/new.html:91
+#: templates/maposmatic/new.html:101
 msgid ""
 "Area too big to be rendered. Please select a\n"
 "        smaller area."
 msgstr ""
 
-#: templates/maposmatic/new.html:102
+#: templates/maposmatic/new.html:112
 msgid "No results."
 msgstr "Keine Ergebnisse."
 
-#: templates/maposmatic/new.html:107
+#: templates/maposmatic/new.html:117
 msgid "Map title"
 msgstr "Name des Stadtplans"
 
-#: templates/maposmatic/new.html:117
+#: templates/maposmatic/new.html:127
 msgid "Paper"
 msgstr ""
 
-#: templates/maposmatic/new.html:135
+#: templates/maposmatic/new.html:145
 msgid "Map Index Language:"
 msgstr "Sprache des Stadtplanindex:"
 
-#: templates/maposmatic/new.html:153
+#: templates/maposmatic/new.html:148
+msgid "Summary:"
+msgstr ""
+
+#: templates/maposmatic/new.html:150
+#, fuzzy
+msgid "Location:"
+msgstr "Ort"
+
+#: templates/maposmatic/new.html:152
+#, fuzzy
+msgid "Title:"
+msgstr "Name"
+
+#: templates/maposmatic/new.html:154
+msgid "Layout:"
+msgstr ""
+
+#: templates/maposmatic/new.html:156
+msgid "Paper size:"
+msgstr ""
+
+#: templates/maposmatic/new.html:158
+msgid "Stylesheet:"
+msgstr ""
+
+#: templates/maposmatic/new.html:160
+#, fuzzy
+msgid "Language:"
+msgstr "Sprache:"
+
+#: templates/maposmatic/new.html:164
 msgid "Generate"
 msgstr "Erzeugen"
 
-#: templates/maposmatic/new.html:160 templates/maposmatic/paginator.html:37
+#: templates/maposmatic/new.html:171
+#, fuzzy
+msgid "Continue"
+msgstr "Mitmachen"
+
+#: templates/maposmatic/paginator.html:33
+msgid "Previous"
+msgstr "Vorherige"
+
+#: templates/maposmatic/paginator.html:37
 msgid "Next"
 msgstr "Nächste"
 

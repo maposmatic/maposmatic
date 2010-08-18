@@ -75,8 +75,8 @@ maps.{% endblocktrans %}
 </p>
 
 <div id="more">
-  <strong><a href="{% url new %}"><img src="/smedia/go-next.png" />{% trans "Create map" %}</a></strong><br />
-  <a href="#" onclick="javascript:document.getElementById('searchform').style.visibility='visible'; document.getElementById('id_query').focus();"><img src="/smedia/search.png" />Find map</a><form id="searchform" style="visibility: hidden; display: inline;" action="{% url maps %}" method="get">&nbsp;{{ form.query }}<input type="submit" value="{% trans "Go" %}" /></form><br/>
+  <strong><a href="{% url new %}"><img src="/smedia/go-next.png" />{% trans "Create a map" %}</a></strong><br />
+  <a href="#" onclick="javascript:document.getElementById('searchform').style.visibility='visible'; document.getElementById('id_query').focus();"><img src="/smedia/search.png" />{% trans "Find map" %}</a><form id="searchform" style="visibility: hidden; display: inline;" action="{% url maps %}" method="get">&nbsp;{{ form.query }}<input type="submit" value="{% trans "Search" %}" /></form><br/>
   <a href="{% url about %}"><img src="/smedia/about.png" />{% trans "More details" %}</a><br />
 </div>
 {% endblock %}

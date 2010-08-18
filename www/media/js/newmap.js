@@ -219,9 +219,9 @@ function prepareSummaryPanel()
   if (getCurrentMode() == 'bbox') {
     $("#summary-area").
       html("(" +
-           $("#lat_upper_left").val() + ","          +
+           $("#lat_upper_left").val() + ", "         +
            $("#lon_upper_left").val() + ") &rarr; (" +
-           $("#lat_bottom_right").val() + ","        +
+           $("#lat_bottom_right").val() + ", "       +
            $("#lon_bottom_right").val() + ")");
   }
   else {
@@ -259,19 +259,19 @@ function prepareNextPage(next)
  */
 
 function allowPrevStep() {
-  $('#prevlink').attr('href', 'javascript:loadPrevStep();').addClass('allowed');
+  $('#prevlink').addClass('allowed');
 }
 
 function disallowPrevStep() {
-  $("#prevlink").attr('href', 'javascript:return false;').removeClass('allowed');
+  $("#prevlink").removeClass('allowed');
 }
 
 function allowNextStep() {
-  $("#nextlink").attr('href', 'javascript:loadNextStep();').addClass('allowed');
+  $("#nextlink").addClass('allowed');
 }
 
 function disallowNextStep() {
-  $("#nextlink").attr('href', 'javascript:return false;').removeClass('allowed');
+  $("#nextlink").removeClass('allowed');
 }
 
 /** Hide a panel and un-highlight the corresponding title in the
