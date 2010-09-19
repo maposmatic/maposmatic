@@ -19,3 +19,9 @@ MAPOSMATIC_LOG = '/tmp/maposmaticd.log'
 #  0: not set (discouraged)
 MAPOSMATIC_LVL = 20
 
+###
+## Optional: if you need to extend the python search path, then write
+## something like the following:
+# import os
+# os.environ['PYTHONPATH'] = '%s:%s' % ('/path/to/lib/python/site-packages',
+#				        os.environ.get('PYTHONPATH', ''))

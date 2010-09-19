@@ -65,18 +65,31 @@ You'll find in support/init-maposmaticd-template an init script template that
 you can tweak and install on your machine to start the MapOSMatic rendering
 daemon automatically at boot time.
 
-Web server configuration
-------------------------
+Testing with Django integrated web server
+-----------------------------------------
 
-For Apache, you can adapt the configuration file given in
-support/apache-maposmatic-template.
+Before you think about configuring your web server to provide the
+maposmatic services, you should try them locally first:
+
+  .../www/manage.py runserver
+
+Then point your web browser to the address mentioned in the output
+message.
+
+External Web server configuration
+---------------------------------
+
+In a normal setup, you don't want to use the Django integrated web
+server. If you are using Apache, you can adapt the configuration file
+given in support/apache-maposmatic-template.
 
 Internationalization
 --------------------
 
-To get proper internationalisation, you need to compile the gettext locale files:
+To get proper internationalisation, you need to compile the gettext
+locale files:
 
-  django-admin compilemessages
+  cd www && django-admin compilemessages
 
 Don't forget to restart the Django server or it won't pick up the new
 translated strings!
