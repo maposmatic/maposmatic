@@ -92,7 +92,7 @@ class MapRenderingJobForm(forms.ModelForm):
         self.fields['layout'].initial = layout_renderers[0].name
 
         self.fields['stylesheet'].choices = [(s.name, s.description)
-                for s in stylesheets]
+                                             for s in stylesheets]
         self.fields['stylesheet'].initial = stylesheets[0].name
 
         def _build_papersize_description(p):
@@ -188,10 +188,11 @@ class MapPaperSizeForm(forms.Form):
     The map paper size form, which is only used to analyze the
     arguments of the POST request to /apis/papersize/
     """
-    osmid = forms.IntegerField(required=False)
-    layout = forms.CharField(max_length=256)
-    lat_upper_left = forms.FloatField(required=False)
-    lon_upper_left = forms.FloatField(required=False)
+    osmid            = forms.IntegerField(required=False)
+    layout           = forms.CharField(max_length=256)
+    stylesheet       = forms.CharField(max_length=256)
+    lat_upper_left   = forms.FloatField(required=False)
+    lon_upper_left   = forms.FloatField(required=False)
     lat_bottom_right = forms.FloatField(required=False)
     lon_bottom_right = forms.FloatField(required=False)
 

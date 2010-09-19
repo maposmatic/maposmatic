@@ -150,7 +150,7 @@ class JobRenderer(threading.Thread):
         l.info("Rendering job #%d '%s'..." % (self.job.id, self.job.maptitle))
 
         try:
-            renderer = ocitysmap2.OCitySMap(OCITYSMAP_CFG_PATH, self.prefix)
+            renderer = ocitysmap2.OCitySMap(OCITYSMAP_CFG_PATH)
             config = ocitysmap2.RenderingConfiguration()
             config.title = self.job.maptitle
             config.osmid = self.job.administrative_osmid
@@ -165,7 +165,8 @@ class JobRenderer(threading.Thread):
                         self.job.lon_bottom_right)
 
             config.language = self.job.map_language
-            config.stylesheet = renderer.get_stylesheet_by_name(self.job.stylesheet)
+            config.stylesheet = renderer.get_stylesheet_by_name(
+                self.job.stylesheet)
             config.paper_width_mm = self.job.paper_width_mm
             config.paper_height_mm = self.job.paper_height_mm
         except KeyboardInterrupt:

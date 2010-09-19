@@ -198,8 +198,13 @@ def query_papersize(request):
     if request.method == 'POST':
         f = forms.MapPaperSizeForm(request.POST)
         if f.is_valid():
-            osmid = f.cleaned_data.get('osmid')
-            layout = f.cleaned_data.get('layout')
+            ocitysmap  = OCitySMap(www.settings.OCITYSMAP_CFG_PATH)
+            osmid      = f.cleaned_data.get('osmid')
+            layout     = f.cleaned_data.get('layout')
+            stylesheet = ocitysmap.get_stylesheet_by_name(
+                f.cleaned_data.get('stylesheet'))
+
+            # Determine geographic area
             if osmid is not None:
                 bbox = helpers.get_bbox_from_osm_id(osmid)
             else:
@@ -211,8 +216,9 @@ def query_papersize(request):
                                           lat_bottom_right, lon_bottom_right)
 
             renderer_cls = renderers.get_renderer_class_by_name(layout)
-            paper_sizes = renderer_cls.get_compatible_paper_sizes(
-                    bbox, OCitySMap.DEFAULT_ZOOM_LEVEL)
+            paper_sizes = sorted(renderer_cls.get_compatible_paper_sizes(
+                    bbox, stylesheet.zoom_level),
+                                 key = lambda p: p[1])
 
             return HttpResponse(content=json_encode(paper_sizes),
                                 mimetype='text/json')

@@ -151,13 +151,15 @@ function preparePaperPanel()
       lon_upper_left   : $("#lon_upper_left").val(),
       lat_bottom_right : $("#lat_bottom_right").val(),
       lon_bottom_right : $("#lon_bottom_right").val(),
-      layout           : $("input[name='layout']:checked").val()
+      layout           : $("input[name='layout']:checked").val(),
+      stylesheet       : $("input[name='stylesheet']:checked").val()
     };
   }
   else {
     args = {
-      osmid  : $("#id_administrative_osmid").val(),
-      layout : $("input[name='layout']:checked").val()
+      osmid      : $("#id_administrative_osmid").val(),
+      layout     : $("input[name='layout']:checked").val(),
+      stylesheet : $("input[name='stylesheet']:checked").val()
     };
   }
 

@@ -50,11 +50,11 @@
     <li id="step-layout-title">
       <span class="step-number">3.</span> {% trans "Layout" %}
     </li>
-    <li id="step-paper-title">
-      <span class="step-number">4.</span> {% trans "Paper size" %}
-    </li>
     <li id="step-stylesheet-title">
       <span class="step-number">5.</span> {% trans "Stylesheet" %}
+    </li>
+    <li id="step-paper-title">
+      <span class="step-number">4.</span> {% trans "Paper size" %}
     </li>
     <li id="step-language-title">
       <span class="step-number">6.</span> {% trans "Language" %}
@@ -123,6 +123,11 @@
     {{ form.layout }}
   </div>
 
+  <div id="step-stylesheet" class="wizardstep">
+    <h3>{% trans "Stylesheet" %}</h3>
+    {{ form.stylesheet }}
+  </div>
+
   <div id="step-paper" class="wizardstep">
     <h3>{% trans "Paper" %}</h3>
     <table id="paperselection">
@@ -133,11 +138,6 @@
     </table>
     {{ form.paper_width_mm }}
     {{ form.paper_height_mm }}
-  </div>
-
-  <div id="step-stylesheet" class="wizardstep">
-    <h3>{% trans "Stylesheet" %}</h3>
-    {{ form.stylesheet }}
   </div>
 
   <div id="step-language" class="wizardstep">
