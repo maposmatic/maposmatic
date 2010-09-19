@@ -155,7 +155,8 @@ class MapRenderingJobForm(forms.ModelForm):
                 if val is None:
                     msg = _(u"Required")
                     self._errors['bbox'] = forms.util.ErrorList([msg])
-                    del cleaned_data[f]
+                    if f in cleaned_data:
+                        del cleaned_data[f]
 
             # Make sure that bbox and admin modes are exclusive
             cleaned_data["administrative_city"] = ''
