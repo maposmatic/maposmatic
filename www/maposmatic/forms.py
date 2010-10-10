@@ -29,7 +29,7 @@ from django.utils.safestring import mark_safe
 from django.utils.translation import ugettext_lazy as _
 
 from ocitysmap2 import OCitySMap, coords
-from www.maposmatic import helpers, models, widgets
+from www.maposmatic import models, widgets
 import www.settings
 
 class MapSearchForm(forms.Form):
@@ -82,10 +82,10 @@ class MapRenderingJobForm(forms.ModelForm):
     def __init__(self, *args, **kwargs):
         super(MapRenderingJobForm, self).__init__(*args, **kwargs)
 
-        ocitysmap = OCitySMap(www.settings.OCITYSMAP_CFG_PATH)
+        self._ocitysmap = OCitySMap(www.settings.OCITYSMAP_CFG_PATH)
 
-        layout_renderers = ocitysmap.get_all_renderers()
-        stylesheets = ocitysmap.get_all_style_configurations()
+        layout_renderers = self._ocitysmap.get_all_renderers()
+        stylesheets = self._ocitysmap.get_all_style_configurations()
 
         self.fields['layout'].choices = [(r.name, r.description)
                 for r in layout_renderers]
@@ -105,7 +105,7 @@ class MapRenderingJobForm(forms.ModelForm):
 
         self.fields['papersize'].choices = [
                 (p[0], _build_papersize_description(p))
-                for p in ocitysmap.get_all_paper_sizes()]
+                for p in self._ocitysmap.get_all_paper_sizes()]
 
     def clean(self):
         """Cleanup function for the map query form. Different checks are
@@ -143,10 +143,11 @@ class MapRenderingJobForm(forms.ModelForm):
             cleaned_data["lon_bottom_right"] = None
 
             try:
-                helpers.check_osm_id(cleaned_data.get("administrative_osmid"))
+                self._check_osm_id(cleaned_data.get("administrative_osmid"))
             except Exception,ex:
                 msg = _(u"Error with osm city: %s" % ex)
-                self._errors['administrative_osmid'] = forms.util.ErrorList([msg])
+                self._errors['administrative_osmid'] \
+                    = forms.util.ErrorList([msg])
 
         elif mode == 'bbox':
             for f in [ "lat_upper_left", "lon_upper_left",
@@ -182,6 +183,18 @@ class MapRenderingJobForm(forms.ModelForm):
                 self._errors['bbox'] = forms.util.ErrorList([msg])
 
         return cleaned_data
+
+    def _check_osm_id(self, osm_id):
+        """Make sure that the supplied OSM Id is valid and can be accepted for
+        rendering (bounding box not too large, etc.). Raise an exception in
+        case of error."""
+        bbox_wkt, area_wkt = self._ocitysmap.get_geographic_info(osm_id)
+        bbox = coords.BoundingBox.parse_wkt(bbox_wkt)
+        (metric_size_lat, metric_size_long) = bbox.spheric_sizes()
+        if metric_size_lat > www.settings.BBOX_MAXIMUM_LENGTH_IN_METERS or \
+                metric_size_long > www.settings.BBOX_MAXIMUM_LENGTH_IN_METERS:
+            raise ValueError("Area too large")
+
 
 class MapPaperSizeForm(forms.Form):
     """

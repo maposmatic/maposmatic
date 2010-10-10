@@ -31,7 +31,6 @@ import threading
 
 import ocitysmap2
 import ocitysmap2.coords
-from www.maposmatic.helpers import get_bbox_from_osm_id
 from www.maposmatic.models import MapRenderingJob
 from www.settings import OCITYSMAP_CFG_PATH
 from www.settings import RENDERING_RESULT_PATH, RENDERING_RESULT_FORMATS
@@ -156,7 +155,10 @@ class JobRenderer(threading.Thread):
             config.osmid = self.job.administrative_osmid
 
             if config.osmid:
-                config.bounding_box = get_bbox_from_osm_id(config.osmid)
+                bbox_wkt, area_wkt \
+                    = renderer.get_geographic_info(config.osmid)
+                config.bounding_box = ocitysmap2.coords.BoundingBox.parse_wkt(
+                    bbox_wkt)
             else:
                 config.bounding_box = ocitysmap2.coords.BoundingBox(
                         self.job.lat_upper_left,

@@ -25,6 +25,7 @@
 # Views for MapOSMatic
 
 import datetime
+import logging
 
 from django.core.paginator import Paginator, InvalidPage, EmptyPage
 from django.core.urlresolvers import reverse
@@ -36,6 +37,8 @@ from django.utils.translation import ugettext_lazy as _
 from ocitysmap2 import OCitySMap, coords, renderers
 from www.maposmatic import helpers, forms, nominatim, models
 import www.settings
+
+LOG = logging.getLogger('maposmatic')
 
 try:
     from json import dumps as json_encode
@@ -206,7 +209,12 @@ def query_papersize(request):
 
             # Determine geographic area
             if osmid is not None:
-                bbox = helpers.get_bbox_from_osm_id(osmid)
+                try:
+                    bbox_wkt, area_wkt = ocitysmap.get_geographic_info(osmid)
+                except ValueError:
+                    LOG.exception("Error determining compatible paper sizes")
+                    raise
+                bbox = coords.BoundingBox.parse_wkt(bbox_wkt)
             else:
                 lat_upper_left = f.cleaned_data.get("lat_upper_left")
                 lon_upper_left = f.cleaned_data.get("lon_upper_left")

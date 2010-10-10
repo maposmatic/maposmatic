@@ -31,50 +31,6 @@ from ocitysmap2 import coords
 from www.maposmatic.models import MapRenderingJob
 import www.settings
 
-def get_bbox_from_osm_id(osm_id, table='polygon'):
-    # If no GIS database is configured, bypass the city_exists check by
-    # returning True.
-    if not www.settings.has_gis_database():
-        raise ValueError("No GIS database available")
-
-    conn = psycopg2.connect("dbname='%s' user='%s' host='%s' password='%s'" %
-                            (www.settings.GIS_DATABASE_NAME,
-                             www.settings.DATABASE_USER,
-                             www.settings.DATABASE_HOST,
-                             www.settings.DATABASE_PASSWORD))
-
-    try:
-        cursor = conn.cursor()
-        cursor.execute("""select osm_id,st_astext(st_transform(st_envelope(way),
-                                                               4002))
-                          from planet_osm_%s where
-                          osm_id=%d""" % (table,int(osm_id)))
-        result = cursor.fetchall()
-        try:
-            ((ret_osm_id, envlp),) = result
-        except ValueError:
-            raise ValueError("Cannot lookup OSM ID in table %s" % table)
-
-        assert ret_osm_id == osm_id
-
-        # Check bbox size
-        bbox = coords.BoundingBox.parse_wkt(envlp)
-    finally:
-        conn.close()
-
-    return bbox
-
-def check_osm_id(osm_id, table='polygon'):
-    """Make sure that the supplied OSM Id is valid and can be accepted for
-    rendering (bounding box not too large, etc.). Raise an exception in
-    case of error."""
-
-    bbox = get_bbox_from_osm_id(osm_id, table)
-    (metric_size_lat, metric_size_long) = bbox.spheric_sizes()
-    if metric_size_lat > www.settings.BBOX_MAXIMUM_LENGTH_IN_METERS or \
-            metric_size_long > www.settings.BBOX_MAXIMUM_LENGTH_IN_METERS:
-        raise ValueError("Area too large")
-
 
 def rendering_already_exists_by_osmid(osmid):
     """Returns the ID of a rendering matching the given OpenStreetMap city ID
