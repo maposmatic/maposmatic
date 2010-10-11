@@ -216,6 +216,18 @@ _fh.setFormatter(logging.Formatter(os.environ.get("MAPOSMATIC_LOG_FORMAT",
 LOG.addHandler(_fh)
 LOG.info("log restarted.")
 
+# GIS database (read settings from OCitySMap's configuration)
+import ConfigParser
+gis_config = ConfigParser.SafeConfigParser()
+
+if OCITYSMAP_CFG_PATH is None:
+    OCITYSMAP_CFG_PATH = os.path.expanduser('~/.ocitysmap.conf')
+with open(OCITYSMAP_CFG_PATH) as fp:
+    gis_config.readfp(fp)
+GIS_DATABASE_HOST = gis_config.get('datasource', 'host')
+GIS_DATABASE_USER = gis_config.get('datasource', 'user')
+GIS_DATABASE_PASSWORD = gis_config.get('datasource', 'password')
+GIS_DATABASE_NAME = gis_config.get('datasource', 'dbname')
 
 def has_gis_database():
     return GIS_DATABASE_NAME and GIS_DATABASE_NAME != ''

@@ -43,9 +43,9 @@ def check_osm_id(osm_id, table='polygon'):
 
     conn = psycopg2.connect("dbname='%s' user='%s' host='%s' password='%s'" %
                             (www.settings.GIS_DATABASE_NAME,
-                             www.settings.DATABASE_USER,
-                             www.settings.DATABASE_HOST,
-                             www.settings.DATABASE_PASSWORD))
+                             www.settings.GIS_DATABASE_USER,
+                             www.settings.GIS_DATABASE_HOST,
+                             www.settings.GIS_DATABASE_PASSWORD))
 
     try:
         cursor = conn.cursor()

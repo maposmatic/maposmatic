@@ -132,9 +132,9 @@ def _retrieve_missing_data_from_GIS(entries):
     try:
         conn = psycopg2.connect("dbname='%s' user='%s' host='%s' password='%s'" %
                                 (www.settings.GIS_DATABASE_NAME,
-                                 www.settings.DATABASE_USER,
-                                 www.settings.DATABASE_HOST,
-                                 www.settings.DATABASE_PASSWORD))
+                                 www.settings.GIS_DATABASE_USER,
+                                 www.settings.GIS_DATABASE_HOST,
+                                 www.settings.GIS_DATABASE_PASSWORD))
     except psycopg2.OperationalError, e:
         www.settings.LOG.warning("Could not connect to the PostGIS database: %s" %
                                  str(e)[:-1])
