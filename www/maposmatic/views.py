@@ -25,6 +25,7 @@
 # Views for MapOSMatic
 
 import datetime
+import logging
 
 from django.core.paginator import Paginator, InvalidPage, EmptyPage
 from django.core.urlresolvers import reverse
@@ -33,8 +34,11 @@ from django.shortcuts import get_object_or_404, render_to_response
 from django.template import RequestContext
 from django.utils.translation import ugettext_lazy as _
 
+from ocitysmap2 import OCitySMap, coords, renderers
 from www.maposmatic import helpers, forms, nominatim, models
 import www.settings
+
+LOG = logging.getLogger('maposmatic')
 
 try:
     from json import dumps as json_encode
@@ -46,7 +50,9 @@ except ImportError:
 
 def index(request):
     """The main page."""
+    form = forms.MapSearchForm(request.GET)
     return render_to_response('maposmatic/index.html',
+                              { 'form': form },
                               context_instance=RequestContext(request))
 
 def about(request):
@@ -62,13 +68,10 @@ def new(request):
         if form.is_valid():
             job = form.save(commit=False)
             job.administrative_osmid = form.cleaned_data.get('administrative_osmid')
-
-            existing = helpers.rendering_already_exists(job)
-            if existing:
-                request.session['redirected'] = True
-                return HttpResponseRedirect(reverse('job-by-id',
-                                                    args=[existing]))
-
+            job.stylesheet = form.cleaned_data.get('stylesheet')
+            job.layout = form.cleaned_data.get('layout')
+            job.paper_width_mm = form.cleaned_data.get('paper_width_mm')
+            job.paper_height_mm = form.cleaned_data.get('paper_height_mm')
             job.status = 0 # Submitted
             job.submitterip = request.META['REMOTE_ADDR']
             job.map_language = form.cleaned_data.get('map_language')
@@ -172,24 +175,64 @@ def all_maps(request):
                                 'pages': helpers.get_pages_list(maps, paginator) },
                               context_instance=RequestContext(request))
 
-def query_nominatim(request, format, squery):
+def query_nominatim(request):
     """Nominatim query gateway."""
-
-    format = format or request.GET.get('format', 'json')
-    if format not in ['json']:
-        return HttpResponseBadRequest("ERROR: Invalid format")
-
-    squery = squery or request.GET.get('q', '')
+    exclude = request.GET.get('exclude', '')
+    squery = request.GET.get('q', '')
 
     try:
-        contents = nominatim.query(squery, with_polygons=False)
+        contents = nominatim.query(squery, exclude, with_polygons=False)
     except:
         contents = []
 
-    if format == 'json':
-        return HttpResponse(content=json_encode(contents),
-                            mimetype='text/json')
-    # Support other formats here.
+    return HttpResponse(content=json_encode(contents),
+                        mimetype='text/json')
+
+def nominatim_reverse(request, lat, lon):
+    """Nominatim reverse geocoding query gateway."""
+    lat = float(lat)
+    lon = float(lon)
+    return HttpResponse(json_encode(nominatim.reverse_geo(lat, lon)),
+                        mimetype='text/json')
+
+def query_papersize(request):
+    """AJAX query handler to get the compatible paper sizes for the provided
+    layout and bounding box."""
+
+    if request.method == 'POST':
+        f = forms.MapPaperSizeForm(request.POST)
+        if f.is_valid():
+            ocitysmap  = OCitySMap(www.settings.OCITYSMAP_CFG_PATH)
+            osmid      = f.cleaned_data.get('osmid')
+            layout     = f.cleaned_data.get('layout')
+            stylesheet = ocitysmap.get_stylesheet_by_name(
+                f.cleaned_data.get('stylesheet'))
+
+            # Determine geographic area
+            if osmid is not None:
+                try:
+                    bbox_wkt, area_wkt = ocitysmap.get_geographic_info(osmid)
+                except ValueError:
+                    LOG.exception("Error determining compatible paper sizes")
+                    raise
+                bbox = coords.BoundingBox.parse_wkt(bbox_wkt)
+            else:
+                lat_upper_left = f.cleaned_data.get("lat_upper_left")
+                lon_upper_left = f.cleaned_data.get("lon_upper_left")
+                lat_bottom_right = f.cleaned_data.get("lat_bottom_right")
+                lon_bottom_right = f.cleaned_data.get("lon_bottom_right")
+                bbox = coords.BoundingBox(lat_upper_left, lon_upper_left,
+                                          lat_bottom_right, lon_bottom_right)
+
+            renderer_cls = renderers.get_renderer_class_by_name(layout)
+            paper_sizes = sorted(renderer_cls.get_compatible_paper_sizes(
+                    bbox, stylesheet.zoom_level),
+                                 key = lambda p: p[1])
+
+            return HttpResponse(content=json_encode(paper_sizes),
+                                mimetype='text/json')
+
+    return HttpResponseBadRequest("ERROR: Invalid arguments")
 
 def recreate(request):
     if request.method == 'POST':
@@ -197,12 +240,6 @@ def recreate(request):
         if form.is_valid():
             job = get_object_or_404(models.MapRenderingJob,
                                     id=form.cleaned_data['jobid'])
-
-            existing = helpers.rendering_already_exists(job)
-            if existing:
-                request.session['redirected'] = True
-                return HttpResponseRedirect(reverse('job-by-id',
-                                                    args=[existing]))
 
             newjob = models.MapRenderingJob()
             newjob.maptitle = job.maptitle
@@ -214,6 +251,11 @@ def recreate(request):
             newjob.lon_upper_left = job.lon_upper_left
             newjob.lat_bottom_right = job.lat_bottom_right
             newjob.lon_bottom_right = job.lon_bottom_right
+
+            newjob.stylesheet = job.stylesheet
+            newjob.layout = job.layout
+            newjob.paper_width_mm = job.paper_width_mm
+            newjob.paper_height_mm = job.paper_height_mm
 
             newjob.status = 0 # Submitted
             newjob.submitterip = request.META['REMOTE_ADDR']

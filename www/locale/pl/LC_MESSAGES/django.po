@@ -20,7 +20,7 @@ msgstr ""
 "X-Poedit-Language: Polish\n"
 "X-Poedit-Country: Poland\n"
 
-#: settings.py:201
+#: settings.py:202
 msgid "No localization"
 msgstr "Bez lokalizacji"
 
@@ -32,48 +32,66 @@ msgstr "Mapy MapOSMatic"
 msgid "The latest rendered maps on MapOSMatic."
 msgstr "Najnowsze utworzone mapy w serwisie MapOSMatic."
 
-#: maposmatic/forms.py:53
+#: maposmatic/forms.py:57
 msgid "Administrative boundary"
 msgstr "Granica administracyjna"
 
-#: maposmatic/forms.py:54
+#: maposmatic/forms.py:58
 msgid "Bounding box"
 msgstr "Obszar"
 
-#: maposmatic/forms.py:59
+#: maposmatic/forms.py:60
+msgid "Landscape"
+msgstr ""
+
+#: maposmatic/forms.py:61
+msgid "Portrait"
+msgstr ""
+
+#: maposmatic/forms.py:73
 msgid "Area"
 msgstr "Obszar"
 
-#: maposmatic/forms.py:84
+#: maposmatic/forms.py:129
+msgid "Map title required"
+msgstr "Nazwa mapy jest wymagana"
+
+#: maposmatic/forms.py:135
 msgid "Administrative city required"
 msgstr "Wymagane jest miasto z granicą administracyjną"
 
-#: maposmatic/forms.py:100
+#: maposmatic/forms.py:148
 #, python-format
 msgid "Error with osm city: %s"
 msgstr "Błąd z miastem w osm: %s"
 
-#: maposmatic/forms.py:105
-msgid "Map title required"
-msgstr "Nazwa mapy jest wymagana"
-
-#: maposmatic/forms.py:113
+#: maposmatic/forms.py:156
 msgid "Required"
 msgstr "Wymagane"
 
-#: maposmatic/forms.py:138 templates/maposmatic/new.html:98
+#: maposmatic/forms.py:180
 msgid "Bounding Box too large"
 msgstr "Wybrany obszar zbyt rozległy"
 
-#: maposmatic/models.py:184
+#: maposmatic/models.py:188
 #, python-format
 msgid "%(title)s %(format)s Map"
 msgstr "Mapa: %(title)s Format: %(format)s"
 
-#: maposmatic/models.py:192
+#: maposmatic/models.py:196
 #, python-format
 msgid "%(title)s %(format)s Index"
 msgstr "Indeks ulic: %(title)s Format: %(format)s"
+
+#: maposmatic/nominatim.py:231
+#, fuzzy
+msgid "Administrative area too big for rendering"
+msgstr "Granica administracyjna"
+
+#: maposmatic/nominatim.py:287 maposmatic/nominatim.py:301
+#, fuzzy
+msgid "No administrative boundary"
+msgstr "Granica administracyjna"
 
 #: maposmatic/widgets.py:88
 msgid "Latitude of the top left corner"
@@ -489,31 +507,36 @@ msgid ""
 "hours."
 msgstr "W ciągu ostatnich 24 godzin nie wykonano żadnego renderingu."
 
-#: templates/maposmatic/all_maps.html:34
+#: templates/maposmatic/all_maps.html:34 templates/maposmatic/index.html:79
 msgid "Search"
 msgstr "Szukaj"
 
-#: templates/maposmatic/all_maps.html:37 templates/maposmatic/base.html:70
+#: templates/maposmatic/all_maps.html:38 templates/maposmatic/base.html:70
 msgid "Maps"
 msgstr "Mapy"
 
-#: templates/maposmatic/all_maps.html:37
+#: templates/maposmatic/all_maps.html:38
 msgid "MapOSMatic maps feed"
 msgstr "Kanał MapOSMatic"
 
-#: templates/maposmatic/all_maps.html:51
+#: templates/maposmatic/all_maps.html:52
 msgid "Our database does not contain any rendered maps for the moment."
 msgstr "Nasza baza danych aktualnie nie zawiera żadnych utworzonych map."
 
-#: templates/maposmatic/all_maps.html:53
+#: templates/maposmatic/all_maps.html:54
 msgid "No map matches your query."
 msgstr ""
+
+#: templates/maposmatic/all_maps.html:54
+#, fuzzy
+msgid "Create a new map!"
+msgstr "Tworzenie mapy"
 
 #: templates/maposmatic/base.html:57
 msgid "Your free city maps!"
 msgstr "Wolne mapy miast!"
 
-#: templates/maposmatic/base.html:68 templates/maposmatic/index.html:78
+#: templates/maposmatic/base.html:68
 msgid "Create map"
 msgstr "Tworzenie mapy"
 
@@ -621,7 +644,17 @@ msgstr ""
 "wiki.openstreetmap.org/wiki/License\">licencji OpenStreetMap</a>) ponownie "
 "wykorzystywać, modyfikować czy też sprzedawać."
 
+#: templates/maposmatic/index.html:78
+#, fuzzy
+msgid "Create a map"
+msgstr "Tworzenie mapy"
+
 #: templates/maposmatic/index.html:79
+#, fuzzy
+msgid "Find map"
+msgstr "Losowa mapa"
+
+#: templates/maposmatic/index.html:80
 msgid "More details"
 msgstr "Więcej informacji"
 
@@ -728,114 +761,139 @@ msgstr "Wygenerowany pliki nie są już dostepne."
 msgid "Rendering completed on"
 msgstr "Rendering zakończono"
 
-#: templates/maposmatic/new.html:38
+#: templates/maposmatic/new.html:37
 msgid "Generate your own map"
 msgstr "Stwórz swoją własną mapę"
 
-#: templates/maposmatic/new.html:41
-msgid ""
-"<em>MapOSMatic</em> covers the whole world but we need\n"
-"contributors to translate and adapt the few parts of <em>MapOSMatic</em>\n"
-"that are country specific."
-msgstr ""
-"<em>MapOSMatic</em> obejmuje cały świat, jednakże potrzebujemy Was, by "
-"tłumaczyć i adaptować niektóre z części projektu <em>MapOSMatic</em>, które "
-"są zależne od danego kraju."
+#: templates/maposmatic/new.html:45
+#, fuzzy
+msgid "Location"
+msgstr "Bez lokalizacji"
 
-#: templates/maposmatic/new.html:47
+#: templates/maposmatic/new.html:48
+msgid "Title"
+msgstr ""
+
+#: templates/maposmatic/new.html:51 templates/maposmatic/new.html.py:122
+msgid "Layout"
+msgstr ""
+
+#: templates/maposmatic/new.html:54
+msgid "Paper size"
+msgstr ""
+
+#: templates/maposmatic/new.html:57 templates/maposmatic/new.html.py:139
+msgid "Stylesheet"
+msgstr ""
+
+#: templates/maposmatic/new.html:60 templates/maposmatic/new.html.py:144
+msgid "Language"
+msgstr ""
+
+#: templates/maposmatic/new.html:63
+msgid "Summary"
+msgstr ""
+
+#: templates/maposmatic/new.html:72
+msgid "Back"
+msgstr ""
+
+#: templates/maposmatic/new.html:77
+#, fuzzy
+msgid "Geographic area selection"
+msgstr "tłumaczenie na język arabski"
+
+#: templates/maposmatic/new.html:79
+#, fuzzy
 msgid ""
 "To select the city to be rendered, two modes are\n"
-"available:"
+"      available:"
 msgstr ""
 "W celu wybrania miasta do renderowania, można skorzystać z dwóch sposobów:"
 
-#: templates/maposmatic/new.html:52
+#: templates/maposmatic/new.html:89
+#, fuzzy
 msgid ""
-"<em>Using an administrative boundary</em>. It allows\n"
-"  to get a map with precise boundaries of the city when such limits are\n"
-"  available in the database. Otherwise, you need to use a bounding\n"
-"  box."
-msgstr ""
-"<em>Korzystając z jego granicy administracyjnej</em>. Pozwala to na dokładne "
-"określenie granic miasta, w przypadku gdy taka granica jest umieszczona jest "
-"w bazie danych. W innym przypadku, należy skorzystać z zaznaczenia obszaru."
-
-#: templates/maposmatic/new.html:56
-msgid "<em>Using a traditional bounding box</em>."
-msgstr "<em>Korzystając z tradycyjnego zaznaczenia obszaru.</em>"
-
-#: templates/maposmatic/new.html:60
-msgid ""
-"Once the rendering is submitted, you will be brought\n"
-"to a page giving the status of your rendering request. As soon as the\n"
-"rendering is completed (that might take some time depending on the queue\n"
-"length), this page will contain links to the generated\n"
-"map."
-msgstr ""
-"Po zatwierdzeniu wybranego obszaru, nastąpi przeniesienie do strony "
-"zawierającej szczegółowe informacje na temat tego zadania. W momencie, gdy "
-"proces renderowania zostanie zakończony (co może zająć chwilę, w zależności "
-"od długości kolejki) strona ta będzie zawierała odnośniki do wygenerowanej "
-"mapy."
-
-#: templates/maposmatic/new.html:69
-msgid "Area selection mode:"
-msgstr "Tryb wyboru obszaru dla mapy:"
-
-#: templates/maposmatic/new.html:74
-msgid "City name:"
-msgstr "Nazwa miasta:"
-
-#: templates/maposmatic/new.html:83
-msgid "Title of the map:"
-msgstr "Tytuł mapy:"
-
-#: templates/maposmatic/new.html:90
-msgid "Map Index Language:"
-msgstr "Język indeksu mapy:"
-
-#: templates/maposmatic/new.html:93
-msgid "Bounding box:"
-msgstr "Obszar:"
-
-#: templates/maposmatic/new.html:100
-msgid ""
-"Latitude and longitude of the top left and bottom right corners of the area "
-"to render."
+"Latitude and longitude of the top left and bottom right\n"
+"        corners of the area to render."
 msgstr ""
 "Szerokość i wysokość geograficzna dla prawego dolnego i lewego górnego rogu "
 "obszaru do renderowania."
 
-#: templates/maposmatic/new.html:101
+#: templates/maposmatic/new.html:95
 #, fuzzy
 msgid ""
-"You can use <tt>Shift+drag</tt> to zoom on a specific area of the map. You "
-"can use <tt>Control+drag</tt> to draw the limits of the area to render."
+"You can use <tt>Shift+drag</tt> to zoom on a specific\n"
+"        area of the map. Then, you must select with <tt>Control+drag</tt> "
+"the\n"
+"        limits of the area you wish to render."
 msgstr ""
 "W celu powiększenia określonego obszaru mapy, można skorzystać z klawisza "
 "<tt>Shift</tt> i przeciągnięcia myszą. Aby wyrenderować tylko część obszaru "
 "na mapie, można skorzystać z klawisza <tt>Control</tt> i przeciągnąć myszą, "
 "by wybrać obszar."
 
-#: templates/maposmatic/new.html:106
-msgid "Generate"
-msgstr "Wygeneruj"
-
-#: templates/maposmatic/new.html:111
+#: templates/maposmatic/new.html:101
 msgid ""
-"Wondering why you can't choose some of these results?<br />Their "
-"administrative boundaries are missing from the OSM database.<br />Look at "
-"the <a href=\"http://wiki.maposmatic.org/doku.php?id=faq\">FAQ</a> for more "
-"details."
+"Area too big to be rendered. Please select a\n"
+"        smaller area."
 msgstr ""
-"Niestety dla niektórych wyników brakuje granic administracyjnych w bazie "
-"danych OSM, z tego powodu nie można ich wybrać.<br />Więcej informacji "
-"znajduje się w <a href=\"http://wiki.maposmatic.org/doku.php?id=faq\">FAQ</"
-"a>."
 
 #: templates/maposmatic/new.html:112
 msgid "No results."
 msgstr "Nie znaleziono."
+
+#: templates/maposmatic/new.html:117
+#, fuzzy
+msgid "Map title"
+msgstr "Nazwa mapy jest wymagana"
+
+#: templates/maposmatic/new.html:127
+msgid "Paper"
+msgstr ""
+
+#: templates/maposmatic/new.html:145
+msgid "Map Index Language:"
+msgstr "Język indeksu mapy:"
+
+#: templates/maposmatic/new.html:148
+msgid "Summary:"
+msgstr ""
+
+#: templates/maposmatic/new.html:150
+#, fuzzy
+msgid "Location:"
+msgstr "Bez lokalizacji"
+
+#: templates/maposmatic/new.html:152
+msgid "Title:"
+msgstr ""
+
+#: templates/maposmatic/new.html:154
+msgid "Layout:"
+msgstr ""
+
+#: templates/maposmatic/new.html:156
+msgid "Paper size:"
+msgstr ""
+
+#: templates/maposmatic/new.html:158
+msgid "Stylesheet:"
+msgstr ""
+
+#: templates/maposmatic/new.html:160
+#, fuzzy
+msgid "Language:"
+msgstr "Język indeksu mapy:"
+
+#: templates/maposmatic/new.html:164
+msgid "Generate"
+msgstr "Wygeneruj"
+
+#: templates/maposmatic/new.html:171
+#, fuzzy
+msgid "Continue"
+msgstr "Jak pomóc"
 
 #: templates/maposmatic/paginator.html:33
 msgid "Previous"
@@ -844,6 +902,65 @@ msgstr "Poprzednia"
 #: templates/maposmatic/paginator.html:37
 msgid "Next"
 msgstr "Następna"
+
+#~ msgid ""
+#~ "<em>MapOSMatic</em> covers the whole world but we need\n"
+#~ "contributors to translate and adapt the few parts of <em>MapOSMatic</em>\n"
+#~ "that are country specific."
+#~ msgstr ""
+#~ "<em>MapOSMatic</em> obejmuje cały świat, jednakże potrzebujemy Was, by "
+#~ "tłumaczyć i adaptować niektóre z części projektu <em>MapOSMatic</em>, "
+#~ "które są zależne od danego kraju."
+
+#~ msgid ""
+#~ "<em>Using an administrative boundary</em>. It allows\n"
+#~ "  to get a map with precise boundaries of the city when such limits are\n"
+#~ "  available in the database. Otherwise, you need to use a bounding\n"
+#~ "  box."
+#~ msgstr ""
+#~ "<em>Korzystając z jego granicy administracyjnej</em>. Pozwala to na "
+#~ "dokładne określenie granic miasta, w przypadku gdy taka granica jest "
+#~ "umieszczona jest w bazie danych. W innym przypadku, należy skorzystać z "
+#~ "zaznaczenia obszaru."
+
+#~ msgid "<em>Using a traditional bounding box</em>."
+#~ msgstr "<em>Korzystając z tradycyjnego zaznaczenia obszaru.</em>"
+
+#~ msgid ""
+#~ "Once the rendering is submitted, you will be brought\n"
+#~ "to a page giving the status of your rendering request. As soon as the\n"
+#~ "rendering is completed (that might take some time depending on the queue\n"
+#~ "length), this page will contain links to the generated\n"
+#~ "map."
+#~ msgstr ""
+#~ "Po zatwierdzeniu wybranego obszaru, nastąpi przeniesienie do strony "
+#~ "zawierającej szczegółowe informacje na temat tego zadania. W momencie, "
+#~ "gdy proces renderowania zostanie zakończony (co może zająć chwilę, w "
+#~ "zależności od długości kolejki) strona ta będzie zawierała odnośniki do "
+#~ "wygenerowanej mapy."
+
+#~ msgid "Area selection mode:"
+#~ msgstr "Tryb wyboru obszaru dla mapy:"
+
+#~ msgid "City name:"
+#~ msgstr "Nazwa miasta:"
+
+#~ msgid "Title of the map:"
+#~ msgstr "Tytuł mapy:"
+
+#~ msgid "Bounding box:"
+#~ msgstr "Obszar:"
+
+#~ msgid ""
+#~ "Wondering why you can't choose some of these results?<br />Their "
+#~ "administrative boundaries are missing from the OSM database.<br />Look at "
+#~ "the <a href=\"http://wiki.maposmatic.org/doku.php?id=faq\">FAQ</a> for "
+#~ "more details."
+#~ msgstr ""
+#~ "Niestety dla niektórych wyników brakuje granic administracyjnych w bazie "
+#~ "danych OSM, z tego powodu nie można ich wybrać.<br />Więcej informacji "
+#~ "znajduje się w <a href=\"http://wiki.maposmatic.org/doku.php?id=faq"
+#~ "\">FAQ</a>."
 
 #~ msgid "No map starts with %(current_letter)s in our database!"
 #~ msgstr ""

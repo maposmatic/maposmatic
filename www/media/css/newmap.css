@@ -1,0 +1,261 @@
+/* coding: utf-8
+ *
+ * maposmatic, the web front-end of the MapOSMatic city map generation system
+ * Copyright (C) 2009-2010 David Decotigny
+ * Copyright (C) 2009-2010 Frédéric Lehobey
+ * Copyright (C) 2009-2010 David Mentré
+ * Copyright (C) 2009-2010 Maxime Petazzoni
+ * Copyright (C) 2009-2010 Thomas Petazzoni
+ * Copyright (C) 2009-2010 Gaël Utard
+ * Copyright (C) 2009-2010 Étienne Loks
+ * Copyright (C) 2010 Pierre Mauduit
+ *
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as
+ * published by the Free Software Foundation, either version 3 of the
+ * License, or (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program.  If not, see <http://www.gnu.org/licenses/>.
+ *
+ * See the file COPYING for details.
+ */
+
+#mainfrm input[type=text] {
+  border: 1px black solid;
+  width: 600px;
+}
+
+#noresultsinfo {
+  display: none;
+}
+
+
+/* Wizard step list */
+ul#steplist {
+  margin: 0;
+  padding: 0.5em 0;
+  list-style: none;
+  border-bottom: 1px #aaa solid;
+}
+
+ul#steplist li {
+  margin: 0;
+  margin-right: 0.25em;
+  padding: 0.5em 0.25em;
+  display: inline;
+  font-weight: normal;
+}
+
+ul#steplist span.step-number {
+  font-weight: bold;
+}
+
+ul#steplist li.title-current-step {
+  background: #eee;
+  font-weight: bold;
+}
+
+
+/* Wizard steps */
+.wizard ul {
+  list-style: none;
+  margin: 0;
+  margin-bottom: 1em;
+  padding: 0;
+}
+
+.wizard table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.wizard th {
+  text-align: left;
+}
+
+.wizard h3 {
+  margin-top: 0;
+}
+
+
+/* Navigation links */
+a.navlink {
+  font-size: 25pt;
+  color: #ccc;
+  cursor: default;
+  visibility: hidden;
+}
+
+a.allowed {
+  visibility: visible !important;
+  cursor: pointer !important;
+  color: #0066b3 !important;
+}
+
+td.prev, td.next {
+  padding-top: 2em;
+  vertical-align: top;
+}
+
+td.next {
+  font-weight: bold;
+}
+
+td.step {
+  width: 100%;
+}
+
+
+.wizardstep {
+  width: auto;
+  display: none;
+  padding: 1em;
+}
+
+#id_maptitle,
+#id_administrative_city {
+  width: 80%;
+  max-width: 600px;
+  font-size: 13pt;
+}
+
+/* Auto-suggest box */
+#suggest {
+  margin: -3px 0 0 0;
+  padding: 0;
+  list-style: none;
+  width: 80%;
+  max-width: 600px;
+  background: white;
+  border: 1px black solid;
+  font-size: 11pt;
+  display: none;
+}
+
+#suggest li {
+  margin: 0;
+  padding: 2px;
+}
+
+#suggest img {
+  float: left;
+  vertical-align: middle;
+  margin-right: 3px;
+}
+
+#suggest li.selected {
+  background: #36c;
+  color: white;
+}
+
+#suggest li.suggestok:hover {
+  cursor: pointer;
+}
+
+#suggest li.suggestoff {
+  color: #bbb;
+}
+
+#suggest li.suggestoff:hover {
+  background: #eee;
+  cursor: help;
+}
+
+#suggest li.info {
+  color: #bbb;
+  font-size: 8pt;
+}
+
+#suggest span.suggestid {
+  display: none;
+}
+
+/* OSM Map */
+#map {
+  border: 1px black solid;
+  width: 600px;
+  height: 350px;
+}
+
+#map .olControlAttribution {
+  bottom: 3px !important;
+}
+
+#map_bb {
+  text-align: left;
+  margin-top: 0.5em;
+  margin-right: 1em;
+  color: #444;
+  float: left;
+}
+
+#map_bb input {
+  width: 4em !important;
+  display: inline;
+  border: 1px #444 solid;
+  color: #444;
+}
+
+p.bbox_info {
+  margin: 0.5em 0 0;
+  font-size: smaller;
+}
+
+p.bbox_info,
+p.bbox_select_help {
+  font-style: italic;
+  width: 600px;
+}
+
+p.bbox_select_help {
+  padding-left: 40px;
+}
+
+img.tip {
+  clear: both;
+  margin-top: 1.5em;
+  float: left;
+}
+
+/* Paper selection */
+em.papersize {
+  color: #aaa;
+  font-style: italic;
+}
+
+table#paperselection td {
+  vertical-align: top;
+  width: 50%;
+}
+
+
+/* Summary */
+ol#summary {
+  margin: 1em 0 0 0;
+  padding: 0;
+  width: 100%;
+}
+
+ol#summary dt {
+  float: left;
+  font-weight: bold;
+  width: 20%;
+}
+
+ol#summary dd {
+  margin-left: 20%;
+  padding-left: 1em;
+  margin-bottom: 0.25em;
+}
+
+input#id_go_next_btn {
+  margin: 2em auto 0 auto;
+  font-size: 14pt;
+  padding: 3px 1em;
+}

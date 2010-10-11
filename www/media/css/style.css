@@ -128,6 +128,10 @@ ul#nav li.activelink a {
   font-weight: bold;
 }
 
+ul.errorlist {
+  color: red;
+  font-weight: bold;
+}
 
 #layout {
   clear: both;
@@ -170,20 +174,16 @@ table#chavagne img {
   width: 200px;
 }
 
-p#more {
+div#more {
   margin: 2em 0 0 1em;
   font-size: 13pt;
 }
 
-p#more img {
+div#more img {
   width: 32px;
   vertical-align: middle;
   margin-right: 0.5em;
   margin-bottom: 0.5em;
-}
-
-p#more span {
-  font-weight: bold;
 }
 
 p.infobox {
@@ -315,150 +315,9 @@ div.mapsearch {
 }
 
 
-/* Navigation links */
+/* Pagination links */
 div.pagination {
   margin-top: 1em;
   text-align: center;
-}
-
-/* Map form */
-#mapform {
-  width: 100%;
-}
-
-#mainfrm {
-  padding: 0 0 1em 1em;
-  margin: 1em 1em;
-
-  border-left: 0.5em #ccc solid;
-}
-
-#mainfrm ul {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-}
-
-#mainfrm tr.bybbox {
-  display: none;
-}
-
-#mainfrm tr.label td {
-  font-weight: bold;
-  padding-top: 10px;
-}
-
-#mainfrm input[type=text] {
-  border: 1px black solid;
-}
-
-#mainfrm input[type=submit] {
-  margin-top: 0.5em;
-  font-size: 14pt;
-  width: 150px;
-}
-
-#id_go_next_btn {
-  display: none;
-}
-
-#mainfrm input#id_maptitle,
-#mainfrm input#id_administrative_city {
-  width: 80%;
-  max-width: 600px;
-  font-size: 13pt;
-}
-
-/* Suggest */
-#suggest {
-  margin: 0;
-  margin-top: -3px;
-
-  width: 80%;
-  max-width: 600px;
-  list-style: none;
-  background: white;
-  border: 1px black solid;
-  font-size: 13pt;
-  display: none;
-}
-
-#suggest li {
-  padding: 1px;
-  display: block;
-}
-
-#suggest li.selected {
-  background: #36c;
-  color: white;
-}
-
-#suggest li.suggestok:hover {
-  cursor: pointer;
-}
-
-#suggest li.suggestoff {
-  color: #bbb;
-}
-
-#suggest li.suggestoff:hover {
-  background: #eee;
-  cursor: help;
-}
-
-#suggest li.info {
-  color: #bbb;
-  font-size: 8pt;
-}
-
-#suggest span.suggestid {
-  display: none;
-}
-
-#map_language_label,
-#map_language_entry {
-  display: none;
-}
-
-#map {
-  border: 1px black solid;
-  width: 600px;
-  height: 350px;
-}
-
-#map_bb {
-  text-align: left;
-  margin: 0.5em 0;
-  color: #444;
-}
-
-#map_bb input {
-  border: 1px #444 solid;
-  width: 4em;
-  display: inline;
-  color: #444;
-}
-
-p.bbox_select_help {
-  font-style: italic;
-  font-size: smaller;
-  width: 600px;
-}
-
-p.bbox_select_help tt {
-  font-size: normal;
-}
-
-#map .olControlAttribution {
-  bottom: 3px !important;
-}
-
-ul.errorlist {
-  color: red;
-}
-
-#noadminlimitinfo,
-#noresultsinfo {
-  display: none;
 }
 

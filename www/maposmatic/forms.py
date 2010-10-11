@@ -25,10 +25,11 @@
 # Forms for MapOSMatic
 
 from django import forms
+from django.utils.safestring import mark_safe
 from django.utils.translation import ugettext_lazy as _
 
-from ocitysmap.coords import BoundingBox as OCMBoundingBox
-from www.maposmatic import helpers, models, widgets
+from ocitysmap2 import OCitySMap, coords
+from www.maposmatic import models, widgets
 import www.settings
 
 class MapSearchForm(forms.Form):
@@ -43,6 +44,9 @@ class MapRenderingJobForm(forms.ModelForm):
     The main map rendering form, displayed on the 'Create Map' page. It's a
     ModelForm based on the MapRenderingJob model.
     """
+    class Media:
+        css = {'all': ['/smedia/css/newmap.css']}
+        js = ['/smedia/js/jquery.js', '/smedia/js/newmap.js']
 
     class Meta:
         model = models.MapRenderingJob
@@ -53,8 +57,18 @@ class MapRenderingJobForm(forms.ModelForm):
     MODES = (('admin', _('Administrative boundary')),
              ('bbox', _('Bounding box')))
 
+    ORIENTATION = (('landscape', _('Landscape')),
+                   ('portrait', _('Portrait')))
+
     mode = forms.ChoiceField(choices=MODES, initial='admin',
                              widget=forms.RadioSelect)
+    layout = forms.ChoiceField(choices=(), widget=forms.RadioSelect)
+    stylesheet = forms.ChoiceField(choices=(), widget=forms.RadioSelect)
+    papersize = forms.ChoiceField(choices=(), widget=forms.RadioSelect)
+    paperorientation = forms.ChoiceField(choices=ORIENTATION,
+                                         widget=forms.RadioSelect)
+    paper_width_mm = forms.IntegerField(widget=forms.HiddenInput)
+    paper_height_mm = forms.IntegerField(widget=forms.HiddenInput)
     maptitle = forms.CharField(max_length=256, required=False)
     bbox = widgets.AreaField(label=_("Area"),
                              fields=(forms.FloatField(), forms.FloatField(),
@@ -64,6 +78,34 @@ class MapRenderingJobForm(forms.ModelForm):
                                         attrs={'style': 'min-width: 200px'}))
     administrative_osmid = forms.IntegerField(widget=forms.HiddenInput,
                                               required=False)
+
+    def __init__(self, *args, **kwargs):
+        super(MapRenderingJobForm, self).__init__(*args, **kwargs)
+
+        self._ocitysmap = OCitySMap(www.settings.OCITYSMAP_CFG_PATH)
+
+        layout_renderers = self._ocitysmap.get_all_renderers()
+        stylesheets = self._ocitysmap.get_all_style_configurations()
+
+        self.fields['layout'].choices = [(r.name, r.description)
+                for r in layout_renderers]
+        self.fields['layout'].initial = layout_renderers[0].name
+
+        self.fields['stylesheet'].choices = [(s.name, s.description)
+                                             for s in stylesheets]
+        self.fields['stylesheet'].initial = stylesheets[0].name
+
+        def _build_papersize_description(p):
+            if p[1] is None or p[2] is None:
+                return mark_safe("%s <em class=\"papersize\"></em>" % p[0])
+            else:
+                return mark_safe("%s <em class=\"papersize\">"
+                                 "(%.1f &times; %.1f cm²)</em>"
+                                 % (p[0], p[1] / 10., p[2] / 10.))
+
+        self.fields['papersize'].choices = [
+                (p[0], _build_papersize_description(p))
+                for p in self._ocitysmap.get_all_paper_sizes()]
 
     def clean(self):
         """Cleanup function for the map query form. Different checks are
@@ -79,14 +121,20 @@ class MapRenderingJobForm(forms.ModelForm):
         city = cleaned_data.get("administrative_city")
         title = cleaned_data.get("maptitle")
 
+        if cleaned_data.get("paperorientation") == 'landscape':
+            cleaned_data["paper_width_mm"], cleaned_data["paper_height_mm"] = \
+                cleaned_data.get("paper_height_mm"), cleaned_data.get("paper_width_mm")
+
+        if title == '':
+            msg = _(u"Map title required")
+            self._errors["maptitle"] = forms.util.ErrorList([msg])
+            del cleaned_data["maptitle"]
+
         if mode == 'admin':
             if city == "":
                 msg = _(u"Administrative city required")
                 self._errors["administrative_city"] = forms.util.ErrorList([msg])
                 del cleaned_data["administrative_city"]
-
-            # No choice, the map title is always the name of the city
-            cleaned_data["maptitle"] = city
 
             # Make sure that bbox and admin modes are exclusive
             cleaned_data["lat_upper_left"] = None
@@ -95,17 +143,13 @@ class MapRenderingJobForm(forms.ModelForm):
             cleaned_data["lon_bottom_right"] = None
 
             try:
-                helpers.check_osm_id(cleaned_data.get("administrative_osmid"))
+                self._check_osm_id(cleaned_data.get("administrative_osmid"))
             except Exception,ex:
                 msg = _(u"Error with osm city: %s" % ex)
-                self._errors['administrative_osmid'] = forms.util.ErrorList([msg])
+                self._errors['administrative_osmid'] \
+                    = forms.util.ErrorList([msg])
 
         elif mode == 'bbox':
-            if title == '':
-                msg = _(u"Map title required")
-                self._errors["maptitle"] = forms.util.ErrorList([msg])
-                del cleaned_data["maptitle"]
-
             for f in [ "lat_upper_left", "lon_upper_left",
                        "lat_bottom_right", "lon_bottom_right" ]:
                 val = cleaned_data.get(f)
@@ -128,10 +172,10 @@ class MapRenderingJobForm(forms.ModelForm):
             lat_bottom_right = cleaned_data.get("lat_bottom_right")
             lon_bottom_right = cleaned_data.get("lon_bottom_right")
 
-            boundingbox = OCMBoundingBox(lat_upper_left,
-                                         lon_upper_left,
-                                         lat_bottom_right,
-                                         lon_bottom_right)
+            boundingbox = coords.BoundingBox(lat_upper_left,
+                                             lon_upper_left,
+                                             lat_bottom_right,
+                                             lon_bottom_right)
             (metric_size_lat, metric_size_long) = boundingbox.spheric_sizes()
             if (metric_size_lat > www.settings.BBOX_MAXIMUM_LENGTH_IN_METERS
                 or metric_size_long > www.settings.BBOX_MAXIMUM_LENGTH_IN_METERS):
@@ -139,6 +183,31 @@ class MapRenderingJobForm(forms.ModelForm):
                 self._errors['bbox'] = forms.util.ErrorList([msg])
 
         return cleaned_data
+
+    def _check_osm_id(self, osm_id):
+        """Make sure that the supplied OSM Id is valid and can be accepted for
+        rendering (bounding box not too large, etc.). Raise an exception in
+        case of error."""
+        bbox_wkt, area_wkt = self._ocitysmap.get_geographic_info(osm_id)
+        bbox = coords.BoundingBox.parse_wkt(bbox_wkt)
+        (metric_size_lat, metric_size_long) = bbox.spheric_sizes()
+        if metric_size_lat > www.settings.BBOX_MAXIMUM_LENGTH_IN_METERS or \
+                metric_size_long > www.settings.BBOX_MAXIMUM_LENGTH_IN_METERS:
+            raise ValueError("Area too large")
+
+
+class MapPaperSizeForm(forms.Form):
+    """
+    The map paper size form, which is only used to analyze the
+    arguments of the POST request to /apis/papersize/
+    """
+    osmid            = forms.IntegerField(required=False)
+    layout           = forms.CharField(max_length=256)
+    stylesheet       = forms.CharField(max_length=256)
+    lat_upper_left   = forms.FloatField(required=False)
+    lon_upper_left   = forms.FloatField(required=False)
+    lat_bottom_right = forms.FloatField(required=False)
+    lon_bottom_right = forms.FloatField(required=False)
 
 class MapRecreateForm(forms.Form):
     """

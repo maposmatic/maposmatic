@@ -24,14 +24,14 @@
 
 import ctypes
 import Image
+import logging
 import os
 import sys
 import threading
 
-from ocitysmap.coords import BoundingBox
-from ocitysmap.street_index import OCitySMap
+import ocitysmap2
+import ocitysmap2.coords
 from www.maposmatic.models import MapRenderingJob
-from www.settings import LOG
 from www.settings import OCITYSMAP_CFG_PATH
 from www.settings import RENDERING_RESULT_PATH, RENDERING_RESULT_FORMATS
 
@@ -42,6 +42,8 @@ RESULT_RENDERING_EXCEPTION = 3
 RESULT_TIMEOUT_REACHED = 4
 
 THUMBNAIL_SUFFIX = '_small.png'
+
+l = logging.getLogger('maposmatic')
 
 class TimingOutJobRenderer:
     """
@@ -81,8 +83,8 @@ class TimingOutJobRenderer:
         if not self.__thread.isAlive():
             return self.__thread.result
 
-        LOG.info("Rendering of job #%d took too long (timeout reached)!" %
-                 self.__thread.job.id)
+        l.info("Rendering of job #%d took too long (timeout reached)!" %
+               self.__thread.job.id)
 
         # Remove the job files
         self.__thread.job.remove_all_files()
@@ -91,7 +93,7 @@ class TimingOutJobRenderer:
         self.__thread.kill()
         del self.__thread
 
-        LOG.debug("Thread removed.")
+        l.debug("Thread removed.")
         return RESULT_TIMEOUT_REACHED
 
 class JobRenderer(threading.Thread):
@@ -124,7 +126,7 @@ class JobRenderer(threading.Thread):
         raise AssertionError("Could not resolve the thread's ID")
 
     def kill(self):
-        LOG.debug("Killing job #%d's worker thread..." % self.job.id)
+        l.debug("Killing job #%d's worker thread..." % self.job.id)
         res = ctypes.pythonapi.PyThreadState_SetAsyncExc(self.__get_my_tid(),
                 ctypes.py_object(SystemExit))
         if res == 0:
@@ -144,62 +146,62 @@ class JobRenderer(threading.Thread):
         Returns one of the RESULT_ constants.
         """
 
-        LOG.info("Rendering job #%d '%s'..." % (self.job.id, self.job.maptitle))
+        l.info("Rendering job #%d '%s'..." % (self.job.id, self.job.maptitle))
 
         try:
-            if not self.job.administrative_city:
-                bbox = BoundingBox(self.job.lat_upper_left,
-                                   self.job.lon_upper_left,
-                                   self.job.lat_bottom_right,
-                                   self.job.lon_bottom_right)
-                renderer = OCitySMap(config_file=OCITYSMAP_CFG_PATH,
-                                     map_areas_prefix=self.prefix,
-                                     boundingbox=bbox,
-                                     language=self.job.map_language)
+            renderer = ocitysmap2.OCitySMap(OCITYSMAP_CFG_PATH)
+            config = ocitysmap2.RenderingConfiguration()
+            config.title = self.job.maptitle
+            config.osmid = self.job.administrative_osmid
+
+            if config.osmid:
+                bbox_wkt, area_wkt \
+                    = renderer.get_geographic_info(config.osmid)
+                config.bounding_box = ocitysmap2.coords.BoundingBox.parse_wkt(
+                    bbox_wkt)
             else:
-                renderer = OCitySMap(config_file=OCITYSMAP_CFG_PATH,
-                                     map_areas_prefix=self.prefix,
-                                     osmid=self.job.administrative_osmid,
-                                     language=self.job.map_language)
+                config.bounding_box = ocitysmap2.coords.BoundingBox(
+                        self.job.lat_upper_left,
+                        self.job.lon_upper_left,
+                        self.job.lat_bottom_right,
+                        self.job.lon_bottom_right)
+
+            config.language = self.job.map_language
+            config.stylesheet = renderer.get_stylesheet_by_name(
+                self.job.stylesheet)
+            config.paper_width_mm = self.job.paper_width_mm
+            config.paper_height_mm = self.job.paper_height_mm
         except KeyboardInterrupt:
             self.result = RESULT_KEYBOARD_INTERRUPT
-            LOG.info("Rendering of job #%d interrupted!" % self.job.id)
+            l.info("Rendering of job #%d interrupted!" % self.job.id)
             return self.result
         except Exception, e:
             self.result = RESULT_PREPARATION_EXCEPTION
-            LOG.exception("Rendering of job #%d failed (exception occurred during"
-                          " data preparation)!" % self.job.id)
+            l.exception("Rendering of job #%d failed (exception occurred during"
+                        " data preparation)!" % self.job.id)
             return self.result
 
         prefix = os.path.join(RENDERING_RESULT_PATH, self.job.files_prefix())
 
         try:
-            # Render the map in all RENDERING_RESULT_FORMATS
-            result = renderer.render_map_into_files(self.job.maptitle, prefix,
-                                                    RENDERING_RESULT_FORMATS,
-                                                    'zoom:16')
-
-            # Render the index in all RENDERING_RESULT_FORMATS, using the
-            # same map size.
-            renderer.render_index(self.job.maptitle, prefix,
-                                  RENDERING_RESULT_FORMATS,
-                                  result.width, result.height)
+            renderer.render(config, self.job.layout,
+                            RENDERING_RESULT_FORMATS, prefix)
 
             # Create thumbnail
             if 'png' in RENDERING_RESULT_FORMATS:
+                l.info('Creating map thumbnail...')
                 img = Image.open(prefix + '.png')
                 img.thumbnail((200, 200), Image.ANTIALIAS)
                 img.save(prefix + THUMBNAIL_SUFFIX)
 
             self.result = RESULT_SUCCESS
-            LOG.info("Finished rendering of job #%d." % self.job.id)
+            l.info("Finished rendering of job #%d." % self.job.id)
         except KeyboardInterrupt:
             self.result = RESULT_KEYBOARD_INTERRUPT
-            LOG.info("Rendering of job #%d interrupted!" % self.job.id)
+            l.info("Rendering of job #%d interrupted!" % self.job.id)
         except Exception, e:
             self.result = RESULT_RENDERING_EXCEPTION
-            LOG.warning(e)
-            LOG.warning("Rendering of job #%d failed (exception occurred during"
+            l.exception("Rendering of job #%d failed (exception occurred during"
                         " rendering)!" % self.job.id)
 
         # Remove the job files if the rendering was not successful.

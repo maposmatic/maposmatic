@@ -42,9 +42,9 @@ DATABASE_PORT = ''             # Set to empty string for default. Not used with 
 OCITYSMAP_CFG_PATH = None
 
 RENDERING_RESULT_PATH = '/path/to/rendering/results/'
-RENDERING_RESULT_URL = 'http://host.name/rendered/'
-RENDERING_RESULT_FORMATS = ['png', 'svg', 'pdf']
-RENDERING_RESULT_MAX_SIZE_GB = 30
+RENDERING_RESULT_URL = 'http://local.server.name/results/'
+RENDERING_RESULT_FORMATS = ['png', 'svgz', 'pdf', 'csv']
+RENDERING_RESULT_MAX_SIZE_GB = 10
 
 # Default output log file when the env variable MAPOSMATIC_LOG_FILE is not set
 DEFAULT_MAPOSMATIC_LOG_FILE = '/path/to/maposmatic/logs/maposmatic.log'
