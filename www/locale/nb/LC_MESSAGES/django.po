@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-10-11 14:27-0700\n"
+"POT-Creation-Date: 2010-10-11 14:59-0700\n"
 "PO-Revision-Date: 2010-08-05 14:38+0100\n"
 "Last-Translator: Hans Fredrik Nordhaug <hans@nordhaug.priv.no>\n"
 "Language-Team: Norwegian Bokmål <i18n-nb@lister.ping.ui.no>\n"
@@ -62,20 +62,20 @@ msgstr "Administrasjonsby må oppgi"
 msgid "Error with osm city: %s"
 msgstr "Feil med OSM by: %s"
 
-#: maposmatic/forms.py:156
+#: maposmatic/forms.py:157
 msgid "Required"
 msgstr "Må oppgis"
 
-#: maposmatic/forms.py:180
+#: maposmatic/forms.py:182
 msgid "Bounding Box too large"
 msgstr "Avgrensingsboks for stor"
 
-#: maposmatic/models.py:188
+#: maposmatic/models.py:182
 #, python-format
 msgid "%(title)s %(format)s Map"
 msgstr "%(title)s %(format)s kart"
 
-#: maposmatic/models.py:196
+#: maposmatic/models.py:189
 #, python-format
 msgid "%(title)s %(format)s Index"
 msgstr "%(title)s %(format)s indeks"
@@ -653,59 +653,59 @@ msgstr ""
 "(siden vil oppdateres automatisk hvert %(refresh)s sekund inntil tegningen "
 "er fullført)."
 
-#: templates/maposmatic/job.html:52
+#: templates/maposmatic/job.html:58
 msgid "Cancel request"
 msgstr "Avbryt forespørsel"
 
-#: templates/maposmatic/job.html:62
+#: templates/maposmatic/job.html:68
 msgid "Rendering: "
 msgstr "Tegner: "
 
-#: templates/maposmatic/job.html:63
+#: templates/maposmatic/job.html:69
 msgid "Rendering submitted"
 msgstr "Tegning sendt inn"
 
-#: templates/maposmatic/job.html:64
+#: templates/maposmatic/job.html:70
 msgid "In queue, position"
 msgstr "I køa, posisjon"
 
-#: templates/maposmatic/job.html:65
+#: templates/maposmatic/job.html:71
 msgid "Rendering in progress..."
 msgstr "Tegning pågår ..."
 
-#: templates/maposmatic/job.html:67
+#: templates/maposmatic/job.html:73
 msgid "Completed on"
 msgstr "Fullført"
 
-#: templates/maposmatic/job.html:68
+#: templates/maposmatic/job.html:74
 msgid "Failed on"
 msgstr "Feilet"
 
-#: templates/maposmatic/job.html:69
+#: templates/maposmatic/job.html:75
 msgid "Cancelled on"
 msgstr "Avbrutt"
 
-#: templates/maposmatic/job.html:70
+#: templates/maposmatic/job.html:76
 #, python-format
 msgid "rendering took %(rendering)s"
 msgstr "tegningen tok %(rendering)s"
 
-#: templates/maposmatic/job.html:73 templates/maposmatic/map-feed.html:44
+#: templates/maposmatic/job.html:79 templates/maposmatic/map-feed.html:44
 #: templates/maposmatic/map.html:57
 msgid "Files: "
 msgstr "Filer:"
 
-#: templates/maposmatic/job.html:75 templates/maposmatic/map-feed.html:46
+#: templates/maposmatic/job.html:81 templates/maposmatic/map-feed.html:46
 #: templates/maposmatic/map.html:59
 msgid "Map: "
 msgstr "Kart:"
 
-#: templates/maposmatic/job.html:76 templates/maposmatic/map-feed.html:47
+#: templates/maposmatic/job.html:82 templates/maposmatic/map-feed.html:47
 #: templates/maposmatic/map.html:60
 msgid "Index: "
 msgstr "Indeks:"
 
-#: templates/maposmatic/job.html:79 templates/maposmatic/map-feed.html:50
+#: templates/maposmatic/job.html:85 templates/maposmatic/map-feed.html:50
 #: templates/maposmatic/map.html:63
 msgid ""
 "No index was generated because no information was available in OpenStreetMap "
@@ -718,11 +718,11 @@ msgstr ""
 "\"http://wiki.openstreetmap.org/wiki/Getting_Involved\">OSM Wiki-en</a> for "
 "en start. "
 
-#: templates/maposmatic/job.html:82
+#: templates/maposmatic/job.html:88
 msgid "View on OpenStreetMap"
 msgstr ""
 
-#: templates/maposmatic/job.html:86 templates/maposmatic/map-feed.html:53
+#: templates/maposmatic/job.html:92 templates/maposmatic/map-feed.html:53
 #: templates/maposmatic/map.html:66
 msgid "The generated files are no longer available."
 msgstr "De genererte filene er ikke lenger tilgjengelig."
@@ -747,12 +747,12 @@ msgstr "Tittel"
 msgid "Layout"
 msgstr ""
 
-#: templates/maposmatic/new.html:54
-msgid "Paper size"
+#: templates/maposmatic/new.html:54 templates/maposmatic/new.html.py:127
+msgid "Stylesheet"
 msgstr ""
 
-#: templates/maposmatic/new.html:57 templates/maposmatic/new.html.py:139
-msgid "Stylesheet"
+#: templates/maposmatic/new.html:57
+msgid "Paper size"
 msgstr ""
 
 #: templates/maposmatic/new.html:60 templates/maposmatic/new.html.py:144
@@ -816,7 +816,7 @@ msgstr "Ingen resultater."
 msgid "Map title"
 msgstr "Karttittel"
 
-#: templates/maposmatic/new.html:127
+#: templates/maposmatic/new.html:132
 msgid "Paper"
 msgstr ""
 

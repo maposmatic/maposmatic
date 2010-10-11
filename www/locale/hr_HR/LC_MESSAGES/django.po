@@ -19,7 +19,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: mapOSMatic 0.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-10-11 14:27-0700\n"
+"POT-Creation-Date: 2010-10-11 14:59-0700\n"
 "PO-Revision-Date: 2010-02-09 20:43+0100\n"
 "Last-Translator: David MENTRÉ <dmentre@linux-france.org>\n"
 "Language-Team: FR <LL@li.org>\n"
@@ -73,20 +73,20 @@ msgstr "Ime grada je obavezno"
 msgid "Error with osm city: %s"
 msgstr "Greška s osm gradom: %s"
 
-#: maposmatic/forms.py:156
+#: maposmatic/forms.py:157
 msgid "Required"
 msgstr "Obavezno"
 
-#: maposmatic/forms.py:180
+#: maposmatic/forms.py:182
 msgid "Bounding Box too large"
 msgstr "Granični okvir je prevelik"
 
-#: maposmatic/models.py:188
+#: maposmatic/models.py:182
 #, python-format
 msgid "%(title)s %(format)s Map"
 msgstr "%(title)s %(format)s"
 
-#: maposmatic/models.py:196
+#: maposmatic/models.py:189
 #, python-format
 msgid "%(title)s %(format)s Index"
 msgstr "%(title)s %(format)s - popis ulica"
@@ -703,60 +703,60 @@ msgstr ""
 "(ova stranica se automatski osvježava svakih %(refresh)s sekundi do kraja "
 "izrade)."
 
-#: templates/maposmatic/job.html:52
+#: templates/maposmatic/job.html:58
 msgid "Cancel request"
 msgstr ""
 
-#: templates/maposmatic/job.html:62
+#: templates/maposmatic/job.html:68
 msgid "Rendering: "
 msgstr "Izrada: "
 
-#: templates/maposmatic/job.html:63
+#: templates/maposmatic/job.html:69
 msgid "Rendering submitted"
 msgstr "Stavljeno za izradu"
 
-#: templates/maposmatic/job.html:64
+#: templates/maposmatic/job.html:70
 msgid "In queue, position"
 msgstr "U redu čekanja, pozicija"
 
-#: templates/maposmatic/job.html:65
+#: templates/maposmatic/job.html:71
 msgid "Rendering in progress..."
 msgstr "Izrada u tijeku..."
 
-#: templates/maposmatic/job.html:67
+#: templates/maposmatic/job.html:73
 msgid "Completed on"
 msgstr "Završeno u"
 
-#: templates/maposmatic/job.html:68
+#: templates/maposmatic/job.html:74
 msgid "Failed on"
 msgstr "Nije uspjelo u"
 
-#: templates/maposmatic/job.html:69
+#: templates/maposmatic/job.html:75
 #, fuzzy
 msgid "Cancelled on"
 msgstr "Nije uspjelo u"
 
-#: templates/maposmatic/job.html:70
+#: templates/maposmatic/job.html:76
 #, python-format
 msgid "rendering took %(rendering)s"
 msgstr "izrada je trajala %(rendering)s"
 
-#: templates/maposmatic/job.html:73 templates/maposmatic/map-feed.html:44
+#: templates/maposmatic/job.html:79 templates/maposmatic/map-feed.html:44
 #: templates/maposmatic/map.html:57
 msgid "Files: "
 msgstr "Datoteke: "
 
-#: templates/maposmatic/job.html:75 templates/maposmatic/map-feed.html:46
+#: templates/maposmatic/job.html:81 templates/maposmatic/map-feed.html:46
 #: templates/maposmatic/map.html:59
 msgid "Map: "
 msgstr "Karta: "
 
-#: templates/maposmatic/job.html:76 templates/maposmatic/map-feed.html:47
+#: templates/maposmatic/job.html:82 templates/maposmatic/map-feed.html:47
 #: templates/maposmatic/map.html:60
 msgid "Index: "
 msgstr "Kazalo: "
 
-#: templates/maposmatic/job.html:79 templates/maposmatic/map-feed.html:50
+#: templates/maposmatic/job.html:85 templates/maposmatic/map-feed.html:50
 #: templates/maposmatic/map.html:63
 msgid ""
 "No index was generated because no information was available in OpenStreetMap "
@@ -765,11 +765,11 @@ msgid ""
 "for a start. "
 msgstr ""
 
-#: templates/maposmatic/job.html:82
+#: templates/maposmatic/job.html:88
 msgid "View on OpenStreetMap"
 msgstr ""
 
-#: templates/maposmatic/job.html:86 templates/maposmatic/map-feed.html:53
+#: templates/maposmatic/job.html:92 templates/maposmatic/map-feed.html:53
 #: templates/maposmatic/map.html:66
 msgid "The generated files are no longer available."
 msgstr "Izrađene datoteke više nisu dostupne."
@@ -795,12 +795,12 @@ msgstr ""
 msgid "Layout"
 msgstr ""
 
-#: templates/maposmatic/new.html:54
-msgid "Paper size"
+#: templates/maposmatic/new.html:54 templates/maposmatic/new.html.py:127
+msgid "Stylesheet"
 msgstr ""
 
-#: templates/maposmatic/new.html:57 templates/maposmatic/new.html.py:139
-msgid "Stylesheet"
+#: templates/maposmatic/new.html:57
+msgid "Paper size"
 msgstr ""
 
 #: templates/maposmatic/new.html:60 templates/maposmatic/new.html.py:144
@@ -855,7 +855,7 @@ msgstr "Nema rezultata."
 msgid "Map title"
 msgstr "Naslov karte je obavezan"
 
-#: templates/maposmatic/new.html:127
+#: templates/maposmatic/new.html:132
 msgid "Paper"
 msgstr ""
 
