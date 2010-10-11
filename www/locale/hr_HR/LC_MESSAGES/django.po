@@ -19,7 +19,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: mapOSMatic 0.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-08-05 19:24+0200\n"
+"POT-Creation-Date: 2010-10-11 14:27-0700\n"
 "PO-Revision-Date: 2010-02-09 20:43+0100\n"
 "Last-Translator: David MENTRÉ <dmentre@linux-france.org>\n"
 "Language-Team: FR <LL@li.org>\n"
@@ -69,7 +69,7 @@ msgstr "Naslov karte je obavezan"
 msgid "Required"
 msgstr "Obavezno"
 
-#: maposmatic/forms.py:137 templates/maposmatic/new.html:98
+#: maposmatic/forms.py:138 templates/maposmatic/new.html:98
 msgid "Bounding Box too large"
 msgstr "Granični okvir je prevelik"
 
@@ -497,16 +497,17 @@ msgid "Job list"
 msgstr "Lista zadataka"
 
 #: templates/maposmatic/all_jobs.html:39
+#, fuzzy
 msgid ""
-"This page gives the status of all the rendering\n"
-"requests received during the last 24 hours, starting from the most\n"
-"recent one."
+"This page gives the status of the rendering queue, showing all requests "
+"received during the last 24 hours as well as all unprocessed requests "
+"without time limit. They are ordered starting from the most recent ones."
 msgstr ""
 "Ova stranica prikazuje stanje svih zahtjeva za \n"
 "  izradom primljenih u zadnjih 24 sata, počevši od \n"
 "najnovijeg."
 
-#: templates/maposmatic/all_jobs.html:56
+#: templates/maposmatic/all_jobs.html:54
 msgid ""
 "No map rendering request since the last 24\n"
 "hours."

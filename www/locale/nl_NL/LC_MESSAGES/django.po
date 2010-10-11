@@ -19,7 +19,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: mapOSMatic 0.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-08-05 19:24+0200\n"
+"POT-Creation-Date: 2010-10-11 14:27-0700\n"
 "PO-Revision-Date: 2010-08-23 13:56+0200\n"
 "Last-Translator: Jeroen van Rijn <jvrnix@gmail.com>\n"
 "Language-Team: MapOSMatic Dutch Translation team\n"
@@ -71,7 +71,7 @@ msgstr "Kaartnaam is vereist"
 msgid "Required"
 msgstr "Vereist"
 
-#: maposmatic/forms.py:137 templates/maposmatic/new.html:98
+#: maposmatic/forms.py:138 templates/maposmatic/new.html:98
 msgid "Bounding Box too large"
 msgstr "Het omkaderd gebied is te groot"
 
@@ -517,15 +517,16 @@ msgid "Job list"
 msgstr "Opdrachtenlijst"
 
 #: templates/maposmatic/all_jobs.html:39
+#, fuzzy
 msgid ""
-"This page gives the status of all the rendering\n"
-"requests received during the last 24 hours, starting from the most\n"
-"recent one."
+"This page gives the status of the rendering queue, showing all requests "
+"received during the last 24 hours as well as all unprocessed requests "
+"without time limit. They are ordered starting from the most recent ones."
 msgstr ""
 "Deze pagina geeft de status weer van alle aanvragen\n"
 " die in de laatste 24 uur zijn ontvangen, beginnend met de meest recente."
 
-#: templates/maposmatic/all_jobs.html:56
+#: templates/maposmatic/all_jobs.html:54
 msgid ""
 "No map rendering request since the last 24\n"
 "hours."
@@ -752,15 +753,14 @@ msgstr "Index:"
 #: templates/maposmatic/map.html:63
 msgid ""
 "No index was generated because no information was available in OpenStreetMap "
-"to create one. Feel free to contribute the missing data yourself. See the "
-"<a href=\"http://wiki.openstreetmap.org/wiki/Getting_Involved\">OSM Wiki</a> "
+"to create one. Feel free to contribute the missing data yourself. See the <a "
+"href=\"http://wiki.openstreetmap.org/wiki/Getting_Involved\">OSM Wiki</a> "
 "for a start. "
 msgstr ""
 "Er is geen index gegenereerd omdat er geen informatie beschikbaar was in "
 "OpenStreetMap om er een te maken. Het staat U vrij de missende informatie te "
-"contribueren. Zie de <a "
-"href=\"http://wiki.openstreetmap.org/wiki/Getting_Involved\">OSM Wiki</a> voor "
-"meer informatie. "
+"contribueren. Zie de <a href=\"http://wiki.openstreetmap.org/wiki/"
+"Getting_Involved\">OSM Wiki</a> voor meer informatie. "
 
 #: templates/maposmatic/job.html:82
 msgid "View on OpenStreetMap"

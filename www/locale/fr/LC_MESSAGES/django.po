@@ -20,7 +20,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: mapOSMatic 0.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-08-05 19:24+0200\n"
+"POT-Creation-Date: 2010-10-11 14:27-0700\n"
 "PO-Revision-Date: 2009-12-26 20:47+0100\n"
 "Last-Translator: Thomas Petazzoni <thomas.petazzoni@enix.org>\n"
 "Language-Team: FR <LL@li.org>\n"
@@ -70,7 +70,7 @@ msgstr "Titre de la carte obligatoire"
 msgid "Required"
 msgstr "Obligatoire"
 
-#: maposmatic/forms.py:137 templates/maposmatic/new.html:98
+#: maposmatic/forms.py:138 templates/maposmatic/new.html:98
 msgid "Bounding Box too large"
 msgstr "Zone géographique trop grande"
 
@@ -489,14 +489,16 @@ msgstr "Liste des rendus"
 
 #: templates/maposmatic/all_jobs.html:39
 msgid ""
-"This page gives the status of all the rendering\n"
-"requests received during the last 24 hours, starting from the most\n"
-"recent one."
+"This page gives the status of the rendering queue, showing all requests "
+"received during the last 24 hours as well as all unprocessed requests "
+"without time limit. They are ordered starting from the most recent ones."
 msgstr ""
-"Cette page donne l'état de toutes les demandes de rendu reçues durant les "
-"dernières 24 heures, de la plus récente à la plus ancienne."
+"Cette page donne l'état de la file de rendu, affichant toutes les demandes "
+"de rendu reçues durant les dernières 24 heures, ainsi que toutes les "
+"demandes de rendu non traitées, sans limite de temps. Les demandes de "
+"rendu les plus récentes sont affichés en premier."
 
-#: templates/maposmatic/all_jobs.html:56
+#: templates/maposmatic/all_jobs.html:54
 msgid ""
 "No map rendering request since the last 24\n"
 "hours."
@@ -694,7 +696,6 @@ msgid "Failed on"
 msgstr "Échoué le"
 
 #: templates/maposmatic/job.html:69
-#, fuzzy
 msgid "Cancelled on"
 msgstr "Échoué le"
 

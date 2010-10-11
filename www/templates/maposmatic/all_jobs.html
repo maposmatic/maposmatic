@@ -36,9 +36,7 @@
 
 {% if jobs %}
 <p style="margin-bottom: 2em;">
-{% blocktrans %}This page gives the status of all the rendering
-requests received during the last 24 hours, starting from the most
-recent one.{% endblocktrans %}
+{% blocktrans %}This page gives the status of the rendering queue, showing all requests received during the last 24 hours as well as all unprocessed requests without time limit. They are ordered starting from the most recent ones.{% endblocktrans %}
 </p>
 
 {% with jobs as data %}{% include "maposmatic/paginator.html" %}{% endwith %}
