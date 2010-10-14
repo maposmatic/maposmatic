@@ -301,6 +301,13 @@ table.jobinfo td.thumb {
   vertical-align: top;
 }
 
+table.jobinfo td.thumb img {
+  border: 1px #ccc solid;
+  background: white;
+  padding: 3px;
+}
+
+
 table.jobinfo td.info {
   vertical-align: top;
 }
