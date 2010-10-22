@@ -31,7 +31,7 @@
  * checked in both directions (longitude and latitude).
  * Note: if you change this you should probably change
  * BBOX_MAXIMUM_LENGTH_IN_METERS in settings_local.py too. */
-const BBOX_MAXIMUM_LENGTH_IN_KM = 20
+const BBOX_MAXIMUM_LENGTH_IN_KM = 20;
 
 var map = null;
 var update_lock = 0;
