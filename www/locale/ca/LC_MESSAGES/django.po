@@ -22,13 +22,15 @@ msgstr ""
 "Project-Id-Version: mapOSMatic 0.1\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2010-10-11 14:59-0700\n"
-"PO-Revision-Date: 2010-01-12 18:32+0100\n"
-"Last-Translator: Joan Montané <joan---sense spam---montane.cat>\n"
-"Language-Team: CA <>\n"
+"PO-Revision-Date: 2010-10-20 11:43+0200\n"
+"Last-Translator: Joan Montané <joan--sense-spam--montane.cat>\n"
+"Language-Team: Català <joan--sense-spam--montane.cat>\n"
 "Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Lokalize 1.0\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
 
 #: settings.py:202
 msgid "No localization"
@@ -36,11 +38,11 @@ msgstr "Sense localització"
 
 #: maposmatic/feeds.py:40
 msgid "MapOSMatic maps"
-msgstr ""
+msgstr "Mapes del MapOSMatic"
 
 #: maposmatic/feeds.py:43
 msgid "The latest rendered maps on MapOSMatic."
-msgstr ""
+msgstr "Els darrrers mapes generats al MapOSMatic."
 
 #: maposmatic/forms.py:57
 msgid "Administrative boundary"
@@ -52,11 +54,11 @@ msgstr "Àrea geogràfica"
 
 #: maposmatic/forms.py:60
 msgid "Landscape"
-msgstr ""
+msgstr "Horitzontal"
 
 #: maposmatic/forms.py:61
 msgid "Portrait"
-msgstr ""
+msgstr "Vertical"
 
 #: maposmatic/forms.py:73
 msgid "Area"
@@ -94,35 +96,32 @@ msgid "%(title)s %(format)s Index"
 msgstr "Índex de %(title)s (format %(format)s)"
 
 #: maposmatic/nominatim.py:231
-#, fuzzy
 msgid "Administrative area too big for rendering"
-msgstr "Límit administratiu"
+msgstr "El límit administratiu és massa gran per a renderitzar el mapa"
 
 #: maposmatic/nominatim.py:287 maposmatic/nominatim.py:301
-#, fuzzy
 msgid "No administrative boundary"
-msgstr "Límit administratiu"
+msgstr "No hi ha cap límit administratiu"
 
 #: maposmatic/widgets.py:88
 msgid "Latitude of the top left corner"
-msgstr ""
+msgstr "Latitud de la cantonada superior esquerra"
 
 #: maposmatic/widgets.py:89
 msgid "Longitude of the top left corner"
-msgstr ""
+msgstr "Longitud de la cantonada superior esquera"
 
 #: maposmatic/widgets.py:90
 msgid "Latitude of the bottom right corner"
-msgstr ""
+msgstr "Latitud de la cantonada inferior esquerra"
 
 #: maposmatic/widgets.py:91
 msgid "Longitude of the bottom right corner"
-msgstr ""
+msgstr "Latitud de la cantonada inferior dreta"
 
 #: maposmatic/templatetags/extratags.py:34
-#, fuzzy
 msgid "Waiting for rendering to begin"
-msgstr "S'està esperant la renderització"
+msgstr "S'està esperant l'inici de la renderització"
 
 #: maposmatic/templatetags/extratags.py:36
 msgid "Rendering in progress"
@@ -137,20 +136,22 @@ msgid "Rendering failed, please contact contact@maposmatic.org"
 msgstr "La renderització ha fallat, contacteu amb contact@maposmatic.org"
 
 #: maposmatic/templatetags/extratags.py:44
-#, fuzzy
 msgid "Rendering was successful, but the files are no longer available"
-msgstr "Els fitxer generats ja no són disponibles."
+msgstr ""
+"La generació del mapa va finalitzar correctament, però els fitxers ja no són "
+"disponibles."
 
 #: maposmatic/templatetags/extratags.py:47
-#, fuzzy
 msgid ""
 "Rendering failed, and the incomplete files were removed. Please contact "
 "contact@maposmatic.org"
-msgstr "La renderització ha fallat, contacteu amb contact@maposmatic.org"
+msgstr ""
+"La generació del mapa ha fallat, i els fitxers incomplets s'ha suprimit. "
+"Contacteu amb contact@maposmatic.org"
 
 #: maposmatic/templatetags/extratags.py:50
 msgid "Rendering was cancelled by the user"
-msgstr ""
+msgstr "La renderització ha estat cancel·lada per l'usuari"
 
 #: templates/404.html:3 templates/500.html:3 templates/maposmatic/base.html:67
 msgid "Home"
@@ -203,8 +204,8 @@ msgid ""
 "href=\"http://www.openstreetmap.org\">OpenStreetMap</a> and free\n"
 "software contributor of Rennes area, France. From his idea, a group of\n"
 "crazy <a\n"
-"href=\"http://en.wikipedia.org/wiki/Hacker_%28programmer_subculture"
-"%29\">hackers</a>\n"
+"href=\"http://en.wikipedia.org/wiki/Hacker_%28programmer_subculture%29"
+"\">hackers</a>\n"
 "met together during a one-week <em>Hackfest</em> in August 2009 and\n"
 "brought the idea of Gilles Lamiral to life by writing the code and\n"
 "named the project <strong>MapOSMatic</strong>. The group of crazy\n"
@@ -382,15 +383,14 @@ msgstr ""
 "us:"
 
 #: templates/maposmatic/about.html:140
-#, fuzzy
 msgid ""
 "The\n"
 "  <a href=\"http://wiki.maposmatic.org\">MapOSMatic Wiki</a>,\n"
 "  which contains valuable technical information and documents about\n"
 "  MapOSMatic;"
 msgstr ""
-"El <a href=\"https://wiki.maposmatic.org\">Wiki del MapOSMatic</a>, que "
-"conté informació tècniva i documents sobre el MapOSMatic;"
+"El <a href=\"https://wiki.maposmatic.org\">wiki del MapOSMatic</a>, que "
+"conté informació tècnica i documents sobre el MapOSMatic;"
 
 #: templates/maposmatic/about.html:144
 msgid ""
@@ -494,28 +494,27 @@ msgid "dutch translation"
 msgstr "traducció al neerlandès"
 
 #: templates/maposmatic/about.html:190
-#, fuzzy
 msgid "croatian translation"
-msgstr "traducció al català"
+msgstr "traducció al croat"
 
 #: templates/maposmatic/about.html:191
-#, fuzzy
 msgid "polish translation"
-msgstr "traducció al danès"
+msgstr "traducció al polonès"
 
 #: templates/maposmatic/all_jobs.html:35
 msgid "Job list"
 msgstr "Llistat de tasques"
 
 #: templates/maposmatic/all_jobs.html:39
-#, fuzzy
 msgid ""
 "This page gives the status of the rendering queue, showing all requests "
 "received during the last 24 hours as well as all unprocessed requests "
 "without time limit. They are ordered starting from the most recent ones."
 msgstr ""
 "Aquesta pàgina us proporciona l'estat de totes les peticions de "
-"renderització rebudes les darreres 24 hores, començant des de la mes recent."
+"renderització rebudes les darreres 24 hores itambé de totes les peticions "
+"sense processar sense limitació de temps. Es mostren ordenades començant des "
+"de la mes recent."
 
 #: templates/maposmatic/all_jobs.html:54
 msgid ""
@@ -533,7 +532,7 @@ msgstr "Mapes"
 
 #: templates/maposmatic/all_maps.html:38
 msgid "MapOSMatic maps feed"
-msgstr ""
+msgstr "Alimentador de mapes del MapOSMatic"
 
 #: templates/maposmatic/all_maps.html:52
 msgid "Our database does not contain any rendered maps for the moment."
@@ -541,12 +540,11 @@ msgstr "La base de dades, ara per ara, no conté cap mapa renderitzat."
 
 #: templates/maposmatic/all_maps.html:54
 msgid "No map matches your query."
-msgstr ""
+msgstr "No hi ha cap mapa coincident amb la vostra cerca."
 
 #: templates/maposmatic/all_maps.html:54
-#, fuzzy
 msgid "Create a new map!"
-msgstr "Crea un mapa"
+msgstr "Crea un mapa nou!"
 
 #: templates/maposmatic/base.html:57
 msgid "Your free city maps!"
@@ -569,6 +567,8 @@ msgid ""
 "The MapOSMatic rendering daemon is currently not running! Jobs will be "
 "queued until the rendering daemon is back up."
 msgstr ""
+"El dimoni de renderització del MapOSMatic no s'està executant! Les tasques "
+"es posaran a la cua d'espera fins que el dimoni torni a estar en servei."
 
 #: templates/maposmatic/base.html:89
 msgid "Random map"
@@ -663,14 +663,12 @@ msgstr ""
 "modificar,... els mapes generats."
 
 #: templates/maposmatic/index.html:78
-#, fuzzy
 msgid "Create a map"
 msgstr "Crea un mapa"
 
 #: templates/maposmatic/index.html:79
-#, fuzzy
 msgid "Find map"
-msgstr "Mapa aleatori"
+msgstr "Cerca un mapa"
 
 #: templates/maposmatic/index.html:80
 msgid "More details"
@@ -678,9 +676,8 @@ msgstr "Més detalls"
 
 #: templates/maposmatic/job-page.html:39 templates/maposmatic/job.html:35
 #: templates/maposmatic/map.html:35
-#, fuzzy
 msgid "Recreate map"
-msgstr "Crea un mapa"
+msgstr "Torna a crear un mapa"
 
 #: templates/maposmatic/job-page.html:48
 msgid ""
@@ -702,7 +699,7 @@ msgstr ""
 
 #: templates/maposmatic/job.html:58
 msgid "Cancel request"
-msgstr ""
+msgstr "Cancel·la la petició"
 
 #: templates/maposmatic/job.html:68
 msgid "Rendering: "
@@ -729,9 +726,8 @@ msgid "Failed on"
 msgstr "Ha fallat el"
 
 #: templates/maposmatic/job.html:75
-#, fuzzy
 msgid "Cancelled on"
-msgstr "Ha fallat el"
+msgstr "Cancel·lat el"
 
 #: templates/maposmatic/job.html:76
 #, python-format
@@ -761,10 +757,14 @@ msgid ""
 "href=\"http://wiki.openstreetmap.org/wiki/Getting_Involved\">OSM Wiki</a> "
 "for a start. "
 msgstr ""
+"No s'ha generat cap índex perquè no hi ha informació disponble a "
+"l'OpenStreetMap per crear-lo. Podeu col·laborar-hi i afegir dades vós "
+"mateix. Visiteu el <a href=\"http://wiki.openstreetmap.org/wiki/"
+"Getting_Involved\">wiki de l'OSM</a> per a informar-vos-en. "
 
 #: templates/maposmatic/job.html:88
 msgid "View on OpenStreetMap"
-msgstr ""
+msgstr "Mostra-ho a l'OpenStreetMap"
 
 #: templates/maposmatic/job.html:92 templates/maposmatic/map-feed.html:53
 #: templates/maposmatic/map.html:66
@@ -789,36 +789,33 @@ msgstr "Títol"
 
 #: templates/maposmatic/new.html:51 templates/maposmatic/new.html.py:122
 msgid "Layout"
-msgstr ""
+msgstr "Disposició"
 
 #: templates/maposmatic/new.html:54 templates/maposmatic/new.html.py:127
 msgid "Stylesheet"
-msgstr ""
+msgstr "Full d'estil"
 
 #: templates/maposmatic/new.html:57
 msgid "Paper size"
-msgstr ""
+msgstr "Mida del paper"
 
 #: templates/maposmatic/new.html:60 templates/maposmatic/new.html.py:144
-#, fuzzy
 msgid "Language"
 msgstr "Llengua:"
 
 #: templates/maposmatic/new.html:63
 msgid "Summary"
-msgstr ""
+msgstr "Resum"
 
 #: templates/maposmatic/new.html:72
 msgid "Back"
-msgstr ""
+msgstr "Enrere"
 
 #: templates/maposmatic/new.html:77
-#, fuzzy
 msgid "Geographic area selection"
-msgstr "traducció a l'àrab"
+msgstr "Selecció d'àrea geogràfica"
 
 #: templates/maposmatic/new.html:79
-#, fuzzy
 msgid ""
 "To select the city to be rendered, two modes are\n"
 "      available:"
@@ -830,6 +827,8 @@ msgid ""
 "Latitude and longitude of the top left and bottom right\n"
 "        corners of the area to render."
 msgstr ""
+"Latitud i longitud de les cantonades superior esquerra i inferior dreta de "
+"l'àrea a renderitzar."
 
 #: templates/maposmatic/new.html:95
 msgid ""
@@ -838,12 +837,15 @@ msgid ""
 "the\n"
 "        limits of the area you wish to render."
 msgstr ""
+"Podeu usar <tt>Majúscules+arrossegar</tt> per fer zoom en una àrea "
+"específica del mapa. Aleshores, seleccioneu amb <tt>Control+arrossegar</tt> "
+"els límits de l'àrea que voleu renderitzar."
 
 #: templates/maposmatic/new.html:101
 msgid ""
 "Area too big to be rendered. Please select a\n"
 "        smaller area."
-msgstr ""
+msgstr "L'àrea indicada és massa gran. Seleccioneu una àrea més petita."
 
 #: templates/maposmatic/new.html:112
 msgid "No results."
@@ -855,7 +857,7 @@ msgstr "Títol del mapa"
 
 #: templates/maposmatic/new.html:132
 msgid "Paper"
-msgstr ""
+msgstr "Paper"
 
 #: templates/maposmatic/new.html:145
 msgid "Map Index Language:"
@@ -863,32 +865,29 @@ msgstr "Llengua de l'índex del mapa:"
 
 #: templates/maposmatic/new.html:148
 msgid "Summary:"
-msgstr ""
+msgstr "Resum:"
 
 #: templates/maposmatic/new.html:150
-#, fuzzy
 msgid "Location:"
-msgstr "Localització"
+msgstr "Localització:"
 
 #: templates/maposmatic/new.html:152
-#, fuzzy
 msgid "Title:"
-msgstr "Títol"
+msgstr "Títol:"
 
 #: templates/maposmatic/new.html:154
 msgid "Layout:"
-msgstr ""
+msgstr "Disposició:"
 
 #: templates/maposmatic/new.html:156
 msgid "Paper size:"
-msgstr ""
+msgstr "Mida del paper:"
 
 #: templates/maposmatic/new.html:158
 msgid "Stylesheet:"
-msgstr ""
+msgstr "Full d'estil:"
 
 #: templates/maposmatic/new.html:160
-#, fuzzy
 msgid "Language:"
 msgstr "Llengua:"
 
@@ -897,9 +896,8 @@ msgid "Generate"
 msgstr "Genera"
 
 #: templates/maposmatic/new.html:171
-#, fuzzy
 msgid "Continue"
-msgstr "Contribuir-hi"
+msgstr "Continua"
 
 #: templates/maposmatic/paginator.html:33
 msgid "Previous"
