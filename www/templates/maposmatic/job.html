@@ -45,7 +45,7 @@
 {% if job.needs_waiting %}
      <a href="{% ifequal nonce job.nonce %}{% url job-by-id-and-nonce job.id job.nonce %}{% else %}{% url job-by-id job.id %}{% endifequal %}">
 {% endif %}
-       <img src="/smedia/{{ job.status|job_status_to_icon_name:job.resultmsg }}.png" title="{{ job.status|job_status_to_str:job.resultmsg }} ({{ job.status }})" />
+<img src="/smedia/{{ job.status|job_status_to_icon_name:job.resultmsg }}.png" title="{{ job.status|job_status_to_str:job.resultmsg }} {% if job.is_done_failed or job.is_obsolete_failed %}{% trans "Reported error: " %}{{ job.resultmsg }}.{% endif %}" />
 {% if job.needs_waiting %}
     </a>
 {% endif %}

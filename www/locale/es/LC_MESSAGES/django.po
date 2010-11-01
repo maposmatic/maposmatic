@@ -20,7 +20,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: mapOSMatic 0.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-10-11 14:59-0700\n"
+"POT-Creation-Date: 2010-11-01 12:13-0700\n"
 "PO-Revision-Date: 2009-12-26 20:47+0100\n"
 "Last-Translator: Jean-Guilhem Cailton <jgc@arkemie.com>\n"
 "Language-Team: ES <LL@li.org>\n"
@@ -122,34 +122,41 @@ msgstr ""
 
 #: maposmatic/templatetags/extratags.py:34
 #, fuzzy
-msgid "Waiting for rendering to begin"
+msgid "Waiting for rendering to begin..."
 msgstr "Esperando la renderización..."
 
 #: maposmatic/templatetags/extratags.py:36
-msgid "Rendering in progress"
-msgstr "Renderización en progreso..."
+#, fuzzy
+msgid "The rendering is in progress..."
+msgstr "Generación en proceso..."
 
 #: maposmatic/templatetags/extratags.py:39
-msgid "Rendering successful"
+#, fuzzy
+msgid "Rendering was successful."
 msgstr "Renderización exitosa"
 
 #: maposmatic/templatetags/extratags.py:41
-msgid "Rendering failed, please contact contact@maposmatic.org"
+#, fuzzy
+msgid ""
+"Rendering failed! Please contact contact@maposmatic.org for more information."
 msgstr "Renderización falló, por favor contacta contact@maposmatic.org"
 
 #: maposmatic/templatetags/extratags.py:44
-msgid "Rendering was successful, but the files are no longer available"
-msgstr "Renderización era exitosa, pero los archivos ya no están disponibles"
-
-#: maposmatic/templatetags/extratags.py:47
 #, fuzzy
 msgid ""
-"Rendering failed, and the incomplete files were removed. Please contact "
-"contact@maposmatic.org"
-msgstr "Renderización falló, por favor contacta contact@maposmatic.org"
+"Rendering is obsolete: the rendering was successful, but the files are no "
+"longer available."
+msgstr "Renderización era exitosa, pero los archivos ya no están disponibles"
 
-#: maposmatic/templatetags/extratags.py:50
-msgid "Rendering was cancelled by the user"
+#: maposmatic/templatetags/extratags.py:46
+#, fuzzy
+msgid ""
+"Obsolete failed rendering: the rendering failed, and the incomplete files "
+"have been removed."
+msgstr "Renderización falló y los archivos incompletos fueron borrados"
+
+#: maposmatic/templatetags/extratags.py:48
+msgid "The rendering was cancelled by the user."
 msgstr ""
 
 #: templates/404.html:3 templates/500.html:3 templates/maposmatic/base.html:67
@@ -701,6 +708,11 @@ msgstr ""
 "(la página se actualizará automáticamente cada %(refresh)s segundos hasta "
 "que la generación se ha terminado)."
 
+#: templates/maposmatic/job.html:48
+#, fuzzy
+msgid "Reported error: "
+msgstr "Error interno del servidor"
+
 #: templates/maposmatic/job.html:58
 msgid "Cancel request"
 msgstr ""
@@ -909,6 +921,15 @@ msgstr "Anterior"
 msgid "Next"
 msgstr "Siguiente"
 
+#~ msgid "Rendering in progress"
+#~ msgstr "Renderización en progreso..."
+
+#, fuzzy
+#~ msgid ""
+#~ "Rendering failed, and the incomplete files were removed. Please contact "
+#~ "contact@maposmatic.org"
+#~ msgstr "Renderización falló, por favor contacta contact@maposmatic.org"
+
 #~ msgid ""
 #~ "<em>MapOSMatic</em> covers the whole world but we need\n"
 #~ "contributors to translate and adapt the few parts of <em>MapOSMatic</em>\n"
@@ -987,6 +1008,3 @@ msgstr "Siguiente"
 #~ msgstr ""
 #~ "Se genero ningún índice debido a que no se disponía de informaciónen "
 #~ "OpenStreetMap para crear uno!"
-
-#~ msgid "Rendering failed, and the incomplete files were removed"
-#~ msgstr "Renderización falló y los archivos incompletos fueron borrados"

@@ -21,7 +21,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: mapOSMatic 0.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-10-11 14:59-0700\n"
+"POT-Creation-Date: 2010-11-01 12:13-0700\n"
 "PO-Revision-Date: 2010-10-20 11:43+0200\n"
 "Last-Translator: Joan Montané <joan--sense-spam--montane.cat>\n"
 "Language-Team: Català <joan--sense-spam--montane.cat>\n"
@@ -120,37 +120,44 @@ msgid "Longitude of the bottom right corner"
 msgstr "Latitud de la cantonada inferior dreta"
 
 #: maposmatic/templatetags/extratags.py:34
-msgid "Waiting for rendering to begin"
+#, fuzzy
+msgid "Waiting for rendering to begin..."
 msgstr "S'està esperant l'inici de la renderització"
 
 #: maposmatic/templatetags/extratags.py:36
-msgid "Rendering in progress"
-msgstr "La renderització és en procès"
+#, fuzzy
+msgid "The rendering is in progress..."
+msgstr "La renderització és en procés..."
 
 #: maposmatic/templatetags/extratags.py:39
-msgid "Rendering successful"
+#, fuzzy
+msgid "Rendering was successful."
 msgstr "La renderització ha finalitzat satisfàctoriament"
 
 #: maposmatic/templatetags/extratags.py:41
-msgid "Rendering failed, please contact contact@maposmatic.org"
+#, fuzzy
+msgid ""
+"Rendering failed! Please contact contact@maposmatic.org for more information."
 msgstr "La renderització ha fallat, contacteu amb contact@maposmatic.org"
 
 #: maposmatic/templatetags/extratags.py:44
-msgid "Rendering was successful, but the files are no longer available"
+#, fuzzy
+msgid ""
+"Rendering is obsolete: the rendering was successful, but the files are no "
+"longer available."
 msgstr ""
 "La generació del mapa va finalitzar correctament, però els fitxers ja no són "
 "disponibles."
 
-#: maposmatic/templatetags/extratags.py:47
+#: maposmatic/templatetags/extratags.py:46
 msgid ""
-"Rendering failed, and the incomplete files were removed. Please contact "
-"contact@maposmatic.org"
+"Obsolete failed rendering: the rendering failed, and the incomplete files "
+"have been removed."
 msgstr ""
-"La generació del mapa ha fallat, i els fitxers incomplets s'ha suprimit. "
-"Contacteu amb contact@maposmatic.org"
 
-#: maposmatic/templatetags/extratags.py:50
-msgid "Rendering was cancelled by the user"
+#: maposmatic/templatetags/extratags.py:48
+#, fuzzy
+msgid "The rendering was cancelled by the user."
 msgstr "La renderització ha estat cancel·lada per l'usuari"
 
 #: templates/404.html:3 templates/500.html:3 templates/maposmatic/base.html:67
@@ -204,8 +211,8 @@ msgid ""
 "href=\"http://www.openstreetmap.org\">OpenStreetMap</a> and free\n"
 "software contributor of Rennes area, France. From his idea, a group of\n"
 "crazy <a\n"
-"href=\"http://en.wikipedia.org/wiki/Hacker_%28programmer_subculture%29"
-"\">hackers</a>\n"
+"href=\"http://en.wikipedia.org/wiki/Hacker_%28programmer_subculture"
+"%29\">hackers</a>\n"
 "met together during a one-week <em>Hackfest</em> in August 2009 and\n"
 "brought the idea of Gilles Lamiral to life by writing the code and\n"
 "named the project <strong>MapOSMatic</strong>. The group of crazy\n"
@@ -697,6 +704,11 @@ msgstr ""
 "(la pàgina s'actualitzarà automàticament cada %(refresh)s segons fins que "
 "finalitzi la renderització)."
 
+#: templates/maposmatic/job.html:48
+#, fuzzy
+msgid "Reported error: "
+msgstr "S'ha produït un error al servidor"
+
 #: templates/maposmatic/job.html:58
 msgid "Cancel request"
 msgstr "Cancel·la la petició"
@@ -906,6 +918,16 @@ msgstr "Enrere"
 #: templates/maposmatic/paginator.html:37
 msgid "Next"
 msgstr "Següent"
+
+#~ msgid "Rendering in progress"
+#~ msgstr "La renderització és en procès"
+
+#~ msgid ""
+#~ "Rendering failed, and the incomplete files were removed. Please contact "
+#~ "contact@maposmatic.org"
+#~ msgstr ""
+#~ "La generació del mapa ha fallat, i els fitxers incomplets s'ha suprimit. "
+#~ "Contacteu amb contact@maposmatic.org"
 
 #~ msgid ""
 #~ "<em>MapOSMatic</em> covers the whole world but we need\n"

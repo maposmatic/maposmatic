@@ -31,23 +31,21 @@ register = template.Library()
 
 def job_status_to_str(value, arg, autoescape=None):
     if value == 0:
-        return _("Waiting for rendering to begin")
+        return _("Waiting for rendering to begin...")
     elif value == 1:
-        return _("Rendering in progress")
+        return _("The rendering is in progress...")
     elif value == 2:
         if arg == 'ok':
-            return _("Rendering successful")
+            return _("Rendering was successful.")
         else:
-            return _("Rendering failed, please contact contact@maposmatic.org")
+            return _("Rendering failed! Please contact contact@maposmatic.org for more information.")
     elif value == 3:
         if arg == 'ok':
-            return _("Rendering was successful, but the files are no longer "
-                     "available")
+            return _("Rendering is obsolete: the rendering was successful, but the files are no longer available.")
         else:
-            return _("Rendering failed, and the incomplete files were "
-                      "removed. Please contact contact@maposmatic.org")
+            return _("Obsolete failed rendering: the rendering failed, and the incomplete files have been removed.")
     elif value == 4:
-        return _("Rendering was cancelled by the user")
+        return _("The rendering was cancelled by the user.")
 
     return ''
 

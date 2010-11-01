@@ -20,7 +20,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: mapOSMatic 0.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-10-11 14:59-0700\n"
+"POT-Creation-Date: 2010-11-01 12:13-0700\n"
 "PO-Revision-Date: 2009-12-26 20:47+0100\n"
 "Last-Translator: Thomas Petazzoni <thomas.petazzoni@enix.org>\n"
 "Language-Team: FR <LL@li.org>\n"
@@ -39,7 +39,7 @@ msgstr "Cartes MapOSMatic"
 
 #: maposmatic/feeds.py:43
 msgid "The latest rendered maps on MapOSMatic."
-msgstr "Les dernières cartes MapOSmatic."
+msgstr "Les dernières cartes MapOSMatic."
 
 #: maposmatic/forms.py:57
 msgid "Administrative boundary"
@@ -117,36 +117,41 @@ msgid "Longitude of the bottom right corner"
 msgstr "Longitude du coin bas droit"
 
 #: maposmatic/templatetags/extratags.py:34
-msgid "Waiting for rendering to begin"
-msgstr "Attente de début du rendu"
+msgid "Waiting for rendering to begin..."
+msgstr "En attente du début du rendu..."
 
 #: maposmatic/templatetags/extratags.py:36
-msgid "Rendering in progress"
-msgstr "Rendu en cours..."
+msgid "The rendering is in progress..."
+msgstr "Le rendu en cours..."
 
 #: maposmatic/templatetags/extratags.py:39
-msgid "Rendering successful"
-msgstr "Rendu terminé avec succès"
+msgid "Rendering was successful."
+msgstr "Rendu terminé avec succès."
 
 #: maposmatic/templatetags/extratags.py:41
-msgid "Rendering failed, please contact contact@maposmatic.org"
-msgstr "Le rendu a échoué, merci de contacter contact@maposmatic.org"
+msgid ""
+"Rendering failed! Please contact contact@maposmatic.org for more information."
+msgstr "Le rendu a échoué&nbsp;! Merci de contacter contact@maposmatic.org "
+"pour plus d'informations."
 
 #: maposmatic/templatetags/extratags.py:44
-msgid "Rendering was successful, but the files are no longer available"
-msgstr "Les fichiers générés ne sont plus disponibles"
-
-#: maposmatic/templatetags/extratags.py:47
 msgid ""
-"Rendering failed, and the incomplete files were removed. Please contact "
-"contact@maposmatic.org"
-msgstr ""
-"Le rendu a échoué et les fichiers incomplets ont été supprimés. Merci de "
-"contacter contact@maposmatic.org"
+"Rendering is obsolete: the rendering was successful, but the files are no "
+"longer available."
+msgstr "Le rendu est obsolète : le rendu s'est terminé avec succès, mais les "
+"fichiers générés ne sont plus disponibles."
 
-#: maposmatic/templatetags/extratags.py:50
-msgid "Rendering was cancelled by the user"
-msgstr "Le rendu a été annulé par l'utilisateur"
+#: maposmatic/templatetags/extratags.py:46
+msgid ""
+"Obsolete failed rendering: the rendering failed, and the incomplete files "
+"have been removed."
+msgstr ""
+"Rendu échoué et obsolète&nbsp;: le rendu a échoué, et les fichiers "
+"incomplets ont été supprimés."
+
+#: maposmatic/templatetags/extratags.py:48
+msgid "The rendering was cancelled by the user."
+msgstr "Le rendu a été annulé par l'utilisateur."
 
 #: templates/404.html:3 templates/500.html:3 templates/maposmatic/base.html:67
 msgid "Home"
@@ -457,7 +462,7 @@ msgstr "Contributeurs"
 
 #: templates/maposmatic/about.html:180
 msgid "slippy map"
-msgstr "carte intéractive"
+msgstr "carte interactive"
 
 #: templates/maposmatic/about.html:181
 msgid "german translation"
@@ -612,7 +617,7 @@ msgstr "Carte de la ville"
 
 #: templates/maposmatic/index.html:46
 msgid "Streets index"
-msgstr "Index des rues "
+msgstr "Index des rues"
 
 #: templates/maposmatic/index.html:53
 msgid ""
@@ -694,6 +699,10 @@ msgid ""
 msgstr ""
 "(la page se rechargera automatiquement toutes les %(refresh)s secondes "
 "jusqu'à ce que le rendu soit terminé)."
+
+#: templates/maposmatic/job.html:48
+msgid "Reported error: "
+msgstr "Erreur rapportée&nbsp;: "
 
 #: templates/maposmatic/job.html:58
 msgid "Cancel request"

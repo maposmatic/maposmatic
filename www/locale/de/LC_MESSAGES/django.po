@@ -20,7 +20,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: mapOSMatic 0.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-10-11 14:59-0700\n"
+"POT-Creation-Date: 2010-11-01 12:13-0700\n"
 "PO-Revision-Date: 2010-08-06 15:04+0100\n"
 "Last-Translator: Claudius Henrichs <claudius.h@gmx.de>\n"
 "Language-Team:  <osm@malenki.ch>\n"
@@ -121,40 +121,46 @@ msgid "Longitude of the bottom right corner"
 msgstr "Geografische Länge der unteren rechten Ecke"
 
 #: maposmatic/templatetags/extratags.py:34
-msgid "Waiting for rendering to begin"
+#, fuzzy
+msgid "Waiting for rendering to begin..."
 msgstr "Auf den Beginn des Rendervorgangs wartend"
 
 #: maposmatic/templatetags/extratags.py:36
-msgid "Rendering in progress"
-msgstr "Plan wird gerendert"
+#, fuzzy
+msgid "The rendering is in progress..."
+msgstr "Plan wird gerendert..."
 
 #: maposmatic/templatetags/extratags.py:39
-msgid "Rendering successful"
+#, fuzzy
+msgid "Rendering was successful."
 msgstr "Rendervorgang erfolgreich"
 
 #: maposmatic/templatetags/extratags.py:41
-msgid "Rendering failed, please contact contact@maposmatic.org"
+#, fuzzy
+msgid ""
+"Rendering failed! Please contact contact@maposmatic.org for more information."
 msgstr ""
 "Rendervorgang fehlgeschlagen, bitte benachrichtigen Sie <a href=\"mailto:"
 "contact@maposmatic.org\">contact@maposmatic.org</a>"
 
 #: maposmatic/templatetags/extratags.py:44
-msgid "Rendering was successful, but the files are no longer available"
+#, fuzzy
+msgid ""
+"Rendering is obsolete: the rendering was successful, but the files are no "
+"longer available."
 msgstr ""
 "Der Rendervorgang war erfolgreich, aber die erzeugten Dateien sind nicht "
 "mehr verfügbar."
 
-#: maposmatic/templatetags/extratags.py:47
+#: maposmatic/templatetags/extratags.py:46
 msgid ""
-"Rendering failed, and the incomplete files were removed. Please contact "
-"contact@maposmatic.org"
+"Obsolete failed rendering: the rendering failed, and the incomplete files "
+"have been removed."
 msgstr ""
-"Der Rendervorgang schlug fehl und die unvollständigen Dateien wurden "
-"entfernt. Bitte benachrichtigen Sie <a href=\"mailto:contact@maposmatic.org"
-"\">contact@maposmatic.org</a>"
 
-#: maposmatic/templatetags/extratags.py:50
-msgid "Rendering was cancelled by the user"
+#: maposmatic/templatetags/extratags.py:48
+#, fuzzy
+msgid "The rendering was cancelled by the user."
 msgstr "Rendervorgang wurde durch den Nutzer abgebrochen"
 
 #: templates/404.html:3 templates/500.html:3 templates/maposmatic/base.html:67
@@ -720,6 +726,11 @@ msgstr ""
 "(die Seite wird alle %(refresh)s Sekunden automatisch neu geladen, bis der "
 "Rendervorgang abgeschlossen ist)."
 
+#: templates/maposmatic/job.html:48
+#, fuzzy
+msgid "Reported error: "
+msgstr "Interner Serverfehler"
+
 #: templates/maposmatic/job.html:58
 msgid "Cancel request"
 msgstr "Vorgang abbrechen"
@@ -937,6 +948,17 @@ msgstr "Vorherige"
 #: templates/maposmatic/paginator.html:37
 msgid "Next"
 msgstr "Nächste"
+
+#~ msgid "Rendering in progress"
+#~ msgstr "Plan wird gerendert"
+
+#~ msgid ""
+#~ "Rendering failed, and the incomplete files were removed. Please contact "
+#~ "contact@maposmatic.org"
+#~ msgstr ""
+#~ "Der Rendervorgang schlug fehl und die unvollständigen Dateien wurden "
+#~ "entfernt. Bitte benachrichtigen Sie <a href=\"mailto:contact@maposmatic."
+#~ "org\">contact@maposmatic.org</a>"
 
 #~ msgid ""
 #~ "<em>MapOSMatic</em> covers the whole world but we need\n"

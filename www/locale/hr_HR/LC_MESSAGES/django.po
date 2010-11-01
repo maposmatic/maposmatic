@@ -19,7 +19,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: mapOSMatic 0.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-10-11 14:59-0700\n"
+"POT-Creation-Date: 2010-11-01 12:13-0700\n"
 "PO-Revision-Date: 2010-02-09 20:43+0100\n"
 "Last-Translator: David MENTRÉ <dmentre@linux-france.org>\n"
 "Language-Team: FR <LL@li.org>\n"
@@ -119,35 +119,40 @@ msgstr ""
 
 #: maposmatic/templatetags/extratags.py:34
 #, fuzzy
-msgid "Waiting for rendering to begin"
+msgid "Waiting for rendering to begin..."
 msgstr "Čekam na izradu (rendering)"
 
 #: maposmatic/templatetags/extratags.py:36
-msgid "Rendering in progress"
+#, fuzzy
+msgid "The rendering is in progress..."
 msgstr "Izrada u tijeku..."
 
 #: maposmatic/templatetags/extratags.py:39
-msgid "Rendering successful"
+#, fuzzy
+msgid "Rendering was successful."
 msgstr "Izrada uspješna"
 
 #: maposmatic/templatetags/extratags.py:41
-msgid "Rendering failed, please contact contact@maposmatic.org"
+#, fuzzy
+msgid ""
+"Rendering failed! Please contact contact@maposmatic.org for more information."
 msgstr "Izrada nije uspjela, molim kontaktirajte contact@maposmatic.org"
 
 #: maposmatic/templatetags/extratags.py:44
 #, fuzzy
-msgid "Rendering was successful, but the files are no longer available"
+msgid ""
+"Rendering is obsolete: the rendering was successful, but the files are no "
+"longer available."
 msgstr "Izrađene datoteke više nisu dostupne."
 
-#: maposmatic/templatetags/extratags.py:47
-#, fuzzy
+#: maposmatic/templatetags/extratags.py:46
 msgid ""
-"Rendering failed, and the incomplete files were removed. Please contact "
-"contact@maposmatic.org"
-msgstr "Izrada nije uspjela, molim kontaktirajte contact@maposmatic.org"
+"Obsolete failed rendering: the rendering failed, and the incomplete files "
+"have been removed."
+msgstr ""
 
-#: maposmatic/templatetags/extratags.py:50
-msgid "Rendering was cancelled by the user"
+#: maposmatic/templatetags/extratags.py:48
+msgid "The rendering was cancelled by the user."
 msgstr ""
 
 #: templates/404.html:3 templates/500.html:3 templates/maposmatic/base.html:67
@@ -703,6 +708,11 @@ msgstr ""
 "(ova stranica se automatski osvježava svakih %(refresh)s sekundi do kraja "
 "izrade)."
 
+#: templates/maposmatic/job.html:48
+#, fuzzy
+msgid "Reported error: "
+msgstr "Greška poslužitelja"
+
 #: templates/maposmatic/job.html:58
 msgid "Cancel request"
 msgstr ""
@@ -909,6 +919,15 @@ msgstr "Prethodna"
 #: templates/maposmatic/paginator.html:37
 msgid "Next"
 msgstr "Slijedeća"
+
+#~ msgid "Rendering in progress"
+#~ msgstr "Izrada u tijeku..."
+
+#, fuzzy
+#~ msgid ""
+#~ "Rendering failed, and the incomplete files were removed. Please contact "
+#~ "contact@maposmatic.org"
+#~ msgstr "Izrada nije uspjela, molim kontaktirajte contact@maposmatic.org"
 
 #~ msgid ""
 #~ "<em>MapOSMatic</em> covers the whole world but we need\n"
