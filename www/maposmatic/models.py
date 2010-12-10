@@ -157,6 +157,11 @@ class MapRenderingJob(models.Model):
 
     def is_cancelled(self):         return self.status == 4
 
+    def can_recreate(self):
+        return ((self.administrative_city and self.administrative_osmid) or
+                (self.lat_upper_left and self.lon_upper_left and
+                 self.lat_bottom_right and self.lon_bottom_right))
+
     def get_map_fileurl(self, format):
         return www.settings.RENDERING_RESULT_URL + "/" + self.files_prefix() + "." + format
 
