@@ -141,6 +141,11 @@ def rendering_already_exists_by_bbox(lat_upper_left, lon_upper_left,
     return None
 
 def rendering_already_exists(job):
+    # Handle very old jobs when we didn't store an OSM ID for maps rendered by
+    # administrative boundary.
+    if not job.administrative_osmid and not job.lat_upper_left:
+        return None
+
     if job.administrative_osmid:
         return rendering_already_exists_by_osmid(job.administrative_osmid)
     return rendering_already_exists_by_bbox(job.lat_upper_left,
