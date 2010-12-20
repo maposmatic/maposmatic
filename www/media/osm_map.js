@@ -30,8 +30,12 @@
 /* Maximum length of the bounding box to be rendered. This length is
  * checked in both directions (longitude and latitude).
  * Note: if you change this you should probably change
- * BBOX_MAXIMUM_LENGTH_IN_METERS in settings_local.py too. */
-const BBOX_MAXIMUM_LENGTH_IN_KM = 20;
+ * BBOX_MAXIMUM_LENGTH_IN_METERS in settings_local.py too.
+ *
+ * Note: this should be a 'const', but apparently Internet Explorer (even
+ * recent versions like 8.x) still chokes on the const keyword.
+ * */
+var BBOX_MAXIMUM_LENGTH_IN_KM = 20;
 
 var map = null;
 var update_lock = 0;
