@@ -199,7 +199,9 @@ def _retrieve_missing_data_from_GIS(entries):
                                       where osm_id = -%s""" \
                                        % (table_name,entry["osm_id"]))
                     result = tuple(set(cursor.fetchall()))
-                    if len(result) == 1:
+
+                    # Result is only valid if it has a way_area.
+                    if len(result) == 1 and result[0][2]:
                         osm_id, admin_level, way_area = result[0]
                         entry["ocitysmap_params"] \
                             = dict(table=table_name, id=osm_id,
