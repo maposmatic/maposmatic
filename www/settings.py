@@ -120,7 +120,8 @@ LANGUAGES = (("fr", u"Français"),
              ("nl", u"Nederlands"),
              ("hr-hr", u"Hrvatski"),
              ("pl", u"Polski"),
-             ("es", u"Español"))
+             ("es", u"Español"),
+             ("id", u"Bahasa Indonesia"))
 
 MAP_LANGUAGES = [("fr_BE.UTF-8", u"Royaume de Belgique (FR)"),
                  ("fr_FR.UTF-8", u"France"),
@@ -144,6 +145,7 @@ MAP_LANGUAGES = [("fr_BE.UTF-8", u"Royaume de Belgique (FR)"),
                  ("en_ZA.UTF-8", u"South Africa (EN)"),
                  ("en_ZW.UTF-8", u"Zimbabwe (EN)"),
                  ("de_BE.UTF-8", u"Königreich Belgien (DE)"),
+                 ("id_ID.UTF-8", u"Bahasa Indonesia (ID)"),
                  ("it_CH.UTF-8", u"Svizzera (IT)"),
                  ("it_IT.UTF-8", u"Italia (IT)"),
                  ("nb_NO.UTF-8", u"Norwegian Bokmål (NO)"),
