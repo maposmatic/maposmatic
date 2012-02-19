@@ -187,6 +187,11 @@ function setSelectedCountryCallback(geoResults)
   });
 }
 
+/* We add the reverse() method to jQuery. See
+ * http://www.mail-archive.com/discuss@jquery.com/msg04261.html for
+ * details */
+jQuery.fn.reverse = [].reverse;
+
 /* Filter the set of available languages according to the country in
  * which the administrative boundary is. There is no filtering done
  * when the area is given by bounding box. */
@@ -207,7 +212,7 @@ function prepareLanguagePanel()
   $('<option disabled="disabled"></option>').prependTo(langlist);
   $('option[value=C]', langlist).prependTo(langlist);
 
-  langlist.children('option').each(function() {
+  langlist.children('option').reverse().each(function() {
     if ($(this).val().match('.._' + selectedCountry.toUpperCase() + '\..*') != null) {
       $(this).prependTo(langlist);
     }
