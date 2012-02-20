@@ -47,5 +47,4 @@ def setup_maposmatic_logging(level, destination, log_format):
     maposmatic_logger.addHandler(handler)
     ocitysmap_logger.addHandler(handler)
 
-    maposmatic_logger.info('log restarted.')
     logging.maposmatic_logging_setup_done = True
