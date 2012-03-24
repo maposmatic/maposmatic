@@ -86,7 +86,7 @@ ul#steplist li.title-current-step {
 
 /* Navigation links */
 a.navlink {
-  font-size: 25pt;
+  font-size: 6em;
   color: #ccc;
   cursor: default;
   visibility: hidden;
