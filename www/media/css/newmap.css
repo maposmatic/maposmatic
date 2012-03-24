@@ -103,6 +103,10 @@ td.prev, td.next {
   vertical-align: top;
 }
 
+td.prev {
+  font-weight: bold;
+}
+
 td.next {
   font-weight: bold;
 }
