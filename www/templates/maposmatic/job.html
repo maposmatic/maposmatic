@@ -94,5 +94,5 @@
     {% endif %}
   </td>
 
-  {% if job.get_thumbnail %}<td class="thumb"><img src="{{ job.get_thumbnail }}" /></td>{% endif %}
+  {% if job.is_done_ok %}<td class="thumb"><img src="{{ job.get_thumbnail }}" /></td>{% endif %}
 </tr></tbody></table>
