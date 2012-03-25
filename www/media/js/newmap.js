@@ -437,7 +437,7 @@ function suggest(input, results, osm_id, options) {
     }
 
     if (unusable_token)
-      $results.append('<li class="info">TODO</li>');
+      $results.append('<li class="info">' + $('#noadminboundary').html() + '</li>');
   }
 
   function doQuery(excludes) {

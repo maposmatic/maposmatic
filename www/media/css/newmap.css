@@ -35,6 +35,9 @@
   display: none;
 }
 
+#noadminboundary {
+  display: none;
+}
 
 /* Wizard step list */
 ul#steplist {
