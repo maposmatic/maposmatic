@@ -146,13 +146,10 @@ def _compute_prev_next_excludes(xml):
     """
     excludes = xml.getroot().get("exclude_place_ids", None)
 
-    # If the current number of entries is 10, we have other entries
-    if (len(xml.getroot().getchildren()) == NOMINATIM_MAX_RESULTS_PER_RESPONSE):
-        nextexcludes = excludes
-        hasnext = True
-    else:
-        nextexcludes = ""
-        hasnext = False
+    # Assume we always have next entries, because there is no way to
+    # know in advance if Nominatim has further entries.
+    nextexcludes = excludes
+    hasnext = True
 
     # Compute the exclude list to get the previous list
     prevexcludes = ""
