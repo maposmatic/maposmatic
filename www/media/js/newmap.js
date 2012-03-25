@@ -485,7 +485,7 @@ function suggest(input, results, osm_id, options) {
       default:
         if (timeout)
           clearTimeout(timeout);
-        timeout = setTimeout(doQuery, options.timeout);
+        timeout = setTimeout(function() { doQuery(''); }, options.timeout);
       }
   }
 
