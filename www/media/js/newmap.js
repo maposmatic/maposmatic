@@ -145,6 +145,7 @@ function preparePaperPanel()
   /* Start the Ajax request to get the list of allowed paper
    * sizes */
   $("#paperselection").hide();
+  $("#nextlink").hide();
   if (getCurrentMode() == 'bbox') {
     args = {
       lat_upper_left   : $("#lat_upper_left").val(),
@@ -164,7 +165,9 @@ function preparePaperPanel()
   }
 
   $.post("/apis/papersize/", args,
-         function(data) { filterAllowedPaper(data); });
+         function(data) { filterAllowedPaper(data);
+                          $("#nextlink").show()
+                        });
 }
 
 /** When using a by admin boundary area, contains the country code of
