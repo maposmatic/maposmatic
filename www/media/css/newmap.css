@@ -127,6 +127,9 @@ td.step {
   width: 80%;
   max-width: 600px;
   font-size: 13pt;
+  background: white right no-repeat;
+  background-position: 99%;
+  padding-right: 19px;
 }
 
 /* Auto-suggest box */

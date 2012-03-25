@@ -403,6 +403,9 @@ function suggest(input, results, osm_id, options) {
     $(input).css('cursor', 'text');
     closeSuggest(false);
 
+    /* Hide the nice loading icon since loading is finished */
+    $('#id_administrative_city').css("background-image", "");
+
     if (!entries.length) {
       $results.append('<li class="info">' + $('#noresultsinfo').html() + '</li>');
       return;
@@ -443,6 +446,9 @@ function suggest(input, results, osm_id, options) {
       return;
     }
     $(input).css('cursor', 'wait');
+
+    /* Show a nice loading icon */
+    $('#id_administrative_city').css("background-image", "url(/smedia/loading.gif)");
 
     if (ajaxSuggestQuery != null)
       ajaxSuggestQuery.abort();
