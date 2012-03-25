@@ -85,6 +85,14 @@
       </td>
 
       <td id="meta">
+	<div id="bosmtimestamp">
+	  <h3>{% trans "OSM database status" %}</h3>
+	  {% if osm_date %}
+          <p>{% blocktrans with osm_date|timesince as date %}Lag of MapOSMatic OSM database: {{ date }}.{% endblocktrans %}</p>
+	  {% else %}
+          <p>{% blocktrans %}Lag of MapOSMatic OSM database: unknown.{% endblocktrans %}</p>
+	  {% endif %}
+	</div>
         <div id="bmap">
           <h3>{% trans "Random map" %}</h3>
           {% if randommap %}<p class="randommap">

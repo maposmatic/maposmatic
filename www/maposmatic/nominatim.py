@@ -42,6 +42,7 @@ from xml.etree.ElementTree import parse as XMLTree
 
 from ocitysmap2 import coords
 import www.settings
+from www.maposmatic import gisdb
 
 NOMINATIM_BASE_URL = 'http://nominatim.openstreetmap.org'
 NOMINATIM_MAX_RESULTS_PER_RESPONSE = 10
@@ -306,16 +307,8 @@ def _prepare_and_filter_entries(entries):
     if not www.settings.has_gis_database():
         return entries
 
-    try:
-        conn = psycopg2.connect("dbname='%s' user='%s' host='%s' password='%s' port='%s'" %
-                                (www.settings.GIS_DATABASE_NAME,
-                                 www.settings.GIS_DATABASE_USER,
-                                 www.settings.GIS_DATABASE_HOST,
-                                 www.settings.GIS_DATABASE_PASSWORD,
-                                 www.settings.GIS_DATABASE_PORT))
-    except psycopg2.OperationalError, e:
-        l.warning("Could not connect to the PostGIS database: %s" %
-                  str(e)[:-1])
+    db = gisdb.get()
+    if db is None:
         return entries
 
     place_tags = [ 'city', 'town', 'municipality',
@@ -323,24 +316,22 @@ def _prepare_and_filter_entries(entries):
                    'island', 'islet', 'locality',
                    'administrative' ]
     filtered_results = []
-    try:
-        cursor = conn.cursor()
-        for entry in entries:
 
-            # Ignore uninteresting tags
-            if not entry.get("type") in place_tags:
-                continue
+    cursor = db.cursor()
+    for entry in entries:
 
-            # Our entry wil be part of the result
-            filtered_results.append(entry)
+        # Ignore uninteresting tags
+        if not entry.get("type") in place_tags:
+            continue
 
-            # Enrich the entry with more info
-            _prepare_entry(cursor, entry)
+        # Our entry wil be part of the result
+        filtered_results.append(entry)
+
+        # Enrich the entry with more info
+        _prepare_entry(cursor, entry)
 
         # Some cleanup
         cursor.close()
-    finally:
-        conn.close()
 
     return filtered_results
 

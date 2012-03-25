@@ -27,9 +27,27 @@ import feedparser
 from models import MapRenderingJob
 import www.settings
 
+from www.maposmatic import gisdb
+import psycopg2
+
 def get_latest_blog_posts():
     f = feedparser.parse("http://news.maposmatic.org/?feed=rss2")
     return f.entries[:5]
+
+def get_osm_database_last_update():
+    db = gisdb.get()
+    if db is None:
+        return None
+    cursor = db.cursor()
+    query = "select last_update from maposmatic_admin;"
+    try:
+        cursor.execute(query)
+    except psycopg2.ProgrammingError:
+        db.rollback()
+        return None
+    # Extract datetime object. It is located as the first element
+    # of a tuple, itself the first element of an array.
+    return cursor.fetchall()[0][0]
 
 def all(request):
     # Do not add the useless overhead of parsing blog entries when generating
@@ -40,4 +58,5 @@ def all(request):
         'randommap': MapRenderingJob.objects.get_random_with_thumbnail(),
         'blogposts': get_latest_blog_posts(),
         'MAPOSMATIC_DAEMON_RUNNING': www.settings.is_daemon_running(),
+        'osm_date': get_osm_database_last_update(),
     }
