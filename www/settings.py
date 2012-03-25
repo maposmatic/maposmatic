@@ -213,9 +213,11 @@ MAP_LANGUAGES.sort(lambda x, y: cmp(x[1], y[1]))
 # "C" must be the last entry
 MAP_LANGUAGES.append(("C", _(u"No localization")))
 
-# GIS database (read settings from OCitySMap's configuration)
+# GIS database (read settings from OCitySMap's configuration). The
+# default port to connect to the database is 5432, which is the
+# default PostgreSQL port.
 import ConfigParser
-gis_config = ConfigParser.SafeConfigParser()
+gis_config = ConfigParser.SafeConfigParser({'port': '5432'})
 
 if OCITYSMAP_CFG_PATH is None:
     OCITYSMAP_CFG_PATH = os.path.expanduser('~/.ocitysmap.conf')
@@ -225,6 +227,7 @@ GIS_DATABASE_HOST = gis_config.get('datasource', 'host')
 GIS_DATABASE_USER = gis_config.get('datasource', 'user')
 GIS_DATABASE_PASSWORD = gis_config.get('datasource', 'password')
 GIS_DATABASE_NAME = gis_config.get('datasource', 'dbname')
+GIS_DATABASE_PORT = gis_config.get('datasource', 'port')
 
 def has_gis_database():
     return GIS_DATABASE_NAME and GIS_DATABASE_NAME != ''
