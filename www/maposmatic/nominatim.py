@@ -330,8 +330,8 @@ def _prepare_and_filter_entries(entries):
         # Enrich the entry with more info
         _prepare_entry(cursor, entry)
 
-        # Some cleanup
-        cursor.close()
+    # Some cleanup
+    cursor.close()
 
     return filtered_results
 
