@@ -42,7 +42,7 @@ DATABASE_PORT = ''             # Set to empty string for default. Not used with 
 OCITYSMAP_CFG_PATH = None
 
 RENDERING_RESULT_PATH = '/path/to/rendering/results/'
-RENDERING_RESULT_URL = 'http://local.server.name/results/'
+RENDERING_RESULT_URL = '/results/' # Either a relative URL or an absolute URL
 RENDERING_RESULT_FORMATS = ['png', 'svgz', 'pdf', 'csv']
 RENDERING_RESULT_MAX_SIZE_GB = 10
 
