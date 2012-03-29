@@ -304,6 +304,9 @@ function showPanel(panel) {
  * respectively find all panels and the currently visible panel */
 const STEP_PANEL_SELECTOR = "div[id|=step][class=wizardstep]";
 const VISIBLE_STEP_PANEL_SELECTOR = "div[id|=step][class=wizardstep]:visible";
+const FIRST_INPUT_SELECTOR =
+    VISIBLE_STEP_PANEL_SELECTOR + " input:visible:first, " +
+    VISIBLE_STEP_PANEL_SELECTOR + " select:visible:first"
 
 /** Replace the panel of the current step by the panel of the next
     step, after preparing it. Also makes sure that Back/Next links are
@@ -321,6 +324,8 @@ function loadNextStep()
   allowPrevStep();
   if (! hasafternext)
     disallowNextStep();
+
+  $(FIRST_INPUT_SELECTOR).focus()
 }
 
 /** Replace the panel of the current step by the panel of the next
@@ -355,7 +360,13 @@ function suggest(input, results, osm_id, options) {
   $input.keyup(processKey);
 
   // Disable form validation via the Enter key
-  $input.keypress(function(e) { if (e.keyCode == 13) return false; });
+  $input.keypress(function(e) {
+    if (e.keyCode == 13) {
+        if  ($osm_id.val() != '')
+            loadNextStep();
+        return false;
+    }
+  });
 
   function appendValidResult(item)
   {
@@ -617,11 +628,6 @@ $(document).ready(function() {
     selectedCountry = "";
   }
 
-  if (getCurrentMode() == 'bbox')
-    switchToBBoxMode();
-  else
-    switchToAdminMode();
-
   $('#id_mode_0').bind('click', function(e) { switchToAdminMode(); });
   $('#id_mode_1').bind('click', function(e) { switchToBBoxMode(); });
 
@@ -633,5 +639,17 @@ $(document).ready(function() {
             timeout: 250
           });
 
+  $('td.step').keypress(function(e) {
+     if (e.keyCode == 13) {
+        current = $(VISIBLE_STEP_PANEL_SELECTOR);
+        next = current.next(STEP_PANEL_SELECTOR);
+        if (next.length != 0) {
+          loadNextStep();
+          return false;
+        }
+     }
+  });
+
   $('#step-location').show();
+  $('#id_administrative_city').focus();
 });
