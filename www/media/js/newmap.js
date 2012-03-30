@@ -123,7 +123,7 @@ function filterAllowedPaper(paperlist)
     else
       $(item).hide();
 
-    if (paper == "Best fit") {
+    if (paperDef != null && paper == "Best fit") {
       paperSizeText = $("label em[class='papersize']", item);
       width_cm = paperDef[1] / 10;
       height_cm = paperDef[2] / 10;
