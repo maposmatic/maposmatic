@@ -44,12 +44,7 @@ from ocitysmap2 import coords
 import www.settings
 from www.maposmatic import gisdb
 
-# Official nominatim
-# NOMINATIM_BASE_URL = 'http://nominatim.openstreetmap.org'
-
-# MapQuest nominatim instance
-NOMINATIM_BASE_URL = 'http://open.mapquestapi.com/nominatim/v1/search'
-
+NOMINATIM_BASE_URL = 'http://nominatim.openstreetmap.org'
 NOMINATIM_MAX_RESULTS_PER_RESPONSE = 10
 
 l = logging.getLogger('maposmatic')
