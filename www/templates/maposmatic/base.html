@@ -147,6 +147,7 @@
       </td>
     </tr></tbody></table>
 
+{% if not DEBUG %}
     <!-- Piwik statistics -->
     <script type="text/javascript">
       var pkBaseURL = (("https:" == document.location.protocol) ? "https://stats.maposmatic.org/piwik/" : "http://stats.maposmatic.org/piwik/");
@@ -163,5 +164,6 @@
       <img src="http://stats.maposmatic.org/piwik/piwik.php?idsite=2" />
     </noscript>
     <!-- End Piwik Tag -->
+{% endif %}
   </body>
 </html>

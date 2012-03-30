@@ -59,4 +59,5 @@ def all(request):
         'blogposts': get_latest_blog_posts(),
         'MAPOSMATIC_DAEMON_RUNNING': www.settings.is_daemon_running(),
         'osm_date': get_osm_database_last_update(),
+        'DEBUG': www.settings.DEBUG,
     }
