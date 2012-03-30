@@ -60,6 +60,11 @@ def about(request):
     return render_to_response('maposmatic/about.html',
                               context_instance=RequestContext(request))
 
+def donate(request):
+    """The donate page."""
+    return render_to_response('maposmatic/donate.html',
+                              context_instance=RequestContext(request))
+
 def new(request):
     """The map creation page and form."""
 

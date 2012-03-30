@@ -69,6 +69,7 @@
         <li {% block menu-jobs %}{% endblock %}><a href="{% url jobs %}">{% trans "Jobs" %}</a></li>
         <li {% block menu-maps %}{% endblock %}><a href="{% url maps %}">{% trans "Maps" %}</a></li>
         <li><a href="http://news.maposmatic.org">{% trans "News" %}</a></li>
+        <li {% block menu-donate %}{% endblock %}><a href="{% url donate %}">{% trans "Donate" %}</a></li>
         <li {% block menu-about %}{% endblock %}><a href="{% url about %}">{% trans "About" %}</a></li>
       </ul>
     </div>
@@ -85,6 +86,22 @@
       </td>
 
       <td id="meta">
+	<div id="bdonate">
+	  <h3>{% trans "Donate to MapOSMatic" %}</h3>
+
+	  <form action="https://www.paypal.com/cgi-bin/webscr" method="post" style="float: right; margin-left: 5px;">
+	    <input type="hidden" name="cmd" value="_s-xclick"/>
+	    <input type="hidden" name="hosted_button_id" value="YQPBAUM3JW8T2"/>
+	    <input type="image" src="https://www.paypalobjects.com/en_GB/i/btn/btn_donate_LG.gif" border="0" name="submit" alt="PayPal — The safer, easier way to pay online."/>
+	    <img alt="" border="0" src="https://www.paypalobjects.com/fr_FR/i/scr/pixel.gif" width="1" height="1"/>
+	  </form>
+
+	  <p>{% blocktrans %}You can donate to help us improve the
+	  service. See our <a href="/donate">donation</a> page.
+	    {% endblocktrans %}</p>
+
+	</div>
+
 	<div id="bosmtimestamp">
 	  <h3>{% trans "OSM database status" %}</h3>
 	  {% if osm_date %}
