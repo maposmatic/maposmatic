@@ -20,7 +20,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: mapOSMatic 0.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-11-01 12:13-0700\n"
+"POT-Creation-Date: 2012-04-01 00:18+0200\n"
 "PO-Revision-Date: 2010-12-23 23:02+0100\n"
 "Last-Translator: malenki <translate@malenki.ch>\n"
 "Language-Team:  <osm@malenki.ch>\n"
@@ -31,7 +31,7 @@ msgstr ""
 "X-Poedit-Language: German\n"
 "X-Poedit-Country: GERMANY\n"
 
-#: settings.py:202
+#: settings.py:229
 msgid "No localization"
 msgstr "Keine Übersetzung"
 
@@ -84,22 +84,23 @@ msgstr "Benötigt"
 msgid "Bounding Box too large"
 msgstr "Begrenzungsrahmen zu groß"
 
-#: maposmatic/models.py:182
+#: maposmatic/models.py:187
 #, python-format
 msgid "%(title)s %(format)s Map"
 msgstr "Plan von %(title)s (format %(format)s)"
 
-#: maposmatic/models.py:189
+#: maposmatic/models.py:194
 #, python-format
 msgid "%(title)s %(format)s Index"
 msgstr "Straßenverzeichnis von %(title)s (format %(format)s)"
 
-#: maposmatic/nominatim.py:231
+#: maposmatic/nominatim.py:229
 msgid "Administrative area too big for rendering"
-msgstr "Das von der Verwaltungsgrenze umfasste Gebiet ist zu groß, um gerendert zu werden."
+msgstr ""
+"Das von der Verwaltungsgrenze umfasste Gebiet ist zu groß, um gerendert zu "
+"werden."
 
-#: maposmatic/nominatim.py:287
-#: maposmatic/nominatim.py:301
+#: maposmatic/nominatim.py:285 maposmatic/nominatim.py:299
 msgid "No administrative boundary"
 msgstr "Keine Verwaltungsgrenze vorhanden."
 
@@ -132,24 +133,31 @@ msgid "Rendering was successful."
 msgstr "Rendervorgang erfolgreich."
 
 #: maposmatic/templatetags/extratags.py:41
-msgid "Rendering failed! Please contact contact@maposmatic.org for more information."
-msgstr "Rendervorgang fehlgeschlagen! Bitte benachrichtigen Sie contact@maposmatic.org."
+msgid ""
+"Rendering failed! Please contact contact@maposmatic.org for more information."
+msgstr ""
+"Rendervorgang fehlgeschlagen! Bitte benachrichtigen Sie contact@maposmatic."
+"org."
 
 #: maposmatic/templatetags/extratags.py:44
-msgid "Rendering is obsolete: the rendering was successful, but the files are no longer available."
-msgstr "Der Rendervorgang war erfolgreich, aber die erzeugten Dateien sind nicht mehr verfügbar."
+msgid ""
+"Rendering is obsolete: the rendering was successful, but the files are no "
+"longer available."
+msgstr ""
+"Der Rendervorgang war erfolgreich, aber die erzeugten Dateien sind nicht "
+"mehr verfügbar."
 
 #: maposmatic/templatetags/extratags.py:46
-msgid "Obsolete failed rendering: the rendering failed, and the incomplete files have been removed."
+msgid ""
+"Obsolete failed rendering: the rendering failed, and the incomplete files "
+"have been removed."
 msgstr "Der Rendervorgang schlug fehl, die erzeugten Dateien wurden entfernt."
 
 #: maposmatic/templatetags/extratags.py:48
 msgid "The rendering was cancelled by the user."
 msgstr "Rendervorgang wurde vom Nutzer abgebrochen."
 
-#: templates/404.html:3
-#: templates/500.html:3
-#: templates/maposmatic/base.html:67
+#: templates/404.html:3 templates/500.html:3 templates/maposmatic/base.html:59
 msgid "Home"
 msgstr "Start"
 
@@ -185,8 +193,7 @@ msgstr "Interner Serverfehler <em>500</em>"
 msgid "There's been an error."
 msgstr "Ein Fehler ist aufgetreten."
 
-#: templates/maposmatic/about.html:35
-#: templates/maposmatic/base.html:72
+#: templates/maposmatic/about.html:35 templates/maposmatic/base.html:65
 msgid "About"
 msgstr "Über"
 
@@ -195,25 +202,33 @@ msgid "History"
 msgstr "Entstehung"
 
 #: templates/maposmatic/about.html:39
+#, fuzzy, python-format
 msgid ""
 "MapOSMatic has been started thanks to an idea of\n"
 "Gilles Lamiral, an <a\n"
 "href=\"http://www.openstreetmap.org\">OpenStreetMap</a> and free\n"
 "software contributor of Rennes area, France. From his idea, a group of\n"
 "crazy <a\n"
-"href=\"http://en.wikipedia.org/wiki/Hacker_%28programmer_subculture%29\">hackers</a>\n"
+"href=\"http://en.wikipedia.org/wiki/Hacker_%%28programmer_subculture"
+"%%29\">hackers</a>\n"
 "met together during a one-week <em>Hackfest</em> in August 2009 and\n"
 "brought the idea of Gilles Lamiral to life by writing the code and\n"
 "named the project <strong>MapOSMatic</strong>. The group of crazy\n"
 "hackers would like to thank Gilles for sharing his bright\n"
 "idea!"
 msgstr ""
-"MapOSMatic entstand dank einer Idee von Gilles Lamiral, einem Mitarbeiter von\n"
-" <a href=\"http://www.openstreetmap.org\">OpenStreetMap</a> und Freier Software bei Rennes in Frankreich.\n"
-" Zu seiner Idee fand sich eine Gruppe von <a href=\"http://de.wikipedia.org/wiki/Hacker%23Free-Software-_und_Open-Source-Hackerkultur\">Hackern</a>\n"
-" während eines einwöchigen <em>Hackfests</em> im August 2009. Sie hauchten Gilles' Idee Leben ein,\n"
-" indem sie den Code schrieben und das Projekt <strong>MapOSMatic</strong> nannten.\n"
-" Die Gruppe der <em>Hacker</em> möchte Gilles dafür danken, dass er seine geniale Idee teilte."
+"MapOSMatic entstand dank einer Idee von Gilles Lamiral, einem Mitarbeiter "
+"von\n"
+" <a href=\"http://www.openstreetmap.org\">OpenStreetMap</a> und Freier "
+"Software bei Rennes in Frankreich.\n"
+" Zu seiner Idee fand sich eine Gruppe von <a href=\"http://de.wikipedia.org/"
+"wiki/Hacker%23Free-Software-_und_Open-Source-Hackerkultur\">Hackern</a>\n"
+" während eines einwöchigen <em>Hackfests</em> im August 2009. Sie hauchten "
+"Gilles' Idee Leben ein,\n"
+" indem sie den Code schrieben und das Projekt <strong>MapOSMatic</strong> "
+"nannten.\n"
+" Die Gruppe der <em>Hacker</em> möchte Gilles dafür danken, dass er seine "
+"geniale Idee teilte."
 
 #: templates/maposmatic/about.html:53
 msgid ""
@@ -223,7 +238,8 @@ msgid ""
 msgstr ""
 "Natürlich ist MapOSMatic völlig freie Software,\n"
 " lizenziert unter den Bedingungen der\n"
-" <a href=\"http://www.fsf.org/licensing/licenses/agpl-3.0.html\">AGPLv3</a>.\n"
+" <a href=\"http://www.fsf.org/licensing/licenses/agpl-3.0.html\">AGPLv3</"
+"a>.\n"
 
 #: templates/maposmatic/about.html:60
 msgid "How does it work?"
@@ -245,12 +261,15 @@ msgid ""
 msgstr ""
 "Auf unserem Server läuft ein\n"
 " <a href=\"http://www.postgresql.org\">PostgreSQL</a>-Server mit der\n"
-" <a href=\"http://postgis.refractions.net\">PostGIS</a>-Erweiterung. In diesen\n"
+" <a href=\"http://postgis.refractions.net\">PostGIS</a>-Erweiterung. In "
+"diesen\n"
 " PostgreSQL-Server haben wir unter Verwendung des\n"
-" <a href=\"http://wiki.openstreetmap.org/wiki/Osm2pgsql\">osm2pgsql</a>-Tools\n"
+" <a href=\"http://wiki.openstreetmap.org/wiki/Osm2pgsql\">osm2pgsql</a>-"
+"Tools\n"
 " die <a href=\"http://wiki.openstreetmap.org/wiki/Planet.osm\">\n"
 " OpenStreetMap-Daten der gesamten Welt</a> geladen. Mit diesem Tool\n"
-" werden auch die <a href=\"http://planet.openstreetmap.org/daily/\">täglichen diffs</a> \n"
+" werden auch die <a href=\"http://planet.openstreetmap.org/daily/"
+"\">täglichen diffs</a> \n"
 " der OSM-Datenbank eingepflegt. So ist es MapOSMatic möglich, \n"
 " Stadtpläne mit den neuesten Beiträgen der OpenStreetMap-User zu erzeugen."
 
@@ -259,22 +278,27 @@ msgid ""
 "For the map rendering, we use the\n"
 "famous <a href=\"http://www.mapnik.org\">Mapnik</a> with the OpenStreetMap\n"
 "stylesheet\n"
-"available <a href=\"http://svn.openstreetmap.org/applications/rendering/mapnik\">in\n"
+"available <a href=\"http://svn.openstreetmap.org/applications/rendering/"
+"mapnik\">in\n"
 "OpenStreetMap Subversion repository</a>. Using Mapnik\n"
 "and <a href=\"http://cairographics.org/pycairo/\">Cairo</a>, we\n"
 "built <i>OCitySMap</i>, a Python module that:"
 msgstr ""
 "Um den Plan zu rendern, nutzen wir das berühmte <a\n"
-" href=\"http://www.mapnik.org\">Mapnik</a> mit dem OpenStreetMap-Stylesheet, das im\n"
+" href=\"http://www.mapnik.org\">Mapnik</a> mit dem OpenStreetMap-Stylesheet, "
+"das im\n"
 " <a href=\"http://svn.openstreetmap.org/applications/rendering/mapnik\">\n"
 " OpenStreetMap Subversion-Repository </a> zu finden ist.\n"
-" Unter Verwendung von Mapnik und <a href=\"http://cairographics.org/pycairo/\">Cairo</a> entwickelten wir <i>OCitySMap</i>, ein Python-Modul, das:"
+" Unter Verwendung von Mapnik und <a href=\"http://cairographics.org/pycairo/"
+"\">Cairo</a> entwickelten wir <i>OCitySMap</i>, ein Python-Modul, das:"
 
 #: templates/maposmatic/about.html:87
 msgid ""
 "Renders the map using OpenStreetMap data and the\n"
 "  OpenStreetMap Mapnik stylesheet;"
-msgstr "die Straßen anhand der OpenStreetMap-Daten und des OpenStreetMap Mapnik-Stylesheets rendert;"
+msgstr ""
+"die Straßen anhand der OpenStreetMap-Daten und des OpenStreetMap Mapnik-"
+"Stylesheets rendert;"
 
 #: templates/maposmatic/about.html:89
 msgid ""
@@ -291,7 +315,9 @@ msgstr ""
 msgid ""
 "Greys out all the area outside the city if we find\n"
 "  its administrative boundary;"
-msgstr "Gebiete außerhalb der Stadt ausgraut, sofern wir deren administrative Grenze finden;"
+msgstr ""
+"Gebiete außerhalb der Stadt ausgraut, sofern wir deren administrative Grenze "
+"finden;"
 
 #: templates/maposmatic/about.html:95
 msgid ""
@@ -316,7 +342,8 @@ msgstr ""
 " seine eigenen Stadtpläne rendern kann.\n"
 " Da die Installation der verschiedenen Komponenten relativ kompliziert ist,\n"
 " wurde ein darauf basierender Webservice erstellt,\n"
-" so dass Endnutzer OpenStreetMap-Stadtpläne einfach erstellen und benutzen können."
+" so dass Endnutzer OpenStreetMap-Stadtpläne einfach erstellen und benutzen "
+"können."
 
 #: templates/maposmatic/about.html:110
 msgid ""
@@ -332,9 +359,13 @@ msgid ""
 msgstr ""
 "Dieser Webservice wurde <i>MapOSMatic</i> genannt,\n"
 " wie <i>map-o-matic</i>, aber mit einer Referenz an OpenStreetMap (OSM).\n"
-" Der Webservice wurde unter Benutzung von <a href=\"http://www.djangoproject.com\">Django</a>\n"
-" in Python geschrieben. Er speichert die Renderanfragen und zeigt deren Ergebnisse an.\n"
-" Das Rendern selbst findet asynchron durch den <i>maposmaticd</i>-Daemon statt.Dieser Daemon bearbeitet nur eine Anfrage auf einmal, da durch das Rendern hohe Prozessor- und In-/Output-Last entsteht."
+" Der Webservice wurde unter Benutzung von <a href=\"http://www.djangoproject."
+"com\">Django</a>\n"
+" in Python geschrieben. Er speichert die Renderanfragen und zeigt deren "
+"Ergebnisse an.\n"
+" Das Rendern selbst findet asynchron durch den <i>maposmaticd</i>-Daemon "
+"statt.Dieser Daemon bearbeitet nur eine Anfrage auf einmal, da durch das "
+"Rendern hohe Prozessor- und In-/Output-Last entsteht."
 
 #: templates/maposmatic/about.html:122
 msgid ""
@@ -361,8 +392,10 @@ msgid ""
 "contribute. Here are the few starting points to help\n"
 "us:"
 msgstr ""
-"Wie oben erwähnt sind <i>OCitySMap</i> und <i>MapOSMatic</i> Freie Software.\n"
-" Sie sind eingeladen, sich daran zu beteiligen. Hier ein paar Ansatzpunkte, wo Sie beginnen können:"
+"Wie oben erwähnt sind <i>OCitySMap</i> und <i>MapOSMatic</i> Freie "
+"Software.\n"
+" Sie sind eingeladen, sich daran zu beteiligen. Hier ein paar Ansatzpunkte, "
+"wo Sie beginnen können:"
 
 #: templates/maposmatic/about.html:140
 msgid ""
@@ -388,11 +421,13 @@ msgstr ""
 #: templates/maposmatic/about.html:147
 msgid ""
 "The <a\n"
-"  href=\"http://lists.nongnu.org/mailman/listinfo/maposmatic-dev\">development\n"
+"  href=\"http://lists.nongnu.org/mailman/listinfo/maposmatic-dev"
+"\">development\n"
 "  mailing-list</a>;"
 msgstr ""
 "Die <a\n"
-"  href=\"http://lists.nongnu.org/mailman/listinfo/maposmatic-dev\">Entwickler-Mailingliste (in Englisch)</a>&nbsp;;"
+"  href=\"http://lists.nongnu.org/mailman/listinfo/maposmatic-dev"
+"\">Entwickler-Mailingliste (in Englisch)</a>&nbsp;;"
 
 #: templates/maposmatic/about.html:150
 msgid ""
@@ -403,12 +438,14 @@ msgstr "Der IRC-Channel <code>#maposmatic</code> auf Freenode;"
 #: templates/maposmatic/about.html:152
 msgid ""
 "The <a\n"
-"  href=\"http://git.savannah.gnu.org/cgit/maposmatic/ocitysmap.git\">OCitySMap\n"
+"  href=\"http://git.savannah.gnu.org/cgit/maposmatic/ocitysmap.git"
+"\">OCitySMap\n"
 "  Git repository</a>, which can be cloned using <tt>git clone\n"
 "  git://git.sv.gnu.org/maposmatic/ocitysmap.git</tt>;"
 msgstr ""
 "Das <a\n"
-" href=\"http://git.savannah.gnu.org/cgit/maposmatic/ocitysmap.git\">OCitySMap Git-Repository</a>,\n"
+" href=\"http://git.savannah.gnu.org/cgit/maposmatic/ocitysmap.git"
+"\">OCitySMap Git-Repository</a>,\n"
 " das mit folgender Befehlszeile heruntergeladen werden kann:\n"
 "<tt>git clone git://git.sv.gnu.org/maposmatic/ocitysmap.git</tt>;"
 
@@ -419,7 +456,8 @@ msgid ""
 "  Git repository</a>, which can be cloned using\n"
 "  <tt>git clone git://git.sv.gnu.org/maposmatic.git</tt>;"
 msgstr ""
-"Das <a href=\"http://git.savannah.gnu.org/cgit/maposmatic.git\">MapOSMatic Git-Repository</a>,\n"
+"Das <a href=\"http://git.savannah.gnu.org/cgit/maposmatic.git\">MapOSMatic "
+"Git-Repository</a>,\n"
 " das mit folgender Befehlszeile heruntergeladen werden kann:\n"
 "  <tt>git clone git://git.sv.gnu.org/maposmatic.git</tt>;"
 
@@ -437,13 +475,9 @@ msgstr ""
 msgid "Authors"
 msgstr "Autoren"
 
-#: templates/maposmatic/about.html:178
+#: templates/maposmatic/about.html:179
 msgid "Contributors"
 msgstr "Mitwirkende"
-
-#: templates/maposmatic/about.html:180
-msgid "slippy map"
-msgstr "slippy map"
 
 #: templates/maposmatic/about.html:181
 msgid "german translation"
@@ -465,8 +499,7 @@ msgstr "russische Übersetzung"
 msgid "arabic translation"
 msgstr "arabische Übersetzung"
 
-#: templates/maposmatic/about.html:186
-#: templates/maposmatic/about.html:187
+#: templates/maposmatic/about.html:186 templates/maposmatic/about.html:187
 msgid "brasilian portuguese translation"
 msgstr "Übersetzung in brasilianisches Portugiesisch"
 
@@ -486,15 +519,24 @@ msgstr "kroatische Übersetzung"
 msgid "polish translation"
 msgstr "polnische Übersetzung"
 
+#: templates/maposmatic/about.html:192
+#, fuzzy
+msgid "printable stylesheet"
+msgstr "Darstellungsstil"
+
 #: templates/maposmatic/all_jobs.html:35
 msgid "Job list"
 msgstr "Liste der Rendervorgänge"
 
 #: templates/maposmatic/all_jobs.html:39
-msgid "This page gives the status of the rendering queue, showing all requests received during the last 24 hours as well as all unprocessed requests without time limit. They are ordered starting from the most recent ones."
+msgid ""
+"This page gives the status of the rendering queue, showing all requests "
+"received during the last 24 hours as well as all unprocessed requests "
+"without time limit. They are ordered starting from the most recent ones."
 msgstr ""
 "Diese Seite zeigt den Status aller innerhalb der letzten 24 Stunden\n"
-" eingegangenen Renderanfragen sowie alle unverarbeiteten Anfragen ohne Zeitlimit. \n"
+" eingegangenen Renderanfragen sowie alle unverarbeiteten Anfragen ohne "
+"Zeitlimit. \n"
 "Die neuesten Anfragen werden als erste angezeigt."
 
 #: templates/maposmatic/all_jobs.html:54
@@ -503,13 +545,11 @@ msgid ""
 "hours."
 msgstr "Keine Renderanfragen innerhalb der letzten 24 Stunden."
 
-#: templates/maposmatic/all_maps.html:34
-#: templates/maposmatic/index.html:79
+#: templates/maposmatic/all_maps.html:34 templates/maposmatic/index.html:61
 msgid "Search"
 msgstr "Suche"
 
-#: templates/maposmatic/all_maps.html:38
-#: templates/maposmatic/base.html:70
+#: templates/maposmatic/all_maps.html:38 templates/maposmatic/base.html:62
 msgid "Maps"
 msgstr "Pläne"
 
@@ -533,126 +573,214 @@ msgstr "Einen neuen Plan erstellen!"
 msgid "Your free city maps!"
 msgstr "Ihre freien Stadtpläne!"
 
-#: templates/maposmatic/base.html:68
+#: templates/maposmatic/base.html:60
 msgid "Create map"
 msgstr "Plan erstellen"
 
-#: templates/maposmatic/base.html:69
+#: templates/maposmatic/base.html:61
 msgid "Jobs"
 msgstr "Rendervorgänge"
 
-#: templates/maposmatic/base.html:71
+#: templates/maposmatic/base.html:63
 msgid "News"
 msgstr "Aktuelles"
 
-#: templates/maposmatic/base.html:78
-msgid "The MapOSMatic rendering daemon is currently not running! Jobs will be queued until the rendering daemon is back up."
-msgstr "Der MapOSMatic Render-Dienst ist momentan nicht aktiv. Neue Aufträge werden in die Warteschlange eingereiht, bis der Dienst wieder verfügbar ist."
+#: templates/maposmatic/base.html:64 templates/maposmatic/donate.html:30
+msgid "Donate"
+msgstr ""
 
-#: templates/maposmatic/base.html:89
+#: templates/maposmatic/base.html:80
+msgid ""
+"The MapOSMatic rendering daemon is currently not running! Jobs will be "
+"queued until the rendering daemon is back up."
+msgstr ""
+"Der MapOSMatic Render-Dienst ist momentan nicht aktiv. Neue Aufträge werden "
+"in die Warteschlange eingereiht, bis der Dienst wieder verfügbar ist."
+
+#: templates/maposmatic/base.html:91
+msgid "Donate to MapOSMatic"
+msgstr ""
+
+#: templates/maposmatic/base.html:101
+msgid ""
+"You can donate to help us improve the service. See our <a href=\"/donate"
+"\">donation</a> page."
+msgstr ""
+
+#: templates/maposmatic/base.html:106
+msgid "OSM database status"
+msgstr ""
+
+#: templates/maposmatic/base.html:108
+#, python-format
+msgid "Lag of MapOSMatic OSM database: %(date)s."
+msgstr ""
+
+#: templates/maposmatic/base.html:110
+msgid "Lag of MapOSMatic OSM database: unknown."
+msgstr ""
+
+#: templates/maposmatic/base.html:114
 msgid "Random map"
 msgstr "Zufälliger Plan"
 
-#: templates/maposmatic/base.html:96
+#: templates/maposmatic/base.html:121
 msgid "No random map found."
 msgstr "Keinen zufälligen Plan gefunden."
 
-#: templates/maposmatic/base.html:101
+#: templates/maposmatic/base.html:126
 msgid "Latest news"
 msgstr "Aktuelles"
 
-#: templates/maposmatic/base.html:106
+#: templates/maposmatic/base.html:131
 #, python-format
 msgid "published %(date)s ago"
 msgstr "vor %(date)s veröffentlicht"
 
-#: templates/maposmatic/base.html:114
+#: templates/maposmatic/base.html:139
 msgid "Contact"
 msgstr "Kontakt"
 
-#: templates/maposmatic/base.html:116
+#: templates/maposmatic/base.html:141
 msgid "Mail:"
 msgstr "E-Mail:"
 
-#: templates/maposmatic/base.html:118
+#: templates/maposmatic/base.html:143
 msgid "IRC:"
 msgstr "IRC:"
 
-#: templates/maposmatic/base.html:119
+#: templates/maposmatic/base.html:144
 msgid "on"
 msgstr "auf"
+
+#: templates/maposmatic/donate.html:31
+msgid "Why donations are useful?"
+msgstr ""
+
+#: templates/maposmatic/donate.html:35
+#, python-format
+msgid ""
+"MapOSMatic is a project entirely developed and maintained by a team of "
+"volunteers (see our <a href=\"%(about_url)s\">About</a> page for details). "
+"However, running the MapOSMatic service and making improvements to it have "
+"various costs beyond the time of the volunteer developers."
+msgstr ""
+
+#: templates/maposmatic/donate.html:37
+msgid "Therefore, we are currently seeking donations to help us funding:"
+msgstr ""
+
+#: templates/maposmatic/donate.html:40
+msgid ""
+"Acquisition of a Solid-State Disk for the storage of our local copy of the "
+"OpenStreetMap database. A SSD drive performs 40 to 50 times better than the "
+"conventional hard drive we are using today, and would therefore help us to "
+"reduce the lag between our local database and the official one, providing "
+"more up-to-date maps. The cost of such hardware is about 500 to 700 €."
+msgstr ""
+
+#: templates/maposmatic/donate.html:42
+msgid ""
+"Participation to the transportation expenses of the MapOSMatic developers "
+"when they gather for <i>hackfests</i> (meeting of developers). You can read "
+"our <a href=\"http://news.maposmatic.org\">blog</a> to learn more about what "
+"we achieve during those hackfests. We usually implement a huge number of "
+"improvements, new features and bug fixes during those meetings. They take "
+"place during the holidays of the developers, and we would like to at least "
+"compensate their travel expenses."
+msgstr ""
+
+#: templates/maposmatic/donate.html:46
+msgid "Donating?"
+msgstr ""
+
+#: templates/maposmatic/donate.html:48
+msgid ""
+"Donations can be done through the well-known <a href=\"http://www.paypal.com"
+"\">PayPal</a> service. We accept donations of any amount: all donations are "
+"helpful, even the smallest ones."
+msgstr ""
 
 #: templates/maposmatic/index.html:33
 msgid "Introduction"
 msgstr "Einleitung"
 
-#: templates/maposmatic/index.html:42
-msgid "City Map"
-msgstr "Stadtplan"
-
-#: templates/maposmatic/index.html:46
-msgid "Streets index"
-msgstr "Straßenverzeichnis"
-
-#: templates/maposmatic/index.html:53
-msgid ""
-"MapOSMatic is a free software web service that\n"
-"allows you to generate maps of cities using\n"
-"<a href=\"http://www.openstreetmap.org\">OpenStreetMap</a> data. A city map\n"
-"is made of two pages:"
+#: templates/maposmatic/index.html:37
+msgid "Plan de la ville"
 msgstr ""
-"MapOSMatic ist ein freier Webservice, der es Ihnen ermöglicht, Stadtpläne unter Benutzung der\n"
-" <a href=\"http://www.openstreetmap.org\">OpenStreetMap</a>-Daten zu erzeugen.\n"
+
+#: templates/maposmatic/index.html:42
+#, fuzzy
+msgid ""
+"MapOSMatic is a free software web service that allows you to generate maps "
+"of cities using <a href=\"http://www.openstreetmap.org\">OpenStreetMap</a> "
+"data. MapOSMatic can generate two kinds of maps: :"
+msgstr ""
+"MapOSMatic ist ein freier Webservice, der es Ihnen ermöglicht, Stadtpläne "
+"unter Benutzung der\n"
+" <a href=\"http://www.openstreetmap.org\">OpenStreetMap</a>-Daten zu "
+"erzeugen.\n"
 " Ein Stadtplan besteht aus zwei Seiten:"
 
-#: templates/maposmatic/index.html:60
-msgid "The map itself, splitted in squares allowing to easily look for streets;"
-msgstr "Dem Plan selbst, aufgeteilt in Quadrate, um leicht nach Straßen suchen zu können;"
-
-#: templates/maposmatic/index.html:61
-msgid "An index of the streets with references to the squares on the map."
-msgstr "Dem Straßenverzeichnis, das sich auf die Planquadrate bezieht."
-
-#: templates/maposmatic/index.html:65
+#: templates/maposmatic/index.html:46
 msgid ""
-"The generated maps are available in PNG, PDF and\n"
-"SVG formats and are ready to be printed."
-msgstr "Die erzeugten Pläne sind als PNG, PDF und SVG verfügbar und druckfertig."
+"Single page posters, where the map and the street index are rendered side by "
+"side. The map itself is split in squares so that streets are easy to find. "
+"This format is typically useful for printing on large paper sheets."
+msgstr ""
 
-#: templates/maposmatic/index.html:70
+#: templates/maposmatic/index.html:48
 msgid ""
-"As the data used to generate maps is coming from\n"
-"OpenStreetMap, you can freely (under the <a\n"
-"href=\"http://wiki.openstreetmap.org/wiki/License\">terms of\n"
-"OpenStreetMap license</a>) reuse, sell, modify, ... the generated\n"
-"maps."
+"Multiple page booklets, where the map and the street index are split into "
+"several pages. This format is typically useful for printing on standard "
+"paper sheets."
+msgstr ""
+
+#: templates/maposmatic/index.html:52
+#, fuzzy
+msgid ""
+"The generated maps are available in PNG, PDF and SVG formats and are ready "
+"to be printed."
+msgstr ""
+"Die erzeugten Pläne sind als PNG, PDF und SVG verfügbar und druckfertig."
+
+#: templates/maposmatic/index.html:56
+#, fuzzy
+msgid ""
+"As the data used to generate maps is coming from OpenStreetMap, you can "
+"freely (under the <a href=\"http://wiki.openstreetmap.org/wiki/License"
+"\">terms of OpenStreetMap license</a>) reuse, sell, modify, ... the "
+"generated maps."
 msgstr ""
 "Da OpenStreetMap-Daten benutzt werden um die Pläne zu erzeugen,\n"
 " dürfen Sie diese unter den Bedingungen der\n"
-" <a href=\"http://wiki.openstreetmap.org/wiki/License\">OpenStreetMap-Lizenz</a>\n"
+" <a href=\"http://wiki.openstreetmap.org/wiki/License\">OpenStreetMap-"
+"Lizenz</a>\n"
 " benutzen, verkaufen, verändern..."
 
-#: templates/maposmatic/index.html:78
+#: templates/maposmatic/index.html:60
 msgid "Create a map"
 msgstr "Einen Plan erstellen"
 
-#: templates/maposmatic/index.html:79
+#: templates/maposmatic/index.html:61
 msgid "Find map"
 msgstr "Finde Plan"
 
-#: templates/maposmatic/index.html:80
+#: templates/maposmatic/index.html:62
 msgid "More details"
 msgstr "Mehr Informationen"
 
-#: templates/maposmatic/job-page.html:39
-#: templates/maposmatic/job.html:35
+#: templates/maposmatic/job-page.html:39 templates/maposmatic/job.html:35
 #: templates/maposmatic/map.html:35
 msgid "Recreate map"
 msgstr "Plan neu erstellen"
 
 #: templates/maposmatic/job-page.html:48
-msgid "You have been redirected to a similar map, rendered less than 24 hours ago."
-msgstr "Sie wurden zu einem ähnlichen Plan weitergeleitet, der vor weniger als 24 Stunden erzeugt wurde."
+msgid ""
+"You have been redirected to a similar map, rendered less than 24 hours ago."
+msgstr ""
+"Sie wurden zu einem ähnlichen Plan weitergeleitet, der vor weniger als 24 "
+"Stunden erzeugt wurde."
 
 #: templates/maposmatic/job-page.html:56
 msgid "Refresh the status"
@@ -660,8 +788,12 @@ msgstr "Renderstatus aktualisieren"
 
 #: templates/maposmatic/job-page.html:56
 #, python-format
-msgid "(the page will refresh automatically every %(refresh)s seconds until the rendering is completed)."
-msgstr "(die Seite wird alle %(refresh)s Sekunden automatisch neu geladen, bis der Rendervorgang abgeschlossen ist)."
+msgid ""
+"(the page will refresh automatically every %(refresh)s seconds until the "
+"rendering is completed)."
+msgstr ""
+"(die Seite wird alle %(refresh)s Sekunden automatisch neu geladen, bis der "
+"Rendervorgang abgeschlossen ist)."
 
 #: templates/maposmatic/job.html:48
 msgid "Reported error: "
@@ -704,42 +836,44 @@ msgstr "Abgebrochen am"
 msgid "rendering took %(rendering)s"
 msgstr "Der Rendervorgang dauerte %(rendering)s"
 
-#: templates/maposmatic/job.html:79
-#: templates/maposmatic/map-feed.html:44
+#: templates/maposmatic/job.html:79 templates/maposmatic/map-feed.html:44
 #: templates/maposmatic/map.html:57
 msgid "Files: "
 msgstr "Dateien:"
 
-#: templates/maposmatic/job.html:81
-#: templates/maposmatic/map-feed.html:46
+#: templates/maposmatic/job.html:81 templates/maposmatic/map-feed.html:46
 #: templates/maposmatic/map.html:59
 msgid "Map: "
 msgstr "Plan:"
 
-#: templates/maposmatic/job.html:82
-#: templates/maposmatic/map-feed.html:47
+#: templates/maposmatic/job.html:82 templates/maposmatic/map-feed.html:47
 #: templates/maposmatic/map.html:60
 msgid "Index: "
 msgstr "Verzeichnis:"
 
-#: templates/maposmatic/job.html:85
-#: templates/maposmatic/map-feed.html:50
+#: templates/maposmatic/job.html:85 templates/maposmatic/map-feed.html:50
 #: templates/maposmatic/map.html:63
-msgid "No index was generated because no information was available in OpenStreetMap to create one. Feel free to contribute the missing data yourself. See the <a href=\"http://wiki.openstreetmap.org/wiki/Getting_Involved\">OSM Wiki</a> for a start. "
-msgstr "Es wurde kein Index erstellt, da in OpenStreetMap die Daten dazu fehlen. Sie können fehlenden Daten selbst eintragen. Einen guten Einstieg biete das OSM-Wiki an <a href=\"http://wiki.openstreetmap.org/wiki/DE:Getting_Involved\">dieser Stelle</a>."
+msgid ""
+"No index was generated because no information was available in OpenStreetMap "
+"to create one. Feel free to contribute the missing data yourself. See the <a "
+"href=\"http://wiki.openstreetmap.org/wiki/Getting_Involved\">OSM Wiki</a> "
+"for a start. "
+msgstr ""
+"Es wurde kein Index erstellt, da in OpenStreetMap die Daten dazu fehlen. Sie "
+"können fehlenden Daten selbst eintragen. Einen guten Einstieg biete das OSM-"
+"Wiki an <a href=\"http://wiki.openstreetmap.org/wiki/DE:Getting_Involved"
+"\">dieser Stelle</a>."
 
 #: templates/maposmatic/job.html:88
 msgid "View on OpenStreetMap"
 msgstr "Auf OpenStreetMap anzeigen"
 
-#: templates/maposmatic/job.html:92
-#: templates/maposmatic/map-feed.html:53
+#: templates/maposmatic/job.html:92 templates/maposmatic/map-feed.html:53
 #: templates/maposmatic/map.html:66
 msgid "The generated files are no longer available."
 msgstr "Die erzeugten Dateien sind nicht mehr verfügbar."
 
-#: templates/maposmatic/map-feed.html:41
-#: templates/maposmatic/map.html:54
+#: templates/maposmatic/map-feed.html:41 templates/maposmatic/map.html:54
 msgid "Rendering completed on"
 msgstr "Rendervorgang beendet am"
 
@@ -755,13 +889,11 @@ msgstr "Ort"
 msgid "Title"
 msgstr "Name"
 
-#: templates/maposmatic/new.html:51
-#: templates/maposmatic/new.html.py:122
+#: templates/maposmatic/new.html:51 templates/maposmatic/new.html.py:123
 msgid "Layout"
 msgstr "Layout"
 
-#: templates/maposmatic/new.html:54
-#: templates/maposmatic/new.html.py:127
+#: templates/maposmatic/new.html:54 templates/maposmatic/new.html.py:128
 msgid "Stylesheet"
 msgstr "Darstellungsstil"
 
@@ -769,8 +901,7 @@ msgstr "Darstellungsstil"
 msgid "Paper size"
 msgstr "Ausrichtung"
 
-#: templates/maposmatic/new.html:60
-#: templates/maposmatic/new.html.py:144
+#: templates/maposmatic/new.html:60 templates/maposmatic/new.html.py:145
 msgid "Language"
 msgstr "Sprache"
 
@@ -796,12 +927,15 @@ msgstr "Es gibt zwei Möglichkeiten, die zu rendernde Stadt auszuwählen:"
 msgid ""
 "Latitude and longitude of the top left and bottom right\n"
 "        corners of the area to render."
-msgstr "Geografische Koordinaten der oberen linken und unteren rechten Ecke des zu rendernden Gebietes."
+msgstr ""
+"Geografische Koordinaten der oberen linken und unteren rechten Ecke des zu "
+"rendernden Gebietes."
 
 #: templates/maposmatic/new.html:95
 msgid ""
 "You can use <tt>Shift+drag</tt> to zoom on a specific\n"
-"        area of the map. Then, you must select with <tt>Control+drag</tt> the\n"
+"        area of the map. Then, you must select with <tt>Control+drag</tt> "
+"the\n"
 "        limits of the area you wish to render."
 msgstr ""
 "Sie können <tt>Umsch+Ziehen</tt> benutzen, \n"
@@ -821,51 +955,64 @@ msgstr ""
 msgid "No results."
 msgstr "Keine Ergebnisse."
 
-#: templates/maposmatic/new.html:117
+#: templates/maposmatic/new.html:113
+#, fuzzy
+msgid ""
+"Wondering why you can't choose some of these results?<br />Their "
+"administrative boundaries are missing from the OSM database.<br />Look at "
+"the <a href=\"http://wiki.maposmatic.org/doku.php?id=faq\">FAQ</a> for more "
+"details."
+msgstr ""
+"Fragen Sie sich, warum Sie einige dieser Ergebnisse nicht auswählen können?"
+"<br />In der OSM-Datenbank fehlen deren Verwaltungsgrenzen.<br />Mehr "
+"Details finden Sie in der <a href=\"http://wiki.maposmatic.org/doku.php?"
+"id=faq\">FAQ</a>."
+
+#: templates/maposmatic/new.html:118
 msgid "Map title"
 msgstr "Name des Stadtplans"
 
-#: templates/maposmatic/new.html:132
+#: templates/maposmatic/new.html:133
 msgid "Paper"
 msgstr "Ausrichtung"
 
-#: templates/maposmatic/new.html:145
+#: templates/maposmatic/new.html:146
 msgid "Map Index Language:"
 msgstr "Sprache des Stadtplanindex:"
 
-#: templates/maposmatic/new.html:148
+#: templates/maposmatic/new.html:149
 msgid "Summary:"
 msgstr "Zusammenfassung:"
 
-#: templates/maposmatic/new.html:150
+#: templates/maposmatic/new.html:151
 msgid "Location:"
 msgstr "Ort:"
 
-#: templates/maposmatic/new.html:152
+#: templates/maposmatic/new.html:153
 msgid "Title:"
 msgstr "Name:"
 
-#: templates/maposmatic/new.html:154
+#: templates/maposmatic/new.html:155
 msgid "Layout:"
 msgstr "Layout:"
 
-#: templates/maposmatic/new.html:156
+#: templates/maposmatic/new.html:157
 msgid "Paper size:"
 msgstr "Ausrichtung:"
 
-#: templates/maposmatic/new.html:158
+#: templates/maposmatic/new.html:159
 msgid "Stylesheet:"
 msgstr "Darstellungsstil:"
 
-#: templates/maposmatic/new.html:160
+#: templates/maposmatic/new.html:161
 msgid "Language:"
 msgstr "Sprache:"
 
-#: templates/maposmatic/new.html:164
+#: templates/maposmatic/new.html:165
 msgid "Generate"
 msgstr "Erzeugen"
 
-#: templates/maposmatic/new.html:171
+#: templates/maposmatic/new.html:172
 msgid "Continue"
 msgstr "Weiter"
 
@@ -876,6 +1023,24 @@ msgstr "Zurück"
 #: templates/maposmatic/paginator.html:37
 msgid "Next"
 msgstr "Weiter"
+
+#~ msgid "slippy map"
+#~ msgstr "slippy map"
+
+#~ msgid "City Map"
+#~ msgstr "Stadtplan"
+
+#~ msgid "Streets index"
+#~ msgstr "Straßenverzeichnis"
+
+#~ msgid ""
+#~ "The map itself, splitted in squares allowing to easily look for streets;"
+#~ msgstr ""
+#~ "Dem Plan selbst, aufgeteilt in Quadrate, um leicht nach Straßen suchen zu "
+#~ "können;"
+
+#~ msgid "An index of the streets with references to the squares on the map."
+#~ msgstr "Dem Straßenverzeichnis, das sich auf die Planquadrate bezieht."
 
 #~ msgid "Rendering in progress"
 #~ msgstr "Plan wird gerendert"
@@ -935,17 +1100,6 @@ msgstr "Weiter"
 
 #~ msgid "Bounding box:"
 #~ msgstr "Begrenzungsrahmen:"
-
-#~ msgid ""
-#~ "Wondering why you can't choose some of these results?<br />Their "
-#~ "administrative boundaries are missing from the OSM database.<br />Look at "
-#~ "the <a href=\"http://wiki.maposmatic.org/doku.php?id=faq\">FAQ</a> for "
-#~ "more details."
-#~ msgstr ""
-#~ "Fragen Sie sich, warum Sie einige dieser Ergebnisse nicht auswählen "
-#~ "können?<br />In der OSM-Datenbank fehlen deren Verwaltungsgrenzen.<br /"
-#~ ">Mehr Details finden Sie in der <a href=\"http://wiki.maposmatic.org/doku."
-#~ "php?id=faq\">FAQ</a>."
 
 #~ msgid "No map starts with %(current_letter)s in our database!"
 #~ msgstr "Kein Plan in unserer Datenbank beginnt mit %(current_letter)s!"
