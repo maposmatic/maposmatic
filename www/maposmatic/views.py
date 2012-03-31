@@ -230,8 +230,7 @@ def query_papersize(request):
                                           lat_bottom_right, lon_bottom_right)
 
             renderer_cls = renderers.get_renderer_class_by_name(layout)
-            paper_sizes = sorted(renderer_cls.get_compatible_paper_sizes(
-                    bbox, stylesheet.zoom_level),
+            paper_sizes = sorted(renderer_cls.get_compatible_paper_sizes(bbox),
                                  key = lambda p: p[1])
 
             return HttpResponse(content=json_encode(paper_sizes),
