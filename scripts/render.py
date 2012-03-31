@@ -32,6 +32,7 @@ import subprocess
 
 import ocitysmap2
 import ocitysmap2.coords
+from ocitysmap2 import renderers
 from www.maposmatic.models import MapRenderingJob
 from www.settings import OCITYSMAP_CFG_PATH
 from www.settings import RENDERING_RESULT_PATH, RENDERING_RESULT_FORMATS
@@ -217,8 +218,18 @@ class JobRenderer(threading.Thread):
         prefix = os.path.join(RENDERING_RESULT_PATH, self.job.files_prefix())
 
         try:
+            # Get the list of output formats (PNG, PDF, SVGZ, CSV)
+            # that the renderer accepts.
+            renderer_cls = renderers.get_renderer_class_by_name(self.job.layout)
+            compatible_output_formats = renderer_cls.get_compatible_output_formats()
+
+            # Compute the intersection of the accepted output formats
+            # with the desired output formats.
+            output_formats = \
+                list(set(compatible_output_formats) & set(RENDERING_RESULT_FORMATS))
+
             renderer.render(config, self.job.layout,
-                            RENDERING_RESULT_FORMATS, prefix)
+                            output_formats, prefix)
 
             # Create thumbnail
             self._gen_thumbnail(prefix, config.paper_width_mm,
