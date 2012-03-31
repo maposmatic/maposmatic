@@ -32,22 +32,11 @@
 {% block page %}
 <h1>{% trans "Introduction" %}</h1>
 
-<table id="chavagne"><tbody>
-  <tr>
-    <td><a href="/smedia/chavagne.png"><img src="/smedia/chavagne-small.png"></a></td>
-    <td><a href="/smedia/chavagne_index.png"><img src="/smedia/chavagne_index-small.png"></a></td>
-  </tr>
-  <tr>
-    <td>
-      {% trans "City Map" %}<br />
-      <a href="/smedia/chavagne.png">PNG</a>&nbsp;-&nbsp;<a href="/smedia/chavagne.pdf">PDF</a>&nbsp;-&nbsp;<a href="/smedia/chavagne.svgz">SVGZ</a>
-    </td>
-    <td>
-      {% trans "Streets index" %}<br />
-      <a href="/smedia/chavagne_index.png">PNG</a>&nbsp;-&nbsp;<a href="/smedia/chavagne_index.pdf">PDF</a>&nbsp;-&nbsp;<a href="/smedia/chavagne_index.svgz">SVGZ</a>
-    </td>
-  </tr>
-</table>
+<div id="chavagne">
+  <a href="/smedia/chavagne.pdf"><img src="/smedia/chavagne-small.png"/></a><br/>
+  {% trans "Plan de la ville" %}<br/>
+  <a href="/smedia/chavagne.pdf">PDF</a>
+</div>
 
 <p>
 {% blocktrans %}MapOSMatic is a free software web service that

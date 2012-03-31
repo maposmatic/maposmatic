@@ -186,14 +186,10 @@ table.authors td {
   vertical-align: top;
 }
 
-table#chavagne {
+div#chavagne {
   margin-left: 3em;
   text-align: center;
   float: right;
-}
-
-table#chavagne img {
-  width: 200px;
 }
 
 div#more {
