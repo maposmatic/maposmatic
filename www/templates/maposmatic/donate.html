@@ -30,11 +30,14 @@ class="activelink"
 <h1>{% trans "Donate" %}</h1>
 <h2>{% trans "Why donations are useful?" %}</h2>
 
+{% url about as about_url %}
+
 <p>{%blocktrans%}MapOSMatic is a project entirely developed and
-maintained by a team of volunteers (see our <a href="{% url about
-%}">About</a> page for details). However, running the MapOSMatic
-service and making improvements to it have various costs beyond the
-time of the volunteer developers.{%endblocktrans%}</p>
+maintained by a team of volunteers (see
+our <a href="{{about_url}}">About</a> page for details). However,
+running the MapOSMatic service and making improvements to it have
+various costs beyond the time of the volunteer
+developers.{%endblocktrans%}</p>
 
 <p>{%blocktrans%}Therefore, we are currently seeking donations to help
 us funding:{%endblocktrans%}</p>
