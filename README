@@ -20,8 +20,19 @@ Translation
 ===========
 
 The .po files are stored in www/locale/<locale>/LC_MESSAGES/. To
-generate or update a .po file, run: django-admin.py makemessages -l
-<locale>. Then, edit the .po file manually, or using a graphical tool
-such as poedit (available in the Debian/Ubuntu package of the same
-name). Once done, don't forget to compile the .po file into an .mo
-file using django-admin.py compilemessages.
+generate or update a .po file:
+
+  cd www/
+  ./manage.py makemessages -a # for all locales
+
+or
+
+  cd www/
+  ./manage.py makemessages -l xx_XX # for one locale
+
+Then, edit the .po file manually, or using a graphical tool such as
+poedit (available in the Debian/Ubuntu package of the same name). Once
+done, don't forget to compile the .po file into an .mo file using:
+
+ ./manage.py compilemessages
+
