@@ -110,7 +110,7 @@
       {{ form.administrative_osmid.errors }}
       {{ form.administrative_city.errors }}
       <span id="noresultsinfo">{% trans "No results." %}</span>
-      <span id="noadminboundary">{% trans "Wondering why you can't choose some of these results?<br />Their administrative boundaries are missing from the OSM database.<br />Look at the <a href=\"http://wiki.maposmatic.org/doku.php?id=faq\">FAQ</a> for more details." %}</span>
+      <span id="noadminboundary">{% blocktrans %}Wondering why you can't choose some of these results?<br />Their administrative boundaries are missing from the OSM database.<br />Look at the <a href="http://wiki.maposmatic.org/doku.php?id=faq">FAQ</a> for more details.{% endblocktrans %}</span>
     </div>
   </div>
 
