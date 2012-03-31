@@ -36,3 +36,10 @@ done, don't forget to compile the .po file into an .mo file using:
 
  ./manage.py compilemessages
 
+WARNING: There is a known bug in Django makemessages 1.2.x (and maybe
+         other versions are affected as well): percent (%) signs in
+         {%blocktrans%} tags are doubled (%%). This defeats the
+         matching of a msgid against source code. As a workaround, %%
+         signs in .po files must be replaced by single % signs. This
+         is typically needed for the Wikipedia URL pointing to the
+         Hacker culture.
