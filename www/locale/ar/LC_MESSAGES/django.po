@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-04-01 00:57+0200\n"
+"POT-Creation-Date: 2012-04-01 01:39+0200\n"
 "PO-Revision-Date: 2010-01-12 17:29+0300\n"
 "Last-Translator: Bassem JARKAS <jarkas@gmail.com>\n"
 "Language-Team: Arabic Translation\n"
@@ -417,6 +417,14 @@ msgid "polish translation"
 msgstr ""
 
 #: templates/maposmatic/about.html:192
+msgid "indonesian translation"
+msgstr ""
+
+#: templates/maposmatic/about.html:193
+msgid "norvegian bokmål translation"
+msgstr ""
+
+#: templates/maposmatic/about.html:194
 msgid "printable stylesheet"
 msgstr ""
 

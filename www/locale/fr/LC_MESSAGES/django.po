@@ -20,8 +20,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: mapOSMatic 0.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-04-01 00:57+0200\n"
-"PO-Revision-Date: 2012-04-01 00:58+0100\n"
+"POT-Creation-Date: 2012-04-01 01:39+0200\n"
+"PO-Revision-Date: 2012-04-01 01:42+0100\n"
 "Last-Translator: Thomas Petazzoni <thomas.petazzoni@enix.org>\n"
 "Language-Team: FR <LL@li.org>\n"
 "Language: \n"
@@ -438,6 +438,14 @@ msgid "polish translation"
 msgstr "traduction Polonaise"
 
 #: templates/maposmatic/about.html:192
+msgid "indonesian translation"
+msgstr "traduction Indonésienne"
+
+#: templates/maposmatic/about.html:193
+msgid "norvegian bokmål translation"
+msgstr "traduction Norvégien Bokmål"
+
+#: templates/maposmatic/about.html:194
 msgid "printable stylesheet"
 msgstr "feuille de style pour l'impression"
 

@@ -20,7 +20,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: mapOSMatic 0.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-04-01 00:57+0200\n"
+"POT-Creation-Date: 2012-04-01 01:39+0200\n"
 "PO-Revision-Date: 2010-12-23 23:02+0100\n"
 "Last-Translator: malenki <translate@malenki.ch>\n"
 "Language-Team:  <osm@malenki.ch>\n"
@@ -520,6 +520,16 @@ msgid "polish translation"
 msgstr "polnische Übersetzung"
 
 #: templates/maposmatic/about.html:192
+#, fuzzy
+msgid "indonesian translation"
+msgstr "russische Übersetzung"
+
+#: templates/maposmatic/about.html:193
+#, fuzzy
+msgid "norvegian bokmål translation"
+msgstr "russische Übersetzung"
+
+#: templates/maposmatic/about.html:194
 #, fuzzy
 msgid "printable stylesheet"
 msgstr "Darstellungsstil"

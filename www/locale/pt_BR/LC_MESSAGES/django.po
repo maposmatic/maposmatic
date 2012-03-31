@@ -20,7 +20,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: mapOSMatic 0.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-04-01 00:57+0200\n"
+"POT-Creation-Date: 2012-04-01 01:39+0200\n"
 "PO-Revision-Date: 2010-12-16 12:02-0300\n"
 "Last-Translator: Rodrigo de Avila <rodrigo@avila.net.br>\n"
 "Language-Team: PT <LL@li.org>\n"
@@ -523,6 +523,16 @@ msgid "polish translation"
 msgstr "tradução para o polonês"
 
 #: templates/maposmatic/about.html:192
+#, fuzzy
+msgid "indonesian translation"
+msgstr "tradução para o russo"
+
+#: templates/maposmatic/about.html:193
+#, fuzzy
+msgid "norvegian bokmål translation"
+msgstr "tradução para o russo"
+
+#: templates/maposmatic/about.html:194
 #, fuzzy
 msgid "printable stylesheet"
 msgstr "Folha de estilo"
