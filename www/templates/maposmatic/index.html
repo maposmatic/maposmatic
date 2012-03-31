@@ -52,13 +52,19 @@
 <p>
 {% blocktrans %}MapOSMatic is a free software web service that
 allows you to generate maps of cities using
-<a href="http://www.openstreetmap.org">OpenStreetMap</a> data. A city map
-is made of two pages:{% endblocktrans %}
+<a href="http://www.openstreetmap.org">OpenStreetMap</a>
+data. MapOSMatic can generate two kinds of maps: :{% endblocktrans %}
 </p>
 
 <ul>
-  <li>{% blocktrans %}The map itself, splitted in squares allowing to easily look for streets;{% endblocktrans %}</li>
-  <li>{% blocktrans %}An index of the streets with references to the squares on the map.{% endblocktrans %}</li>
+  <li>{% blocktrans %}Single page posters, where the map and the
+  street index are rendered side by side. The map itself is split in
+  squares so that streets are easy to find. This format is typically
+  useful for printing on large paper sheets.{% endblocktrans %}</li>
+
+  <li>{% blocktrans %}Multiple page booklets, where the map and the
+  street index are split into several pages. This format is typically
+  useful for printing on standard paper sheets.{% endblocktrans %}</li>
 </ul>
 
 <p>
