@@ -22,6 +22,7 @@
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 from django.core.urlresolvers import reverse
+import django.utils.translation
 import feedparser
 
 from models import MapRenderingJob
@@ -54,10 +55,21 @@ def all(request):
     # the rss feed
     if request.path == reverse('rss-feed', args=['maps']):
         return {}
+
+    l = django.utils.translation.get_language()
+    if www.settings.PAYPAL_LANGUAGES.has_key(l):
+        paypal_lang_code = www.settings.PAYPAL_LANGUAGES[l][0]
+        paypal_country_code = www.settings.PAYPAL_LANGUAGES[l][1]
+    else:
+        paypal_lang_code = "en_US"
+        paypal_country_code = "US"
+
     return {
         'randommap': MapRenderingJob.objects.get_random_with_thumbnail(),
         'blogposts': get_latest_blog_posts(),
         'MAPOSMATIC_DAEMON_RUNNING': www.settings.is_daemon_running(),
         'osm_date': get_osm_database_last_update(),
         'DEBUG': www.settings.DEBUG,
+        'paypal_lang_code': paypal_lang_code,
+        'paypal_country_code': paypal_country_code,
     }

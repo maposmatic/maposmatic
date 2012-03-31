@@ -123,6 +123,21 @@ LANGUAGES = (("fr", u"Français"),
              ("es", u"Español"),
              ("id", u"Bahasa Indonesia"))
 
+# Associate a Django language code with:
+#  the language code used to select the Paypal button
+#  the country code that allows to get the proper translation of the
+#  PayPal payment page
+# When no association is found, we automatically default to english
+PAYPAL_LANGUAGES = {
+    "fr": ("fr_FR", "FR"),
+    "de": ("de_DE", "DE"),
+    "it": ("it_IT", "IT"),
+    "pt-br": ("pt_BR", "BR"),
+    "nl": ("nl_NL", "NL"),
+    "pl": ("pl_PL", "PL"),
+    "es": ("es_ES", "ES"),
+}
+
 # Languages must be ordered by country (in xx_YY, YY is the country
 # code), and then ordered with the most widely used language in the
 # country first. For example, in France, we will want "French" to be
