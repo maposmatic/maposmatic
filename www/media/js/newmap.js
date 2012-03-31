@@ -74,7 +74,8 @@ function handlePaperSizeClick(width_mm, height_mm, portrait_ok, landscape_ok)
 
   if (landscape_ok) {
     landscape.attr("disabled", "");
-    landscape.attr("checked", "checked");
+    if (! portrait_ok)
+      landscape.attr("checked", "checked");
     landscape.parent().parent().removeClass("disabled");
   }
   else {
@@ -84,8 +85,7 @@ function handlePaperSizeClick(width_mm, height_mm, portrait_ok, landscape_ok)
 
   if (portrait_ok) {
     portrait.attr("disabled", "");
-    if (! landscape_ok)
-      portrait.attr("checked", "checked");
+    portrait.attr("checked", "checked");
     portrait.parent().parent().removeClass("disabled");
   }
   else {
@@ -119,6 +119,9 @@ function filterAllowedPaper(paperlist)
                                                    paperDef[1], paperDef[2],
                                                    paperDef[3], paperDef[4]));
       $(item).show();
+      /* select the default paper size */
+      if (paperDef[5])
+          default_paper = $(item);
     }
     else
       $(item).hide();
@@ -134,10 +137,7 @@ function filterAllowedPaper(paperlist)
   });
 
   $("#paperselection").show();
-
-  /* Make sure that default paper size and orientation are selected
-   * by simulating a click on the first available paper */
-  $("label input", $($("#papersizeselection ul li:visible")[0])).click();
+  $("label input", $(default_paper)).click();
 }
 
 function preparePaperPanel()

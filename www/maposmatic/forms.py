@@ -57,8 +57,8 @@ class MapRenderingJobForm(forms.ModelForm):
     MODES = (('admin', _('Administrative boundary')),
              ('bbox', _('Bounding box')))
 
-    ORIENTATION = (('landscape', _('Landscape')),
-                   ('portrait', _('Portrait')))
+    ORIENTATION = (('portrait', _('Portrait')),
+                   ('landscape', _('Landscape')))
 
     mode = forms.ChoiceField(choices=MODES, initial='admin',
                              widget=forms.RadioSelect)
