@@ -55,14 +55,6 @@
     <div id="header">
       <h1><a href="{% url main %}">MapOSMatic</a></h1>
       <h2>{% trans "Your free city maps!" %}</h2>
-      <form name="langsel" action="/i18n/setlang/" method="post" id="langsel">
-        <select name="language" onChange="document.langsel.submit();">
-          {% for lang in LANGUAGES %}<option{% ifequal lang.0 LANGUAGE_CODE %} selected{% endifequal %} value="{{ lang.0 }}" {% ifequal lang.0 "ar" %}dir="rtl"{% else %}dir="ltr"{% endifequal %}>{{ lang.1 }}</option>
-          {% endfor %}
-        </select>
-        <noscript><input type="submit" value="Go" /></noscript>
-      </form>
-
       <ul id="nav">
         <li {% block menu-home %}{% endblock %}><a href="{% url main %}">{% trans "Home" %}</a></li>
         <li {% block menu-new  %}{% endblock %}><a href="{% url new  %}">{% trans "Create map" %}</a></li>
@@ -71,6 +63,15 @@
         <li><a href="http://news.maposmatic.org">{% trans "News" %}</a></li>
         <li {% block menu-donate %}{% endblock %}><a href="{% url donate %}">{% trans "Donate" %}</a></li>
         <li {% block menu-about %}{% endblock %}><a href="{% url about %}">{% trans "About" %}</a></li>
+
+        <form name="langsel" action="/i18n/setlang/" method="post" id="langsel">
+          <select name="language" onChange="document.langsel.submit();">
+            {% for lang in LANGUAGES %}<option{% ifequal lang.0 LANGUAGE_CODE %} selected{% endifequal %} value="{{ lang.0 }}" {% ifequal lang.0 "ar" %}dir="rtl"{% else %}dir="ltr"{% endifequal %}>{{ lang.1 }}</option>
+            {% endfor %}
+          </select>
+          <noscript><input type="submit" value="Go" /></noscript>
+        </form>
+
       </ul>
     </div>
 
