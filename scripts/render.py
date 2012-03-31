@@ -28,6 +28,7 @@ import logging
 import os
 import sys
 import threading
+import subprocess
 
 import ocitysmap2
 import ocitysmap2.coords
@@ -135,6 +136,38 @@ class JobRenderer(threading.Thread):
             ctypes.pythonapi.PyThreadState_SetAsyncExc(self.__get_my_tid(), 0)
             raise SystemError("PyThreadState_SetAsync failed")
 
+    def _gen_thumbnail(self, prefix, paper_width_mm, paper_height_mm):
+        l.info('Creating map thumbnail...')
+        if self.job.layout == "multi_page":
+            # Depending on whether we're rendering landscape or
+            # portrait, adapt how the tiling is done.
+            if paper_width_mm > paper_height_mm:
+                tile = "1x2"
+            else:
+                tile = "2x1"
+
+            # With the 'montage' command from ImageMagick, create an
+            # image with the first two pages of the PDF (cover page
+            # and overview page).
+            montage_cmd = [ "montage", "-tile", tile, "%s.pdf[0]" % prefix,
+                            "%s.pdf[2]" % prefix, "-geometry", "+10+10",
+                            "-shadow", "%s%s" % (prefix, THUMBNAIL_SUFFIX) ]
+            ret = subprocess.call(montage_cmd)
+            if ret != 0:
+                return
+
+            # And now scale it to the normal thumbnail size
+            mogrify_cmd = [ "mogrify", "-scale", "200x200",
+                            "%s%s" % (prefix, THUMBNAIL_SUFFIX) ]
+            ret = subprocess.call(mogrify_cmd)
+            if ret != 0:
+                return
+        else:
+            if 'png' in RENDERING_RESULT_FORMATS:
+                img = Image.open(prefix + '.png')
+                img.thumbnail((200, 200), Image.ANTIALIAS)
+                img.save(prefix + THUMBNAIL_SUFFIX)
+
     def run(self):
         """Renders the given job, encapsulating all processing errors and
         exceptions.
@@ -188,11 +221,8 @@ class JobRenderer(threading.Thread):
                             RENDERING_RESULT_FORMATS, prefix)
 
             # Create thumbnail
-            if 'png' in RENDERING_RESULT_FORMATS:
-                l.info('Creating map thumbnail...')
-                img = Image.open(prefix + '.png')
-                img.thumbnail((200, 200), Image.ANTIALIAS)
-                img.save(prefix + THUMBNAIL_SUFFIX)
+            self._gen_thumbnail(prefix, config.paper_width_mm,
+                                config.paper_height_mm)
 
             self.result = RESULT_SUCCESS
             l.info("Finished rendering of job #%d." % self.job.id)

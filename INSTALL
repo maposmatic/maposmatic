@@ -23,10 +23,13 @@ MapOSMatic depends on :
 
  * JSON (any python-*json package should work).
 
+ * ImageMagick, for rendering the thumbnails of multi-page maps
+
 On an debian/ubuntu installation, the following should be enough:
 
   sudo aptitude install python-django python-psycopg2 \
-          python-feedparser python-imaging gettext
+          python-feedparser python-imaging gettext \
+          imagemagick
 
 You will also most likely need a working PostGIS installation for the
 entire pipeline to run. See the INSTALL documentation of OcitySMap for
