@@ -43,3 +43,10 @@ WARNING: There is a known bug in Django makemessages 1.2.x (and maybe
          signs in .po files must be replaced by single % signs. This
          is typically needed for the Wikipedia URL pointing to the
          Hacker culture.
+
+         In order to workaround this bug, we recommend running:
+
+         find locale/ -name 'django.po' | xargs sed -i 's/%%/%/g'
+
+         after the execution of the makemessages command.
+
