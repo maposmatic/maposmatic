@@ -65,6 +65,11 @@ def donate(request):
     return render_to_response('maposmatic/donate.html',
                               context_instance=RequestContext(request))
 
+def donate_thanks(request):
+    """The thanks for donation page."""
+    return render_to_response('maposmatic/donate-thanks.html',
+                              context_instance=RequestContext(request))
+
 def new(request):
     """The map creation page and form."""
 
