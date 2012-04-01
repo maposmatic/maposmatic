@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-04-01 11:26+0200\n"
+"POT-Creation-Date: 2012-04-01 15:58+0200\n"
 "PO-Revision-Date: 2010-07-07 18:32+0200\n"
 "Last-Translator: Łukasz Jernaś <deejay1@srem.org>\n"
 "Language-Team: Polish <dev@maposmatic.org>\n"
@@ -707,8 +707,9 @@ msgid "Introduction"
 msgstr "Wprowadzenie"
 
 #: templates/maposmatic/index.html:37
-msgid "Plan de la ville"
-msgstr ""
+#, fuzzy
+msgid "City map"
+msgstr "Mapa miasta"
 
 #: templates/maposmatic/index.html:42
 #, fuzzy
@@ -1037,9 +1038,6 @@ msgstr "Następna"
 
 #~ msgid "slippy map"
 #~ msgstr "mapa slippy"
-
-#~ msgid "City Map"
-#~ msgstr "Mapa miasta"
 
 #~ msgid "Streets index"
 #~ msgstr "Indeks ulic"

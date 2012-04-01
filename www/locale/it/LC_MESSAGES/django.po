@@ -20,7 +20,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: mapOSMatic 0.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-04-01 11:26+0200\n"
+"POT-Creation-Date: 2012-04-01 15:58+0200\n"
 "PO-Revision-Date: 2009-12-25 11:49+0100\n"
 "Last-Translator: Thomas Petazzoni <thomas.petazzoni@enix.org>\n"
 "Language-Team: IT <talk-it@openstreetmap.org>\n"
@@ -663,8 +663,9 @@ msgid "Introduction"
 msgstr "Introduzione"
 
 #: templates/maposmatic/index.html:37
-msgid "Plan de la ville"
-msgstr ""
+#, fuzzy
+msgid "City map"
+msgstr "Mappa della città"
 
 #: templates/maposmatic/index.html:42
 #, fuzzy
@@ -973,9 +974,6 @@ msgstr ""
 #: templates/maposmatic/paginator.html:37
 msgid "Next"
 msgstr ""
-
-#~ msgid "City Map"
-#~ msgstr "Mappa della città"
 
 #~ msgid "Streets index"
 #~ msgstr "Stradario "

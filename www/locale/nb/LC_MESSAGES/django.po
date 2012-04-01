@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-04-01 11:26+0200\n"
+"POT-Creation-Date: 2012-04-01 15:58+0200\n"
 "PO-Revision-Date: 2010-08-05 14:38+0100\n"
 "Last-Translator: Hans Fredrik Nordhaug <hans@nordhaug.priv.no>\n"
 "Language-Team: Norwegian Bokmål <i18n-nb@lister.ping.ui.no>\n"
@@ -678,8 +678,9 @@ msgid "Introduction"
 msgstr "Introduksjon"
 
 #: templates/maposmatic/index.html:37
-msgid "Plan de la ville"
-msgstr ""
+#, fuzzy
+msgid "City map"
+msgstr "Bykart"
 
 #: templates/maposmatic/index.html:42
 #, fuzzy
@@ -1006,9 +1007,6 @@ msgstr "Neste"
 
 #~ msgid "slippy map"
 #~ msgstr "slippy-kart"
-
-#~ msgid "City Map"
-#~ msgstr "Bykart"
 
 #~ msgid "Streets index"
 #~ msgstr "Gateindeks"

@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-04-01 11:26+0200\n"
+"POT-Creation-Date: 2012-04-01 15:58+0200\n"
 "PO-Revision-Date: 2010-01-12 17:29+0300\n"
 "Last-Translator: Bassem JARKAS <jarkas@gmail.com>\n"
 "Language-Team: Arabic Translation\n"
@@ -625,8 +625,9 @@ msgid "Introduction"
 msgstr "المقدمة"
 
 #: templates/maposmatic/index.html:37
-msgid "Plan de la ville"
-msgstr ""
+#, fuzzy
+msgid "City map"
+msgstr "خريطة المدينة"
 
 #: templates/maposmatic/index.html:42
 #, fuzzy
@@ -928,9 +929,6 @@ msgstr "السابق"
 #: templates/maposmatic/paginator.html:37
 msgid "Next"
 msgstr "التالي"
-
-#~ msgid "City Map"
-#~ msgstr "خريطة المدينة"
 
 #~ msgid "Streets index"
 #~ msgstr "فهرس الشوارع"

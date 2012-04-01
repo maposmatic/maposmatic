@@ -19,7 +19,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: mapOSMatic 0.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-04-01 11:26+0200\n"
+"POT-Creation-Date: 2012-04-01 15:58+0200\n"
 "PO-Revision-Date: 2010-08-23 13:56+0200\n"
 "Last-Translator: Jeroen van Rijn <jvrnix@gmail.com>\n"
 "Language-Team: MapOSMatic Dutch Translation team\n"
@@ -747,8 +747,9 @@ msgid "Introduction"
 msgstr "Introductie"
 
 #: templates/maposmatic/index.html:37
-msgid "Plan de la ville"
-msgstr ""
+#, fuzzy
+msgid "City map"
+msgstr "Stadskaart"
 
 #: templates/maposmatic/index.html:42
 #, fuzzy
@@ -1081,9 +1082,6 @@ msgstr "Volgende"
 
 #~ msgid "slippy map"
 #~ msgstr "slipkaart"
-
-#~ msgid "City Map"
-#~ msgstr "Stadskaart"
 
 #~ msgid "Streets index"
 #~ msgstr "Straatindex "

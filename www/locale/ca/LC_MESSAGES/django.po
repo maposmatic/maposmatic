@@ -21,7 +21,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: mapOSMatic 0.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-04-01 11:26+0200\n"
+"POT-Creation-Date: 2012-04-01 15:58+0200\n"
 "PO-Revision-Date: 2010-10-20 11:43+0200\n"
 "Last-Translator: Joan Montané <joan--sense-spam--montane.cat>\n"
 "Language-Team: Català <joan--sense-spam--montane.cat>\n"
@@ -724,8 +724,9 @@ msgid "Introduction"
 msgstr "Introducció"
 
 #: templates/maposmatic/index.html:37
-msgid "Plan de la ville"
-msgstr ""
+#, fuzzy
+msgid "City map"
+msgstr "Mapa de la ciutat"
 
 #: templates/maposmatic/index.html:42
 #, fuzzy
@@ -1041,9 +1042,6 @@ msgstr "Següent"
 
 #~ msgid "slippy map"
 #~ msgstr "slippy map"
-
-#~ msgid "City Map"
-#~ msgstr "Mapa de la ciutat"
 
 #~ msgid "Streets index"
 #~ msgstr "Índex de carrers"

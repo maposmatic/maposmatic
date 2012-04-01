@@ -20,7 +20,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: mapOSMatic 0.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-04-01 11:26+0200\n"
+"POT-Creation-Date: 2012-04-01 15:58+0200\n"
 "PO-Revision-Date: 2009-12-26 20:47+0100\n"
 "Last-Translator: Jean-Guilhem Cailton <jgc@arkemie.com>\n"
 "Language-Team: ES <LL@li.org>\n"
@@ -725,8 +725,9 @@ msgid "Introduction"
 msgstr "Introducción"
 
 #: templates/maposmatic/index.html:37
-msgid "Plan de la ville"
-msgstr ""
+#, fuzzy
+msgid "City map"
+msgstr "Plano de la ciudad"
 
 #: templates/maposmatic/index.html:42
 #, fuzzy
@@ -1040,9 +1041,6 @@ msgstr "Anterior"
 #: templates/maposmatic/paginator.html:37
 msgid "Next"
 msgstr "Siguiente"
-
-#~ msgid "City Map"
-#~ msgstr "Plano de la ciudad"
 
 #~ msgid "Streets index"
 #~ msgstr "Índice de las calles"
