@@ -21,7 +21,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: mapOSMatic 0.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-04-01 01:39+0200\n"
+"POT-Creation-Date: 2012-04-01 11:26+0200\n"
 "PO-Revision-Date: 2010-10-20 11:43+0200\n"
 "Last-Translator: Joan Montané <joan--sense-spam--montane.cat>\n"
 "Language-Team: Català <joan--sense-spam--montane.cat>\n"
@@ -53,12 +53,12 @@ msgid "Bounding box"
 msgstr "Àrea geogràfica"
 
 #: maposmatic/forms.py:60
-msgid "Landscape"
-msgstr "Horitzontal"
-
-#: maposmatic/forms.py:61
 msgid "Portrait"
 msgstr "Vertical"
+
+#: maposmatic/forms.py:61
+msgid "Landscape"
+msgstr "Horitzontal"
 
 #: maposmatic/forms.py:73
 msgid "Area"
@@ -650,6 +650,26 @@ msgstr "IRC:"
 #: templates/maposmatic/base.html:144
 msgid "on"
 msgstr "a"
+
+#: templates/maposmatic/donate-thanks.html:30
+msgid "Thanks for your donation!"
+msgstr ""
+
+#: templates/maposmatic/donate-thanks.html:32
+msgid ""
+"We have received your donation, thanks for your\n"
+"support to the MapOSMatic project!"
+msgstr ""
+
+#: templates/maposmatic/donate-thanks.html:35
+msgid ""
+"You will receive a notification e-mail concerning\n"
+"your donation. This e-mail will indicate that the donation has been\n"
+"received by <i>Thomas Petazzoni</i>, who is the MapOSMatic developer\n"
+"in charge of donations and funds. MapOSMatic is still an informal\n"
+"gathering of developers, and we have not (yet) created a non-profit\n"
+"organization to support the project."
+msgstr ""
 
 #: templates/maposmatic/donate.html:31
 msgid "Why donations are useful?"
