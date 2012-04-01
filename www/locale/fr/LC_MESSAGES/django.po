@@ -21,7 +21,7 @@ msgstr ""
 "Project-Id-Version: mapOSMatic 0.1\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2012-04-01 11:26+0200\n"
-"PO-Revision-Date: 2012-04-01 11:27+0100\n"
+"PO-Revision-Date: 2012-04-01 11:30+0100\n"
 "Last-Translator: Thomas Petazzoni <thomas.petazzoni@enix.org>\n"
 "Language-Team: FR <LL@li.org>\n"
 "Language: \n"
@@ -193,7 +193,7 @@ msgid "History"
 msgstr "Historique"
 
 #: templates/maposmatic/about.html:39
-#, fuzzy, python-format
+#, python-format
 msgid ""
 "MapOSMatic has been started thanks to an idea of\n"
 "Gilles Lamiral, an <a\n"
@@ -570,13 +570,13 @@ msgstr "sur"
 
 #: templates/maposmatic/donate-thanks.html:30
 msgid "Thanks for your donation!"
-msgstr ""
+msgstr "Merci pour votre don!"
 
 #: templates/maposmatic/donate-thanks.html:32
 msgid ""
 "We have received your donation, thanks for your\n"
 "support to the MapOSMatic project!"
-msgstr ""
+msgstr "Nous avons bien reçu votre don, merci pour votre soutien au projet MapOSMatic!"
 
 #: templates/maposmatic/donate-thanks.html:35
 msgid ""
@@ -586,7 +586,7 @@ msgid ""
 "in charge of donations and funds. MapOSMatic is still an informal\n"
 "gathering of developers, and we have not (yet) created a non-profit\n"
 "organization to support the project."
-msgstr ""
+msgstr "Vous allez recevoir un e-mail de notification concernant votre don. Cet e-mail indiquera que le don a été reçu par <i>Thomas Petazzoni</i>, qui est le développeur MapOSMatic chargé des dons et du financement. MapOSMatic est toujours un regroupement informel de développeurs, et nous n'avons pas (encore) mis en place de structure juridique pour soutenir le projet."
 
 #: templates/maposmatic/donate.html:31
 msgid "Why donations are useful?"
