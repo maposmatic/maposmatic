@@ -87,17 +87,43 @@ class MapRenderingJobForm(forms.ModelForm):
         layout_renderers = self._ocitysmap.get_all_renderers()
         stylesheets = self._ocitysmap.get_all_style_configurations()
 
-        self.fields['layout'].choices = [(r.name, r.description)
-                for r in layout_renderers]
+        self.fields['layout'].choices = []
+        for r in layout_renderers:
+            if r.name == 'plain':
+                description = _(u"Full-page layout without street index")
+            elif r.name == 'single_page_index_side':
+                description = _(u"Full-page layout with the street index on the side")
+            elif r.name == 'single_page_index_bottom':
+                description = _(u"Full-page layout with the street index at the bottom")
+            elif r.name == 'multi_page2':
+                description = _(u"Multi-page layout")
+            else:
+                description = mark_safe(_(u"The %(layout_name)s layout") % {'layout_name':r.name})
+            self.fields['layout'].choices.append((r.name, description))
+
         self.fields['layout'].initial = layout_renderers[0].name
 
-        self.fields['stylesheet'].choices = [(s.name, s.description)
-                                             for s in stylesheets]
+        self.fields['stylesheet'].choices = []
+        for s in stylesheets:
+            if s.name == "Default":
+                description = _("The default OpenStreetMap.org style")
+            elif s.name == "MapQuestEu":
+                description = _("The european MapQuest style")
+            elif s.name == "MapQuestUs":
+                description = _("The US MapQuest style")
+            elif s.name == "MapQuestUk":
+                description = _("The UK MapQuest style")
+            elif s.name == "Printable":
+                description = _("A MapOSMatic-specific stylesheet suitable for printing")
+            else:
+                description = mark_safe(_("The <i>%(stylesheet_name)s</i> stylesheet") % {'stylesheet_name':s.name})
+            self.fields['stylesheet'].choices.append((s.name, description))
+
         self.fields['stylesheet'].initial = stylesheets[0].name
 
         def _build_papersize_description(p):
-            if p[1] is None or p[2] is None:
-                return mark_safe("%s <em class=\"papersize\"></em>" % p[0])
+            if p[0] == "Best fit":
+                return mark_safe(_("Best fit <em class=\"papersize\"></em>"))
             else:
                 return mark_safe("%s <em class=\"papersize\">"
                                  "(%.1f &times; %.1f cm²)</em>"
