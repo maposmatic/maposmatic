@@ -200,6 +200,7 @@ MAP_LANGUAGES = [
     ("es_NI.UTF-8", u"Nicaragua (ES)"),
     ("nl_NL.UTF-8", u"Nederland (NL)"),
     ("nb_NO.UTF-8", u"Norwegian Bokmål (NO)"),
+    ("nn_NO.UTF-8", u"Norwegian Nynorsk (NO)"),
     ("en_NZ.UTF-8", u"New Zealand (EN)"),
     ("ar_OM.UTF-8", u"سلطنة عمان (AR)"),
     ("es_PA.UTF-8", u"Panamá (ES)"),
