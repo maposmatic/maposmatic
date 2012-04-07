@@ -144,7 +144,9 @@ function mapInit(areaSelectionNotifier)
     OpenLayers.Util.extend(selectControl, {
         draw: function() {
             this.box = new OpenLayers.Handler.Box(selectControl,
-                {'done': this.notice}, {keyMask: OpenLayers.Handler.MOD_CTRL});
+                {'done': this.notice},
+                {keyMask: navigator.platform.match(/Mac/) ?
+                     OpenLayers.Handler.MOD_ALT :OpenLayers.Handler.MOD_CTRL});
             this.box.activate();
         },
 
