@@ -19,7 +19,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: mapOSMatic 0.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-04-01 15:58+0200\n"
+"POT-Creation-Date: 2012-04-10 21:38+0200\n"
 "PO-Revision-Date: 2010-02-09 20:43+0100\n"
 "Last-Translator: David MENTRÉ <dmentre@linux-france.org>\n"
 "Language-Team: FR <LL@li.org>\n"
@@ -28,7 +28,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: settings.py:229
+#: settings.py:230
 msgid "No localization"
 msgstr "Nema lokalizacije"
 
@@ -60,24 +60,74 @@ msgstr ""
 msgid "Area"
 msgstr "Područje"
 
-#: maposmatic/forms.py:129
+#: maposmatic/forms.py:93
+msgid "Full-page layout without street index"
+msgstr ""
+
+#: maposmatic/forms.py:95
+msgid "Full-page layout with the street index on the side"
+msgstr ""
+
+#: maposmatic/forms.py:97
+msgid "Full-page layout with the street index at the bottom"
+msgstr ""
+
+#: maposmatic/forms.py:99
+msgid "Multi-page layout"
+msgstr ""
+
+#: maposmatic/forms.py:101
+#, python-format
+msgid "The %(layout_name)s layout"
+msgstr ""
+
+#: maposmatic/forms.py:109
+msgid "The default OpenStreetMap.org style"
+msgstr ""
+
+#: maposmatic/forms.py:111
+msgid "The european MapQuest style"
+msgstr ""
+
+#: maposmatic/forms.py:113
+msgid "The US MapQuest style"
+msgstr ""
+
+#: maposmatic/forms.py:115
+msgid "The UK MapQuest style"
+msgstr ""
+
+#: maposmatic/forms.py:117
+msgid "A MapOSMatic-specific stylesheet suitable for printing"
+msgstr ""
+
+#: maposmatic/forms.py:119
+#, python-format
+msgid "The <i>%(stylesheet_name)s</i> stylesheet"
+msgstr ""
+
+#: maposmatic/forms.py:126
+msgid "Best fit <em class=\"papersize\"></em>"
+msgstr ""
+
+#: maposmatic/forms.py:155
 msgid "Map title required"
 msgstr "Naslov karte je obavezan"
 
-#: maposmatic/forms.py:135
+#: maposmatic/forms.py:161
 msgid "Administrative city required"
 msgstr "Ime grada je obavezno"
 
-#: maposmatic/forms.py:148
+#: maposmatic/forms.py:174
 #, python-format
 msgid "Error with osm city: %s"
 msgstr "Greška s osm gradom: %s"
 
-#: maposmatic/forms.py:157
+#: maposmatic/forms.py:183
 msgid "Required"
 msgstr "Obavezno"
 
-#: maposmatic/forms.py:182
+#: maposmatic/forms.py:208
 msgid "Bounding Box too large"
 msgstr "Granični okvir je prevelik"
 
@@ -134,21 +184,16 @@ msgstr "Izrada uspješna"
 
 #: maposmatic/templatetags/extratags.py:41
 #, fuzzy
-msgid ""
-"Rendering failed! Please contact contact@maposmatic.org for more information."
+msgid "Rendering failed! Please contact contact@maposmatic.org for more information."
 msgstr "Izrada nije uspjela, molim kontaktirajte contact@maposmatic.org"
 
 #: maposmatic/templatetags/extratags.py:44
 #, fuzzy
-msgid ""
-"Rendering is obsolete: the rendering was successful, but the files are no "
-"longer available."
+msgid "Rendering is obsolete: the rendering was successful, but the files are no longer available."
 msgstr "Izrađene datoteke više nisu dostupne."
 
 #: maposmatic/templatetags/extratags.py:46
-msgid ""
-"Obsolete failed rendering: the rendering failed, and the incomplete files "
-"have been removed."
+msgid "Obsolete failed rendering: the rendering failed, and the incomplete files have been removed."
 msgstr ""
 
 #: maposmatic/templatetags/extratags.py:48
@@ -207,20 +252,16 @@ msgid ""
 "href=\"http://www.openstreetmap.org\">OpenStreetMap</a> and free\n"
 "software contributor of Rennes area, France. From his idea, a group of\n"
 "crazy <a\n"
-"href=\"http://en.wikipedia.org/wiki/Hacker_%28programmer_subculture"
-"%29\">hackers</a>\n"
+"href=\"http://en.wikipedia.org/wiki/Hacker_%28programmer_subculture%29\">hackers</a>\n"
 "met together during a one-week <em>Hackfest</em> in August 2009 and\n"
 "brought the idea of Gilles Lamiral to life by writing the code and\n"
 "named the project <strong>MapOSMatic</strong>. The group of crazy\n"
 "hackers would like to thank Gilles for sharing his bright\n"
 "idea!"
 msgstr ""
-"MapOSMatic je započet zahvaljujući ideji Gilles Lamiral-a, softverskog "
-"doprinositelja <a href=\"http://www.openstreetmap.org\">OpenStreetMap</a> iz "
-"područja Rennes-a, Francuska. Iz njegove ideje, skupinaf\n"
+"MapOSMatic je započet zahvaljujući ideji Gilles Lamiral-a, softverskog doprinositelja <a href=\"http://www.openstreetmap.org\">OpenStreetMap</a> iz područja Rennes-a, Francuska. Iz njegove ideje, skupinaf\n"
 "ludih <a\n"
-"href=\"http://en.wikipedia.org/wiki/Hacker_%28programmer_subculture"
-"%29\">hakera</a>\n"
+"href=\"http://en.wikipedia.org/wiki/Hacker_%28programmer_subculture%29\">hakera</a>\n"
 "okupila se tijekom jednog tjedna <em>Hackfest</em> u kolovozu 2009 i\n"
 "oživjela ideju Gilles Lamiral-a u programski kod i\n"
 "nazvala projekt <strong>MapOSMatic</strong>. Gruša ludih \n"
@@ -232,9 +273,7 @@ msgid ""
 "Of course, MapOSMatic is fully free software,\n"
 "licensed under the <a\n"
 "href=\"http://www.fsf.org/licensing/licenses/agpl-3.0.html\">AGPLv3</a>.\n"
-msgstr ""
-"Naravno, MapOSMatic je potpuno slobodan softver, pod dozvolom <a href="
-"\"http://www.fsf.org/licensing/licenses/agpl-3.0.html\">AGPLv3</a>.\n"
+msgstr "Naravno, MapOSMatic je potpuno slobodan softver, pod dozvolom <a href=\"http://www.fsf.org/licensing/licenses/agpl-3.0.html\">AGPLv3</a>.\n"
 
 #: templates/maposmatic/about.html:60
 msgid "How does it work?"
@@ -254,23 +293,16 @@ msgid ""
 "the database, which allows to keep it up to date with the new\n"
 "contributions of OpenStreetMap users."
 msgstr ""
-"Na našem poslužitelju vrtimo, <a href=\"http://www.postgresql.org"
-"\">PostgreSQL</a> s ekstenzijom <a href=\"http://postgis.refractions.net"
-"\">PostGIS</a>. U PostgreSQL poslužitelj smo učitali <a href=\"http://wiki."
-"openstreetmap.org/wiki/Planet.osm\">podatke OpenStreetMap za cijeli Svijet</"
-"a> koristeći <a\n"
-"href=\"http://wiki.openstreetmap.org/wiki/Osm2pgsql\">osm2pgsql</a>. Isti "
-"alat je korišten za ažuriranje <a\n"
-"href=\"http://planet.openstreetmap.org/daily/\">dnevnih promjena</a> baze "
-"podataka, tako da držimo korak s novim doprinosima OpenStreetMap korisnika."
+"Na našem poslužitelju vrtimo, <a href=\"http://www.postgresql.org\">PostgreSQL</a> s ekstenzijom <a href=\"http://postgis.refractions.net\">PostGIS</a>. U PostgreSQL poslužitelj smo učitali <a href=\"http://wiki.openstreetmap.org/wiki/Planet.osm\">podatke OpenStreetMap za cijeli Svijet</a> koristeći <a\n"
+"href=\"http://wiki.openstreetmap.org/wiki/Osm2pgsql\">osm2pgsql</a>. Isti alat je korišten za ažuriranje <a\n"
+"href=\"http://planet.openstreetmap.org/daily/\">dnevnih promjena</a> baze podataka, tako da držimo korak s novim doprinosima OpenStreetMap korisnika."
 
 #: templates/maposmatic/about.html:77
 msgid ""
 "For the map rendering, we use the\n"
 "famous <a href=\"http://www.mapnik.org\">Mapnik</a> with the OpenStreetMap\n"
 "stylesheet\n"
-"available <a href=\"http://svn.openstreetmap.org/applications/rendering/"
-"mapnik\">in\n"
+"available <a href=\"http://svn.openstreetmap.org/applications/rendering/mapnik\">in\n"
 "OpenStreetMap Subversion repository</a>. Using Mapnik\n"
 "and <a href=\"http://cairographics.org/pycairo/\">Cairo</a>, we\n"
 "built <i>OCitySMap</i>, a Python module that:"
@@ -278,8 +310,7 @@ msgstr ""
 "Za izradu (renderiranje) karti, koristimo \n"
 "poznati <a href=\"http://www.mapnik.org\">Mapnik</a> s OpenStreetMap\n"
 "stylesheet-ovima \n"
-"dostupni na <a href=\"http://svn.openstreetmap.org/applications/rendering/"
-"mapnik\">in\n"
+"dostupni na <a href=\"http://svn.openstreetmap.org/applications/rendering/mapnik\">in\n"
 "OpenStreetMap Subversion repository</a>. Koristeći Mapnik\n"
 "and <a href=\"http://cairographics.org/pycairo/\">Cairo</a>, napravili smo\n"
 " <i>OCitySMap</i>, a Python module koji:"
@@ -308,9 +339,7 @@ msgstr ""
 msgid ""
 "Greys out all the area outside the city if we find\n"
 "  its administrative boundary;"
-msgstr ""
-"Zasivi područje izvan grada, ali samo za onaj koji ima definiranu "
-"administrativnu granicu;"
+msgstr "Zasivi područje izvan grada, ali samo za onaj koji ima definiranu administrativnu granicu;"
 
 #: templates/maposmatic/about.html:95
 msgid ""
@@ -413,13 +442,11 @@ msgstr ""
 #: templates/maposmatic/about.html:147
 msgid ""
 "The <a\n"
-"  href=\"http://lists.nongnu.org/mailman/listinfo/maposmatic-dev"
-"\">development\n"
+"  href=\"http://lists.nongnu.org/mailman/listinfo/maposmatic-dev\">development\n"
 "  mailing-list</a>;"
 msgstr ""
 " <a\n"
-"  href=\"http://lists.nongnu.org/mailman/listinfo/maposmatic-dev"
-"\">development\n"
+"  href=\"http://lists.nongnu.org/mailman/listinfo/maposmatic-dev\">development\n"
 "  mailing-lista</a>;"
 
 #: templates/maposmatic/about.html:150
@@ -431,14 +458,12 @@ msgstr "IRC kanal <tt>#maposmatic</tt> na Freenode;"
 #: templates/maposmatic/about.html:152
 msgid ""
 "The <a\n"
-"  href=\"http://git.savannah.gnu.org/cgit/maposmatic/ocitysmap.git"
-"\">OCitySMap\n"
+"  href=\"http://git.savannah.gnu.org/cgit/maposmatic/ocitysmap.git\">OCitySMap\n"
 "  Git repository</a>, which can be cloned using <tt>git clone\n"
 "  git://git.sv.gnu.org/maposmatic/ocitysmap.git</tt>;"
 msgstr ""
 " <a\n"
-"  href=\"http://git.savannah.gnu.org/cgit/maposmatic/ocitysmap.git"
-"\">OCitySMap\n"
+"  href=\"http://git.savannah.gnu.org/cgit/maposmatic/ocitysmap.git\">OCitySMap\n"
 "  Git repository</a>, koji se može klonirati koristeći <tt>git clone\n"
 "  git://git.sv.gnu.org/maposmatic/ocitysmap.git</tt>;"
 
@@ -530,10 +555,7 @@ msgstr "Lista zadataka"
 
 #: templates/maposmatic/all_jobs.html:39
 #, fuzzy
-msgid ""
-"This page gives the status of the rendering queue, showing all requests "
-"received during the last 24 hours as well as all unprocessed requests "
-"without time limit. They are ordered starting from the most recent ones."
+msgid "This page gives the status of the rendering queue, showing all requests received during the last 24 hours as well as all unprocessed requests without time limit. They are ordered starting from the most recent ones."
 msgstr ""
 "Ova stranica prikazuje stanje svih zahtjeva za \n"
 "  izradom primljenih u zadnjih 24 sata, počevši od \n"
@@ -557,15 +579,15 @@ msgstr "Karte"
 msgid "MapOSMatic maps feed"
 msgstr ""
 
-#: templates/maposmatic/all_maps.html:52
+#: templates/maposmatic/all_maps.html:53
 msgid "Our database does not contain any rendered maps for the moment."
 msgstr ""
 
-#: templates/maposmatic/all_maps.html:54
+#: templates/maposmatic/all_maps.html:55
 msgid "No map matches your query."
 msgstr ""
 
-#: templates/maposmatic/all_maps.html:54
+#: templates/maposmatic/all_maps.html:55
 #, fuzzy
 msgid "Create a new map!"
 msgstr "Izradi kartu"
@@ -591,9 +613,7 @@ msgid "Donate"
 msgstr ""
 
 #: templates/maposmatic/base.html:80
-msgid ""
-"The MapOSMatic rendering daemon is currently not running! Jobs will be "
-"queued until the rendering daemon is back up."
+msgid "The MapOSMatic rendering daemon is currently not running! Jobs will be queued until the rendering daemon is back up."
 msgstr ""
 
 #: templates/maposmatic/base.html:91
@@ -601,9 +621,7 @@ msgid "Donate to MapOSMatic"
 msgstr ""
 
 #: templates/maposmatic/base.html:101
-msgid ""
-"You can donate to help us improve the service. See our <a href=\"/donate"
-"\">donation</a> page."
+msgid "You can donate to help us improve the service. See our <a href=\"/donate\">donation</a> page."
 msgstr ""
 
 #: templates/maposmatic/base.html:106
@@ -678,11 +696,7 @@ msgstr ""
 
 #: templates/maposmatic/donate.html:35
 #, python-format
-msgid ""
-"MapOSMatic is a project entirely developed and maintained by a team of "
-"volunteers (see our <a href=\"%(about_url)s\">About</a> page for details). "
-"However, running the MapOSMatic service and making improvements to it have "
-"various costs beyond the time of the volunteer developers."
+msgid "MapOSMatic is a project entirely developed and maintained by a team of volunteers (see our <a href=\"%(about_url)s\">About</a> page for details). However, running the MapOSMatic service and making improvements to it have various costs beyond the time of the volunteer developers."
 msgstr ""
 
 #: templates/maposmatic/donate.html:37
@@ -690,23 +704,11 @@ msgid "Therefore, we are currently seeking donations to help us funding:"
 msgstr ""
 
 #: templates/maposmatic/donate.html:40
-msgid ""
-"Acquisition of a Solid-State Disk for the storage of our local copy of the "
-"OpenStreetMap database. A SSD drive performs 40 to 50 times better than the "
-"conventional hard drive we are using today, and would therefore help us to "
-"reduce the lag between our local database and the official one, providing "
-"more up-to-date maps. The cost of such hardware is about 500 to 700 €."
+msgid "Acquisition of a Solid-State Disk for the storage of our local copy of the OpenStreetMap database. A SSD drive performs 40 to 50 times better than the conventional hard drive we are using today, and would therefore help us to reduce the lag between our local database and the official one, providing more up-to-date maps. The cost of such hardware is about 500 to 700 €."
 msgstr ""
 
 #: templates/maposmatic/donate.html:42
-msgid ""
-"Participation to the transportation expenses of the MapOSMatic developers "
-"when they gather for <i>hackfests</i> (meeting of developers). You can read "
-"our <a href=\"http://news.maposmatic.org\">blog</a> to learn more about what "
-"we achieve during those hackfests. We usually implement a huge number of "
-"improvements, new features and bug fixes during those meetings. They take "
-"place during the holidays of the developers, and we would like to at least "
-"compensate their travel expenses."
+msgid "Participation to the transportation expenses of the MapOSMatic developers when they gather for <i>hackfests</i> (meeting of developers). You can read our <a href=\"http://news.maposmatic.org\">blog</a> to learn more about what we achieve during those hackfests. We usually implement a huge number of improvements, new features and bug fixes during those meetings. They take place during the holidays of the developers, and we would like to at least compensate their travel expenses."
 msgstr ""
 
 #: templates/maposmatic/donate.html:46
@@ -714,10 +716,7 @@ msgid "Donating?"
 msgstr ""
 
 #: templates/maposmatic/donate.html:48
-msgid ""
-"Donations can be done through the well-known <a href=\"http://www.paypal.com"
-"\">PayPal</a> service. We accept donations of any amount: all donations are "
-"helpful, even the smallest ones."
+msgid "Donations can be done through the well-known <a href=\"http://www.paypal.com\">PayPal</a> service. We accept donations of any amount: all donations are helpful, even the smallest ones."
 msgstr ""
 
 #: templates/maposmatic/index.html:33
@@ -731,50 +730,32 @@ msgstr "Karta grada"
 
 #: templates/maposmatic/index.html:42
 #, fuzzy
-msgid ""
-"MapOSMatic is a free software web service that allows you to generate maps "
-"of cities using <a href=\"http://www.openstreetmap.org\">OpenStreetMap</a> "
-"data. MapOSMatic can generate two kinds of maps: :"
+msgid "MapOSMatic is a free software web service that allows you to generate maps of cities using <a href=\"http://www.openstreetmap.org\">OpenStreetMap</a> data. MapOSMatic can generate two kinds of maps: :"
 msgstr ""
-"MapOSMatic je slobodan web uslužni softvare koji omogućuje izradu karti "
-"gradova koristeći <a href=\"http://www.openstreetmap.org\">OpenStreetMap</a> "
-"podatke. Karta grada je \n"
+"MapOSMatic je slobodan web uslužni softvare koji omogućuje izradu karti gradova koristeći <a href=\"http://www.openstreetmap.org\">OpenStreetMap</a> podatke. Karta grada je \n"
 "napravljena u dva dijela:"
 
 #: templates/maposmatic/index.html:46
-msgid ""
-"Single page posters, where the map and the street index are rendered side by "
-"side. The map itself is split in squares so that streets are easy to find. "
-"This format is typically useful for printing on large paper sheets."
+msgid "Single page posters, where the map and the street index are rendered side by side. The map itself is split in squares so that streets are easy to find. This format is typically useful for printing on large paper sheets."
 msgstr ""
 
 #: templates/maposmatic/index.html:48
-msgid ""
-"Multiple page booklets, where the map and the street index are split into "
-"several pages. This format is typically useful for printing on standard "
-"paper sheets."
+msgid "Multiple page booklets, where the map and the street index are split into several pages. This format is typically useful for printing on standard paper sheets."
 msgstr ""
 
 #: templates/maposmatic/index.html:52
 #, fuzzy
-msgid ""
-"The generated maps are available in PNG, PDF and SVG formats and are ready "
-"to be printed."
+msgid "The generated maps are available in PNG, PDF and SVG formats and are ready to be printed."
 msgstr "Izrađene karte su dostupne u PNG, PDF i SVG i spreme su za tisak."
 
 #: templates/maposmatic/index.html:56
 #, fuzzy
-msgid ""
-"As the data used to generate maps is coming from OpenStreetMap, you can "
-"freely (under the <a href=\"http://wiki.openstreetmap.org/wiki/License"
-"\">terms of OpenStreetMap license</a>) reuse, sell, modify, ... the "
-"generated maps."
+msgid "As the data used to generate maps is coming from OpenStreetMap, you can freely (under the <a href=\"http://wiki.openstreetmap.org/wiki/License\">terms of OpenStreetMap license</a>) reuse, sell, modify, ... the generated maps."
 msgstr ""
 "Kako podaci za izradu dolaze s \n"
 "OpenStreetMap, možete slobodno (pod <a\n"
 "href=\"http://wiki.openstreetmap.org/wiki/License\">uvijetima\n"
-"OpenStreetMap dozvole</a>) koristiti, prodavati i modificirati, ... "
-"izrađene \n"
+"OpenStreetMap dozvole</a>) koristiti, prodavati i modificirati, ... izrađene \n"
 "karte."
 
 #: templates/maposmatic/index.html:60
@@ -798,8 +779,7 @@ msgid "Recreate map"
 msgstr "Izradi kartu"
 
 #: templates/maposmatic/job-page.html:48
-msgid ""
-"You have been redirected to a similar map, rendered less than 24 hours ago."
+msgid "You have been redirected to a similar map, rendered less than 24 hours ago."
 msgstr "Preusmjereni ste na sličnu kartu, izrađenu prije manje od 24 sata."
 
 #: templates/maposmatic/job-page.html:56
@@ -808,12 +788,8 @@ msgstr "Osvježi status"
 
 #: templates/maposmatic/job-page.html:56
 #, python-format
-msgid ""
-"(the page will refresh automatically every %(refresh)s seconds until the "
-"rendering is completed)."
-msgstr ""
-"(ova stranica se automatski osvježava svakih %(refresh)s sekundi do kraja "
-"izrade)."
+msgid "(the page will refresh automatically every %(refresh)s seconds until the rendering is completed)."
+msgstr "(ova stranica se automatski osvježava svakih %(refresh)s sekundi do kraja izrade)."
 
 #: templates/maposmatic/job.html:48
 #, fuzzy
@@ -875,11 +851,7 @@ msgstr "Kazalo: "
 
 #: templates/maposmatic/job.html:85 templates/maposmatic/map-feed.html:50
 #: templates/maposmatic/map.html:63
-msgid ""
-"No index was generated because no information was available in OpenStreetMap "
-"to create one. Feel free to contribute the missing data yourself. See the <a "
-"href=\"http://wiki.openstreetmap.org/wiki/Getting_Involved\">OSM Wiki</a> "
-"for a start. "
+msgid "No index was generated because no information was available in OpenStreetMap to create one. Feel free to contribute the missing data yourself. See the <a href=\"http://wiki.openstreetmap.org/wiki/Getting_Involved\">OSM Wiki</a> for a start. "
 msgstr ""
 
 #: templates/maposmatic/job.html:88
@@ -908,11 +880,11 @@ msgstr "Nema lokalizacije"
 msgid "Title"
 msgstr ""
 
-#: templates/maposmatic/new.html:51 templates/maposmatic/new.html.py:123
+#: templates/maposmatic/new.html:51 templates/maposmatic/new.html.py:124
 msgid "Layout"
 msgstr ""
 
-#: templates/maposmatic/new.html:54 templates/maposmatic/new.html.py:128
+#: templates/maposmatic/new.html:54 templates/maposmatic/new.html.py:129
 msgid "Stylesheet"
 msgstr ""
 
@@ -920,7 +892,7 @@ msgstr ""
 msgid "Paper size"
 msgstr ""
 
-#: templates/maposmatic/new.html:60 templates/maposmatic/new.html.py:145
+#: templates/maposmatic/new.html:60 templates/maposmatic/new.html.py:146
 msgid "Language"
 msgstr ""
 
@@ -952,81 +924,74 @@ msgstr ""
 #: templates/maposmatic/new.html:95
 msgid ""
 "You can use <tt>Shift+drag</tt> to zoom on a specific\n"
-"        area of the map. Then, you must select with <tt>Control+drag</tt> "
-"the\n"
+"        area of the map. Then, you must select\n"
+"        with <tt>Control+drag</tt> (<tt>Alt+drag</tt> on Mac) the\n"
 "        limits of the area you wish to render."
 msgstr ""
 
-#: templates/maposmatic/new.html:101
+#: templates/maposmatic/new.html:102
 msgid ""
 "Area too big to be rendered. Please select a\n"
 "        smaller area."
 msgstr ""
 
-#: templates/maposmatic/new.html:112
+#: templates/maposmatic/new.html:113
 msgid "No results."
 msgstr "Nema rezultata."
 
-#: templates/maposmatic/new.html:113
+#: templates/maposmatic/new.html:114
 #, fuzzy
-msgid ""
-"Wondering why you can't choose some of these results?<br />Their "
-"administrative boundaries are missing from the OSM database.<br />Look at "
-"the <a href=\"http://wiki.maposmatic.org/doku.php?id=faq\">FAQ</a> for more "
-"details."
-msgstr ""
-"Pitate se zašto ne možete izabrati neke od ovih rezultata?<br />Njihove "
-"administrativne granice nedostaju u OSM bazi podataka.<br />Pogedajte <a "
-"href=\"http://wiki.maposmatic.org/doku.php?id=faq\">FAQ</a> za više detalja."
+msgid "Wondering why you can't choose some of these results?<br />Their administrative boundaries are missing from the OSM database.<br />Look at the <a href=\"http://wiki.maposmatic.org/doku.php?id=faq\">FAQ</a> for more details."
+msgstr "Pitate se zašto ne možete izabrati neke od ovih rezultata?<br />Njihove administrativne granice nedostaju u OSM bazi podataka.<br />Pogedajte <a href=\"http://wiki.maposmatic.org/doku.php?id=faq\">FAQ</a> za više detalja."
 
-#: templates/maposmatic/new.html:118
+#: templates/maposmatic/new.html:119
 #, fuzzy
 msgid "Map title"
 msgstr "Naslov karte je obavezan"
 
-#: templates/maposmatic/new.html:133
+#: templates/maposmatic/new.html:134
 msgid "Paper"
 msgstr ""
 
-#: templates/maposmatic/new.html:146
+#: templates/maposmatic/new.html:147
 msgid "Map Index Language:"
 msgstr "Jezik kazala karte:"
 
-#: templates/maposmatic/new.html:149
+#: templates/maposmatic/new.html:150
 msgid "Summary:"
 msgstr ""
 
-#: templates/maposmatic/new.html:151
+#: templates/maposmatic/new.html:152
 #, fuzzy
 msgid "Location:"
 msgstr "Nema lokalizacije"
 
-#: templates/maposmatic/new.html:153
+#: templates/maposmatic/new.html:154
 msgid "Title:"
 msgstr ""
 
-#: templates/maposmatic/new.html:155
+#: templates/maposmatic/new.html:156
 msgid "Layout:"
 msgstr ""
 
-#: templates/maposmatic/new.html:157
+#: templates/maposmatic/new.html:158
 msgid "Paper size:"
 msgstr ""
 
-#: templates/maposmatic/new.html:159
+#: templates/maposmatic/new.html:160
 msgid "Stylesheet:"
 msgstr ""
 
-#: templates/maposmatic/new.html:161
+#: templates/maposmatic/new.html:162
 #, fuzzy
 msgid "Language:"
 msgstr "Jezik kazala karte:"
 
-#: templates/maposmatic/new.html:165
+#: templates/maposmatic/new.html:166
 msgid "Generate"
 msgstr "Izradi..."
 
-#: templates/maposmatic/new.html:172
+#: templates/maposmatic/new.html:173
 #, fuzzy
 msgid "Continue"
 msgstr "Doprinjeli"
@@ -1042,8 +1007,7 @@ msgstr "Slijedeća"
 #~ msgid "Streets index"
 #~ msgstr "Kazalo ulica"
 
-#~ msgid ""
-#~ "The map itself, splitted in squares allowing to easily look for streets;"
+#~ msgid "The map itself, splitted in squares allowing to easily look for streets;"
 #~ msgstr "Sama karta, s mrežom kvadranta za lakše traženje ulice;"
 
 #~ msgid "An index of the streets with references to the squares on the map."
@@ -1053,19 +1017,14 @@ msgstr "Slijedeća"
 #~ msgstr "Izrada u tijeku..."
 
 #, fuzzy
-#~ msgid ""
-#~ "Rendering failed, and the incomplete files were removed. Please contact "
-#~ "contact@maposmatic.org"
+#~ msgid "Rendering failed, and the incomplete files were removed. Please contact contact@maposmatic.org"
 #~ msgstr "Izrada nije uspjela, molim kontaktirajte contact@maposmatic.org"
 
 #~ msgid ""
 #~ "<em>MapOSMatic</em> covers the whole world but we need\n"
 #~ "contributors to translate and adapt the few parts of <em>MapOSMatic</em>\n"
 #~ "that are country specific."
-#~ msgstr ""
-#~ "<em>MapOSMatic</em> pokriva cijeli svijet ali trebamo doprinositelje za "
-#~ "prijevod i adaptaciju nekoliko dijelova <em>MapOSMatic</em>-a koji su "
-#~ "specifični za pojedine zemlje."
+#~ msgstr "<em>MapOSMatic</em> pokriva cijeli svijet ali trebamo doprinositelje za prijevod i adaptaciju nekoliko dijelova <em>MapOSMatic</em>-a koji su specifični za pojedine zemlje."
 
 #~ msgid ""
 #~ "<em>Using an administrative boundary</em>. It allows\n"
@@ -1075,8 +1034,7 @@ msgstr "Slijedeća"
 #~ msgstr ""
 #~ "<em>Koristeći administrativne granice</em>. To dozvoljava\n"
 #~ "  da se dobije karta s preciznim granicama grada kada su takve granice \n"
-#~ "  dostupne u pazi podataka. U drugom slučaju, trebate koristiti granični "
-#~ "okvir."
+#~ "  dostupne u pazi podataka. U drugom slučaju, trebate koristiti granični okvir."
 
 #~ msgid "<em>Using a traditional bounding box</em>."
 #~ msgstr "<em>Koristeći tradicionalni granični okvir</em>."
@@ -1090,8 +1048,7 @@ msgstr "Slijedeća"
 #~ msgstr ""
 #~ "Kada je izrada (rendering) potvrđen, doći će te na\n"
 #~ "stranicu koja prikazuje status zahtjeva. Čim je izrada gotova\n"
-#~ "(može biti nešto duže, ovisno o redu čekanja), ova će stranica sadržavati "
-#~ "veze na izrađenu\n"
+#~ "(može biti nešto duže, ovisno o redu čekanja), ova će stranica sadržavati veze na izrađenu\n"
 #~ "kartu."
 
 #~ msgid "Area selection mode:"

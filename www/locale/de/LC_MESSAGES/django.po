@@ -20,7 +20,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: mapOSMatic 0.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-04-01 11:26+0200\n"
+"POT-Creation-Date: 2012-04-10 21:38+0200\n"
 "PO-Revision-Date: 2012-04-01 20:30+0100\n"
 "Last-Translator: malenki <translate@malenki.ch>\n"
 "Language-Team:  <osm@malenki.ch>\n"
@@ -31,7 +31,7 @@ msgstr ""
 "X-Poedit-Language: German\n"
 "X-Poedit-Country: GERMANY\n"
 
-#: settings.py:229
+#: settings.py:230
 msgid "No localization"
 msgstr "Keine Übersetzung"
 
@@ -63,24 +63,74 @@ msgstr "Quer"
 msgid "Area"
 msgstr "Gebiet"
 
-#: maposmatic/forms.py:129
+#: maposmatic/forms.py:93
+msgid "Full-page layout without street index"
+msgstr ""
+
+#: maposmatic/forms.py:95
+msgid "Full-page layout with the street index on the side"
+msgstr ""
+
+#: maposmatic/forms.py:97
+msgid "Full-page layout with the street index at the bottom"
+msgstr ""
+
+#: maposmatic/forms.py:99
+msgid "Multi-page layout"
+msgstr ""
+
+#: maposmatic/forms.py:101
+#, python-format
+msgid "The %(layout_name)s layout"
+msgstr ""
+
+#: maposmatic/forms.py:109
+msgid "The default OpenStreetMap.org style"
+msgstr ""
+
+#: maposmatic/forms.py:111
+msgid "The european MapQuest style"
+msgstr ""
+
+#: maposmatic/forms.py:113
+msgid "The US MapQuest style"
+msgstr ""
+
+#: maposmatic/forms.py:115
+msgid "The UK MapQuest style"
+msgstr ""
+
+#: maposmatic/forms.py:117
+msgid "A MapOSMatic-specific stylesheet suitable for printing"
+msgstr ""
+
+#: maposmatic/forms.py:119
+#, python-format
+msgid "The <i>%(stylesheet_name)s</i> stylesheet"
+msgstr ""
+
+#: maposmatic/forms.py:126
+msgid "Best fit <em class=\"papersize\"></em>"
+msgstr ""
+
+#: maposmatic/forms.py:155
 msgid "Map title required"
 msgstr "Name des Stadtplans erforderlich"
 
-#: maposmatic/forms.py:135
+#: maposmatic/forms.py:161
 msgid "Administrative city required"
 msgstr "Name der Stadt erforderlich"
 
-#: maposmatic/forms.py:148
+#: maposmatic/forms.py:174
 #, python-format
 msgid "Error with osm city: %s"
 msgstr "Fehler bei OSM-Stadt: %s"
 
-#: maposmatic/forms.py:157
+#: maposmatic/forms.py:183
 msgid "Required"
 msgstr "Benötigt"
 
-#: maposmatic/forms.py:182
+#: maposmatic/forms.py:208
 msgid "Bounding Box too large"
 msgstr "Begrenzungsrahmen zu groß"
 
@@ -98,8 +148,7 @@ msgstr "Straßenverzeichnis von %(title)s (format %(format)s)"
 msgid "Administrative area too big for rendering"
 msgstr "Das von der Verwaltungsgrenze umfasste Gebiet ist zu groß, um gerendert zu werden."
 
-#: maposmatic/nominatim.py:285
-#: maposmatic/nominatim.py:299
+#: maposmatic/nominatim.py:285 maposmatic/nominatim.py:299
 msgid "No administrative boundary"
 msgstr "Keine Verwaltungsgrenze vorhanden."
 
@@ -147,9 +196,7 @@ msgstr "Der Rendervorgang schlug fehl, die erzeugten Dateien wurden entfernt."
 msgid "The rendering was cancelled by the user."
 msgstr "Rendervorgang wurde vom Nutzer abgebrochen."
 
-#: templates/404.html:3
-#: templates/500.html:3
-#: templates/maposmatic/base.html:59
+#: templates/404.html:3 templates/500.html:3 templates/maposmatic/base.html:59
 msgid "Home"
 msgstr "Start"
 
@@ -185,8 +232,7 @@ msgstr "Interner Serverfehler <em>500</em>"
 msgid "There's been an error."
 msgstr "Ein Fehler ist aufgetreten."
 
-#: templates/maposmatic/about.html:35
-#: templates/maposmatic/base.html:65
+#: templates/maposmatic/about.html:35 templates/maposmatic/base.html:65
 msgid "About"
 msgstr "Über"
 
@@ -195,7 +241,7 @@ msgid "History"
 msgstr "Entstehung"
 
 #: templates/maposmatic/about.html:39
-#, python-format
+#, fuzzy, python-format
 msgid ""
 "MapOSMatic has been started thanks to an idea of\n"
 "Gilles Lamiral, an <a\n"
@@ -462,8 +508,7 @@ msgstr "russische Übersetzung"
 msgid "arabic translation"
 msgstr "arabische Übersetzung"
 
-#: templates/maposmatic/about.html:186
-#: templates/maposmatic/about.html:187
+#: templates/maposmatic/about.html:186 templates/maposmatic/about.html:187
 msgid "brasilian portuguese translation"
 msgstr "Übersetzung in brasilianisches Portugiesisch"
 
@@ -512,13 +557,11 @@ msgid ""
 "hours."
 msgstr "Keine Renderanfragen innerhalb der letzten 24 Stunden."
 
-#: templates/maposmatic/all_maps.html:34
-#: templates/maposmatic/index.html:61
+#: templates/maposmatic/all_maps.html:34 templates/maposmatic/index.html:61
 msgid "Search"
 msgstr "Suche"
 
-#: templates/maposmatic/all_maps.html:38
-#: templates/maposmatic/base.html:62
+#: templates/maposmatic/all_maps.html:38 templates/maposmatic/base.html:62
 msgid "Maps"
 msgstr "Pläne"
 
@@ -526,15 +569,15 @@ msgstr "Pläne"
 msgid "MapOSMatic maps feed"
 msgstr "MapOSMatic Stadtplan-Feed"
 
-#: templates/maposmatic/all_maps.html:52
+#: templates/maposmatic/all_maps.html:53
 msgid "Our database does not contain any rendered maps for the moment."
 msgstr "Momentan enthält unsere Datenbank keine gerenderten Pläne."
 
-#: templates/maposmatic/all_maps.html:54
+#: templates/maposmatic/all_maps.html:55
 msgid "No map matches your query."
 msgstr "Keinen Pläne zu Ihrem Suchbegriff gefunden."
 
-#: templates/maposmatic/all_maps.html:54
+#: templates/maposmatic/all_maps.html:55
 msgid "Create a new map!"
 msgstr "Einen neuen Plan erstellen!"
 
@@ -554,8 +597,7 @@ msgstr "Rendervorgänge"
 msgid "News"
 msgstr "Aktuelles"
 
-#: templates/maposmatic/base.html:64
-#: templates/maposmatic/donate.html:30
+#: templates/maposmatic/base.html:64 templates/maposmatic/donate.html:30
 msgid "Donate"
 msgstr "Spenden"
 
@@ -720,8 +762,7 @@ msgstr "Finde Plan"
 msgid "More details"
 msgstr "Mehr Informationen"
 
-#: templates/maposmatic/job-page.html:39
-#: templates/maposmatic/job.html:35
+#: templates/maposmatic/job-page.html:39 templates/maposmatic/job.html:35
 #: templates/maposmatic/map.html:35
 msgid "Recreate map"
 msgstr "Plan neu erstellen"
@@ -780,26 +821,22 @@ msgstr "abgebrochen am"
 msgid "rendering took %(rendering)s"
 msgstr "Der Rendervorgang dauerte %(rendering)s"
 
-#: templates/maposmatic/job.html:79
-#: templates/maposmatic/map-feed.html:44
+#: templates/maposmatic/job.html:79 templates/maposmatic/map-feed.html:44
 #: templates/maposmatic/map.html:57
 msgid "Files: "
 msgstr "Dateien:"
 
-#: templates/maposmatic/job.html:81
-#: templates/maposmatic/map-feed.html:46
+#: templates/maposmatic/job.html:81 templates/maposmatic/map-feed.html:46
 #: templates/maposmatic/map.html:59
 msgid "Map: "
 msgstr "Plan:"
 
-#: templates/maposmatic/job.html:82
-#: templates/maposmatic/map-feed.html:47
+#: templates/maposmatic/job.html:82 templates/maposmatic/map-feed.html:47
 #: templates/maposmatic/map.html:60
 msgid "Index: "
 msgstr "Index:"
 
-#: templates/maposmatic/job.html:85
-#: templates/maposmatic/map-feed.html:50
+#: templates/maposmatic/job.html:85 templates/maposmatic/map-feed.html:50
 #: templates/maposmatic/map.html:63
 msgid "No index was generated because no information was available in OpenStreetMap to create one. Feel free to contribute the missing data yourself. See the <a href=\"http://wiki.openstreetmap.org/wiki/Getting_Involved\">OSM Wiki</a> for a start. "
 msgstr "Es wurde kein Index erstellt, da in OpenStreetMap die Daten dazu fehlen. Sie können fehlenden Daten selbst eintragen. Einen guten Einstieg bietet das OSM-Wiki an <a href=\"http://wiki.openstreetmap.org/wiki/DE:Getting_Involved\">dieser Stelle</a>."
@@ -808,14 +845,12 @@ msgstr "Es wurde kein Index erstellt, da in OpenStreetMap die Daten dazu fehlen.
 msgid "View on OpenStreetMap"
 msgstr "Auf OpenStreetMap anzeigen"
 
-#: templates/maposmatic/job.html:92
-#: templates/maposmatic/map-feed.html:53
+#: templates/maposmatic/job.html:92 templates/maposmatic/map-feed.html:53
 #: templates/maposmatic/map.html:66
 msgid "The generated files are no longer available."
 msgstr "Die erzeugten Dateien sind nicht mehr verfügbar."
 
-#: templates/maposmatic/map-feed.html:41
-#: templates/maposmatic/map.html:54
+#: templates/maposmatic/map-feed.html:41 templates/maposmatic/map.html:54
 msgid "Rendering completed on"
 msgstr "Rendervorgang beendet am"
 
@@ -831,13 +866,11 @@ msgstr "Ort"
 msgid "Title"
 msgstr "Name"
 
-#: templates/maposmatic/new.html:51
-#: templates/maposmatic/new.html.py:123
+#: templates/maposmatic/new.html:51 templates/maposmatic/new.html.py:124
 msgid "Layout"
 msgstr "Layout"
 
-#: templates/maposmatic/new.html:54
-#: templates/maposmatic/new.html.py:128
+#: templates/maposmatic/new.html:54 templates/maposmatic/new.html.py:129
 msgid "Stylesheet"
 msgstr "Darstellungsstil"
 
@@ -845,8 +878,7 @@ msgstr "Darstellungsstil"
 msgid "Paper size"
 msgstr "Ausrichtung"
 
-#: templates/maposmatic/new.html:60
-#: templates/maposmatic/new.html.py:145
+#: templates/maposmatic/new.html:60 templates/maposmatic/new.html.py:146
 msgid "Language"
 msgstr "Sprache"
 
@@ -875,9 +907,11 @@ msgid ""
 msgstr "Geografische Koordinaten der oberen linken und unteren rechten Ecke des zu rendernden Gebietes."
 
 #: templates/maposmatic/new.html:95
+#, fuzzy
 msgid ""
 "You can use <tt>Shift+drag</tt> to zoom on a specific\n"
-"        area of the map. Then, you must select with <tt>Control+drag</tt> the\n"
+"        area of the map. Then, you must select\n"
+"        with <tt>Control+drag</tt> (<tt>Alt+drag</tt> on Mac) the\n"
 "        limits of the area you wish to render."
 msgstr ""
 "Sie können <tt>Umsch+Ziehen</tt> benutzen, \n"
@@ -885,7 +919,7 @@ msgstr ""
 "Möchten Sie nur einen Teil der dargestellten Karte rendern lassen, \n"
 "markieren Sie mit <tt>Strg+Ziehen</tt> das gewünschte Gebiet."
 
-#: templates/maposmatic/new.html:101
+#: templates/maposmatic/new.html:102
 msgid ""
 "Area too big to be rendered. Please select a\n"
 "        smaller area."
@@ -893,59 +927,59 @@ msgstr ""
 "Gebiet ist zu groß, um gerendert zu werden. \n"
 "Bitte wählen Sie ein kleineres Gebiet aus."
 
-#: templates/maposmatic/new.html:112
+#: templates/maposmatic/new.html:113
 msgid "No results."
 msgstr "Keine Ergebnisse."
 
-#: templates/maposmatic/new.html:113
+#: templates/maposmatic/new.html:114
 msgid "Wondering why you can't choose some of these results?<br />Their administrative boundaries are missing from the OSM database.<br />Look at the <a href=\"http://wiki.maposmatic.org/doku.php?id=faq\">FAQ</a> for more details."
 msgstr "Fragen Sie sich, warum Sie einige dieser Ergebnisse nicht auswählen können?<br />In der OSM-Datenbank fehlen deren Verwaltungsgrenzen.<br />Mehr Details finden Sie in der <a href=\"http://wiki.maposmatic.org/doku.php?id=faq\">FAQ</a>."
 
-#: templates/maposmatic/new.html:118
+#: templates/maposmatic/new.html:119
 msgid "Map title"
 msgstr "Name des Stadtplans"
 
-#: templates/maposmatic/new.html:133
+#: templates/maposmatic/new.html:134
 msgid "Paper"
 msgstr "Ausrichtung"
 
-#: templates/maposmatic/new.html:146
+#: templates/maposmatic/new.html:147
 msgid "Map Index Language:"
 msgstr "Sprache des Stadtplanindex:"
 
-#: templates/maposmatic/new.html:149
+#: templates/maposmatic/new.html:150
 msgid "Summary:"
 msgstr "Zusammenfassung:"
 
-#: templates/maposmatic/new.html:151
+#: templates/maposmatic/new.html:152
 msgid "Location:"
 msgstr "Ort:"
 
-#: templates/maposmatic/new.html:153
+#: templates/maposmatic/new.html:154
 msgid "Title:"
 msgstr "Name:"
 
-#: templates/maposmatic/new.html:155
+#: templates/maposmatic/new.html:156
 msgid "Layout:"
 msgstr "Layout:"
 
-#: templates/maposmatic/new.html:157
+#: templates/maposmatic/new.html:158
 msgid "Paper size:"
 msgstr "Ausrichtung:"
 
-#: templates/maposmatic/new.html:159
+#: templates/maposmatic/new.html:160
 msgid "Stylesheet:"
 msgstr "Darstellungsstil:"
 
-#: templates/maposmatic/new.html:161
+#: templates/maposmatic/new.html:162
 msgid "Language:"
 msgstr "Sprache:"
 
-#: templates/maposmatic/new.html:165
+#: templates/maposmatic/new.html:166
 msgid "Generate"
 msgstr "Erzeugen"
 
-#: templates/maposmatic/new.html:172
+#: templates/maposmatic/new.html:173
 msgid "Continue"
 msgstr "Weiter"
 
@@ -963,11 +997,8 @@ msgstr "Weiter"
 #~ msgid "Streets index"
 #~ msgstr "Straßenverzeichnis"
 
-#~ msgid ""
-#~ "The map itself, splitted in squares allowing to easily look for streets;"
-#~ msgstr ""
-#~ "Dem Plan selbst, aufgeteilt in Quadrate, um leicht nach Straßen suchen zu "
-#~ "können;"
+#~ msgid "The map itself, splitted in squares allowing to easily look for streets;"
+#~ msgstr "Dem Plan selbst, aufgeteilt in Quadrate, um leicht nach Straßen suchen zu können;"
 
 #~ msgid "An index of the streets with references to the squares on the map."
 #~ msgstr "Dem Straßenverzeichnis, das sich auf die Planquadrate bezieht."
@@ -975,13 +1006,8 @@ msgstr "Weiter"
 #~ msgid "Rendering in progress"
 #~ msgstr "Plan wird gerendert"
 
-#~ msgid ""
-#~ "Rendering failed, and the incomplete files were removed. Please contact "
-#~ "contact@maposmatic.org"
-#~ msgstr ""
-#~ "Der Rendervorgang schlug fehl und die unvollständigen Dateien wurden "
-#~ "entfernt. Bitte benachrichtigen Sie <a href=\"mailto:contact@maposmatic."
-#~ "org\">contact@maposmatic.org</a>"
+#~ msgid "Rendering failed, and the incomplete files were removed. Please contact contact@maposmatic.org"
+#~ msgstr "Der Rendervorgang schlug fehl und die unvollständigen Dateien wurden entfernt. Bitte benachrichtigen Sie <a href=\"mailto:contact@maposmatic.org\">contact@maposmatic.org</a>"
 
 #~ msgid ""
 #~ "<em>MapOSMatic</em> covers the whole world but we need\n"
@@ -1045,50 +1071,29 @@ msgstr "Weiter"
 
 #, fuzzy
 #~ msgid ""
-#~ "No index was generated because no information was available in "
-#~ "OpenStreetMap to create one. Feel free to contribute the missing data "
-#~ "yourself. See the \n"
-#~ "<a href=\"http://wiki.openstreetmap.org/wiki/Getting_Involved\">OSM Wiki</"
-#~ "a> for a start. "
-#~ msgstr ""
-#~ "Es wurde kein Index erstellt, da in OpenStreetMap die Daten dazu fehlen. "
-#~ "Sie können fehlenden Daten selbst eintragen. Einen guten Einstieg biete "
-#~ "das OSM-Wiki an <a href=\"http://wiki.openstreetmap.org/wiki/DE:"
-#~ "Getting_Involved\">dieser Stelle</a>."
+#~ "No index was generated because no information was available in OpenStreetMap to create one. Feel free to contribute the missing data yourself. See the \n"
+#~ "<a href=\"http://wiki.openstreetmap.org/wiki/Getting_Involved\">OSM Wiki</a> for a start. "
+#~ msgstr "Es wurde kein Index erstellt, da in OpenStreetMap die Daten dazu fehlen. Sie können fehlenden Daten selbst eintragen. Einen guten Einstieg biete das OSM-Wiki an <a href=\"http://wiki.openstreetmap.org/wiki/DE:Getting_Involved\">dieser Stelle</a>."
 
 #, fuzzy
 #~ msgid ""
-#~ "No index was generated because no information was available in "
-#~ "OpenStreetMap to create one.\n"
+#~ "No index was generated because no information was available in OpenStreetMap to create one.\n"
 #~ "Feel free to contribute the missing data yourself. \n"
 #~ "See the \n"
-#~ "<a href=\"http://wiki.openstreetmap.org/wiki/Getting_Involved\">OSM Wiki</"
-#~ "a> for a start. "
-#~ msgstr ""
-#~ "Es wurde kein Index erstellt, da in OpenStreetMap die Daten dazu fehlen. "
-#~ "Sie können fehlenden Daten selbst eintragen. Einen guten Einstieg biete "
-#~ "das OSM-Wiki an <a href=\"http://wiki.openstreetmap.org/wiki/DE:"
-#~ "Getting_Involved\">dieser Stelle</a>."
+#~ "<a href=\"http://wiki.openstreetmap.org/wiki/Getting_Involved\">OSM Wiki</a> for a start. "
+#~ msgstr "Es wurde kein Index erstellt, da in OpenStreetMap die Daten dazu fehlen. Sie können fehlenden Daten selbst eintragen. Einen guten Einstieg biete das OSM-Wiki an <a href=\"http://wiki.openstreetmap.org/wiki/DE:Getting_Involved\">dieser Stelle</a>."
 
 #~ msgid ""
-#~ "No index was generated because no information was available in "
-#~ "OpenStreetMap to create one. \n"
+#~ "No index was generated because no information was available in OpenStreetMap to create one. \n"
 #~ "    Feel free to contribute the missing data yourself. \n"
-#~ "    See the <a href=\"http://wiki.openstreetmap.org/wiki/Getting_Involved"
-#~ "\">OSM Wiki</a> for a start. "
+#~ "    See the <a href=\"http://wiki.openstreetmap.org/wiki/Getting_Involved\">OSM Wiki</a> for a start. "
 #~ msgstr ""
-#~ "Es wurde kein Index erstellt, da in OpenStreetMap die nötigen "
-#~ "Informationen fehlen.\n"
+#~ "Es wurde kein Index erstellt, da in OpenStreetMap die nötigen Informationen fehlen.\n"
 #~ " Sie können die fehlenden Daten selbst eintragen.\n"
-#~ " Einen guten Einstieg bietet das OSM-Wiki an <a href=\"http://wiki."
-#~ "openstreetmap.org/wiki/DE:Getting_Involved\">dieser Stelle</a>."
+#~ " Einen guten Einstieg bietet das OSM-Wiki an <a href=\"http://wiki.openstreetmap.org/wiki/DE:Getting_Involved\">dieser Stelle</a>."
 
-#~ msgid ""
-#~ "No index was generated because no information was available in "
-#~ "OpenStreetMap to create one!"
-#~ msgstr ""
-#~ "Es wurde kein Straßenverzeichnis erstellt, da bei OpenStreetMap keine "
-#~ "entsprechenden Daten vorhanden sind."
+#~ msgid "No index was generated because no information was available in OpenStreetMap to create one!"
+#~ msgstr "Es wurde kein Straßenverzeichnis erstellt, da bei OpenStreetMap keine entsprechenden Daten vorhanden sind."
 
 #~ msgid "Search coming soon!"
 #~ msgstr "Suche kommt bald!"
@@ -1098,15 +1103,10 @@ msgstr "Weiter"
 #~ msgstr "Voraussichtliches Ende des Rendervorgangs"
 
 #~ msgid "Please fill in the form before trying to proceed"
-#~ msgstr ""
-#~ "Bitte füllen Sie das Formular aus, bevor Sie versuchen fortzufahren."
+#~ msgstr "Bitte füllen Sie das Formular aus, bevor Sie versuchen fortzufahren."
 
-#~ msgid ""
-#~ "This place cannot be rendered by MapOSMatic, administrative boundary "
-#~ "missing. Please contribute !"
-#~ msgstr ""
-#~ "Ein Plan dieses Ortes kann von MapOSMatic nicht erzeugt werden, da die "
-#~ "Verwaltungsgrenzen fehlen. Bitte helfen Sie mit!"
+#~ msgid "This place cannot be rendered by MapOSMatic, administrative boundary missing. Please contribute !"
+#~ msgstr "Ein Plan dieses Ortes kann von MapOSMatic nicht erzeugt werden, da die Verwaltungsgrenzen fehlen. Bitte helfen Sie mit!"
 
 #~ msgid "search"
 #~ msgstr "Suche"
@@ -1168,11 +1168,8 @@ msgstr "Weiter"
 #~ msgid "ETA before rendering"
 #~ msgstr "Voraussichtlicher Beginn des Rendervorgangs"
 
-#~ msgid ""
-#~ "No administrative boundaries found for this city. Try with proper casing."
-#~ msgstr ""
-#~ "Keine administrativen Grenzen für diese Stadt gefunden. Versuchen Sie es "
-#~ "mit korrekter Groß-/Kleinschreibung."
+#~ msgid "No administrative boundaries found for this city. Try with proper casing."
+#~ msgstr "Keine administrativen Grenzen für diese Stadt gefunden. Versuchen Sie es mit korrekter Groß-/Kleinschreibung."
 
 #~ msgid "Rendering failed, reason: <i>%(errmsg)s</i>"
 #~ msgstr "Rendern aus folgendem Grund fehlgeschlagen : <i>%(errmsg)s</i>"
@@ -1189,8 +1186,7 @@ msgstr "Weiter"
 #~ msgstr ""
 #~ "Unter Benutzung einer administrativen Grenze.\n"
 #~ "Dies erlaubt einen Plan mit präzisen Stadtgrenzen,\n"
-#~ "die momentan aber nur für etwa ein Drittel der französischen Großstädte "
-#~ "verfügbar sind.\n"
+#~ "die momentan aber nur für etwa ein Drittel der französischen Großstädte verfügbar sind.\n"
 #~ "Der Name der gewünschten Stadt muss <em>exakt</em>\n"
 #~ "mit dem in der OpenStreetMap-Datenbank übereinstimmen\n"
 #~ "(keine abweichende Großschreibung und diakritische Zeichen erlaubt).\n"
