@@ -23,12 +23,14 @@ The .po files are stored in www/locale/<locale>/LC_MESSAGES/. To
 generate or update a .po file:
 
   cd www/
-  ./manage.py makemessages -a # for all locales
+  ./manage.py makemessages --no-wrap -a # for all locales
 
 or
 
   cd www/
-  ./manage.py makemessages -l xx_XX # for one locale
+  ./manage.py makemessages --no-wrap -l xx_XX # for one locale
+
+Note: Django 1.3 is needed for the --no-wrap option.
 
 Then, edit the .po file manually, or using a graphical tool such as
 poedit (available in the Debian/Ubuntu package of the same name). Once
