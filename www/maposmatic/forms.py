@@ -95,7 +95,7 @@ class MapRenderingJobForm(forms.ModelForm):
                 description = _(u"Full-page layout with the street index on the side")
             elif r.name == 'single_page_index_bottom':
                 description = _(u"Full-page layout with the street index at the bottom")
-            elif r.name == 'multi_page2':
+            elif r.name == 'multi_page':
                 description = _(u"Multi-page layout")
             else:
                 description = mark_safe(_(u"The %(layout_name)s layout") % {'layout_name':r.name})
