@@ -20,7 +20,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: mapOSMatic 0.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-04-10 21:38+0200\n"
+"POT-Creation-Date: 2012-04-11 08:59+0200\n"
 "PO-Revision-Date: 2009-12-26 20:47+0100\n"
 "Last-Translator: Jean-Guilhem Cailton <jgc@arkemie.com>\n"
 "Language-Team: ES <LL@li.org>\n"
@@ -684,7 +684,7 @@ msgstr "Plano de la ciudad"
 
 #: templates/maposmatic/index.html:42
 #, fuzzy
-msgid "MapOSMatic is a free software web service that allows you to generate maps of cities using <a href=\"http://www.openstreetmap.org\">OpenStreetMap</a> data. MapOSMatic can generate two kinds of maps: :"
+msgid "MapOSMatic is a free software web service that allows you to generate maps of cities using <a href=\"http://www.openstreetmap.org\">OpenStreetMap</a> data. MapOSMatic can generate two kinds of maps:"
 msgstr "MapOSMatic es un servicio web de software libre que le permite generar planos de ciudad utilizando datos de <a href=\"http://www.openstreetmap.org\">OpenStreetMap</a>. Un plano de ciudad esta constituido de dos páginas:"
 
 #: templates/maposmatic/index.html:46

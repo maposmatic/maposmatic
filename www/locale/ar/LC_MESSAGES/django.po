@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-04-10 21:38+0200\n"
+"POT-Creation-Date: 2012-04-11 08:59+0200\n"
 "PO-Revision-Date: 2010-01-12 17:29+0300\n"
 "Last-Translator: Bassem JARKAS <jarkas@gmail.com>\n"
 "Language-Team: Arabic Translation\n"
@@ -645,7 +645,7 @@ msgstr "خريطة المدينة"
 
 #: templates/maposmatic/index.html:42
 #, fuzzy
-msgid "MapOSMatic is a free software web service that allows you to generate maps of cities using <a href=\"http://www.openstreetmap.org\">OpenStreetMap</a> data. MapOSMatic can generate two kinds of maps: :"
+msgid "MapOSMatic is a free software web service that allows you to generate maps of cities using <a href=\"http://www.openstreetmap.org\">OpenStreetMap</a> data. MapOSMatic can generate two kinds of maps:"
 msgstr "MapOSMatic هو برنامج خدمة ويب حر يسمح لك بتوليد خرائط للمدن باستخدام بيانات <a href=\"http://www.openstreetmap.org\">خريطة الشارع المفتوحة</a>. خريطة المدينة تتكون من صفحتين:"
 
 #: templates/maposmatic/index.html:46

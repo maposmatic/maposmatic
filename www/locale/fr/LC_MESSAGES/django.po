@@ -20,8 +20,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: mapOSMatic 0.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-04-10 20:59+0200\n"
-"PO-Revision-Date: 2012-04-10 21:05+0100\n"
+"POT-Creation-Date: 2012-04-11 08:59+0200\n"
+"PO-Revision-Date: 2012-04-11 08:59+0100\n"
 "Last-Translator: Thomas Petazzoni <thomas.petazzoni@enix.org>\n"
 "Language-Team: FR <LL@li.org>\n"
 "Language: \n"
@@ -676,7 +676,7 @@ msgid "City map"
 msgstr "Carte de la ville"
 
 #: templates/maposmatic/index.html:42
-msgid "MapOSMatic is a free software web service that allows you to generate maps of cities using <a href=\"http://www.openstreetmap.org\">OpenStreetMap</a> data. MapOSMatic can generate two kinds of maps: :"
+msgid "MapOSMatic is a free software web service that allows you to generate maps of cities using <a href=\"http://www.openstreetmap.org\">OpenStreetMap</a> data. MapOSMatic can generate two kinds of maps:"
 msgstr "MapOSMatic est un service Web en Logiciel Libre qui vous permet de générer des cartes de villes en utilisant les données <a href=\"http://www.openstreetmap.org\">OpenStreetMap</a>. MapOSMatic peut générer deux types de cartes :"
 
 #: templates/maposmatic/index.html:46
