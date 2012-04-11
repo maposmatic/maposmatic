@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-04-11 08:59+0200\n"
+"POT-Creation-Date: 2012-04-11 13:02+0200\n"
 "PO-Revision-Date: 2010-08-05 14:38+0100\n"
 "Last-Translator: Hans Fredrik Nordhaug <hans@nordhaug.priv.no>\n"
 "Language-Team: Norwegian Bokmål <i18n-nb@lister.ping.ui.no>\n"
@@ -488,12 +488,17 @@ msgstr "polsk oversettelse"
 msgid "indonesian translation"
 msgstr "russisk oversettelse"
 
-#: templates/maposmatic/about.html:193
+#: templates/maposmatic/about.html:193 templates/maposmatic/about.html:194
 #, fuzzy
 msgid "norvegian bokmål translation"
 msgstr "russisk oversettelse"
 
-#: templates/maposmatic/about.html:194
+#: templates/maposmatic/about.html:195
+#, fuzzy
+msgid "norvegian nynorsk translation"
+msgstr "russisk oversettelse"
+
+#: templates/maposmatic/about.html:196
 msgid "printable stylesheet"
 msgstr ""
 

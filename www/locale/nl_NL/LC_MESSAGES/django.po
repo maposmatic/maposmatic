@@ -19,7 +19,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: mapOSMatic 0.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-04-11 08:59+0200\n"
+"POT-Creation-Date: 2012-04-11 13:02+0200\n"
 "PO-Revision-Date: 2012-04-02 23:29+0100\n"
 "Last-Translator: Jeroen van Rijn <jvrnix@gmail.com>\n"
 "Language-Team: MapOSMatic Dutch Translation team\n"
@@ -540,11 +540,15 @@ msgstr "poolse vertaling"
 msgid "indonesian translation"
 msgstr "indonesische vertaling"
 
-#: templates/maposmatic/about.html:193
+#: templates/maposmatic/about.html:193 templates/maposmatic/about.html:194
 msgid "norvegian bokmål translation"
 msgstr "noorse (bokmål) vertaling"
 
-#: templates/maposmatic/about.html:194
+#: templates/maposmatic/about.html:195
+msgid "norvegian nynorsk translation"
+msgstr "noorse (nynorsk) vertaling"
+
+#: templates/maposmatic/about.html:196
 msgid "printable stylesheet"
 msgstr "afdrukbaar stijlblad"
 

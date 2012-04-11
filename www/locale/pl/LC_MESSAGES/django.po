@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-04-11 08:59+0200\n"
+"POT-Creation-Date: 2012-04-11 13:02+0200\n"
 "PO-Revision-Date: 2010-07-07 18:32+0200\n"
 "Last-Translator: Łukasz Jernaś <deejay1@srem.org>\n"
 "Language-Team: Polish <dev@maposmatic.org>\n"
@@ -466,12 +466,17 @@ msgstr "tłumaczenie na język polski"
 msgid "indonesian translation"
 msgstr "tłumaczenie na język rosyjski"
 
-#: templates/maposmatic/about.html:193
+#: templates/maposmatic/about.html:193 templates/maposmatic/about.html:194
 #, fuzzy
 msgid "norvegian bokmål translation"
 msgstr "tłumaczenie na język rosyjski"
 
-#: templates/maposmatic/about.html:194
+#: templates/maposmatic/about.html:195
+#, fuzzy
+msgid "norvegian nynorsk translation"
+msgstr "tłumaczenie na język rosyjski"
+
+#: templates/maposmatic/about.html:196
 msgid "printable stylesheet"
 msgstr ""
 

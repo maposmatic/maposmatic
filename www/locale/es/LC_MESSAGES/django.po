@@ -20,7 +20,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: mapOSMatic 0.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-04-11 08:59+0200\n"
+"POT-Creation-Date: 2012-04-11 13:02+0200\n"
 "PO-Revision-Date: 2009-12-26 20:47+0100\n"
 "Last-Translator: Jean-Guilhem Cailton <jgc@arkemie.com>\n"
 "Language-Team: ES <LL@li.org>\n"
@@ -497,12 +497,17 @@ msgstr "traducción al polaco"
 msgid "indonesian translation"
 msgstr "traducción al ruso"
 
-#: templates/maposmatic/about.html:193
+#: templates/maposmatic/about.html:193 templates/maposmatic/about.html:194
 #, fuzzy
 msgid "norvegian bokmål translation"
 msgstr "traducción al ruso"
 
-#: templates/maposmatic/about.html:194
+#: templates/maposmatic/about.html:195
+#, fuzzy
+msgid "norvegian nynorsk translation"
+msgstr "traducción al ruso"
+
+#: templates/maposmatic/about.html:196
 msgid "printable stylesheet"
 msgstr ""
 

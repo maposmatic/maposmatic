@@ -21,7 +21,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: mapOSMatic 0.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-04-11 08:59+0200\n"
+"POT-Creation-Date: 2012-04-11 13:02+0200\n"
 "PO-Revision-Date: 2010-10-20 11:43+0200\n"
 "Last-Translator: Joan Montané <joan--sense-spam--montane.cat>\n"
 "Language-Team: Català <joan--sense-spam--montane.cat>\n"
@@ -492,12 +492,17 @@ msgstr "traducció al polonès"
 msgid "indonesian translation"
 msgstr "traducció al rus"
 
-#: templates/maposmatic/about.html:193
+#: templates/maposmatic/about.html:193 templates/maposmatic/about.html:194
 #, fuzzy
 msgid "norvegian bokmål translation"
 msgstr "traducció al rus"
 
-#: templates/maposmatic/about.html:194
+#: templates/maposmatic/about.html:195
+#, fuzzy
+msgid "norvegian nynorsk translation"
+msgstr "traducció al rus"
+
+#: templates/maposmatic/about.html:196
 #, fuzzy
 msgid "printable stylesheet"
 msgstr "Full d'estil"

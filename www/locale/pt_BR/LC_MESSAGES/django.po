@@ -20,7 +20,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: mapOSMatic 0.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-04-11 08:59+0200\n"
+"POT-Creation-Date: 2012-04-11 13:02+0200\n"
 "PO-Revision-Date: 2012-04-10 19:26-0300\n"
 "Last-Translator: Rodrigo de Avila <rodrigo@avila.net.br>\n"
 "Language-Team: PT <LL@li.org>\n"
@@ -548,11 +548,15 @@ msgstr "tradução para o polonês"
 msgid "indonesian translation"
 msgstr "tradução para o indonésio"
 
-#: templates/maposmatic/about.html:193
+#: templates/maposmatic/about.html:193 templates/maposmatic/about.html:194
 msgid "norvegian bokmål translation"
 msgstr "tradução para norvegian bokmål"
 
-#: templates/maposmatic/about.html:194
+#: templates/maposmatic/about.html:195
+msgid "norvegian nynorsk translation"
+msgstr "tradução para norvegian nynorsk"
+
+#: templates/maposmatic/about.html:196
 msgid "printable stylesheet"
 msgstr "folha de estilo para impressora"
 

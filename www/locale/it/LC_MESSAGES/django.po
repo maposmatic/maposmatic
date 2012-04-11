@@ -20,7 +20,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: mapOSMatic 0.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-04-11 08:59+0200\n"
+"POT-Creation-Date: 2012-04-11 13:02+0200\n"
 "PO-Revision-Date: 2012-04-06 17:00+0100\n"
 "Last-Translator: Simone Cortesi <simone@cortesi.com>\n"
 "Language-Team: IT <talk-it@openstreetmap.org>\n"
@@ -542,11 +542,15 @@ msgstr "traduzione polacca"
 msgid "indonesian translation"
 msgstr "traduzione indonesiana"
 
-#: templates/maposmatic/about.html:193
+#: templates/maposmatic/about.html:193 templates/maposmatic/about.html:194
 msgid "norvegian bokmål translation"
 msgstr "traduzione norvegese bokmål"
 
-#: templates/maposmatic/about.html:194
+#: templates/maposmatic/about.html:195
+msgid "norvegian nynorsk translation"
+msgstr "traduzione norvegese nynorsk"
+
+#: templates/maposmatic/about.html:196
 msgid "printable stylesheet"
 msgstr "foglio di stile stampabile"
 
