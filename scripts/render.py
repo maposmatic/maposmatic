@@ -158,18 +158,13 @@ class JobRenderer(threading.Thread):
             montage_cmd = [ "montage", "-tile", tile, "%s.pdf[0]" % prefix,
                             "%s.pdf[2]" % prefix, "-geometry", "+10+10",
                             "-shadow", "%s%s" % (prefix, THUMBNAIL_SUFFIX) ]
-            ret = subprocess.call(montage_cmd)
-            if ret != 0:
-                return
+            subprocess.check_call(montage_cmd)
 
             # And now scale it to the normal thumbnail size
             mogrify_cmd = [ "mogrify", "-scale", "200x200",
                             "%s%s" % (prefix, THUMBNAIL_SUFFIX) ]
-            ret = subprocess.call(mogrify_cmd)
-            if ret != 0:
-                return
-        else:
-            if 'png' in RENDERING_RESULT_FORMATS:
+            subprocess.check_call(mogrify_cmd)
+        elif 'png' in RENDERING_RESULT_FORMATS:
                 img = Image.open(prefix + '.png')
                 img.thumbnail((200, 200), Image.ANTIALIAS)
                 img.save(prefix + THUMBNAIL_SUFFIX)
