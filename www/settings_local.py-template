@@ -71,6 +71,14 @@ ITEMS_PER_PAGE = 25
 # start-stop-daemon(8) in debian systems:
 MAPOSMATIC_PID_FILE = '/var/run/maposmaticd.pid'
 
+# Settings for exception emails: the from email address, and the list of
+# receipient email addresses. No emails are sent if the receipients list is
+# empty.
+DAEMON_ERRORS_SMTP_HOST = 'localhost'
+DAEMON_ERRORS_SMTP_PORT = 25
+DAEMON_ERRORS_EMAIL_FROM = 'daemon@domain.com'
+DAEMON_ERRORS_JOB_URL = 'http://domain.com/jobs/%d'
+
 ###
 ## Optional: if you need to extend the python search path, then write
 ## something like the following:

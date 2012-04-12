@@ -26,16 +26,21 @@ import ctypes
 import Image
 import logging
 import os
+import smtplib
 import sys
 import threading
+import traceback
 import subprocess
 
 import ocitysmap2
 import ocitysmap2.coords
 from ocitysmap2 import renderers
 from www.maposmatic.models import MapRenderingJob
-from www.settings import OCITYSMAP_CFG_PATH
+from www.settings import ADMINS, OCITYSMAP_CFG_PATH
 from www.settings import RENDERING_RESULT_PATH, RENDERING_RESULT_FORMATS
+from www.settings import DAEMON_ERRORS_SMTP_HOST, DAEMON_ERRORS_SMTP_PORT
+from www.settings import DAEMON_ERRORS_EMAIL_FROM
+from www.settings import DAEMON_ERRORS_JOB_URL
 
 RESULT_SUCCESS = 0
 RESULT_KEYBOARD_INTERRUPT = 1
@@ -213,6 +218,7 @@ class JobRenderer(threading.Thread):
             self.result = RESULT_PREPARATION_EXCEPTION
             l.exception("Rendering of job #%d failed (exception occurred during"
                         " data preparation)!" % self.job.id)
+            self._email_exception(e)
             return self.result
 
         prefix = os.path.join(RENDERING_RESULT_PATH, self.job.files_prefix())
@@ -244,6 +250,7 @@ class JobRenderer(threading.Thread):
             self.result = RESULT_RENDERING_EXCEPTION
             l.exception("Rendering of job #%d failed (exception occurred during"
                         " rendering)!" % self.job.id)
+            self._email_exception(e)
 
         # Remove the job files if the rendering was not successful.
         if self.result:
@@ -251,6 +258,39 @@ class JobRenderer(threading.Thread):
 
         return self.result
 
+    def _email_exception(self, e):
+        if not DAEMON_ERRORS_EMAIL_RECEIPIENTS:
+            return
+
+        try:
+            mailer = smtplib.SMTP()
+            mailer.connect(DAEMON_ERRORS_SMTP_HOST, DAEMON_ERRORS_SMTP_PORT)
+
+            msg = ("""From: MapOSMatic rendering daemon <%(from)s>
+To: %(to)s
+Subject: Rendering of job #%(jobid)d failed
+Date: %(date)s
+
+An error occured while rendering job #%(jobid)d:
+
+%(tb)s
+
+
+View the job details at <%(url)s>.
+-- 
+MapOSMatic
+""" % { 'from': DAEMON_ERRORS_EMAIL_FROM,
+        'to': ', '.join(['%s <%s>' % admin for admin in ADMINS]),
+        'jobid': self.job.id,
+        'date': datetime.datetime.now().strftime('%a, %d %b %Y %H:%M:%S %Z'),
+        'url': DAEMON_ERRORS_JOB_URL % self.job.id,
+        'tb': ''.join(traceback.format_tb(e)) })
+
+            mailer.sendmail(DAEMON_ERRORS_EMAIL_FROM,
+                    DAEMON_ERRORS_EMAIL_RECEIPIENTS, msg)
+        except:
+            l.warn("Could not send error email to %s!" %
+                    DAEMON_ERRORS_EMAIL_RECEIPIENTS)
 
 if __name__ == '__main__':
     def usage():
