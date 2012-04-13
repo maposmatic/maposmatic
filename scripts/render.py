@@ -267,22 +267,30 @@ class JobRenderer(threading.Thread):
             mailer = smtplib.SMTP()
             mailer.connect(DAEMON_ERRORS_SMTP_HOST, DAEMON_ERRORS_SMTP_PORT)
 
+            jobinfo = []
+            for k, v in self.job.__dict__.iteritems():
+                jobinfo.append('  %s: %s' % (k, str(v)))
+
             msg = ("""From: MapOSMatic rendering daemon <%(from)s>
 To: %(to)s
 Subject: Rendering of job #%(jobid)d failed
 Date: %(date)s
 
-An error occured while rendering job #%(jobid)d:
+An error occured while rendering job #%(jobid)d!
 
 %(tb)s
 
+Job information:
 
-View the job details at <%(url)s>.
+%(jobinfo)s
+
+You can view the job page at <%(url)s>.
 -- 
 MapOSMatic
 """ % { 'from': DAEMON_ERRORS_EMAIL_FROM,
         'to': ', '.join(['%s <%s>' % admin for admin in ADMINS]),
         'jobid': self.job.id,
+        'jobinfo': '\n'.join(jobinfo),
         'date': datetime.datetime.now().strftime('%a, %d %b %Y %H:%M:%S %Z'),
         'url': DAEMON_ERRORS_JOB_URL % self.job.id,
         'tb': traceback.format_exc(e) })
