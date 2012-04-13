@@ -23,6 +23,7 @@
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 import ctypes
+import datetime
 import Image
 import logging
 import os
@@ -254,10 +255,15 @@ class JobRenderer(threading.Thread):
         return self.result
 
     def _email_exception(self, e):
-        if not DAEMON_ERRORS_EMAIL_RECEIPIENTS:
+        if not ADMINS:
             return
 
         try:
+            l.info("Emailing rendering exceptions to the admins (%s) via %s:%d..." %
+                (', '.join([admin[1] for admin in ADMINS]),
+                 DAEMON_ERRORS_SMTP_HOST,
+                 DAEMON_ERRORS_SMTP_PORT))
+
             mailer = smtplib.SMTP()
             mailer.connect(DAEMON_ERRORS_SMTP_HOST, DAEMON_ERRORS_SMTP_PORT)
 
@@ -279,13 +285,13 @@ MapOSMatic
         'jobid': self.job.id,
         'date': datetime.datetime.now().strftime('%a, %d %b %Y %H:%M:%S %Z'),
         'url': DAEMON_ERRORS_JOB_URL % self.job.id,
-        'tb': ''.join(traceback.format_tb(e)) })
+        'tb': traceback.format_exc(e) })
 
             mailer.sendmail(DAEMON_ERRORS_EMAIL_FROM,
-                    DAEMON_ERRORS_EMAIL_RECEIPIENTS, msg)
-        except:
-            l.warn("Could not send error email to %s!" %
-                    DAEMON_ERRORS_EMAIL_RECEIPIENTS)
+                    [admin[1] for admin in ADMINS], msg)
+            l.info("Error report sent.")
+        except Exception, e:
+            l.exception("Could not send error email to the admins!")
 
 if __name__ == '__main__':
     def usage():
