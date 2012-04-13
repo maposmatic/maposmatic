@@ -278,6 +278,8 @@ class JobRenderer(threading.Thread):
             msg = ("""From: MapOSMatic rendering daemon <%(from)s>
 Reply-To: %(replyto)s
 To: %(to)s
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
 Subject: Rendering of job #%(jobid)d failed
 Date: %(date)s
 
