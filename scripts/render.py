@@ -269,8 +269,11 @@ class JobRenderer(threading.Thread):
             mailer.connect(DAEMON_ERRORS_SMTP_HOST, DAEMON_ERRORS_SMTP_PORT)
 
             jobinfo = []
-            for k, v in self.job.__dict__.iteritems():
-                jobinfo.append('  %s: %s' % (k, str(v)))
+            for k in sorted(self.job.__dict__.keys()):
+                # We don't care about state that much, especially since it
+                # doesn't display well
+                if k != '_state':
+                    jobinfo.append('  %s: %s' % (k, str(self.job.__dict__[k])))
 
             msg = ("""From: MapOSMatic rendering daemon <%(from)s>
 Reply-To: %(replyto)s
