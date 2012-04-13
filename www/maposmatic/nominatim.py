@@ -33,19 +33,41 @@ Simple API to query http://nominatim.openstreetmap.org
 Most of the credits should go to gthe Nominatim team.
 """
 
-import www.settings
+from django.utils.translation import ugettext
+import logging
 import psycopg2
 from urllib import urlencode
 import urllib2
 from xml.etree.ElementTree import parse as XMLTree
 
+from ocitysmap2 import coords
+import www.settings
+from www.maposmatic import gisdb
 
-NOMINATIM_BASE_URL = "http://nominatim.openstreetmap.org/search/"
+NOMINATIM_BASE_URL = 'http://nominatim.openstreetmap.org'
+NOMINATIM_MAX_RESULTS_PER_RESPONSE = 10
 
+l = logging.getLogger('maposmatic')
 
-def query(query_text, with_polygons = False):
-    """
-    Query the nominatim service for the given city query and return a
+def reverse_geo(lat, lon):
+    """Query the nominatim service for the given lat/long coordinates and
+    returns the reverse geocoded informations."""
+
+    url = '%s/reverse?' % NOMINATIM_BASE_URL
+    url = url + ("lat=%f&lon=%f" % (lat, lon))
+
+    f = urllib2.urlopen(url=url)
+    result = []
+
+    for place in XMLTree(f).getroot().getchildren():
+        attribs = dict(place.attrib)
+        for elt in place.getchildren():
+            attribs[elt.tag] = elt.text
+        result.append(attribs)
+    return result
+
+def query(query_text, exclude, with_polygons=False):
+    """Query the nominatim service for the given city query and return a
     (python) list of entries for the given squery (eg. "Paris"). Each
     entry is a dictionary key -> value (value is always a
     string). When possible, we also try to uncover the OSM database
@@ -57,17 +79,21 @@ def query(query_text, with_polygons = False):
       - key "id": ID of the OSM database entry
       - key "admin_level": The value stored in the OSM table for admin_level
     """
-    entries = _fetch_entries(query_text, with_polygons)
-    return _canonicalize_data(_retrieve_missing_data_from_GIS(entries))
+    xml = _fetch_xml(query_text, exclude, with_polygons)
+    (hasprev, prevexcludes, hasnext, nextexcludes) = _compute_prev_next_excludes(xml)
+    entries = _extract_entries(xml)
+    entries = _prepare_and_filter_entries(entries)
+    return _canonicalize_data({
+        'hasprev'     : hasprev,
+        'prevexcludes': prevexcludes,
+        'hasnext'     : hasnext,
+        'nextexcludes': nextexcludes,
+        'entries'     : entries
+        })
 
-
-def _fetch_entries(query_text, with_polygons):
-    """
-    Query the nominatim service for the given city query and return a
-    (python) list of entries for the given squery (eg. "Paris"). Each
-    entry is a dictionary key -> value (value is always a
-    string).
-    """
+def _fetch_xml(query_text, exclude, with_polygons):
+    """Query the nominatim service for the given city query and return a
+    XMLTree object."""
     # For some reason, the "xml" nominatim output is ALWAYS used, even
     # though we will later (in views.py) transform this into
     # json. This is because we know that this xml output is correct
@@ -75,14 +101,23 @@ def _fetch_entries(query_text, with_polygons):
     # json output)
     query_tags = dict(q=query_text.encode("UTF-8"),
                       format='xml', addressdetails=1)
+
     if with_polygons:
         query_tags['polygon']=1
 
-    qdata = urlencode(query_tags)
-    f = urllib2.urlopen(url="%s?%s" % (NOMINATIM_BASE_URL, qdata))
+    if exclude != '':
+        query_tags['exclude_place_ids'] = exclude
 
+    qdata = urlencode(query_tags)
+    f = urllib2.urlopen(url="%s/search/?%s" % (NOMINATIM_BASE_URL, qdata))
+    return XMLTree(f)
+
+def _extract_entries(xml):
+    """Given a XMLTree object of a Nominatim result, return a (python)
+    list of entries for the given squery (eg. "Paris"). Each entry is
+    a dictionary key -> value (value is always a string)."""
     result = []
-    for place in XMLTree(f).getroot().getchildren():
+    for place in xml.getroot().getchildren():
         attribs = dict(place.attrib)
         for elt in place.getchildren():
             attribs[elt.tag] = elt.text
@@ -90,13 +125,52 @@ def _fetch_entries(query_text, with_polygons):
 
     return result
 
+def _compute_prev_next_excludes(xml):
+    """Given a XML response from Nominatim, determines the set of
+    "exclude_place_ids" that should be used to get the next set of
+    entries and the previous set of entries. We also determine
+    booleans saying whether there are or not previous or next entries
+    available. This allows the website to show previous/next buttons
+    in the administrative boundary search box.
+
+    Args:
+         xml (XMLTree): the XML tree of the Nominatim response
+
+    Returns a (hasprev, prevexcludes, hasnext, nextexcludes) tuple,
+    where:
+         hasprev (boolean): Whether there are or not previous entries.
+         prevexcludes (string): String to pass as exclude_place_ids to
+            get the previous entries.
+         hasnext (boolean): Whether there are or not next entries.
+         nextexcludes (string): String to pass as exclude_place_ids to
+             get the next entries.
+    """
+    excludes = xml.getroot().get("exclude_place_ids", None)
+
+    # Assume we always have next entries, because there is no way to
+    # know in advance if Nominatim has further entries.
+    nextexcludes = excludes
+    hasnext = True
+
+    # Compute the exclude list to get the previous list
+    prevexcludes = ""
+    hasprev = False
+    if excludes is not None:
+        excludes_list = excludes.split(',')
+        hasprev = len(excludes_list) > NOMINATIM_MAX_RESULTS_PER_RESPONSE
+        prevexcludes_count = ((len(excludes_list) /
+                              NOMINATIM_MAX_RESULTS_PER_RESPONSE) *
+                              NOMINATIM_MAX_RESULTS_PER_RESPONSE -
+                              2 * NOMINATIM_MAX_RESULTS_PER_RESPONSE)
+        if prevexcludes_count >= 0:
+            prevexcludes = ','.join(excludes_list[:prevexcludes_count])
+
+    return (hasprev, prevexcludes, hasnext, nextexcludes)
 
 def _canonicalize_data(data):
-    """
-    Take a structure containing strings (dict, list, scalars, ...)
+    """Take a structure containing strings (dict, list, scalars, ...)
     and convert it into the same structure with the proper conversions
-    to float or integers, etc.
-    """
+    to float or integers, etc."""
     if type(data) is tuple:
         return tuple(_canonicalize_data(x) for x in data)
     elif type(data) is list:
@@ -113,33 +187,16 @@ def _canonicalize_data(data):
             pass
     return data
 
+def _get_admin_boundary_info_from_GIS(cursor, osm_id):
+    """Lookup additional data for the administrative boundary of given
+    relation osm_id.
 
-def _retrieve_missing_data_from_GIS(entries):
+    Args:
+          osm_id (int) : the OSM id of the relation to lookup
+
+    Returns a tuple (osm_id, admin_level, table_name, valid,
+    reason, reason_text).
     """
-    Try to retrieve additional OSM information for the given nominatim
-    entries. Among the information, we try to determine the real ID in
-    an OSM table for each of these entries. All these additional data
-    are stored in the "ocitysmap_params" key of the entry, which maps
-    to a dictionary containing:
-      - key "table": when "line" -> refers to table "planet_osm_line";
-        when "polygon" -> "planet_osm_polygon"
-      - key "id": ID of the OSM database entry
-      - key "admin_level": The value stored in the OSM table for admin_level
-    """
-    if not www.settings.has_gis_database():
-        return entries
-
-    try:
-        conn = psycopg2.connect("dbname='%s' user='%s' host='%s' password='%s'" %
-                                (www.settings.GIS_DATABASE_NAME,
-                                 www.settings.GIS_DATABASE_USER,
-                                 www.settings.GIS_DATABASE_HOST,
-                                 www.settings.GIS_DATABASE_PASSWORD))
-    except psycopg2.OperationalError, e:
-        www.settings.LOG.warning("Could not connect to the PostGIS database: %s" %
-                                 str(e)[:-1])
-        return entries
-
     # Nominatim returns a field "osm_id" for each result
     # entry. Depending on the type of the entry, it can point to
     # various database entries. For admin boundaries, osm_id is
@@ -148,94 +205,135 @@ def _retrieve_missing_data_from_GIS(entries):
     # the "relation" items by osm2pgsql, which assigns to that ID the
     # opposite of osm_id... But we still consider that it could be the
     # real osm_id (not its opposite). Let's have fun...
+    for table_name in ("polygon", "line"):
+        # Lookup the polygon/line table for both osm_id and
+        # the opposite of osm_id
+        cursor.execute("""select osm_id, admin_level,
+                          st_astext(st_envelope(st_transform(way,
+                          4002))) AS bbox
+                          from planet_osm_%s
+                          where osm_id = -%s"""
+                       % (table_name,osm_id))
+        result = tuple(set(cursor.fetchall()))
 
-    # Will sort the entries so that the admin boundaries appear first,
-    # then cities, towns, etc. Second order: larger cities
-    # (ie. greater way_area) are listed first
-    unsorted_entries = []
-    admin_boundary_names = set()
-    PLACE_RANKS = { 'city': 20, 'town': 30, 'municipality': 40,
-                    'village': 50, 'hamlet': 60, 'suburb': 70,
-                    'island': 80, 'islet': 90, 'locality': 100 }
-    ADMIN_LEVEL_RANKS = { '8': 0, '7': 1, '6': 2, '5':3 } # level 8 is best !
-    try:
-        cursor = conn.cursor()
-        for entry in entries:
-            # Should we try to lookup the id in the OSM DB ?
-            lookup_OSM = False
+        if len(result) == 0:
+            continue
 
-            # Highest rank = last in the output
-            entry_rank = (1000,0) # tuple (sort rank, -area)
+        osm_id, admin_level, bboxtxt = result[0]
+        bbox = coords.BoundingBox.parse_wkt(bboxtxt)
+        (metric_size_lat, metric_size_lon) = bbox.spheric_sizes()
+        if (metric_size_lat > www.settings.BBOX_MAXIMUM_LENGTH_IN_METERS
+            or metric_size_lon > www.settings.BBOX_MAXIMUM_LENGTH_IN_METERS):
+            valid = False
+            reason = "area-too-big"
+            reason_text = ugettext("Administrative area too big for rendering")
+        else:
+            valid = True
+            reason = ""
+            reason_text = ""
 
-            # Try to determine the order in which this entry should appear
-            if entry.get("class") == "boundary":
-                if entry.get("type") == "administrative":
-                    entry_rank = (10,0)
-                    admin_boundary_names.add(entry.get("display_name", 42))
-                    lookup_OSM = True
-                else:
-                    # Just don't try to lookup any additional
-                    # information from OSM when the nominatim entry is
-                    # not an administrative boundary
-                    continue
-            elif entry.get("class") == "place":
-                try:
-                    entry_rank = (PLACE_RANKS[entry.get("type")],0)
-                except KeyError:
-                    # Will ignore all the other place tags
-                    continue
-            else:
-                # We ignore all the other classes
-                continue
+        return (osm_id, admin_level, table_name,
+                valid, reason, reason_text)
 
-            # Try to lookup in the OSM DB, when needed and when it
-            # makes sense (ie. the data is coming from a relation)
-            if lookup_OSM and (entry.get('osm_type') == "relation"):
-                for table_name in ("polygon", "line"):
-                    # Lookup the polygon/line table for both osm_id and
-                    # the opposite of osm_id
-                    cursor.execute("""select osm_id, admin_level, way_area
-                                      from planet_osm_%s
-                                      where osm_id = -%s""" \
-                                       % (table_name,entry["osm_id"]))
-                    result = tuple(set(cursor.fetchall()))
+    # Not found
+    return None
 
-                    # Result is only valid if it has a way_area.
-                    if len(result) == 1 and result[0][2]:
-                        osm_id, admin_level, way_area = result[0]
-                        entry["ocitysmap_params"] \
-                            = dict(table=table_name, id=osm_id,
-                                   admin_level=admin_level,
-                                   way_area=way_area)
-                        # Make these first in list, priviledging level 8
-                        entry_rank = (ADMIN_LEVEL_RANKS.get(admin_level,9),
-                                      -way_area)
-                        break
+def _prepare_entry(cursor, entry):
+    """Prepare an entry by adding additional informations to it, in the
+    form of a ocitysmap_params dictionary.
 
-            # Register this entry for the results
-            unsorted_entries.append((entry_rank, entry))
+    Args:
+           cursor: database connection cursor
+           entry:  the entry to enrich
 
-        # Some cleanup
-        cursor.close()
-    finally:
-        conn.close()
+    Returns nothing, but adds an ocitysmap_params dictionary to the
+    entry. It will contain entries 'valid', 'reason', 'reason_text'
+    when the entry is invalid, or 'table', 'id', 'valid', 'reason',
+    'reason_text' when the entry is valid. Meaning of those values:
 
-    # Sort the entries according to their rank
-    sorted_entries = [entry for rank,entry in sorted(unsorted_entries,
-                                                     key=lambda kv: kv[0])]
+           valid (boolean): tells whether the entry is valid for
+           rendering or not
 
-    # Remove those non-admin-boundaries having the same name as an
-    # admin boundary
-    retval = []
-    for e in sorted_entries:
-        if e.get("class") != "boundary" or e.get("type") != "administrative":
-            if e.get("display_name") in admin_boundary_names:
-                continue
-        retval.append(e)
+           reason (string): non human readable short string that
+           describes why the entry is invalid. To be used for
+           Javascript comparaison. Empty for valid entries.
 
-    return retval
+           reason_text (string): human readable and translated
+           explanation of why the entry is invalid. Empty for valid
+           entries.
 
+           table (string): "line" or "polygon", tells in which table
+           the administrative boundary has been found. Only present
+           for valid entries.
 
+           id (string): the OSM id. Only present for valid entries.
+
+           admin_level (string): the administrative boundary
+           level. Only present for valid entries.
+    """
+    # Try to lookup in the OSM DB, when needed and when it
+    # makes sense (ie. the data is coming from a relation)
+    if (entry.get("class") == "boundary" and
+        entry.get("type") == "administrative" and
+        entry.get('osm_type') == "relation"):
+        details = _get_admin_boundary_info_from_GIS(cursor, entry["osm_id"])
+
+        if details is None:
+            entry["ocitysmap_params"] \
+                = dict(valid=False,
+                       reason="no-admin",
+                       reason_text=ugettext("No administrative boundary"))
+        else:
+            (osm_id, admin_level, table_name,
+             valid, reason, reason_text) = details
+            entry["ocitysmap_params"] \
+                = dict(table=table_name, id=osm_id,
+                       admin_level=admin_level,
+                       valid=valid,
+                       reason=reason,
+                       reason_text=reason_text)
+    else:
+        entry["ocitysmap_params"] \
+            = dict(valid=False,
+                   reason="no-admin",
+                   reason_text=ugettext("No administrative boundary"))
+
+def _prepare_and_filter_entries(entries):
+    """Try to retrieve additional OSM information for the given nominatim
+    entries. Among the information, we try to determine the real ID in
+    an OSM table for each of these entries. All these additional data
+    are stored in the "ocitysmap_params" key of the entry."""
+
+    if not www.settings.has_gis_database():
+        return entries
+
+    db = gisdb.get()
+    if db is None:
+        return entries
+
+    place_tags = [ 'city', 'town', 'municipality',
+                   'village', 'hamlet', 'suburb',
+                   'island', 'islet', 'locality',
+                   'administrative' ]
+    filtered_results = []
+
+    cursor = db.cursor()
+    for entry in entries:
+
+        # Ignore uninteresting tags
+        if not entry.get("type") in place_tags:
+            continue
+
+        # Our entry wil be part of the result
+        filtered_results.append(entry)
+
+        # Enrich the entry with more info
+        _prepare_entry(cursor, entry)
+
+    # Some cleanup
+    cursor.close()
+
+    return filtered_results
 
 if __name__ == "__main__":
     import pprint, sys

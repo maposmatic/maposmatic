@@ -20,8 +20,35 @@ Translation
 ===========
 
 The .po files are stored in www/locale/<locale>/LC_MESSAGES/. To
-generate or update a .po file, run: django-admin.py makemessages -l
-<locale>. Then, edit the .po file manually, or using a graphical tool
-such as poedit (available in the Debian/Ubuntu package of the same
-name). Once done, don't forget to compile the .po file into an .mo
-file using django-admin.py compilemessages.
+generate or update a .po file:
+
+  cd www/
+  ./manage.py makemessages --no-wrap -a # for all locales
+
+or
+
+  cd www/
+  ./manage.py makemessages --no-wrap -l xx_XX # for one locale
+
+Note: Django 1.3 is needed for the --no-wrap option.
+
+Then, edit the .po file manually, or using a graphical tool such as
+poedit (available in the Debian/Ubuntu package of the same name). Once
+done, don't forget to compile the .po file into an .mo file using:
+
+ ./manage.py compilemessages
+
+WARNING: There is a known bug in Django makemessages 1.2.x (and maybe
+         other versions are affected as well): percent (%) signs in
+         {%blocktrans%} tags are doubled (%%). This defeats the
+         matching of a msgid against source code. As a workaround, %%
+         signs in .po files must be replaced by single % signs. This
+         is typically needed for the Wikipedia URL pointing to the
+         Hacker culture.
+
+         In order to workaround this bug, we recommend running:
+
+         find locale/ -name 'django.po' | xargs sed -i 's/%%/%/g'
+
+         after the execution of the makemessages command.
+

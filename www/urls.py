@@ -41,7 +41,10 @@ urlpatterns = patterns('',
         name='main'),
     url(r'^about/$', maposmatic.views.about,
         name='about'),
-
+    url(r'^donate/$', maposmatic.views.donate,
+        name='donate'),
+    url(r'^donate-thanks/$', maposmatic.views.donate_thanks,
+        name='donate-thanks'),
     url(r'^jobs/(?P<job_id>\d+)/(?P<job_nonce>[A-Za-z]{16})$',
         maposmatic.views.job,
         name='job-by-id-and-nonce'),
@@ -62,7 +65,11 @@ urlpatterns = patterns('',
     url(r'^cancel/$', maposmatic.views.cancel,
         name='cancel'),
 
-    (r'^nominatim/([^/]*/)?(.*)$', maposmatic.views.query_nominatim),
+    (r'^apis/nominatim/$', maposmatic.views.query_nominatim),
+
+    (r'^apis/reversegeo/([^/]*)/([^/]*)/$', maposmatic.views.nominatim_reverse),
+
+    (r'^apis/papersize', maposmatic.views.query_papersize),
 
     # Internationalization
     (r'^i18n/', include('django.conf.urls.i18n')),

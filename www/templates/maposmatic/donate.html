@@ -1,0 +1,58 @@
+{% extends "maposmatic/base.html" %}
+
+{% comment %}
+ coding: utf-8
+
+ maposmatic, the web front-end of the MapOSMatic city map generation system
+ Copyright (C) 2012  Thomas Petazzoni
+
+ This program is free software: you can redistribute it and/or modify
+ it under the terms of the GNU Affero General Public License as
+ published by the Free Software Foundation, either version 3 of the
+ License, or any later version.
+
+ This program is distributed in the hope that it will be useful,
+ but WITHOUT ANY WARRANTY; without even the implied warranty of
+ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ GNU Affero General Public License for more details.
+
+ You should have received a copy of the GNU Affero General Public License
+ along with this program.  If not, see <http://www.gnu.org/licenses/>.
+{% endcomment %}
+
+{% load i18n %}
+
+{% block menu-donate %}
+class="activelink"
+{% endblock %}
+
+{% block page %}
+<h1>{% trans "Donate" %}</h1>
+<h2>{% trans "Why donations are useful?" %}</h2>
+
+{% url about as about_url %}
+
+<p>{%blocktrans%}MapOSMatic is a project entirely developed and maintained by a team of volunteers (see our <a href="{{about_url}}">About</a> page for details). However, running the MapOSMatic service and making improvements to it have various costs beyond the time of the volunteer developers.{%endblocktrans%}</p>
+
+<p>{%blocktrans%}Therefore, we are currently seeking donations to help us funding:{%endblocktrans%}</p>
+
+<ul>
+  <li>{%blocktrans%}Acquisition of a Solid-State Disk for the storage of our local copy of the OpenStreetMap database. A SSD drive performs 40 to 50 times better than the conventional hard drive we are using today, and would therefore help us to reduce the lag between our local database and the official one, providing more up-to-date maps. The cost of such hardware is about 500 to 700 €.{%endblocktrans%}</li>
+
+  <li>{%blocktrans%}Participation to the transportation expenses of the MapOSMatic developers when they gather for <i>hackfests</i> (meeting of developers). You can read our <a href="http://news.maposmatic.org">blog</a> to learn more about what we achieve during those hackfests. We usually implement a huge number of improvements, new features and bug fixes during those meetings. They take place during the holidays of the developers, and we would like to at least compensate their travel expenses.{%endblocktrans%}</li>
+
+</ul>
+
+<h2>{% trans "Donating?" %}</h2>
+
+<p>{%blocktrans%}Donations can be done through the well-known <a href="http://www.paypal.com">PayPal</a> service. We accept donations of any amount: all donations are helpful, even the smallest ones.{%endblocktrans%}</p>
+
+<form action="https://www.paypal.com/cgi-bin/webscr" method="post">
+  <input type="hidden" name="cmd" value="_s-xclick"/>
+  <input type="hidden" name="hosted_button_id" value="YQPBAUM3JW8T2"/>
+  <input type="hidden" name="country" value="{{paypal_country_code}}"/>
+  <input type="image" src="https://www.paypalobjects.com/{{paypal_lang_code}}/i/btn/btn_donate_LG.gif" border="0" name="submit" alt="PayPal — The safer, easier way to pay online."/>
+  <img alt="" border="0" src="https://www.paypalobjects.com/{{paypal_lang_code}}/i/scr/pixel.gif" width="1" height="1"/>
+</form>
+
+{% endblock %}

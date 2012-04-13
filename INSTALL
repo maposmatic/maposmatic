@@ -23,6 +23,14 @@ MapOSMatic depends on :
 
  * JSON (any python-*json package should work).
 
+ * ImageMagick, for rendering the thumbnails of multi-page maps
+
+On an debian/ubuntu installation, the following should be enough:
+
+  sudo aptitude install python-django python-psycopg2 \
+          python-feedparser python-imaging gettext \
+          imagemagick
+
 You will also most likely need a working PostGIS installation for the
 entire pipeline to run. See the INSTALL documentation of OcitySMap for
 more details.
@@ -31,17 +39,11 @@ Setup
 -----
 
 The www/ directory contains the Django web application. The file
-www/settings_local.py-template must be copied to www/settings_local.py and
-modified to match your installation configuration.
-
-Check DEFAULT_MAPOSMATIC_LOG_FILE is writable by the web server. For
-example:
-
-  sudo chgrp www-data /path/to/maposmatic/logs/maposmatic.log
-  sudo chmod 664 /path/to/maposmatic/logs/maposmatic.log
+www/settings_local.py-template must be copied to www/settings_local.py
+and modified to match your installation configuration.
 
 Likewise for www/maposmatic.wsgi-template and
-scripts/maposmaticd.sh-template.
+scripts/config.py-template.
 
 The database must then be initialized with the tables needed for MapOSMatic,
 using :
@@ -61,9 +63,12 @@ Then, you can run the rendering daemon through the wrapper with:
 
   .../scripts/wrapper.py scripts/daemon.py &
 
-You'll find in support/init-maposmaticd-template an init script template that
-you can tweak and install on your machine to start the MapOSMatic rendering
-daemon automatically at boot time.
+You'll find in support/init-maposmaticd-template an init script
+template that you can tweak and install on your machine to start the
+MapOSMatic rendering daemon automatically at boot time. If you are not
+using it or an equivalent, then please ignore any message "The
+MapOSMatic rendering daemon is currently not running! [...]" that the
+web frontend (below) might display.
 
 Testing with Django integrated web server
 -----------------------------------------
@@ -74,7 +79,12 @@ maposmatic services, you should try them locally first:
   .../www/manage.py runserver
 
 Then point your web browser to the address mentioned in the output
-message.
+message. You will need to adjust RENDERING_RESULT_URL in
+www/settings_local.py to something like
+'http://localhost:8000/results' (8000 being the port that is assigned
+to the integrated web server, printed on the console when you start
+it), otherwise the rendered map files will not be accessible through
+the web frontend.
 
 External Web server configuration
 ---------------------------------
@@ -82,6 +92,12 @@ External Web server configuration
 In a normal setup, you don't want to use the Django integrated web
 server. If you are using Apache, you can adapt the configuration file
 given in support/apache-maposmatic-template.
+
+Also double-check DEFAULT_MAPOSMATIC_LOG_FILE in www/settings_local.py
+is writable by the web server. For example:
+
+  sudo chgrp www-data /path/to/maposmatic/logs/maposmatic.log
+  sudo chmod 664 /path/to/maposmatic/logs/maposmatic.log
 
 Internationalization
 --------------------

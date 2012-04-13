@@ -51,10 +51,6 @@ ul#nav {
   padding-right: 2em !important;
 }
 
-ul#nav li {
-  float: right !important;
-}
-
 /* Content */
 #content {
   padding-right: 0 !important;

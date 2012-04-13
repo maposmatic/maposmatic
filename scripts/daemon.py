@@ -22,6 +22,7 @@
 # You should have received a copy of the GNU Affero General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
+import logging
 import os
 import sys
 import threading
@@ -29,7 +30,6 @@ import time
 
 import render
 from www.maposmatic.models import MapRenderingJob
-from www.settings import LOG
 from www.settings import RENDERING_RESULT_PATH, RENDERING_RESULT_MAX_SIZE_GB
 
 _DEFAULT_CLEAN_FREQUENCY = 20       # Clean thread polling frequency, in
@@ -44,6 +44,8 @@ _RESULT_MSGS = {
     render.RESULT_TIMEOUT_REACHED: 'rendering took too long, canceled'
 }
 
+l = logging.getLogger('maposmatic')
+
 class MapOSMaticDaemon:
     """
     This is a basic rendering daemon, base class for the different
@@ -56,7 +58,7 @@ class MapOSMaticDaemon:
 
     def __init__(self, frequency=_DEFAULT_POLL_FREQUENCY):
         self.frequency = frequency
-        LOG.info("MapOSMatic rendering daemon started.")
+        l.info("MapOSMatic rendering daemon started.")
         self.rollback_orphaned_jobs()
 
     def rollback_orphaned_jobs(self):
@@ -80,7 +82,7 @@ class MapOSMaticDaemon:
                 except KeyboardInterrupt:
                     break
 
-        LOG.info("MapOSMatic rendering daemon terminating.")
+        l.info("MapOSMatic rendering daemon terminating.")
 
     def dispatch(self, job):
         """In this simple single-process daemon, dispatching is as easy as
@@ -128,7 +130,7 @@ class RenderingsGarbageCollector(threading.Thread):
         """Run the main garbage collector thread loop, cleaning files every
         self.frequency seconds until the program is stopped."""
 
-        LOG.info("Cleanup thread started.")
+        l.info("Cleanup thread started.")
 
         while True:
             self.cleanup()
@@ -186,9 +188,9 @@ class RenderingsGarbageCollector(threading.Thread):
         if size < threshold:
             return
 
-        LOG.info("%s consumed for a %s threshold. Cleaning..." %
-                 (self.get_formatted_value(size),
-                  self.get_formatted_value(threshold)))
+        l.info("%s consumed for a %s threshold. Cleaning..." %
+               (self.get_formatted_value(size),
+                self.get_formatted_value(threshold)))
 
         # Sort files by timestamp, oldest last, and start removing them by
         # pop()-ing the list.
@@ -196,39 +198,39 @@ class RenderingsGarbageCollector(threading.Thread):
 
         while size > threshold:
             if not len(files):
-                LOG.error("No files to remove and still above threshold! "
-                          "Something's wrong!")
+                l.error("No files to remove and still above threshold! "
+                        "Something's wrong!")
                 return
 
             f = files.pop()
-            LOG.debug("Considering file %s..." % f['name'])
+            l.debug("Considering file %s..." % f['name'])
             job = MapRenderingJob.objects.get_by_filename(f['name'])
             if job:
-                LOG.debug("Found matching parent job #%d." % job.id)
+                l.debug("Found matching parent job #%d." % job.id)
                 removed, saved = job.remove_all_files()
                 size -= saved
                 if removed:
-                    LOG.info("Removed %d files for job #%d (%s)." %
-                             (removed, job.id,
-                              self.get_formatted_details(saved, size,
-                                                         threshold)))
+                    l.info("Removed %d files for job #%d (%s)." %
+                           (removed, job.id,
+                            self.get_formatted_details(saved, size,
+                                                       threshold)))
 
             else:
                 # If we didn't find a parent job, it means this is an orphaned
                 # file, we can safely remove it to get back some disk space.
-                LOG.debug("No parent job found.")
+                l.debug("No parent job found.")
                 os.remove(f['path'])
                 size -= f['size']
-                LOG.info("Removed orphan file %s (%s)." %
-                         (f['name'], self.get_formatted_details(f['size'],
-                                                                size,
-                                                                threshold)))
+                l.info("Removed orphan file %s (%s)." %
+                       (f['name'], self.get_formatted_details(f['size'],
+                                                              size,
+                                                              threshold)))
 
 
 if __name__ == '__main__':
     if (not os.path.exists(RENDERING_RESULT_PATH)
         or not os.path.isdir(RENDERING_RESULT_PATH)):
-        LOG.error("%s does not exist or is not a directory! "
+        l.error("%s does not exist or is not a directory! "
                   "Please use a valid RENDERING_RESULT_PATH.")
         sys.exit(1)
 

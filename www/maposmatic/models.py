@@ -82,6 +82,10 @@ class MapRenderingJob(models.Model):
     NONCE_SIZE = 16
 
     maptitle = models.CharField(max_length=256)
+    stylesheet = models.CharField(max_length=256)
+    layout = models.CharField(max_length=256)
+    paper_width_mm = models.IntegerField()
+    paper_height_mm = models.IntegerField()
 
     # When rendering through administrative city is selected, the
     # following three fields must be non empty
@@ -168,12 +172,6 @@ class MapRenderingJob(models.Model):
     def get_map_filepath(self, format):
         return os.path.join(www.settings.RENDERING_RESULT_PATH, self.files_prefix() + "." + format)
 
-    def get_index_fileurl(self, format):
-        return www.settings.RENDERING_RESULT_URL + "/" + self.files_prefix() + "_index." + format
-
-    def get_index_filepath(self, format):
-        return os.path.join(www.settings.RENDERING_RESULT_PATH, self.files_prefix() + "_index." + format)
-
     def output_files(self):
         """Returns a structured dictionary of the output files for this job.
         The result contains two lists, 'maps' and 'indeces', listing the output
@@ -182,21 +180,20 @@ class MapRenderingJob(models.Model):
         allfiles = {'maps': [], 'indeces': []}
 
         for format in www.settings.RENDERING_RESULT_FORMATS:
-            # Map files (all formats but CSV)
             map_path = self.get_map_filepath(format)
             if format != 'csv' and os.path.exists(map_path):
+                # Map files (all formats but CSV)
                 allfiles['maps'].append((format, self.get_map_fileurl(format),
                     _("%(title)s %(format)s Map") % {'title': self.maptitle,
                                                      'format': format.upper()},
                     os.stat(map_path).st_size, map_path))
-
-            # Index files
-            index_path = self.get_index_filepath(format)
-            if os.path.exists(index_path):
-                allfiles['indeces'].append((format, self.get_index_fileurl(format),
-                    _("%(title)s %(format)s Index") % {'title': self.maptitle,
+            elif format == 'csv' and os.path.exists(map_path):
+                # Index CSV file
+                allfiles['indeces'].append(
+                    (format, self.get_map_fileurl(format),
+                     _("%(title)s %(format)s Index") % {'title': self.maptitle,
                                                        'format': format.upper()},
-                    os.stat(index_path).st_size, index_path))
+                    os.stat(map_path).st_size, map_path))
 
         return allfiles
 

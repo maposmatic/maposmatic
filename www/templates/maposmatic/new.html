@@ -28,7 +28,6 @@
 {% load i18n %}
 
 {% block extralink %}
-<script type="text/javascript" src="/smedia/jquery.js"></script>
 {{ form.media }}
 {% endblock %}
 
@@ -37,79 +36,148 @@
 {% block page %}
 <h1 id="submitmapform">{% trans "Generate your own map" %}</h1>
 
-<p>
-{% blocktrans %}<em>MapOSMatic</em> covers the whole world but we need
-contributors to translate and adapt the few parts of <em>MapOSMatic</em>
-that are country specific.{% endblocktrans %}
-</p>
-
-<p>
-{% blocktrans %}To select the city to be rendered, two modes are
-available:{% endblocktrans %}
-</p>
-
-<ul>
-  <li>{% blocktrans %}<em>Using an administrative boundary</em>. It allows
-  to get a map with precise boundaries of the city when such limits are
-  available in the database. Otherwise, you need to use a bounding
-  box.{% endblocktrans %}</li>
-  <li>{% blocktrans %}<em>Using a traditional bounding box</em>.{% endblocktrans %}</li>
-</ul>
-
-<p>
-{% blocktrans %}Once the rendering is submitted, you will be brought
-to a page giving the status of your rendering request. As soon as the
-rendering is completed (that might take some time depending on the queue
-length), this page will contain links to the generated
-map.{% endblocktrans %}
-</p>
-
 <form id="mainfrm" method="post" action="{% url new %}#submitmapform" class="submitmap">
-  <table id="mapform">
-    <tr class="label"><td>{% trans "Area selection mode:" %}</td></tr>
-    <tr class="field"><td>
-      {{ form.mode }}
-    </td></tr>
+<div class="wizard">
+  {{ form.errors }}
 
-    <tr class="byadmin label"><td>{% trans "City name:" %}</td></tr>
-    <tr class="byadmin field"><td>
+  <ul id="steplist">
+    <li id="step-location-title" class="title-current-step">
+      <span class="step-number">1.</span> {% trans "Location" %}
+    </li>
+    <li id="step-title-title">
+      <span class="step-number">2.</span> {% trans "Title" %}
+    </li>
+    <li id="step-layout-title">
+      <span class="step-number">3.</span> {% trans "Layout" %}
+    </li>
+    <li id="step-stylesheet-title">
+      <span class="step-number">4.</span> {% trans "Stylesheet" %}
+    </li>
+    <li id="step-paper-title">
+      <span class="step-number">5.</span> {% trans "Paper size" %}
+    </li>
+    <li id="step-language-title">
+      <span class="step-number">6.</span> {% trans "Language" %}
+    </li>
+    <li id="step-summary-title">
+      <span class="step-number">7.</span> {% trans "Summary" %}
+    </li>
+  </ul>
+
+  <table>
+    <tbody>
+      <tr>
+        <td class="prev">
+          <a id="prevlink" class="navlink" href="javascript:loadPrevStep();"
+             title="{% trans "Back" %}">&larr;</a>
+        </td>
+        <td class="step">
+
+  <div id="step-location" class="wizardstep">
+    <h3>{% trans "Geographic area selection" %}</h3>
+    <p>
+      {% blocktrans %}To select the city to be rendered, two modes are
+      available:{% endblocktrans %}
+    </p>
+
+    {{ form.mode }}
+
+    <div id="step-location-bbox" style="display: none";>
+      {{ form.bbox }}
+      {{ form.bbox.errors }}
+      <p class="bbox_info">
+        {% blocktrans %}Latitude and longitude of the top left and bottom right
+        corners of the area to render.{% endblocktrans %}
+      </p>
+
+      <img src="/smedia/tip.png" class="tip" />
+      <p class="bbox_select_help">
+        {% blocktrans %}You can use <tt>Shift+drag</tt> to zoom on a specific
+        area of the map. Then, you must select
+        with <tt>Control+drag</tt> (<tt>Alt+drag</tt> on Mac) the
+        limits of the area you wish to render.{% endblocktrans %}
+      </p>
+
+      <ul id="toobigareaerror" class="errorlist" style="display: none;">
+        <li>{% blocktrans %}Area too big to be rendered. Please select a
+        smaller area.{% endblocktrans %}</li>
+      </ul>
+    </div>
+
+    <div id="step-location-admin">
       {{ form.administrative_city }}
       <ul id="suggest"></ul>
       {{ form.administrative_osmid }}
       {{ form.administrative_osmid.errors }}
       {{ form.administrative_city.errors }}
-    </td></tr>
+      <span id="noresultsinfo">{% trans "No results." %}</span>
+      <span id="noadminboundary">{% blocktrans %}Wondering why you can't choose some of these results?<br />Their administrative boundaries are missing from the OSM database.<br />Look at the <a href="http://wiki.maposmatic.org/doku.php?id=faq">FAQ</a> for more details.{% endblocktrans %}</span>
+    </div>
+  </div>
 
-    <tr class="bybbox label"><td>{% trans "Title of the map:" %}</td></tr>
-    <tr class="bybbox field"><td>
-      {{ form.maptitle }}
-      {{ form.maptitle.errors }}
-    </td></tr>
+  <div id="step-title" class="wizardstep">
+    <h3>{% trans "Map title" %}</h3>
+    {{ form.maptitle }}
+  </div>
 
-    <tr class="bybbox label" id="map_language"><td>
+  <div id="step-layout" class="wizardstep">
+    <h3>{% trans "Layout" %}</h3>
+    {{ form.layout }}
+  </div>
+
+  <div id="step-stylesheet" class="wizardstep">
+    <h3>{% trans "Stylesheet" %}</h3>
+    {{ form.stylesheet }}
+  </div>
+
+  <div id="step-paper" class="wizardstep">
+    <h3>{% trans "Paper" %}</h3>
+    <table id="paperselection">
+      <tr>
+        <td id="papersizeselection">{{ form.papersize }}</td>
+        <td id="paperorientationselection">{{ form.paperorientation }}</td>
+      </tr>
+    </table>
+    {{ form.paper_width_mm }}
+    {{ form.paper_height_mm }}
+  </div>
+
+  <div id="step-language" class="wizardstep">
+    <h3>{% trans "Language" %}</h3>
       {% trans "Map Index Language:" %} {{ form.map_language }}
-    </td></tr>
+  </div>
+  <div id="step-summary" class="wizardstep">
+    <h3>{% trans "Summary:" %}</h3>
+    <ol id="summary">
+      <dt>{% trans "Location:" %}</dt>
+      <dd id="summary-area"></dd>
+      <dt>{% trans "Title:" %}</dt>
+      <dd id="summary-title"></dd>
+      <dt>{% trans "Layout:" %}</dt>
+      <dd id="summary-layout"></dd>
+      <dt>{% trans "Paper size:" %}</dt>
+      <dd id="summary-papersize"></dd>
+      <dt>{% trans "Stylesheet:" %}</dt>
+      <dd id="summary-stylesheet"></dd>
+      <dt>{% trans "Language:" %}</dt>
+      <dd id="summary-language"></dd>
+    </ol>
 
-    <tr class="bybbox label"><td colspan="2">{% trans "Bounding box:" %}</td></tr>
-    <tr class="bybbox field"><td colspan="2">
-      {{ form.bbox }}
-      {{ form.bbox.errors }}
-      <ul class="errorlist" id="bboxtoolarge" style="display: none">
-        <li>{% blocktrans %}Bounding Box too large{% endblocktrans %}</li>
-      </ul>
-      <p class="bbox_select_help">{% blocktrans %}Latitude and longitude of the top left and bottom right corners of the area to render.{% endblocktrans %}</p>
-      <p class="bbox_select_help">{% blocktrans %}You can use <tt>Shift+drag</tt> to zoom on a specific area of the map. You can use <tt>Control+drag</tt> to draw the limits of the area to render.{% endblocktrans %}</p>
-    </td></tr>
+    <input id="id_go_next_btn" type="submit" value="{% trans "Generate" %}" />
+  </div>
 
-    <tr><td class="submit">
-      <input id="id_go_next_btn" type="submit"
-             value="{% trans "Generate" %}" disabled="disabled" />
-    </td></tr>
+        </td>
+
+        <td class="next">
+          <a id="nextlink" class="navlink" href="javascript:loadNextStep();"
+             title="{% trans "Continue" %}">&rarr;</a>
+        </td>
+      </tr>
+    </tbody>
   </table>
-</form>
 
-<span id="noadminlimitinfo">{% blocktrans %}Wondering why you can't choose some of these results?<br />Their administrative boundaries are missing from the OSM database.<br />Look at the <a href="http://wiki.maposmatic.org/doku.php?id=faq">FAQ</a> for more details.{% endblocktrans %}</span>
-<span id="noresultsinfo">{% trans "No results." %}</span>
+</div>
+</form>
 
 {% endblock %}
 

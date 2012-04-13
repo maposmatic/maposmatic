@@ -30,6 +30,7 @@ from django.conf.global_settings import TEMPLATE_CONTEXT_PROCESSORS
 from django.utils.translation import ugettext_lazy as _
 
 from settings_local import *
+import logconfig
 
 PROJECT_PATH = os.path.dirname(os.path.abspath(__file__))
 
@@ -119,106 +120,120 @@ LANGUAGES = (("fr", u"Français"),
              ("nl", u"Nederlands"),
              ("hr-hr", u"Hrvatski"),
              ("pl", u"Polski"),
-             ("es", u"Español"))
+             ("es", u"Español"),
+             ("id", u"Bahasa Indonesia"))
 
-MAP_LANGUAGES = [("fr_BE.UTF-8", u"Royaume de Belgique (FR)"),
-                 ("fr_FR.UTF-8", u"France"),
-                 ("fr_CA.UTF-8", u"Canada (FR)"),
-                 ("fr_CH.UTF-8", u"Suisse (FR)"),
-                 ("fr_LU.UTF-8", u"Luxembourg (FR)"),
-                 ("en_AG",       u"Antigua and Barbuda (EN)"),
-                 ("en_AU.UTF-8", u"Australia (EN)"),
-                 ("en_BW.UTF-8", u"Botswana (EN)"),
-                 ("en_CA.UTF-8", u"Canada (EN)"),
-                 ("en_DK.UTF-8", u"Denmark (EN)"),
-                 ("en_GB.UTF-8", u"United Kingdom (EN)"),
-                 ("en_HK.UTF-8", u"Hong Kong (EN)"),
-                 ("en_IE.UTF-8", u"Ireland (EN)"),
-                 ("en_IN",       u"India (EN)"),
-                 ("en_NG",       u"Nigeria (EN)"),
-                 ("en_NZ.UTF-8", u"New Zealand (EN)"),
-                 ("en_PH.UTF-8", u"Philippines (EN)"),
-                 ("en_SG.UTF-8", u"Singapore (EN)"),
-                 ("en_US.UTF-8", u"United States (EN)"),
-                 ("en_ZA.UTF-8", u"South Africa (EN)"),
-                 ("en_ZW.UTF-8", u"Zimbabwe (EN)"),
-                 ("de_BE.UTF-8", u"Königreich Belgien (DE)"),
-                 ("it_CH.UTF-8", u"Svizzera (IT)"),
-                 ("it_IT.UTF-8", u"Italia (IT)"),
-                 ("nb_NO.UTF-8", u"Norwegian Bokmål (NO)"),
-                 ("nl_BE.UTF-8", u"Koninkrijk België (NL)"),
-                 ("nl_NL.UTF-8", u"Nederland (NL)"),
-                 ("de_AT.UTF-8", u"Österreich (DE)"),
-                 ("de_DE.UTF-8", u"Deutschland (DE)"),
-                 ("de_LU.UTF-8", u"Luxemburg (DE)"),
-                 ("de_CH.UTF-8", u"Schweiz (DE)"),
-                 ("ca_ES.UTF-8", u"Espanya (CA)"),
-                 ("ca_AD.UTF-8", u"Andorra (CA)"),
-                 ("ca_FR.UTF-8", u"França (CA)"),
-                 ("pt_BR.UTF-8", u"Brasil (PT)"),
-                 ("da_DK.UTF-8", u"Danmark (DA)"),
-                 ("hr_HR.UTF-8", u"Republika Hrvatska"),
-                 ("pl_PL.UTF-8", u"Rzeczpospolita Polska"),
-                 ("es_ES.UTF-8", u"España (ES)"),
-                 ("es_AR.UTF-8", u"Argentina (ES)"),
-                 ("es_BO.UTF-8", u"Bolivia (ES)"),
-                 ("es_CL.UTF-8", u"Chile (ES)"),
-                 ("es_CR.UTF-8", u"Costa Rica (ES)"),
-                 ("es_DO.UTF-8", u"República Dominicana (ES)"),
-                 ("es_EC.UTF-8", u"Ecuador (ES)"),
-                 ("es_SV.UTF-8", u"El Salvador (ES)"),
-                 ("es_GT.UTF-8", u"Guatemala (ES)"),
-                 ("es_HN.UTF-8", u"Honduras (ES)"),
-                 ("es_MX.UTF-8", u"México (ES)"),
-                 ("es_NI.UTF-8", u"Nicaragua (ES)"),
-                 ("es_PA.UTF-8", u"Panamá (ES)"),
-                 ("es_PY.UTF-8", u"Paraguay (ES)"),
-                 ("es_PE.UTF-8", u"Perú (ES)"),
-                 ("es_PR.UTF-8", u"Puerto Rico (ES)"),
-                 ("es_US.UTF-8", u"Estados Unidos de América (ES)"),
-                 ("es_UY.UTF-8", u"Uruguay (ES)"),
-                 ("es_VE.UTF-8", u"Venezuela (ES)"),
-                 ("ar_DZ.UTF-8", u"الجزائر (AR)"),
-                 ("ar_BH.UTF-8", u"البحرين (AR)"),
-                 ("ar_EG.UTF-8", u"مصر (AR)"),
-                 ("ar_IQ.UTF-8", u"العراق (AR)"),
-                 ("ar_JO.UTF-8", u"الأردنّ‎ (AR)"),
-                 ("ar_KW.UTF-8", u"الكويت (AR)"),
-                 ("ar_LB.UTF-8", u"لبنان (AR)"),
-                 ("ar_LY.UTF-8", u"ليبيا (AR)"),
-                 ("ar_MA.UTF-8", u"المملكة المغربية (AR)"),
-                 ("ar_OM.UTF-8", u"سلطنة عمان (AR)"),
-                 ("ar_QA.UTF-8", u"دولة قطر (AR)"),
-                 ("ar_SA.UTF-8", u"المملكة العربية السعودية (AR)"),
-                 ("ar_SD.UTF-8", u"السودان (AR)"),
-                 ("ar_SY.UTF-8", u"سوريا (AR)"),
-                 ("ar_TN.UTF-8", u"تونس (AR)"),
-                 ("ar_AE.UTF-8", u"دولة الإمارات العربية المتحدة (AR)"),
-                 ("ar_YE.UTF-8", u"اليَمَن (AR)")]
+# Associate a Django language code with:
+#  the language code used to select the Paypal button
+#  the country code that allows to get the proper translation of the
+#  PayPal payment page
+# When no association is found, we automatically default to english
+PAYPAL_LANGUAGES = {
+    "fr": ("fr_FR", "FR"),
+    "de": ("de_DE", "DE"),
+    "it": ("it_IT", "IT"),
+    "pt-br": ("pt_BR", "BR"),
+    "nl": ("nl_NL", "NL"),
+    "pl": ("pl_PL", "PL"),
+    "es": ("es_ES", "ES"),
+}
+
+# Languages must be ordered by country (in xx_YY, YY is the country
+# code), and then ordered with the most widely used language in the
+# country first. For example, in France, we will want "French" to be
+# the first, and catalan to be in the second place). The reason for
+# this is that the order in the below list will be the order with
+# which languages will be presented by the MapOSMatic website (after
+# filtering the language list based on the country of the city that is
+# being rendered).
+MAP_LANGUAGES = [
+    ("ca_AD.UTF-8", u"Andorra (CA)"),
+    ("ar_AE.UTF-8", u"دولة الإمارات العربية المتحدة (AR)"),
+    ("en_AG",       u"Antigua and Barbuda (EN)"),
+    ("es_AR.UTF-8", u"Argentina (ES)"),
+    ("de_AT.UTF-8", u"Österreich (DE)"),
+    ("en_AU.UTF-8", u"Australia (EN)"),
+    ("nl_BE.UTF-8", u"Koninkrijk België (NL)"),
+    ("fr_BE.UTF-8", u"Royaume de Belgique (FR)"),
+    ("de_BE.UTF-8", u"Königreich Belgien (DE)"),
+    ("ar_BH.UTF-8", u"البحرين (AR)"),
+    ("es_BO.UTF-8", u"Bolivia (ES)"),
+    ("pt_BR.UTF-8", u"Brasil (PT)"),
+    ("en_BW.UTF-8", u"Botswana (EN)"),
+    ("en_CA.UTF-8", u"Canada (EN)"),
+    ("fr_CA.UTF-8", u"Canada (FR)"),
+    ("de_CH.UTF-8", u"Schweiz (DE)"),
+    ("fr_CH.UTF-8", u"Suisse (FR)"),
+    ("it_CH.UTF-8", u"Svizzera (IT)"),
+    ("es_CL.UTF-8", u"Chile (ES)"),
+    ("es_CR.UTF-8", u"Costa Rica (ES)"),
+    ("de_DE.UTF-8", u"Deutschland (DE)"),
+    ("da_DK.UTF-8", u"Danmark (DA)"),
+    ("en_DK.UTF-8", u"Denmark (EN)"),
+    ("es_DO.UTF-8", u"República Dominicana (ES)"),
+    ("ar_DZ.UTF-8", u"الجزائر (AR)"),
+    ("es_EC.UTF-8", u"Ecuador (ES)"),
+    ("ar_EG.UTF-8", u"مصر (AR)"),
+    ("es_ES.UTF-8", u"España (ES)"),
+    ("ca_ES.UTF-8", u"Espanya (CA)"),
+    ("fr_FR.UTF-8", u"France (FR)"),
+    ("ca_FR.UTF-8", u"França (CA)"),
+    ("en_GB.UTF-8", u"United Kingdom (EN)"),
+    ("es_GT.UTF-8", u"Guatemala (ES)"),
+    ("en_HK.UTF-8", u"Hong Kong (EN)"),
+    ("es_HN.UTF-8", u"Honduras (ES)"),
+    ("hr_HR.UTF-8", u"Republika Hrvatska"),
+    ("id_ID.UTF-8", u"Bahasa Indonesia (ID)"),
+    ("en_IE.UTF-8", u"Ireland (EN)"),
+    ("en_IN",       u"India (EN)"),
+    ("ar_IQ.UTF-8", u"العراق (AR)"),
+    ("it_IT.UTF-8", u"Italia (IT)"),
+    ("ar_JO.UTF-8", u"الأردنّ‎ (AR)"),
+    ("ar_KW.UTF-8", u"الكويت (AR)"),
+    ("ar_LB.UTF-8", u"لبنان (AR)"),
+    ("fr_LU.UTF-8", u"Luxembourg (FR)"),
+    ("de_LU.UTF-8", u"Luxemburg (DE)"),
+    ("ar_LY.UTF-8", u"ليبيا (AR)"),
+    ("ar_MA.UTF-8", u"المملكة المغربية (AR)"),
+    ("es_MX.UTF-8", u"México (ES)"),
+    ("en_NG",       u"Nigeria (EN)"),
+    ("es_NI.UTF-8", u"Nicaragua (ES)"),
+    ("nl_NL.UTF-8", u"Nederland (NL)"),
+    ("nb_NO.UTF-8", u"Norwegian Bokmål (NO)"),
+    ("nn_NO.UTF-8", u"Norwegian Nynorsk (NO)"),
+    ("en_NZ.UTF-8", u"New Zealand (EN)"),
+    ("ar_OM.UTF-8", u"سلطنة عمان (AR)"),
+    ("es_PA.UTF-8", u"Panamá (ES)"),
+    ("es_PE.UTF-8", u"Perú (ES)"),
+    ("en_PH.UTF-8", u"Philippines (EN)"),
+    ("pl_PL.UTF-8", u"Rzeczpospolita Polska"),
+    ("es_PR.UTF-8", u"Puerto Rico (ES)"),
+    ("es_PY.UTF-8", u"Paraguay (ES)"),
+    ("ar_QA.UTF-8", u"دولة قطر (AR)"),
+    ("ar_SA.UTF-8", u"المملكة العربية السعودية (AR)"),
+    ("ar_SD.UTF-8", u"السودان (AR)"),
+    ("en_SG.UTF-8", u"Singapore (EN)"),
+    ("es_SV.UTF-8", u"El Salvador (ES)"),
+    ("ar_SY.UTF-8", u"سوريا (AR)"),
+    ("ar_TN.UTF-8", u"تونس (AR)"),
+    ("es_US.UTF-8", u"Estados Unidos de América (ES)"),
+    ("en_US.UTF-8", u"United States (EN)"),
+    ("es_UY.UTF-8", u"Uruguay (ES)"),
+    ("es_VE.UTF-8", u"Venezuela (ES)"),
+    ("ar_YE.UTF-8", u"اليَمَن (AR)"),
+    ("en_ZA.UTF-8", u"South Africa (EN)"),
+    ("en_ZW.UTF-8", u"Zimbabwe (EN)"),
+]
 
 MAP_LANGUAGES.sort(lambda x, y: cmp(x[1], y[1]))
 # "C" must be the last entry
 MAP_LANGUAGES.append(("C", _(u"No localization")))
 
-# Logging
-LOG = logging.getLogger(os.environ.get("MAPOSMATIC_LOG_TARGET",
-                                       "maposmatic"))
-LOG.setLevel(int(os.environ.get("MAPOSMATIC_LOG_LEVEL",
-                                DEFAULT_MAPOSMATIC_LOG_LEVEL)))
-_log_dest = os.environ.get('MAPOSMATIC_LOG_FILE', DEFAULT_MAPOSMATIC_LOG_FILE)
-if _log_dest:
-    _fh = logging.FileHandler(_log_dest)
-else:
-    _fh = logging.StreamHandler()
-_fh.setFormatter(logging.Formatter(os.environ.get("MAPOSMATIC_LOG_FORMAT",
-                                                  DEFAULT_MAPOSMATIC_LOG_FORMAT)))
-
-LOG.addHandler(_fh)
-LOG.info("log restarted.")
-
-# GIS database (read settings from OCitySMap's configuration)
+# GIS database (read settings from OCitySMap's configuration). The
+# default port to connect to the database is 5432, which is the
+# default PostgreSQL port.
 import ConfigParser
-gis_config = ConfigParser.SafeConfigParser()
+gis_config = ConfigParser.SafeConfigParser({'port': '5432'})
 
 if OCITYSMAP_CFG_PATH is None:
     OCITYSMAP_CFG_PATH = os.path.expanduser('~/.ocitysmap.conf')
@@ -228,6 +243,7 @@ GIS_DATABASE_HOST = gis_config.get('datasource', 'host')
 GIS_DATABASE_USER = gis_config.get('datasource', 'user')
 GIS_DATABASE_PASSWORD = gis_config.get('datasource', 'password')
 GIS_DATABASE_NAME = gis_config.get('datasource', 'dbname')
+GIS_DATABASE_PORT = gis_config.get('datasource', 'port')
 
 def has_gis_database():
     return GIS_DATABASE_NAME and GIS_DATABASE_NAME != ''
@@ -239,3 +255,12 @@ REFRESH_JOB_RENDERING = 20
 
 def is_daemon_running():
     return os.path.exists(MAPOSMATIC_PID_FILE)
+
+# Logging
+logconfig.setup_maposmatic_logging(
+        int(os.environ.get("MAPOSMATIC_LOG_LEVEL",
+                           DEFAULT_MAPOSMATIC_LOG_LEVEL)),
+        os.environ.get('MAPOSMATIC_LOG_FILE', DEFAULT_MAPOSMATIC_LOG_FILE),
+        os.environ.get("MAPOSMATIC_LOG_FORMAT", DEFAULT_MAPOSMATIC_LOG_FORMAT))
+LOG = logging.getLogger('maposmatic')
+
