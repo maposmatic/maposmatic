@@ -41,6 +41,7 @@ from www.settings import ADMINS, OCITYSMAP_CFG_PATH
 from www.settings import RENDERING_RESULT_PATH, RENDERING_RESULT_FORMATS
 from www.settings import DAEMON_ERRORS_SMTP_HOST, DAEMON_ERRORS_SMTP_PORT
 from www.settings import DAEMON_ERRORS_EMAIL_FROM
+from www.settings import DAEMON_ERRORS_EMAIL_REPLY_TO
 from www.settings import DAEMON_ERRORS_JOB_URL
 
 RESULT_SUCCESS = 0
@@ -272,6 +273,7 @@ class JobRenderer(threading.Thread):
                 jobinfo.append('  %s: %s' % (k, str(v)))
 
             msg = ("""From: MapOSMatic rendering daemon <%(from)s>
+Reply-To: %(replyto)s
 To: %(to)s
 Subject: Rendering of job #%(jobid)d failed
 Date: %(date)s
@@ -288,6 +290,7 @@ You can view the job page at <%(url)s>.
 -- 
 MapOSMatic
 """ % { 'from': DAEMON_ERRORS_EMAIL_FROM,
+        'replyto': DAEMON_ERRORS_EMAIL_REPLY_TO,
         'to': ', '.join(['%s <%s>' % admin for admin in ADMINS]),
         'jobid': self.job.id,
         'jobinfo': '\n'.join(jobinfo),

@@ -77,6 +77,7 @@ MAPOSMATIC_PID_FILE = '/var/run/maposmaticd.pid'
 DAEMON_ERRORS_SMTP_HOST = 'localhost'
 DAEMON_ERRORS_SMTP_PORT = 25
 DAEMON_ERRORS_EMAIL_FROM = 'daemon@domain.com'
+DAEMON_ERRORS_EMAIL_REPLY_TO = 'noreply@domain.com'
 DAEMON_ERRORS_JOB_URL = 'http://domain.com/jobs/%d'
 
 ###
