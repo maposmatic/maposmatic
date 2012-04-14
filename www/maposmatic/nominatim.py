@@ -47,18 +47,23 @@ from www.maposmatic import gisdb
 NOMINATIM_BASE_URL = 'http://nominatim.openstreetmap.org'
 NOMINATIM_MAX_RESULTS_PER_RESPONSE = 10
 
+NOMINATIM_USER_AGENT = 'MapOSMatic'
+if www.settings.ADMINS:
+    NOMINATIM_USER_AGENT = '%s (%s)' % (NOMINATIM_USER_AGENT,
+                                        www.settings.ADMINS[0][1])
+
 l = logging.getLogger('maposmatic')
 
 def reverse_geo(lat, lon):
     """Query the nominatim service for the given lat/long coordinates and
     returns the reverse geocoded informations."""
 
-    url = '%s/reverse?' % NOMINATIM_BASE_URL
-    url = url + ("lat=%f&lon=%f" % (lat, lon))
+    request = urllib2.Request('%s/reverse?%s' %
+        (NOMINATIM_BASE_URL, urlencode({'lat': lat, 'lon': lon})))
+    request.add_header('User-Agent', NOMINATIM_USER_AGENT)
+    f = urllib2.urlopen(request)
 
-    f = urllib2.urlopen(url=url)
     result = []
-
     for place in XMLTree(f).getroot().getchildren():
         attribs = dict(place.attrib)
         for elt in place.getchildren():
@@ -66,7 +71,7 @@ def reverse_geo(lat, lon):
         result.append(attribs)
     return result
 
-def query(query_text, exclude, with_polygons=False):
+def query(query_text, exclude, with_polygons=False, accept_language=None):
     """Query the nominatim service for the given city query and return a
     (python) list of entries for the given squery (eg. "Paris"). Each
     entry is a dictionary key -> value (value is always a
@@ -79,7 +84,7 @@ def query(query_text, exclude, with_polygons=False):
       - key "id": ID of the OSM database entry
       - key "admin_level": The value stored in the OSM table for admin_level
     """
-    xml = _fetch_xml(query_text, exclude, with_polygons)
+    xml = _fetch_xml(query_text, exclude, with_polygons, accept_language)
     (hasprev, prevexcludes, hasnext, nextexcludes) = _compute_prev_next_excludes(xml)
     entries = _extract_entries(xml)
     entries = _prepare_and_filter_entries(entries)
@@ -91,7 +96,7 @@ def query(query_text, exclude, with_polygons=False):
         'entries'     : entries
         })
 
-def _fetch_xml(query_text, exclude, with_polygons):
+def _fetch_xml(query_text, exclude, with_polygons, accept_language):
     """Query the nominatim service for the given city query and return a
     XMLTree object."""
     # For some reason, the "xml" nominatim output is ALWAYS used, even
@@ -99,6 +104,7 @@ def _fetch_xml(query_text, exclude, with_polygons):
     # json. This is because we know that this xml output is correct
     # and complete (at least the "osm_id" field is missing from the
     # json output)
+
     query_tags = dict(q=query_text.encode("UTF-8"),
                       format='xml', addressdetails=1)
 
@@ -108,9 +114,13 @@ def _fetch_xml(query_text, exclude, with_polygons):
     if exclude != '':
         query_tags['exclude_place_ids'] = exclude
 
-    qdata = urlencode(query_tags)
-    f = urllib2.urlopen(url="%s/search/?%s" % (NOMINATIM_BASE_URL, qdata))
-    return XMLTree(f)
+    request = urllib2.Request('%s/search/?%s' %
+            (NOMINATIM_BASE_URL, urlencode(query_tags)))
+    request.add_header('User-Agent', NOMINATIM_USER_AGENT)
+    if accept_language:
+        request.add_header('Accept-Language', accept_language)
+
+    return XMLTree(urllib2.urlopen(request))
 
 def _extract_entries(xml):
     """Given a XMLTree object of a Nominatim result, return a (python)
