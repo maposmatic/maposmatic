@@ -26,6 +26,26 @@
  * See the file COPYING for details.
  */
 
+/*
+ * Helper functions to hide/show the back/next links
+ */
+
+function allowPrevStep() {
+  $('#prevlink').addClass('allowed');
+}
+
+function disallowPrevStep() {
+  $("#prevlink").removeClass('allowed');
+}
+
+function allowNextStep() {
+  $("#nextlink").addClass('allowed');
+}
+
+function disallowNextStep() {
+  $("#nextlink").removeClass('allowed');
+}
+
 function mapTitleChange()
 {
   if ($("#id_maptitle").val().length != 0)
@@ -145,7 +165,8 @@ function preparePaperPanel()
   /* Start the Ajax request to get the list of allowed paper
    * sizes */
   $("#paperselection").hide();
-  $("#nextlink").hide();
+  disallowNextStep();
+  $("#papersizeerror").hide();
   if (getCurrentMode() == 'bbox') {
     args = {
       lat_upper_left   : $("#lat_upper_left").val(),
@@ -164,10 +185,18 @@ function preparePaperPanel()
     };
   }
 
-  $.post("/apis/papersize/", args,
-         function(data) { filterAllowedPaper(data);
-                          $("#nextlink").show()
-                        });
+  $.ajax({ type: 'POST',
+           url:  "/apis/papersize/",
+           data: args,
+           success: function(data) {
+                      filterAllowedPaper(data);
+                      allowNextStep();
+                    },
+           error: function(data) {
+                      $("#papersizeerror").show();
+                      disallowNextStep();
+                    },
+         });
 }
 
 /** When using a by admin boundary area, contains the country code of
@@ -262,26 +291,6 @@ function prepareNextPage(next)
         prepareSummaryPanel();
     else if (next == "step-language")
         prepareLanguagePanel();
-}
-
-/*
- * Helper functions to hide/show the back/next links
- */
-
-function allowPrevStep() {
-  $('#prevlink').addClass('allowed');
-}
-
-function disallowPrevStep() {
-  $("#prevlink").removeClass('allowed');
-}
-
-function allowNextStep() {
-  $("#nextlink").addClass('allowed');
-}
-
-function disallowNextStep() {
-  $("#nextlink").removeClass('allowed');
 }
 
 /** Hide a panel and un-highlight the corresponding title in the
