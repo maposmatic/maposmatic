@@ -20,7 +20,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: mapOSMatic 0.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-04-11 13:02+0200\n"
+"POT-Creation-Date: 2012-04-14 18:57+0200\n"
 "PO-Revision-Date: 2012-04-14 12:31+0100\n"
 "Last-Translator: Thomas Petazzoni <thomas.petazzoni@enix.org>\n"
 "Language-Team: RUSSIAN <LL@li.org>\n"
@@ -113,24 +113,34 @@ msgstr ""
 msgid "Best fit <em class=\"papersize\"></em>"
 msgstr ""
 
-#: maposmatic/forms.py:155
+#: maposmatic/forms.py:157
 msgid "Map title required"
 msgstr "Требуется название карты"
 
-#: maposmatic/forms.py:161
+#: maposmatic/forms.py:162
+#, fuzzy
+msgid "Layout required"
+msgstr "Требуется название карты"
+
+#: maposmatic/forms.py:167
+#, fuzzy
+msgid "Stylesheet required"
+msgstr "Таблица стилей"
+
+#: maposmatic/forms.py:173
 msgid "Administrative city required"
 msgstr "Требуется название города"
 
-#: maposmatic/forms.py:174
+#: maposmatic/forms.py:186
 #, python-format
 msgid "Error with osm city: %s"
 msgstr "Ошибка с городом: %s"
 
-#: maposmatic/forms.py:183
+#: maposmatic/forms.py:195
 msgid "Required"
 msgstr "Требуется"
 
-#: maposmatic/forms.py:208
+#: maposmatic/forms.py:220
 msgid "Bounding Box too large"
 msgstr "Прямоугольная область слишком большая"
 
@@ -144,12 +154,11 @@ msgstr "Карта %(title)s %(format)s"
 msgid "%(title)s %(format)s Index"
 msgstr "Указатель %(title)s %(format)s"
 
-#: maposmatic/nominatim.py:229
+#: maposmatic/nominatim.py:239
 msgid "Administrative area too big for rendering"
 msgstr "Административная граница слишком велика для отрисовки"
 
-#: maposmatic/nominatim.py:285
-#: maposmatic/nominatim.py:299
+#: maposmatic/nominatim.py:295 maposmatic/nominatim.py:309
 msgid "No administrative boundary"
 msgstr "Нет административной границы"
 
@@ -197,9 +206,7 @@ msgstr "Устаревшая неудачная отрисовка: если о�
 msgid "The rendering was cancelled by the user."
 msgstr "Отрисовка отменена пользователем."
 
-#: templates/404.html:3
-#: templates/500.html:3
-#: templates/maposmatic/base.html:59
+#: templates/404.html:3 templates/500.html:3 templates/maposmatic/base.html:59
 msgid "Home"
 msgstr "Домой"
 
@@ -235,8 +242,7 @@ msgstr "Ошибка сервера <em>(500)</em>"
 msgid "There's been an error."
 msgstr "Произошла ошибка."
 
-#: templates/maposmatic/about.html:35
-#: templates/maposmatic/base.html:65
+#: templates/maposmatic/about.html:35 templates/maposmatic/base.html:65
 msgid "About"
 msgstr "О сервисе"
 
@@ -245,7 +251,7 @@ msgid "History"
 msgstr "История"
 
 #: templates/maposmatic/about.html:39
-#, python-format
+#, fuzzy, python-format
 msgid ""
 "MapOSMatic has been started thanks to an idea of\n"
 "Gilles Lamiral, an <a\n"
@@ -530,8 +536,7 @@ msgstr "перевод на русский"
 msgid "arabic translation"
 msgstr "перевод на арабский"
 
-#: templates/maposmatic/about.html:186
-#: templates/maposmatic/about.html:187
+#: templates/maposmatic/about.html:186 templates/maposmatic/about.html:187
 msgid "brasilian portuguese translation"
 msgstr "перевод на бразильский португальский"
 
@@ -555,8 +560,7 @@ msgstr "перевод на польский"
 msgid "indonesian translation"
 msgstr "перевод на индонезийский"
 
-#: templates/maposmatic/about.html:193
-#: templates/maposmatic/about.html:194
+#: templates/maposmatic/about.html:193 templates/maposmatic/about.html:194
 msgid "norvegian bokmål translation"
 msgstr "перевод на норвежский букмол"
 
@@ -585,13 +589,11 @@ msgstr ""
 "Не было запросов на отрисовку карты в последние 24\n"
 "часа."
 
-#: templates/maposmatic/all_maps.html:34
-#: templates/maposmatic/index.html:61
+#: templates/maposmatic/all_maps.html:34 templates/maposmatic/index.html:61
 msgid "Search"
 msgstr "Поиск"
 
-#: templates/maposmatic/all_maps.html:38
-#: templates/maposmatic/base.html:62
+#: templates/maposmatic/all_maps.html:38 templates/maposmatic/base.html:62
 msgid "Maps"
 msgstr "Карты"
 
@@ -627,8 +629,7 @@ msgstr "Задания"
 msgid "News"
 msgstr "Новости"
 
-#: templates/maposmatic/base.html:64
-#: templates/maposmatic/donate.html:30
+#: templates/maposmatic/base.html:64 templates/maposmatic/donate.html:30
 msgid "Donate"
 msgstr "Пожертвовать"
 
@@ -788,8 +789,7 @@ msgstr "Найти карту"
 msgid "More details"
 msgstr "Подробнее"
 
-#: templates/maposmatic/job-page.html:39
-#: templates/maposmatic/job.html:35
+#: templates/maposmatic/job-page.html:39 templates/maposmatic/job.html:35
 #: templates/maposmatic/map.html:35
 msgid "Recreate map"
 msgstr "Создать заново карту"
@@ -848,26 +848,22 @@ msgstr "Отменено"
 msgid "rendering took %(rendering)s"
 msgstr "отрисовка заняла %(rendering)s"
 
-#: templates/maposmatic/job.html:79
-#: templates/maposmatic/map-feed.html:44
+#: templates/maposmatic/job.html:79 templates/maposmatic/map-feed.html:44
 #: templates/maposmatic/map.html:57
 msgid "Files: "
 msgstr "Файлы:"
 
-#: templates/maposmatic/job.html:81
-#: templates/maposmatic/map-feed.html:46
+#: templates/maposmatic/job.html:81 templates/maposmatic/map-feed.html:46
 #: templates/maposmatic/map.html:59
 msgid "Map: "
 msgstr "Карта:"
 
-#: templates/maposmatic/job.html:82
-#: templates/maposmatic/map-feed.html:47
+#: templates/maposmatic/job.html:82 templates/maposmatic/map-feed.html:47
 #: templates/maposmatic/map.html:60
 msgid "Index: "
 msgstr "Указатель:"
 
-#: templates/maposmatic/job.html:85
-#: templates/maposmatic/map-feed.html:50
+#: templates/maposmatic/job.html:85 templates/maposmatic/map-feed.html:50
 #: templates/maposmatic/map.html:63
 msgid "No index was generated because no information was available in OpenStreetMap to create one. Feel free to contribute the missing data yourself. See the <a href=\"http://wiki.openstreetmap.org/wiki/Getting_Involved\">OSM Wiki</a> for a start. "
 msgstr "Указатель улиц не был сгенерирован, потому что оказалось недостаточно информации в OpenStreetMap для его создания. Вы можете участвовать в дополнении этих данных. См. <a href=\"http://wiki.openstreetmap.org/wiki/Getting_Involved\">вики OSM</a> как начать."
@@ -876,14 +872,12 @@ msgstr "Указатель улиц не был сгенерирован, пот
 msgid "View on OpenStreetMap"
 msgstr "Посмотреть на OpenStreetMap"
 
-#: templates/maposmatic/job.html:92
-#: templates/maposmatic/map-feed.html:53
+#: templates/maposmatic/job.html:92 templates/maposmatic/map-feed.html:53
 #: templates/maposmatic/map.html:66
 msgid "The generated files are no longer available."
 msgstr "Сгенерированные файлы больше не доступны."
 
-#: templates/maposmatic/map-feed.html:41
-#: templates/maposmatic/map.html:54
+#: templates/maposmatic/map-feed.html:41 templates/maposmatic/map.html:54
 msgid "Rendering completed on"
 msgstr "Отрисовка завершена"
 
@@ -899,13 +893,11 @@ msgstr "Местность"
 msgid "Title"
 msgstr "Название"
 
-#: templates/maposmatic/new.html:51
-#: templates/maposmatic/new.html.py:124
+#: templates/maposmatic/new.html:51 templates/maposmatic/new.html.py:124
 msgid "Layout"
 msgstr "Расположение"
 
-#: templates/maposmatic/new.html:54
-#: templates/maposmatic/new.html.py:129
+#: templates/maposmatic/new.html:54 templates/maposmatic/new.html.py:129
 msgid "Stylesheet"
 msgstr "Таблица стилей"
 
@@ -913,8 +905,7 @@ msgstr "Таблица стилей"
 msgid "Paper size"
 msgstr "Размер бумаги"
 
-#: templates/maposmatic/new.html:60
-#: templates/maposmatic/new.html.py:146
+#: templates/maposmatic/new.html:60 templates/maposmatic/new.html.py:147
 msgid "Language"
 msgstr "Язык"
 
@@ -982,43 +973,47 @@ msgstr "Заголовок карты"
 msgid "Paper"
 msgstr "Бумага"
 
-#: templates/maposmatic/new.html:147
+#: templates/maposmatic/new.html:135
+msgid "An error occured while retrieving compatible paper sizes."
+msgstr ""
+
+#: templates/maposmatic/new.html:148
 msgid "Map Index Language:"
 msgstr "Язык указателя карты:"
 
-#: templates/maposmatic/new.html:150
+#: templates/maposmatic/new.html:151
 msgid "Summary:"
 msgstr "Итог:"
 
-#: templates/maposmatic/new.html:152
+#: templates/maposmatic/new.html:153
 msgid "Location:"
 msgstr "Местоположение:"
 
-#: templates/maposmatic/new.html:154
+#: templates/maposmatic/new.html:155
 msgid "Title:"
 msgstr "Название:"
 
-#: templates/maposmatic/new.html:156
+#: templates/maposmatic/new.html:157
 msgid "Layout:"
 msgstr "Расположение:"
 
-#: templates/maposmatic/new.html:158
+#: templates/maposmatic/new.html:159
 msgid "Paper size:"
 msgstr "Размер бумаги:"
 
-#: templates/maposmatic/new.html:160
+#: templates/maposmatic/new.html:161
 msgid "Stylesheet:"
 msgstr "Таблица стилей:"
 
-#: templates/maposmatic/new.html:162
+#: templates/maposmatic/new.html:163
 msgid "Language:"
 msgstr "Язык:"
 
-#: templates/maposmatic/new.html:166
+#: templates/maposmatic/new.html:167
 msgid "Generate"
 msgstr "Создать"
 
-#: templates/maposmatic/new.html:173
+#: templates/maposmatic/new.html:174
 msgid "Continue"
 msgstr "Далее"
 

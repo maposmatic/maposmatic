@@ -20,7 +20,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: mapOSMatic 0.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-04-11 13:02+0200\n"
+"POT-Creation-Date: 2012-04-14 18:57+0200\n"
 "PO-Revision-Date: 2012-12-23 22:18-0800\n"
 "Last-Translator: Jeff Haack <jeff.haack@gmail.com>\n"
 "Language-Team: MapOSMatic <contact@maposmatic.org>\n"
@@ -112,24 +112,34 @@ msgstr ""
 msgid "Best fit <em class=\"papersize\"></em>"
 msgstr ""
 
-#: maposmatic/forms.py:155
+#: maposmatic/forms.py:157
 msgid "Map title required"
 msgstr "Harus menggunakan judul peta"
 
-#: maposmatic/forms.py:161
+#: maposmatic/forms.py:162
+#, fuzzy
+msgid "Layout required"
+msgstr "Harus menggunakan judul peta"
+
+#: maposmatic/forms.py:167
+#, fuzzy
+msgid "Stylesheet required"
+msgstr "Stylesheet"
+
+#: maposmatic/forms.py:173
 msgid "Administrative city required"
 msgstr "Harus menggunakan kota administratif"
 
-#: maposmatic/forms.py:174
+#: maposmatic/forms.py:186
 #, python-format
 msgid "Error with osm city: %s"
 msgstr "Kesalahan pada kota OSM: %s"
 
-#: maposmatic/forms.py:183
+#: maposmatic/forms.py:195
 msgid "Required"
 msgstr "Harus diisi"
 
-#: maposmatic/forms.py:208
+#: maposmatic/forms.py:220
 msgid "Bounding Box too large"
 msgstr "Kotak batasan terlalu besar"
 
@@ -143,12 +153,12 @@ msgstr "%(title)s %(format)s Peta"
 msgid "%(title)s %(format)s Index"
 msgstr "%(title)s %(format)s Indeks"
 
-#: maposmatic/nominatim.py:229
+#: maposmatic/nominatim.py:239
 #, fuzzy
 msgid "Administrative area too big for rendering"
 msgstr "Wilayah administratif terlalu besaar untuk diproses"
 
-#: maposmatic/nominatim.py:285 maposmatic/nominatim.py:299
+#: maposmatic/nominatim.py:295 maposmatic/nominatim.py:309
 #, fuzzy
 msgid "No administrative boundary"
 msgstr "Tidak ada batas administratif"
@@ -925,7 +935,7 @@ msgstr "Stylesheet"
 msgid "Paper size"
 msgstr "Ukuran kertas"
 
-#: templates/maposmatic/new.html:60 templates/maposmatic/new.html.py:146
+#: templates/maposmatic/new.html:60 templates/maposmatic/new.html.py:147
 msgid "Language"
 msgstr "Bahasa"
 
@@ -994,45 +1004,49 @@ msgstr "Judul peta"
 msgid "Paper"
 msgstr "Kertas"
 
-#: templates/maposmatic/new.html:147
+#: templates/maposmatic/new.html:135
+msgid "An error occured while retrieving compatible paper sizes."
+msgstr ""
+
+#: templates/maposmatic/new.html:148
 msgid "Map Index Language:"
 msgstr "Bahasa Indeks Peta:"
 
-#: templates/maposmatic/new.html:150
+#: templates/maposmatic/new.html:151
 msgid "Summary:"
 msgstr "Ringkasan"
 
-#: templates/maposmatic/new.html:152
+#: templates/maposmatic/new.html:153
 #, fuzzy
 msgid "Location:"
 msgstr "Lokasi"
 
-#: templates/maposmatic/new.html:154
+#: templates/maposmatic/new.html:155
 msgid "Title:"
 msgstr "Judul:"
 
-#: templates/maposmatic/new.html:156
+#: templates/maposmatic/new.html:157
 msgid "Layout:"
 msgstr "Layout:"
 
-#: templates/maposmatic/new.html:158
+#: templates/maposmatic/new.html:159
 msgid "Paper size:"
 msgstr "Ukuran kertas:"
 
-#: templates/maposmatic/new.html:160
+#: templates/maposmatic/new.html:161
 msgid "Stylesheet:"
 msgstr "Stylesheet:"
 
-#: templates/maposmatic/new.html:162
+#: templates/maposmatic/new.html:163
 #, fuzzy
 msgid "Language:"
 msgstr "Bahasa:"
 
-#: templates/maposmatic/new.html:166
+#: templates/maposmatic/new.html:167
 msgid "Generate"
 msgstr "Hasilkan..."
 
-#: templates/maposmatic/new.html:173
+#: templates/maposmatic/new.html:174
 #, fuzzy
 msgid "Continue"
 msgstr "Lanjut"
