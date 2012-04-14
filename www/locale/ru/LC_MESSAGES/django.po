@@ -20,7 +20,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: mapOSMatic 0.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-04-14 18:57+0200\n"
+"POT-Creation-Date: 2012-04-14 19:25+0200\n"
 "PO-Revision-Date: 2012-04-14 12:31+0100\n"
 "Last-Translator: Thomas Petazzoni <thomas.petazzoni@enix.org>\n"
 "Language-Team: RUSSIAN <LL@li.org>\n"
@@ -144,12 +144,12 @@ msgstr "Требуется"
 msgid "Bounding Box too large"
 msgstr "Прямоугольная область слишком большая"
 
-#: maposmatic/models.py:187
+#: maposmatic/models.py:189
 #, python-format
 msgid "%(title)s %(format)s Map"
 msgstr "Карта %(title)s %(format)s"
 
-#: maposmatic/models.py:194
+#: maposmatic/models.py:196
 #, python-format
 msgid "%(title)s %(format)s Index"
 msgstr "Указатель %(title)s %(format)s"
@@ -251,14 +251,14 @@ msgid "History"
 msgstr "История"
 
 #: templates/maposmatic/about.html:39
-#, fuzzy, python-format
+#, fuzzy
 msgid ""
 "MapOSMatic has been started thanks to an idea of\n"
 "Gilles Lamiral, an <a\n"
 "href=\"http://www.openstreetmap.org\">OpenStreetMap</a> and free\n"
 "software contributor of Rennes area, France. From his idea, a group of\n"
 "crazy <a\n"
-"href=\"http://en.wikipedia.org/wiki/Hacker_%28programmer_subculture%29\">hackers</a>\n"
+"href=\"http://en.wikipedia.org/wiki/Hacker_(programmer_subculture)\">hackers</a>\n"
 "met together during a one-week <em>Hackfest</em> in August 2009 and\n"
 "brought the idea of Gilles Lamiral to life by writing the code and\n"
 "named the project <strong>MapOSMatic</strong>. The group of crazy\n"
@@ -269,7 +269,7 @@ msgstr ""
 "Gilles Lamiral, контрибьютору <a\n"
 "href=\"http://www.openstreetmap.org\">OpenStreetMap</a> и разработчику свободного ПО из\n"
 "Rennes, Франция. С его идеи, группа сумасшедших <a\n"
-"href=\"http://en.wikipedia.org/wiki/Hacker_%28programmer_subculture%29\">хакеров</a>\n"
+"href=\"http://en.wikipedia.org/wiki/Hacker_(programmer_subculture)\">хакеров</a>\n"
 "собралась в одно-недельный <em>Hackfest</em> в августе 2009 и\n"
 "назвала проект <strong>MapOSMatic</strong>. Группа сумасшедших хакеров благодарит Gilles\n"
 "за то что он поделился своей идеей!"

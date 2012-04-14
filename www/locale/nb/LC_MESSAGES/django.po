@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-04-14 18:57+0200\n"
+"POT-Creation-Date: 2012-04-14 19:25+0200\n"
 "PO-Revision-Date: 2010-08-05 14:38+0100\n"
 "Last-Translator: Hans Fredrik Nordhaug <hans@nordhaug.priv.no>\n"
 "Language-Team: Norwegian Bokmål <i18n-nb@lister.ping.ui.no>\n"
@@ -130,12 +130,12 @@ msgstr "Må oppgis"
 msgid "Bounding Box too large"
 msgstr "Avgrensingsboks for stor"
 
-#: maposmatic/models.py:187
+#: maposmatic/models.py:189
 #, python-format
 msgid "%(title)s %(format)s Map"
 msgstr "%(title)s %(format)s kart"
 
-#: maposmatic/models.py:194
+#: maposmatic/models.py:196
 #, python-format
 msgid "%(title)s %(format)s Index"
 msgstr "%(title)s %(format)s indeks"
@@ -245,14 +245,14 @@ msgid "History"
 msgstr "Historie"
 
 #: templates/maposmatic/about.html:39
-#, fuzzy, python-format
+#, fuzzy
 msgid ""
 "MapOSMatic has been started thanks to an idea of\n"
 "Gilles Lamiral, an <a\n"
 "href=\"http://www.openstreetmap.org\">OpenStreetMap</a> and free\n"
 "software contributor of Rennes area, France. From his idea, a group of\n"
 "crazy <a\n"
-"href=\"http://en.wikipedia.org/wiki/Hacker_%28programmer_subculture%29\">hackers</a>\n"
+"href=\"http://en.wikipedia.org/wiki/Hacker_(programmer_subculture)\">hackers</a>\n"
 "met together during a one-week <em>Hackfest</em> in August 2009 and\n"
 "brought the idea of Gilles Lamiral to life by writing the code and\n"
 "named the project <strong>MapOSMatic</strong>. The group of crazy\n"
@@ -262,7 +262,7 @@ msgstr ""
 "MapOSMatic ble startet takket være en idé fra \n"
 "Gilles Lamiral, en <a href=\"http://www.openstreetmap.org\">OpenStreetMap</a>- og\n"
 "friprogramvare-bidragsyter fra Rennes-område i Frankrike. I løpet av en ukes <em>Hackfest</em> \n"
-"i august 2009 fikk en gruppe gale <a href=\"http://en.wikipedia.org/wiki/Hacker_%28programmer_subculture%29\">hackere</a>\n"
+"i august 2009 fikk en gruppe gale <a href=\"http://en.wikipedia.org/wiki/Hacker_(programmer_subculture)\">hackere</a>\n"
 "brakt idéen til Gilles Lamiral til live ved å skrive koden og kalle prosjektet <strong>MapOSMatic</strong>. \n"
 "Gruppen med gale hackere vil takke Gilles for at han delte sin gode idé!"
 

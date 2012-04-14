@@ -20,7 +20,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: mapOSMatic 0.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-04-14 18:57+0200\n"
+"POT-Creation-Date: 2012-04-14 19:25+0200\n"
 "PO-Revision-Date: 2012-12-23 22:18-0800\n"
 "Last-Translator: Jeff Haack <jeff.haack@gmail.com>\n"
 "Language-Team: MapOSMatic <contact@maposmatic.org>\n"
@@ -143,12 +143,12 @@ msgstr "Harus diisi"
 msgid "Bounding Box too large"
 msgstr "Kotak batasan terlalu besar"
 
-#: maposmatic/models.py:187
+#: maposmatic/models.py:189
 #, python-format
 msgid "%(title)s %(format)s Map"
 msgstr "%(title)s %(format)s Peta"
 
-#: maposmatic/models.py:194
+#: maposmatic/models.py:196
 #, python-format
 msgid "%(title)s %(format)s Index"
 msgstr "%(title)s %(format)s Indeks"
@@ -258,14 +258,14 @@ msgid "History"
 msgstr "Riwayat"
 
 #: templates/maposmatic/about.html:39
-#, fuzzy, python-format
+#, fuzzy
 msgid ""
 "MapOSMatic has been started thanks to an idea of\n"
 "Gilles Lamiral, an <a\n"
 "href=\"http://www.openstreetmap.org\">OpenStreetMap</a> and free\n"
 "software contributor of Rennes area, France. From his idea, a group of\n"
 "crazy <a\n"
-"href=\"http://en.wikipedia.org/wiki/Hacker_%28programmer_subculture%29\">hackers</a>\n"
+"href=\"http://en.wikipedia.org/wiki/Hacker_(programmer_subculture)\">hackers</a>\n"
 "met together during a one-week <em>Hackfest</em> in August 2009 and\n"
 "brought the idea of Gilles Lamiral to life by writing the code and\n"
 "named the project <strong>MapOSMatic</strong>. The group of crazy\n"
@@ -277,7 +277,7 @@ msgstr ""
 "href=\"http://www.openstreetmap.org\">OpenStreetMap</a> dan\n"
 "kontributor software cuma-cuma dari Rennes area, Perancis. Dari idenya lah, sekelompok\n"
 "crazy <a\n"
-"href=\"http://en.wikipedia.org/wiki/Hacker_%28programmer_subculture%29\">hackers</a>\n"
+"href=\"http://en.wikipedia.org/wiki/Hacker_(programmer_subculture)\">hackers</a>\n"
 "berkumpul bersama pada suatu minggu <em>Hackfest</em> di bulan August 2009 dan\n"
 "membawa ide dari Gilles Lamiral dengan menulis kode-kodenya dan\n"
 "menamai proyek tersebut <strong>MapOSMatic</strong>. Kelompok 'crazy\n"
