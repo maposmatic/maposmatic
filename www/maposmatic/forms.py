@@ -146,6 +146,8 @@ class MapRenderingJobForm(forms.ModelForm):
         mode = cleaned_data.get("mode")
         city = cleaned_data.get("administrative_city")
         title = cleaned_data.get("maptitle")
+        layout = cleaned_data.get("layout")
+        stylesheet = cleaned_data.get("stylesheet")
 
         if cleaned_data.get("paperorientation") == 'landscape':
             cleaned_data["paper_width_mm"], cleaned_data["paper_height_mm"] = \
@@ -155,6 +157,16 @@ class MapRenderingJobForm(forms.ModelForm):
             msg = _(u"Map title required")
             self._errors["maptitle"] = forms.util.ErrorList([msg])
             del cleaned_data["maptitle"]
+
+        if layout == '':
+            msg = _(u"Layout required")
+            self._errors["layout"] = forms.util.ErrorList([msg])
+            del cleaned_data["layout"]
+
+        if stylesheet == '':
+            msg = _(u"Stylesheet required")
+            self._errors["stylesheet"] = forms.util.ErrorList([msg])
+            del cleaned_data["stylesheet"]
 
         if mode == 'admin':
             if city == "":
