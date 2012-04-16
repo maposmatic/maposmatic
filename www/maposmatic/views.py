@@ -189,10 +189,22 @@ def query_nominatim(request):
     """Nominatim query gateway."""
     exclude = request.GET.get('exclude', '')
     squery = request.GET.get('q', '')
+    lang = None
+
+    if 'HTTP_ACCEPT_LANGUAGE' in request.META:
+        # Accept-Language headers typically look like
+        # fr,fr-fr;q=0.8,en-us;q=0.5,en;q=0.3. Unfortunately,
+        # Nominatim behaves improperly with such a string: it gives
+        # the region name in French, but the country name in
+        # English. We split at the first comma to only keep the
+        # preferred language, which makes Nominatim work properly.
+        lang = request.META['HTTP_ACCEPT_LANGUAGE'].split(',')[0]
 
     try:
-        contents = nominatim.query(squery, exclude, with_polygons=False)
-    except:
+        contents = nominatim.query(squery, exclude, with_polygons=False,
+                accept_language=lang)
+    except Exception, e:
+        LOG.exception("Error querying Nominatim")
         contents = []
 
     return HttpResponse(content=json_encode(contents),

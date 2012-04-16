@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-04-11 13:02+0200\n"
+"POT-Creation-Date: 2012-04-14 19:25+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -99,42 +99,50 @@ msgstr ""
 msgid "Best fit <em class=\"papersize\"></em>"
 msgstr ""
 
-#: maposmatic/forms.py:155
+#: maposmatic/forms.py:157
 msgid "Map title required"
 msgstr ""
 
-#: maposmatic/forms.py:161
+#: maposmatic/forms.py:162
+msgid "Layout required"
+msgstr ""
+
+#: maposmatic/forms.py:167
+msgid "Stylesheet required"
+msgstr ""
+
+#: maposmatic/forms.py:173
 msgid "Administrative city required"
 msgstr ""
 
-#: maposmatic/forms.py:174
+#: maposmatic/forms.py:186
 #, python-format
 msgid "Error with osm city: %s"
 msgstr ""
 
-#: maposmatic/forms.py:183
+#: maposmatic/forms.py:195
 msgid "Required"
 msgstr ""
 
-#: maposmatic/forms.py:208
+#: maposmatic/forms.py:220
 msgid "Bounding Box too large"
 msgstr ""
 
-#: maposmatic/models.py:187
+#: maposmatic/models.py:189
 #, python-format
 msgid "%(title)s %(format)s Map"
 msgstr ""
 
-#: maposmatic/models.py:194
+#: maposmatic/models.py:196
 #, python-format
 msgid "%(title)s %(format)s Index"
 msgstr ""
 
-#: maposmatic/nominatim.py:229
+#: maposmatic/nominatim.py:239
 msgid "Administrative area too big for rendering"
 msgstr ""
 
-#: maposmatic/nominatim.py:285 maposmatic/nominatim.py:299
+#: maposmatic/nominatim.py:295 maposmatic/nominatim.py:309
 msgid "No administrative boundary"
 msgstr ""
 
@@ -227,14 +235,13 @@ msgid "History"
 msgstr ""
 
 #: templates/maposmatic/about.html:39
-#, python-format
 msgid ""
 "MapOSMatic has been started thanks to an idea of\n"
 "Gilles Lamiral, an <a\n"
 "href=\"http://www.openstreetmap.org\">OpenStreetMap</a> and free\n"
 "software contributor of Rennes area, France. From his idea, a group of\n"
 "crazy <a\n"
-"href=\"http://en.wikipedia.org/wiki/Hacker_%28programmer_subculture%29\">hackers</a>\n"
+"href=\"http://en.wikipedia.org/wiki/Hacker_(programmer_subculture)\">hackers</a>\n"
 "met together during a one-week <em>Hackfest</em> in August 2009 and\n"
 "brought the idea of Gilles Lamiral to life by writing the code and\n"
 "named the project <strong>MapOSMatic</strong>. The group of crazy\n"
@@ -786,7 +793,7 @@ msgstr ""
 msgid "Paper size"
 msgstr ""
 
-#: templates/maposmatic/new.html:60 templates/maposmatic/new.html.py:146
+#: templates/maposmatic/new.html:60 templates/maposmatic/new.html.py:147
 msgid "Language"
 msgstr ""
 
@@ -844,43 +851,47 @@ msgstr ""
 msgid "Paper"
 msgstr ""
 
-#: templates/maposmatic/new.html:147
+#: templates/maposmatic/new.html:135
+msgid "An error occured while retrieving compatible paper sizes."
+msgstr ""
+
+#: templates/maposmatic/new.html:148
 msgid "Map Index Language:"
 msgstr ""
 
-#: templates/maposmatic/new.html:150
+#: templates/maposmatic/new.html:151
 msgid "Summary:"
 msgstr ""
 
-#: templates/maposmatic/new.html:152
+#: templates/maposmatic/new.html:153
 msgid "Location:"
 msgstr ""
 
-#: templates/maposmatic/new.html:154
+#: templates/maposmatic/new.html:155
 msgid "Title:"
 msgstr ""
 
-#: templates/maposmatic/new.html:156
+#: templates/maposmatic/new.html:157
 msgid "Layout:"
 msgstr ""
 
-#: templates/maposmatic/new.html:158
+#: templates/maposmatic/new.html:159
 msgid "Paper size:"
 msgstr ""
 
-#: templates/maposmatic/new.html:160
+#: templates/maposmatic/new.html:161
 msgid "Stylesheet:"
 msgstr ""
 
-#: templates/maposmatic/new.html:162
+#: templates/maposmatic/new.html:163
 msgid "Language:"
 msgstr ""
 
-#: templates/maposmatic/new.html:166
+#: templates/maposmatic/new.html:167
 msgid "Generate"
 msgstr ""
 
-#: templates/maposmatic/new.html:173
+#: templates/maposmatic/new.html:174
 msgid "Continue"
 msgstr ""
 

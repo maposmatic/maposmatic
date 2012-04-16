@@ -20,8 +20,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: mapOSMatic 0.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-04-11 13:02+0200\n"
-"PO-Revision-Date: 2012-04-11 08:59+0100\n"
+"POT-Creation-Date: 2012-04-14 19:25+0200\n"
+"PO-Revision-Date: 2012-04-14 19:25+0100\n"
 "Last-Translator: Thomas Petazzoni <thomas.petazzoni@enix.org>\n"
 "Language-Team: FR <LL@li.org>\n"
 "Language: \n"
@@ -111,42 +111,51 @@ msgstr "Style <i>%(stylesheet_name)s</i>"
 msgid "Best fit <em class=\"papersize\"></em>"
 msgstr "Taille optimale <em class=\"papersize\"></em>"
 
-#: maposmatic/forms.py:155
+#: maposmatic/forms.py:157
 msgid "Map title required"
 msgstr "Titre de la carte obligatoire"
 
-#: maposmatic/forms.py:161
+#: maposmatic/forms.py:162
+msgid "Layout required"
+msgstr "Disposition obligatoire"
+
+#: maposmatic/forms.py:167
+msgid "Stylesheet required"
+msgstr "Feuille de style obligatoire"
+
+#: maposmatic/forms.py:173
 msgid "Administrative city required"
 msgstr "Nom de ville obligatoire"
 
-#: maposmatic/forms.py:174
+#: maposmatic/forms.py:186
 #, python-format
 msgid "Error with osm city: %s"
 msgstr "Erreur avec la ville sélectionnée: %s"
 
-#: maposmatic/forms.py:183
+#: maposmatic/forms.py:195
 msgid "Required"
 msgstr "Obligatoire"
 
-#: maposmatic/forms.py:208
+#: maposmatic/forms.py:220
 msgid "Bounding Box too large"
 msgstr "Zone géographique trop grande"
 
-#: maposmatic/models.py:187
+#: maposmatic/models.py:189
 #, python-format
 msgid "%(title)s %(format)s Map"
 msgstr "Carte pour %(title)s (format %(format)s)"
 
-#: maposmatic/models.py:194
+#: maposmatic/models.py:196
 #, python-format
 msgid "%(title)s %(format)s Index"
 msgstr "Index des rues pour %(title)s (format %(format)s)"
 
-#: maposmatic/nominatim.py:229
+#: maposmatic/nominatim.py:239
 msgid "Administrative area too big for rendering"
 msgstr "Zone géographique trop vaste pour être rendue"
 
-#: maposmatic/nominatim.py:285 maposmatic/nominatim.py:299
+#: maposmatic/nominatim.py:295
+#: maposmatic/nominatim.py:309
 msgid "No administrative boundary"
 msgstr "Pas de limite administrative disponible"
 
@@ -194,7 +203,9 @@ msgstr "Rendu échoué et obsolète&nbsp;: le rendu a échoué, et les fichiers 
 msgid "The rendering was cancelled by the user."
 msgstr "Le rendu a été annulé par l'utilisateur."
 
-#: templates/404.html:3 templates/500.html:3 templates/maposmatic/base.html:59
+#: templates/404.html:3
+#: templates/500.html:3
+#: templates/maposmatic/base.html:59
 msgid "Home"
 msgstr "Accueil"
 
@@ -230,7 +241,8 @@ msgstr "Erreur interne <em>500</em>"
 msgid "There's been an error."
 msgstr "Une erreur est apparue."
 
-#: templates/maposmatic/about.html:35 templates/maposmatic/base.html:65
+#: templates/maposmatic/about.html:35
+#: templates/maposmatic/base.html:65
 msgid "About"
 msgstr "À propos..."
 
@@ -239,20 +251,19 @@ msgid "History"
 msgstr "Historique"
 
 #: templates/maposmatic/about.html:39
-#, fuzzy, python-format
 msgid ""
 "MapOSMatic has been started thanks to an idea of\n"
 "Gilles Lamiral, an <a\n"
 "href=\"http://www.openstreetmap.org\">OpenStreetMap</a> and free\n"
 "software contributor of Rennes area, France. From his idea, a group of\n"
 "crazy <a\n"
-"href=\"http://en.wikipedia.org/wiki/Hacker_%28programmer_subculture%29\">hackers</a>\n"
+"href=\"http://en.wikipedia.org/wiki/Hacker_(programmer_subculture)\">hackers</a>\n"
 "met together during a one-week <em>Hackfest</em> in August 2009 and\n"
 "brought the idea of Gilles Lamiral to life by writing the code and\n"
 "named the project <strong>MapOSMatic</strong>. The group of crazy\n"
 "hackers would like to thank Gilles for sharing his bright\n"
 "idea!"
-msgstr "MapOSMatic a été lancé grâce à une idée de Gilles Lamiral, un contributeur à <a href=\"http://www.openstreetmap.org\">OpenStreetMap</a> et au Logiciel Libre de la région rennaise en France. À partir de son idée, un groupe de <a href=\"http://fr.wikipedia.org/wiki/Hacker_%28universit%C3%A9%29\">hackers</a> fous s'est réuni durant une <em>Hackfest</em> d'une semaine en août 2009 et a transformé l'idée de Gilles en réalité. Le groupe de <em>hackers</em> fous souhaite remercier Gilles d'avoir partagé cette brillante idée&nbsp;!"
+msgstr "MapOSMatic a été lancé grâce à une idée de Gilles Lamiral, un contributeur à <a href=\"http://www.openstreetmap.org\">OpenStreetMap</a> et au Logiciel Libre de la région rennaise en France. À partir de son idée, un groupe de <a href=\"http://fr.wikipedia.org/wiki/Hacker_(université)\">hackers</a> fous s'est réuni durant une <em>Hackfest</em> d'une semaine en août 2009 et a transformé l'idée de Gilles en réalité. Le groupe de <em>hackers</em> fous souhaite remercier Gilles d'avoir partagé cette brillante idée&nbsp;!"
 
 #: templates/maposmatic/about.html:53
 msgid ""
@@ -462,7 +473,8 @@ msgstr "traduction Russe"
 msgid "arabic translation"
 msgstr "traduction Arabe"
 
-#: templates/maposmatic/about.html:186 templates/maposmatic/about.html:187
+#: templates/maposmatic/about.html:186
+#: templates/maposmatic/about.html:187
 msgid "brasilian portuguese translation"
 msgstr "traduction Portugaise (Brésil)"
 
@@ -486,7 +498,8 @@ msgstr "traduction Polonaise"
 msgid "indonesian translation"
 msgstr "traduction Indonésienne"
 
-#: templates/maposmatic/about.html:193 templates/maposmatic/about.html:194
+#: templates/maposmatic/about.html:193
+#: templates/maposmatic/about.html:194
 msgid "norvegian bokmål translation"
 msgstr "traduction Norvégien Bokmål"
 
@@ -512,11 +525,13 @@ msgid ""
 "hours."
 msgstr "Pas de demande de rendu de carte durant les dernières 24 heures."
 
-#: templates/maposmatic/all_maps.html:34 templates/maposmatic/index.html:61
+#: templates/maposmatic/all_maps.html:34
+#: templates/maposmatic/index.html:61
 msgid "Search"
 msgstr "Recherche"
 
-#: templates/maposmatic/all_maps.html:38 templates/maposmatic/base.html:62
+#: templates/maposmatic/all_maps.html:38
+#: templates/maposmatic/base.html:62
 msgid "Maps"
 msgstr "Cartes"
 
@@ -552,7 +567,8 @@ msgstr "Rendus"
 msgid "News"
 msgstr "Actualités"
 
-#: templates/maposmatic/base.html:64 templates/maposmatic/donate.html:30
+#: templates/maposmatic/base.html:64
+#: templates/maposmatic/donate.html:30
 msgid "Donate"
 msgstr "Faire un don"
 
@@ -703,7 +719,8 @@ msgstr "Chercher une carte"
 msgid "More details"
 msgstr "Plus d'informations"
 
-#: templates/maposmatic/job-page.html:39 templates/maposmatic/job.html:35
+#: templates/maposmatic/job-page.html:39
+#: templates/maposmatic/job.html:35
 #: templates/maposmatic/map.html:35
 msgid "Recreate map"
 msgstr "Regénérer la carte"
@@ -762,22 +779,26 @@ msgstr "Annulé le"
 msgid "rendering took %(rendering)s"
 msgstr "%(rendering)s de rendu"
 
-#: templates/maposmatic/job.html:79 templates/maposmatic/map-feed.html:44
+#: templates/maposmatic/job.html:79
+#: templates/maposmatic/map-feed.html:44
 #: templates/maposmatic/map.html:57
 msgid "Files: "
 msgstr "Fichiers&nbsp;: "
 
-#: templates/maposmatic/job.html:81 templates/maposmatic/map-feed.html:46
+#: templates/maposmatic/job.html:81
+#: templates/maposmatic/map-feed.html:46
 #: templates/maposmatic/map.html:59
 msgid "Map: "
 msgstr "Cartes&nbsp;: "
 
-#: templates/maposmatic/job.html:82 templates/maposmatic/map-feed.html:47
+#: templates/maposmatic/job.html:82
+#: templates/maposmatic/map-feed.html:47
 #: templates/maposmatic/map.html:60
 msgid "Index: "
 msgstr "Index&nbsp;: "
 
-#: templates/maposmatic/job.html:85 templates/maposmatic/map-feed.html:50
+#: templates/maposmatic/job.html:85
+#: templates/maposmatic/map-feed.html:50
 #: templates/maposmatic/map.html:63
 msgid "No index was generated because no information was available in OpenStreetMap to create one. Feel free to contribute the missing data yourself. See the <a href=\"http://wiki.openstreetmap.org/wiki/Getting_Involved\">OSM Wiki</a> for a start. "
 msgstr "Aucun index n'a été généré parce qu'il manque les informations dans OpenStreetMap pour pouvoir en générer un. N'hésitez pas à contribuer les données manquantes. Pour plus d'informations, refférer-vous au <a href=\"http://wiki.openstreetmap.org/wiki/Getting_Involved\">Wiki OSM</a>. "
@@ -786,12 +807,14 @@ msgstr "Aucun index n'a été généré parce qu'il manque les informations dans
 msgid "View on OpenStreetMap"
 msgstr "Voir sur OpenStreetMap"
 
-#: templates/maposmatic/job.html:92 templates/maposmatic/map-feed.html:53
+#: templates/maposmatic/job.html:92
+#: templates/maposmatic/map-feed.html:53
 #: templates/maposmatic/map.html:66
 msgid "The generated files are no longer available."
 msgstr "Les fichiers générés ne sont plus disponibles."
 
-#: templates/maposmatic/map-feed.html:41 templates/maposmatic/map.html:54
+#: templates/maposmatic/map-feed.html:41
+#: templates/maposmatic/map.html:54
 msgid "Rendering completed on"
 msgstr "Rendu terminé le"
 
@@ -807,11 +830,13 @@ msgstr "Emplacement"
 msgid "Title"
 msgstr "Titre"
 
-#: templates/maposmatic/new.html:51 templates/maposmatic/new.html.py:124
+#: templates/maposmatic/new.html:51
+#: templates/maposmatic/new.html.py:124
 msgid "Layout"
 msgstr "Disposition"
 
-#: templates/maposmatic/new.html:54 templates/maposmatic/new.html.py:129
+#: templates/maposmatic/new.html:54
+#: templates/maposmatic/new.html.py:129
 msgid "Stylesheet"
 msgstr "Feuille de style"
 
@@ -819,7 +844,8 @@ msgstr "Feuille de style"
 msgid "Paper size"
 msgstr "Taille du papier"
 
-#: templates/maposmatic/new.html:60 templates/maposmatic/new.html.py:146
+#: templates/maposmatic/new.html:60
+#: templates/maposmatic/new.html.py:147
 msgid "Language"
 msgstr "Langue"
 
@@ -879,43 +905,47 @@ msgstr "Titre de la carte"
 msgid "Paper"
 msgstr "Papier"
 
-#: templates/maposmatic/new.html:147
+#: templates/maposmatic/new.html:135
+msgid "An error occured while retrieving compatible paper sizes."
+msgstr "Une erreur est survenue lors de la récupération des formats de papier compatibles."
+
+#: templates/maposmatic/new.html:148
 msgid "Map Index Language:"
 msgstr "Langue de l'index de la carte&nbsp;:"
 
-#: templates/maposmatic/new.html:150
+#: templates/maposmatic/new.html:151
 msgid "Summary:"
 msgstr "Résumé&nbsp;:"
 
-#: templates/maposmatic/new.html:152
+#: templates/maposmatic/new.html:153
 msgid "Location:"
 msgstr "Emplacement&nbsp;:"
 
-#: templates/maposmatic/new.html:154
+#: templates/maposmatic/new.html:155
 msgid "Title:"
 msgstr "Titre&nbsp;:"
 
-#: templates/maposmatic/new.html:156
+#: templates/maposmatic/new.html:157
 msgid "Layout:"
 msgstr "Disposition&nbsp;:"
 
-#: templates/maposmatic/new.html:158
+#: templates/maposmatic/new.html:159
 msgid "Paper size:"
 msgstr "Taille du papier&nbsp;:"
 
-#: templates/maposmatic/new.html:160
+#: templates/maposmatic/new.html:161
 msgid "Stylesheet:"
 msgstr "Feuille de style&nbsp;:"
 
-#: templates/maposmatic/new.html:162
+#: templates/maposmatic/new.html:163
 msgid "Language:"
 msgstr "Langue&nbsp;:"
 
-#: templates/maposmatic/new.html:166
+#: templates/maposmatic/new.html:167
 msgid "Generate"
 msgstr "Générer..."
 
-#: templates/maposmatic/new.html:173
+#: templates/maposmatic/new.html:174
 msgid "Continue"
 msgstr "Continuer"
 

@@ -20,9 +20,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: mapOSMatic 0.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-04-11 13:02+0200\n"
-"PO-Revision-Date: 2012-04-03 22:35+0300\n"
-"Last-Translator: Konstantin Mochalov <incredible.angst@gmail.com>\n"
+"POT-Creation-Date: 2012-04-14 19:25+0200\n"
+"PO-Revision-Date: 2012-04-14 12:31+0100\n"
+"Last-Translator: Thomas Petazzoni <thomas.petazzoni@enix.org>\n"
 "Language-Team: RUSSIAN <LL@li.org>\n"
 "Language: \n"
 "MIME-Version: 1.0\n"
@@ -113,42 +113,52 @@ msgstr ""
 msgid "Best fit <em class=\"papersize\"></em>"
 msgstr ""
 
-#: maposmatic/forms.py:155
+#: maposmatic/forms.py:157
 msgid "Map title required"
 msgstr "Требуется название карты"
 
-#: maposmatic/forms.py:161
+#: maposmatic/forms.py:162
+#, fuzzy
+msgid "Layout required"
+msgstr "Требуется название карты"
+
+#: maposmatic/forms.py:167
+#, fuzzy
+msgid "Stylesheet required"
+msgstr "Таблица стилей"
+
+#: maposmatic/forms.py:173
 msgid "Administrative city required"
 msgstr "Требуется название города"
 
-#: maposmatic/forms.py:174
+#: maposmatic/forms.py:186
 #, python-format
 msgid "Error with osm city: %s"
 msgstr "Ошибка с городом: %s"
 
-#: maposmatic/forms.py:183
+#: maposmatic/forms.py:195
 msgid "Required"
 msgstr "Требуется"
 
-#: maposmatic/forms.py:208
+#: maposmatic/forms.py:220
 msgid "Bounding Box too large"
 msgstr "Прямоугольная область слишком большая"
 
-#: maposmatic/models.py:187
+#: maposmatic/models.py:189
 #, python-format
 msgid "%(title)s %(format)s Map"
 msgstr "Карта %(title)s %(format)s"
 
-#: maposmatic/models.py:194
+#: maposmatic/models.py:196
 #, python-format
 msgid "%(title)s %(format)s Index"
 msgstr "Указатель %(title)s %(format)s"
 
-#: maposmatic/nominatim.py:229
+#: maposmatic/nominatim.py:239
 msgid "Administrative area too big for rendering"
 msgstr "Административная граница слишком велика для отрисовки"
 
-#: maposmatic/nominatim.py:285 maposmatic/nominatim.py:299
+#: maposmatic/nominatim.py:295 maposmatic/nominatim.py:309
 msgid "No administrative boundary"
 msgstr "Нет административной границы"
 
@@ -241,14 +251,14 @@ msgid "History"
 msgstr "История"
 
 #: templates/maposmatic/about.html:39
-#, fuzzy, python-format
+#, fuzzy
 msgid ""
 "MapOSMatic has been started thanks to an idea of\n"
 "Gilles Lamiral, an <a\n"
 "href=\"http://www.openstreetmap.org\">OpenStreetMap</a> and free\n"
 "software contributor of Rennes area, France. From his idea, a group of\n"
 "crazy <a\n"
-"href=\"http://en.wikipedia.org/wiki/Hacker_%28programmer_subculture%29\">hackers</a>\n"
+"href=\"http://en.wikipedia.org/wiki/Hacker_(programmer_subculture)\">hackers</a>\n"
 "met together during a one-week <em>Hackfest</em> in August 2009 and\n"
 "brought the idea of Gilles Lamiral to life by writing the code and\n"
 "named the project <strong>MapOSMatic</strong>. The group of crazy\n"
@@ -259,7 +269,7 @@ msgstr ""
 "Gilles Lamiral, контрибьютору <a\n"
 "href=\"http://www.openstreetmap.org\">OpenStreetMap</a> и разработчику свободного ПО из\n"
 "Rennes, Франция. С его идеи, группа сумасшедших <a\n"
-"href=\"http://en.wikipedia.org/wiki/Hacker_%28programmer_subculture%29\">хакеров</a>\n"
+"href=\"http://en.wikipedia.org/wiki/Hacker_(programmer_subculture)\">хакеров</a>\n"
 "собралась в одно-недельный <em>Hackfest</em> в августе 2009 и\n"
 "назвала проект <strong>MapOSMatic</strong>. Группа сумасшедших хакеров благодарит Gilles\n"
 "за то что он поделился своей идеей!"
@@ -748,9 +758,8 @@ msgid "City map"
 msgstr "Карта города"
 
 #: templates/maposmatic/index.html:42
-#, fuzzy
 msgid "MapOSMatic is a free software web service that allows you to generate maps of cities using <a href=\"http://www.openstreetmap.org\">OpenStreetMap</a> data. MapOSMatic can generate two kinds of maps:"
-msgstr "MapOSMatic — основанный на свободном ПО вебсервис, позволяющий генерировать карты городов используя данные <a href=\"http://www.openstreetmap.org\">OpenStreetMap</a>. MapOSMatic позволяет создавать два следующих типа карт: :"
+msgstr "MapOSMatic — основанный на свободном ПО вебсервис, позволяющий генерировать карты городов используя данные <a href=\"http://www.openstreetmap.org\">OpenStreetMap</a>. MapOSMatic позволяет создавать два следующих типа карт:"
 
 #: templates/maposmatic/index.html:46
 msgid "Single page posters, where the map and the street index are rendered side by side. The map itself is split in squares so that streets are easy to find. This format is typically useful for printing on large paper sheets."
@@ -896,7 +905,7 @@ msgstr "Таблица стилей"
 msgid "Paper size"
 msgstr "Размер бумаги"
 
-#: templates/maposmatic/new.html:60 templates/maposmatic/new.html.py:146
+#: templates/maposmatic/new.html:60 templates/maposmatic/new.html.py:147
 msgid "Language"
 msgstr "Язык"
 
@@ -964,43 +973,47 @@ msgstr "Заголовок карты"
 msgid "Paper"
 msgstr "Бумага"
 
-#: templates/maposmatic/new.html:147
+#: templates/maposmatic/new.html:135
+msgid "An error occured while retrieving compatible paper sizes."
+msgstr ""
+
+#: templates/maposmatic/new.html:148
 msgid "Map Index Language:"
 msgstr "Язык указателя карты:"
 
-#: templates/maposmatic/new.html:150
+#: templates/maposmatic/new.html:151
 msgid "Summary:"
 msgstr "Итог:"
 
-#: templates/maposmatic/new.html:152
+#: templates/maposmatic/new.html:153
 msgid "Location:"
 msgstr "Местоположение:"
 
-#: templates/maposmatic/new.html:154
+#: templates/maposmatic/new.html:155
 msgid "Title:"
 msgstr "Название:"
 
-#: templates/maposmatic/new.html:156
+#: templates/maposmatic/new.html:157
 msgid "Layout:"
 msgstr "Расположение:"
 
-#: templates/maposmatic/new.html:158
+#: templates/maposmatic/new.html:159
 msgid "Paper size:"
 msgstr "Размер бумаги:"
 
-#: templates/maposmatic/new.html:160
+#: templates/maposmatic/new.html:161
 msgid "Stylesheet:"
 msgstr "Таблица стилей:"
 
-#: templates/maposmatic/new.html:162
+#: templates/maposmatic/new.html:163
 msgid "Language:"
 msgstr "Язык:"
 
-#: templates/maposmatic/new.html:166
+#: templates/maposmatic/new.html:167
 msgid "Generate"
 msgstr "Создать"
 
-#: templates/maposmatic/new.html:173
+#: templates/maposmatic/new.html:174
 msgid "Continue"
 msgstr "Далее"
 

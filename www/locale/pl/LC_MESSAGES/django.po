@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-04-11 13:02+0200\n"
+"POT-Creation-Date: 2012-04-14 19:25+0200\n"
 "PO-Revision-Date: 2010-07-07 18:32+0200\n"
 "Last-Translator: Łukasz Jernaś <deejay1@srem.org>\n"
 "Language-Team: Polish <dev@maposmatic.org>\n"
@@ -101,43 +101,53 @@ msgstr ""
 msgid "Best fit <em class=\"papersize\"></em>"
 msgstr ""
 
-#: maposmatic/forms.py:155
+#: maposmatic/forms.py:157
 msgid "Map title required"
 msgstr "Nazwa mapy jest wymagana"
 
-#: maposmatic/forms.py:161
+#: maposmatic/forms.py:162
+#, fuzzy
+msgid "Layout required"
+msgstr "Nazwa mapy jest wymagana"
+
+#: maposmatic/forms.py:167
+#, fuzzy
+msgid "Stylesheet required"
+msgstr "Nazwa mapy jest wymagana"
+
+#: maposmatic/forms.py:173
 msgid "Administrative city required"
 msgstr "Wymagane jest miasto z granicą administracyjną"
 
-#: maposmatic/forms.py:174
+#: maposmatic/forms.py:186
 #, python-format
 msgid "Error with osm city: %s"
 msgstr "Błąd z miastem w osm: %s"
 
-#: maposmatic/forms.py:183
+#: maposmatic/forms.py:195
 msgid "Required"
 msgstr "Wymagane"
 
-#: maposmatic/forms.py:208
+#: maposmatic/forms.py:220
 msgid "Bounding Box too large"
 msgstr "Wybrany obszar zbyt rozległy"
 
-#: maposmatic/models.py:187
+#: maposmatic/models.py:189
 #, python-format
 msgid "%(title)s %(format)s Map"
 msgstr "Mapa: %(title)s Format: %(format)s"
 
-#: maposmatic/models.py:194
+#: maposmatic/models.py:196
 #, python-format
 msgid "%(title)s %(format)s Index"
 msgstr "Indeks ulic: %(title)s Format: %(format)s"
 
-#: maposmatic/nominatim.py:229
+#: maposmatic/nominatim.py:239
 #, fuzzy
 msgid "Administrative area too big for rendering"
 msgstr "Granica administracyjna"
 
-#: maposmatic/nominatim.py:285 maposmatic/nominatim.py:299
+#: maposmatic/nominatim.py:295 maposmatic/nominatim.py:309
 #, fuzzy
 msgid "No administrative boundary"
 msgstr "Granica administracyjna"
@@ -237,20 +247,20 @@ msgid "History"
 msgstr "Historia"
 
 #: templates/maposmatic/about.html:39
-#, fuzzy, python-format
+#, fuzzy
 msgid ""
 "MapOSMatic has been started thanks to an idea of\n"
 "Gilles Lamiral, an <a\n"
 "href=\"http://www.openstreetmap.org\">OpenStreetMap</a> and free\n"
 "software contributor of Rennes area, France. From his idea, a group of\n"
 "crazy <a\n"
-"href=\"http://en.wikipedia.org/wiki/Hacker_%28programmer_subculture%29\">hackers</a>\n"
+"href=\"http://en.wikipedia.org/wiki/Hacker_(programmer_subculture)\">hackers</a>\n"
 "met together during a one-week <em>Hackfest</em> in August 2009 and\n"
 "brought the idea of Gilles Lamiral to life by writing the code and\n"
 "named the project <strong>MapOSMatic</strong>. The group of crazy\n"
 "hackers would like to thank Gilles for sharing his bright\n"
 "idea!"
-msgstr "MapOSMatic powstało jako pomysł Gillesa Lamiral, współtwórcy projektu <a href=\"http://www.openstreetmap.org\">OpenStreetMap</a> i innych projektów na bazie wolnego oprogramowania, z okolice Rennes we Francji. Z powodu Jego pomysłu, grupa szalonych <a href=\"http://pl.wikipedia.org/wiki/Haker_%28slang_komputerowy%29\">hackerów</a> spotkała się ze sobą, podczas jednotygodniowego <em>hackfestu</em> w sierpniu 2009 roku i pisząc kod sprawiła, że projekt nazwany <strong>MapOSMatic</strong> powstał do życia. Grupa tych hackerów chciałaby podziękować Gillesowi za podzielenie się tym świetnym pomysłem!"
+msgstr "MapOSMatic powstało jako pomysł Gillesa Lamiral, współtwórcy projektu <a href=\"http://www.openstreetmap.org\">OpenStreetMap</a> i innych projektów na bazie wolnego oprogramowania, z okolice Rennes we Francji. Z powodu Jego pomysłu, grupa szalonych <a href=\"http://pl.wikipedia.org/wiki/Haker_(slang_komputerowy)\">hackerów</a> spotkała się ze sobą, podczas jednotygodniowego <em>hackfestu</em> w sierpniu 2009 roku i pisząc kod sprawiła, że projekt nazwany <strong>MapOSMatic</strong> powstał do życia. Grupa tych hackerów chciałaby podziękować Gillesowi za podzielenie się tym świetnym pomysłem!"
 
 #: templates/maposmatic/about.html:53
 msgid ""
@@ -811,7 +821,7 @@ msgstr ""
 msgid "Paper size"
 msgstr ""
 
-#: templates/maposmatic/new.html:60 templates/maposmatic/new.html.py:146
+#: templates/maposmatic/new.html:60 templates/maposmatic/new.html.py:147
 msgid "Language"
 msgstr ""
 
@@ -875,45 +885,49 @@ msgstr "Nazwa mapy jest wymagana"
 msgid "Paper"
 msgstr ""
 
-#: templates/maposmatic/new.html:147
+#: templates/maposmatic/new.html:135
+msgid "An error occured while retrieving compatible paper sizes."
+msgstr ""
+
+#: templates/maposmatic/new.html:148
 msgid "Map Index Language:"
 msgstr "Język indeksu mapy:"
 
-#: templates/maposmatic/new.html:150
+#: templates/maposmatic/new.html:151
 msgid "Summary:"
 msgstr ""
 
-#: templates/maposmatic/new.html:152
+#: templates/maposmatic/new.html:153
 #, fuzzy
 msgid "Location:"
 msgstr "Bez lokalizacji"
 
-#: templates/maposmatic/new.html:154
+#: templates/maposmatic/new.html:155
 msgid "Title:"
 msgstr ""
 
-#: templates/maposmatic/new.html:156
+#: templates/maposmatic/new.html:157
 msgid "Layout:"
 msgstr ""
 
-#: templates/maposmatic/new.html:158
+#: templates/maposmatic/new.html:159
 msgid "Paper size:"
 msgstr ""
 
-#: templates/maposmatic/new.html:160
+#: templates/maposmatic/new.html:161
 msgid "Stylesheet:"
 msgstr ""
 
-#: templates/maposmatic/new.html:162
+#: templates/maposmatic/new.html:163
 #, fuzzy
 msgid "Language:"
 msgstr "Język indeksu mapy:"
 
-#: templates/maposmatic/new.html:166
+#: templates/maposmatic/new.html:167
 msgid "Generate"
 msgstr "Wygeneruj"
 
-#: templates/maposmatic/new.html:173
+#: templates/maposmatic/new.html:174
 #, fuzzy
 msgid "Continue"
 msgstr "Jak pomóc"
