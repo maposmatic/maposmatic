@@ -21,7 +21,7 @@ msgstr ""
 "Project-Id-Version: mapOSMatic 0.1\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2012-04-14 19:25+0200\n"
-"PO-Revision-Date: 2012-04-14 19:25+0100\n"
+"PO-Revision-Date: 2012-04-17 14:03+0100\n"
 "Last-Translator: Thomas Petazzoni <thomas.petazzoni@enix.org>\n"
 "Language-Team: FR <LL@li.org>\n"
 "Language: \n"
@@ -189,7 +189,7 @@ msgstr "Rendu terminé avec succès."
 
 #: maposmatic/templatetags/extratags.py:41
 msgid "Rendering failed! Please contact contact@maposmatic.org for more information."
-msgstr "Le rendu a échoué&nbsp;! Merci de contacter contact@maposmatic.org pour plus d'informations."
+msgstr "Le rendu a échoué ! Merci de contacter contact@maposmatic.org pour plus d'informations."
 
 #: maposmatic/templatetags/extratags.py:44
 msgid "Rendering is obsolete: the rendering was successful, but the files are no longer available."
@@ -197,7 +197,7 @@ msgstr "Le rendu est obsolète : le rendu s'est terminé avec succès, mais les 
 
 #: maposmatic/templatetags/extratags.py:46
 msgid "Obsolete failed rendering: the rendering failed, and the incomplete files have been removed."
-msgstr "Rendu échoué et obsolète&nbsp;: le rendu a échoué, et les fichiers incomplets ont été supprimés."
+msgstr "Rendu échoué et obsolète : le rendu a échoué, et les fichiers incomplets ont été supprimés."
 
 #: maposmatic/templatetags/extratags.py:48
 msgid "The rendering was cancelled by the user."
