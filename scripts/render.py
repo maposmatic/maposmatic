@@ -26,6 +26,7 @@ import ctypes
 import datetime
 import Image
 import logging
+import multiprocessing
 import os
 import smtplib
 import sys
@@ -52,21 +53,38 @@ RESULT_TIMEOUT_REACHED = 4
 
 THUMBNAIL_SUFFIX = '_small.png'
 
+EXCEPTION_EMAIL_TEMPLATE = """From: MapOSMatic rendering daemon <%(from)s>
+Reply-To: %(replyto)s
+To: %(to)s
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+Subject: Rendering of job #%(jobid)d failed
+Date: %(date)s
+
+An error occured while rendering job #%(jobid)d!
+
+%(tb)s
+
+Job information:
+
+%(jobinfo)s
+
+You can view the job page at <%(url)s>.
+-- 
+MapOSMatic
+"""
+
 l = logging.getLogger('maposmatic')
 
-class TimingOutJobRenderer:
+class ThreadingJobRenderer:
     """
-    The TimingOutJobRenderer is a wrapper around JobRenderer implementing
-    timeout management. It uses JobRenderer as a thread, and tries to join it
-    for the given timeout. If the timeout is reached, the thread is suspended,
-    cleaned up and killed.
-
-    The TimingOutJobRenderer has exactly the same API as the non-threading
-    JobRenderer, so it can be used in place of JobRenderer very easily.
+    The ThreadingJobRenderer is a wrapper around a JobRendered thread that
+    implements timeout management. If the timeout is reached, the thread is
+    suspended, cleaned up and killed.
     """
 
     def __init__(self, job, timeout=1200, prefix=None):
-        """Initializes this TimingOutJobRenderer with a given job and a timeout.
+        """Initializes this ThreadingJobRenderer with a given job and a timeout.
 
         Args:
             job (MapRenderingJob): the job to render.
@@ -74,6 +92,7 @@ class TimingOutJobRenderer:
             prefix (string): renderer map_areas table prefix.
         """
 
+        self.__job = job
         self.__timeout = timeout
         self.__thread = JobRenderer(job, prefix)
 
@@ -93,27 +112,60 @@ class TimingOutJobRenderer:
             return self.__thread.result
 
         l.info("Rendering of job #%d took too long (timeout reached)!" %
-               self.__thread.job.id)
+               self.__job.id)
 
-        # Remove the job files
-        self.__thread.job.remove_all_files()
-
-        # Kill the thread and return TIMEOUT_REACHED
+        # Kill the thread, clean up and return TIMEOUT_REACHED
         self.__thread.kill()
         del self.__thread
 
-        l.debug("Thread removed.")
+        # Remove the job files
+        self.__job.remove_all_files()
+
+        l.debug("Worker removed.")
         return RESULT_TIMEOUT_REACHED
+
+
+class ForkingJobRenderer:
+
+    def __init__(self, job, timeout=1200, prefix=None):
+        self.__job = job
+        self.__timeout = timeout
+        self.__renderer = JobRenderer(job, prefix)
+        self.__process = multiprocessing.Process(target=self._wrap)
+
+    def run(self):
+        self.__process.start()
+        self.__process.join(self.__timeout)
+
+        # If the process is no longer alive, the timeout was not reached and
+        # all is well.
+        if not self.__process.is_alive():
+            return self.__process.exitcode
+
+        l.info("Rendering of job #%d took too long (timeout reached)!" %
+            self.__job.id)
+
+        # Kill the process, clean up and return TIMEOUT_REACHED
+        self.__process.terminate()
+        del self.__process
+
+        # Remove job files
+        self.__job.remove_all_files()
+
+        l.debug("Process terminated.")
+        return RESULT_TIMEOUT_REACHED
+
+    def _wrap(self):
+        sys.exit(self.__renderer.run())
+
 
 class JobRenderer(threading.Thread):
     """
-    A simple, blocking job rendered. It can be used as a thread, or directly in
-    the main processing path of the caller if it chooses to call run()
-    directly.
+    A simple, blocking job renderer. Can be used as a thread.
     """
 
     def __init__(self, job, prefix):
-        threading.Thread.__init__(self, name='renderer')
+        threading.Thread.__init__(self, name='renderer-%d' % job.id)
         self.job = job
         self.prefix = prefix
         self.result = None
@@ -144,8 +196,49 @@ class JobRenderer(threading.Thread):
             ctypes.pythonapi.PyThreadState_SetAsyncExc(self.__get_my_tid(), 0)
             raise SystemError("PyThreadState_SetAsync failed")
 
+    def _email_exception(self, e):
+        """This method can be used to send the given exception by email to the
+        configured admins in the project's settings."""
+
+        if not ADMINS or not DAEMON_ERRORS_SMTP_HOST:
+            return
+
+        try:
+            l.info("Emailing rendering exceptions to the admins (%s) via %s:%d..." %
+                (', '.join([admin[1] for admin in ADMINS]),
+                 DAEMON_ERRORS_SMTP_HOST,
+                 DAEMON_ERRORS_SMTP_PORT))
+
+            mailer = smtplib.SMTP()
+            mailer.connect(DAEMON_ERRORS_SMTP_HOST, DAEMON_ERRORS_SMTP_PORT)
+
+            jobinfo = []
+            for k in sorted(self.job.__dict__.keys()):
+                # We don't care about state that much, especially since it
+                # doesn't display well
+                if k != '_state':
+                    jobinfo.append('  %s: %s' % (k, str(self.job.__dict__[k])))
+
+            msg = EXCEPTION_EMAIL_TEMPLATE % \
+                    { 'from': DAEMON_ERRORS_EMAIL_FROM,
+                      'replyto': DAEMON_ERRORS_EMAIL_REPLY_TO,
+                      'to': ', '.join(['%s <%s>' % admin for admin in ADMINS]),
+                      'jobid': self.job.id,
+                      'jobinfo': '\n'.join(jobinfo),
+                      'date': datetime.datetime.now().strftime('%a, %d %b %Y %H:%M:%S %Z'),
+                      'url': DAEMON_ERRORS_JOB_URL % self.job.id,
+                      'tb': traceback.format_exc(e)
+                    }
+
+            mailer.sendmail(DAEMON_ERRORS_EMAIL_FROM,
+                    [admin[1] for admin in ADMINS], msg)
+            l.info("Error report sent.")
+        except Exception, e:
+            l.exception("Could not send error email to the admins!")
+
     def _gen_thumbnail(self, prefix, paper_width_mm, paper_height_mm):
         l.info('Creating map thumbnail...')
+
         if self.job.layout == "multi_page":
             # Depending on whether we're rendering landscape or
             # portrait, adapt how the tiling is done.
@@ -166,6 +259,7 @@ class JobRenderer(threading.Thread):
             mogrify_cmd = [ "mogrify", "-scale", "200x200",
                             "%s%s" % (prefix, THUMBNAIL_SUFFIX) ]
             subprocess.check_call(mogrify_cmd)
+
         elif 'png' in RENDERING_RESULT_FORMATS:
                 img = Image.open(prefix + '.png')
                 img.thumbnail((200, 200), Image.ANTIALIAS)
@@ -255,59 +349,6 @@ class JobRenderer(threading.Thread):
 
         return self.result
 
-    def _email_exception(self, e):
-        if not ADMINS:
-            return
-
-        try:
-            l.info("Emailing rendering exceptions to the admins (%s) via %s:%d..." %
-                (', '.join([admin[1] for admin in ADMINS]),
-                 DAEMON_ERRORS_SMTP_HOST,
-                 DAEMON_ERRORS_SMTP_PORT))
-
-            mailer = smtplib.SMTP()
-            mailer.connect(DAEMON_ERRORS_SMTP_HOST, DAEMON_ERRORS_SMTP_PORT)
-
-            jobinfo = []
-            for k in sorted(self.job.__dict__.keys()):
-                # We don't care about state that much, especially since it
-                # doesn't display well
-                if k != '_state':
-                    jobinfo.append('  %s: %s' % (k, str(self.job.__dict__[k])))
-
-            msg = ("""From: MapOSMatic rendering daemon <%(from)s>
-Reply-To: %(replyto)s
-To: %(to)s
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: 8bit
-Subject: Rendering of job #%(jobid)d failed
-Date: %(date)s
-
-An error occured while rendering job #%(jobid)d!
-
-%(tb)s
-
-Job information:
-
-%(jobinfo)s
-
-You can view the job page at <%(url)s>.
--- 
-MapOSMatic
-""" % { 'from': DAEMON_ERRORS_EMAIL_FROM,
-        'replyto': DAEMON_ERRORS_EMAIL_REPLY_TO,
-        'to': ', '.join(['%s <%s>' % admin for admin in ADMINS]),
-        'jobid': self.job.id,
-        'jobinfo': '\n'.join(jobinfo),
-        'date': datetime.datetime.now().strftime('%a, %d %b %Y %H:%M:%S %Z'),
-        'url': DAEMON_ERRORS_JOB_URL % self.job.id,
-        'tb': traceback.format_exc(e) })
-
-            mailer.sendmail(DAEMON_ERRORS_EMAIL_FROM,
-                    [admin[1] for admin in ADMINS], msg)
-            l.info("Error report sent.")
-        except Exception, e:
-            l.exception("Could not send error email to the admins!")
 
 if __name__ == '__main__':
     def usage():
@@ -324,7 +365,7 @@ if __name__ == '__main__':
         if job:
             prefix = 'renderer_%d_' % os.getpid()
             if len(sys.argv) == 3:
-                renderer = TimingOutJobRenderer(job, int(sys.argv[2]), prefix)
+                renderer = ThreadingJobRenderer(job, int(sys.argv[2]), prefix)
             else:
                 renderer = JobRenderer(job, prefix)
 
