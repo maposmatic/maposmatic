@@ -183,18 +183,23 @@ def _canonicalize_data(data):
     to float or integers, etc."""
     if type(data) is tuple:
         return tuple(_canonicalize_data(x) for x in data)
-    elif type(data) is list:
+
+    if type(data) is list:
         return [_canonicalize_data(x) for x in data]
-    elif type(data) is dict:
+
+    if type(data) is dict:
         return dict([(_canonicalize_data(k),
                       _canonicalize_data(v)) for k,v in data.iteritems()])
-    try:
-        return int(data)
-    except ValueError:
+
+    if data:
         try:
-            return float(data)
+            return int(data)
         except ValueError:
-            pass
+            try:
+                return float(data)
+            except ValueError:
+                pass
+
     return data
 
 def _get_admin_boundary_info_from_GIS(cursor, osm_id):
