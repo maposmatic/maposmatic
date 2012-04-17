@@ -180,7 +180,7 @@ class MapRenderingJob(models.Model):
         The result contains two lists, 'maps' and 'indeces', listing the output
         files. Each file is reported by a tuple (format, path, title, size)."""
 
-        allfiles = {'maps': [], 'indeces': []}
+        allfiles = {'maps': [], 'indeces': [], 'thumbnail': []}
 
         for format in www.settings.RENDERING_RESULT_FORMATS:
             map_path = self.get_map_filepath(format)
@@ -198,6 +198,10 @@ class MapRenderingJob(models.Model):
                                                        'format': format.upper()},
                     os.stat(map_path).st_size, map_path))
 
+        thumbnail = os.path.join(www.settings.RENDERING_RESULT_PATH, self.files_prefix() + "_small.png")
+        if os.path.exists(thumbnail):
+            allfiles['thumbnail'].append(thumbnail)
+
         return allfiles
 
     def has_output_files(self):
@@ -209,7 +213,7 @@ class MapRenderingJob(models.Model):
 
         if self.is_done():
             files = self.output_files()
-            return len(files['maps']) + len(files['indeces'])
+            return len(files['maps']) + len(files['indeces']) + len(files['thumbnail'])
 
         return False
 
@@ -221,7 +225,7 @@ class MapRenderingJob(models.Model):
         saved = 0
         removed = 0
 
-        for f in (files['maps'] + files['indeces']):
+        for f in (files['maps'] + files['indeces'] + files['thumbnail']):
             try:
                 os.remove(f[4])
                 removed += 1
