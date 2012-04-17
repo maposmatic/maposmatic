@@ -98,20 +98,32 @@ class MapOSMaticDaemon:
         return self.render(job, 'maposmaticd_%d_' % os.getpid())
 
     def render(self, job, prefix=None):
-        """Render the given job using a timing out job renderer.
+        """Render a given job. Uses get_renderer() to get the appropriate
+        renderer to use to render this job.
 
         Args:
             job (MapRenderingJob): the job to process and render.
+            renderer (JobRenderer): the renderer to use.
 
         Returns True if the rendering was successful, False otherwise.
         """
-
-        renderer = render.TimingOutJobRenderer(job, prefix=prefix)
+        renderer = self.get_renderer(job, prefix)
         job.start_rendering()
         ret = renderer.run()
         job.end_rendering(_RESULT_MSGS[ret])
         return ret == 0
 
+    def get_renderer(self, job, prefix):
+        return render.ThreadingJobRenderer(job, prefix=prefix)
+
+class ForkingMapOSMaticDaemon(MapOSMaticDaemon):
+
+    def __init__(self, frequency=_DEFAULT_POLL_FREQUENCY):
+        MapOSMaticDaemon.__init__(self, frequency)
+        l.info('This is the forking daemon. Will fork to process each job.')
+
+    def get_renderer(self, job, prefix):
+        return render.ForkingJobRenderer(job, prefix=prefix)
 
 class RenderingsGarbageCollector(threading.Thread):
     """
@@ -235,7 +247,7 @@ if __name__ == '__main__':
         sys.exit(1)
 
     cleaner = RenderingsGarbageCollector()
-    daemon = MapOSMaticDaemon()
+    daemon = ForkingMapOSMaticDaemon()
 
     cleaner.start()
     daemon.serve()

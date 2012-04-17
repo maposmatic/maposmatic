@@ -26,6 +26,7 @@ import ctypes
 import datetime
 import Image
 import logging
+import multiprocessing
 import os
 import smtplib
 import sys
@@ -75,19 +76,15 @@ MapOSMatic
 
 l = logging.getLogger('maposmatic')
 
-class TimingOutJobRenderer:
+class ThreadingJobRenderer:
     """
-    The TimingOutJobRenderer is a wrapper around JobRenderer implementing
-    timeout management. It uses JobRenderer as a thread, and tries to join it
-    for the given timeout. If the timeout is reached, the thread is suspended,
-    cleaned up and killed.
-
-    The TimingOutJobRenderer has exactly the same API as the non-threading
-    JobRenderer, so it can be used in place of JobRenderer very easily.
+    The ThreadingJobRenderer is a wrapper around a JobRendered thread that
+    implements timeout management. If the timeout is reached, the thread is
+    suspended, cleaned up and killed.
     """
 
     def __init__(self, job, timeout=1200, prefix=None):
-        """Initializes this TimingOutJobRenderer with a given job and a timeout.
+        """Initializes this ThreadingJobRenderer with a given job and a timeout.
 
         Args:
             job (MapRenderingJob): the job to render.
@@ -95,6 +92,7 @@ class TimingOutJobRenderer:
             prefix (string): renderer map_areas table prefix.
         """
 
+        self.__job = job
         self.__timeout = timeout
         self.__thread = JobRenderer(job, prefix)
 
@@ -114,17 +112,52 @@ class TimingOutJobRenderer:
             return self.__thread.result
 
         l.info("Rendering of job #%d took too long (timeout reached)!" %
-               self.__thread.job.id)
+               self.__job.id)
 
-        # Remove the job files
-        self.__thread.job.remove_all_files()
-
-        # Kill the thread and return TIMEOUT_REACHED
+        # Kill the thread, clean up and return TIMEOUT_REACHED
         self.__thread.kill()
         del self.__thread
 
-        l.debug("Thread removed.")
+        # Remove the job files
+        self.__job.remove_all_files()
+
+        l.debug("Worker removed.")
         return RESULT_TIMEOUT_REACHED
+
+
+class ForkingJobRenderer:
+
+    def __init__(self, job, timeout=1200, prefix=None):
+        self.__job = job
+        self.__timeout = timeout
+        self.__renderer = JobRenderer(job, prefix)
+        self.__process = multiprocessing.Process(target=self._wrap)
+
+    def run(self):
+        self.__process.start()
+        self.__process.join(self.__timeout)
+
+        # If the process is no longer alive, the timeout was not reached and
+        # all is well.
+        if not self.__process.is_alive():
+            return self.__process.exitcode
+
+        l.info("Rendering of job #%d took too long (timeout reached)!" %
+            self.__job.id)
+
+        # Kill the process, clean up and return TIMEOUT_REACHED
+        self.__process.terminate()
+        del self.__process
+
+        # Remove job files
+        self.__job.remove_all_files()
+
+        l.debug("Process terminated.")
+        return RESULT_TIMEOUT_REACHED
+
+    def _wrap(self, rv):
+        sys.exit(self.__renderer.run())
+
 
 class JobRenderer(threading.Thread):
     """
@@ -332,7 +365,7 @@ if __name__ == '__main__':
         if job:
             prefix = 'renderer_%d_' % os.getpid()
             if len(sys.argv) == 3:
-                renderer = TimingOutJobRenderer(job, int(sys.argv[2]), prefix)
+                renderer = ThreadingJobRenderer(job, int(sys.argv[2]), prefix)
             else:
                 renderer = JobRenderer(job, prefix)
 
