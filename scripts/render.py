@@ -155,7 +155,7 @@ class ForkingJobRenderer:
         l.debug("Process terminated.")
         return RESULT_TIMEOUT_REACHED
 
-    def _wrap(self, rv):
+    def _wrap(self):
         sys.exit(self.__renderer.run())
 
 
