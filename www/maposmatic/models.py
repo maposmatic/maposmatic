@@ -45,6 +45,7 @@ class MapRenderingJobManager(models.Manager):
         fifteen_days_before = datetime.now() - timedelta(15)
         maps = (MapRenderingJob.objects.filter(status=2)
             .filter(submission_time__gte=fifteen_days_before)
+            .filter(resultmsg='ok')
             .order_by('?')[0:10])
         for m in maps:
             if m.get_thumbnail():
