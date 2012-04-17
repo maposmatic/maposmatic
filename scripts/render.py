@@ -140,7 +140,12 @@ class ForkingJobRenderer:
         # If the process is no longer alive, the timeout was not reached and
         # all is well.
         if not self.__process.is_alive():
-            return self.__process.exitcode
+            # If the exit code is < 0, it means the subprocess was terminated
+            # abnormaly (by signal). In this situation, we need to report a
+            # rendering exception.
+            if self.__process.exitcode >= 0:
+                return self.__process.exitcode
+            return RESULT_RENDERING_EXCEPTION
 
         l.info("Rendering of job #%d took too long (timeout reached)!" %
             self.__job.id)
