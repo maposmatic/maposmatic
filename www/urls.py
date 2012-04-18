@@ -28,13 +28,9 @@ from django.conf.urls.defaults import *
 # from django.contrib import admin
 # admin.autodiscover()
 
-import maposmatic.feeds
+from maposmatic.feeds import MapsFeed
 import maposmatic.views
 import settings
-
-feeds = {
-    'maps': maposmatic.feeds.MapsFeed,
-}
 
 urlpatterns = patterns('',
     url(r'^$', maposmatic.views.index,
@@ -75,8 +71,7 @@ urlpatterns = patterns('',
     (r'^i18n/', include('django.conf.urls.i18n')),
 
     # Feeds
-    (r'^feeds/(?P<url>.*)/$', 'django.contrib.syndication.views.feed',
-     {'feed_dict': feeds}, 'rss-feed'),
+    url(r'^feeds/(?P<url>.*)/$', MapsFeed(), name='rss-feed'),
 )
 
 if settings.DEBUG:
