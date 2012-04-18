@@ -45,6 +45,10 @@ DATABASES = {
 # Path to ocitysmap's config file to use, or None for the default in ~/
 OCITYSMAP_CFG_PATH = None
 
+# Path to the file containing the datetime of the state of the GIS
+# database. It should be of the form YYYY-MM-DD HH:MM:SS.
+GIS_DATABASE_LAG_FILE = '/path/to/gis/database/lag/file'
+
 RENDERING_RESULT_PATH = '/path/to/rendering/results/'
 RENDERING_RESULT_URL = '/results/' # Either a relative URL or an absolute URL
 RENDERING_RESULT_FORMATS = ['png', 'svgz', 'pdf', 'csv']
