@@ -243,6 +243,12 @@ def query_papersize(request):
                 lon_upper_left = f.cleaned_data.get("lon_upper_left")
                 lat_bottom_right = f.cleaned_data.get("lat_bottom_right")
                 lon_bottom_right = f.cleaned_data.get("lon_bottom_right")
+
+                # Check we have correct floats
+                if (lat_upper_left == None or lon_upper_left == None
+                    or lat_bottom_right == None or lon_bottom_right == None):
+                   return HttpResponseBadRequest("ERROR: Invalid arguments")
+
                 bbox = coords.BoundingBox(lat_upper_left, lon_upper_left,
                                           lat_bottom_right, lon_bottom_right)
 
