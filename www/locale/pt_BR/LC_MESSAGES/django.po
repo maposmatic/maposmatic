@@ -21,8 +21,8 @@ msgstr ""
 "Project-Id-Version: mapOSMatic 0.1\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2012-04-14 19:25+0200\n"
-"PO-Revision-Date: 2012-04-14 19:27+0100\n"
-"Last-Translator: Thomas Petazzoni <thomas.petazzoni@enix.org>\n"
+"PO-Revision-Date: 2012-04-22 18:56-0300\n"
+"Last-Translator: Rodrigo de Avila <rodrigo@avila.net.br>\n"
 "Language-Team: PT <LL@li.org>\n"
 "Language: \n"
 "MIME-Version: 1.0\n"
@@ -116,14 +116,12 @@ msgid "Map title required"
 msgstr "Título do mapa obrigatório"
 
 #: maposmatic/forms.py:162
-#, fuzzy
 msgid "Layout required"
-msgstr "Título do mapa obrigatório"
+msgstr "Layout obrigatório"
 
 #: maposmatic/forms.py:167
-#, fuzzy
 msgid "Stylesheet required"
-msgstr "Folha de estilo"
+msgstr "Folha de estilo obrigatória"
 
 #: maposmatic/forms.py:173
 msgid "Administrative city required"
@@ -988,7 +986,7 @@ msgstr "Papel"
 
 #: templates/maposmatic/new.html:135
 msgid "An error occured while retrieving compatible paper sizes."
-msgstr ""
+msgstr "Um erro ocorreu enquanto recebia os tamanhos de papel compatíveis."
 
 #: templates/maposmatic/new.html:148
 msgid "Map Index Language:"
