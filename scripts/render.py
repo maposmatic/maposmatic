@@ -109,6 +109,8 @@ class ThreadingJobRenderer:
         # If the thread is no longer alive, the timeout was not reached and all
         # is well.
         if not self.__thread.isAlive():
+            if self.__thread.result != 0:
+                self.__job.remove_all_files()
             return self.__thread.result
 
         l.info("Rendering of job #%d took too long (timeout reached)!" %
@@ -140,6 +142,9 @@ class ForkingJobRenderer:
         # If the process is no longer alive, the timeout was not reached and
         # all is well.
         if not self.__process.is_alive():
+            if self.__process.exitcode != 0:
+                self.__job.remove_all_files()
+
             # If the exit code is < 0, it means the subprocess was terminated
             # abnormaly (by signal). In this situation, we need to report a
             # rendering exception.
@@ -347,10 +352,6 @@ class JobRenderer(threading.Thread):
             l.exception("Rendering of job #%d failed (exception occurred during"
                         " rendering)!" % self.job.id)
             self._email_exception(e)
-
-        # Remove the job files if the rendering was not successful.
-        if self.result:
-            self.job.remove_all_files()
 
         return self.result
 

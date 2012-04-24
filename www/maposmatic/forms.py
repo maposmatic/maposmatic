@@ -242,10 +242,10 @@ class MapPaperSizeForm(forms.Form):
     osmid            = forms.IntegerField(required=False)
     layout           = forms.CharField(max_length=256)
     stylesheet       = forms.CharField(max_length=256)
-    lat_upper_left   = forms.FloatField(required=False)
-    lon_upper_left   = forms.FloatField(required=False)
-    lat_bottom_right = forms.FloatField(required=False)
-    lon_bottom_right = forms.FloatField(required=False)
+    lat_upper_left   = forms.FloatField(required=False, min_value=-90.0, max_value=90.0)
+    lon_upper_left   = forms.FloatField(required=False, min_value=-180.0, max_value=180.0)
+    lat_bottom_right = forms.FloatField(required=False, min_value=-90.0, max_value=90.0)
+    lon_bottom_right = forms.FloatField(required=False, min_value=-180.0, max_value=180.0)
 
 class MapRecreateForm(forms.Form):
     """

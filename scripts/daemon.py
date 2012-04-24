@@ -246,9 +246,12 @@ if __name__ == '__main__':
                   "Please use a valid RENDERING_RESULT_PATH.")
         sys.exit(1)
 
-    cleaner = RenderingsGarbageCollector()
-    daemon = ForkingMapOSMaticDaemon()
+    try:
+        cleaner = RenderingsGarbageCollector()
+        daemon = ForkingMapOSMaticDaemon()
 
-    cleaner.start()
-    daemon.serve()
+        cleaner.start()
+        daemon.serve()
+    except Exception, e:
+        l.exception('Fatal error during daemon execution!')
 

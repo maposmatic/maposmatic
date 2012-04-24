@@ -24,6 +24,7 @@
 from django.core.urlresolvers import reverse
 import django.utils.translation
 import feedparser
+import datetime
 
 from models import MapRenderingJob
 import www.settings
@@ -36,19 +37,17 @@ def get_latest_blog_posts():
     return f.entries[:5]
 
 def get_osm_database_last_update():
-    db = gisdb.get()
-    if db is None:
-        return None
-    cursor = db.cursor()
-    query = "select last_update from maposmatic_admin;"
     try:
-        cursor.execute(query)
-    except psycopg2.ProgrammingError:
-        db.rollback()
+        f = open(www.settings.GIS_DATABASE_LAG_FILE)
+    except IOError:
         return None
-    # Extract datetime object. It is located as the first element
-    # of a tuple, itself the first element of an array.
-    return cursor.fetchall()[0][0]
+
+    s = f.readline().strip()
+    try:
+        d = datetime.datetime.strptime(s, "%Y-%m-%d %H:%M:%S")
+    except ValueError:
+        return None
+    return d
 
 def all(request):
     # Do not add the useless overhead of parsing blog entries when generating

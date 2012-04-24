@@ -31,15 +31,23 @@ ADMINS = (
     ('MapOSMatic admin', 'contact@your.domain'),
 )
 
-DATABASE_ENGINE = 'postgresql_psycopg2'           # 'postgresql_psycopg2', 'postgresql', 'mysql', 'sqlite3' or 'oracle'.
-DATABASE_NAME = 'maposmatic'             # Or path to database file if using sqlite3.
-DATABASE_USER = 'maposmatic'             # Not used with sqlite3.
-DATABASE_PASSWORD = 'ereiamjh'         # Not used with sqlite3.
-DATABASE_HOST = 'localhost'             # Set to empty string for localhost. Not used with sqlite3.
-DATABASE_PORT = ''             # Set to empty string for default. Not used with sqlite3.
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': 'maposmatic',
+        'USER': 'maposmatic',
+        'PASSWORD': 'ereiamjh',
+        'HOST': 'localhost',
+        'PORT': ''
+        }
+    }
 
 # Path to ocitysmap's config file to use, or None for the default in ~/
 OCITYSMAP_CFG_PATH = None
+
+# Path to the file containing the datetime of the state of the GIS
+# database. It should be of the form YYYY-MM-DD HH:MM:SS.
+GIS_DATABASE_LAG_FILE = '/path/to/gis/database/lag/file'
 
 RENDERING_RESULT_PATH = '/path/to/rendering/results/'
 RENDERING_RESULT_URL = '/results/' # Either a relative URL or an absolute URL
