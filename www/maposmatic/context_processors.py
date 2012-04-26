@@ -21,6 +21,7 @@
 # You should have received a copy of the GNU Affero General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
+import django
 from django.core.urlresolvers import reverse
 import django.utils.translation
 import feedparser
@@ -53,7 +54,8 @@ def get_osm_database_last_update():
 def all(request):
     # Do not add the useless overhead of parsing blog entries when generating
     # the rss feed
-    if request.path == reverse('rss-feed', args=['maps']):
+    if (django.VERSION[1] >= 4 and request.path == reverse('rss-feed')) or \
+       (django.VERSION[1] < 4 and request.path == reverse('rss-feed', args=['maps'])):
         return {}
 
     l = django.utils.translation.get_language()
