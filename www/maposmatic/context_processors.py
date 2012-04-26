@@ -38,16 +38,17 @@ def get_latest_blog_posts():
 
 def get_osm_database_last_update():
     try:
-        f = open(www.settings.GIS_DATABASE_LAG_FILE)
+        with open(www.settings.GIS_DATABASE_LAG_FILE) as f:
+            try:
+                return datetime.datetime.strptime(
+                    '%s' % f.read().strip(),
+                    '%Y-%m-%d %H:%M:%S')
+            except ValueError:
+                pass
     except IOError:
-        return None
+        pass
 
-    s = f.readline().strip()
-    try:
-        d = datetime.datetime.strptime(s, "%Y-%m-%d %H:%M:%S")
-    except ValueError:
-        return None
-    return d
+    return None
 
 def all(request):
     # Do not add the useless overhead of parsing blog entries when generating
@@ -68,6 +69,7 @@ def all(request):
         'blogposts': get_latest_blog_posts(),
         'MAPOSMATIC_DAEMON_RUNNING': www.settings.is_daemon_running(),
         'osm_date': get_osm_database_last_update(),
+        'utc_now': datetime.datetime.utcnow(),
         'DEBUG': www.settings.DEBUG,
         'paypal_lang_code': paypal_lang_code,
         'paypal_country_code': paypal_country_code,
