@@ -223,6 +223,7 @@ MAP_LANGUAGES = [
     ("ar_YE.UTF-8", u"اليَمَن (AR)"),
     ("en_ZA.UTF-8", u"South Africa (EN)"),
     ("en_ZW.UTF-8", u"Zimbabwe (EN)"),
+    ("tr_TR.UTF-8", u"Türkçe (TR)"),
 ]
 
 MAP_LANGUAGES.sort(lambda x, y: cmp(x[1], y[1]))
