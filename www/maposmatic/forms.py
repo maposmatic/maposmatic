@@ -188,6 +188,7 @@ class MapRenderingJobForm(forms.ModelForm):
                     = forms.util.ErrorList([msg])
 
         elif mode == 'bbox':
+            # Check bounding box corners are provided
             for f in [ "lat_upper_left", "lon_upper_left",
                        "lat_bottom_right", "lon_bottom_right" ]:
                 val = cleaned_data.get(f)
@@ -196,6 +197,21 @@ class MapRenderingJobForm(forms.ModelForm):
                     self._errors['bbox'] = forms.util.ErrorList([msg])
                     if f in cleaned_data:
                         del cleaned_data[f]
+
+            # Check latitude and longitude are different
+            if (cleaned_data.get("lat_upper_left")
+                == cleaned_data.get("lat_bottom_right")):
+                msg = _(u"Same latitude")
+                self._errors['bbox'] = forms.util.ErrorList([msg])
+                del cleaned_data["lat_upper_left"]
+                del cleaned_data["lat_bottom_right"]
+
+            if (cleaned_data.get("lon_upper_left")
+                == cleaned_data.get("lon_bottom_right")):
+                msg = _(u"Same longitude")
+                self._errors['bbox'] = forms.util.ErrorList([msg])
+                del cleaned_data["lon_upper_left"]
+                del cleaned_data["lon_bottom_right"]
 
             # Make sure that bbox and admin modes are exclusive
             cleaned_data["administrative_city"] = ''
