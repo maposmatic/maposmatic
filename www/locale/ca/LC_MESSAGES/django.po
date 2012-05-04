@@ -21,7 +21,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: mapOSMatic 0.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-04-14 19:25+0200\n"
+"POT-Creation-Date: 2012-05-04 09:34+0200\n"
 "PO-Revision-Date: 2010-10-20 11:43+0200\n"
 "Last-Translator: Joan Montané <joan--sense-spam--montane.cat>\n"
 "Language-Team: Català <joan--sense-spam--montane.cat>\n"
@@ -32,7 +32,7 @@ msgstr ""
 "X-Generator: Lokalize 1.0\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
 
-#: settings.py:230
+#: settings.py:232
 msgid "No localization"
 msgstr "Sense localització"
 
@@ -137,29 +137,37 @@ msgstr "És necessària una ciutat administrativa"
 msgid "Error with osm city: %s"
 msgstr "S'ha produït un error amb la ciutat de l'OSM: %s"
 
-#: maposmatic/forms.py:195
+#: maposmatic/forms.py:196
 msgid "Required"
 msgstr "És necessari"
 
-#: maposmatic/forms.py:220
+#: maposmatic/forms.py:204
+msgid "Same latitude"
+msgstr ""
+
+#: maposmatic/forms.py:211
+msgid "Same longitude"
+msgstr ""
+
+#: maposmatic/forms.py:236
 msgid "Bounding Box too large"
 msgstr "L'àrea seleccionada és massa gran"
 
-#: maposmatic/models.py:189
+#: maposmatic/models.py:190
 #, python-format
 msgid "%(title)s %(format)s Map"
 msgstr "Mapa de %(title)s (format %(format)s)"
 
-#: maposmatic/models.py:196
+#: maposmatic/models.py:197
 #, python-format
 msgid "%(title)s %(format)s Index"
 msgstr "Índex de %(title)s (format %(format)s)"
 
-#: maposmatic/nominatim.py:239
+#: maposmatic/nominatim.py:244
 msgid "Administrative area too big for rendering"
 msgstr "El límit administratiu és massa gran per a renderitzar el mapa"
 
-#: maposmatic/nominatim.py:295 maposmatic/nominatim.py:309
+#: maposmatic/nominatim.py:300 maposmatic/nominatim.py:314
 msgid "No administrative boundary"
 msgstr "No hi ha cap límit administratiu"
 
@@ -514,6 +522,11 @@ msgstr "traducció al rus"
 
 #: templates/maposmatic/about.html:196
 #, fuzzy
+msgid "turkish translation"
+msgstr "traducció al danès"
+
+#: templates/maposmatic/about.html:197
+#, fuzzy
 msgid "printable stylesheet"
 msgstr "Full d'estil"
 
@@ -600,38 +613,38 @@ msgstr ""
 msgid "Lag of MapOSMatic OSM database: unknown."
 msgstr ""
 
-#: templates/maposmatic/base.html:114
+#: templates/maposmatic/base.html:115
 msgid "Random map"
 msgstr "Mapa aleatori"
 
-#: templates/maposmatic/base.html:121
+#: templates/maposmatic/base.html:122
 msgid "No random map found."
 msgstr "No s'ha trobat cap mapa aleatori."
 
-#: templates/maposmatic/base.html:126
+#: templates/maposmatic/base.html:127
 msgid "Latest news"
 msgstr "Últimes notícies"
 
-#: templates/maposmatic/base.html:131
+#: templates/maposmatic/base.html:132
 #, python-format
 msgid "published %(date)s ago"
 msgstr ""
 "publicat fa %(date)s\n"
 "    "
 
-#: templates/maposmatic/base.html:139
+#: templates/maposmatic/base.html:140
 msgid "Contact"
 msgstr "Contacte"
 
-#: templates/maposmatic/base.html:141
+#: templates/maposmatic/base.html:142
 msgid "Mail:"
 msgstr "Correu:"
 
-#: templates/maposmatic/base.html:143
+#: templates/maposmatic/base.html:144
 msgid "IRC:"
 msgstr "IRC:"
 
-#: templates/maposmatic/base.html:144
+#: templates/maposmatic/base.html:145
 msgid "on"
 msgstr "a"
 
