@@ -121,7 +121,8 @@ LANGUAGES = (("fr", u"Français"),
              ("hr-hr", u"Hrvatski"),
              ("pl", u"Polski"),
              ("es", u"Español"),
-             ("id", u"Bahasa Indonesia"))
+             ("id", u"Bahasa Indonesia"),
+             ("tr-tr", u"Türkçe"))
 
 # Associate a Django language code with:
 #  the language code used to select the Paypal button
