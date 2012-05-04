@@ -177,6 +177,7 @@ MAP_LANGUAGES = [
     ("ar_EG.UTF-8", u"مصر (AR)"),
     ("es_ES.UTF-8", u"España (ES)"),
     ("ca_ES.UTF-8", u"Espanya (CA)"),
+    ("ast_ES.UTF-8", u"España (AST)"),
     ("fr_FR.UTF-8", u"France (FR)"),
     ("ca_FR.UTF-8", u"França (CA)"),
     ("en_GB.UTF-8", u"United Kingdom (EN)"),
