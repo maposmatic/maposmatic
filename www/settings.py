@@ -212,6 +212,7 @@ MAP_LANGUAGES = [
     ("es_PR.UTF-8", u"Puerto Rico (ES)"),
     ("es_PY.UTF-8", u"Paraguay (ES)"),
     ("ar_QA.UTF-8", u"دولة قطر (AR)"),
+    ("ru_RU.UTF-8", u"Русский"),
     ("ar_SA.UTF-8", u"المملكة العربية السعودية (AR)"),
     ("ar_SD.UTF-8", u"السودان (AR)"),
     ("en_SG.UTF-8", u"Singapore (EN)"),
