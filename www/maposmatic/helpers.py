@@ -27,7 +27,6 @@ import psycopg2
 import random
 import string
 
-from ocitysmap2 import coords
 from www.maposmatic.models import MapRenderingJob
 import www.settings
 

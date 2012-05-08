@@ -28,7 +28,7 @@ from django import forms
 from django.utils.safestring import mark_safe
 from django.utils.translation import ugettext_lazy as _
 
-from ocitysmap2 import OCitySMap, coords
+import ocitysmap
 from www.maposmatic import models, widgets
 import www.settings
 
@@ -82,7 +82,7 @@ class MapRenderingJobForm(forms.ModelForm):
     def __init__(self, *args, **kwargs):
         super(MapRenderingJobForm, self).__init__(*args, **kwargs)
 
-        self._ocitysmap = OCitySMap(www.settings.OCITYSMAP_CFG_PATH)
+        self._ocitysmap = ocitysmap.OCitySMap(www.settings.OCITYSMAP_CFG_PATH)
 
         layout_renderers = self._ocitysmap.get_all_renderers()
         stylesheets = self._ocitysmap.get_all_style_configurations()
@@ -226,10 +226,9 @@ class MapRenderingJobForm(forms.ModelForm):
             lat_bottom_right = cleaned_data.get("lat_bottom_right")
             lon_bottom_right = cleaned_data.get("lon_bottom_right")
 
-            boundingbox = coords.BoundingBox(lat_upper_left,
-                                             lon_upper_left,
-                                             lat_bottom_right,
-                                             lon_bottom_right)
+            boundingbox = ocitysmap.coords.BoundingBox(
+                lat_upper_left, lon_upper_left,
+                lat_bottom_right, lon_bottom_right)
             (metric_size_lat, metric_size_long) = boundingbox.spheric_sizes()
             if (metric_size_lat > www.settings.BBOX_MAXIMUM_LENGTH_IN_METERS
                 or metric_size_long > www.settings.BBOX_MAXIMUM_LENGTH_IN_METERS):
@@ -243,7 +242,7 @@ class MapRenderingJobForm(forms.ModelForm):
         rendering (bounding box not too large, etc.). Raise an exception in
         case of error."""
         bbox_wkt, area_wkt = self._ocitysmap.get_geographic_info(osm_id)
-        bbox = coords.BoundingBox.parse_wkt(bbox_wkt)
+        bbox = ocitysmap.coords.BoundingBox.parse_wkt(bbox_wkt)
         (metric_size_lat, metric_size_long) = bbox.spheric_sizes()
         if metric_size_lat > www.settings.BBOX_MAXIMUM_LENGTH_IN_METERS or \
                 metric_size_long > www.settings.BBOX_MAXIMUM_LENGTH_IN_METERS:
