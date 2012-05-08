@@ -37,7 +37,9 @@ class MapSearchForm(forms.Form):
     The map search form, allowing search through the rendered maps.
     """
 
-    query = forms.CharField(min_length=1, required=True)
+    query = forms.CharField(min_length=1, required=True,
+                widget=forms.TextInput(attrs={'placeholder':
+                    _('Search by map name')}))
 
 class MapRenderingJobForm(forms.ModelForm):
     """
