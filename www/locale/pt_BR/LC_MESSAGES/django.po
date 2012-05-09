@@ -21,7 +21,7 @@ msgstr ""
 "Project-Id-Version: mapOSMatic 0.1\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2012-05-04 09:34+0200\n"
-"PO-Revision-Date: 2012-04-22 18:56-0300\n"
+"PO-Revision-Date: 2012-05-08 19:34-0300\n"
 "Last-Translator: Rodrigo de Avila <rodrigo@avila.net.br>\n"
 "Language-Team: PT <LL@li.org>\n"
 "Language: \n"
@@ -138,11 +138,11 @@ msgstr "Obrigatório"
 
 #: maposmatic/forms.py:204
 msgid "Same latitude"
-msgstr ""
+msgstr "Mesma latitude"
 
 #: maposmatic/forms.py:211
 msgid "Same longitude"
-msgstr ""
+msgstr "Mesma longitude"
 
 #: maposmatic/forms.py:236
 msgid "Bounding Box too large"
@@ -162,7 +162,8 @@ msgstr "Índice de ruas pelo %(title)s (format %(format)s)"
 msgid "Administrative area too big for rendering"
 msgstr "Área administrativa muito grande para renderizar"
 
-#: maposmatic/nominatim.py:300 maposmatic/nominatim.py:314
+#: maposmatic/nominatim.py:300
+#: maposmatic/nominatim.py:314
 msgid "No administrative boundary"
 msgstr "Sem limite administrativo"
 
@@ -210,7 +211,9 @@ msgstr "Falhas de renderização obsoleta: a renderização falhou, e os arquivo
 msgid "The rendering was cancelled by the user."
 msgstr "A renderização foi cancelada pelo usuário."
 
-#: templates/404.html:3 templates/500.html:3 templates/maposmatic/base.html:59
+#: templates/404.html:3
+#: templates/500.html:3
+#: templates/maposmatic/base.html:59
 msgid "Home"
 msgstr "Início"
 
@@ -246,7 +249,8 @@ msgstr "Erro no servidor <em>(500)</em>"
 msgid "There's been an error."
 msgstr "Um erro aconteceu."
 
-#: templates/maposmatic/about.html:35 templates/maposmatic/base.html:65
+#: templates/maposmatic/about.html:35
+#: templates/maposmatic/base.html:65
 msgid "About"
 msgstr "Sobre"
 
@@ -539,7 +543,8 @@ msgstr "tradução para o russo"
 msgid "arabic translation"
 msgstr "tradução para o árabe"
 
-#: templates/maposmatic/about.html:186 templates/maposmatic/about.html:187
+#: templates/maposmatic/about.html:186
+#: templates/maposmatic/about.html:187
 msgid "brasilian portuguese translation"
 msgstr "tradução para o português brasileiro"
 
@@ -563,7 +568,8 @@ msgstr "tradução para o polonês"
 msgid "indonesian translation"
 msgstr "tradução para o indonésio"
 
-#: templates/maposmatic/about.html:193 templates/maposmatic/about.html:194
+#: templates/maposmatic/about.html:193
+#: templates/maposmatic/about.html:194
 msgid "norvegian bokmål translation"
 msgstr "tradução para norvegian bokmål"
 
@@ -572,9 +578,8 @@ msgid "norvegian nynorsk translation"
 msgstr "tradução para norvegian nynorsk"
 
 #: templates/maposmatic/about.html:196
-#, fuzzy
 msgid "turkish translation"
-msgstr "tradução para o dinamarquês"
+msgstr "tradução para o turco"
 
 #: templates/maposmatic/about.html:197
 msgid "printable stylesheet"
@@ -596,11 +601,13 @@ msgstr ""
 "Nenhum pedido de renderização de mapas desde\n"
 "as últimas 24 horas."
 
-#: templates/maposmatic/all_maps.html:34 templates/maposmatic/index.html:61
+#: templates/maposmatic/all_maps.html:34
+#: templates/maposmatic/index.html:61
 msgid "Search"
 msgstr "Procurar"
 
-#: templates/maposmatic/all_maps.html:38 templates/maposmatic/base.html:62
+#: templates/maposmatic/all_maps.html:38
+#: templates/maposmatic/base.html:62
 msgid "Maps"
 msgstr "Mapas"
 
@@ -636,7 +643,8 @@ msgstr "Trabalhos"
 msgid "News"
 msgstr "Notícias"
 
-#: templates/maposmatic/base.html:64 templates/maposmatic/donate.html:30
+#: templates/maposmatic/base.html:64
+#: templates/maposmatic/donate.html:30
 msgid "Donate"
 msgstr "Fazer uma Doação"
 
@@ -795,7 +803,8 @@ msgstr "Encontrar um mapa"
 msgid "More details"
 msgstr "Mais detalhes"
 
-#: templates/maposmatic/job-page.html:39 templates/maposmatic/job.html:35
+#: templates/maposmatic/job-page.html:39
+#: templates/maposmatic/job.html:35
 #: templates/maposmatic/map.html:35
 msgid "Recreate map"
 msgstr "Recriar o mapa"
@@ -854,22 +863,26 @@ msgstr "Cancelado em"
 msgid "rendering took %(rendering)s"
 msgstr "renderização demorou %(rendering)s"
 
-#: templates/maposmatic/job.html:79 templates/maposmatic/map-feed.html:44
+#: templates/maposmatic/job.html:79
+#: templates/maposmatic/map-feed.html:44
 #: templates/maposmatic/map.html:57
 msgid "Files: "
 msgstr "Arquivos:"
 
-#: templates/maposmatic/job.html:81 templates/maposmatic/map-feed.html:46
+#: templates/maposmatic/job.html:81
+#: templates/maposmatic/map-feed.html:46
 #: templates/maposmatic/map.html:59
 msgid "Map: "
 msgstr "Mapa:"
 
-#: templates/maposmatic/job.html:82 templates/maposmatic/map-feed.html:47
+#: templates/maposmatic/job.html:82
+#: templates/maposmatic/map-feed.html:47
 #: templates/maposmatic/map.html:60
 msgid "Index: "
 msgstr "Índice:"
 
-#: templates/maposmatic/job.html:85 templates/maposmatic/map-feed.html:50
+#: templates/maposmatic/job.html:85
+#: templates/maposmatic/map-feed.html:50
 #: templates/maposmatic/map.html:63
 msgid "No index was generated because no information was available in OpenStreetMap to create one. Feel free to contribute the missing data yourself. See the <a href=\"http://wiki.openstreetmap.org/wiki/Getting_Involved\">OSM Wiki</a> for a start. "
 msgstr "Nenhum índice foi gerado porque não há nenhuma informação disponível no OpenStreetMap para criá-lo. Fique à vontade para contribuir com os dados faltantes. Veja no <a href=\"http://wiki.openstreetmap.org/wiki/Getting_Involved\">Wiki do OSM</a> como começar. "
@@ -878,12 +891,14 @@ msgstr "Nenhum índice foi gerado porque não há nenhuma informação disponív
 msgid "View on OpenStreetMap"
 msgstr "Ver no OpenStreetMap"
 
-#: templates/maposmatic/job.html:92 templates/maposmatic/map-feed.html:53
+#: templates/maposmatic/job.html:92
+#: templates/maposmatic/map-feed.html:53
 #: templates/maposmatic/map.html:66
 msgid "The generated files are no longer available."
 msgstr "Os arquivos gerados não estão mais disponíveis."
 
-#: templates/maposmatic/map-feed.html:41 templates/maposmatic/map.html:54
+#: templates/maposmatic/map-feed.html:41
+#: templates/maposmatic/map.html:54
 msgid "Rendering completed on"
 msgstr "Renderização encerrada em"
 
@@ -899,11 +914,13 @@ msgstr "Localidade"
 msgid "Title"
 msgstr "Título"
 
-#: templates/maposmatic/new.html:51 templates/maposmatic/new.html.py:124
+#: templates/maposmatic/new.html:51
+#: templates/maposmatic/new.html.py:124
 msgid "Layout"
 msgstr "Layout"
 
-#: templates/maposmatic/new.html:54 templates/maposmatic/new.html.py:129
+#: templates/maposmatic/new.html:54
+#: templates/maposmatic/new.html.py:129
 msgid "Stylesheet"
 msgstr "Folha de estilo"
 
@@ -911,7 +928,8 @@ msgstr "Folha de estilo"
 msgid "Paper size"
 msgstr "Tamanho do papel"
 
-#: templates/maposmatic/new.html:60 templates/maposmatic/new.html.py:147
+#: templates/maposmatic/new.html:60
+#: templates/maposmatic/new.html.py:147
 msgid "Language"
 msgstr "Idioma"
 
