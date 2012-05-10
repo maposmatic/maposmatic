@@ -242,7 +242,7 @@ class RenderingsGarbageCollector(threading.Thread):
 if __name__ == '__main__':
     if (not os.path.exists(RENDERING_RESULT_PATH)
         or not os.path.isdir(RENDERING_RESULT_PATH)):
-        l.error("%s does not exist, is not a directory! " %
+        l.error("%s does not exist or is not a directory! " %
                 RENDERING_RESULT_PATH)
         l.error("Please set RENDERING_RESULT_PATH to a valid directory!")
         sys.exit(1)
