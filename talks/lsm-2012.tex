@@ -13,9 +13,8 @@
 \usetheme{MapOSMatic}
 \setbeamercovered{dynamic}
 
-\title{MapOSMatic: city maps for the masses}
+\title{MapOSMatic: free city maps for everyone!}
 \author{Thomas {\sc Petazzoni}}
-\institute{Libre Software Meeting}
 \date{July 10th, 2012}
 
 \begin{document}
@@ -23,7 +22,21 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \begin{frame}
-  \titlepage
+  \begin{center}
+    \Huge
+    MapOSMatic, free city maps for everyone!\\
+    \vspace{2cm}
+    \begin{columns}
+      \column{0.6\textwidth}
+      \normalsize
+      Thomas Petazzoni\\
+      \path{thomas.petazzoni@enix.org}\\
+      Libre Software Meeting 2012\\
+      \url{http://www.maposmatic.org}\\
+      \column{0.4\textwidth}
+      \includegraphics[height=0.3\textheight]{geneve-small.png}
+    \end{columns}
+  \end{center}
 \end{frame}
 
 \begin{frame}{Thomas Petazzoni}
@@ -303,31 +316,225 @@
   \end{center}
 \end{frame}
 
-\begin{frame}{OSM Database}
+\begin{frame}{OSM Database (1/2)}
+  \begin{itemize}
+  \item In order to render maps, Mapnik needs an OSM database
+    converted in a PostGIS schema
+  \item The format of the main OSM database is different, to allow
+    flexible tags: the conversion process is non-trivial
+  \item {\bf Initial import}
+    \begin{itemize}
+    \item Planet dumps available in a protobuf-encoded format, at
+      \url{http://planet.openstreetmap.org/pbf/}
+    \item Converted to the PostGIS schema and pushed into a PostgreSQL
+      database by the {\em osm2pgsql} tool,
+      \url{http://wiki.openstreetmap.org/wiki/Osm2pgsql}
+    \item Takes 8-10 days on a 6x4 cores Xeon X5670 @ 2.93 Ghz, 24 GB
+      of RAM, a single hard drive
+    \item Initial file 16 GB, resulting database around 250 GB
+    \end{itemize}
+  \end{itemize}
+\end{frame}
 
+\begin{frame}{OSM Database (2/2)}
+  \begin{itemize}
+  \item {\bf Regular updates}
+    \begin{itemize}
+    \item Minutely updates available. At MapOSMatic, we group them by
+      slots of 15 minutes.
+    \item Generated using the {\em osmosis} tool, from the
+      \url{http://planet.openstreetmap.org/redaction-period/minute-replicate/}
+      server
+    \item \url{http://wiki.openstreetmap.org/wiki/Osmosis}
+    \item Applied to the PostgreSQL database using {\em osm2pgsql}
+    \item Very hard to keep updated: time to apply a 15 minutes update
+      is often around 10 minutes
+    \end{itemize}
+  \item Need to buy a SSD drive.
+  \end{itemize}
+\end{frame}
+
+\begin{frame}{OSM Database diagram}
+  \begin{center}
+    \includegraphics[width=\textwidth]{osm-database.pdf}
+  \end{center}
 \end{frame}
 
 \begin{frame}{OCitySMap}
+  \begin{itemize}
+  \item OCitySMap is a Python module that implements the map and
+    street index rendering
+  \item A command-line client is provided
+  \item Uses multiple Python modules:
+    \begin{itemize}
+    \item {\bf psycopg2} for direct PostgreSQL queries used to build
+      the index of streets and amenities
+    \item {\bf mapnik} to do the map rendering
+    \item {\bf pango} to do the text rendering
+    \item {\bf cairo} to layout the map and index
+    \item {\bf ogr} for shapes manipulation
+    \end{itemize}
+  \item Available as a separate project from MapOSMatic
+  \end{itemize}
+\end{frame}
 
+\begin{frame}{OCitySMap architecture}
+  \begin{center}
+    \includegraphics[height=0.8\textheight]{ocitysmap.pdf}
+  \end{center}
+\end{frame}
+
+\begin{frame}[fragile]{OCitySMap example usage}
+Render an administrative boundary, knowing its OSM id:
+\begin{verbatim}
+./render.py -t "Chevreuse" -f pdf -s mapquest_eu \
+            -L fr_FR -l multi_page --paper-format A4 \
+            --osmid=-943886
+\end{verbatim}
+Render a geographic area, knowing its bounding box:
+\begin{verbatim}
+  ./render.py -t "Map Title" \
+              -b 48.7268,1.9946 48.6801,2.0742
+\end{verbatim}
+\end{frame}
+
+\begin{frame}{OCitySMap installation in a nutshell}
+  \begin{enumerate}
+  \item Install PostgreSQL and PostGIS, create a PostgreSQL user and
+    database
+  \item Enable PostGIS in the database
+  \item Build and install {\em osm2pgsql}
+  \item Download and import the OSM data with {\em osm2pgsql}
+  \item Install Mapnik
+  \item Install Mapnik-OSM, the official OpenStreetMap stylesheet for
+    Mapnik. Requires downloading of coast line data and fonts.
+  \item Installation and configuration of OCitySMap
+  \end{enumerate}
+  Fortunately, everything is documented in details in the
+  \path{INSTALL} file of the project.
 \end{frame}
 
 \begin{frame}{MapOSMatic}
+  MapOSMatic is composed of:
+  \begin{enumerate}
+  \item {\bf A Web interface}, written using the Django
+    framework. This
+    interface allows user to create new maps, view existing maps, etc.\\
+    When a new map is requested, it is put into a rendering queue.
+  \item {\bf A daemon}, which processes the jobs in the rendering
+    queue one by one. This daemon uses {\em OCitySMap} to do the
+    rendering.
+  \end{enumerate}
+  \begin{center}
+    \includegraphics[width=\textwidth]{maposmatic.pdf}
+  \end{center}
+\end{frame}
 
+\begin{frame}{Languages}
+
+  Both the website and the street index logic requires
+  translations. So far, we have translations in:
+  \begin{columns}
+    \column{0.5\textwidth}
+    \begin{itemize}
+    \item French
+    \item Dutch
+    \item German
+    \item Spanish
+    \item Brazilian Portuguese
+    \item Russian
+    \end{itemize}
+    \column{0.5\textwidth}
+    \begin{itemize}
+    \item Norvegian Bokmal
+    \item Italian
+    \item Catalan
+    \item Hungarian
+    \item Polish
+    \item Indonesian
+    \item Arabic
+    \end{itemize}
+  \end{columns}
 \end{frame}
 
 \begin{frame}{Hardware setup}
-
+  \begin{center}
+    \includegraphics[width=\textwidth]{hardware-setup.pdf}
+  \end{center}
 \end{frame}
 
 \begin{frame}{Statistics}
-
+  \begin{itemize}
+    \item {\bf 50000 maps} render since the service has been launched
+    \item {\bf 5000 to 10000} visitors per month
+    \item {\bf 280 GB} of OSM database
+  \end{itemize}
+  \begin{center}
+    \includegraphics[width=0.8\textwidth]{maposmatic-stats.png}\\
+    Number of daily maps rendered
+  \end{center}
 \end{frame}
 
-\begin{frame}{Examples of usage}
-
+\begin{frame}{Example of usage}
+  \begin{center}
+    \includegraphics[width=0.7\textwidth]{orange-city.jpg}\\
+    City of {\em Orange, France}, has printed folded maps using
+    MapOSMatic.
+  \end{center}
 \end{frame}
 
-\begin{frame}[t]{Conclusion}
+\begin{frame}{Future work}
+  \begin{itemize}
+  \item Allow users to customize the set of amenities and point of
+    interests visible in the index
+  \item Allow users to customize the rendering style. Maybe by
+    exploring the {\em MapCSS} technology.
+  \item Add a legend and scale on the map.
+  \item Add more translations
+  \item Fix more bugs
+  \end{itemize}
+\end{frame}
+
+\begin{frame}{Join the project!}
+  \begin{itemize}
+  \item {\bf Website}: \url{http://www.maposmatic.org}
+  \item {\bf Blog}: \url{http://news.maposmatic.org}
+  \item {\bf Savannah project}: \url{https://savannah.nongnu.org/projects/maposmatic/}
+  \item {\bf Git} repositories
+    \begin{itemize}
+      \scriptsize
+    \item OcitySMap: \url{git://git.savannah.nongnu.org/maposmatic/ocitysmap.git}
+    \item MapOSMatic: \url{git://git.savannah.nongnu.org/maposmatic.git}
+    \end{itemize}
+  \item {\bf Mailing list}: \url{https://lists.nongnu.org/mailman/listinfo/maposmatic-dev}
+  \item {\bf IRC channel}: {\tt \#maposmatic} on {\em Freenode}
+  \end{itemize}
+\end{frame}
+
+\begin{frame}{Conclusion}
+  \begin{itemize}
+  \item The OSM database and all the tools around it allow a
+    relatively {\bf easy access to geographic data}
+  \item {\bf Very impressive amount of reuse} in this project, thanks to the
+    numerous Python modules available.
+  \item MapOSMatic is, we think, a {\bf good illustration of what is
+    possible thanks to freely available data}
+  \item MapOSMatic is free software, {\bf join us and contribute}!
+  \end{itemize}
+\end{frame}
+
+\begin{frame}
+  \begin{center}
+    \Huge
+    Questions ?\\
+    \Large
+    \vspace{2cm}
+    \path{http://www.maposmatic.org}\\
+    \vspace{2cm}
+    \normalsize
+    \path{thomas.petazzoni@enix.org}\\
+    \path{contact@maposmatic.org}\\
+  \end{center}
 \end{frame}
 
 \end{document}
