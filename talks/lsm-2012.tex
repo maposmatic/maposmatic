@@ -21,68 +21,116 @@
 \begin{document}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{Introduction}
-\begin{frame}[t]
+
+\begin{frame}
   \titlepage
 \end{frame}
 
-\begin{frame}[t]{Outline}
-  \setcounter{tocdepth}{1}
-  \tableofcontents
-\end{frame}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{The story}
-
-\subsection{The story behing MapOSMatic}
-\begin{frame}[t]{From the idea to the code}
+\begin{frame}{Thomas Petazzoni}
   \begin{itemize}
-    \item<1-> An idea from Gilles Lamiral
-    \item<2-> The first hackfest in August 2009
+  \item {\bf Embedded Linux engineer} and trainer at Free Electrons
+  \item Regular contributor to the {\bf Buildroot} project, an open-source
+    embedded Linux build system
+  \item Contributor to the Linux {\bf kernel}
+  \item Active in the free software community: founder of {\em
+      Toulibre}, founder of the {\em Agenda du Libre}
+  \item {\bf One of the developer of MapOSMatic}, together with
+    David Decotigny, Gaël Utard, Maxime Petazzoni, David Mentré,
+    Frédéric Lehobey, Étienne Loks, and many other contributors.
   \end{itemize}
 \end{frame}
 
-\subsection{Hackfests}
-\subsubsection{August 2009}
-\subsubsection{December 2009}
-\subsubsection{August 2010}
+\begin{frame}{Agenda}
+  \begin{enumerate}
+  \item Original idea and goal
+  \item History
+  \item Current status
+  \item Technical details
+  \item Future
+  \end{enumerate}
+\end{frame}
 
-\subsection{Features timeline}
+\begin{frame}{Original idea}
+  At some point in 2009...
+  \vspace{1cm}
+  \\
+  \Large
+  \begin{quote}
+    ``It would be great to be able to use OpenStreetMap data to generate
+    city maps such as the ones we can see in town signs and in folded
+    maps.''
+  \end{quote}
+  \normalsize
+  \vspace{1cm}
+  \hfill Gilles Lamiral, OSM contributor of Bretagne, France
+\end{frame}
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{MapOSMatic}
-\subsection{The user experience: the MapOSMatic.org website}
-\subsubsection{A quick walkthrough}
-\subsubsection{Example renderings}
-\subsubsection{Some statistics}
+\begin{frame}{Public city maps}
+  \begin{center}
+    \includegraphics[height=0.8\textheight]{public-city-map.jpg}
+  \end{center}
+\end{frame}
 
-\subsection{Behind the web page}
-\subsubsection{Our server and infrastructure}
-\subsubsection{Rendering pipeline architecture}
-\subsubsection{Standing on the shoulders of giants}
-\subsubsection{Internationalization}
+\begin{frame}{Folded maps}
+  \begin{center}
+    \includegraphics[height=0.8\textheight]{folded-map.jpg}
+  \end{center}
+\end{frame}
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{OSM/Mapnik weak points}
-\subsection{OpenStreetMap administrative boundaries}
-\subsubsection{The {\tt admin\_level} problem}
-\subsubsection{Missing boundaries}
-\subsubsection{Incorrect polygons and {\tt osm2pgsql}}
+\begin{frame}{Goal}
+  \Large
+  Create an {\bf easy-to-use Web service}, in which the user inputs
+  the {\bf name of a city}, and in return gets:
+  \begin{enumerate}
+  \item a {\bf map} of that city, overlayed by a {\bf grid}
+  \item an {\bf index of streets and amenities} associated to the map
+  \end{enumerate}
+\end{frame}
 
-\subsection{Mapnik rendering}
-\subsubsection{Street labels and zoom level}
+\begin{frame}{Development model}
+  \begin{itemize}
+  \item The development mainly takes place during {\bf hackfests}
+  \item Hackfests are gathering of 4-6 developers for 2 to 8 days,
+    fully dedicated to making progress on the project
+  \item Hackfests provide an excellent productivity
+  \item Maintenance and minor progress (bug fixes, translation
+    updates) done outside of the hackfests, as a regular open-source
+    project, with mailing-list, Git repositories, etc.
+  \end{itemize}
+\end{frame}
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{The database}
+\begin{frame}{Hackfest \#0}
+  \begin{itemize}
+  \item August 2009, Toulouse, France
+  \item Six OSM contributors
+  \item No knowledge of PostgreSQL, PostGIS, Mapnik, OSM data
+    structure, Cairo
+  \item Initial version of MapOSMatic developed and published in 5 days
+    \begin{itemize}
+    \item Technologies: Python, Django, Cairo, PostgreSQL, PostGIS, Mapnik
+    \end{itemize}
+  \item Limited to France, no support for languages other than French
+    and English, very basic user interface, OSM data never updated
+  \item \url{http://www.maposmatic.org}
+  \end{itemize}
+\end{frame}
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{Future work}
-\subsection{Semantics: make the most out of OSM data}
-\subsection{Map improvements}
-\subsection{Infrastructure improvements}
+\begin{frame}{Hackfest \#0 results}
+  \begin{center}
+    \includegraphics[height=0.8\textheight]{chavagne.png}
+    \includegraphics[height=0.8\textheight]{chavagne_index.png}
+  \end{center}
+\end{frame}
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{Conclusion}
+\begin{frame}{Hackfest \#0 map detail}
+
+\end{frame}
+
+\begin{frame}{Hackfest \#1}
+  \begin{center}
+  \end{center}
+\end{frame}
+
 \begin{frame}[t]{Conclusion}
 \end{frame}
 
