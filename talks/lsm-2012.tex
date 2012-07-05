@@ -112,6 +112,7 @@
   \item Limited to France, no support for languages other than French
     and English, very basic user interface, OSM data never updated
   \item \url{http://www.maposmatic.org}
+  \item Excellent reception from the OpenStreetMap community
   \end{itemize}
 \end{frame}
 
@@ -122,13 +123,208 @@
   \end{center}
 \end{frame}
 
-\begin{frame}{Hackfest \#0 map detail}
-
+\begin{frame}{Hackfest \#0 details}
+  \begin{center}
+    \includegraphics[height=0.5\textheight]{chavagne_detail.png}
+    \includegraphics[height=0.5\textheight]{chavagne_index_detail.png}
+  \end{center}
 \end{frame}
 
 \begin{frame}{Hackfest \#1}
+  \begin{itemize}
+  \item December 2009, near Paris, France
+  \item Five developers, four days
+  \item Features implemented
+    \begin{itemize}
+    \item Coverage of the whole world: required a much larger import
+      of OSM data
+    \item OSM database updated on a daily basis
+    \item i18 infrastructure to adapt the street index generation on a
+      per-language basis
+    \item City name search based on Nominatim
+    \item Amenities (schools, town hall, post offices) in the index
+    \end{itemize}
+  \item All improvements put in production early January 2010
+  \item After this hackfest, we started receiving a lot of
+    contributions to translate the language and the street index
+    rendering logic.
+  \end{itemize}
+\end{frame}
+
+\begin{frame}{Hackfest \#2}
+  \begin{columns}
+    \column{0.7\textwidth}
+  \begin{itemize}
+  \item August 2010, Toulouse, France
+  \item Six developers, seven days
+  \item Features
+    \begin{itemize}
+    \item Complete rewrite of the rendering engine, to support
+      multiple layouts (index on the same side as the map, at the
+      bottom or on the side) and selectable standard paper sizes
+    \item Support for multiple stylesheets (style of renderings)
+    \item Major rewrite of the web interface, to provide a wizard for
+      the map creation
+    \end{itemize}
+  \item Features not completed, so no delivery in production...
+  \end{itemize}
+  \column{0.3\textwidth}
+  \includegraphics[height=0.5\textheight]{hackfest-2-notes.jpg}
+  \end{columns}
+\end{frame}
+
+\begin{frame}{Hackfest \#2 result}
   \begin{center}
+    \includegraphics[height=0.8\textheight]{stains.png}
   \end{center}
+\end{frame}
+
+\begin{frame}{Server migration, october 2010}
+  Our initial server, having 250 GB of hard disk space, was completely
+  filled with the OpenStreetMap database.\\
+
+  Had to migrate all our services on different machines, causing a
+  severe downtime for the service.
+\end{frame}
+
+\begin{frame}{Hackfest \#3}
+  \begin{columns}
+    \column{0.6\textwidth}
+  \begin{itemize}
+  \item February 2012, San Francisco, USA
+  \item Four developers, two days
+  \item Things done
+    \begin{itemize}
+    \item Investigation of a Mapnik rendering bug that was a block for
+      releasing in production our new version
+    \item Add some monitoring tools on our servers
+    \item Polish web interface details
+    \end{itemize}
+  \item Improvements made in August 2010 were still not in production!
+  \end{itemize}
+    \column{0.4\textwidth}
+  \includegraphics[width=0.9\textwidth]{hackfest-3.jpg}
+  \end{columns}
+\end{frame}
+
+\begin{frame}{Hackfest \#4}
+  \begin{columns}
+    \column{0.6\textwidth}
+  \begin{itemize}
+  \item March 2012, Rennes, France
+  \item Five developers, seven days
+  \item Objective: put in production all the new features
+    \begin{itemize}
+    \item Support for multi-page maps, which allows to render large
+      maps on A4 and A5 paper sizes
+    \item Integration of several Mapnik stylesheets
+    \item Many, many fixes in the rendering engine and the web
+      interface
+    \end{itemize}
+  \item {\bf On April, 19th, a few weeks after the hackfest, we
+      managed to put all the improvements in production and make it
+      public!}
+  \end{itemize}
+    \column{0.4\textwidth}
+  \includegraphics[width=0.9\textwidth]{hackfest-4.jpg}
+  \end{columns}
+\end{frame}
+
+\begin{frame}{Hackfest \#4 results}
+  \begin{center}
+    \includegraphics[height=0.8\textheight]{chavagne-multi-page-front.png}
+    \includegraphics[height=0.8\textheight]{chavagne-multi-page-overview.png}
+  \end{center}
+\end{frame}
+
+\begin{frame}{Using maposmatic.org (1/11)}
+  \begin{center}
+    \includegraphics[width=\textwidth]{screenshot1.png}
+  \end{center}
+\end{frame}
+
+\begin{frame}{Using maposmatic.org (2/11)}
+  \begin{center}
+    \includegraphics[width=\textwidth]{screenshot2.png}
+  \end{center}
+\end{frame}
+
+\begin{frame}{Using maposmatic.org (3/11)}
+  \begin{center}
+    \includegraphics[width=\textwidth]{screenshot3.png}
+  \end{center}
+\end{frame}
+
+\begin{frame}{Using maposmatic.org (4/11)}
+  \begin{center}
+    \includegraphics[width=\textwidth]{screenshot4.png}
+  \end{center}
+\end{frame}
+
+\begin{frame}{Using maposmatic.org (5/11)}
+  \begin{center}
+    \includegraphics[width=\textwidth]{screenshot5.png}
+  \end{center}
+\end{frame}
+
+\begin{frame}{Using maposmatic.org (6/11)}
+  \begin{center}
+    \includegraphics[width=\textwidth]{screenshot6.png}
+  \end{center}
+\end{frame}
+
+\begin{frame}{Using maposmatic.org (7/11)}
+  \begin{center}
+    \includegraphics[width=\textwidth]{screenshot7.png}
+  \end{center}
+\end{frame}
+
+\begin{frame}{Using maposmatic.org (8/11)}
+  \begin{center}
+    \includegraphics[width=\textwidth]{screenshot8.png}
+  \end{center}
+\end{frame}
+
+\begin{frame}{Using maposmatic.org (9/11)}
+  \begin{center}
+    \includegraphics[width=\textwidth]{screenshot9.png}
+  \end{center}
+\end{frame}
+
+\begin{frame}{Using maposmatic.org (10/11)}
+  \begin{center}
+    \includegraphics[width=\textwidth]{screenshot10.png}
+  \end{center}
+\end{frame}
+
+\begin{frame}{Using maposmatic.org (11/11)}
+  \begin{center}
+    \includegraphics[width=\textwidth]{screenshot11.png}
+  \end{center}
+\end{frame}
+
+\begin{frame}{OSM Database}
+
+\end{frame}
+
+\begin{frame}{OCitySMap}
+
+\end{frame}
+
+\begin{frame}{MapOSMatic}
+
+\end{frame}
+
+\begin{frame}{Hardware setup}
+
+\end{frame}
+
+\begin{frame}{Statistics}
+
+\end{frame}
+
+\begin{frame}{Examples of usage}
+
 \end{frame}
 
 \begin{frame}[t]{Conclusion}
