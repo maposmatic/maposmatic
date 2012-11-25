@@ -127,7 +127,8 @@ def all_jobs(request):
     job_list = (models.MapRenderingJob.objects.all()
                 .order_by('-submission_time'))
     job_list = (job_list.filter(submission_time__gte=one_day_before) |
-                job_list.filter(status=0))
+                job_list.filter(status=0) |
+                job_list.filter(status=1))
     paginator = Paginator(job_list, www.settings.ITEMS_PER_PAGE)
 
     try:
