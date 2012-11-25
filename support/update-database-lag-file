@@ -8,8 +8,10 @@
 #
 # This script typically needs to be executed as a cronjob
 
-DATABASE=$1
+DATABASE_HOST=$(echo $1 | cut -d':' -f1)
+DATABASE_PORT=$(echo $1 | cut -d':' -f2)
+test -z $DATABASE_PORT && DATABASE_PORT=5432
 OUTPUT_FILE=$2
 
 echo "select last_update from maposmatic_admin;" | \
-    psql -h ${DATABASE} -A -t > ${OUTPUT_FILE}
+    psql -h ${DATABASE_HOST} -p ${DATABASE_PORT} -A -t > ${OUTPUT_FILE}
