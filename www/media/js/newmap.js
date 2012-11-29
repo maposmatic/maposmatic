@@ -165,6 +165,7 @@ function preparePaperPanel()
   /* Start the Ajax request to get the list of allowed paper
    * sizes */
   $("#paperselection").hide();
+  $("#papersizeloading").show();
   disallowNextStep();
   $("#papersizeerror").hide();
   if (getCurrentMode() == 'bbox') {
@@ -189,10 +190,12 @@ function preparePaperPanel()
            url:  "/apis/papersize/",
            data: args,
            success: function(data) {
+                      $("#papersizeloading").hide();
                       filterAllowedPaper(data);
                       allowNextStep();
                     },
            error: function(data) {
+                      $("#papersizeloading").hide();
                       $("#papersizeerror").show();
                       disallowNextStep();
                     },
