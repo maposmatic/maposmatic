@@ -38,17 +38,25 @@ def get_latest_blog_posts():
     return f.entries[:5]
 
 def get_osm_database_last_update():
+    """Returns the timestamp of the last PostGIS database update, which is
+    placed into the maposmatic_admin table in the PostGIS database by the
+    planet-update incremental update script."""
+
+    db = gisdb.get()
+    if db is None:
+        return None
+
+    cursor = db.cursor()
+
     try:
-        with open(www.settings.GIS_DATABASE_LAG_FILE) as f:
-            try:
-                return datetime.datetime.strptime(
-                    '%s' % f.read().strip(),
-                    '%Y-%m-%d %H:%M:%S')
-            except ValueError:
-                pass
-    except IOError:
+        cursor.execute("""select last_update from maposmatic_admin""")
+        last_update = cursor.fetchone()
+        if last_update is not None and len(last_update) == 1:
+            return datetime.datetime.strptime(last_update[0], '%Y-%m-%d %H:%M:%S')
+    except:
         pass
 
+    cursor.close()
     return None
 
 def all(request):

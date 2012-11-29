@@ -40,7 +40,7 @@ def get():
         return _DB
 
     try:
-        _DB = psycopg2.connect("dbname='%s' user='%s' host='%s' password='%s' port='%s'" %
+        _DB = psycopg2.connect("dbname='%s' user='%s' host='%s' password='%s' port='%s' connection_timeout=1" %
                                 (www.settings.GIS_DATABASE_NAME,
                                  www.settings.GIS_DATABASE_USER,
                                  www.settings.GIS_DATABASE_HOST,

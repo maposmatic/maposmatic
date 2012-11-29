@@ -105,9 +105,9 @@
         <div id="bosmtimestamp">
           <h3>{% trans "OSM database status" %}</h3>
           {% if osm_date %}
-          <p>{% blocktrans with osm_date|timesince:utc_now as date %}Lag of MapOSMatic OSM database: {{ date }}.{% endblocktrans %}</p>
+          <p>{% blocktrans with osm_date|timesince:utc_now as date %}Database is online, <span title="{{ osm_date|date:"r" }}">last update {{ date }} ago</span>.{% endblocktrans %}</p>
           {% else %}
-          <p>{% blocktrans %}Lag of MapOSMatic OSM database: unknown.{% endblocktrans %}</p>
+          <p class="error">{% blocktrans %}Could not connect to OSM database!{% endblocktrans %}</p>
           {% endif %}
         </div>
 
