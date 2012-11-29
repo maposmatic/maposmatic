@@ -52,11 +52,12 @@ def get_osm_database_last_update():
         cursor.execute("""select last_update from maposmatic_admin""")
         last_update = cursor.fetchone()
         if last_update is not None and len(last_update) == 1:
-            return datetime.datetime.strptime(last_update[0], '%Y-%m-%d %H:%M:%S')
+            return last_update[0]
     except:
         pass
+    finally:
+        cursor.close()
 
-    cursor.close()
     return None
 
 def all(request):
