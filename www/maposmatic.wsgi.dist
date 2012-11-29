@@ -28,6 +28,7 @@ sys.path.append("/path/to/our/ocitysmap/top/directory")
 
 os.environ["DJANGO_SETTINGS_MODULE"] = 'www.settings'
 os.environ["MAPOSMATIC_LOG_FILE"] = "/tmp/maposmatic-www.log"
+os.environ["PGCONNECT_TIMEOUT"] = 1
 
 import django.core.handlers.wsgi
 
