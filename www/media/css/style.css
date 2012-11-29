@@ -87,6 +87,11 @@ form#langsel {
   margin-right: 1em;
 }
 
+p.error {
+  color: red;
+  font-weight: bold;
+}
+
 /* Navigation menu */
 ul#nav {
   list-style: none;

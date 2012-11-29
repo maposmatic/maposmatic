@@ -22,6 +22,7 @@
 # You should have received a copy of the GNU Affero General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
+import django
 from django.conf.urls.defaults import *
 
 # Uncomment the next two lines to enable the admin:
@@ -31,10 +32,6 @@ from django.conf.urls.defaults import *
 import maposmatic.feeds
 import maposmatic.views
 import settings
-
-feeds = {
-    'maps': maposmatic.feeds.MapsFeed,
-}
 
 urlpatterns = patterns('',
     url(r'^$', maposmatic.views.index,
@@ -71,12 +68,17 @@ urlpatterns = patterns('',
 
     (r'^apis/papersize', maposmatic.views.query_papersize),
 
+    # Feeds
+    django.VERSION[1] >= 4 and \
+        url(r'^feeds/maps/', maposmatic.feeds.MapsFeed(),
+            name='rss-feed') or \
+        url(r'^feeds/(?P<url>.*)/$',
+            'django.contrib.syndication.views.feed',
+            {'feed_dict': {'maps': maposmatic.feeds.MapsFeed}},
+            name='rss-feed'),
+
     # Internationalization
     (r'^i18n/', include('django.conf.urls.i18n')),
-
-    # Feeds
-    (r'^feeds/(?P<url>.*)/$', 'django.contrib.syndication.views.feed',
-     {'feed_dict': feeds}, 'rss-feed'),
 )
 
 if settings.DEBUG:

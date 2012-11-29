@@ -22,8 +22,14 @@
 # You should have received a copy of the GNU Affero General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-
 import logging
+import os
+import sys
+
+# Optional: if you need to extend the Python search path, for example to
+# include your OCitySMap installation, then write something like the following:
+# sys.path.append('/path/to/ocitysmap')
+# sys.path.append('/path/to/lib/python/site-packages')
 
 DEBUG = True
 
@@ -32,17 +38,31 @@ ADMINS = (
 )
 
 DATABASES = {
+    # For SQLite:
     'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'maposmatic',
-        'USER': 'maposmatic',
-        'PASSWORD': 'ereiamjh',
-        'HOST': 'localhost',
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': os.path.join(os.path.dirname(__file__),
+                    'datastore.sqlite3'),
+        'USER': '',
+        'PASSWORD': '',
+        'HOST': '',
         'PORT': ''
-        }
-    }
+        },
 
-# Path to ocitysmap's config file to use, or None for the default in ~/
+    # For PostgreSQL:
+    #'default': {
+    #    'ENGINE': 'django.db.backends.postgresql_psycopg2',
+    #    'NAME': 'maposmatic',
+    #    'USER': 'maposmatic',
+    #    'PASSWORD': 'secret',
+    #    'HOST': 'localhost',
+    #    'PORT': '5432'
+    #    },
+
+}
+
+# Path to ocitysmap's config file to use, or None for the default
+# (~/.ocitysmap.conf)
 OCITYSMAP_CFG_PATH = None
 
 # Path to the file containing the datetime of the state of the GIS
@@ -80,17 +100,10 @@ ITEMS_PER_PAGE = 25
 MAPOSMATIC_PID_FILE = '/var/run/maposmaticd.pid'
 
 # Settings for exception emails: the from email address, and the list of
-# receipient email addresses. No emails are sent if the receipients list is
-# empty.
-DAEMON_ERRORS_SMTP_HOST = 'localhost'
+# receipient email addresses. No emails are sent if the SMTP host is not
+# defined.
+DAEMON_ERRORS_SMTP_HOST = None
 DAEMON_ERRORS_SMTP_PORT = 25
 DAEMON_ERRORS_EMAIL_FROM = 'daemon@domain.com'
 DAEMON_ERRORS_EMAIL_REPLY_TO = 'noreply@domain.com'
 DAEMON_ERRORS_JOB_URL = 'http://domain.com/jobs/%d'
-
-###
-## Optional: if you need to extend the python search path, then write
-## something like the following:
-# import sys
-# sys.path.append('/path/to/ocitysmap')
-# sys.path.append('/path/to/lib/python/site-packages')

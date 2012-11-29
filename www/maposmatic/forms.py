@@ -28,7 +28,7 @@ from django import forms
 from django.utils.safestring import mark_safe
 from django.utils.translation import ugettext_lazy as _
 
-from ocitysmap2 import OCitySMap, coords
+import ocitysmap
 from www.maposmatic import models, widgets
 import www.settings
 
@@ -37,7 +37,9 @@ class MapSearchForm(forms.Form):
     The map search form, allowing search through the rendered maps.
     """
 
-    query = forms.CharField(min_length=1, required=True)
+    query = forms.CharField(min_length=1, required=True,
+                widget=forms.TextInput(attrs={'placeholder':
+                    _('Search by map name')}))
 
 class MapRenderingJobForm(forms.ModelForm):
     """
@@ -82,7 +84,7 @@ class MapRenderingJobForm(forms.ModelForm):
     def __init__(self, *args, **kwargs):
         super(MapRenderingJobForm, self).__init__(*args, **kwargs)
 
-        self._ocitysmap = OCitySMap(www.settings.OCITYSMAP_CFG_PATH)
+        self._ocitysmap = ocitysmap.OCitySMap(www.settings.OCITYSMAP_CFG_PATH)
 
         layout_renderers = self._ocitysmap.get_all_renderers()
         stylesheets = self._ocitysmap.get_all_style_configurations()
@@ -188,6 +190,7 @@ class MapRenderingJobForm(forms.ModelForm):
                     = forms.util.ErrorList([msg])
 
         elif mode == 'bbox':
+            # Check bounding box corners are provided
             for f in [ "lat_upper_left", "lon_upper_left",
                        "lat_bottom_right", "lon_bottom_right" ]:
                 val = cleaned_data.get(f)
@@ -196,6 +199,21 @@ class MapRenderingJobForm(forms.ModelForm):
                     self._errors['bbox'] = forms.util.ErrorList([msg])
                     if f in cleaned_data:
                         del cleaned_data[f]
+
+            # Check latitude and longitude are different
+            if (cleaned_data.get("lat_upper_left")
+                == cleaned_data.get("lat_bottom_right")):
+                msg = _(u"Same latitude")
+                self._errors['bbox'] = forms.util.ErrorList([msg])
+                del cleaned_data["lat_upper_left"]
+                del cleaned_data["lat_bottom_right"]
+
+            if (cleaned_data.get("lon_upper_left")
+                == cleaned_data.get("lon_bottom_right")):
+                msg = _(u"Same longitude")
+                self._errors['bbox'] = forms.util.ErrorList([msg])
+                del cleaned_data["lon_upper_left"]
+                del cleaned_data["lon_bottom_right"]
 
             # Make sure that bbox and admin modes are exclusive
             cleaned_data["administrative_city"] = ''
@@ -210,10 +228,9 @@ class MapRenderingJobForm(forms.ModelForm):
             lat_bottom_right = cleaned_data.get("lat_bottom_right")
             lon_bottom_right = cleaned_data.get("lon_bottom_right")
 
-            boundingbox = coords.BoundingBox(lat_upper_left,
-                                             lon_upper_left,
-                                             lat_bottom_right,
-                                             lon_bottom_right)
+            boundingbox = ocitysmap.coords.BoundingBox(
+                lat_upper_left, lon_upper_left,
+                lat_bottom_right, lon_bottom_right)
             (metric_size_lat, metric_size_long) = boundingbox.spheric_sizes()
             if (metric_size_lat > www.settings.BBOX_MAXIMUM_LENGTH_IN_METERS
                 or metric_size_long > www.settings.BBOX_MAXIMUM_LENGTH_IN_METERS):
@@ -227,7 +244,7 @@ class MapRenderingJobForm(forms.ModelForm):
         rendering (bounding box not too large, etc.). Raise an exception in
         case of error."""
         bbox_wkt, area_wkt = self._ocitysmap.get_geographic_info(osm_id)
-        bbox = coords.BoundingBox.parse_wkt(bbox_wkt)
+        bbox = ocitysmap.coords.BoundingBox.parse_wkt(bbox_wkt)
         (metric_size_lat, metric_size_long) = bbox.spheric_sizes()
         if metric_size_lat > www.settings.BBOX_MAXIMUM_LENGTH_IN_METERS or \
                 metric_size_long > www.settings.BBOX_MAXIMUM_LENGTH_IN_METERS:

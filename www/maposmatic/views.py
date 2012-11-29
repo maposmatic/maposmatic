@@ -34,7 +34,7 @@ from django.shortcuts import get_object_or_404, render_to_response
 from django.template import RequestContext
 from django.utils.translation import ugettext_lazy as _
 
-from ocitysmap2 import OCitySMap, coords, renderers
+import ocitysmap
 from www.maposmatic import helpers, forms, nominatim, models
 import www.settings
 
@@ -127,7 +127,8 @@ def all_jobs(request):
     job_list = (models.MapRenderingJob.objects.all()
                 .order_by('-submission_time'))
     job_list = (job_list.filter(submission_time__gte=one_day_before) |
-                job_list.filter(status=0))
+                job_list.filter(status=0) |
+                job_list.filter(status=1))
     paginator = Paginator(job_list, www.settings.ITEMS_PER_PAGE)
 
     try:
@@ -224,20 +225,20 @@ def query_papersize(request):
     if request.method == 'POST':
         f = forms.MapPaperSizeForm(request.POST)
         if f.is_valid():
-            ocitysmap  = OCitySMap(www.settings.OCITYSMAP_CFG_PATH)
-            osmid      = f.cleaned_data.get('osmid')
-            layout     = f.cleaned_data.get('layout')
-            stylesheet = ocitysmap.get_stylesheet_by_name(
+            renderer = ocitysmap.OCitySMap(www.settings.OCITYSMAP_CFG_PATH)
+            osmid = f.cleaned_data.get('osmid')
+            layout = f.cleaned_data.get('layout')
+            stylesheet = renderer.get_stylesheet_by_name(
                 f.cleaned_data.get('stylesheet'))
 
             # Determine geographic area
             if osmid is not None:
                 try:
-                    bbox_wkt, area_wkt = ocitysmap.get_geographic_info(osmid)
+                    bbox_wkt, area_wkt = renderer.get_geographic_info(osmid)
                 except ValueError:
                     LOG.exception("Error determining compatible paper sizes")
                     raise
-                bbox = coords.BoundingBox.parse_wkt(bbox_wkt)
+                bbox = ocitysmap.coords.BoundingBox.parse_wkt(bbox_wkt)
             else:
                 lat_upper_left = f.cleaned_data.get("lat_upper_left")
                 lon_upper_left = f.cleaned_data.get("lon_upper_left")
@@ -249,10 +250,11 @@ def query_papersize(request):
                     or lat_bottom_right == None or lon_bottom_right == None):
                    return HttpResponseBadRequest("ERROR: Invalid arguments")
 
-                bbox = coords.BoundingBox(lat_upper_left, lon_upper_left,
-                                          lat_bottom_right, lon_bottom_right)
+                bbox = ocitysmap.coords.BoundingBox(
+                    lat_upper_left, lon_upper_left,
+                    lat_bottom_right, lon_bottom_right)
 
-            renderer_cls = renderers.get_renderer_class_by_name(layout)
+            renderer_cls = ocitysmap.renderers.get_renderer_class_by_name(layout)
             paper_sizes = sorted(renderer_cls.get_compatible_paper_sizes(bbox),
                                  key = lambda p: p[1])
 

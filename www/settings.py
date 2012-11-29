@@ -121,7 +121,8 @@ LANGUAGES = (("fr", u"Français"),
              ("hr-hr", u"Hrvatski"),
              ("pl", u"Polski"),
              ("es", u"Español"),
-             ("id", u"Bahasa Indonesia"))
+             ("id", u"Bahasa Indonesia"),
+             ("tr-tr", u"Türkçe"))
 
 # Associate a Django language code with:
 #  the language code used to select the Paypal button
@@ -176,6 +177,7 @@ MAP_LANGUAGES = [
     ("ar_EG.UTF-8", u"مصر (AR)"),
     ("es_ES.UTF-8", u"España (ES)"),
     ("ca_ES.UTF-8", u"Espanya (CA)"),
+    ("ast_ES.UTF-8", u"España (AST)"),
     ("fr_FR.UTF-8", u"France (FR)"),
     ("ca_FR.UTF-8", u"França (CA)"),
     ("en_GB.UTF-8", u"United Kingdom (EN)"),
@@ -210,6 +212,7 @@ MAP_LANGUAGES = [
     ("es_PR.UTF-8", u"Puerto Rico (ES)"),
     ("es_PY.UTF-8", u"Paraguay (ES)"),
     ("ar_QA.UTF-8", u"دولة قطر (AR)"),
+    ("ru_RU.UTF-8", u"Русский"),
     ("ar_SA.UTF-8", u"المملكة العربية السعودية (AR)"),
     ("ar_SD.UTF-8", u"السودان (AR)"),
     ("en_SG.UTF-8", u"Singapore (EN)"),
@@ -223,6 +226,8 @@ MAP_LANGUAGES = [
     ("ar_YE.UTF-8", u"اليَمَن (AR)"),
     ("en_ZA.UTF-8", u"South Africa (EN)"),
     ("en_ZW.UTF-8", u"Zimbabwe (EN)"),
+    ("tr_TR.UTF-8", u"Türkçe (TR)"),
+    ("sk_SK.UTF-8", u"Slovakien (SK)"),
 ]
 
 MAP_LANGUAGES.sort(lambda x, y: cmp(x[1], y[1]))

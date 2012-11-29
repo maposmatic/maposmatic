@@ -19,7 +19,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: mapOSMatic 0.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-04-14 19:25+0200\n"
+"POT-Creation-Date: 2012-05-04 09:34+0200\n"
 "PO-Revision-Date: 2012-04-14 19:27+0100\n"
 "Last-Translator: Thomas Petazzoni <thomas.petazzoni@enix.org>\n"
 "Language-Team: MapOSMatic Dutch Translation team\n"
@@ -30,7 +30,7 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Generator: Virtaal 0.5.2\n"
 
-#: settings.py:230
+#: settings.py:232
 msgid "No localization"
 msgstr "Geen vertaling"
 
@@ -133,30 +133,37 @@ msgstr "Plaatsnaam is vereist"
 msgid "Error with osm city: %s"
 msgstr "Er is een fout met de gekozen plaats: %s"
 
-#: maposmatic/forms.py:195
+#: maposmatic/forms.py:196
 msgid "Required"
 msgstr "Vereist"
 
-#: maposmatic/forms.py:220
+#: maposmatic/forms.py:204
+msgid "Same latitude"
+msgstr ""
+
+#: maposmatic/forms.py:211
+msgid "Same longitude"
+msgstr ""
+
+#: maposmatic/forms.py:236
 msgid "Bounding Box too large"
 msgstr "Het omkaderd gebied is te groot"
 
-#: maposmatic/models.py:189
+#: maposmatic/models.py:190
 #, python-format
 msgid "%(title)s %(format)s Map"
 msgstr "Kaart voor %(title)s (bestandsindeling %(format)s)"
 
-#: maposmatic/models.py:196
+#: maposmatic/models.py:197
 #, python-format
 msgid "%(title)s %(format)s Index"
 msgstr "Straatindex voor %(title)s (bestandsindeling %(format)s)"
 
-#: maposmatic/nominatim.py:239
+#: maposmatic/nominatim.py:244
 msgid "Administrative area too big for rendering"
 msgstr "Administratieve grens te groot voor weergave"
 
-#: maposmatic/nominatim.py:295
-#: maposmatic/nominatim.py:309
+#: maposmatic/nominatim.py:300 maposmatic/nominatim.py:314
 msgid "No administrative boundary"
 msgstr "Geen administratieve grens"
 
@@ -204,9 +211,7 @@ msgstr "Verouderde mislukte productie: het produceren is mislukt en de incomplet
 msgid "The rendering was cancelled by the user."
 msgstr "Reproductie is door de gebruiker geannuleerd."
 
-#: templates/404.html:3
-#: templates/500.html:3
-#: templates/maposmatic/base.html:59
+#: templates/404.html:3 templates/500.html:3 templates/maposmatic/base.html:59
 msgid "Home"
 msgstr "Thuis"
 
@@ -242,8 +247,7 @@ msgstr "Interne fout <em>500</em>"
 msgid "There's been an error."
 msgstr "Er is een fout opgetreden."
 
-#: templates/maposmatic/about.html:35
-#: templates/maposmatic/base.html:65
+#: templates/maposmatic/about.html:35 templates/maposmatic/base.html:65
 msgid "About"
 msgstr "Over..."
 
@@ -527,8 +531,7 @@ msgstr "russische vertaling"
 msgid "arabic translation"
 msgstr "arabische vertaling"
 
-#: templates/maposmatic/about.html:186
-#: templates/maposmatic/about.html:187
+#: templates/maposmatic/about.html:186 templates/maposmatic/about.html:187
 msgid "brasilian portuguese translation"
 msgstr "braziliaans portugese vertaling"
 
@@ -552,8 +555,7 @@ msgstr "poolse vertaling"
 msgid "indonesian translation"
 msgstr "indonesische vertaling"
 
-#: templates/maposmatic/about.html:193
-#: templates/maposmatic/about.html:194
+#: templates/maposmatic/about.html:193 templates/maposmatic/about.html:194
 msgid "norvegian bokmål translation"
 msgstr "noorse (bokmål) vertaling"
 
@@ -562,6 +564,11 @@ msgid "norvegian nynorsk translation"
 msgstr "noorse (nynorsk) vertaling"
 
 #: templates/maposmatic/about.html:196
+#, fuzzy
+msgid "turkish translation"
+msgstr "deense vertaling"
+
+#: templates/maposmatic/about.html:197
 msgid "printable stylesheet"
 msgstr "afdrukbaar stijlblad"
 
@@ -581,13 +588,11 @@ msgid ""
 "hours."
 msgstr "Geen aanvragen gedaan in de afgelopen 24 uur."
 
-#: templates/maposmatic/all_maps.html:34
-#: templates/maposmatic/index.html:61
+#: templates/maposmatic/all_maps.html:34 templates/maposmatic/index.html:61
 msgid "Search"
 msgstr "Zoek"
 
-#: templates/maposmatic/all_maps.html:38
-#: templates/maposmatic/base.html:62
+#: templates/maposmatic/all_maps.html:38 templates/maposmatic/base.html:62
 msgid "Maps"
 msgstr "Kaarten"
 
@@ -623,8 +628,7 @@ msgstr "Opdrachten"
 msgid "News"
 msgstr "Nieuws"
 
-#: templates/maposmatic/base.html:64
-#: templates/maposmatic/donate.html:30
+#: templates/maposmatic/base.html:64 templates/maposmatic/donate.html:30
 msgid "Donate"
 msgstr "Doneer"
 
@@ -653,36 +657,36 @@ msgstr "Vertraging van  MapOSMatic OSM database: %(date)s."
 msgid "Lag of MapOSMatic OSM database: unknown."
 msgstr "Vertraging van  MapOSMatic OSM database: onbekend."
 
-#: templates/maposmatic/base.html:114
+#: templates/maposmatic/base.html:115
 msgid "Random map"
 msgstr "Willekeurige kaart"
 
-#: templates/maposmatic/base.html:121
+#: templates/maposmatic/base.html:122
 msgid "No random map found."
 msgstr "Geen willekeurige kaart gevonden."
 
-#: templates/maposmatic/base.html:126
+#: templates/maposmatic/base.html:127
 msgid "Latest news"
 msgstr "Laatste nieuws"
 
-#: templates/maposmatic/base.html:131
+#: templates/maposmatic/base.html:132
 #, python-format
 msgid "published %(date)s ago"
 msgstr "%(date)s geleden gepubliceerd"
 
-#: templates/maposmatic/base.html:139
+#: templates/maposmatic/base.html:140
 msgid "Contact"
 msgstr "Contact"
 
-#: templates/maposmatic/base.html:141
+#: templates/maposmatic/base.html:142
 msgid "Mail:"
 msgstr "Email:"
 
-#: templates/maposmatic/base.html:143
+#: templates/maposmatic/base.html:144
 msgid "IRC:"
 msgstr "IRC:"
 
-#: templates/maposmatic/base.html:144
+#: templates/maposmatic/base.html:145
 msgid "on"
 msgstr "op"
 
@@ -792,8 +796,7 @@ msgstr "Vind kaart"
 msgid "More details"
 msgstr "Meer details"
 
-#: templates/maposmatic/job-page.html:39
-#: templates/maposmatic/job.html:35
+#: templates/maposmatic/job-page.html:39 templates/maposmatic/job.html:35
 #: templates/maposmatic/map.html:35
 msgid "Recreate map"
 msgstr "Maak kaart opnieuw"
@@ -852,26 +855,22 @@ msgstr "Afgebroken op"
 msgid "rendering took %(rendering)s"
 msgstr "reproductie duurde %(rendering)s"
 
-#: templates/maposmatic/job.html:79
-#: templates/maposmatic/map-feed.html:44
+#: templates/maposmatic/job.html:79 templates/maposmatic/map-feed.html:44
 #: templates/maposmatic/map.html:57
 msgid "Files: "
 msgstr "Bestanden:"
 
-#: templates/maposmatic/job.html:81
-#: templates/maposmatic/map-feed.html:46
+#: templates/maposmatic/job.html:81 templates/maposmatic/map-feed.html:46
 #: templates/maposmatic/map.html:59
 msgid "Map: "
 msgstr "Kaarten:"
 
-#: templates/maposmatic/job.html:82
-#: templates/maposmatic/map-feed.html:47
+#: templates/maposmatic/job.html:82 templates/maposmatic/map-feed.html:47
 #: templates/maposmatic/map.html:60
 msgid "Index: "
 msgstr "Index:"
 
-#: templates/maposmatic/job.html:85
-#: templates/maposmatic/map-feed.html:50
+#: templates/maposmatic/job.html:85 templates/maposmatic/map-feed.html:50
 #: templates/maposmatic/map.html:63
 msgid "No index was generated because no information was available in OpenStreetMap to create one. Feel free to contribute the missing data yourself. See the <a href=\"http://wiki.openstreetmap.org/wiki/Getting_Involved\">OSM Wiki</a> for a start. "
 msgstr "Er is geen index gegenereerd omdat er geen informatie beschikbaar was in OpenStreetMap om er een te maken. Het staat U vrij de missende informatie te contribueren. Zie de <a href=\"http://wiki.openstreetmap.org/wiki/Getting_Involved\">OSM Wiki</a> voor meer informatie. "
@@ -880,14 +879,12 @@ msgstr "Er is geen index gegenereerd omdat er geen informatie beschikbaar was in
 msgid "View on OpenStreetMap"
 msgstr "Bekijk op OpenStreetMap"
 
-#: templates/maposmatic/job.html:92
-#: templates/maposmatic/map-feed.html:53
+#: templates/maposmatic/job.html:92 templates/maposmatic/map-feed.html:53
 #: templates/maposmatic/map.html:66
 msgid "The generated files are no longer available."
 msgstr "De gegenereerde bestanden zijn niet langer beschikbaar."
 
-#: templates/maposmatic/map-feed.html:41
-#: templates/maposmatic/map.html:54
+#: templates/maposmatic/map-feed.html:41 templates/maposmatic/map.html:54
 msgid "Rendering completed on"
 msgstr "Reproductie beeindigd op"
 
@@ -903,13 +900,11 @@ msgstr "Locatie"
 msgid "Title"
 msgstr "Titel"
 
-#: templates/maposmatic/new.html:51
-#: templates/maposmatic/new.html.py:124
+#: templates/maposmatic/new.html:51 templates/maposmatic/new.html.py:124
 msgid "Layout"
 msgstr "Indeling."
 
-#: templates/maposmatic/new.html:54
-#: templates/maposmatic/new.html.py:129
+#: templates/maposmatic/new.html:54 templates/maposmatic/new.html.py:129
 msgid "Stylesheet"
 msgstr "Stijlblad"
 
@@ -917,8 +912,7 @@ msgstr "Stijlblad"
 msgid "Paper size"
 msgstr "Papiergrootte"
 
-#: templates/maposmatic/new.html:60
-#: templates/maposmatic/new.html.py:147
+#: templates/maposmatic/new.html:60 templates/maposmatic/new.html.py:147
 msgid "Language"
 msgstr "Taal"
 

@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-04-14 19:25+0200\n"
+"POT-Creation-Date: 2012-05-04 09:34+0200\n"
 "PO-Revision-Date: 2010-01-12 17:29+0300\n"
 "Last-Translator: Bassem JARKAS <jarkas@gmail.com>\n"
 "Language-Team: Arabic Translation\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Plural-Forms: nplurals=6; plural=n==0 ? 0 : n==1 ? 1 : n==2 ? 2 : n%100>=3 && n%100<=10 ? 3 : n%100>=11 && n%100<=99 ? 4 : 5;\n"
 "X-Generator: Virtaal 0.5.0\n"
 
-#: settings.py:230
+#: settings.py:232
 msgid "No localization"
 msgstr "لا يوجد ترجمة"
 
@@ -122,30 +122,38 @@ msgstr "مدينة إدارية مطلوبة"
 msgid "Error with osm city: %s"
 msgstr "خطأ بمدينة أو إس إم: %s"
 
-#: maposmatic/forms.py:195
+#: maposmatic/forms.py:196
 msgid "Required"
 msgstr "مطلوب"
 
-#: maposmatic/forms.py:220
+#: maposmatic/forms.py:204
+msgid "Same latitude"
+msgstr ""
+
+#: maposmatic/forms.py:211
+msgid "Same longitude"
+msgstr ""
+
+#: maposmatic/forms.py:236
 msgid "Bounding Box too large"
 msgstr "مربع الإحاطة كبير جدًا"
 
-#: maposmatic/models.py:189
+#: maposmatic/models.py:190
 #, python-format
 msgid "%(title)s %(format)s Map"
 msgstr "خريطة %(title)s %(format)s"
 
-#: maposmatic/models.py:196
+#: maposmatic/models.py:197
 #, python-format
 msgid "%(title)s %(format)s Index"
 msgstr "فهرس %(title)s %(format)s"
 
-#: maposmatic/nominatim.py:239
+#: maposmatic/nominatim.py:244
 #, fuzzy
 msgid "Administrative area too big for rendering"
 msgstr "حدود إدارية"
 
-#: maposmatic/nominatim.py:295 maposmatic/nominatim.py:309
+#: maposmatic/nominatim.py:300 maposmatic/nominatim.py:314
 #, fuzzy
 msgid "No administrative boundary"
 msgstr "حدود إدارية"
@@ -478,6 +486,10 @@ msgid "norvegian nynorsk translation"
 msgstr ""
 
 #: templates/maposmatic/about.html:196
+msgid "turkish translation"
+msgstr ""
+
+#: templates/maposmatic/about.html:197
 msgid "printable stylesheet"
 msgstr ""
 
@@ -565,36 +577,36 @@ msgstr ""
 msgid "Lag of MapOSMatic OSM database: unknown."
 msgstr ""
 
-#: templates/maposmatic/base.html:114
+#: templates/maposmatic/base.html:115
 msgid "Random map"
 msgstr "خريطة عشوائية"
 
-#: templates/maposmatic/base.html:121
+#: templates/maposmatic/base.html:122
 msgid "No random map found."
 msgstr "لم يتم العثور على أي خريطة عشوائي."
 
-#: templates/maposmatic/base.html:126
+#: templates/maposmatic/base.html:127
 msgid "Latest news"
 msgstr "آخر الأخبار"
 
-#: templates/maposmatic/base.html:131
+#: templates/maposmatic/base.html:132
 #, python-format
 msgid "published %(date)s ago"
 msgstr ""
 
-#: templates/maposmatic/base.html:139
+#: templates/maposmatic/base.html:140
 msgid "Contact"
 msgstr "اتصال"
 
-#: templates/maposmatic/base.html:141
+#: templates/maposmatic/base.html:142
 msgid "Mail:"
 msgstr "البريد:"
 
-#: templates/maposmatic/base.html:143
+#: templates/maposmatic/base.html:144
 msgid "IRC:"
 msgstr "أي أر سي:"
 
-#: templates/maposmatic/base.html:144
+#: templates/maposmatic/base.html:145
 msgid "on"
 msgstr "على"
 

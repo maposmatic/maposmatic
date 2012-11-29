@@ -34,9 +34,8 @@ import threading
 import traceback
 import subprocess
 
-import ocitysmap2
-import ocitysmap2.coords
-from ocitysmap2 import renderers
+import ocitysmap
+from ocitysmap import renderers
 from www.maposmatic.models import MapRenderingJob
 from www.settings import ADMINS, OCITYSMAP_CFG_PATH
 from www.settings import RENDERING_RESULT_PATH, RENDERING_RESULT_FORMATS
@@ -289,18 +288,18 @@ class JobRenderer(threading.Thread):
         l.info("Rendering job #%d '%s'..." % (self.job.id, self.job.maptitle))
 
         try:
-            renderer = ocitysmap2.OCitySMap(OCITYSMAP_CFG_PATH)
-            config = ocitysmap2.RenderingConfiguration()
+            renderer = ocitysmap.OCitySMap(OCITYSMAP_CFG_PATH)
+            config = ocitysmap.RenderingConfiguration()
             config.title = self.job.maptitle
             config.osmid = self.job.administrative_osmid
 
             if config.osmid:
                 bbox_wkt, area_wkt \
                     = renderer.get_geographic_info(config.osmid)
-                config.bounding_box = ocitysmap2.coords.BoundingBox.parse_wkt(
+                config.bounding_box = ocitysmap.coords.BoundingBox.parse_wkt(
                     bbox_wkt)
             else:
-                config.bounding_box = ocitysmap2.coords.BoundingBox(
+                config.bounding_box = ocitysmap.coords.BoundingBox(
                         self.job.lat_upper_left,
                         self.job.lon_upper_left,
                         self.job.lat_bottom_right,

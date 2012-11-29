@@ -21,6 +21,7 @@
 # You should have received a copy of the GNU Affero General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
+import django
 from django.core.urlresolvers import reverse
 import django.utils.translation
 import feedparser
@@ -37,22 +38,33 @@ def get_latest_blog_posts():
     return f.entries[:5]
 
 def get_osm_database_last_update():
-    try:
-        f = open(www.settings.GIS_DATABASE_LAG_FILE)
-    except IOError:
+    """Returns the timestamp of the last PostGIS database update, which is
+    placed into the maposmatic_admin table in the PostGIS database by the
+    planet-update incremental update script."""
+
+    db = gisdb.get()
+    if db is None:
         return None
 
-    s = f.readline().strip()
+    cursor = db.cursor()
+
     try:
-        d = datetime.datetime.strptime(s, "%Y-%m-%d %H:%M:%S")
-    except ValueError:
-        return None
-    return d
+        cursor.execute("""select last_update from maposmatic_admin""")
+        last_update = cursor.fetchone()
+        if last_update is not None and len(last_update) == 1:
+            return last_update[0]
+    except:
+        pass
+    finally:
+        cursor.close()
+
+    return None
 
 def all(request):
     # Do not add the useless overhead of parsing blog entries when generating
     # the rss feed
-    if request.path == reverse('rss-feed', args=['maps']):
+    if (django.VERSION[1] >= 4 and request.path == reverse('rss-feed')) or \
+       (django.VERSION[1] < 4 and request.path == reverse('rss-feed', args=['maps'])):
         return {}
 
     l = django.utils.translation.get_language()
@@ -68,6 +80,7 @@ def all(request):
         'blogposts': get_latest_blog_posts(),
         'MAPOSMATIC_DAEMON_RUNNING': www.settings.is_daemon_running(),
         'osm_date': get_osm_database_last_update(),
+        'utc_now': datetime.datetime.utcnow(),
         'DEBUG': www.settings.DEBUG,
         'paypal_lang_code': paypal_lang_code,
         'paypal_country_code': paypal_country_code,

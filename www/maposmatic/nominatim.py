@@ -40,7 +40,7 @@ from urllib import urlencode
 import urllib2
 from xml.etree.ElementTree import parse as XMLTree
 
-from ocitysmap2 import coords
+import ocitysmap
 import www.settings
 from www.maposmatic import gisdb
 
@@ -235,7 +235,7 @@ def _get_admin_boundary_info_from_GIS(cursor, osm_id):
             continue
 
         osm_id, admin_level, bboxtxt = result[0]
-        bbox = coords.BoundingBox.parse_wkt(bboxtxt)
+        bbox = ocitysmap.coords.BoundingBox.parse_wkt(bboxtxt)
         (metric_size_lat, metric_size_lon) = bbox.spheric_sizes()
         if (metric_size_lat > www.settings.BBOX_MAXIMUM_LENGTH_IN_METERS
             or metric_size_lon > www.settings.BBOX_MAXIMUM_LENGTH_IN_METERS):

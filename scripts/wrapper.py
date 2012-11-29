@@ -34,7 +34,7 @@ if __name__ == '__main__':
     os.environ['PYTHONPATH'] = '%s:%s:%s' % (OCITYSMAP_PATH, root,
                                              os.environ.get('PYTHONPATH', ''))
     os.environ['DJANGO_SETTINGS_MODULE'] = 'www.settings'
-    os.environ['MAPOSMATIC_LOG_FILE'] = MAPOSMATIC_LOG
+    os.environ['MAPOSMATIC_LOG_FILE'] = MAPOSMATIC_LOG or ''
     os.environ['MAPOSMATIC_LOG_LEVEL'] = str(MAPOSMATIC_LVL)
 
     os.execv(os.path.join(root, sys.argv[1]), sys.argv[1:])
