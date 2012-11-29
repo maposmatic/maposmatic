@@ -42,8 +42,11 @@ def get_osm_database_last_update():
     placed into the maposmatic_admin table in the PostGIS database by the
     planet-update incremental update script."""
 
-    db = gisdb.get()
-    if db is None:
+    try:
+        db = gisdb.get()
+        if db is None:
+            return None
+    except:
         return None
 
     cursor = db.cursor()
