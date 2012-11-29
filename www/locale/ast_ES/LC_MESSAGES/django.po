@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-05-04 11:28+0200\n"
+"POT-Creation-Date: 2012-11-29 19:21+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: settings.py:233
+#: settings.py:235
 msgid "No localization"
 msgstr ""
 
@@ -29,110 +29,114 @@ msgstr ""
 msgid "The latest rendered maps on MapOSMatic."
 msgstr ""
 
-#: maposmatic/forms.py:57
+#: maposmatic/forms.py:42
+msgid "Search by map name"
+msgstr ""
+
+#: maposmatic/forms.py:59
 msgid "Administrative boundary"
 msgstr ""
 
-#: maposmatic/forms.py:58
+#: maposmatic/forms.py:60
 msgid "Bounding box"
 msgstr ""
 
-#: maposmatic/forms.py:60
+#: maposmatic/forms.py:62
 msgid "Portrait"
 msgstr ""
 
-#: maposmatic/forms.py:61
+#: maposmatic/forms.py:63
 msgid "Landscape"
 msgstr ""
 
-#: maposmatic/forms.py:73
+#: maposmatic/forms.py:75
 msgid "Area"
 msgstr ""
 
-#: maposmatic/forms.py:93
+#: maposmatic/forms.py:95
 msgid "Full-page layout without street index"
 msgstr ""
 
-#: maposmatic/forms.py:95
+#: maposmatic/forms.py:97
 msgid "Full-page layout with the street index on the side"
 msgstr ""
 
-#: maposmatic/forms.py:97
+#: maposmatic/forms.py:99
 msgid "Full-page layout with the street index at the bottom"
 msgstr ""
 
-#: maposmatic/forms.py:99
+#: maposmatic/forms.py:101
 msgid "Multi-page layout"
 msgstr ""
 
-#: maposmatic/forms.py:101
+#: maposmatic/forms.py:103
 #, python-format
 msgid "The %(layout_name)s layout"
 msgstr ""
 
-#: maposmatic/forms.py:109
+#: maposmatic/forms.py:111
 msgid "The default OpenStreetMap.org style"
 msgstr ""
 
-#: maposmatic/forms.py:111
+#: maposmatic/forms.py:113
 msgid "The european MapQuest style"
 msgstr ""
 
-#: maposmatic/forms.py:113
+#: maposmatic/forms.py:115
 msgid "The US MapQuest style"
 msgstr ""
 
-#: maposmatic/forms.py:115
+#: maposmatic/forms.py:117
 msgid "The UK MapQuest style"
 msgstr ""
 
-#: maposmatic/forms.py:117
+#: maposmatic/forms.py:119
 msgid "A MapOSMatic-specific stylesheet suitable for printing"
 msgstr ""
 
-#: maposmatic/forms.py:119
+#: maposmatic/forms.py:121
 #, python-format
 msgid "The <i>%(stylesheet_name)s</i> stylesheet"
 msgstr ""
 
-#: maposmatic/forms.py:126
+#: maposmatic/forms.py:128
 msgid "Best fit <em class=\"papersize\"></em>"
 msgstr ""
 
-#: maposmatic/forms.py:157
+#: maposmatic/forms.py:159
 msgid "Map title required"
 msgstr ""
 
-#: maposmatic/forms.py:162
+#: maposmatic/forms.py:164
 msgid "Layout required"
 msgstr ""
 
-#: maposmatic/forms.py:167
+#: maposmatic/forms.py:169
 msgid "Stylesheet required"
 msgstr ""
 
-#: maposmatic/forms.py:173
+#: maposmatic/forms.py:175
 msgid "Administrative city required"
 msgstr ""
 
-#: maposmatic/forms.py:186
+#: maposmatic/forms.py:188
 #, python-format
 msgid "Error with osm city: %s"
 msgstr ""
 
-#: maposmatic/forms.py:196
+#: maposmatic/forms.py:198
 msgid "Required"
 msgstr ""
 
-#: maposmatic/forms.py:204
+#: maposmatic/forms.py:206
 msgid "Same latitude"
 msgstr ""
 
-#: maposmatic/forms.py:211
+#: maposmatic/forms.py:213
 msgid "Same longitude"
 msgstr ""
 
-#: maposmatic/forms.py:236
+#: maposmatic/forms.py:237
 msgid "Bounding Box too large"
 msgstr ""
 
@@ -560,11 +564,11 @@ msgstr ""
 
 #: templates/maposmatic/base.html:108
 #, python-format
-msgid "Lag of MapOSMatic OSM database: %(date)s."
+msgid "Database is online, <span title=\"%(osm_date)s\">last update %(date)s ago</span>."
 msgstr ""
 
 #: templates/maposmatic/base.html:110
-msgid "Lag of MapOSMatic OSM database: unknown."
+msgid "Could not connect to OSM database!"
 msgstr ""
 
 #: templates/maposmatic/base.html:115
@@ -805,7 +809,7 @@ msgstr ""
 msgid "Paper size"
 msgstr ""
 
-#: templates/maposmatic/new.html:60 templates/maposmatic/new.html.py:147
+#: templates/maposmatic/new.html:60 templates/maposmatic/new.html.py:148
 msgid "Language"
 msgstr ""
 
@@ -867,43 +871,43 @@ msgstr ""
 msgid "An error occured while retrieving compatible paper sizes."
 msgstr ""
 
-#: templates/maposmatic/new.html:148
+#: templates/maposmatic/new.html:149
 msgid "Map Index Language:"
 msgstr ""
 
-#: templates/maposmatic/new.html:151
+#: templates/maposmatic/new.html:152
 msgid "Summary:"
 msgstr ""
 
-#: templates/maposmatic/new.html:153
+#: templates/maposmatic/new.html:154
 msgid "Location:"
 msgstr ""
 
-#: templates/maposmatic/new.html:155
+#: templates/maposmatic/new.html:156
 msgid "Title:"
 msgstr ""
 
-#: templates/maposmatic/new.html:157
+#: templates/maposmatic/new.html:158
 msgid "Layout:"
 msgstr ""
 
-#: templates/maposmatic/new.html:159
+#: templates/maposmatic/new.html:160
 msgid "Paper size:"
 msgstr ""
 
-#: templates/maposmatic/new.html:161
+#: templates/maposmatic/new.html:162
 msgid "Stylesheet:"
 msgstr ""
 
-#: templates/maposmatic/new.html:163
+#: templates/maposmatic/new.html:164
 msgid "Language:"
 msgstr ""
 
-#: templates/maposmatic/new.html:167
+#: templates/maposmatic/new.html:168
 msgid "Generate"
 msgstr ""
 
-#: templates/maposmatic/new.html:174
+#: templates/maposmatic/new.html:175
 msgid "Continue"
 msgstr ""
 

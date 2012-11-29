@@ -15,7 +15,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: mapOSMatic 0.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-05-04 09:34+0200\n"
+"POT-Creation-Date: 2012-11-29 19:21+0100\n"
 "PO-Revision-Date: 2012-05-03 21:18+0100\n"
 "Last-Translator: Hakan Tandoğan <hakan@gurkensalat.com>\n"
 "Language-Team: \n"
@@ -26,7 +26,7 @@ msgstr ""
 "X-Poedit-Language: Turkish\n"
 "X-Poedit-Country: TURKEY\n"
 
-#: settings.py:232
+#: settings.py:235
 msgid "No localization"
 msgstr "Çevirisi yok"
 
@@ -38,110 +38,114 @@ msgstr "MapOSMatic haritaları"
 msgid "The latest rendered maps on MapOSMatic."
 msgstr "MapOSMatic üzerindeki son oluşturulmuş haritalar."
 
-#: maposmatic/forms.py:57
+#: maposmatic/forms.py:42
+msgid "Search by map name"
+msgstr ""
+
+#: maposmatic/forms.py:59
 msgid "Administrative boundary"
 msgstr "İdari sınır (İl ismi)"
 
-#: maposmatic/forms.py:58
+#: maposmatic/forms.py:60
 msgid "Bounding box"
 msgstr "Sınırlayıcı çerçeve"
 
-#: maposmatic/forms.py:60
+#: maposmatic/forms.py:62
 msgid "Portrait"
 msgstr "Dikey"
 
-#: maposmatic/forms.py:61
+#: maposmatic/forms.py:63
 msgid "Landscape"
 msgstr "Yatay"
 
-#: maposmatic/forms.py:73
+#: maposmatic/forms.py:75
 msgid "Area"
 msgstr "Bölge"
 
-#: maposmatic/forms.py:93
+#: maposmatic/forms.py:95
 msgid "Full-page layout without street index"
 msgstr "Sokaklar olmadan tam sayfa düzeni"
 
-#: maposmatic/forms.py:95
+#: maposmatic/forms.py:97
 msgid "Full-page layout with the street index on the side"
 msgstr "Tam sayfa düzeni (sokak dizini yanda)"
 
-#: maposmatic/forms.py:97
+#: maposmatic/forms.py:99
 msgid "Full-page layout with the street index at the bottom"
 msgstr "Tam sayfa düzeni (sokak dizini altta)"
 
-#: maposmatic/forms.py:99
+#: maposmatic/forms.py:101
 msgid "Multi-page layout"
 msgstr "Çoklu sayfa düzeni"
 
-#: maposmatic/forms.py:101
+#: maposmatic/forms.py:103
 #, python-format
 msgid "The %(layout_name)s layout"
 msgstr "%(layout_name)s tarzı"
 
-#: maposmatic/forms.py:109
+#: maposmatic/forms.py:111
 msgid "The default OpenStreetMap.org style"
 msgstr "Varsayılan OpenStreetMap.org tarzı"
 
-#: maposmatic/forms.py:111
+#: maposmatic/forms.py:113
 msgid "The european MapQuest style"
 msgstr "Avrupa MapQuest tarzı"
 
-#: maposmatic/forms.py:113
+#: maposmatic/forms.py:115
 msgid "The US MapQuest style"
 msgstr "US MapQuest tarzı"
 
-#: maposmatic/forms.py:115
+#: maposmatic/forms.py:117
 msgid "The UK MapQuest style"
 msgstr "US MapQuest tarzı"
 
-#: maposmatic/forms.py:117
+#: maposmatic/forms.py:119
 msgid "A MapOSMatic-specific stylesheet suitable for printing"
 msgstr "Baskı için uygun özel MapOSMatic tarzı"
 
-#: maposmatic/forms.py:119
+#: maposmatic/forms.py:121
 #, python-format
 msgid "The <i>%(stylesheet_name)s</i> stylesheet"
 msgstr "<i>%(stylesheet_name)s</i>"
 
-#: maposmatic/forms.py:126
+#: maposmatic/forms.py:128
 msgid "Best fit <em class=\"papersize\"></em>"
 msgstr "en uygun<em class=\"papersize\"></em>"
 
-#: maposmatic/forms.py:157
+#: maposmatic/forms.py:159
 msgid "Map title required"
 msgstr "Harita başlığı gereklidir"
 
-#: maposmatic/forms.py:162
+#: maposmatic/forms.py:164
 msgid "Layout required"
 msgstr "Tarz gerekli"
 
-#: maposmatic/forms.py:167
+#: maposmatic/forms.py:169
 msgid "Stylesheet required"
 msgstr "Stil gerekli"
 
-#: maposmatic/forms.py:173
+#: maposmatic/forms.py:175
 msgid "Administrative city required"
 msgstr "İdari şehir gerekli"
 
-#: maposmatic/forms.py:186
+#: maposmatic/forms.py:188
 #, python-format
 msgid "Error with osm city: %s"
 msgstr "OSM şehrinde hata: %s"
 
-#: maposmatic/forms.py:196
+#: maposmatic/forms.py:198
 msgid "Required"
 msgstr "Gerekli"
 
-#: maposmatic/forms.py:204
+#: maposmatic/forms.py:206
 msgid "Same latitude"
 msgstr ""
 
-#: maposmatic/forms.py:211
+#: maposmatic/forms.py:213
 msgid "Same longitude"
 msgstr ""
 
-#: maposmatic/forms.py:236
+#: maposmatic/forms.py:237
 msgid "Bounding Box too large"
 msgstr "Sınırlayıcı çerçeve çok büyük"
 
@@ -619,12 +623,12 @@ msgstr "OSM veritabanı durumu"
 
 #: templates/maposmatic/base.html:108
 #, python-format
-msgid "Lag of MapOSMatic OSM database: %(date)s."
-msgstr "MapOSMatic OSM veritabanı gecikmesi: %(date)s."
+msgid "Database is online, <span title=\"%(osm_date)s\">last update %(date)s ago</span>."
+msgstr ""
 
 #: templates/maposmatic/base.html:110
-msgid "Lag of MapOSMatic OSM database: unknown."
-msgstr "MapOSMatic OSM veritabanı gecikmesi: bilinmiyor"
+msgid "Could not connect to OSM database!"
+msgstr ""
 
 #: templates/maposmatic/base.html:115
 msgid "Random map"
@@ -877,7 +881,7 @@ msgstr "Tarz"
 msgid "Paper size"
 msgstr "Kağıt boyutu"
 
-#: templates/maposmatic/new.html:60 templates/maposmatic/new.html.py:147
+#: templates/maposmatic/new.html:60 templates/maposmatic/new.html.py:148
 msgid "Language"
 msgstr "dil"
 
@@ -945,43 +949,43 @@ msgstr "Doğrultma"
 msgid "An error occured while retrieving compatible paper sizes."
 msgstr "Uyumlu kağıt boyutları aranırken bir hata oluştu."
 
-#: templates/maposmatic/new.html:148
+#: templates/maposmatic/new.html:149
 msgid "Map Index Language:"
 msgstr "Harita endeksi dili:"
 
-#: templates/maposmatic/new.html:151
+#: templates/maposmatic/new.html:152
 msgid "Summary:"
 msgstr "Özet:"
 
-#: templates/maposmatic/new.html:153
+#: templates/maposmatic/new.html:154
 msgid "Location:"
 msgstr "Yer:"
 
-#: templates/maposmatic/new.html:155
+#: templates/maposmatic/new.html:156
 msgid "Title:"
 msgstr "Başlık:"
 
-#: templates/maposmatic/new.html:157
+#: templates/maposmatic/new.html:158
 msgid "Layout:"
 msgstr "Düzen:"
 
-#: templates/maposmatic/new.html:159
+#: templates/maposmatic/new.html:160
 msgid "Paper size:"
 msgstr "Kağıt boyutu:"
 
-#: templates/maposmatic/new.html:161
+#: templates/maposmatic/new.html:162
 msgid "Stylesheet:"
 msgstr "Tarz:"
 
-#: templates/maposmatic/new.html:163
+#: templates/maposmatic/new.html:164
 msgid "Language:"
 msgstr "Dil:"
 
-#: templates/maposmatic/new.html:167
+#: templates/maposmatic/new.html:168
 msgid "Generate"
 msgstr "Oluştur"
 
-#: templates/maposmatic/new.html:174
+#: templates/maposmatic/new.html:175
 msgid "Continue"
 msgstr "Devam et"
 
@@ -992,3 +996,9 @@ msgstr "Önceki"
 #: templates/maposmatic/paginator.html:37
 msgid "Next"
 msgstr "Devam"
+
+#~ msgid "Lag of MapOSMatic OSM database: %(date)s."
+#~ msgstr "MapOSMatic OSM veritabanı gecikmesi: %(date)s."
+
+#~ msgid "Lag of MapOSMatic OSM database: unknown."
+#~ msgstr "MapOSMatic OSM veritabanı gecikmesi: bilinmiyor"

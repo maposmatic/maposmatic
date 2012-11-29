@@ -20,7 +20,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: mapOSMatic 0.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-05-04 09:34+0200\n"
+"POT-Creation-Date: 2012-11-29 19:21+0100\n"
 "PO-Revision-Date: 2012-05-08 19:34-0300\n"
 "Last-Translator: Rodrigo de Avila <rodrigo@avila.net.br>\n"
 "Language-Team: PT <LL@li.org>\n"
@@ -29,7 +29,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: settings.py:232
+#: settings.py:235
 msgid "No localization"
 msgstr "Sem tradução"
 
@@ -41,110 +41,114 @@ msgstr "Mapas do MapOSMatic"
 msgid "The latest rendered maps on MapOSMatic."
 msgstr "As últimas renderizações do MapOSMatic."
 
-#: maposmatic/forms.py:57
+#: maposmatic/forms.py:42
+msgid "Search by map name"
+msgstr ""
+
+#: maposmatic/forms.py:59
 msgid "Administrative boundary"
 msgstr "Limites administrativos (nome da cidade)"
 
-#: maposmatic/forms.py:58
+#: maposmatic/forms.py:60
 msgid "Bounding box"
 msgstr "Bounding box"
 
-#: maposmatic/forms.py:60
+#: maposmatic/forms.py:62
 msgid "Portrait"
 msgstr "Retrato"
 
-#: maposmatic/forms.py:61
+#: maposmatic/forms.py:63
 msgid "Landscape"
 msgstr "Paisagem"
 
-#: maposmatic/forms.py:73
+#: maposmatic/forms.py:75
 msgid "Area"
 msgstr "Área"
 
-#: maposmatic/forms.py:93
+#: maposmatic/forms.py:95
 msgid "Full-page layout without street index"
 msgstr "Layout de página inteira sem índice de ruas"
 
-#: maposmatic/forms.py:95
+#: maposmatic/forms.py:97
 msgid "Full-page layout with the street index on the side"
 msgstr "Layout de página inteira com índice de ruas na lateral"
 
-#: maposmatic/forms.py:97
+#: maposmatic/forms.py:99
 msgid "Full-page layout with the street index at the bottom"
 msgstr "Layout de página inteira com índice de ruas embaixo"
 
-#: maposmatic/forms.py:99
+#: maposmatic/forms.py:101
 msgid "Multi-page layout"
 msgstr "Layout de múltiplas páginas"
 
-#: maposmatic/forms.py:101
+#: maposmatic/forms.py:103
 #, python-format
 msgid "The %(layout_name)s layout"
 msgstr "O layout %(layout_name)s"
 
-#: maposmatic/forms.py:109
+#: maposmatic/forms.py:111
 msgid "The default OpenStreetMap.org style"
 msgstr "O estilo padrão do OpenStreetMap.org"
 
-#: maposmatic/forms.py:111
+#: maposmatic/forms.py:113
 msgid "The european MapQuest style"
 msgstr "O estilo do MapQuest europeu"
 
-#: maposmatic/forms.py:113
+#: maposmatic/forms.py:115
 msgid "The US MapQuest style"
 msgstr "O estilo do MapQuest americano"
 
-#: maposmatic/forms.py:115
+#: maposmatic/forms.py:117
 msgid "The UK MapQuest style"
 msgstr "O estilo do MapQuest britânico"
 
-#: maposmatic/forms.py:117
+#: maposmatic/forms.py:119
 msgid "A MapOSMatic-specific stylesheet suitable for printing"
 msgstr "Uma folha de estilos específica do MapOSMatic para impressão"
 
-#: maposmatic/forms.py:119
+#: maposmatic/forms.py:121
 #, python-format
 msgid "The <i>%(stylesheet_name)s</i> stylesheet"
 msgstr "A folha de estilos <i>%(stylesheet_name)s</i> "
 
-#: maposmatic/forms.py:126
+#: maposmatic/forms.py:128
 msgid "Best fit <em class=\"papersize\"></em>"
 msgstr "Encaixa em <em class=\"papersize\"></em>"
 
-#: maposmatic/forms.py:157
+#: maposmatic/forms.py:159
 msgid "Map title required"
 msgstr "Título do mapa obrigatório"
 
-#: maposmatic/forms.py:162
+#: maposmatic/forms.py:164
 msgid "Layout required"
 msgstr "Layout obrigatório"
 
-#: maposmatic/forms.py:167
+#: maposmatic/forms.py:169
 msgid "Stylesheet required"
 msgstr "Folha de estilo obrigatória"
 
-#: maposmatic/forms.py:173
+#: maposmatic/forms.py:175
 msgid "Administrative city required"
 msgstr "Nome de cidade obrigatório"
 
-#: maposmatic/forms.py:186
+#: maposmatic/forms.py:188
 #, python-format
 msgid "Error with osm city: %s"
 msgstr "Erro com a cidade osm selecionada: %s"
 
-#: maposmatic/forms.py:196
+#: maposmatic/forms.py:198
 msgid "Required"
 msgstr "Obrigatório"
 
-#: maposmatic/forms.py:204
+#: maposmatic/forms.py:206
 msgid "Same latitude"
 msgstr "Mesma latitude"
 
-#: maposmatic/forms.py:211
+#: maposmatic/forms.py:213
 msgid "Same longitude"
 msgstr "Mesma longitude"
 
-#: maposmatic/forms.py:236
+#: maposmatic/forms.py:237
 msgid "Bounding Box too large"
 msgstr "Bounding Box muito grande"
 
@@ -162,8 +166,7 @@ msgstr "Índice de ruas pelo %(title)s (format %(format)s)"
 msgid "Administrative area too big for rendering"
 msgstr "Área administrativa muito grande para renderizar"
 
-#: maposmatic/nominatim.py:300
-#: maposmatic/nominatim.py:314
+#: maposmatic/nominatim.py:300 maposmatic/nominatim.py:314
 msgid "No administrative boundary"
 msgstr "Sem limite administrativo"
 
@@ -211,9 +214,7 @@ msgstr "Falhas de renderização obsoleta: a renderização falhou, e os arquivo
 msgid "The rendering was cancelled by the user."
 msgstr "A renderização foi cancelada pelo usuário."
 
-#: templates/404.html:3
-#: templates/500.html:3
-#: templates/maposmatic/base.html:59
+#: templates/404.html:3 templates/500.html:3 templates/maposmatic/base.html:59
 msgid "Home"
 msgstr "Início"
 
@@ -249,8 +250,7 @@ msgstr "Erro no servidor <em>(500)</em>"
 msgid "There's been an error."
 msgstr "Um erro aconteceu."
 
-#: templates/maposmatic/about.html:35
-#: templates/maposmatic/base.html:65
+#: templates/maposmatic/about.html:35 templates/maposmatic/base.html:65
 msgid "About"
 msgstr "Sobre"
 
@@ -543,8 +543,7 @@ msgstr "tradução para o russo"
 msgid "arabic translation"
 msgstr "tradução para o árabe"
 
-#: templates/maposmatic/about.html:186
-#: templates/maposmatic/about.html:187
+#: templates/maposmatic/about.html:186 templates/maposmatic/about.html:187
 msgid "brasilian portuguese translation"
 msgstr "tradução para o português brasileiro"
 
@@ -568,8 +567,7 @@ msgstr "tradução para o polonês"
 msgid "indonesian translation"
 msgstr "tradução para o indonésio"
 
-#: templates/maposmatic/about.html:193
-#: templates/maposmatic/about.html:194
+#: templates/maposmatic/about.html:193 templates/maposmatic/about.html:194
 msgid "norvegian bokmål translation"
 msgstr "tradução para norvegian bokmål"
 
@@ -601,13 +599,11 @@ msgstr ""
 "Nenhum pedido de renderização de mapas desde\n"
 "as últimas 24 horas."
 
-#: templates/maposmatic/all_maps.html:34
-#: templates/maposmatic/index.html:61
+#: templates/maposmatic/all_maps.html:34 templates/maposmatic/index.html:61
 msgid "Search"
 msgstr "Procurar"
 
-#: templates/maposmatic/all_maps.html:38
-#: templates/maposmatic/base.html:62
+#: templates/maposmatic/all_maps.html:38 templates/maposmatic/base.html:62
 msgid "Maps"
 msgstr "Mapas"
 
@@ -643,8 +639,7 @@ msgstr "Trabalhos"
 msgid "News"
 msgstr "Notícias"
 
-#: templates/maposmatic/base.html:64
-#: templates/maposmatic/donate.html:30
+#: templates/maposmatic/base.html:64 templates/maposmatic/donate.html:30
 msgid "Donate"
 msgstr "Fazer uma Doação"
 
@@ -666,12 +661,12 @@ msgstr "Status da base de dados do OSM"
 
 #: templates/maposmatic/base.html:108
 #, python-format
-msgid "Lag of MapOSMatic OSM database: %(date)s."
-msgstr "Diferença do MapOSMatic com a base de dados do OSM: %(date)s."
+msgid "Database is online, <span title=\"%(osm_date)s\">last update %(date)s ago</span>."
+msgstr ""
 
 #: templates/maposmatic/base.html:110
-msgid "Lag of MapOSMatic OSM database: unknown."
-msgstr "Diferença do MapOSMatic com a base de dados do OSM: desconhecido."
+msgid "Could not connect to OSM database!"
+msgstr ""
 
 #: templates/maposmatic/base.html:115
 msgid "Random map"
@@ -803,8 +798,7 @@ msgstr "Encontrar um mapa"
 msgid "More details"
 msgstr "Mais detalhes"
 
-#: templates/maposmatic/job-page.html:39
-#: templates/maposmatic/job.html:35
+#: templates/maposmatic/job-page.html:39 templates/maposmatic/job.html:35
 #: templates/maposmatic/map.html:35
 msgid "Recreate map"
 msgstr "Recriar o mapa"
@@ -863,26 +857,22 @@ msgstr "Cancelado em"
 msgid "rendering took %(rendering)s"
 msgstr "renderização demorou %(rendering)s"
 
-#: templates/maposmatic/job.html:79
-#: templates/maposmatic/map-feed.html:44
+#: templates/maposmatic/job.html:79 templates/maposmatic/map-feed.html:44
 #: templates/maposmatic/map.html:57
 msgid "Files: "
 msgstr "Arquivos:"
 
-#: templates/maposmatic/job.html:81
-#: templates/maposmatic/map-feed.html:46
+#: templates/maposmatic/job.html:81 templates/maposmatic/map-feed.html:46
 #: templates/maposmatic/map.html:59
 msgid "Map: "
 msgstr "Mapa:"
 
-#: templates/maposmatic/job.html:82
-#: templates/maposmatic/map-feed.html:47
+#: templates/maposmatic/job.html:82 templates/maposmatic/map-feed.html:47
 #: templates/maposmatic/map.html:60
 msgid "Index: "
 msgstr "Índice:"
 
-#: templates/maposmatic/job.html:85
-#: templates/maposmatic/map-feed.html:50
+#: templates/maposmatic/job.html:85 templates/maposmatic/map-feed.html:50
 #: templates/maposmatic/map.html:63
 msgid "No index was generated because no information was available in OpenStreetMap to create one. Feel free to contribute the missing data yourself. See the <a href=\"http://wiki.openstreetmap.org/wiki/Getting_Involved\">OSM Wiki</a> for a start. "
 msgstr "Nenhum índice foi gerado porque não há nenhuma informação disponível no OpenStreetMap para criá-lo. Fique à vontade para contribuir com os dados faltantes. Veja no <a href=\"http://wiki.openstreetmap.org/wiki/Getting_Involved\">Wiki do OSM</a> como começar. "
@@ -891,14 +881,12 @@ msgstr "Nenhum índice foi gerado porque não há nenhuma informação disponív
 msgid "View on OpenStreetMap"
 msgstr "Ver no OpenStreetMap"
 
-#: templates/maposmatic/job.html:92
-#: templates/maposmatic/map-feed.html:53
+#: templates/maposmatic/job.html:92 templates/maposmatic/map-feed.html:53
 #: templates/maposmatic/map.html:66
 msgid "The generated files are no longer available."
 msgstr "Os arquivos gerados não estão mais disponíveis."
 
-#: templates/maposmatic/map-feed.html:41
-#: templates/maposmatic/map.html:54
+#: templates/maposmatic/map-feed.html:41 templates/maposmatic/map.html:54
 msgid "Rendering completed on"
 msgstr "Renderização encerrada em"
 
@@ -914,13 +902,11 @@ msgstr "Localidade"
 msgid "Title"
 msgstr "Título"
 
-#: templates/maposmatic/new.html:51
-#: templates/maposmatic/new.html.py:124
+#: templates/maposmatic/new.html:51 templates/maposmatic/new.html.py:124
 msgid "Layout"
 msgstr "Layout"
 
-#: templates/maposmatic/new.html:54
-#: templates/maposmatic/new.html.py:129
+#: templates/maposmatic/new.html:54 templates/maposmatic/new.html.py:129
 msgid "Stylesheet"
 msgstr "Folha de estilo"
 
@@ -928,8 +914,7 @@ msgstr "Folha de estilo"
 msgid "Paper size"
 msgstr "Tamanho do papel"
 
-#: templates/maposmatic/new.html:60
-#: templates/maposmatic/new.html.py:147
+#: templates/maposmatic/new.html:60 templates/maposmatic/new.html.py:148
 msgid "Language"
 msgstr "Idioma"
 
@@ -1000,43 +985,43 @@ msgstr "Papel"
 msgid "An error occured while retrieving compatible paper sizes."
 msgstr "Um erro ocorreu enquanto recebia os tamanhos de papel compatíveis."
 
-#: templates/maposmatic/new.html:148
+#: templates/maposmatic/new.html:149
 msgid "Map Index Language:"
 msgstr "Idioma do Índice do Mapa:"
 
-#: templates/maposmatic/new.html:151
+#: templates/maposmatic/new.html:152
 msgid "Summary:"
 msgstr "Sumário:"
 
-#: templates/maposmatic/new.html:153
+#: templates/maposmatic/new.html:154
 msgid "Location:"
 msgstr "Localidade:"
 
-#: templates/maposmatic/new.html:155
+#: templates/maposmatic/new.html:156
 msgid "Title:"
 msgstr "Título:"
 
-#: templates/maposmatic/new.html:157
+#: templates/maposmatic/new.html:158
 msgid "Layout:"
 msgstr "Layout:"
 
-#: templates/maposmatic/new.html:159
+#: templates/maposmatic/new.html:160
 msgid "Paper size:"
 msgstr "Tamanho do papel:"
 
-#: templates/maposmatic/new.html:161
+#: templates/maposmatic/new.html:162
 msgid "Stylesheet:"
 msgstr "Folha de estilos:"
 
-#: templates/maposmatic/new.html:163
+#: templates/maposmatic/new.html:164
 msgid "Language:"
 msgstr "Idioma:"
 
-#: templates/maposmatic/new.html:167
+#: templates/maposmatic/new.html:168
 msgid "Generate"
 msgstr "Gerar"
 
-#: templates/maposmatic/new.html:174
+#: templates/maposmatic/new.html:175
 msgid "Continue"
 msgstr "Continuar"
 
@@ -1047,6 +1032,12 @@ msgstr "Anterior"
 #: templates/maposmatic/paginator.html:37
 msgid "Next"
 msgstr "Próxima"
+
+#~ msgid "Lag of MapOSMatic OSM database: %(date)s."
+#~ msgstr "Diferença do MapOSMatic com a base de dados do OSM: %(date)s."
+
+#~ msgid "Lag of MapOSMatic OSM database: unknown."
+#~ msgstr "Diferença do MapOSMatic com a base de dados do OSM: desconhecido."
 
 #~ msgid "slippy map"
 #~ msgstr "slippy map"

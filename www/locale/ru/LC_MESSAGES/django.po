@@ -20,7 +20,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: mapOSMatic 0.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-05-04 09:34+0200\n"
+"POT-Creation-Date: 2012-11-29 19:20+0100\n"
 "PO-Revision-Date: 2012-04-14 12:31+0100\n"
 "Last-Translator: Thomas Petazzoni <thomas.petazzoni@enix.org>\n"
 "Language-Team: RUSSIAN <LL@li.org>\n"
@@ -31,7 +31,7 @@ msgstr ""
 "X-Poedit-Language: Russian\n"
 "X-Poedit-Country: RUSSIAN FEDERATION\n"
 
-#: settings.py:232
+#: settings.py:235
 msgid "No localization"
 msgstr "Без локализации"
 
@@ -43,112 +43,116 @@ msgstr "Карты MapOSMatic"
 msgid "The latest rendered maps on MapOSMatic."
 msgstr "Последние отрисованные карты на MapOSMatic."
 
-#: maposmatic/forms.py:57
+#: maposmatic/forms.py:42
+msgid "Search by map name"
+msgstr ""
+
+#: maposmatic/forms.py:59
 msgid "Administrative boundary"
 msgstr "Административная граница"
 
-#: maposmatic/forms.py:58
+#: maposmatic/forms.py:60
 msgid "Bounding box"
 msgstr "Прямоугольная область"
 
-#: maposmatic/forms.py:60
+#: maposmatic/forms.py:62
 msgid "Portrait"
 msgstr "Портретная"
 
-#: maposmatic/forms.py:61
+#: maposmatic/forms.py:63
 msgid "Landscape"
 msgstr "Ландшафтная"
 
-#: maposmatic/forms.py:73
+#: maposmatic/forms.py:75
 msgid "Area"
 msgstr "Область"
 
-#: maposmatic/forms.py:93
+#: maposmatic/forms.py:95
 msgid "Full-page layout without street index"
 msgstr ""
 
-#: maposmatic/forms.py:95
+#: maposmatic/forms.py:97
 msgid "Full-page layout with the street index on the side"
 msgstr ""
 
-#: maposmatic/forms.py:97
+#: maposmatic/forms.py:99
 msgid "Full-page layout with the street index at the bottom"
 msgstr ""
 
-#: maposmatic/forms.py:99
+#: maposmatic/forms.py:101
 msgid "Multi-page layout"
 msgstr ""
 
-#: maposmatic/forms.py:101
+#: maposmatic/forms.py:103
 #, python-format
 msgid "The %(layout_name)s layout"
 msgstr ""
 
-#: maposmatic/forms.py:109
+#: maposmatic/forms.py:111
 msgid "The default OpenStreetMap.org style"
 msgstr ""
 
-#: maposmatic/forms.py:111
+#: maposmatic/forms.py:113
 msgid "The european MapQuest style"
 msgstr ""
 
-#: maposmatic/forms.py:113
+#: maposmatic/forms.py:115
 msgid "The US MapQuest style"
 msgstr ""
 
-#: maposmatic/forms.py:115
+#: maposmatic/forms.py:117
 msgid "The UK MapQuest style"
 msgstr ""
 
-#: maposmatic/forms.py:117
+#: maposmatic/forms.py:119
 msgid "A MapOSMatic-specific stylesheet suitable for printing"
 msgstr ""
 
-#: maposmatic/forms.py:119
+#: maposmatic/forms.py:121
 #, python-format
 msgid "The <i>%(stylesheet_name)s</i> stylesheet"
 msgstr ""
 
-#: maposmatic/forms.py:126
+#: maposmatic/forms.py:128
 msgid "Best fit <em class=\"papersize\"></em>"
 msgstr ""
 
-#: maposmatic/forms.py:157
+#: maposmatic/forms.py:159
 msgid "Map title required"
 msgstr "Требуется название карты"
 
-#: maposmatic/forms.py:162
+#: maposmatic/forms.py:164
 #, fuzzy
 msgid "Layout required"
 msgstr "Требуется название карты"
 
-#: maposmatic/forms.py:167
+#: maposmatic/forms.py:169
 #, fuzzy
 msgid "Stylesheet required"
 msgstr "Таблица стилей"
 
-#: maposmatic/forms.py:173
+#: maposmatic/forms.py:175
 msgid "Administrative city required"
 msgstr "Требуется название города"
 
-#: maposmatic/forms.py:186
+#: maposmatic/forms.py:188
 #, python-format
 msgid "Error with osm city: %s"
 msgstr "Ошибка с городом: %s"
 
-#: maposmatic/forms.py:196
+#: maposmatic/forms.py:198
 msgid "Required"
 msgstr "Требуется"
 
-#: maposmatic/forms.py:204
+#: maposmatic/forms.py:206
 msgid "Same latitude"
 msgstr ""
 
-#: maposmatic/forms.py:211
+#: maposmatic/forms.py:213
 msgid "Same longitude"
 msgstr ""
 
-#: maposmatic/forms.py:236
+#: maposmatic/forms.py:237
 msgid "Bounding Box too large"
 msgstr "Прямоугольная область слишком большая"
 
@@ -664,12 +668,12 @@ msgstr "Статус базы данных OSM"
 
 #: templates/maposmatic/base.html:108
 #, python-format
-msgid "Lag of MapOSMatic OSM database: %(date)s."
-msgstr "Задержка базы данных OSM MapOSMatic: %(date)s."
+msgid "Database is online, <span title=\"%(osm_date)s\">last update %(date)s ago</span>."
+msgstr ""
 
 #: templates/maposmatic/base.html:110
-msgid "Lag of MapOSMatic OSM database: unknown."
-msgstr "Задержка базы данных OSM MapOSMatic: неизвестна."
+msgid "Could not connect to OSM database!"
+msgstr ""
 
 #: templates/maposmatic/base.html:115
 msgid "Random map"
@@ -918,7 +922,7 @@ msgstr "Таблица стилей"
 msgid "Paper size"
 msgstr "Размер бумаги"
 
-#: templates/maposmatic/new.html:60 templates/maposmatic/new.html.py:147
+#: templates/maposmatic/new.html:60 templates/maposmatic/new.html.py:148
 msgid "Language"
 msgstr "Язык"
 
@@ -990,43 +994,43 @@ msgstr "Бумага"
 msgid "An error occured while retrieving compatible paper sizes."
 msgstr ""
 
-#: templates/maposmatic/new.html:148
+#: templates/maposmatic/new.html:149
 msgid "Map Index Language:"
 msgstr "Язык указателя карты:"
 
-#: templates/maposmatic/new.html:151
+#: templates/maposmatic/new.html:152
 msgid "Summary:"
 msgstr "Итог:"
 
-#: templates/maposmatic/new.html:153
+#: templates/maposmatic/new.html:154
 msgid "Location:"
 msgstr "Местоположение:"
 
-#: templates/maposmatic/new.html:155
+#: templates/maposmatic/new.html:156
 msgid "Title:"
 msgstr "Название:"
 
-#: templates/maposmatic/new.html:157
+#: templates/maposmatic/new.html:158
 msgid "Layout:"
 msgstr "Расположение:"
 
-#: templates/maposmatic/new.html:159
+#: templates/maposmatic/new.html:160
 msgid "Paper size:"
 msgstr "Размер бумаги:"
 
-#: templates/maposmatic/new.html:161
+#: templates/maposmatic/new.html:162
 msgid "Stylesheet:"
 msgstr "Таблица стилей:"
 
-#: templates/maposmatic/new.html:163
+#: templates/maposmatic/new.html:164
 msgid "Language:"
 msgstr "Язык:"
 
-#: templates/maposmatic/new.html:167
+#: templates/maposmatic/new.html:168
 msgid "Generate"
 msgstr "Создать"
 
-#: templates/maposmatic/new.html:174
+#: templates/maposmatic/new.html:175
 msgid "Continue"
 msgstr "Далее"
 
@@ -1037,6 +1041,12 @@ msgstr "Предыдущая"
 #: templates/maposmatic/paginator.html:37
 msgid "Next"
 msgstr "Следующая"
+
+#~ msgid "Lag of MapOSMatic OSM database: %(date)s."
+#~ msgstr "Задержка базы данных OSM MapOSMatic: %(date)s."
+
+#~ msgid "Lag of MapOSMatic OSM database: unknown."
+#~ msgstr "Задержка базы данных OSM MapOSMatic: неизвестна."
 
 #~ msgid "Streets index"
 #~ msgstr "Указатель улиц"

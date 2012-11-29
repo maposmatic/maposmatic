@@ -21,7 +21,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: mapOSMatic 0.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-05-04 09:34+0200\n"
+"POT-Creation-Date: 2012-11-29 19:20+0100\n"
 "PO-Revision-Date: 2010-10-20 11:43+0200\n"
 "Last-Translator: Joan Montané <joan--sense-spam--montane.cat>\n"
 "Language-Team: Català <joan--sense-spam--montane.cat>\n"
@@ -32,7 +32,7 @@ msgstr ""
 "X-Generator: Lokalize 1.0\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
 
-#: settings.py:232
+#: settings.py:235
 msgid "No localization"
 msgstr "Sense localització"
 
@@ -44,112 +44,116 @@ msgstr "Mapes del MapOSMatic"
 msgid "The latest rendered maps on MapOSMatic."
 msgstr "Els darrrers mapes generats al MapOSMatic."
 
-#: maposmatic/forms.py:57
+#: maposmatic/forms.py:42
+msgid "Search by map name"
+msgstr ""
+
+#: maposmatic/forms.py:59
 msgid "Administrative boundary"
 msgstr "Límit administratiu"
 
-#: maposmatic/forms.py:58
+#: maposmatic/forms.py:60
 msgid "Bounding box"
 msgstr "Àrea geogràfica"
 
-#: maposmatic/forms.py:60
+#: maposmatic/forms.py:62
 msgid "Portrait"
 msgstr "Vertical"
 
-#: maposmatic/forms.py:61
+#: maposmatic/forms.py:63
 msgid "Landscape"
 msgstr "Horitzontal"
 
-#: maposmatic/forms.py:73
+#: maposmatic/forms.py:75
 msgid "Area"
 msgstr "Àrea"
 
-#: maposmatic/forms.py:93
+#: maposmatic/forms.py:95
 msgid "Full-page layout without street index"
 msgstr ""
 
-#: maposmatic/forms.py:95
+#: maposmatic/forms.py:97
 msgid "Full-page layout with the street index on the side"
 msgstr ""
 
-#: maposmatic/forms.py:97
+#: maposmatic/forms.py:99
 msgid "Full-page layout with the street index at the bottom"
 msgstr ""
 
-#: maposmatic/forms.py:99
+#: maposmatic/forms.py:101
 msgid "Multi-page layout"
 msgstr ""
 
-#: maposmatic/forms.py:101
+#: maposmatic/forms.py:103
 #, python-format
 msgid "The %(layout_name)s layout"
 msgstr ""
 
-#: maposmatic/forms.py:109
+#: maposmatic/forms.py:111
 msgid "The default OpenStreetMap.org style"
 msgstr ""
 
-#: maposmatic/forms.py:111
+#: maposmatic/forms.py:113
 msgid "The european MapQuest style"
 msgstr ""
 
-#: maposmatic/forms.py:113
+#: maposmatic/forms.py:115
 msgid "The US MapQuest style"
 msgstr ""
 
-#: maposmatic/forms.py:115
+#: maposmatic/forms.py:117
 msgid "The UK MapQuest style"
 msgstr ""
 
-#: maposmatic/forms.py:117
+#: maposmatic/forms.py:119
 msgid "A MapOSMatic-specific stylesheet suitable for printing"
 msgstr ""
 
-#: maposmatic/forms.py:119
+#: maposmatic/forms.py:121
 #, python-format
 msgid "The <i>%(stylesheet_name)s</i> stylesheet"
 msgstr ""
 
-#: maposmatic/forms.py:126
+#: maposmatic/forms.py:128
 msgid "Best fit <em class=\"papersize\"></em>"
 msgstr ""
 
-#: maposmatic/forms.py:157
+#: maposmatic/forms.py:159
 msgid "Map title required"
 msgstr "Indiqueu un títol per al mapa"
 
-#: maposmatic/forms.py:162
+#: maposmatic/forms.py:164
 #, fuzzy
 msgid "Layout required"
 msgstr "Indiqueu un títol per al mapa"
 
-#: maposmatic/forms.py:167
+#: maposmatic/forms.py:169
 #, fuzzy
 msgid "Stylesheet required"
 msgstr "Full d'estil"
 
-#: maposmatic/forms.py:173
+#: maposmatic/forms.py:175
 msgid "Administrative city required"
 msgstr "És necessària una ciutat administrativa"
 
-#: maposmatic/forms.py:186
+#: maposmatic/forms.py:188
 #, python-format
 msgid "Error with osm city: %s"
 msgstr "S'ha produït un error amb la ciutat de l'OSM: %s"
 
-#: maposmatic/forms.py:196
+#: maposmatic/forms.py:198
 msgid "Required"
 msgstr "És necessari"
 
-#: maposmatic/forms.py:204
+#: maposmatic/forms.py:206
 msgid "Same latitude"
 msgstr ""
 
-#: maposmatic/forms.py:211
+#: maposmatic/forms.py:213
 msgid "Same longitude"
 msgstr ""
 
-#: maposmatic/forms.py:236
+#: maposmatic/forms.py:237
 msgid "Bounding Box too large"
 msgstr "L'àrea seleccionada és massa gran"
 
@@ -606,11 +610,11 @@ msgstr ""
 
 #: templates/maposmatic/base.html:108
 #, python-format
-msgid "Lag of MapOSMatic OSM database: %(date)s."
+msgid "Database is online, <span title=\"%(osm_date)s\">last update %(date)s ago</span>."
 msgstr ""
 
 #: templates/maposmatic/base.html:110
-msgid "Lag of MapOSMatic OSM database: unknown."
+msgid "Could not connect to OSM database!"
 msgstr ""
 
 #: templates/maposmatic/base.html:115
@@ -862,7 +866,7 @@ msgstr "Full d'estil"
 msgid "Paper size"
 msgstr "Mida del paper"
 
-#: templates/maposmatic/new.html:60 templates/maposmatic/new.html.py:147
+#: templates/maposmatic/new.html:60 templates/maposmatic/new.html.py:148
 msgid "Language"
 msgstr "Llengua:"
 
@@ -926,43 +930,43 @@ msgstr "Paper"
 msgid "An error occured while retrieving compatible paper sizes."
 msgstr ""
 
-#: templates/maposmatic/new.html:148
+#: templates/maposmatic/new.html:149
 msgid "Map Index Language:"
 msgstr "Llengua de l'índex del mapa:"
 
-#: templates/maposmatic/new.html:151
+#: templates/maposmatic/new.html:152
 msgid "Summary:"
 msgstr "Resum:"
 
-#: templates/maposmatic/new.html:153
+#: templates/maposmatic/new.html:154
 msgid "Location:"
 msgstr "Localització:"
 
-#: templates/maposmatic/new.html:155
+#: templates/maposmatic/new.html:156
 msgid "Title:"
 msgstr "Títol:"
 
-#: templates/maposmatic/new.html:157
+#: templates/maposmatic/new.html:158
 msgid "Layout:"
 msgstr "Disposició:"
 
-#: templates/maposmatic/new.html:159
+#: templates/maposmatic/new.html:160
 msgid "Paper size:"
 msgstr "Mida del paper:"
 
-#: templates/maposmatic/new.html:161
+#: templates/maposmatic/new.html:162
 msgid "Stylesheet:"
 msgstr "Full d'estil:"
 
-#: templates/maposmatic/new.html:163
+#: templates/maposmatic/new.html:164
 msgid "Language:"
 msgstr "Llengua:"
 
-#: templates/maposmatic/new.html:167
+#: templates/maposmatic/new.html:168
 msgid "Generate"
 msgstr "Genera"
 
-#: templates/maposmatic/new.html:174
+#: templates/maposmatic/new.html:175
 msgid "Continue"
 msgstr "Continua"
 
