@@ -27,6 +27,7 @@
 from django import forms
 from django.utils.safestring import mark_safe
 from django.utils.translation import ugettext_lazy as _
+import time
 
 import ocitysmap
 from www.maposmatic import models, widgets
@@ -47,8 +48,15 @@ class MapRenderingJobForm(forms.ModelForm):
     ModelForm based on the MapRenderingJob model.
     """
     class Media:
-        css = {'all': ['/smedia/css/newmap.css']}
-        js = ['/smedia/js/jquery.js', '/smedia/js/newmap.js']
+        css = {
+            'all': [
+                '/smedia/css/newmap.css?_salt=%d' % int(time.time()*100)
+            ]
+        }
+        js = [
+            '/smedia/js/jquery.js',
+            '/smedia/js/newmap.js?_salt=%d' % int(time.time()*100)
+        ]
 
     class Meta:
         model = models.MapRenderingJob
