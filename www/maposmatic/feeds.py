@@ -33,7 +33,7 @@ from www.maposmatic import models
 
 class MapsFeed(Feed):
     """
-    This feeds syndicates the latest successful rendering jobs in MapOSMatic,
+    This feeds syndicates the latest successfully rendered maps in MapOSMatic,
     with their thumbnail, and links to the rendered files.
     """
 
@@ -45,8 +45,8 @@ class MapsFeed(Feed):
     description_template = 'maposmatic/map-feed.html'
 
     def items(self):
-        """Returns the successfull rendering jobs from the last 24 hours, or
-        the last 10 jobs if nothing happened recently."""
+        """Returns the successfully rendered maps from the last 24 hours, or
+        the last 10 maps/jobs if nothing happened recently."""
 
         one_day_before = datetime.datetime.now() - datetime.timedelta(1)
         items = (models.MapRenderingJob.objects

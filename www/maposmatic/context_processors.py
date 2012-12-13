@@ -31,11 +31,12 @@ from models import MapRenderingJob
 import www.settings
 
 from www.maposmatic import gisdb
+from www.maposmatic import forms
 import psycopg2
 
 def get_latest_blog_posts():
     f = feedparser.parse("http://news.maposmatic.org/?feed=rss2")
-    return f.entries[:5]
+    return f.entries[:4]
 
 def get_osm_database_last_update():
     """Returns the timestamp of the last PostGIS database update, which is
@@ -82,13 +83,33 @@ def all(request):
         paypal_lang_code = "en_US"
         paypal_country_code = "US"
 
+    daemon_running = www.settings.is_daemon_running()
+    gis_lastupdate = get_osm_database_last_update()
+    gis_lag_ok = (gis_lastupdate
+        and datetime.datetime.utcnow() - gis_lastupdate < datetime.timedelta(minutes=10)
+        or False)
+    platform_status = 'off'
+    if daemon_running and gis_lag_ok:
+        platform_status = 'ok'
+    elif daemon_running and gis_lastupdate and not gis_lag_ok:
+        platform_status = 'warning-sign'
+
     return {
+        'DEBUG': www.settings.DEBUG,
+        'LANGUAGES': www.settings.LANGUAGES,
+        'MAP_LANGUAGES': www.settings.MAP_LANGUAGES,
+        'BBOX_MAXIMUM_LENGTH_IN_METERS': www.settings.BBOX_MAXIMUM_LENGTH_IN_METERS,
+
+        'searchform': forms.MapSearchForm(request.GET),
         'randommap': MapRenderingJob.objects.get_random_with_thumbnail(),
         'blogposts': get_latest_blog_posts(),
-        'MAPOSMATIC_DAEMON_RUNNING': www.settings.is_daemon_running(),
-        'osm_date': get_osm_database_last_update(),
+
+        'daemon_running': daemon_running,
+        'gis_lastupdate': gis_lastupdate,
+        'gis_lag_ok': gis_lag_ok,
         'utc_now': datetime.datetime.utcnow(),
-        'DEBUG': www.settings.DEBUG,
+        'platform_status': platform_status,
+
         'paypal_lang_code': paypal_lang_code,
         'paypal_country_code': paypal_country_code,
     }

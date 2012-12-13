@@ -1,0 +1,248 @@
+/*
+ maposmatic, the web front-end of the MapOSMatic city map generation system
+ Copyright (C) 2009  David Decotigny
+ Copyright (C) 2009  Frédéric Lehobey
+ Copyright (C) 2009  David Mentré
+ Copyright (C) 2009  Maxime Petazzoni
+ Copyright (C) 2009  Thomas Petazzoni
+ Copyright (C) 2009  Gaël Utard
+
+ This program is free software: you can redistribute it and/or modify
+ it under the terms of the GNU Affero General Public License as
+ published by the Free Software Foundation, either version 3 of the
+ License, or any later version.
+
+ This program is distributed in the hope that it will be useful,
+ but WITHOUT ANY WARRANTY; without even the implied warranty of
+ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ GNU Affero General Public License for more details.
+
+ You should have received a copy of the GNU Affero General Public License
+ along with this program.  If not, see <http://www.gnu.org/licenses/>.
+*/
+
+body {
+  font-family: sans-serif;
+}
+
+h2 {
+  margin-top: 20px;
+}
+
+/** Top navigation bar. */
+.navbar .nav { float: none; }
+.navbar .control-group { margin-bottom: 0px; }
+.navbar .controls { margin-left: 0px; }
+.navbar-inner { padding-top: 5px; padding-bottom: 5px; }
+
+/** Platform status in the top nav bar. */
+.menu-status > a { cursor: pointer; }
+.menu-status i { margin-top: 5px; }
+.menu-status .caret { border-top-color: #999; border-bottom-color: #999; }
+.menu-status p { margin-bottom: 0; }
+.menu-status .popover { padding: 0; left: 0 !important; }
+.menu-status .popover .arrow { left: 30% !important; }
+
+/** Page footer. */
+.footer { background: #f5f5f5; border-top: 1px solid #e5e5e5;
+  padding: 30px 0; text-align: center; margin-top: 70px; }
+.footer address { display: inline; }
+.footer p { color: #777; }
+
+.caret-up { border-bottom: 4px solid #000000;
+  border-left: 4px solid transparent;
+  border-right: 4px solid transparent;
+  border-top: none; }
+
+/** Home page styling. */
+body.home .hero-unit h1 { margin-left: -5px; margin-bottom: 30px; }
+body.home h2 { margin-top: 10px; }
+body.home p.actions { margin-top: 30px; }
+
+/** Donate page. */
+body.donate .hero-unit h1 { margin-left: -5px; margin-bottom: 30px; }
+body.donate p.info { margin-top: 2em; font-size: smaller; line-height: 16px; }
+
+/** Maps and jobs listing page. */
+body.maps span.refresh-time { font-size: 8pt; color: #777;
+  margin-top: 20px; }
+body.maps div.map { position: relative; border: 1px #e5e5e5 solid;
+  margin-bottom: 20px;
+  -webkit-border-radius: 4px;
+     -moz-border-radius: 4px;
+          border-radius: 4px; }
+body.maps div.mapthumbnail { border-top: 1px #e5e5e5 solid;
+  background-color: #e5e5e5; height: 250px; }
+body.maps div.mapthumbnail p { color: #777777;
+  text-align: center; margin-top: 110px; }
+body.maps div.mapthumbnail img { max-width: none; }
+body.maps div.info { margin: 0 10px; padding: 10px 0; }
+body.maps div.info > h2 {
+  margin: 0; padding: 0; width: 60%;
+  overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+body.maps div.info p.details { height: 50px; }
+body.maps div.info p.queue-position { position: absolute;
+  top: -15px; right: 0; color: #eee; text-align: right;
+  font-weight: bold; line-height: 100pt; font-size: 100pt;
+  letter-spacing: -2px; vertical-align: top; z-index: -1; }
+
+/** Map creation page. */
+body.new .item { height: 530px; padding: 0 80px; }
+body.new .item ul { list-style: none; margin: 0; padding: 0; }
+body.new .item input[type=radio] { margin: -1px 2px 0 0; }
+
+#step-location-admin > div > ul.errorlist {
+  width: auto;
+  position: absolute;
+  z-index: 0;
+  margin: 30px; padding: 10px 30px;
+  background: #f2dede; border: 1px #eed3d7 solid;
+  -webkit-border-radius: 4px;
+     -moz-border-radius: 4px;
+          border-radius: 4px;
+  color: #b94a48;
+  list-style: disc;
+}
+
+a.carousel-control { display: none; }
+
+#wizard-step-location .nav-tabs li {
+  margin: 0 5px -2px 0;
+  border-top-left-radius: 4px;
+  border-top-right-radius: 4px; }
+#wizard-step-location .nav-tabs li label { color: #08c; padding: 8px 12px; }
+#wizard-step-location .nav-tabs li:first-child { margin-left: 3em; }
+#wizard-step-location .nav-tabs li:hover { background: #e5e5e5; }
+#wizard-step-location .nav-tabs li.active { background: white;
+  border: 1px #ddd solid;
+  border-bottom: 1px transparent solid; }
+#wizard-step-location .nav-tabs li.active label { color: #555; }
+#wizard-step-location .nav-tabs input[type=radio] { display: none; }
+#wizard-step-location .tab-content { height: 400px; }
+
+/* By administrative boundary */
+#wizard-step-location .suggest-icon { top: 24px; right: 20px;
+  display: none; position: absolute; z-index: 2; }
+#id_administrative_city {
+  font-size: 25pt;
+  line-height: normal;
+  height: 26pt;
+  margin: 10px auto;
+  padding-right: 40px;
+  width: 93%;
+  position: relative;
+  z-index: 1;
+}
+#suggest { width: 99%; margin: 2px auto; padding: 5px 0; z-index: 1; }
+#suggest a { padding: 3px 10px; }
+#suggest a img { margin-right: 3px; }
+#suggest a.suggestoff { color: #999 !important; }
+#suggest a.suggestoff:hover { background: #e5e5e5 !important; }
+#suggest a { overflow: hidden; text-overflow: ellipsis; }
+
+/* By map */
+#step-location-map { margin: 20px auto 10px auto !important;
+  width: 97%; height: 270px; background-color: #e5e5e5;
+  border: 1px #e5e5e5 solid;
+  -webkit-border-radius: 4px;
+     -moz-border-radius: 4px;
+          border-radius: 4px;
+}
+#step-location-map img { max-width: none; }
+.olControlAttribution { bottom: 3px !important; }
+#step-location-bbox p { width: 97%; margin: -5px auto; font-size: 12pt; }
+#step-location-bbox input[type=text] { width: 5em; margin-top: 5px;
+  font-size: 9pt; font-family: monospace; }
+#area-size-alert { text-align: center; }
+
+/** Paper size and orientation slide. */
+#wizard-step-paper-size .alert { margin-top: 60px; }
+#paper-selection { display: none; }
+#paper-size-loading-error { display: none; }
+#paper-size em { color: #777; }
+
+/** Map title, language and summary slide. */
+#wizard-step-lang-title input[type=text],
+#wizard-step-lang-title select { width: 97%; }
+#summary legend { margin-bottom: 0; border-bottom: none; }
+
+/** Platform status styling, like buttons. */
+.platform-status {
+  display: inline-block;
+  *display: inline;
+  padding: 10px 20px;
+  margin-bottom: 0;
+  *margin-left: .3em;
+  font-size: 14px;
+  line-height: 20px;
+  *border: 0;
+  -webkit-border-radius: 4px;
+     -moz-border-radius: 4px;
+          border-radius: 4px;
+}
+
+.menu-status h3,
+.platform-status-ok {
+  background-color: #5bb75b;
+  *background-color: #51a351;
+  background-image: -moz-linear-gradient(top, #62c462, #51a351);
+  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#62c462), to(#51a351));
+  background-image: -webkit-linear-gradient(top, #62c462, #51a351);
+  background-image: -o-linear-gradient(top, #62c462, #51a351);
+  background-image: linear-gradient(to bottom, #62c462, #51a351);
+  border-color: #51a351 #51a351 #387038;
+  border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
+  background-repeat: repeat-x;
+  color: #ffffff;
+  text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff62c462', endColorstr='#ff51a351', GradientType=0);
+  filter: progid:DXImageTransform.Microsoft.gradient(enabled=false);
+}
+
+.menu-status-off h3,
+.platform-status-off {
+  background-color: #da4f49;
+  *background-color: #bd362f;
+  background-image: -moz-linear-gradient(top, #ee5f5b, #bd362f);
+  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#ee5f5b), to(#bd362f));
+  background-image: -webkit-linear-gradient(top, #ee5f5b, #bd362f);
+  background-image: -o-linear-gradient(top, #ee5f5b, #bd362f);
+  background-image: linear-gradient(to bottom, #ee5f5b, #bd362f);
+  background-repeat: repeat-x;
+  border-color: #bd362f #bd362f #802420;
+  border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
+  color: #ffffff;
+  text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffee5f5b', endColorstr='#ffbd362f', GradientType=0);
+  filter: progid:DXImageTransform.Microsoft.gradient(enabled=false);
+}
+
+.menu-status-warning-sign h3,
+.platform-status-warning-sign {
+  background-color: #faa732;
+  *background-color: #f89406;
+  background-image: -moz-linear-gradient(top, #fbb450, #f89406);
+  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#fbb450), to(#f89406));
+  background-image: -webkit-linear-gradient(top, #fbb450, #f89406);
+  background-image: -o-linear-gradient(top, #fbb450, #f89406);
+  background-image: linear-gradient(to bottom, #fbb450, #f89406);
+  background-repeat: repeat-x;
+  border-color: #f89406 #f89406 #ad6704;
+  border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
+  color: #ffffff;
+  text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#fffbb450', endColorstr='#fff89406', GradientType=0);
+  filter: progid:DXImageTransform.Microsoft.gradient(enabled=false);
+}
+
+.platform-status h3 { margin-bottom: 0; }
+.platform-status p.queue { font-size: larger; }
+.platform-status ul { list-style: none; padding: 0; margin: 0; }
+.platform-status ul li { margin: 5px 0; }
+
+/** Latest news column on home page. */
+.latest-news ul { list-style: none; padding: 0; margin: 0; }
+.latest-news ul li { margin-bottom: 10px; }
+.latest-news ul li:first-child { font-size: 16pt; }
+.latest-news p.newsinfo { font-size: 10pt; color: #777;
+  margin: 0; margin-top: -2px; padding: 0; }

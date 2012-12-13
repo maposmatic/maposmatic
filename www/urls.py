@@ -34,39 +34,44 @@ import maposmatic.views
 import settings
 
 urlpatterns = patterns('',
-    url(r'^$', maposmatic.views.index,
+    url(r'^$',
+        maposmatic.views.index,
         name='main'),
-    url(r'^about/$', maposmatic.views.about,
-        name='about'),
-    url(r'^donate/$', maposmatic.views.donate,
-        name='donate'),
-    url(r'^donate-thanks/$', maposmatic.views.donate_thanks,
-        name='donate-thanks'),
-    url(r'^jobs/(?P<job_id>\d+)/(?P<job_nonce>[A-Za-z]{16})$',
-        maposmatic.views.job,
-        name='job-by-id-and-nonce'),
-    url(r'^jobs/(?P<job_id>\d+)$', maposmatic.views.job,
-        name='job-by-id'),
-    url(r'^jobs/$', maposmatic.views.all_jobs,
-        name='jobs'),
 
-    url(r'^maps/$', maposmatic.views.all_maps,
-        name='maps'),
-
-    url(r'^new/$', maposmatic.views.new,
+    url(r'^new/$',
+        maposmatic.views.new,
         name='new'),
-
-    url(r'^recreate/$', maposmatic.views.recreate,
+    url(r'^recreate/$',
+        maposmatic.views.recreate,
         name='recreate'),
-
-    url(r'^cancel/$', maposmatic.views.cancel,
+    url(r'^cancel/$',
+        maposmatic.views.cancel,
         name='cancel'),
 
-    (r'^apis/nominatim/$', maposmatic.views.query_nominatim),
+    url(r'^maps/(?P<id>\d+)/(?P<nonce>[A-Za-z]{16})$',
+        maposmatic.views.map_full,
+        name='map-by-id-and-nonce'),
+    url(r'^maps/(?P<id>\d+)$',
+        maposmatic.views.map_full,
+        name='map-by-id'),
+    url(r'^maps/$',
+        maposmatic.views.maps,
+        name='maps'),
 
-    (r'^apis/reversegeo/([^/]*)/([^/]*)/$', maposmatic.views.nominatim_reverse),
+    url(r'^about/$',
+        maposmatic.views.about,
+        name='about'),
+    url(r'^donate/$',
+        maposmatic.views.donate,
+        name='donate'),
+    url(r'^donate-thanks/$',
+        maposmatic.views.donate_thanks,
+        name='donate-thanks'),
 
-    (r'^apis/papersize', maposmatic.views.query_papersize),
+    (r'^apis/nominatim/$', maposmatic.views.api_nominatim),
+    (r'^apis/reversegeo/([^/]*)/([^/]*)/$', maposmatic.views.api_nominatim_reverse),
+    (r'^apis/papersize', maposmatic.views.api_papersize),
+    (r'^apis/boundingbox/([^/]*)/$', maposmatic.views.api_bbox),
 
     # Feeds
     django.VERSION[1] >= 4 and \
@@ -86,6 +91,6 @@ if settings.DEBUG:
         (r'^results/(?P<path>.*)$', 'django.views.static.serve',
          {'document_root': settings.RENDERING_RESULT_PATH}),
 
-        (r'^smedia/(?P<path>.*)$', 'django.views.static.serve',
+        (r'^media/(?P<path>.*)$', 'django.views.static.serve',
          {'document_root': settings.LOCAL_MEDIA_PATH}),
     ))

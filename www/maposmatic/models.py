@@ -123,9 +123,10 @@ class MapRenderingJob(models.Model):
         return t
 
     def files_prefix(self):
-        return "%06d_%s_%s" % (self.id,
-                             self.startofrendering_time.strftime("%Y-%m-%d_%H-%M"),
-                             self.maptitle_computized())
+        return "%06d_%s_%s" % \
+            (self.id,
+             self.startofrendering_time.strftime("%Y-%m-%d_%H-%M"),
+             self.maptitle_computized())
 
 
     def start_rendering(self):
@@ -180,23 +181,26 @@ class MapRenderingJob(models.Model):
         The result contains two lists, 'maps' and 'indeces', listing the output
         files. Each file is reported by a tuple (format, path, title, size)."""
 
-        allfiles = {'maps': [], 'indeces': [], 'thumbnail': []}
+        allfiles = {'maps': {}, 'indeces': {}, 'thumbnail': []}
 
         for format in www.settings.RENDERING_RESULT_FORMATS:
             map_path = self.get_map_filepath(format)
             if format != 'csv' and os.path.exists(map_path):
                 # Map files (all formats but CSV)
-                allfiles['maps'].append((format, self.get_map_fileurl(format),
+                allfiles['maps'][format] = (
+                    self.get_map_fileurl(format),
                     _("%(title)s %(format)s Map") % {'title': self.maptitle,
                                                      'format': format.upper()},
-                    os.stat(map_path).st_size, map_path))
+                    os.stat(map_path).st_size,
+                    map_path)
             elif format == 'csv' and os.path.exists(map_path):
                 # Index CSV file
-                allfiles['indeces'].append(
-                    (format, self.get_map_fileurl(format),
+                allfiles['indeces'][format] = (
+                    self.get_map_fileurl(format),
                      _("%(title)s %(format)s Index") % {'title': self.maptitle,
                                                        'format': format.upper()},
-                    os.stat(map_path).st_size, map_path))
+                    os.stat(map_path).st_size,
+                    map_path)
 
         thumbnail = os.path.join(www.settings.RENDERING_RESULT_PATH, self.files_prefix() + "_small.png")
         if os.path.exists(thumbnail):
@@ -225,11 +229,11 @@ class MapRenderingJob(models.Model):
         saved = 0
         removed = 0
 
-        for f in (files['maps'] + files['indeces'] + files['thumbnail']):
+        for f in (files['maps'].values() + files['indeces'].values() + files['thumbnail']):
             try:
-                os.remove(f[4])
+                os.remove(f[3])
                 removed += 1
-                saved += f[3]
+                saved += f[2]
             except OSError:
                 pass
 
@@ -265,5 +269,5 @@ class MapRenderingJob(models.Model):
         return datetime.now() + estimated_time_left
 
     def get_absolute_url(self):
-        return reverse('job-by-id', args=[self.id])
+        return reverse('map-by-id', args=[self.id])
 

@@ -1,0 +1,180 @@
+{% extends "maposmatic/base.html" %}
+
+{% comment %}
+ coding: utf-8
+
+ maposmatic, the web front-end of the MapOSMatic city map generation system
+ Copyright (C) 2012  David Decotigny
+ Copyright (C) 2012  Frédéric Lehobey
+ Copyright (C) 2012  Pierre Mauduit
+ Copyright (C) 2012  David Mentré
+ Copyright (C) 2012  Maxime Petazzoni
+ Copyright (C) 2012  Thomas Petazzoni
+ Copyright (C) 2012  Gaël Utard
+
+ This program is free software: you can redistribute it and/or modify
+ it under the terms of the GNU Affero General Public License as
+ published by the Free Software Foundation, either version 3 of the
+ License, or any later version.
+
+ This program is distributed in the hope that it will be useful,
+ but WITHOUT ANY WARRANTY; without even the implied warranty of
+ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ GNU Affero General Public License for more details.
+
+ You should have received a copy of the GNU Affero General Public License
+ along with this program.  If not, see <http://www.gnu.org/licenses/>.
+{% endcomment %}
+{% load i18n %}
+{% load extratags %}
+
+{% block body-class %}maps{% endblock %}
+{% block menu-maps %}active{% endblock %}
+
+{% block title %}{{ map.maptitle }}{% endblock %}
+{% block extrajs %}
+{% if map.needs_waiting %}
+  setInterval(function() {
+    var t = $('.refresh-time > span').text() - 1;
+    $('.refresh-time > span').text(t);
+    if (t == 0) {
+      $('.refresh-time').text('{% trans "Updating now..." %}');
+      location.reload(true);
+    }
+  }, 1000);
+{% endif %}
+{% endblock %}
+
+{% block page %}
+<div class="row-fluid" style="margin-top: 30px;">
+  <div class="span8">
+    <h1>{{ map.maptitle }}</h1>
+
+    <p style="margin: 20px 0 100px 0;">
+      {% with map.submission_time|date:"DATETIME_FORMAT" as date %}
+      {% blocktrans %}Submitted {{ date }}{% endblocktrans %}
+      {% endwith %}
+      <br />
+      {% if map.is_done %}
+      {% with map.endofrendering_time|date:"DATETIME_FORMAT" as date %}
+      {% blocktrans %}Rendering completed {{ date }}{% endblocktrans %}
+      {% endwith %}
+      <br />
+      {% endif %}
+      {{ map.status|job_status_to_str:map.resultmsg }}
+    </p>
+
+    {% if map.needs_waiting %}
+      <div id="queue-progress" class="progress progress-striped active">
+        <div class="bar" style="width: {{ progress }}%; text-align: right; padding-right: 10px;">
+          {{ map.current_position_in_queue }} / {{ queue_size }}
+        </div>
+      </div>
+    {% endif %}
+
+
+    {% if map.is_waiting %}
+      <a class="btn btn-large disabled tooltipped"
+         data-placement="right"
+         data-original-title="{% with map.submission_time|timesince as date %}
+           {% blocktrans %}Pending, submitted {{ date }} ago{% endblocktrans %}
+         {% endwith %}">
+        <i class="icon-time"></i> {% trans "Pending..." %}
+      </a>
+
+      {% ifequal nonce map.nonce %}
+      <form method="post" action="{% url cancel %}" class="pull-right">
+        <input type="hidden" name="jobid" value="{{ map.id }}" />
+        <input type="hidden" name="jobnonce" value="{{ map.nonce }}" />
+        <button type="submit" class="btn btn-large btn-danger tooltipped"
+                data-placement="right"
+                data-original-title="
+                  {% blocktrans with map.current_position_in_queue as pos %}Cancel this queued request (position {{ pos }} in the queue){% endblocktrans %}">
+          {% blocktrans %}<i class="icon-white icon-remove-sign"></i> Cancel{% endblocktrans %}
+        </button>
+      </form>
+      {% endifequal %}
+    {% elif map.is_rendering %}
+      <a class="btn btn-large disabled tooltipped"
+         data-placement="right"
+         data-original-title="
+         {% with map.startofrendering_time|timesince:map.endofrendering_time as date %}
+           {% blocktrans %}Rendering is in progress, started {{ date }} ago{% endblocktrans %}
+         {% endwith %}">
+        <i class="icon-refresh"></i> {% trans "Rendering..." %}
+      </a>
+    {% else %}
+      {% if map.has_output_files %}
+      <div class="btn-group">
+        {% with map.output_files.maps.pdf as file %}
+        <a href="{{ file.0 }}" class="btn btn-large btn-primary">
+          <i class="icon-white icon-download-alt"></i> {% trans "Download" %}
+        </a>
+        {% endwith %}
+        <button class="btn btn-large btn-primary dropdown-toggle tooltipped"
+                data-toggle="dropdown"
+                data-original-title="{% trans "Download other formats and map indeces" %}">
+          <span class="caret"></span>
+        </button>
+        <ul class="dropdown-menu">
+        {% for format,file in map.output_files.maps.items %}
+          <li><a href="{{ file.0 }}" title="{{ file.1 }}">{{ format|upper }} {% trans "map" %} ({{ file.2|filesizeformat }})</a></li>
+        {% endfor %}
+
+        {% if map.output_files.indeces|length %}
+          <li class="divider"></li>
+          {% for format,file in map.output_files.indeces.items %}<li><a href="{{ file.0 }}" title="{{ file.1 }}">{{ format|upper }} {% trans "index" %}</a></li>{% endfor %}
+        {% endif %}
+        </ul>
+      </div>
+
+      {% else %}
+      <a class="btn btn-large disabled tooltipped"
+         data-placement="right"
+         data-original-title="{% trans "The generated files are no longer available." %}">
+        <i class="icon-ban-circle"></i> {% trans "Download" %}
+      </a>
+      {% endif %}
+    {% endif %}
+  </div>
+
+  <div class="span4">
+    {% if map.needs_waiting %}
+    <span class="refresh-time pull-right">{% blocktrans %}Updating in <span>{{ refresh }}</span>s...{% endblocktrans %}</span>
+    {% endif %}
+    <h3>{% trans "Map details" %}</h3>
+
+    <table class="table table-striped">
+      <tbody>
+        {% if map.administrative_city %}
+        <tr><td><strong>{% trans "City" %}</strong></td>
+          <td>{{ map.administrative_city }} ({{ map.administrative_osmid }})</td></tr>
+        {% else %}
+        <tr><td><strong>{% trans "Bounding box" %}</strong></td>
+          <td>({{ map.lat_upper_left }}, {{ map.lon_upper_left }}) &rarr;
+            ({{ map.lat_bottom_right }}, {{ map.lon_bottom_right }})</td></tr>
+        {% endif %}
+        <tr><td><strong>{% trans "Layout" %}</strong></td>
+          <td>{{ map.layout }}</td></tr>
+        <tr><td><strong>{% trans "Stylesheet" %}</strong></td>
+          <td>{{ map.stylesheet }}</td></tr>
+        <tr><td><strong>{% trans "Paper format" %}</strong></td>
+          <td>{{ map.paper_width_mm }}&times;{{ map.paper_height_mm }} mm²
+        <tr><td><strong>{% trans "Map locale" %}</strong></td>
+          <td>{{ MAP_LANGUAGES|getitem:map.map_language }}</td></tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<div class="row-fluid" style="margin-top: 30px;">
+  <div class="span12 map mapthumbnail" id="map-{{ map.id }}"
+       data-geo-osm-id="{{ map.administrative_osmid }}"
+       data-geo-from-lat="{{ map.lat_upper_left }}"
+       data-geo-from-lon="{{ map.lon_upper_left }}"
+       data-geo-to-lat="{{ map.lat_bottom_right }}"
+       data-geo-to-lon="{{ map.lon_bottom_right }}">
+     <p>GIS database is not available.</p>
+  </div>
+</div>
+{% endblock %}

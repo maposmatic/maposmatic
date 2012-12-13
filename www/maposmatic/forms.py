@@ -39,25 +39,15 @@ class MapSearchForm(forms.Form):
     """
 
     query = forms.CharField(min_length=1, required=True,
-                widget=forms.TextInput(attrs={'placeholder':
-                    _('Search by map name')}))
+                widget=forms.TextInput(attrs=
+                    {'placeholder': _('Search for a map'),
+                     'class': 'span2'}))
 
 class MapRenderingJobForm(forms.ModelForm):
     """
     The main map rendering form, displayed on the 'Create Map' page. It's a
     ModelForm based on the MapRenderingJob model.
     """
-    class Media:
-        css = {
-            'all': [
-                '/smedia/css/newmap.css?_salt=%d' % int(time.time()*100)
-            ]
-        }
-        js = [
-            '/smedia/js/jquery.js',
-            '/smedia/js/newmap.js?_salt=%d' % int(time.time()*100)
-        ]
-
     class Meta:
         model = models.MapRenderingJob
         fields = ('maptitle', 'administrative_city',
@@ -83,7 +73,7 @@ class MapRenderingJobForm(forms.ModelForm):
     bbox = widgets.AreaField(label=_("Area"),
                              fields=(forms.FloatField(), forms.FloatField(),
                                      forms.FloatField(), forms.FloatField()))
-    map_language = forms.ChoiceField(choices=www.settings.MAP_LANGUAGES,
+    map_language = forms.ChoiceField(choices=www.settings.MAP_LANGUAGES_LIST,
                                      widget=forms.Select(
                                         attrs={'style': 'min-width: 200px'}))
     administrative_osmid = forms.IntegerField(widget=forms.HiddenInput,
