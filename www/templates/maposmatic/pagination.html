@@ -33,8 +33,8 @@
     <li class="{% if not data.has_previous %}disabled{% endif %}">
       <a href="?{% if is_search %}query={{ query|urlencode }}&{% endif %}page={{ data.previous_page_number }}">&laquo;</a>
     </li>
-    {% for num in pages %}<li class="{% ifequal num data.number %}active{% endifequal %}">
-      {% ifequal num "..." %}<a class="disabled">{{ num }}</a>{% else %}<a href="?{% if is_search %}query={{ query|urlencode }}&{% endif %}page={{ num }}">{{ num }}</a>{% endifequal %}
+    {% for num in pages %}<li class="{% ifequal num data.number %}active{% endifequal %} {% ifequal num "..." %}disabled{% endifequal %}">
+      {% ifequal num "..." %}<a>{{ num }}</a>{% else %}<a href="?{% if is_search %}query={{ query|urlencode }}&{% endif %}page={{ num }}">{{ num }}</a>{% endifequal %}
     </li>{% endfor %}
     <li class="{% if not data.has_next %}disabled{% endif %}">
       <a href="?{% if is_search %}query={{ query|urlencode }}&{% endif %}page={{ data.next_page_number }}">&raquo;</a>
