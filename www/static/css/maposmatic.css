@@ -121,7 +121,7 @@ a.carousel-control { display: none; }
 #wizard-step-location .tab-content { height: 400px; }
 
 /* By administrative boundary */
-#wizard-step-location .suggest-icon { top: 24px; right: 20px;
+#wizard-step-location .suggest-icon { top: 24px; right: 30px;
   display: none; position: absolute; z-index: 2; }
 #id_administrative_city {
   font-size: 25pt;

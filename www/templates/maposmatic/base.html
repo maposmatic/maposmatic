@@ -66,11 +66,11 @@
 
           <div class="nav-collapse collapse">
             <ul class="nav">
-              <li class="{% block menu-home   %}{% endblock %}"><a href="{% url main   %}"><i class="icon-white icon-home"></i> Home</a></li>
-              <li class="{% block menu-new    %}{% endblock %}"><a href="{% url new    %}"><i class="icon-white icon-edit"></i> Create map</a></li>
-              <li class="{% block menu-maps   %}{% endblock %}"><a href="{% url maps   %}"><i class="icon-white icon-list"></i> Maps</a></li>
-              <li class="{% block menu-about  %}{% endblock %}"><a href="{% url about  %}"><i class="icon-white icon-comment"></i> About</a></li>
-              <li class="{% block menu-donate %}{% endblock %}"><a href="{% url donate %}"><i class="icon-white icon-gift"></i> Donate</a></li>
+              <li class="{% block menu-home   %}{% endblock %}"><a href="{% url main   %}"><i class="icon-white icon-home"></i> {% trans "Home" %}</a></li>
+              <li class="{% block menu-new    %}{% endblock %}"><a href="{% url new    %}"><i class="icon-white icon-edit"></i> {% trans "Create map" %}</a></li>
+              <li class="{% block menu-maps   %}{% endblock %}"><a href="{% url maps   %}"><i class="icon-white icon-list"></i> {% trans "Maps" %}</a></li>
+              <li class="{% block menu-about  %}{% endblock %}"><a href="{% url about  %}"><i class="icon-white icon-comment"></i> {% trans "About" %}</a></li>
+              <li class="{% block menu-donate %}{% endblock %}"><a href="{% url donate %}"><i class="icon-white icon-gift"></i> {% trans "Donate" %}</a></li>
 
               <li class="dropdown">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">

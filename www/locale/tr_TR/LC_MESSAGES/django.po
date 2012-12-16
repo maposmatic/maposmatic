@@ -15,7 +15,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: mapOSMatic 0.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-11-29 19:21+0100\n"
+"POT-Creation-Date: 2012-12-16 12:51+0100\n"
 "PO-Revision-Date: 2012-05-03 21:18+0100\n"
 "Last-Translator: Hakan Tandoğan <hakan@gurkensalat.com>\n"
 "Language-Team: \n"
@@ -26,135 +26,140 @@ msgstr ""
 "X-Poedit-Language: Turkish\n"
 "X-Poedit-Country: TURKEY\n"
 
-#: settings.py:235
+#: settings.py:238
 msgid "No localization"
 msgstr "Çevirisi yok"
 
-#: maposmatic/feeds.py:40
+#: maposmatic/feeds.py:41
 msgid "MapOSMatic maps"
 msgstr "MapOSMatic haritaları"
 
-#: maposmatic/feeds.py:43
+#: maposmatic/feeds.py:41
+#, fuzzy
+msgid "MapOSMatic maps [DEV]"
+msgstr "MapOSMatic haritaları"
+
+#: maposmatic/feeds.py:44
 msgid "The latest rendered maps on MapOSMatic."
 msgstr "MapOSMatic üzerindeki son oluşturulmuş haritalar."
 
-#: maposmatic/forms.py:42
-msgid "Search by map name"
+#: maposmatic/forms.py:43
+msgid "Search for a map"
 msgstr ""
 
-#: maposmatic/forms.py:59
+#: maposmatic/forms.py:57
 msgid "Administrative boundary"
 msgstr "İdari sınır (İl ismi)"
 
-#: maposmatic/forms.py:60
+#: maposmatic/forms.py:58 templates/maposmatic/map-full.html:157
 msgid "Bounding box"
 msgstr "Sınırlayıcı çerçeve"
 
-#: maposmatic/forms.py:62
+#: maposmatic/forms.py:60
 msgid "Portrait"
 msgstr "Dikey"
 
-#: maposmatic/forms.py:63
+#: maposmatic/forms.py:61
 msgid "Landscape"
 msgstr "Yatay"
 
-#: maposmatic/forms.py:75
+#: maposmatic/forms.py:73
 msgid "Area"
 msgstr "Bölge"
 
-#: maposmatic/forms.py:95
+#: maposmatic/forms.py:93
 msgid "Full-page layout without street index"
 msgstr "Sokaklar olmadan tam sayfa düzeni"
 
-#: maposmatic/forms.py:97
+#: maposmatic/forms.py:95
 msgid "Full-page layout with the street index on the side"
 msgstr "Tam sayfa düzeni (sokak dizini yanda)"
 
-#: maposmatic/forms.py:99
+#: maposmatic/forms.py:97
 msgid "Full-page layout with the street index at the bottom"
 msgstr "Tam sayfa düzeni (sokak dizini altta)"
 
-#: maposmatic/forms.py:101
+#: maposmatic/forms.py:99
 msgid "Multi-page layout"
 msgstr "Çoklu sayfa düzeni"
 
-#: maposmatic/forms.py:103
+#: maposmatic/forms.py:101
 #, python-format
 msgid "The %(layout_name)s layout"
 msgstr "%(layout_name)s tarzı"
 
-#: maposmatic/forms.py:111
+#: maposmatic/forms.py:109
 msgid "The default OpenStreetMap.org style"
 msgstr "Varsayılan OpenStreetMap.org tarzı"
 
-#: maposmatic/forms.py:113
+#: maposmatic/forms.py:111
 msgid "The european MapQuest style"
 msgstr "Avrupa MapQuest tarzı"
 
-#: maposmatic/forms.py:115
+#: maposmatic/forms.py:113
 msgid "The US MapQuest style"
 msgstr "US MapQuest tarzı"
 
-#: maposmatic/forms.py:117
+#: maposmatic/forms.py:115
 msgid "The UK MapQuest style"
 msgstr "US MapQuest tarzı"
 
-#: maposmatic/forms.py:119
+#: maposmatic/forms.py:117
 msgid "A MapOSMatic-specific stylesheet suitable for printing"
 msgstr "Baskı için uygun özel MapOSMatic tarzı"
 
-#: maposmatic/forms.py:121
+#: maposmatic/forms.py:119
 #, python-format
 msgid "The <i>%(stylesheet_name)s</i> stylesheet"
 msgstr "<i>%(stylesheet_name)s</i>"
 
-#: maposmatic/forms.py:128
+#: maposmatic/forms.py:126
 msgid "Best fit <em class=\"papersize\"></em>"
 msgstr "en uygun<em class=\"papersize\"></em>"
 
-#: maposmatic/forms.py:159
+#: maposmatic/forms.py:157
 msgid "Map title required"
 msgstr "Harita başlığı gereklidir"
 
-#: maposmatic/forms.py:164
+#: maposmatic/forms.py:162
 msgid "Layout required"
 msgstr "Tarz gerekli"
 
-#: maposmatic/forms.py:169
+#: maposmatic/forms.py:167
 msgid "Stylesheet required"
 msgstr "Stil gerekli"
 
-#: maposmatic/forms.py:175
+#: maposmatic/forms.py:173
 msgid "Administrative city required"
 msgstr "İdari şehir gerekli"
 
-#: maposmatic/forms.py:188
+#: maposmatic/forms.py:186
 #, python-format
 msgid "Error with osm city: %s"
 msgstr "OSM şehrinde hata: %s"
 
-#: maposmatic/forms.py:198
+#: maposmatic/forms.py:196
 msgid "Required"
 msgstr "Gerekli"
 
-#: maposmatic/forms.py:206
+#: maposmatic/forms.py:204
 msgid "Same latitude"
 msgstr ""
 
-#: maposmatic/forms.py:213
+#: maposmatic/forms.py:211
 msgid "Same longitude"
 msgstr ""
 
-#: maposmatic/forms.py:237
+#: maposmatic/forms.py:235
 msgid "Bounding Box too large"
 msgstr "Sınırlayıcı çerçeve çok büyük"
 
-#: maposmatic/models.py:190
+#: maposmatic/models.py:192
 #, python-format
 msgid "%(title)s %(format)s Map"
 msgstr "%(title)s (format %(format)s) haritası"
 
-#: maposmatic/models.py:197
+#: maposmatic/models.py:200
 #, python-format
 msgid "%(title)s %(format)s Index"
 msgstr "%(title)s (format %(format)s) sokak listesi"
@@ -167,21 +172,29 @@ msgstr " İdari alan geliştirilebilme için çok büyük"
 msgid "No administrative boundary"
 msgstr " İdari alan bulunamadı"
 
-#: maposmatic/widgets.py:88
+#: maposmatic/widgets.py:74
 msgid "Latitude of the top left corner"
 msgstr "Sol üst köşe enlemi"
 
-#: maposmatic/widgets.py:89
+#: maposmatic/widgets.py:75
 msgid "Longitude of the top left corner"
 msgstr "Sol üst köşe boylamı"
 
-#: maposmatic/widgets.py:90
+#: maposmatic/widgets.py:76
 msgid "Latitude of the bottom right corner"
 msgstr "Sağ alt köşe enlemi"
 
-#: maposmatic/widgets.py:91
+#: maposmatic/widgets.py:77
 msgid "Longitude of the bottom right corner"
 msgstr "Sağ alt köşe boylamı"
+
+#: maposmatic/widgets.py:78
+msgid "<i class=\"icon-warning-sign\"></i> Area too big to be rendered!"
+msgstr ""
+
+#: maposmatic/widgets.py:79
+msgid "Remove any selected region from the map"
+msgstr ""
 
 #: maposmatic/templatetags/extratags.py:34
 msgid "Waiting for rendering to begin..."
@@ -211,51 +224,35 @@ msgstr "Eski başarısız işlenme: geliştirme başarısız ve eksik dosyalar k
 msgid "The rendering was cancelled by the user."
 msgstr "İşlenme kullanıcı tarafından iptal edildi."
 
-#: templates/404.html:3 templates/500.html:3 templates/maposmatic/base.html:59
-msgid "Home"
-msgstr "Başlangıç"
+#: templates/404.html:34
+msgid "Page not found!"
+msgstr ""
 
-#: templates/404.html:3
-msgid "Not Found"
-msgstr "Bulunamadı"
+#: templates/404.html:37
+msgid "Woups. Looks like you've followed a broken link ;-("
+msgstr ""
 
-#: templates/404.html:5
-msgid "Not Found (404)"
-msgstr "Bulunamadı (404)"
-
-#: templates/404.html:8
-msgid "Not Found <em>(404)</em>"
-msgstr "Bulunamadı <em>(404)</em>"
-
-#: templates/404.html:9
-msgid "Not Found."
-msgstr "Bulunamadı."
-
-#: templates/500.html:3
-msgid "Server error"
+#: templates/500.html:34
+#, fuzzy
+msgid "Server error!"
 msgstr "Sunucu hatası"
 
-#: templates/500.html:5
-msgid "Server error (500)"
-msgstr "Sunucu hatası (500)"
+#: templates/500.html:37
+msgid ""
+"Well, this is embarrassing. Looks like the server crashed\n"
+"    processing this request."
+msgstr ""
 
-#: templates/500.html:8
-msgid "Server Error <em>(500)</em>"
-msgstr "Sunucu hatası <em>500</em>"
-
-#: templates/500.html:9
-msgid "There's been an error."
-msgstr "Bir hata oldu."
-
-#: templates/maposmatic/about.html:35 templates/maposmatic/base.html:65
+#: templates/maposmatic/about.html:34 templates/maposmatic/about.html.py:36
+#: templates/maposmatic/base.html:72
 msgid "About"
 msgstr "Hakkında"
 
-#: templates/maposmatic/about.html:36
+#: templates/maposmatic/about.html:37
 msgid "History"
 msgstr "Tarihçe"
 
-#: templates/maposmatic/about.html:39
+#: templates/maposmatic/about.html:40
 msgid ""
 "MapOSMatic has been started thanks to an idea of\n"
 "Gilles Lamiral, an <a\n"
@@ -276,20 +273,21 @@ msgstr ""
 "yazılımı yazarak ve projeye <strong>MapOSMatic</strong> adını vererek gerçekleştirdiler.\n"
 "<em>Hacker</em> grubu Gillese bu fikrini paylaştığı için teşekkür etmek isterler."
 
-#: templates/maposmatic/about.html:53
+#: templates/maposmatic/about.html:54
+#, fuzzy
 msgid ""
 "Of course, MapOSMatic is fully free software,\n"
-"licensed under the <a\n"
+"licensed under the <a \n"
 "href=\"http://www.fsf.org/licensing/licenses/agpl-3.0.html\">AGPLv3</a>.\n"
 msgstr ""
 "MapOSMatic tabiiki <a href=\"http://www.fsf.org/licensing/licenses/agpl-3.0.html\">AGPLv3</a> altında lisanslı,\n"
 "tamamen özgür bir yazılımdır.\n"
 
-#: templates/maposmatic/about.html:60
+#: templates/maposmatic/about.html:61
 msgid "How does it work?"
 msgstr "Nasıl çalışır?"
 
-#: templates/maposmatic/about.html:63
+#: templates/maposmatic/about.html:64
 msgid ""
 "On our server, we run a <a\n"
 "href=\"http://www.postgresql.org\">PostgreSQL</a> server, with the <a\n"
@@ -314,7 +312,7 @@ msgstr ""
 " der OSM-Datenbank eingepflegt. So ist es MapOSMatic möglich, \n"
 " Stadtpläne mit den neuesten Beiträgen der OpenStreetMap-User zu erzeugen."
 
-#: templates/maposmatic/about.html:77
+#: templates/maposmatic/about.html:78
 msgid ""
 "For the map rendering, we use the\n"
 "famous <a href=\"http://www.mapnik.org\">Mapnik</a> with the OpenStreetMap\n"
@@ -330,13 +328,13 @@ msgstr ""
 "Mapnik ve <a href=\"http://cairographics.org/pycairo/\">Cairo</a> kullanarak <i>OCitySMap</i>'i,\n"
 " bir Python modülünü, geliştirdik:"
 
-#: templates/maposmatic/about.html:87
+#: templates/maposmatic/about.html:88
 msgid ""
 "Renders the map using OpenStreetMap data and the\n"
 "  OpenStreetMap Mapnik stylesheet;"
 msgstr "OpenStreetMap verileri ve OpenStreetMap Mapnik tarzını kullanarak haritayı oluşturuyor;"
 
-#: templates/maposmatic/about.html:89
+#: templates/maposmatic/about.html:90
 msgid ""
 "Renders on top of the map, using Mapnik, the grid\n"
 "  of 500 meters squares, the labels of the squares, and a few other\n"
@@ -346,20 +344,20 @@ msgstr ""
 "Mapnik kullanılarak 500 metrekarelik alanları oluşturuyor,\n"
 "ve plan üzerinde isimleri ve bazı diğer bilgileri (telif hakları, ölçek, vs) ekliyor"
 
-#: templates/maposmatic/about.html:93
+#: templates/maposmatic/about.html:94
 msgid ""
 "Greys out all the area outside the city if we find\n"
 "  its administrative boundary;"
 msgstr "İdari sınırları bulabilirsek şehir dışında tüm bölgeyi griye boyuyor;"
 
-#: templates/maposmatic/about.html:95
+#: templates/maposmatic/about.html:96
 msgid ""
 "Renders an index of the streets, based on\n"
 "  OpenStreetMap data and the intersection of the streets with the\n"
 "  squares on the map."
 msgstr "OpenStreetMap verilerine ve sokaklarin karelerle birleştiği yerlere dayanarak sokak isimlerinin endeksini oluşturuyor"
 
-#: templates/maposmatic/about.html:101
+#: templates/maposmatic/about.html:102
 msgid ""
 "This Python module can be used through a command-line\n"
 "tool provided with OCitySMap, so everyone can run its own city-map\n"
@@ -374,7 +372,7 @@ msgstr ""
 "komut satırı üzerine küçük bir web hizmeti oluşturulmuştur.\n"
 "Böylelikle kullanıcılar basitçe kendi haritalarını oluşturup kullanabilirler."
 
-#: templates/maposmatic/about.html:110
+#: templates/maposmatic/about.html:111
 msgid ""
 "This web service has been called <i>MapOSMatic</i>,\n"
 "like <i>map-o-matic</i> but with a reference to OpenStreetMap (OSM). The\n"
@@ -392,9 +390,10 @@ msgstr ""
 "Asıl oluşturma eşzamanlı olmayarak <i>maposmaticd</i> daemon'u ile gercekleşiyordur.\n"
 "Harita oluşturmak işlemci ve sabit diskte yüksek yüke neden oldugu için bu daemon aynı anda sadece bir tek isteği cevaplandırıyordur."
 
-#: templates/maposmatic/about.html:122
+#: templates/maposmatic/about.html:123
+#, fuzzy
 msgid ""
-"For the city search engine, we use the wonderful <a\n"
+"For the city search engine, we use the wonderful <a \n"
 "href=\"http://nominatim.openstreetmap.org\">Nominatim</a> service. This\n"
 "service made it really simple to provide a nice search engine that\n"
 "allows to select between multiple cities of the same name, by\n"
@@ -406,11 +405,11 @@ msgstr ""
 " bei der man zwischen Städten gleichen Namens unterscheiden kann,\n"
 " da Informationenen zur Lage der Stadt anzeigt werden."
 
-#: templates/maposmatic/about.html:130
+#: templates/maposmatic/about.html:131
 msgid "Contributing"
 msgstr "Katkıda bulunabilmek"
 
-#: templates/maposmatic/about.html:133
+#: templates/maposmatic/about.html:134
 msgid ""
 "As stated above, both <i>OCitySMap</i> and\n"
 "<i>MapOSMatic</i> are fully free software, so you're invited to\n"
@@ -420,7 +419,7 @@ msgstr ""
 "Yukarıda belirtildiği gibi <i>OCitySMap</i> ve <i>MapOSMatic</i> özgür yazılımdırlar.\n"
 "Sizi katılmaya davet ediyoruz. Bize yardımda bulunabileceıiniz bir kaç başlangıç noktaları şunlardır:"
 
-#: templates/maposmatic/about.html:140
+#: templates/maposmatic/about.html:141
 msgid ""
 "The\n"
 "  <a href=\"http://wiki.maposmatic.org\">MapOSMatic Wiki</a>,\n"
@@ -430,27 +429,27 @@ msgstr ""
 "MapOSMatic hakkında değerli teknik bilgi ve belgeleri içeren\n"
 "  <a href=\"https://wiki.maposmatic.org\">MapOSMatic Wikisi</a>,;"
 
-#: templates/maposmatic/about.html:144
+#: templates/maposmatic/about.html:145
 msgid ""
 "The <a\n"
 "  href=\"https://savannah.nongnu.org/projects/maposmatic/\">project on\n"
 "  Savannah</a>;"
 msgstr "Bu proje Savannah sitesinde <a href=\"https://savannah.nongnu.org/projects/maposmatic/\">barındırılmaktadır</a>.;"
 
-#: templates/maposmatic/about.html:147
+#: templates/maposmatic/about.html:148
 msgid ""
 "The <a\n"
 "  href=\"http://lists.nongnu.org/mailman/listinfo/maposmatic-dev\">development\n"
 "  mailing-list</a>;"
 msgstr "<a href=\"http://lists.nongnu.org/mailman/listinfo/maposmatic-dev\">geliştirici posta listesi (ingilizce)</a>&nbsp;;"
 
-#: templates/maposmatic/about.html:150
+#: templates/maposmatic/about.html:151
 msgid ""
 "The IRC channel <tt>#maposmatic</tt> on\n"
 "  Freenode;"
 msgstr "Freenode üzerinde <code>#maposmatic</code> IRC kanalı;"
 
-#: templates/maposmatic/about.html:152
+#: templates/maposmatic/about.html:153
 msgid ""
 "The <a\n"
 "  href=\"http://git.savannah.gnu.org/cgit/maposmatic/ocitysmap.git\">OCitySMap\n"
@@ -458,7 +457,7 @@ msgid ""
 "  git://git.sv.gnu.org/maposmatic/ocitysmap.git</tt>;"
 msgstr "şu komutu <tt>git clone git://git.sv.gnu.org/maposmatic/ocitysmap.git</tt> kullanarak klonlanılabilir olan: <a href=\"http://git.savannah.gnu.org/cgit/maposmatic/ocitysmap.git\">OCitySMap Git deposu</a>;"
 
-#: templates/maposmatic/about.html:156
+#: templates/maposmatic/about.html:157
 msgid ""
 "The <a\n"
 "  href=\"http://git.savannah.gnu.org/cgit/maposmatic.git\">MapOSMatic\n"
@@ -466,7 +465,7 @@ msgid ""
 "  <tt>git clone git://git.sv.gnu.org/maposmatic.git</tt>;"
 msgstr "şu komutu <tt>git clone git://git.sv.gnu.org/maposmatic/ocitysmap.git</tt> kullanarak klonlanılabilir olan: <a href=\"http://git.savannah.gnu.org/cgit/maposmatic/ocitysmap.git\">OCitySMap Git deposu</a>;"
 
-#: templates/maposmatic/about.html:160
+#: templates/maposmatic/about.html:161
 msgid ""
 "<a\n"
 "  href=\"https://savannah.nongnu.org/task/?group=maposmatic\">TODO-list\n"
@@ -475,214 +474,182 @@ msgstr ""
 "<a\n"
 "  href=\"https://savannah.nongnu.org/task/?group=maposmatic\">Yapılacaklar listesi ve fikirler</a>."
 
-#: templates/maposmatic/about.html:167
-msgid "Authors"
-msgstr "Yazarlar"
-
-#: templates/maposmatic/about.html:179
+#: templates/maposmatic/about.html:166
 msgid "Contributors"
 msgstr "Katkıda bulunanlar"
 
-#: templates/maposmatic/about.html:181
-msgid "german translation"
-msgstr "almanca tercüme"
+#: templates/maposmatic/about.html:170
+msgid "Core team"
+msgstr ""
 
-#: templates/maposmatic/about.html:182
-msgid "italian translation"
-msgstr "italyanca tercüme"
+#: templates/maposmatic/about.html:173 templates/maposmatic/about.html:174
+#: templates/maposmatic/about.html:175 templates/maposmatic/about.html:177
+#: templates/maposmatic/about.html:180
+msgid "Developer"
+msgstr ""
 
-#: templates/maposmatic/about.html:183
-msgid "catalan translation"
-msgstr "katalonyaca tercüme"
+#: templates/maposmatic/about.html:176
+msgid "Developer and Mapnik stylesheets"
+msgstr ""
 
-#: templates/maposmatic/about.html:184
-msgid "russian translation"
-msgstr "rusça tercüme"
+#: templates/maposmatic/about.html:178
+msgid "Developer, system administration, GIS database maintenance and site design"
+msgstr ""
 
-#: templates/maposmatic/about.html:185
-msgid "arabic translation"
-msgstr "arapça tercüme"
+#: templates/maposmatic/about.html:179
+msgid "Developer, treasurer"
+msgstr ""
 
-#: templates/maposmatic/about.html:186 templates/maposmatic/about.html:187
-msgid "brasilian portuguese translation"
-msgstr "brezilya portekizce tercüme"
-
-#: templates/maposmatic/about.html:188
-msgid "danish translation"
-msgstr "danimarkaca tercüme"
+#: templates/maposmatic/about.html:186
+#, fuzzy
+msgid "Other contributors"
+msgstr "Katkıda bulunanlar"
 
 #: templates/maposmatic/about.html:189
-msgid "dutch translation"
-msgstr "hollandalıca tercüme"
+#, fuzzy
+msgid "German translation"
+msgstr "almanca tercüme"
 
 #: templates/maposmatic/about.html:190
-msgid "croatian translation"
-msgstr "hırvatca tercüme"
+#, fuzzy
+msgid "Italian translation"
+msgstr "italyanca tercüme"
 
 #: templates/maposmatic/about.html:191
-msgid "polish translation"
-msgstr "lehçe tercüme"
+#, fuzzy
+msgid "Catalan translation"
+msgstr "katalonyaca tercüme"
 
 #: templates/maposmatic/about.html:192
-msgid "indonesian translation"
-msgstr "endonezyaca tercüme"
+#, fuzzy
+msgid "Russian translation"
+msgstr "rusça tercüme"
 
-#: templates/maposmatic/about.html:193 templates/maposmatic/about.html:194
-msgid "norvegian bokmål translation"
-msgstr "norveçce (Bokmål) tercüme"
+#: templates/maposmatic/about.html:193
+#, fuzzy
+msgid "Arabic translation"
+msgstr "arapça tercüme"
 
-#: templates/maposmatic/about.html:195
-msgid "norvegian nynorsk translation"
-msgstr "norveçce (Nynorsk) tercüme"
+#: templates/maposmatic/about.html:194 templates/maposmatic/about.html:195
+#, fuzzy
+msgid "Brasilian portuguese translation"
+msgstr "brezilya portekizce tercüme"
 
 #: templates/maposmatic/about.html:196
 #, fuzzy
-msgid "turkish translation"
+msgid "Danish translation"
 msgstr "danimarkaca tercüme"
 
 #: templates/maposmatic/about.html:197
-msgid "printable stylesheet"
+#, fuzzy
+msgid "Dutch translation"
+msgstr "hollandalıca tercüme"
+
+#: templates/maposmatic/about.html:198
+#, fuzzy
+msgid "Croatian translation"
+msgstr "hırvatca tercüme"
+
+#: templates/maposmatic/about.html:199
+#, fuzzy
+msgid "Polish translation"
+msgstr "lehçe tercüme"
+
+#: templates/maposmatic/about.html:200
+#, fuzzy
+msgid "Indonesian translation"
+msgstr "endonezyaca tercüme"
+
+#: templates/maposmatic/about.html:201
+#, fuzzy
+msgid "Norvegian bokmål translation"
+msgstr "norveçce (Bokmål) tercüme"
+
+#: templates/maposmatic/about.html:202
+#, fuzzy
+msgid "Norvegian bokmål and Norvegian nynorsk translations"
+msgstr "norveçce (Nynorsk) tercüme"
+
+#: templates/maposmatic/about.html:203
+#, fuzzy
+msgid "Turkish translation"
+msgstr "danimarkaca tercüme"
+
+#: templates/maposmatic/about.html:204
+#, fuzzy
+msgid "Printable stylesheet"
 msgstr "yazdırılabilir tarz"
 
-#: templates/maposmatic/all_jobs.html:35
-msgid "Job list"
-msgstr "iş listesi"
-
-#: templates/maposmatic/all_jobs.html:39
-msgid "This page gives the status of the rendering queue, showing all requests received during the last 24 hours as well as all unprocessed requests without time limit. They are ordered starting from the most recent ones."
-msgstr ""
-"Bu sayfa son 24 saat içinde verilen işleme isteği isteklerinin ve zaman sınırı olmaksızın\n"
-"işlenmemiş isteklerin durumunu gösterir.\n"
-"En son istek ilk başta görüntülenir."
-
-#: templates/maposmatic/all_jobs.html:54
-msgid ""
-"No map rendering request since the last 24\n"
-"hours."
-msgstr "Son 24 saat içinde hiçbir işleme isteği bulunamadı."
-
-#: templates/maposmatic/all_maps.html:34 templates/maposmatic/index.html:61
-msgid "Search"
-msgstr "Arama"
-
-#: templates/maposmatic/all_maps.html:38 templates/maposmatic/base.html:62
-msgid "Maps"
-msgstr "Haritalar"
-
-#: templates/maposmatic/all_maps.html:38
-msgid "MapOSMatic maps feed"
+#: templates/maposmatic/base.html:41
+#, fuzzy
+msgid "Maps feed"
 msgstr "MapOSMatic harita Feed"
 
-#: templates/maposmatic/all_maps.html:53
-msgid "Our database does not contain any rendered maps for the moment."
-msgstr "Veritabanımız şu an için herhangi bir işlenmiş harita içermiyor."
-
-#: templates/maposmatic/all_maps.html:55
-msgid "No map matches your query."
-msgstr "Aramanız için hiçbir harita bulundmadı."
-
-#: templates/maposmatic/all_maps.html:55
-msgid "Create a new map!"
-msgstr "Yeni harita oluştur!"
-
-#: templates/maposmatic/base.html:57
-msgid "Your free city maps!"
-msgstr "Sizin özgür şehir haritalarınız!"
+#: templates/maposmatic/base.html:58 templates/maposmatic/index.html:65
+msgid "Platform status"
+msgstr ""
 
 #: templates/maposmatic/base.html:60
+#, fuzzy
+msgid "Rendering daemon: "
+msgstr "Oluşturulma:"
+
+#: templates/maposmatic/base.html:61
+#, fuzzy
+msgid "GIS database: "
+msgstr "OSM veritabanı durumu"
+
+#: templates/maposmatic/base.html:69
+msgid "Home"
+msgstr "Başlangıç"
+
+#: templates/maposmatic/base.html:70 templates/maposmatic/new.html:34
 msgid "Create map"
 msgstr "Harita oluştur"
 
-#: templates/maposmatic/base.html:61
-msgid "Jobs"
-msgstr "İşler"
+#: templates/maposmatic/base.html:71 templates/maposmatic/maps.html:34
+#: templates/maposmatic/maps.html.py:38
+msgid "Maps"
+msgstr "Haritalar"
 
-#: templates/maposmatic/base.html:63
-msgid "News"
-msgstr "Yenilikler"
-
-#: templates/maposmatic/base.html:64 templates/maposmatic/donate.html:30
+#: templates/maposmatic/base.html:73 templates/maposmatic/donate.html:34
+#: templates/maposmatic/donate.html:36 templates/maposmatic/index.html:119
 msgid "Donate"
 msgstr "Bağışlar"
 
-#: templates/maposmatic/base.html:80
-msgid "The MapOSMatic rendering daemon is currently not running! Jobs will be queued until the rendering daemon is back up."
-msgstr "Der MapOSMatic Render-Dienst ist momentan nicht aktiv. Neue Aufträge werden in die Warteschlange eingereiht, bis der Dienst wieder verfügbar ist."
+#: templates/maposmatic/base.html:113
+#, fuzzy
+msgid "MapOSMatic is a free software webservice to generate maps of cities using OpenStreetMap data."
+msgstr ""
+"MapOSMatic ist ein freier Webservice der es Ihnen ermöglicht, Stadtpläne unter Benutzung der\n"
+" <a href=\"http://www.openstreetmap.org\">OpenStreetMap</a>-Daten zu generieren.\n"
+" MapOSMatic kann zwei Arten von Karten erzeugen:"
 
-#: templates/maposmatic/base.html:91
-msgid "Donate to MapOSMatic"
-msgstr "MapOSMatic'e bağışta bulunun"
-
-#: templates/maposmatic/base.html:101
-msgid "You can donate to help us improve the service. See our <a href=\"/donate\">donation</a> page."
-msgstr "Bu hizmeti iyileştirmek amacıyla bağışta bulunabilirsiniz. Ayrıntılar için <a href=\"/donate\">bağış</a> sayfamızı tıklayın."
-
-#: templates/maposmatic/base.html:106
-msgid "OSM database status"
-msgstr "OSM veritabanı durumu"
-
-#: templates/maposmatic/base.html:108
-#, python-format
-msgid "Database is online, <span title=\"%(osm_date)s\">last update %(date)s ago</span>."
+#: templates/maposmatic/donate-thanks.html:34
+msgid "Thanks!"
 msgstr ""
 
-#: templates/maposmatic/base.html:110
-msgid "Could not connect to OSM database!"
-msgstr ""
-
-#: templates/maposmatic/base.html:115
-msgid "Random map"
-msgstr "Rastgele harita"
-
-#: templates/maposmatic/base.html:122
-msgid "No random map found."
-msgstr "Rastgele harita bulunamadı."
-
-#: templates/maposmatic/base.html:127
-msgid "Latest news"
-msgstr "Son haberler"
-
-#: templates/maposmatic/base.html:132
-#, python-format
-msgid "published %(date)s ago"
-msgstr "%(date)s gün önce yayınlandı"
-
-#: templates/maposmatic/base.html:140
-msgid "Contact"
-msgstr "Temas"
-
-#: templates/maposmatic/base.html:142
-msgid "Mail:"
-msgstr "E-Posta:"
-
-#: templates/maposmatic/base.html:144
-msgid "IRC:"
-msgstr "IRC:"
-
-#: templates/maposmatic/base.html:145
-msgid "on"
-msgstr "üzerinde"
-
-#: templates/maposmatic/donate-thanks.html:30
+#: templates/maposmatic/donate-thanks.html:37
 msgid "Thanks for your donation!"
 msgstr "Bağışınız için teşekkür ederiz!"
 
-#: templates/maposmatic/donate-thanks.html:32
+#: templates/maposmatic/donate-thanks.html:40
+#, fuzzy
 msgid ""
-"We have received your donation, thanks for your\n"
-"support to the MapOSMatic project!"
+"<i class=\"icon-ok\"></i> We have received your donation.\n"
+"Thank you for your support to the MapOSMatic project!"
 msgstr ""
 "Bağışınızı aldık.\n"
 "MapOSMatic projesini desteğiniz için teşekkür ederiz!"
 
-#: templates/maposmatic/donate-thanks.html:35
+#: templates/maposmatic/donate-thanks.html:45
+#, fuzzy
 msgid ""
-"You will receive a notification e-mail concerning\n"
-"your donation. This e-mail will indicate that the donation has been\n"
-"received by <i>Thomas Petazzoni</i>, who is the MapOSMatic developer\n"
-"in charge of donations and funds. MapOSMatic is still an informal\n"
-"gathering of developers, and we have not (yet) created a non-profit\n"
-"organization to support the project."
+"You will receive a notification e-mail concerning your\n"
+"donation. This e-mail will indicate that the donation has been received by\n"
+"<i>Thomas Petazzoni</i>, who is the MapOSMatic developer in charge of donations\n"
+"and funds. MapOSMatic is still an informal gathering of developers, and we have\n"
+"not (yet) created a non-profit organization to support the project."
 msgstr ""
 "Sie werden eine Email bezüglich Ihrer Spende erhalten\n"
 " Diese Email wird bestätigen, dass <i>Thomas Petazzoni</i> die Spende erhalten hat.\n"
@@ -690,312 +657,572 @@ msgstr ""
 " MapOSMatic ist noch immer eine informelle Gruppe von Entwicklern.\n"
 " Wir haben (noch) keine gemeinnützige Organisation zur Unterstützung von MapOSMatic gegründet."
 
-#: templates/maposmatic/donate.html:31
-msgid "Why donations are useful?"
+#: templates/maposmatic/donate.html:37
+#, fuzzy
+msgid "Why are donations useful?"
 msgstr "Bağışlar neden yararlıdırlar?"
 
-#: templates/maposmatic/donate.html:35
-#, python-format
-msgid "MapOSMatic is a project entirely developed and maintained by a team of volunteers (see our <a href=\"%(about_url)s\">About</a> page for details). However, running the MapOSMatic service and making improvements to it have various costs beyond the time of the volunteer developers."
+#: templates/maposmatic/donate.html:42
+#, fuzzy, python-format
+msgid ""
+"MapOSMatic is a project entirely developed and maintained by a\n"
+"team of volunteers (see our <a href=\"%(about_url)s\">About</a> page for\n"
+"details). However, running the MapOSMatic service and making improvements to it\n"
+"has various costs beyond the time of the volunteer developers."
 msgstr "MapOSMatic ist ein Projekt, das vollständig von einem Team Freiwilliger entwickelt und gewartet wird. Näheres dazu auf der <a href=\"%(about_url)s\">Über</a>-Seite. Allerdings verursacht das Betreiben und Verbessern des MapOSMatic-Dienstes Aufwendungen, die über die Zeit der freiwilligen Entwickler hinausgehen."
 
-#: templates/maposmatic/donate.html:37
-msgid "Therefore, we are currently seeking donations to help us funding:"
+#: templates/maposmatic/donate.html:49
+#, fuzzy
+msgid ""
+"Therefore, we are currently seeking donations to help us\n"
+"funding:"
 msgstr "Dolayısıyla şu anda aşağıdaki projelere bağış arıyoruz:"
 
-#: templates/maposmatic/donate.html:40
-msgid "Acquisition of a Solid-State Disk for the storage of our local copy of the OpenStreetMap database. A SSD drive performs 40 to 50 times better than the conventional hard drive we are using today, and would therefore help us to reduce the lag between our local database and the official one, providing more up-to-date maps. The cost of such hardware is about 500 to 700 €."
-msgstr "Anschaffung einer Solid State Disk für unsere lokale Kopie der OpenStreetMap-Datenbank. Ein SSD-Laufwerk ist 40- bis 50-mal leistungsfähiger als die konventionelle Festplatte, die derzeit verwendet wird. Deshalb würde ein SSD-Laufwerk zu einem geringeren Rückstand von unserer zur offiziellen Datenbank und zu aktuelleren Karten verhelfen."
-
-#: templates/maposmatic/donate.html:42
-msgid "Participation to the transportation expenses of the MapOSMatic developers when they gather for <i>hackfests</i> (meeting of developers). You can read our <a href=\"http://news.maposmatic.org\">blog</a> to learn more about what we achieve during those hackfests. We usually implement a huge number of improvements, new features and bug fixes during those meetings. They take place during the holidays of the developers, and we would like to at least compensate their travel expenses."
+#: templates/maposmatic/donate.html:54
+#, fuzzy
+msgid ""
+"Participation to the transportation expenses of the\n"
+"MapOSMatic developers when they gather for <i>hackfests</i> (meeting of\n"
+"developers). You can read our <a href=\"http://news.maposmatic.org\">blog</a> to\n"
+"learn more about what we achieve during those hackfests. We usually implement a\n"
+"huge number of improvements, new features and bug fixes during those meetings.\n"
+"They take place during the holidays of the developers, and we would like to at\n"
+"least compensate their travel expenses."
 msgstr "Beteiligung an den Fahrtkosten der MapOSMatic-Entwickler, wenn sie <i>Hackfests</i> (Treffen von Entwicklern) besuchen. Lesen Sie unser <a href=\"http://news.maposmatic.org\">Blog</a> um zu erfahren, was wir während dieser Hackfests erreichen. Üblicherweise implementieren wir eine große Zahl von Verbesserungen, neuer Features und beseitigen Fehler. Diese Treffen finden während des Urlaubs der Entwickler statt und wir möchten ihnen zumindest die Fahrtkosten erstatten."
 
-#: templates/maposmatic/donate.html:46
-msgid "Donating?"
-msgstr "Bağış?"
+#: templates/maposmatic/donate.html:63
+msgid "Considering making a donation?"
+msgstr ""
 
-#: templates/maposmatic/donate.html:48
-msgid "Donations can be done through the well-known <a href=\"http://www.paypal.com\">PayPal</a> service. We accept donations of any amount: all donations are helpful, even the smallest ones."
+#: templates/maposmatic/donate.html:66
+#, fuzzy
+msgid ""
+"Donations can be done through the well-known <a\n"
+"href=\"http://www.paypal.com\">PayPal</a> service. We accept donations of any\n"
+"amount: all donations are helpful, even the smallest ones."
 msgstr "Gespendet werden kann über den bekannten <a href=\"http://www.paypal.com\">PayPal</a>-Dienst. Wir akzeptieren Spenden in jeder Höhe: Alle Spenden sind hilfreich, auch die kleinsten."
 
-#: templates/maposmatic/index.html:33
-msgid "Introduction"
-msgstr "Giriş"
+#: templates/maposmatic/donate.html:75 templates/maposmatic/index.html:129
+msgid "Donate via PayPal &raquo;"
+msgstr ""
 
-#: templates/maposmatic/index.html:37
-msgid "City map"
-msgstr "Şehir haritası"
-
-#: templates/maposmatic/index.html:42
-msgid "MapOSMatic is a free software web service that allows you to generate maps of cities using <a href=\"http://www.openstreetmap.org\">OpenStreetMap</a> data. MapOSMatic can generate two kinds of maps:"
+#: templates/maposmatic/index.html:41
+#, fuzzy
+msgid "MapOSMatic is a free software web service that allows you to generate maps of cities using <a href=\"http://www.openstreetmap.org\">OpenStreetMap</a> data. The generated maps are available in PNG, PDF and SVG formats and are ready to be printed."
 msgstr ""
 "MapOSMatic ist ein freier Webservice der es Ihnen ermöglicht, Stadtpläne unter Benutzung der\n"
 " <a href=\"http://www.openstreetmap.org\">OpenStreetMap</a>-Daten zu generieren.\n"
 " MapOSMatic kann zwei Arten von Karten erzeugen:"
 
-#: templates/maposmatic/index.html:46
-msgid "Single page posters, where the map and the street index are rendered side by side. The map itself is split in squares so that streets are easy to find. This format is typically useful for printing on large paper sheets."
-msgstr "Einseitige Poster, auf denen Plan und Straßenindex nebeneinander dargestellt werden. Der Plan wird in Quadrate aufgeteilt, so dass Straßen einfach zu finden sind. Dieses Format wird üblicherweise für großformatige Ausdrucke verwendet."
-
-#: templates/maposmatic/index.html:48
-msgid "Multiple page booklets, where the map and the street index are split into several pages. This format is typically useful for printing on standard paper sheets."
-msgstr "Mehrseitige Broschüren, in denen der Plan und der Straßenindex auf mehrere Seiten verteilt werden. Dieses Format ist nützlich, um auf Standard-Papierformaten zu drucken."
-
-#: templates/maposmatic/index.html:52
-msgid "The generated maps are available in PNG, PDF and SVG formats and are ready to be printed."
-msgstr "Oluşturulan haritalar PNG, PDF ve SVG formatlarında mevcuttur ve basılmak üzere hazırdırlar."
-
-#: templates/maposmatic/index.html:56
-msgid "As the data used to generate maps is coming from OpenStreetMap, you can freely (under the <a href=\"http://wiki.openstreetmap.org/wiki/License\">terms of OpenStreetMap license</a>) reuse, sell, modify, ... the generated maps."
+#: templates/maposmatic/index.html:45
+#, fuzzy
+msgid "As the data used to generate maps is coming from OpenStreetMap, you can freely reuse, sell, or modify the generated maps under the <a href=\"http://wiki.openstreetmap.org/wiki/License\">terms of the OpenStreetMap license</a>."
 msgstr ""
 "Haritaları oluşturmak için OpenStreetMap verileri kullanıldığı için bu haritaları\n"
 " <a href=\"http://wiki.openstreetmap.org/wiki/License\">OpenStreetMap lisans şartları</a>\n"
 "altında değiştirebilir, satabilir, kullanmabilirsiniz..."
 
-#: templates/maposmatic/index.html:60
-msgid "Create a map"
+#: templates/maposmatic/index.html:49
+msgid "Learn more"
+msgstr ""
+
+#: templates/maposmatic/index.html:50
+#, fuzzy
+msgid "Create a map &raquo;"
 msgstr "Harita oluştur"
 
-#: templates/maposmatic/index.html:61
-msgid "Find map"
-msgstr "Harita bul"
-
-#: templates/maposmatic/index.html:62
-msgid "More details"
-msgstr "Ayrıntılar"
-
-#: templates/maposmatic/job-page.html:39 templates/maposmatic/job.html:35
-#: templates/maposmatic/map.html:35
-msgid "Recreate map"
-msgstr "Haritayı yenile"
-
-#: templates/maposmatic/job-page.html:48
-msgid "You have been redirected to a similar map, rendered less than 24 hours ago."
-msgstr "Sie wurden zu einem ähnlichen Plan weitergeleitet, der vor weniger als 24 Stunden erzeugt wurde."
-
-#: templates/maposmatic/job-page.html:56
-msgid "Refresh the status"
-msgstr "Oluşturulma Durumunu güncelle"
-
-#: templates/maposmatic/job-page.html:56
+#: templates/maposmatic/index.html:69
 #, python-format
-msgid "(the page will refresh automatically every %(refresh)s seconds until the rendering is completed)."
-msgstr "(Bu sayfa harita oluşturulması sona erene kadar her %(refresh)s saniyede kendiliginden güncellenecektir)."
+msgid "%(queued)s job%(qp)s in the rendering queue."
+msgstr ""
 
-#: templates/maposmatic/job.html:48
-msgid "Reported error: "
-msgstr "Bildirilen hata:"
+#: templates/maposmatic/index.html:75
+#, python-format
+msgid "<i class=\"icon-white icon-ok\"></i> All systems are operational. The rendering daemon is running and the GIS database was <span class=\"tooltipped\" data-original-title=\"%(gis_lastupdate)s\">updated %(date)s ago</span>."
+msgstr ""
 
-#: templates/maposmatic/job.html:58
-msgid "Cancel request"
-msgstr "Oluşturulmayı iptal"
+#: templates/maposmatic/index.html:78
+msgid "Systems are operational but renderings may not reflect the latest available OpenStreetMap data:"
+msgstr ""
 
-#: templates/maposmatic/job.html:68
-msgid "Rendering: "
-msgstr "Oluşturulma:"
+#: templates/maposmatic/index.html:83
+msgid "<i class=\"icon-white icon-ok\"></i> The rendering daemon is running."
+msgstr ""
 
-#: templates/maposmatic/job.html:69
-msgid "Rendering submitted"
-msgstr "istek tarihi"
+#: templates/maposmatic/index.html:85
+#, fuzzy
+msgid "<i class=\"icon-white icon-off\"></i> The rendering daemon is not running: jobs will be queued until the rendering daemon is back up."
+msgstr "Der MapOSMatic Render-Dienst ist momentan nicht aktiv. Neue Aufträge werden in die Warteschlange eingereiht, bis der Dienst wieder verfügbar ist."
 
-#: templates/maposmatic/job.html:70
-msgid "In queue, position"
-msgstr "Kuyrukta sırada"
+#: templates/maposmatic/index.html:91
+#, python-format
+msgid "<i class=\"icon-white icon-ok\"></i> The GIS database is online and up to date, <span class=\"tooltipped\" data-original-title=\"%(gis_lastupdate)s\">updated %(date)s ago</span>."
+msgstr ""
 
-#: templates/maposmatic/job.html:71
-msgid "Rendering in progress..."
+#: templates/maposmatic/index.html:94
+#, python-format
+msgid "<i class=\"icon-white icon-warning-sign\"></i> The GIS database is not up to date and was only <span class=\"tooltipped\" data-original-title=\"%(gis_lastupdate)s\">updated %(date)s ago</span>."
+msgstr ""
+
+#: templates/maposmatic/index.html:96
+msgid "<i class=\"icon-white icon-off\"></i> The GIS database is not available. Renderings cannot be processed at this time."
+msgstr ""
+
+#: templates/maposmatic/index.html:106
+msgid "Latest news"
+msgstr "Son haberler"
+
+#: templates/maposmatic/index.html:112
+#, python-format
+msgid "published %(date)s ago"
+msgstr "%(date)s gün önce yayınlandı"
+
+#: templates/maposmatic/index.html:122
+#, fuzzy
+msgid "You can donate to help us improve the service. See our <a href=\"/donate\">donation</a> page for more information on how donations are processed and how they help us keep MapOSMatic free (and ad-free!)."
+msgstr "Bu hizmeti iyileştirmek amacıyla bağışta bulunabilirsiniz. Ayrıntılar için <a href=\"/donate\">bağış</a> sayfamızı tıklayın."
+
+#: templates/maposmatic/map-full.html:41
+msgid "Updating now..."
+msgstr ""
+
+#: templates/maposmatic/map-full.html:55
+#, fuzzy, python-format
+msgid "Submitted %(date)s"
+msgstr "%(date)s gün önce yayınlandı"
+
+#: templates/maposmatic/map-full.html:60
+#, fuzzy, python-format
+msgid "Rendering completed %(date)s"
+msgstr "Oluşturma tamamlanma tarihi"
+
+#: templates/maposmatic/map-full.html:80 templates/maposmatic/maps.html:63
+#, fuzzy, python-format
+msgid "Pending, submitted %(date)s ago"
+msgstr "%(date)s gün önce yayınlandı"
+
+#: templates/maposmatic/map-full.html:82 templates/maposmatic/maps.html:65
+msgid "Pending..."
+msgstr ""
+
+#: templates/maposmatic/map-full.html:92
+#, python-format
+msgid "Cancel this queued request (position %(pos)s in the queue)"
+msgstr ""
+
+#: templates/maposmatic/map-full.html:93
+msgid "<i class=\"icon-white icon-remove-sign\"></i> Cancel"
+msgstr ""
+
+#: templates/maposmatic/map-full.html:104 templates/maposmatic/maps.html:73
+#, fuzzy, python-format
+msgid "Rendering is in progress, started %(date)s ago"
 msgstr "Harita oluşturuluyor..."
 
-#: templates/maposmatic/job.html:73
-msgid "Completed on"
-msgstr "tamamlanma tarihi"
+#: templates/maposmatic/map-full.html:106 templates/maposmatic/maps.html:75
+#, fuzzy
+msgid "Rendering..."
+msgstr "Oluşturulma:"
 
-#: templates/maposmatic/job.html:74
-msgid "Failed on"
-msgstr "başarısızlık tarihi"
+#: templates/maposmatic/map-full.html:115
+#: templates/maposmatic/map-full.html:139 templates/maposmatic/maps.html:83
+#: templates/maposmatic/maps.html.py:107
+msgid "Download"
+msgstr ""
 
-#: templates/maposmatic/job.html:75
-msgid "Cancelled on"
-msgstr "iptal tarihi"
+#: templates/maposmatic/map-full.html:120 templates/maposmatic/maps.html:88
+msgid "Download other formats and map indeces"
+msgstr ""
 
-#: templates/maposmatic/job.html:76
-#, python-format
-msgid "rendering took %(rendering)s"
-msgstr "oluşturma işlemi %(rendering)s sürdü"
+#: templates/maposmatic/map-full.html:125 templates/maposmatic/maps.html:93
+msgid "map"
+msgstr ""
 
-#: templates/maposmatic/job.html:79 templates/maposmatic/map-feed.html:44
-#: templates/maposmatic/map.html:57
-msgid "Files: "
-msgstr "Dosyalar:"
-
-#: templates/maposmatic/job.html:81 templates/maposmatic/map-feed.html:46
-#: templates/maposmatic/map.html:59
-msgid "Map: "
-msgstr "Harita:"
-
-#: templates/maposmatic/job.html:82 templates/maposmatic/map-feed.html:47
-#: templates/maposmatic/map.html:60
-msgid "Index: "
+#: templates/maposmatic/map-full.html:130 templates/maposmatic/maps.html:98
+#, fuzzy
+msgid "index"
 msgstr "Dizin:"
 
-#: templates/maposmatic/job.html:85 templates/maposmatic/map-feed.html:50
-#: templates/maposmatic/map.html:63
-msgid "No index was generated because no information was available in OpenStreetMap to create one. Feel free to contribute the missing data yourself. See the <a href=\"http://wiki.openstreetmap.org/wiki/Getting_Involved\">OSM Wiki</a> for a start. "
-msgstr "OpenStreetMap veritabanında gerekli bilgiler bulunamadıgı için endeks oluşturulmadı. Eksik verileri kendiniz eklemeye çekinmeyin. Güzel bir başlangıç <a href=\"http://wiki.openstreetmap.org/wiki/Tr:Getting_Involved\">bu sayfada</a> bulunabilir."
-
-#: templates/maposmatic/job.html:88
-msgid "View on OpenStreetMap"
-msgstr "OpenStreetMap'ta gör"
-
-#: templates/maposmatic/job.html:92 templates/maposmatic/map-feed.html:53
-#: templates/maposmatic/map.html:66
+#: templates/maposmatic/map-full.html:138 templates/maposmatic/maps.html:106
 msgid "The generated files are no longer available."
 msgstr "Oluşturulan dosyalar artık mevcut değiller."
 
-#: templates/maposmatic/map-feed.html:41 templates/maposmatic/map.html:54
-msgid "Rendering completed on"
-msgstr "Oluşturma tamamlanma tarihi"
+#: templates/maposmatic/map-full.html:147
+#, python-format
+msgid "Updating in <span>%(refresh)s</span>s..."
+msgstr ""
 
-#: templates/maposmatic/new.html:37
-msgid "Generate your own map"
-msgstr "Kendi haritanızı oluşturun"
+#: templates/maposmatic/map-full.html:149
+#, fuzzy
+msgid "Map details"
+msgstr "Ayrıntılar"
 
-#: templates/maposmatic/new.html:45
-msgid "Location"
-msgstr "Konum"
+#: templates/maposmatic/map-full.html:154
+#, fuzzy
+msgid "City"
+msgstr "Şehir haritası"
 
-#: templates/maposmatic/new.html:48
-msgid "Title"
-msgstr "Başlık"
-
-#: templates/maposmatic/new.html:51 templates/maposmatic/new.html.py:124
+#: templates/maposmatic/map-full.html:161 templates/maposmatic/new.html:108
 msgid "Layout"
 msgstr "Düzen"
 
-#: templates/maposmatic/new.html:54 templates/maposmatic/new.html.py:129
+#: templates/maposmatic/map-full.html:163 templates/maposmatic/new.html:115
 msgid "Stylesheet"
 msgstr "Tarz"
 
-#: templates/maposmatic/new.html:57
-msgid "Paper size"
-msgstr "Kağıt boyutu"
+#: templates/maposmatic/map-full.html:165
+msgid "Paper format"
+msgstr ""
 
-#: templates/maposmatic/new.html:60 templates/maposmatic/new.html.py:148
-msgid "Language"
-msgstr "dil"
+#: templates/maposmatic/map-full.html:167
+#, fuzzy
+msgid "Map locale"
+msgstr "Harita başlığı"
 
-#: templates/maposmatic/new.html:63
-msgid "Summary"
-msgstr "Özet"
+#: templates/maposmatic/maps.html:115
+#, python-format
+msgid "Map #%(id)s details"
+msgstr ""
 
-#: templates/maposmatic/new.html:72
-msgid "Back"
-msgstr "Geriye"
+#: templates/maposmatic/maps.html:116
+#, python-format
+msgid "Request created %(date)s %(status)s"
+msgstr ""
 
-#: templates/maposmatic/new.html:77
+#: templates/maposmatic/maps.html:117
+msgid "Map details <b class=\"caret caret-up\"></b>"
+msgstr ""
+
+#: templates/maposmatic/maps.html:134
+msgid "Our database does not contain any rendered maps for the moment."
+msgstr "Veritabanımız şu an için herhangi bir işlenmiş harita içermiyor."
+
+#: templates/maposmatic/maps.html:136
+msgid "No map matches your query."
+msgstr "Aramanız için hiçbir harita bulundmadı."
+
+#: templates/maposmatic/maps.html:136
+msgid "Create a new map!"
+msgstr "Yeni harita oluştur!"
+
+#: templates/maposmatic/new.html:41
+msgid "Generate your own map"
+msgstr "Kendi haritanızı oluşturun"
+
+#: templates/maposmatic/new.html:56
+#, fuzzy
+msgid "City search"
+msgstr "Şehir haritası"
+
+#: templates/maposmatic/new.html:62
+#, fuzzy
+msgid "Geographic area"
+msgstr "Coğrafi alan seçimi"
+
+#: templates/maposmatic/new.html:92
 msgid "Geographic area selection"
 msgstr "Coğrafi alan seçimi"
 
-#: templates/maposmatic/new.html:79
+#: templates/maposmatic/new.html:94
 msgid ""
-"To select the city to be rendered, two modes are\n"
-"      available:"
-msgstr "Haritası oluşturulacak şehri seçim için iki yol vardır:"
-
-#: templates/maposmatic/new.html:89
-msgid ""
-"Latitude and longitude of the top left and bottom right\n"
-"        corners of the area to render."
-msgstr "Oluşturulacak alanın sol üst ve sağ alt köşesinin coğrafi koordinatları"
-
-#: templates/maposmatic/new.html:95
-msgid ""
-"You can use <tt>Shift+drag</tt> to zoom on a specific\n"
-"        area of the map. Then, you must select\n"
-"        with <tt>Control+drag</tt> (<tt>Alt+drag</tt> on Mac) the\n"
-"        limits of the area you wish to render."
+"Start by choosing the city or geographic area you want to\n"
+"render. Suggestions will appear as you start typing. If you can't find the city\n"
+"you want, or if you prefer to choose the exact area you want to render\n"
+"yourself, select the <em>Geographic area</em> tab and use the mini-map to set\n"
+"the limits of the rendered area."
 msgstr ""
-"Harita üzerinde bir alanı yakınlaştırmak için \n"
-"<tt>Shift+drag</tt> kullanın. \n"
-"Görüntülenen haritanın yalnızca bir bölümünü oluşturmak isterseniz, \n"
-"istenen alanı <tt>Control+drag</tt> (Mac <tt>Alt+drag</tt> ile) ile işaretleyin."
 
-#: templates/maposmatic/new.html:102
+#: templates/maposmatic/new.html:122
+#, fuzzy
+msgid "Map layout and stylesheet"
+msgstr "yazdırılabilir tarz"
+
+#: templates/maposmatic/new.html:124
 msgid ""
-"Area too big to be rendered. Please select a\n"
-"        smaller area."
+"The map layout determines how the map and the index are\n"
+"rendered. The <em>Multi-page layout</em> produces a booklet very suitable for\n"
+"printing and binding. The map stylesheet determines the style and appearance of\n"
+"the map itself. Note that the stylesheet also drives what details will be\n"
+"visible on the map."
 msgstr ""
-"Oluşturulacak alan çok büyük.\n"
-"Lütfen daha küçük bir alan seçiniz."
 
-#: templates/maposmatic/new.html:113
-msgid "No results."
-msgstr "Sonuç yok."
+#: templates/maposmatic/new.html:137
+msgid "Paper size"
+msgstr "Kağıt boyutu"
 
-#: templates/maposmatic/new.html:114
-msgid "Wondering why you can't choose some of these results?<br />Their administrative boundaries are missing from the OSM database.<br />Look at the <a href=\"http://wiki.maposmatic.org/doku.php?id=faq\">FAQ</a> for more details."
-msgstr "Bu sonuçların bazılarını neden seçemediğinizi merak ediyormusunuz?<br />Onların idari sınırları OSM veritabanında bulunmuyor.<br />Daha fazla bilgiyi <a href=\"http://wiki.maposmatic.org/doku.php?id=faq\">FAQ</a> sayfasında bulabilirsiniz."
+#: templates/maposmatic/new.html:145
+msgid "Paper orientation"
+msgstr ""
 
-#: templates/maposmatic/new.html:119
-msgid "Map title"
-msgstr "Harita başlığı"
-
-#: templates/maposmatic/new.html:134
-msgid "Paper"
-msgstr "Doğrultma"
-
-#: templates/maposmatic/new.html:135
+#: templates/maposmatic/new.html:153
 msgid "An error occured while retrieving compatible paper sizes."
 msgstr "Uyumlu kağıt boyutları aranırken bir hata oluştu."
 
-#: templates/maposmatic/new.html:149
-msgid "Map Index Language:"
-msgstr "Harita endeksi dili:"
+#: templates/maposmatic/new.html:156
+msgid "<i class=\"icon-refresh\"></i> Calculating available paper formats for your map..."
+msgstr ""
 
-#: templates/maposmatic/new.html:152
-msgid "Summary:"
-msgstr "Özet:"
+#: templates/maposmatic/new.html:161
+#, fuzzy
+msgid "Paper format and size"
+msgstr "Kağıt boyutu"
 
-#: templates/maposmatic/new.html:154
+#: templates/maposmatic/new.html:163
+msgid "Select the desired format, size and orientation for your map."
+msgstr ""
+
+#: templates/maposmatic/new.html:172
+msgid "Map title"
+msgstr "Harita başlığı"
+
+#: templates/maposmatic/new.html:178
+msgid "Language"
+msgstr "dil"
+
+#: templates/maposmatic/new.html:187
+msgid "Summary"
+msgstr "Özet"
+
+#: templates/maposmatic/new.html:190
 msgid "Location:"
 msgstr "Yer:"
 
-#: templates/maposmatic/new.html:156
-msgid "Title:"
-msgstr "Başlık:"
-
-#: templates/maposmatic/new.html:158
+#: templates/maposmatic/new.html:191
 msgid "Layout:"
 msgstr "Düzen:"
 
-#: templates/maposmatic/new.html:160
-msgid "Paper size:"
-msgstr "Kağıt boyutu:"
-
-#: templates/maposmatic/new.html:162
+#: templates/maposmatic/new.html:192
 msgid "Stylesheet:"
 msgstr "Tarz:"
 
-#: templates/maposmatic/new.html:164
-msgid "Language:"
-msgstr "Dil:"
+#: templates/maposmatic/new.html:193
+msgid "Paper format:"
+msgstr ""
 
-#: templates/maposmatic/new.html:168
-msgid "Generate"
+#: templates/maposmatic/new.html:199
+#, fuzzy
+msgid "Generate &raquo;"
 msgstr "Oluştur"
 
-#: templates/maposmatic/new.html:175
-msgid "Continue"
-msgstr "Devam et"
+#: templates/maposmatic/new.html:205
+msgid "Almost there!"
+msgstr ""
 
-#: templates/maposmatic/paginator.html:33
-msgid "Previous"
-msgstr "Önceki"
+#: templates/maposmatic/new.html:207
+msgid ""
+"You're almost ready to request to map rendering! Select the map\n"
+"language, eventually adjust the title of your map, and you're good to go!"
+msgstr ""
 
-#: templates/maposmatic/paginator.html:37
-msgid "Next"
-msgstr "Devam"
+#~ msgid "Not Found"
+#~ msgstr "Bulunamadı"
+
+#~ msgid "Not Found (404)"
+#~ msgstr "Bulunamadı (404)"
+
+#~ msgid "Not Found <em>(404)</em>"
+#~ msgstr "Bulunamadı <em>(404)</em>"
+
+#~ msgid "Not Found."
+#~ msgstr "Bulunamadı."
+
+#~ msgid "Server error (500)"
+#~ msgstr "Sunucu hatası (500)"
+
+#~ msgid "Server Error <em>(500)</em>"
+#~ msgstr "Sunucu hatası <em>500</em>"
+
+#~ msgid "There's been an error."
+#~ msgstr "Bir hata oldu."
+
+#~ msgid "Authors"
+#~ msgstr "Yazarlar"
+
+#~ msgid "Job list"
+#~ msgstr "iş listesi"
+
+#~ msgid "This page gives the status of the rendering queue, showing all requests received during the last 24 hours as well as all unprocessed requests without time limit. They are ordered starting from the most recent ones."
+#~ msgstr ""
+#~ "Bu sayfa son 24 saat içinde verilen işleme isteği isteklerinin ve zaman sınırı olmaksızın\n"
+#~ "işlenmemiş isteklerin durumunu gösterir.\n"
+#~ "En son istek ilk başta görüntülenir."
+
+#~ msgid ""
+#~ "No map rendering request since the last 24\n"
+#~ "hours."
+#~ msgstr "Son 24 saat içinde hiçbir işleme isteği bulunamadı."
+
+#~ msgid "Search"
+#~ msgstr "Arama"
+
+#~ msgid "Your free city maps!"
+#~ msgstr "Sizin özgür şehir haritalarınız!"
+
+#~ msgid "Jobs"
+#~ msgstr "İşler"
+
+#~ msgid "News"
+#~ msgstr "Yenilikler"
+
+#~ msgid "Donate to MapOSMatic"
+#~ msgstr "MapOSMatic'e bağışta bulunun"
+
+#~ msgid "Random map"
+#~ msgstr "Rastgele harita"
+
+#~ msgid "No random map found."
+#~ msgstr "Rastgele harita bulunamadı."
+
+#~ msgid "Contact"
+#~ msgstr "Temas"
+
+#~ msgid "Mail:"
+#~ msgstr "E-Posta:"
+
+#~ msgid "IRC:"
+#~ msgstr "IRC:"
+
+#~ msgid "on"
+#~ msgstr "üzerinde"
+
+#~ msgid "Acquisition of a Solid-State Disk for the storage of our local copy of the OpenStreetMap database. A SSD drive performs 40 to 50 times better than the conventional hard drive we are using today, and would therefore help us to reduce the lag between our local database and the official one, providing more up-to-date maps. The cost of such hardware is about 500 to 700 €."
+#~ msgstr "Anschaffung einer Solid State Disk für unsere lokale Kopie der OpenStreetMap-Datenbank. Ein SSD-Laufwerk ist 40- bis 50-mal leistungsfähiger als die konventionelle Festplatte, die derzeit verwendet wird. Deshalb würde ein SSD-Laufwerk zu einem geringeren Rückstand von unserer zur offiziellen Datenbank und zu aktuelleren Karten verhelfen."
+
+#~ msgid "Donating?"
+#~ msgstr "Bağış?"
+
+#~ msgid "Introduction"
+#~ msgstr "Giriş"
+
+#~ msgid "Single page posters, where the map and the street index are rendered side by side. The map itself is split in squares so that streets are easy to find. This format is typically useful for printing on large paper sheets."
+#~ msgstr "Einseitige Poster, auf denen Plan und Straßenindex nebeneinander dargestellt werden. Der Plan wird in Quadrate aufgeteilt, so dass Straßen einfach zu finden sind. Dieses Format wird üblicherweise für großformatige Ausdrucke verwendet."
+
+#~ msgid "Multiple page booklets, where the map and the street index are split into several pages. This format is typically useful for printing on standard paper sheets."
+#~ msgstr "Mehrseitige Broschüren, in denen der Plan und der Straßenindex auf mehrere Seiten verteilt werden. Dieses Format ist nützlich, um auf Standard-Papierformaten zu drucken."
+
+#~ msgid "The generated maps are available in PNG, PDF and SVG formats and are ready to be printed."
+#~ msgstr "Oluşturulan haritalar PNG, PDF ve SVG formatlarında mevcuttur ve basılmak üzere hazırdırlar."
+
+#~ msgid "Find map"
+#~ msgstr "Harita bul"
+
+#~ msgid "Recreate map"
+#~ msgstr "Haritayı yenile"
+
+#~ msgid "You have been redirected to a similar map, rendered less than 24 hours ago."
+#~ msgstr "Sie wurden zu einem ähnlichen Plan weitergeleitet, der vor weniger als 24 Stunden erzeugt wurde."
+
+#~ msgid "Refresh the status"
+#~ msgstr "Oluşturulma Durumunu güncelle"
+
+#~ msgid "(the page will refresh automatically every %(refresh)s seconds until the rendering is completed)."
+#~ msgstr "(Bu sayfa harita oluşturulması sona erene kadar her %(refresh)s saniyede kendiliginden güncellenecektir)."
+
+#~ msgid "Reported error: "
+#~ msgstr "Bildirilen hata:"
+
+#~ msgid "Cancel request"
+#~ msgstr "Oluşturulmayı iptal"
+
+#~ msgid "Rendering submitted"
+#~ msgstr "istek tarihi"
+
+#~ msgid "In queue, position"
+#~ msgstr "Kuyrukta sırada"
+
+#~ msgid "Completed on"
+#~ msgstr "tamamlanma tarihi"
+
+#~ msgid "Failed on"
+#~ msgstr "başarısızlık tarihi"
+
+#~ msgid "Cancelled on"
+#~ msgstr "iptal tarihi"
+
+#~ msgid "rendering took %(rendering)s"
+#~ msgstr "oluşturma işlemi %(rendering)s sürdü"
+
+#~ msgid "Files: "
+#~ msgstr "Dosyalar:"
+
+#~ msgid "Map: "
+#~ msgstr "Harita:"
+
+#~ msgid "No index was generated because no information was available in OpenStreetMap to create one. Feel free to contribute the missing data yourself. See the <a href=\"http://wiki.openstreetmap.org/wiki/Getting_Involved\">OSM Wiki</a> for a start. "
+#~ msgstr "OpenStreetMap veritabanında gerekli bilgiler bulunamadıgı için endeks oluşturulmadı. Eksik verileri kendiniz eklemeye çekinmeyin. Güzel bir başlangıç <a href=\"http://wiki.openstreetmap.org/wiki/Tr:Getting_Involved\">bu sayfada</a> bulunabilir."
+
+#~ msgid "View on OpenStreetMap"
+#~ msgstr "OpenStreetMap'ta gör"
+
+#~ msgid "Location"
+#~ msgstr "Konum"
+
+#~ msgid "Title"
+#~ msgstr "Başlık"
+
+#~ msgid "Back"
+#~ msgstr "Geriye"
+
+#~ msgid ""
+#~ "To select the city to be rendered, two modes are\n"
+#~ "      available:"
+#~ msgstr "Haritası oluşturulacak şehri seçim için iki yol vardır:"
+
+#~ msgid ""
+#~ "Latitude and longitude of the top left and bottom right\n"
+#~ "        corners of the area to render."
+#~ msgstr "Oluşturulacak alanın sol üst ve sağ alt köşesinin coğrafi koordinatları"
+
+#~ msgid ""
+#~ "You can use <tt>Shift+drag</tt> to zoom on a specific\n"
+#~ "        area of the map. Then, you must select\n"
+#~ "        with <tt>Control+drag</tt> (<tt>Alt+drag</tt> on Mac) the\n"
+#~ "        limits of the area you wish to render."
+#~ msgstr ""
+#~ "Harita üzerinde bir alanı yakınlaştırmak için \n"
+#~ "<tt>Shift+drag</tt> kullanın. \n"
+#~ "Görüntülenen haritanın yalnızca bir bölümünü oluşturmak isterseniz, \n"
+#~ "istenen alanı <tt>Control+drag</tt> (Mac <tt>Alt+drag</tt> ile) ile işaretleyin."
+
+#~ msgid ""
+#~ "Area too big to be rendered. Please select a\n"
+#~ "        smaller area."
+#~ msgstr ""
+#~ "Oluşturulacak alan çok büyük.\n"
+#~ "Lütfen daha küçük bir alan seçiniz."
+
+#~ msgid "No results."
+#~ msgstr "Sonuç yok."
+
+#~ msgid "Wondering why you can't choose some of these results?<br />Their administrative boundaries are missing from the OSM database.<br />Look at the <a href=\"http://wiki.maposmatic.org/doku.php?id=faq\">FAQ</a> for more details."
+#~ msgstr "Bu sonuçların bazılarını neden seçemediğinizi merak ediyormusunuz?<br />Onların idari sınırları OSM veritabanında bulunmuyor.<br />Daha fazla bilgiyi <a href=\"http://wiki.maposmatic.org/doku.php?id=faq\">FAQ</a> sayfasında bulabilirsiniz."
+
+#~ msgid "Paper"
+#~ msgstr "Doğrultma"
+
+#~ msgid "Map Index Language:"
+#~ msgstr "Harita endeksi dili:"
+
+#~ msgid "Summary:"
+#~ msgstr "Özet:"
+
+#~ msgid "Title:"
+#~ msgstr "Başlık:"
+
+#~ msgid "Paper size:"
+#~ msgstr "Kağıt boyutu:"
+
+#~ msgid "Language:"
+#~ msgstr "Dil:"
+
+#~ msgid "Continue"
+#~ msgstr "Devam et"
+
+#~ msgid "Previous"
+#~ msgstr "Önceki"
+
+#~ msgid "Next"
+#~ msgstr "Devam"
 
 #~ msgid "Lag of MapOSMatic OSM database: %(date)s."
 #~ msgstr "MapOSMatic OSM veritabanı gecikmesi: %(date)s."
