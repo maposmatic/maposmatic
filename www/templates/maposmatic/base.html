@@ -29,7 +29,7 @@
 <!DOCTYPE html>
 <html lang="{{ LANGUAGE_CODE }}"{% if LANGUAGE_BIDI %} dir="rtl"{% endif %}>
   <head>
-    <title>MapOSMatic: {% block title %}Welcome!{% endblock %}</title>
+    <title>MapOSMatic{% if DEBUG %} [DEV]{% endif %}: {% block title %}Welcome!{% endblock %}</title>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
@@ -180,5 +180,22 @@
 
       {% block extrajs %}{% endblock %}
     </script>
+
+    <!-- Piwik statistics -->
+    <script type="text/javascript">
+      var pkBaseURL = (("https:" == document.location.protocol) ? "https://stats.maposmatic.org/piwik/" : "http://stats.maposmatic.org/piwik/");
+      document.write(unescape("%3Cscript src='" + pkBaseURL
+            + "piwik.js' type='text/javascript'%3E%3C/script%3E"));
+    </script><script type="text/javascript">
+      try {
+        var piwikTracker = Piwik.getTracker(pkBaseURL + "piwik.php", {% if DEBUG %}3{% else %}2{% endif %});
+        piwikTracker.trackPageView();
+        piwikTracker.enableLinkTracking();
+      } catch (err) {}
+    </script>
+    <noscript>
+      <img src="http://stats.maposmatic.org/piwik/piwik.php?idsite={% if DEBUG %}3{% else %}2{% endif %}" />
+    </noscript>
+    <!-- End Piwik Tag -->
   </body>
 </html>

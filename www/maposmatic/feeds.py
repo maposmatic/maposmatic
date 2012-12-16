@@ -30,6 +30,7 @@ from django.contrib.gis.feeds import Feed
 from django.utils.translation import ugettext_lazy as _
 
 from www.maposmatic import models
+import www.settings
 
 class MapsFeed(Feed):
     """
@@ -37,7 +38,7 @@ class MapsFeed(Feed):
     with their thumbnail, and links to the rendered files.
     """
 
-    title = _('MapOSMatic maps')
+    title = www.settings.DEBUG and _('MapOSMatic maps') or _('MapOSMatic maps [DEV]')
     link = '/maps/' # We can't use reverse here as the urlpatterns aren't
                     # defined yet at this point.
     description = _('The latest rendered maps on MapOSMatic.')
