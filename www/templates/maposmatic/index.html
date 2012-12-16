@@ -73,7 +73,7 @@
 
     {% if queued %}
     <p class="queue">
-    {% blocktrans %}{{ queued }} job{{ queued|pluralize }} in the rendering queue.{% endblocktrans %}
+    {% blocktrans with queued|pluralize as qp %}{{ queued }} job{{ qp }} in the rendering queue.{% endblocktrans %}
     </p>
     {% endif %}
 
@@ -96,10 +96,12 @@
         <li>
           {% if gis_lag_ok %}
           {% blocktrans with gis_lastupdate|timesince:utc_now as date %}<i class="icon-white icon-ok"></i> The GIS database is online and up to date, <span class="tooltipped" data-original-title="{{ gis_lastupdate }}">updated {{ date }} ago</span>.{% endblocktrans %}
-          {% elif gis_lastupdate %}
-          {% blocktrans with gis_lastupdate|timesince:utc_now as date %}<i class="icon-white icon-warning-sign"></i> The GIS database is not up to date and was only <span class="tooltipped" data-original-title="{{ gis_lastupdate }}">updated {{ date }} ago</span>.{% endblocktrans %}
-          {% elif not gis_lastupdate %}
-          {% blocktrans %}<i class="icon-white icon-off"></i> The GIS database is not available. Renderings cannot be processed at this time.{% endblocktrans %}
+          {% else %}
+            {% if gis_lastupdate %}
+            {% blocktrans with gis_lastupdate|timesince:utc_now as date %}<i class="icon-white icon-warning-sign"></i> The GIS database is not up to date and was only <span class="tooltipped" data-original-title="{{ gis_lastupdate }}">updated {{ date }} ago</span>.{% endblocktrans %}
+            {% else %}
+            {% blocktrans %}<i class="icon-white icon-off"></i> The GIS database is not available. Renderings cannot be processed at this time.{% endblocktrans %}
+            {% endif %}
           {% endif %}
         </li>
       </ul>

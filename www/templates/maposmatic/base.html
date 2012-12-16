@@ -58,7 +58,7 @@
             data-original-title="{% trans "Platform status" %}"
             data-placement="bottom"
             data-content='<p>{% trans "Rendering daemon: " %}<i class="pull-right icon-{% if daemon_running %}ok{% else %}off{% endif %}"></i></p>
-            <p>{% trans "GIS database: " %}<i class="pull-right icon-{% if gis_lag_ok %}ok{% elif gis_lastupdate %}warning-sign{% else %}off{% endif %}"></i></p>'>
+            <p>{% trans "GIS database: " %}<i class="pull-right icon-{% if gis_lag_ok %}ok{% else %}{% if gis_lastupdate %}warning-sign{% else %}off{% endif %}{% endif %}"></i></p>'>
             <i class="icon-white icon-{{ platform_status }}"></i>
             MapOSMatic
           </a>

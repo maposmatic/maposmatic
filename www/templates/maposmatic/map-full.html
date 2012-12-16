@@ -94,7 +94,9 @@
         </button>
       </form>
       {% endifequal %}
-    {% elif map.is_rendering %}
+    {% endif %}
+
+    {% if map.is_rendering %}
       <a class="btn btn-large disabled tooltipped"
          data-placement="right"
          data-original-title="
@@ -103,7 +105,9 @@
          {% endwith %}">
         <i class="icon-refresh"></i> {% trans "Rendering..." %}
       </a>
-    {% else %}
+    {% endif %}
+
+    {% if map.is_done %}
       {% if map.has_output_files %}
       <div class="btn-group">
         {% with map.output_files.maps.pdf as file %}
