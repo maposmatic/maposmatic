@@ -101,7 +101,6 @@ def all(request):
         'BBOX_MAXIMUM_LENGTH_IN_METERS': www.settings.BBOX_MAXIMUM_LENGTH_IN_METERS,
 
         'searchform': forms.MapSearchForm(request.GET),
-        'randommap': MapRenderingJob.objects.get_random_with_thumbnail(),
         'blogposts': get_latest_blog_posts(),
 
         'daemon_running': daemon_running,

@@ -52,17 +52,10 @@
     </div>
 
     <div class="span4">
-      {% if randommap %}
-      <a href="{% url map-by-id randommap.id %}" class="thumbnail">
-        <img data-src="holder.js/200x200" src="{{ randommap.get_thumbnail }}"
-             class="tooltipped" data-original-title="{{ randommap.maptitle }}" />
-      </a>
-      {% else %}
       <a href="/media/pub/chavagne.pdf" class="thumbnail">
         <img data-src="holder.js/427x300" src="/media/img/chavagne-small.png"
              class="tooltipped" data-original-title="Chavagne, France" />
       </a>
-      {% endif %}
     </div>
   </div>
 </div>
