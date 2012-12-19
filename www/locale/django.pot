@@ -1,0 +1,220 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2012-12-19 08:51+0100\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=CHARSET\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: www/settings.py:238
+msgid "No localization"
+msgstr ""
+
+#: www/maposmatic/nominatim.py:244
+msgid "Administrative area too big for rendering"
+msgstr ""
+
+#: www/maposmatic/nominatim.py:300 www/maposmatic/nominatim.py:314
+msgid "No administrative boundary"
+msgstr ""
+
+#: www/maposmatic/models.py:192
+#, python-format
+msgid "%(title)s %(format)s Map"
+msgstr ""
+
+#: www/maposmatic/models.py:200
+#, python-format
+msgid "%(title)s %(format)s Index"
+msgstr ""
+
+#: www/maposmatic/feeds.py:41
+msgid "MapOSMatic maps"
+msgstr ""
+
+#: www/maposmatic/feeds.py:41
+msgid "MapOSMatic maps [DEV]"
+msgstr ""
+
+#: www/maposmatic/feeds.py:44
+msgid "The latest rendered maps on MapOSMatic."
+msgstr ""
+
+#: www/maposmatic/forms.py:43
+msgid "Search for a map"
+msgstr ""
+
+#: www/maposmatic/forms.py:57
+msgid "Administrative boundary"
+msgstr ""
+
+#: www/maposmatic/forms.py:58
+msgid "Bounding box"
+msgstr ""
+
+#: www/maposmatic/forms.py:60
+msgid "Portrait"
+msgstr ""
+
+#: www/maposmatic/forms.py:61
+msgid "Landscape"
+msgstr ""
+
+#: www/maposmatic/forms.py:73
+msgid "Area"
+msgstr ""
+
+#: www/maposmatic/forms.py:93
+msgid "Full-page layout without street index"
+msgstr ""
+
+#: www/maposmatic/forms.py:95
+msgid "Full-page layout with the street index on the side"
+msgstr ""
+
+#: www/maposmatic/forms.py:97
+msgid "Full-page layout with the street index at the bottom"
+msgstr ""
+
+#: www/maposmatic/forms.py:99
+msgid "Multi-page layout"
+msgstr ""
+
+#: www/maposmatic/forms.py:101
+#, python-format
+msgid "The %(layout_name)s layout"
+msgstr ""
+
+#: www/maposmatic/forms.py:109
+msgid "The default OpenStreetMap.org style"
+msgstr ""
+
+#: www/maposmatic/forms.py:111
+msgid "The european MapQuest style"
+msgstr ""
+
+#: www/maposmatic/forms.py:113
+msgid "The US MapQuest style"
+msgstr ""
+
+#: www/maposmatic/forms.py:115
+msgid "The UK MapQuest style"
+msgstr ""
+
+#: www/maposmatic/forms.py:117
+msgid "A MapOSMatic-specific stylesheet suitable for printing"
+msgstr ""
+
+#: www/maposmatic/forms.py:119
+#, python-format
+msgid "The <i>%(stylesheet_name)s</i> stylesheet"
+msgstr ""
+
+#: www/maposmatic/forms.py:126
+msgid "Best fit <em class=\"papersize\"></em>"
+msgstr ""
+
+#: www/maposmatic/forms.py:157
+msgid "Map title required"
+msgstr ""
+
+#: www/maposmatic/forms.py:162
+msgid "Layout required"
+msgstr ""
+
+#: www/maposmatic/forms.py:167
+msgid "Stylesheet required"
+msgstr ""
+
+#: www/maposmatic/forms.py:173
+msgid "Administrative city required"
+msgstr ""
+
+#: www/maposmatic/forms.py:186
+#, python-format
+msgid "Error with osm city: %s"
+msgstr ""
+
+#: www/maposmatic/forms.py:196
+msgid "Required"
+msgstr ""
+
+#: www/maposmatic/forms.py:204
+msgid "Same latitude"
+msgstr ""
+
+#: www/maposmatic/forms.py:211
+msgid "Same longitude"
+msgstr ""
+
+#: www/maposmatic/forms.py:235
+msgid "Bounding Box too large"
+msgstr ""
+
+#: www/maposmatic/templatetags/extratags.py:34
+msgid "Waiting for rendering to begin..."
+msgstr ""
+
+#: www/maposmatic/templatetags/extratags.py:36
+msgid "The rendering is in progress..."
+msgstr ""
+
+#: www/maposmatic/templatetags/extratags.py:39
+msgid "Rendering was successful."
+msgstr ""
+
+#: www/maposmatic/templatetags/extratags.py:41
+msgid ""
+"Rendering failed! Please contact contact@maposmatic.org for more information."
+msgstr ""
+
+#: www/maposmatic/templatetags/extratags.py:44
+msgid ""
+"Rendering is obsolete: the rendering was successful, but the files are no "
+"longer available."
+msgstr ""
+
+#: www/maposmatic/templatetags/extratags.py:46
+msgid ""
+"Obsolete failed rendering: the rendering failed, and the incomplete files "
+"have been removed."
+msgstr ""
+
+#: www/maposmatic/templatetags/extratags.py:48
+msgid "The rendering was cancelled by the user."
+msgstr ""
+
+#: www/maposmatic/widgets.py:74
+msgid "Latitude of the top left corner"
+msgstr ""
+
+#: www/maposmatic/widgets.py:75
+msgid "Longitude of the top left corner"
+msgstr ""
+
+#: www/maposmatic/widgets.py:76
+msgid "Latitude of the bottom right corner"
+msgstr ""
+
+#: www/maposmatic/widgets.py:77
+msgid "Longitude of the bottom right corner"
+msgstr ""
+
+#: www/maposmatic/widgets.py:78
+msgid "<i class=\"icon-warning-sign\"></i> Area too big to be rendered!"
+msgstr ""
+
+#: www/maposmatic/widgets.py:79
+msgid "Remove any selected region from the map"
+msgstr ""
