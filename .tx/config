@@ -1,0 +1,8 @@
+[main]
+host = https://www.transifex.com
+
+[maposmatic.maposmatic]
+file_filter = www/locale/<lang>/LC_MESSAGES/django.po
+source_file = www/messages.mo
+source_lang = en
+type = PO
