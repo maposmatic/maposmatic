@@ -123,7 +123,7 @@ LANGUAGES = {
     "pl":    u"Polski",
     "es":    u"Español",
     "id":    u"Bahasa Indonesia",
-    "tr-tr": u"Türkçe",
+    "tr":    u"Türkçe",
 }
 
 # Associate a Django language code with:
