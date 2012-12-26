@@ -29,7 +29,7 @@
 {% load extratags %}
 
 {% if not single %}
-{% if not job.needs_waiting %}
+{% if not job.needs_waiting and job.can_recreate %}
 <form method="post" action="{% url recreate %}" class="recreate">
   <input type="hidden" name="jobid" value="{{ job.id }}" />
   <input type="submit" value="{% trans "Recreate map" %}" />
