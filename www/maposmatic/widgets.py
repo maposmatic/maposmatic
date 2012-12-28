@@ -45,8 +45,8 @@ class AreaWidget(forms.TextInput):
                 lower_right_lat, lower_right_lon = settings.BASE_BOUNDING_BOX
 
         tpl = u"""<div id="step-location-map"></div>
-        <div class="row-fluid">
-          <div class="span6">
+        <div class="row-fluid step-location-map-bbox">
+          <div class="span12">
             <input type="text" name="lat_upper_left" id="id_lat_upper_left"
                    value="%(tl_lat)s" title="%(tl_lat_help)s" />
             &middot;
@@ -59,17 +59,9 @@ class AreaWidget(forms.TextInput):
             <input type="text" name="lon_bottom_right" id="id_lon_bottom_right"
                    value="%(br_lon)s" title="%(br_lon_help)s" />
           </div>
-          <div class="span5">
-            <div id="area-size-alert" class="alert alert-error">%(alert)s</div>
-          </div>
-          <div class="span1">
-            <a id="map-remove-features" class="btn tooltipped"
-               data-placement="left"
-               data-original-title="%(clear)s">
-              <i class="icon-retweet"></i>
-            </a>
-          </div>
-        </div>""" % {'tl_lat': upper_left_lat, 'tl_lon': upper_left_lon,
+        </div>
+        <div id="area-size-alert" class="alert alert-error">%(alert)s</div>
+        """ % {'tl_lat': upper_left_lat, 'tl_lon': upper_left_lon,
                    'br_lat': lower_right_lat, 'br_lon': lower_right_lon,
                    'tl_lat_help': _('Latitude of the top left corner'),
                    'tl_lon_help': _('Longitude of the top left corner'),

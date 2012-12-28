@@ -77,17 +77,18 @@ body.maps div.mapthumbnail p { color: #777777;
   text-align: center; margin-top: 110px; }
 body.maps div.mapthumbnail img { max-width: none; }
 body.maps div.info { margin: 0 10px; padding: 10px 0; }
+body.maps p.details { height: 60px; }
 body.maps div.info > h2 {
   margin: 0; padding: 0; width: 60%;
   overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
-body.maps div.info p.details { height: 50px; }
 body.maps div.info p.queue-position { position: absolute;
   top: -15px; right: 0; color: #eee; text-align: right;
   font-weight: bold; line-height: 100pt; font-size: 100pt;
   letter-spacing: -2px; vertical-align: top; z-index: -1; }
+body.maps div.info img.thumbnail { text-align: center; display: block; margin: 0 auto; }
 
 /** Map creation page. */
-body.new .item { height: 530px; padding: 0 80px; }
+body.new .item { min-height: 530px; padding: 0 80px; }
 body.new .item ul { list-style: none; margin: 0; padding: 0; }
 body.new .item input[type=radio] { margin: -1px 2px 0 0; }
 
@@ -105,6 +106,7 @@ body.new .item input[type=radio] { margin: -1px 2px 0 0; }
 }
 
 a.carousel-control { display: none; }
+div.carousel-caption { position: relative; margin: 2em -80px 0 -80px; }
 
 #wizard-step-location .nav-tabs li {
   margin: 0 5px -2px 0;
@@ -118,22 +120,17 @@ a.carousel-control { display: none; }
   border-bottom: 1px transparent solid; }
 #wizard-step-location .nav-tabs li.active label { color: #555; }
 #wizard-step-location .nav-tabs input[type=radio] { display: none; }
-#wizard-step-location .tab-content { height: 400px; }
+#wizard-step-location .tab-content { min-height: 400px; }
 
 /* By administrative boundary */
-#wizard-step-location .suggest-icon { top: 24px; right: 30px;
+#wizard-step-location .suggest-icon { top: 25px; right: 3%;
   display: none; position: absolute; z-index: 2; }
-#id_administrative_city {
-  font-size: 25pt;
-  line-height: normal;
-  height: 26pt;
-  margin: 10px auto;
-  padding-right: 40px;
-  width: 93%;
-  position: relative;
-  z-index: 1;
-}
-#suggest { width: 99%; margin: 2px auto; padding: 5px 0; z-index: 1; }
+#id_administrative_city { font-size: 25pt;
+  line-height: normal; height: 26pt;
+  margin: 10px auto; width: 95%;
+  position: relative; z-index: 1; }
+#suggest { width: 96%; margin: 2px auto; padding: 5px 0;
+  z-index: 1; float: none; position: relative; }
 #suggest a { padding: 3px 10px; }
 #suggest a img { margin-right: 3px; }
 #suggest a.suggestoff { color: #999 !important; }
@@ -150,13 +147,14 @@ a.carousel-control { display: none; }
 }
 #step-location-map img { max-width: none; }
 .olControlAttribution { bottom: 3px !important; }
-#step-location-bbox p { width: 97%; margin: -5px auto; font-size: 12pt; }
+.olControlPanel { bottom: 3px; left: 13px; width: 20px; height: 20px; }
+.step-location-map-bbox { text-align: center; }
 #step-location-bbox input[type=text] { width: 5em; margin-top: 5px;
   font-size: 9pt; font-family: monospace; }
 #area-size-alert { text-align: center; }
 
 /** Paper size and orientation slide. */
-#wizard-step-paper-size .alert { margin-top: 60px; }
+#wizard-step-paper-size .alert { margin-top: 60px; line-height: 20px; }
 #paper-selection { display: none; }
 #paper-size-loading-error { display: none; }
 #paper-size em { color: #777; }

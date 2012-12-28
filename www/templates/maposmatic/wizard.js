@@ -360,10 +360,34 @@ function wizardmap(elt) {
     }
   });
 
+  var clearControl = new OpenLayers.Control.Button({
+    displayClass: 'clear-features olControlButton',
+    title: '{% trans "Clear selected area" %}',
+    trigger: function() {
+      vectorLayer.destroyFeatures();
+      bbox = null;
+      update_fields();
+      set_map_bounds_from_fields();
+      update_fields();
+    },
+  });
+
+  var clearPanel = new OpenLayers.Control.Panel({
+    defaultControl: clearControl,
+    createControlMarkup: function(control) {
+      var i = document.createElement('i');
+      $(i).addClass('icon-retweet');
+      $(i).attr('title', control.title);
+      return i;
+    },
+  });
+  clearPanel.addControls([clearControl]);
+
   map.addControl(new OpenLayers.Control.Navigation());
   map.addControl(new OpenLayers.Control.PanZoom());
   map.addControl(new OpenLayers.Control.PinchZoom());
   map.addControl(selectControl);
+  map.addControl(clearPanel);
 
   /* Bind events. */
   map.events.register('zoomend', map, update_fields);
@@ -380,12 +404,6 @@ function wizardmap(elt) {
 
     set_map_bounds_from_fields();
     update_fields();
-  });
-  $('#map-remove-features').click(function() {
-    vectorLayer.destroyFeatures();
-    bbox = null;
-    update_fields();
-    set_map_bounds_from_fields();
   });
 
   set_map_bounds_from_fields();
