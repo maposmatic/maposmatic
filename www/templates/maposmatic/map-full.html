@@ -50,17 +50,31 @@
   <div class="span8">
     <h1>{{ map.maptitle }}</h1>
 
+    {% if map.get_thumbnail %}
+    <img class="thumbnail pull-right" src="{{ map.get_thumbnail }}" />
+    {% endif %}
+
     <p style="margin: 20px 0 100px 0;">
       {% with map.submission_time|date:"DATETIME_FORMAT" as date %}
-      {% blocktrans %}Submitted {{ date }}{% endblocktrans %}
+      {% blocktrans %}Request submitted: {{ date }}{% endblocktrans %}
       {% endwith %}
       <br />
-      {% if map.is_done %}
-      {% with map.endofrendering_time|date:"DATETIME_FORMAT" as date %}
-      {% blocktrans %}Rendering completed {{ date }}{% endblocktrans %}
+      {% if map.is_rendering %}
+      {% with map.startofrendering_time|date:"DATETIME_FORMAT" as date %}
+      {% blocktrans %}Rendering started: {{ date }}{% endblocktrans %}
       {% endwith %}
-      <br />
       {% endif %}
+      {% if map.is_done or map.is_obsolete %}
+      {% with map.endofrendering_time|date:"DATETIME_FORMAT" as date %}
+      {% blocktrans %}Rendering completed: {{ date }}{% endblocktrans %}
+      {% endwith %}
+      {% endif %}
+      {% if map.is_cancelled %}
+      {% with map.endofrendering_time|date:"DATETIME_FORMAT" as date %}
+      {% blocktrans %}Rendering cancelled: {{ date }}{% endblocktrans %}
+      {% endwith %}
+      {% endif %}
+      <br />
       {{ map.status|job_status_to_str:map.resultmsg }}
     </p>
 
@@ -84,8 +98,8 @@
 
       {% ifequal nonce map.nonce %}
       <form method="post" action="{% url cancel %}" class="pull-right">
-        <input type="hidden" name="jobid" value="{{ map.id }}" />
-        <input type="hidden" name="jobnonce" value="{{ map.nonce }}" />
+        <input type="hidden" name="id" value="{{ map.id }}" />
+        <input type="hidden" name="nonce" value="{{ map.nonce }}" />
         <button type="submit" class="btn btn-large btn-danger tooltipped"
                 data-placement="right"
                 data-original-title="

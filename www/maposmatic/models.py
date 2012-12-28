@@ -248,12 +248,14 @@ class MapRenderingJob(models.Model):
         self.save()
 
     def get_thumbnail(self):
+        if self.is_waiting() or self.is_cancelled():
+            return None
+
         thumbnail_file = os.path.join(www.settings.RENDERING_RESULT_PATH, self.files_prefix() + "_small.png")
         thumbnail_url = www.settings.RENDERING_RESULT_URL + "/" + self.files_prefix() + "_small.png"
         if os.path.exists(thumbnail_file):
             return thumbnail_url
-        else:
-            return None
+        return None
 
     def current_position_in_queue(self):
         return MapRenderingJob.objects.filter(status=0).filter(id__lte=self.id).count()

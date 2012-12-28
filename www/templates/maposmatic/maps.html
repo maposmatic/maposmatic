@@ -40,20 +40,40 @@
 
 {% for map in maps.object_list %}
 {% if forloop.counter0|divisibleby:2 %}<div class="row-fluid">{% endif %}
-<div class="span6 map">
+<div class="span6 map map-status-{{ map.status }}">
   <div class="info">
-    {% if map.current_position_in_queue %}
+    {% if map.needs_waiting and map.current_position_in_queue %}
     <p class="queue-position">#{{ map.current_position_in_queue }}</p>
     {% endif %}
     <h2><a href="{% url map-by-id map.id %}">{{ map.maptitle }}</a></h2>
 
     <p class="details">
-    {% if map.administrative_city %}
-    {{ map.administrative_city }}
-    {% else %}
-    ({{ map.lat_upper_left|floatformat:3 }}, {{ map.lon_upper_left|floatformat:3 }}) &rarr;
-    ({{ map.lat_bottom_right|floatformat:3 }}, {{ map.lon_bottom_right|floatformat:3 }})
-    {% endif %}
+      {% if map.administrative_city %}
+      {{ map.administrative_city }}
+      {% else %}
+      ({{ map.lat_upper_left|floatformat:3 }}, {{ map.lon_upper_left|floatformat:3 }}) &rarr;
+      ({{ map.lat_bottom_right|floatformat:3 }}, {{ map.lon_bottom_right|floatformat:3 }})
+      {% endif %}
+      <br />
+      {% with map.submission_time|date:"DATETIME_FORMAT" as date %}
+      {% blocktrans %}Request submitted: {{ date }}{% endblocktrans %}
+      {% endwith %}
+      <br />
+      {% if map.is_rendering %}
+      {% with map.startofrendering_time|date:"DATETIME_FORMAT" as date %}
+      {% blocktrans %}Rendering started: {{ date }}{% endblocktrans %}
+      {% endwith %}
+      {% endif %}
+      {% if map.is_done or map.is_obsolete %}
+      {% with map.endofrendering_time|date:"DATETIME_FORMAT" as date %}
+      {% blocktrans %}Rendering completed: {{ date }}{% endblocktrans %}
+      {% endwith %}
+      {% endif %}
+      {% if map.is_cancelled %}
+      {% with map.endofrendering_time|date:"DATETIME_FORMAT" as date %}
+      {% blocktrans %}Rendering cancelled: {{ date }}{% endblocktrans %}
+      {% endwith %}
+      {% endif %}
     </p>
 
     {% if map.is_waiting %}
@@ -75,8 +95,7 @@
         <i class="icon-refresh"></i> {% trans "Rendering..." %}
       </a>
     {% endif %}
-    {% if map.is_done %}
-      {% if map.has_output_files %}
+    {% if map.is_done_ok and map.has_output_files %}
       <div class="btn-group">
         {% with map.output_files.maps.pdf as file %}
         <a href="{{ file.0 }}" class="btn btn-primary">
@@ -99,23 +118,30 @@
         {% endif %}
         </ul>
       </div>
-
-      {% else %}
+    {% endif %}
+    {% if not map.is_done_ok and not map.needs_waiting %}
       <a class="btn disabled tooltipped"
          data-placement="top"
-         data-original-title="{% trans "The generated files are no longer available." %}">
+         data-original-title="{{ map.status|job_status_to_str:map.resultmsg }}">
         <i class="icon-ban-circle"></i> {% trans "Download" %}
       </a>
-      {% endif %}
     {% endif %}
 
-    <a class="btn pull-right popovered" rel="popover"
-       data-placement="top"
-       data-html="true"
-       data-original-title="<a href='{% url map-by-id map.id %}'>{% blocktrans with map.id as id %}Map #{{ id }} details{% endblocktrans %}</a>"
-       data-content="{% with map.submission_time|date:"DATETIME_FORMAT" as date %}{% with map.status|job_status_to_str:map.resultmsg as status %}{% blocktrans %}Request created {{ date }} {{ status }}{% endblocktrans %}{% endwith %}{% endwith %}">
-       {% blocktrans %}Map details <b class="caret caret-up"></b>{% endblocktrans %}
-    </a>
+    <form class="form-horizontal pull-right" method="post" action="{% url recreate %}">
+      <input type="hidden" name="id" value="{{ map.id }}" />
+      <button class="btn tooltipped"
+              data-original-title="{% trans "Recreate map" %}"
+              type="submit" {% if map.needs_waiting or not map.can_recreate %}disabled="disabled"{% endif %}>
+        <i class="icon-refresh"></i>
+      </button>
+
+      <a class="btn popovered {% if not map.get_thumbnail %}disabled{% endif %}"
+         rel="popover" data-placement="left" data-html="true"
+         data-original-title="{% trans "Map thumbnail" %}"
+         data-content='<img class="thumbnail" src="{{ map.get_thumbnail }}" />'>
+         <i class="icon-search"></i>
+      </a>
+    </form>
   </div>
 
   {% if gis_lastupdate %}
