@@ -119,7 +119,7 @@ LANGUAGES = {
     "pt-br": u"Português do Brasil",
     "nb":    u"Norwegian Bokmål",
     "nl":    u"Nederlands",
-    "hr-hr": u"Hrvatski",
+    "hr":    u"Hrvatski",
     "pl":    u"Polski",
     "es":    u"Español",
     "id":    u"Bahasa Indonesia",
