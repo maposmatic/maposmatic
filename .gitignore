@@ -17,3 +17,12 @@
 # Ignore temp files
 *~
 *.swp
+
+# Ignore translated files
+*.mo
+
+# From scripts directory
+/scripts/config.py
+
+# From www
+/www/*.pyc
