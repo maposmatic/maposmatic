@@ -25,4 +25,4 @@
 /scripts/config.py
 
 # From www
-/www/*.pyc
+*.pyc
