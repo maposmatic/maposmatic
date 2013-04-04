@@ -1,33 +1,20 @@
-# maposmatic, the web front-end of the MapOSMatic city map generation system
-# Copyright (C) 2009  David Decotigny
-# Copyright (C) 2009  Frédéric Lehobey
-# Copyright (C) 2009  David Mentré
-# Copyright (C) 2009  Maxime Petazzoni
-# Copyright (C) 2009  Thomas Petazzoni
-# Copyright (C) 2009  Gaël Utard
-# This program is free software: you can redistribute it and/or modify
-# it under the terms of the GNU Affero General Public License as
-# published by the Free Software Foundation, either version 3 of the
-# License, or any later version.
-# This program is distributed in the hope that it will be useful,
-# but WITHOUT ANY WARRANTY; without even the implied warranty of
-# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-# GNU Affero General Public License for more details.
-# You should have received a copy of the GNU Affero General Public License
-# along with this program.  If not, see <http://www.gnu.org/licenses/>.
-#
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# 
+# Translators:
 msgid ""
 msgstr ""
-"Project-Id-Version: mapOSMatic 0.1\n"
-"Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-12-16 12:51+0100\n"
-"PO-Revision-Date: 2012-12-23 22:18-0800\n"
-"Last-Translator: Jeff Haack <jeff.haack@gmail.com>\n"
-"Language-Team: MapOSMatic <contact@maposmatic.org>\n"
-"Language: Indonesian\n"
+"Project-Id-Version: MapOSMatic\n"
+"Report-Msgid-Bugs-To: https://savannah.nongnu.org/bugs/?group=maposmatic\n"
+"PO-Revision-Date: 2013-01-13 15:03+0000\n"
+"Last-Translator: Hakan Tandogan <hakan.tandogan@gmail.com>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: id\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
 
 #: settings.py:238
 msgid "No localization"
@@ -38,14 +25,12 @@ msgid "MapOSMatic maps"
 msgstr "Peta MapOSMatic"
 
 #: maposmatic/feeds.py:41
-#, fuzzy
 msgid "MapOSMatic maps [DEV]"
-msgstr "Peta MapOSMatic"
+msgstr ""
 
 #: maposmatic/feeds.py:44
-#, fuzzy
 msgid "The latest rendered maps on MapOSMatic."
-msgstr "Peta terbaru yang telah dirender pada MapOSMatic"
+msgstr ""
 
 #: maposmatic/forms.py:43
 msgid "Search for a map"
@@ -55,7 +40,7 @@ msgstr ""
 msgid "Administrative boundary"
 msgstr "Batas Administrasi"
 
-#: maposmatic/forms.py:58 templates/maposmatic/map-full.html:157
+#: maposmatic/forms.py:58 templates/maposmatic/map-full.html:171
 msgid "Bounding box"
 msgstr "Kotak batasan"
 
@@ -126,14 +111,12 @@ msgid "Map title required"
 msgstr "Harus menggunakan judul peta"
 
 #: maposmatic/forms.py:162
-#, fuzzy
 msgid "Layout required"
-msgstr "Harus menggunakan judul peta"
+msgstr ""
 
 #: maposmatic/forms.py:167
-#, fuzzy
 msgid "Stylesheet required"
-msgstr "Stylesheet"
+msgstr ""
 
 #: maposmatic/forms.py:173
 msgid "Administrative city required"
@@ -171,68 +154,66 @@ msgid "%(title)s %(format)s Index"
 msgstr "%(title)s %(format)s Indeks"
 
 #: maposmatic/nominatim.py:244
-#, fuzzy
 msgid "Administrative area too big for rendering"
-msgstr "Wilayah administratif terlalu besaar untuk diproses"
+msgstr ""
 
 #: maposmatic/nominatim.py:300 maposmatic/nominatim.py:314
-#, fuzzy
 msgid "No administrative boundary"
-msgstr "Tidak ada batas administratif"
+msgstr ""
 
-#: maposmatic/widgets.py:74
+#: maposmatic/widgets.py:66
 msgid "Latitude of the top left corner"
 msgstr "Garis lintang (latitude) di pojok kiri atas"
 
-#: maposmatic/widgets.py:75
+#: maposmatic/widgets.py:67
 msgid "Longitude of the top left corner"
 msgstr "Garis bujur di pojok kiri atas"
 
-#: maposmatic/widgets.py:76
+#: maposmatic/widgets.py:68
 msgid "Latitude of the bottom right corner"
 msgstr "Garis lintang di pojok kanan bawah"
 
-#: maposmatic/widgets.py:77
+#: maposmatic/widgets.py:69
 msgid "Longitude of the bottom right corner"
 msgstr "Garis bujur di pojong kanan bawah"
 
-#: maposmatic/widgets.py:78
+#: maposmatic/widgets.py:70
 msgid "<i class=\"icon-warning-sign\"></i> Area too big to be rendered!"
 msgstr ""
 
-#: maposmatic/widgets.py:79
+#: maposmatic/widgets.py:71
 msgid "Remove any selected region from the map"
 msgstr ""
 
 #: maposmatic/templatetags/extratags.py:34
-#, fuzzy
 msgid "Waiting for rendering to begin..."
-msgstr "Menunggu untuk proses render dimulai..."
+msgstr ""
 
 #: maposmatic/templatetags/extratags.py:36
-#, fuzzy
 msgid "The rendering is in progress..."
-msgstr "Proses render sedang berlangsung..."
+msgstr ""
 
 #: maposmatic/templatetags/extratags.py:39
-#, fuzzy
 msgid "Rendering was successful."
-msgstr "Proses render berhasil"
+msgstr ""
 
 #: maposmatic/templatetags/extratags.py:41
-#, fuzzy
-msgid "Rendering failed! Please contact contact@maposmatic.org for more information."
-msgstr "Proses render gagal! Silahkan hubungi contact@maposmatic.org untuk informasilebih lanjut."
+msgid ""
+"Rendering failed! Please contact contact@maposmatic.org for more "
+"information."
+msgstr ""
 
 #: maposmatic/templatetags/extratags.py:44
-#, fuzzy
-msgid "Rendering is obsolete: the rendering was successful, but the files are no longer available."
-msgstr "Proses render kadaluwarsa: proses render berhasil, namun file terkait tidak berhasil."
+msgid ""
+"Rendering is obsolete: the rendering was successful, but the files are no "
+"longer available."
+msgstr ""
 
 #: maposmatic/templatetags/extratags.py:46
-#, fuzzy
-msgid "Obsolete failed rendering: the rendering failed, and the incomplete files have been removed."
-msgstr "Proses render kadaluwarsa: proses render gagal, dan file tidak lengkap."
+msgid ""
+"Obsolete failed rendering: the rendering failed, and the incomplete files "
+"have been removed."
+msgstr ""
 
 #: maposmatic/templatetags/extratags.py:48
 msgid "The rendering was cancelled by the user."
@@ -247,9 +228,8 @@ msgid "Woups. Looks like you've followed a broken link ;-("
 msgstr ""
 
 #: templates/500.html:34
-#, fuzzy
 msgid "Server error!"
-msgstr "Server error"
+msgstr ""
 
 #: templates/500.html:37
 msgid ""
@@ -260,14 +240,13 @@ msgstr ""
 #: templates/maposmatic/about.html:34 templates/maposmatic/about.html.py:36
 #: templates/maposmatic/base.html:72
 msgid "About"
-msgstr "Tentang"
+msgstr ""
 
 #: templates/maposmatic/about.html:37
 msgid "History"
-msgstr "Riwayat"
+msgstr ""
 
 #: templates/maposmatic/about.html:40
-#, fuzzy
 msgid ""
 "MapOSMatic has been started thanks to an idea of\n"
 "Gilles Lamiral, an <a\n"
@@ -281,32 +260,17 @@ msgid ""
 "hackers would like to thank Gilles for sharing his bright\n"
 "idea!"
 msgstr ""
-"MapOSMatic telah dimulai, terima kasih kepada ide dari\n"
-"Gilles Lamiral, sebuah <a\n"
-"href=\"http://www.openstreetmap.org\">OpenStreetMap</a> dan\n"
-"kontributor software cuma-cuma dari Rennes area, Perancis. Dari idenya lah, sekelompok\n"
-"crazy <a\n"
-"href=\"http://en.wikipedia.org/wiki/Hacker_(programmer_subculture)\">hackers</a>\n"
-"berkumpul bersama pada suatu minggu <em>Hackfest</em> di bulan August 2009 dan\n"
-"membawa ide dari Gilles Lamiral dengan menulis kode-kodenya dan\n"
-"menamai proyek tersebut <strong>MapOSMatic</strong>. Kelompok 'crazy\n"
-"hackers' ingin berterima kasih kepada Gilles yang telah berbagi ide yang\n"
-"cemerlang!"
 
 #: templates/maposmatic/about.html:54
-#, fuzzy
 msgid ""
 "Of course, MapOSMatic is fully free software,\n"
 "licensed under the <a \n"
 "href=\"http://www.fsf.org/licensing/licenses/agpl-3.0.html\">AGPLv3</a>.\n"
 msgstr ""
-"Tentu saja, MapOSMatic merupakan perangkat lunak (software) gratis,\n"
-"lisensi pada <a\n"
-"href=\"http://www.fsf.org/licensing/licenses/agpl-3.0.html\">AGPLv3</a>.\n"
 
 #: templates/maposmatic/about.html:61
 msgid "How does it work?"
-msgstr "Bagaimana cara kerjanya?"
+msgstr ""
 
 #: templates/maposmatic/about.html:64
 msgid ""
@@ -322,17 +286,6 @@ msgid ""
 "the database, which allows to keep it up to date with the new\n"
 "contributions of OpenStreetMap users."
 msgstr ""
-"Pada server kami menjalankan sebuah <a\n"
-"href=\"http://www.postgresql.org\">PostgreSQL</a> server, dengan sebuah <a\n"
-"href=\"http://postgis.refractions.net\">PostGIS</a> extension. Pada server ini\n"
-"PostgreSQL server, kami telah mengisi <a\n"
-"href=\"http://wiki.openstreetmap.org/wiki/Planet.osm\">OpenStreetMap\n"
-"data dari seluruh dunia</a> menggunakan <a\n"
-"href=\"http://wiki.openstreetmap.org/wiki/Osm2pgsql\">osm2pgsql</a>\n"
-"alat. Alat yang sama juga digunakan untuk menerapkan <a\n"
-"href=\"http://planet.openstreetmap.org/daily/\">perbedaan harian</a> dari\n"
-"database, yang memungkinkan untuk tetap up to date dengan\n"
-"kontributor baru dari pengguna OpenStreetMap."
 
 #: templates/maposmatic/about.html:78
 msgid ""
@@ -344,21 +297,12 @@ msgid ""
 "and <a href=\"http://cairographics.org/pycairo/\">Cairo</a>, we\n"
 "built <i>OCitySMap</i>, a Python module that:"
 msgstr ""
-"Untuk proses rendering peta, kami menggunakan\n"
-"yang telah dikenal <a href=\"http://www.mapnik.org\">Mapnik</a> dengan OpenStreetMap\n"
-"stylesheet\n"
-"yang tersedia <a href=\"http://svn.openstreetmap.org/applications/rendering/mapnik\">in\n"
-"OpenStreetMap Subversion repository</a>. Dengan menggunakan Mapnik\n"
-"dan <a href=\"http://cairographics.org/pycairo/\">Cairo</a>, kami\n"
-"membangun <i>OCitySMap</i>, sebuah modul Python yang:"
 
 #: templates/maposmatic/about.html:88
 msgid ""
 "Renders the map using OpenStreetMap data and the\n"
 "  OpenStreetMap Mapnik stylesheet;"
 msgstr ""
-"Melakukan proses render peta menggunakan data OpenStreetMap dan\n"
-"  OpenStreetMap Mapnik stylesheet;"
 
 #: templates/maposmatic/about.html:90
 msgid ""
@@ -367,18 +311,12 @@ msgid ""
 "  informations on the map (copyright, scale,\n"
 "  etc.);"
 msgstr ""
-"Melakukan proses render pada peta, menggunakan Mapnik, grid\n"
-"  500 meter persegi, label pada kotak, dan beberapa\n"
-"  informasi lain di peta (hak cipta, skala,\n"
-"  danlain-lain);"
 
 #: templates/maposmatic/about.html:94
 msgid ""
 "Greys out all the area outside the city if we find\n"
 "  its administrative boundary;"
 msgstr ""
-"Berikan warna abu-abu pada semua daerah yang berada diluar\n"
-"  batas administrasi;"
 
 #: templates/maposmatic/about.html:96
 msgid ""
@@ -386,9 +324,6 @@ msgid ""
 "  OpenStreetMap data and the intersection of the streets with the\n"
 "  squares on the map."
 msgstr ""
-"Melakukan proses render indeks dari jalan, berdasarkan\n"
-"  data OpenStreetMap dan persimpangan dari jalan tersebut dengan\n"
-"  kotak pada peta."
 
 #: templates/maposmatic/about.html:102
 msgid ""
@@ -399,12 +334,6 @@ msgid ""
 "on top of it so that end-users can easily generate and use\n"
 "OpenStreetMap city maps."
 msgstr ""
-"Modul Phyton ini dapat digunakan melalui sebuah alat command-line\n"
-"yang disediakan dengan OCityMap, sehingga semua orang dapat menjalankan proses rendering peta-kota (city-map)nya\n"
-"masing-masing. Namun, instalasi dari komponen yang berbeda\n"
-"bisa jadi agak rumit, maka sebuah website kecil telah dibuat\n"
-"pula agar pengguna yang bermasalah dalam proses instalasi dapat tetap menggunakan\n"
-"peta kota OpenStreetMap dengan mudah."
 
 #: templates/maposmatic/about.html:111
 msgid ""
@@ -418,18 +347,8 @@ msgid ""
 "rendering at a time, which is very important because of the CPU and I/O\n"
 "intensive nature of the map rendering process."
 msgstr ""
-"Web service ini biasa disebut dengan <i>MapOSMatic</i>,\n"
-"seperti pada <i>map-o-matic</i> tetapi dengan acuan kepada OpenStreetMap (OSM).\n"
-"Layanan Web ditulis dalam Phyton\n"
-"menggunakan <a href=\"http://www.djangoproject.com\">Django</a>. Django\n"
-"bertanggungjawab dalam penyimpanan dan permintaan proses render dan menampilkan hasil\n"
-"dari permintaan-permintaan tersebut. Proses render itu sendiri terjadi secara independen tanpa mengganggu proses lainnya\n"
-"melalui <i>maposmaticd</i> daemon. Daemon ini hanya dapat melakukan satu\n"
-"proses render dalam satu waktu, hal ini penting karena CPU dan I/O\n"
-"sifat intensif pada proses rendering data."
 
 #: templates/maposmatic/about.html:123
-#, fuzzy
 msgid ""
 "For the city search engine, we use the wonderful <a \n"
 "href=\"http://nominatim.openstreetmap.org\">Nominatim</a> service. This\n"
@@ -437,15 +356,10 @@ msgid ""
 "allows to select between multiple cities of the same name, by\n"
 "providing informations on the city location."
 msgstr ""
-"Untuk mesin pencari kota, kami menggunakan <a\n"
-"href=\"http://nominatim.openstreetmap.org\">Nominatim</a> service. Layanan ini\n"
-"menjadikan proses pencarian nyaman yang\n"
-"memperbolehkan kita untuk memilih antara banyak kota dengan nama yang sama, dengan\n"
-"menyediakan informasi pada lokasi kota yang dicari."
 
 #: templates/maposmatic/about.html:131
 msgid "Contributing"
-msgstr "Berkontribusi"
+msgstr ""
 
 #: templates/maposmatic/about.html:134
 msgid ""
@@ -454,23 +368,14 @@ msgid ""
 "contribute. Here are the few starting points to help\n"
 "us:"
 msgstr ""
-"Seperti yang disebutkan diatas, keduanya antara <i>OCitySMap</i> dan\n"
-"<i>MapOSMatic</i> merupakan software yang gratis, jadi Andapun kami undang untuk\n"
-"berkontribusi. Berikut beberapa point untuk memulai untuk membantu\n"
-"kami:"
 
 #: templates/maposmatic/about.html:141
-#, fuzzy
 msgid ""
 "The\n"
 "  <a href=\"http://wiki.maposmatic.org\">MapOSMatic Wiki</a>,\n"
 "  which contains valuable technical information and documents about\n"
 "  MapOSMatic;"
 msgstr ""
-"The\n"
-"  <a href=\"http://wiki.maposmatic.org\">MapOSMatic Wiki</a>,\n"
-"  yang berisi informasi teknikal dan dokumen-dokumen yang berguna mengenai\n"
-"  MapOSMatic;"
 
 #: templates/maposmatic/about.html:145
 msgid ""
@@ -478,9 +383,6 @@ msgid ""
 "  href=\"https://savannah.nongnu.org/projects/maposmatic/\">project on\n"
 "  Savannah</a>;"
 msgstr ""
-"Project <a\n"
-"  href=\"https://savannah.nongnu.org/projects/maposmatic/\"> di\n"
-"  Savannah</a>;"
 
 #: templates/maposmatic/about.html:148
 msgid ""
@@ -488,17 +390,12 @@ msgid ""
 "  href=\"http://lists.nongnu.org/mailman/listinfo/maposmatic-dev\">development\n"
 "  mailing-list</a>;"
 msgstr ""
-"The <a\n"
-"  href=\"http://lists.nongnu.org/mailman/listinfo/maposmatic-dev\">development\n"
-"  mailing-list</a>;"
 
 #: templates/maposmatic/about.html:151
 msgid ""
 "The IRC channel <tt>#maposmatic</tt> on\n"
 "  Freenode;"
 msgstr ""
-"Channel IRC <tt>#maposmatic</tt> pada\n"
-"  Freenode;"
 
 #: templates/maposmatic/about.html:153
 msgid ""
@@ -507,10 +404,6 @@ msgid ""
 "  Git repository</a>, which can be cloned using <tt>git clone\n"
 "  git://git.sv.gnu.org/maposmatic/ocitysmap.git</tt>;"
 msgstr ""
-"The <a\n"
-"  href=\"http://git.savannah.gnu.org/cgit/maposmatic/ocitysmap.git\">OCitySMap\n"
-"  Git repository</a>, yang dapan di kloning menggunakan <tt>git clone\n"
-"  git://git.sv.gnu.org/maposmatic/ocitysmap.git</tt>;"
 
 #: templates/maposmatic/about.html:157
 msgid ""
@@ -519,10 +412,6 @@ msgid ""
 "  Git repository</a>, which can be cloned using\n"
 "  <tt>git clone git://git.sv.gnu.org/maposmatic.git</tt>;"
 msgstr ""
-"The <a\n"
-"  href=\"http://git.savannah.gnu.org/cgit/maposmatic.git\">MapOSMatic\n"
-"  Git repository</a>, yang dapat di kloning menggunakan\n"
-"  <tt>git clone git://git.sv.gnu.org/maposmatic.git</tt>;"
 
 #: templates/maposmatic/about.html:161
 msgid ""
@@ -530,13 +419,10 @@ msgid ""
 "  href=\"https://savannah.nongnu.org/task/?group=maposmatic\">TODO-list\n"
 "  and ideas</a>."
 msgstr ""
-"<a\n"
-"  href=\"https://savannah.nongnu.org/task/?group=maposmatic\">TODO-list\n"
-"  dan ide-ide</a>."
 
 #: templates/maposmatic/about.html:166
 msgid "Contributors"
-msgstr "Kontributor"
+msgstr ""
 
 #: templates/maposmatic/about.html:170
 msgid "Core team"
@@ -553,7 +439,8 @@ msgid "Developer and Mapnik stylesheets"
 msgstr ""
 
 #: templates/maposmatic/about.html:178
-msgid "Developer, system administration, GIS database maintenance and site design"
+msgid ""
+"Developer, system administration, GIS database maintenance and site design"
 msgstr ""
 
 #: templates/maposmatic/about.html:179
@@ -561,98 +448,88 @@ msgid "Developer, treasurer"
 msgstr ""
 
 #: templates/maposmatic/about.html:186
-#, fuzzy
 msgid "Other contributors"
-msgstr "Kontributor"
+msgstr ""
 
 #: templates/maposmatic/about.html:189
-#, fuzzy
 msgid "German translation"
-msgstr "terjemahan bahasa Jerman"
+msgstr ""
 
 #: templates/maposmatic/about.html:190
-#, fuzzy
 msgid "Italian translation"
-msgstr "terjemahan bahasa Italia"
+msgstr ""
 
 #: templates/maposmatic/about.html:191
-#, fuzzy
 msgid "Catalan translation"
-msgstr "terjemahan bahasa Catalan"
+msgstr ""
 
 #: templates/maposmatic/about.html:192
-#, fuzzy
 msgid "Russian translation"
-msgstr "terjemahan bahasa Rusia"
+msgstr ""
 
 #: templates/maposmatic/about.html:193
-#, fuzzy
 msgid "Arabic translation"
-msgstr "terjemahan bahasa Arab"
+msgstr ""
 
 #: templates/maposmatic/about.html:194 templates/maposmatic/about.html:195
-#, fuzzy
 msgid "Brasilian portuguese translation"
-msgstr "terjemahan bahasa Portugis-Brasil"
+msgstr ""
 
 #: templates/maposmatic/about.html:196
-#, fuzzy
 msgid "Danish translation"
-msgstr "terjemahan bahasa Denmark"
+msgstr ""
 
 #: templates/maposmatic/about.html:197
-#, fuzzy
 msgid "Dutch translation"
-msgstr "terjemahan bahasa Belanda"
+msgstr ""
 
 #: templates/maposmatic/about.html:198
-#, fuzzy
 msgid "Croatian translation"
-msgstr "terjemahan bahasa Kroasia"
+msgstr ""
 
 #: templates/maposmatic/about.html:199
-#, fuzzy
 msgid "Polish translation"
-msgstr "terjemahan bahasa Polandia"
+msgstr ""
 
 #: templates/maposmatic/about.html:200
-#, fuzzy
 msgid "Indonesian translation"
-msgstr "terjemahan bahasa Rusia"
+msgstr ""
 
-#: templates/maposmatic/about.html:201
-#, fuzzy
-msgid "Norvegian bokmål translation"
-msgstr "terjemahan bahasa Rusia"
+#: templates/maposmatic/about.html:201 templates/maposmatic/about.html:202
+msgid "Norwegian bokmål translation"
+msgstr ""
 
 #: templates/maposmatic/about.html:202
-#, fuzzy
-msgid "Norvegian bokmål and Norvegian nynorsk translations"
-msgstr "terjemahan bahasa Rusia"
+msgid "Norwegian nynorsk translation"
+msgstr ""
 
 #: templates/maposmatic/about.html:203
-#, fuzzy
 msgid "Turkish translation"
-msgstr "terjemahan bahasa Denmark"
+msgstr ""
+
+#: templates/maposmatic/about.html:203
+msgid "Translation automation"
+msgstr ""
 
 #: templates/maposmatic/about.html:204
-#, fuzzy
+msgid "Kirgyz translation"
+msgstr ""
+
+#: templates/maposmatic/about.html:205
 msgid "Printable stylesheet"
-msgstr "Stylesheet"
+msgstr ""
 
 #: templates/maposmatic/base.html:41
-#, fuzzy
 msgid "Maps feed"
-msgstr "MapOSMatic maps feed"
+msgstr ""
 
 #: templates/maposmatic/base.html:58 templates/maposmatic/index.html:65
 msgid "Platform status"
 msgstr ""
 
 #: templates/maposmatic/base.html:60
-#, fuzzy
 msgid "Rendering daemon: "
-msgstr "Rendering: "
+msgstr ""
 
 #: templates/maposmatic/base.html:61
 msgid "GIS database: "
@@ -660,16 +537,16 @@ msgstr ""
 
 #: templates/maposmatic/base.html:69
 msgid "Home"
-msgstr "Beranda"
+msgstr ""
 
 #: templates/maposmatic/base.html:70 templates/maposmatic/new.html:34
 msgid "Create map"
-msgstr "Buat peta"
+msgstr ""
 
 #: templates/maposmatic/base.html:71 templates/maposmatic/maps.html:34
 #: templates/maposmatic/maps.html.py:38
 msgid "Maps"
-msgstr "Peta"
+msgstr ""
 
 #: templates/maposmatic/base.html:73 templates/maposmatic/donate.html:34
 #: templates/maposmatic/donate.html:36 templates/maposmatic/index.html:119
@@ -677,13 +554,10 @@ msgid "Donate"
 msgstr ""
 
 #: templates/maposmatic/base.html:113
-#, fuzzy
-msgid "MapOSMatic is a free software webservice to generate maps of cities using OpenStreetMap data."
+msgid ""
+"MapOSMatic is a free software webservice to generate maps of cities using "
+"OpenStreetMap data."
 msgstr ""
-"MapOSMatic merupakan software web service gratis yang\n"
-"membantu Anda untuk menghasilkan peta kota menggunakan\n"
-"<a href=\"http://www.openstreetmap.org\">OpenStreetMap</a> data. Sebuah peta kota\n"
-"terdiri dari dua halaman:"
 
 #: templates/maposmatic/donate-thanks.html:34
 msgid "Thanks!"
@@ -754,32 +628,28 @@ msgid "Donate via PayPal &raquo;"
 msgstr ""
 
 #: templates/maposmatic/index.html:41
-#, fuzzy
-msgid "MapOSMatic is a free software web service that allows you to generate maps of cities using <a href=\"http://www.openstreetmap.org\">OpenStreetMap</a> data. The generated maps are available in PNG, PDF and SVG formats and are ready to be printed."
+msgid ""
+"MapOSMatic is a free software web service that allows you to generate maps "
+"of cities using <a href=\"http://www.openstreetmap.org\">OpenStreetMap</a> "
+"data. The generated maps are available in PNG, PDF and SVG formats and are "
+"ready to be printed."
 msgstr ""
-"MapOSMatic merupakan software web service gratis yang\n"
-"membantu Anda untuk menghasilkan peta kota menggunakan\n"
-"<a href=\"http://www.openstreetmap.org\">OpenStreetMap</a> data. Sebuah peta kota\n"
-"terdiri dari dua halaman:"
 
 #: templates/maposmatic/index.html:45
-#, fuzzy
-msgid "As the data used to generate maps is coming from OpenStreetMap, you can freely reuse, sell, or modify the generated maps under the <a href=\"http://wiki.openstreetmap.org/wiki/License\">terms of the OpenStreetMap license</a>."
+msgid ""
+"As the data used to generate maps is coming from OpenStreetMap, you can "
+"freely reuse, sell, or modify the generated maps under the <a "
+"href=\"http://wiki.openstreetmap.org/wiki/License\">terms of the "
+"OpenStreetMap license</a>."
 msgstr ""
-"Karena data yang digunakan untuk menghasilkan peta didapat dari\n"
-"OpenStreetMap, Anda dapat dengan bebas (under the <a\n"
-"href=\"http://wiki.openstreetmap.org/wiki/License\">terms of\n"
-"OpenStreetMap license</a>) menggunakan kembali, menjual, mengubah, ...\n"
-"peta yang ada."
 
 #: templates/maposmatic/index.html:49
 msgid "Learn more"
 msgstr ""
 
 #: templates/maposmatic/index.html:50
-#, fuzzy
 msgid "Create a map &raquo;"
-msgstr "Buat peta"
+msgstr ""
 
 #: templates/maposmatic/index.html:69
 #, python-format
@@ -788,11 +658,17 @@ msgstr ""
 
 #: templates/maposmatic/index.html:75
 #, python-format
-msgid "<i class=\"icon-white icon-ok\"></i> All systems are operational. The rendering daemon is running and the GIS database was <span class=\"tooltipped\" data-original-title=\"%(gis_lastupdate)s\">updated %(date)s ago</span>."
+msgid ""
+"<i class=\"icon-white icon-ok\"></i> All systems are operational. The "
+"rendering daemon is running and the GIS database was <span "
+"class=\"tooltipped\" data-original-title=\"%(gis_lastupdate)s\">updated "
+"%(date)s ago</span>."
 msgstr ""
 
 #: templates/maposmatic/index.html:78
-msgid "Systems are operational but renderings may not reflect the latest available OpenStreetMap data:"
+msgid ""
+"Systems are operational but renderings may not reflect the latest available "
+"OpenStreetMap data:"
 msgstr ""
 
 #: templates/maposmatic/index.html:83
@@ -800,169 +676,178 @@ msgid "<i class=\"icon-white icon-ok\"></i> The rendering daemon is running."
 msgstr ""
 
 #: templates/maposmatic/index.html:85
-#, fuzzy
-msgid "<i class=\"icon-white icon-off\"></i> The rendering daemon is not running: jobs will be queued until the rendering daemon is back up."
-msgstr "MapOSMatic rendering daemon saat ini sedang tidak bekerja! Pemrosesan akan mengantri hingga daemon rendering telah berhasil di back up."
+msgid ""
+"<i class=\"icon-white icon-off\"></i> The rendering daemon is not running: "
+"jobs will be queued until the rendering daemon is back up."
+msgstr ""
 
 #: templates/maposmatic/index.html:91
 #, python-format
-msgid "<i class=\"icon-white icon-ok\"></i> The GIS database is online and up to date, <span class=\"tooltipped\" data-original-title=\"%(gis_lastupdate)s\">updated %(date)s ago</span>."
+msgid ""
+"<i class=\"icon-white icon-ok\"></i> The GIS database is online and up to "
+"date, <span class=\"tooltipped\" data-original-"
+"title=\"%(gis_lastupdate)s\">updated %(date)s ago</span>."
 msgstr ""
 
 #: templates/maposmatic/index.html:94
 #, python-format
-msgid "<i class=\"icon-white icon-warning-sign\"></i> The GIS database is not up to date and was only <span class=\"tooltipped\" data-original-title=\"%(gis_lastupdate)s\">updated %(date)s ago</span>."
+msgid ""
+"<i class=\"icon-white icon-warning-sign\"></i> The GIS database is not up to"
+" date and was only <span class=\"tooltipped\" data-original-"
+"title=\"%(gis_lastupdate)s\">updated %(date)s ago</span>."
 msgstr ""
 
 #: templates/maposmatic/index.html:96
-msgid "<i class=\"icon-white icon-off\"></i> The GIS database is not available. Renderings cannot be processed at this time."
+msgid ""
+"<i class=\"icon-white icon-off\"></i> The GIS database is not available. "
+"Renderings cannot be processed at this time."
 msgstr ""
 
 #: templates/maposmatic/index.html:106
 msgid "Latest news"
-msgstr "Berita terbaru"
+msgstr ""
 
 #: templates/maposmatic/index.html:112
 #, python-format
 msgid "published %(date)s ago"
-msgstr "diterbitkan %(date)s lalu"
+msgstr ""
 
 #: templates/maposmatic/index.html:122
-msgid "You can donate to help us improve the service. See our <a href=\"/donate\">donation</a> page for more information on how donations are processed and how they help us keep MapOSMatic free (and ad-free!)."
+msgid ""
+"You can donate to help us improve the service. See our <a "
+"href=\"/donate\">donation</a> page for more information on how donations are"
+" processed and how they help us keep MapOSMatic free (and ad-free!)."
 msgstr ""
 
 #: templates/maposmatic/map-full.html:41
 msgid "Updating now..."
 msgstr ""
 
-#: templates/maposmatic/map-full.html:55
-#, fuzzy, python-format
-msgid "Submitted %(date)s"
-msgstr "diterbitkan %(date)s lalu"
+#: templates/maposmatic/map-full.html:59 templates/maposmatic/maps.html:59
+#, python-format
+msgid "Request submitted: %(date)s"
+msgstr ""
 
-#: templates/maposmatic/map-full.html:60
-#, fuzzy, python-format
-msgid "Rendering completed %(date)s"
-msgstr "Rendering selesai pada"
+#: templates/maposmatic/map-full.html:64 templates/maposmatic/maps.html:64
+#, python-format
+msgid "Rendering started: %(date)s"
+msgstr ""
 
-#: templates/maposmatic/map-full.html:80 templates/maposmatic/maps.html:63
-#, fuzzy, python-format
+#: templates/maposmatic/map-full.html:69 templates/maposmatic/maps.html:69
+#, python-format
+msgid "Rendering completed: %(date)s"
+msgstr ""
+
+#: templates/maposmatic/map-full.html:74 templates/maposmatic/maps.html:74
+#, python-format
+msgid "Rendering cancelled: %(date)s"
+msgstr ""
+
+#: templates/maposmatic/map-full.html:94 templates/maposmatic/maps.html:83
+#, python-format
 msgid "Pending, submitted %(date)s ago"
-msgstr "diterbitkan %(date)s lalu"
+msgstr ""
 
-#: templates/maposmatic/map-full.html:82 templates/maposmatic/maps.html:65
+#: templates/maposmatic/map-full.html:96 templates/maposmatic/maps.html:85
 msgid "Pending..."
 msgstr ""
 
-#: templates/maposmatic/map-full.html:92
+#: templates/maposmatic/map-full.html:106
 #, python-format
 msgid "Cancel this queued request (position %(pos)s in the queue)"
 msgstr ""
 
-#: templates/maposmatic/map-full.html:93
+#: templates/maposmatic/map-full.html:107
 msgid "<i class=\"icon-white icon-remove-sign\"></i> Cancel"
 msgstr ""
 
-#: templates/maposmatic/map-full.html:104 templates/maposmatic/maps.html:73
-#, fuzzy, python-format
+#: templates/maposmatic/map-full.html:118 templates/maposmatic/maps.html:93
+#, python-format
 msgid "Rendering is in progress, started %(date)s ago"
-msgstr "Rendering sedang dalam progres..."
+msgstr ""
 
-#: templates/maposmatic/map-full.html:106 templates/maposmatic/maps.html:75
-#, fuzzy
+#: templates/maposmatic/map-full.html:120 templates/maposmatic/maps.html:95
 msgid "Rendering..."
-msgstr "Rendering: "
+msgstr ""
 
-#: templates/maposmatic/map-full.html:115
-#: templates/maposmatic/map-full.html:139 templates/maposmatic/maps.html:83
-#: templates/maposmatic/maps.html.py:107
+#: templates/maposmatic/map-full.html:129
+#: templates/maposmatic/map-full.html:153 templates/maposmatic/maps.html:102
+#: templates/maposmatic/maps.html.py:126
 msgid "Download"
 msgstr ""
 
-#: templates/maposmatic/map-full.html:120 templates/maposmatic/maps.html:88
+#: templates/maposmatic/map-full.html:134 templates/maposmatic/maps.html:107
 msgid "Download other formats and map indeces"
 msgstr ""
 
-#: templates/maposmatic/map-full.html:125 templates/maposmatic/maps.html:93
+#: templates/maposmatic/map-full.html:139 templates/maposmatic/maps.html:112
 msgid "map"
 msgstr ""
 
-#: templates/maposmatic/map-full.html:130 templates/maposmatic/maps.html:98
-#, fuzzy
+#: templates/maposmatic/map-full.html:144 templates/maposmatic/maps.html:117
 msgid "index"
-msgstr "Indeks: "
+msgstr ""
 
-#: templates/maposmatic/map-full.html:138 templates/maposmatic/maps.html:106
+#: templates/maposmatic/map-full.html:152
 msgid "The generated files are no longer available."
-msgstr "File yang dihasilkan tidak lagi tersedia."
+msgstr ""
 
-#: templates/maposmatic/map-full.html:147
+#: templates/maposmatic/map-full.html:161
 #, python-format
 msgid "Updating in <span>%(refresh)s</span>s..."
 msgstr ""
 
-#: templates/maposmatic/map-full.html:149
-#, fuzzy
+#: templates/maposmatic/map-full.html:163
 msgid "Map details"
-msgstr "Lebih detil"
+msgstr ""
 
-#: templates/maposmatic/map-full.html:154
-#, fuzzy
+#: templates/maposmatic/map-full.html:168
 msgid "City"
-msgstr "Peta Kota"
+msgstr ""
 
-#: templates/maposmatic/map-full.html:161 templates/maposmatic/new.html:108
+#: templates/maposmatic/map-full.html:175 templates/maposmatic/new.html:108
 msgid "Layout"
-msgstr "Layout"
+msgstr ""
 
-#: templates/maposmatic/map-full.html:163 templates/maposmatic/new.html:115
+#: templates/maposmatic/map-full.html:177 templates/maposmatic/new.html:115
 msgid "Stylesheet"
-msgstr "Stylesheet"
+msgstr ""
 
-#: templates/maposmatic/map-full.html:165
+#: templates/maposmatic/map-full.html:179
 msgid "Paper format"
 msgstr ""
 
-#: templates/maposmatic/map-full.html:167
-#, fuzzy
+#: templates/maposmatic/map-full.html:181
 msgid "Map locale"
-msgstr "Judul peta"
-
-#: templates/maposmatic/maps.html:115
-#, python-format
-msgid "Map #%(id)s details"
 msgstr ""
 
-#: templates/maposmatic/maps.html:116
-#, python-format
-msgid "Request created %(date)s %(status)s"
+#: templates/maposmatic/maps.html:133
+msgid "Recreate map"
 msgstr ""
 
-#: templates/maposmatic/maps.html:117
-msgid "Map details <b class=\"caret caret-up\"></b>"
+#: templates/maposmatic/maps.html:140
+msgid "Map thumbnail"
 msgstr ""
 
-#: templates/maposmatic/maps.html:134
+#: templates/maposmatic/maps.html:160
 msgid "Our database does not contain any rendered maps for the moment."
-msgstr "Saat ini database kami tidak memiliki peta yang telah dirender."
+msgstr ""
 
-#: templates/maposmatic/maps.html:136
+#: templates/maposmatic/maps.html:162
 msgid "No map matches your query."
-msgstr "Tidak ada peta yang cocok dengan query Anda."
+msgstr ""
 
-#: templates/maposmatic/maps.html:136
-#, fuzzy
+#: templates/maposmatic/maps.html:162
 msgid "Create a new map!"
-msgstr "Buat peta baru!"
+msgstr ""
 
 #: templates/maposmatic/new.html:41
 msgid "Generate your own map"
-msgstr "Hasilkan peta anda sendiri"
+msgstr ""
 
 #: templates/maposmatic/new.html:56
-#, fuzzy
 msgid "City search"
-msgstr "Peta Kota"
+msgstr ""
 
 #: templates/maposmatic/new.html:62
 msgid "Geographic area"
@@ -982,9 +867,8 @@ msgid ""
 msgstr ""
 
 #: templates/maposmatic/new.html:122
-#, fuzzy
 msgid "Map layout and stylesheet"
-msgstr "Stylesheet"
+msgstr ""
 
 #: templates/maposmatic/new.html:124
 msgid ""
@@ -997,7 +881,7 @@ msgstr ""
 
 #: templates/maposmatic/new.html:137
 msgid "Paper size"
-msgstr "Ukuran kertas"
+msgstr ""
 
 #: templates/maposmatic/new.html:145
 msgid "Paper orientation"
@@ -1008,52 +892,50 @@ msgid "An error occured while retrieving compatible paper sizes."
 msgstr ""
 
 #: templates/maposmatic/new.html:156
-msgid "<i class=\"icon-refresh\"></i> Calculating available paper formats for your map..."
+msgid ""
+"<i class=\"icon-refresh\"></i> Calculating available paper formats for your "
+"map..."
 msgstr ""
 
 #: templates/maposmatic/new.html:161
-#, fuzzy
 msgid "Paper format and size"
-msgstr "Ukuran kertas"
+msgstr ""
 
 #: templates/maposmatic/new.html:163
 msgid "Select the desired format, size and orientation for your map."
 msgstr ""
 
 #: templates/maposmatic/new.html:172
-#, fuzzy
 msgid "Map title"
-msgstr "Judul peta"
+msgstr ""
 
 #: templates/maposmatic/new.html:178
 msgid "Language"
-msgstr "Bahasa"
+msgstr ""
 
 #: templates/maposmatic/new.html:187
 msgid "Summary"
-msgstr "Ringkasan"
+msgstr ""
 
 #: templates/maposmatic/new.html:190
-#, fuzzy
 msgid "Location:"
-msgstr "Lokasi"
+msgstr ""
 
 #: templates/maposmatic/new.html:191
 msgid "Layout:"
-msgstr "Layout:"
+msgstr ""
 
 #: templates/maposmatic/new.html:192
 msgid "Stylesheet:"
-msgstr "Stylesheet:"
+msgstr ""
 
 #: templates/maposmatic/new.html:193
 msgid "Paper format:"
 msgstr ""
 
 #: templates/maposmatic/new.html:199
-#, fuzzy
 msgid "Generate &raquo;"
-msgstr "Hasilkan..."
+msgstr ""
 
 #: templates/maposmatic/new.html:205
 msgid "Almost there!"
@@ -1064,287 +946,3 @@ msgid ""
 "You're almost ready to request to map rendering! Select the map\n"
 "language, eventually adjust the title of your map, and you're good to go!"
 msgstr ""
-
-#~ msgid "Not Found"
-#~ msgstr "Tidak ditemukan"
-
-#~ msgid "Not Found (404)"
-#~ msgstr "Tidak ditemukan (404)"
-
-#~ msgid "Not Found <em>(404)</em>"
-#~ msgstr "Tidak ditemukan <em>(404)</em>"
-
-#~ msgid "Not Found."
-#~ msgstr "Tidak ditemukan."
-
-#~ msgid "Server error (500)"
-#~ msgstr "Server error (500)"
-
-#~ msgid "Server Error <em>(500)</em>"
-#~ msgstr "Server Error <em>500</em>"
-
-#~ msgid "There's been an error."
-#~ msgstr "Telah ada kesalahan."
-
-#~ msgid "Authors"
-#~ msgstr "Penulis"
-
-#~ msgid "Job list"
-#~ msgstr "Daftar kerja"
-
-#, fuzzy
-#~ msgid "This page gives the status of the rendering queue, showing all requests received during the last 24 hours as well as all unprocessed requests without time limit. They are ordered starting from the most recent ones."
-#~ msgstr "Halaman ini menunjukkan status antrian proses rendering, menunjukkan seluruh permintaan yang masuk yang diterima selama 24 jam terakhir demikian pula dengan semua permintaan yang belum diproses tanpa batas waktu. Dengan urutan dimulai dari yang terbaru."
-
-#~ msgid ""
-#~ "No map rendering request since the last 24\n"
-#~ "hours."
-#~ msgstr "Tidak ada permintaan proses rendering peta selama 24 jam terakhir."
-
-#~ msgid "Search"
-#~ msgstr "Cari"
-
-#~ msgid "Your free city maps!"
-#~ msgstr "Peta kota gratis!"
-
-#~ msgid "Jobs"
-#~ msgstr "Pekerjaan"
-
-#~ msgid "News"
-#~ msgstr "Berita"
-
-#~ msgid "Random map"
-#~ msgstr "Peta acak"
-
-#~ msgid "No random map found."
-#~ msgstr "Peta acak tidak dapatditemukan."
-
-#~ msgid "Contact"
-#~ msgstr "Kontak"
-
-#~ msgid "Mail:"
-#~ msgstr "E-mail:"
-
-#~ msgid "IRC:"
-#~ msgstr "IRC:"
-
-#~ msgid "on"
-#~ msgstr "on"
-
-#~ msgid "Introduction"
-#~ msgstr "Introduksi"
-
-#, fuzzy
-#~ msgid "The generated maps are available in PNG, PDF and SVG formats and are ready to be printed."
-#~ msgstr ""
-#~ "Peta-peta yang dihasilkan tersedia dalam format PNG, PDF dan\n"
-#~ "SVG yang siap untuk dicetak."
-
-#, fuzzy
-#~ msgid "Find map"
-#~ msgstr "Cari peta"
-
-#, fuzzy
-#~ msgid "Recreate map"
-#~ msgstr "Buat kembali peta"
-
-#~ msgid "You have been redirected to a similar map, rendered less than 24 hours ago."
-#~ msgstr "Anda telah diarahkan ke petayang sama, yang dirender kurang dari 24 jam lalu."
-
-#~ msgid "Refresh the status"
-#~ msgstr "Refresh status"
-
-#~ msgid "(the page will refresh automatically every %(refresh)s seconds until the rendering is completed)."
-#~ msgstr "(halaman ini akan otomatis di refresh setiap %(refresh)s detik hingga proses rendering selesai)."
-
-#, fuzzy
-#~ msgid "Reported error: "
-#~ msgstr "Terjadi kesalahan:"
-
-#~ msgid "Cancel request"
-#~ msgstr "Cancel permintaan"
-
-#~ msgid "Rendering submitted"
-#~ msgstr "Rendering submitted"
-
-#~ msgid "In queue, position"
-#~ msgstr "Dalam antrian, posisi"
-
-#~ msgid "Rendering in progress..."
-#~ msgstr "Rendering dalam progres..."
-
-#~ msgid "Completed on"
-#~ msgstr "Diselesaikan pada"
-
-#~ msgid "Failed on"
-#~ msgstr "Gagal pada"
-
-#, fuzzy
-#~ msgid "Cancelled on"
-#~ msgstr "Dibatalkan pada"
-
-#~ msgid "rendering took %(rendering)s"
-#~ msgstr "rendering memakan waktu %(rendering)s"
-
-#~ msgid "Files: "
-#~ msgstr "Arsip: "
-
-#~ msgid "Map: "
-#~ msgstr "Peta: "
-
-#~ msgid "No index was generated because no information was available in OpenStreetMap to create one. Feel free to contribute the missing data yourself. See the <a href=\"http://wiki.openstreetmap.org/wiki/Getting_Involved\">OSM Wiki</a> for a start. "
-#~ msgstr "Tidak ada indeks yang dihasilkan karena tidak ada informasi yang tersedia di OpenStreetMapuntuk membuatnya. Silahkan berkontribusi untuk mengisi data yang hilang. Lihat <a href=\"http://wiki.openstreetmap.org/wiki/Getting_Involved\">OSM Wiki</a> untuk memulai. "
-
-#~ msgid "View on OpenStreetMap"
-#~ msgstr "Lihat pada OpenStreetMap"
-
-#, fuzzy
-#~ msgid "Location"
-#~ msgstr "Lokasi"
-
-#~ msgid "Title"
-#~ msgstr "Judul"
-
-#~ msgid "Back"
-#~ msgstr "Kembali"
-
-#, fuzzy
-#~ msgid ""
-#~ "To select the city to be rendered, two modes are\n"
-#~ "      available:"
-#~ msgstr ""
-#~ "Untuk memilih kota yang akan dirender, terdapat dua modus\n"
-#~ "      yang tersedia:"
-
-#, fuzzy
-#~ msgid ""
-#~ "You can use <tt>Shift+drag</tt> to zoom on a specific\n"
-#~ "        area of the map. Then, you must select\n"
-#~ "        with <tt>Control+drag</tt> (<tt>Alt+drag</tt> on Mac) the\n"
-#~ "        limits of the area you wish to render."
-#~ msgstr ""
-#~ "Anda dapay menggunakan <tt>Shift+drag</tt> untuk memperbesar (zoom) kepada area\n"
-#~ "        yang lebih spesifik pada peta. Lalu, Anda harus memilih dengan <tt>Control+drag</tt> batasan\n"
-#~ "        area yang ingin anda render."
-
-#~ msgid ""
-#~ "Area too big to be rendered. Please select a\n"
-#~ "        smaller area."
-#~ msgstr ""
-#~ "Area terlalu besar untuk dirender. Silahkan plih a\n"
-#~ "        area yang lebih kecil."
-
-#~ msgid "No results."
-#~ msgstr "Tidak ada hasil."
-
-#, fuzzy
-#~ msgid "Wondering why you can't choose some of these results?<br />Their administrative boundaries are missing from the OSM database.<br />Look at the <a href=\"http://wiki.maposmatic.org/doku.php?id=faq\">FAQ</a> for more details."
-#~ msgstr "Bertanya-tanya mengapa Anda tidak dapat memilih beberapa dari hasil ini?<br />Batas administrasinya hilang dari database OSM.<br />Lihat pada <a href=\"http://wiki.maposmatic.org/doku.php?id=faq\">FAQ</a> untuk datail lebih lanjut."
-
-#~ msgid "Paper"
-#~ msgstr "Kertas"
-
-#~ msgid "Map Index Language:"
-#~ msgstr "Bahasa Indeks Peta:"
-
-#~ msgid "Summary:"
-#~ msgstr "Ringkasan"
-
-#~ msgid "Title:"
-#~ msgstr "Judul:"
-
-#~ msgid "Paper size:"
-#~ msgstr "Ukuran kertas:"
-
-#, fuzzy
-#~ msgid "Language:"
-#~ msgstr "Bahasa:"
-
-#, fuzzy
-#~ msgid "Continue"
-#~ msgstr "Lanjut"
-
-#~ msgid "Previous"
-#~ msgstr "Sebelumnya"
-
-#~ msgid "Next"
-#~ msgstr "Berikutnya"
-
-#~ msgid "slippy map"
-#~ msgstr "slippy map"
-
-#~ msgid "Streets index"
-#~ msgstr "Indeks jalan"
-
-#~ msgid "The map itself, splitted in squares allowing to easily look for streets;"
-#~ msgstr "Peta itu sendiri terbagi menjadi dua kotak yang mempermudah dalam mencari jalan;"
-
-#~ msgid "An index of the streets with references to the squares on the map."
-#~ msgstr "Sebuah indeks jalan dengan referensi kepadakotak-kotak pada peta."
-
-#, fuzzy
-#~ msgid "Rendering failed, and the incomplete files were removed. Please contact contact@maposmatic.org"
-#~ msgstr "Rendering gagal, dan file yang tidak lengkap dihapus. Silahkan hubungi contact@maposmatic.org"
-
-#~ msgid ""
-#~ "<em>MapOSMatic</em> covers the whole world but we need\n"
-#~ "contributors to translate and adapt the few parts of <em>MapOSMatic</em>\n"
-#~ "that are country specific."
-#~ msgstr ""
-#~ "<em>MapOSMatic</em> meliputi seluruh dunia namun kami masih membutuhkan\n"
-#~ "kontributor untuk menerjemahkan dan mengadaptasi beberapa bagian dari <em>MapOSMatic</em>\n"
-#~ "yangthat are country specific."
-
-#~ msgid ""
-#~ "<em>Using an administrative boundary</em>. It allows\n"
-#~ "  to get a map with precise boundaries of the city when such limits are\n"
-#~ "  available in the database. Otherwise, you need to use a bounding\n"
-#~ "  box."
-#~ msgstr ""
-#~ "<em>Menggunakan batas-batas administratif</em>. Hal ini memungkinkan\n"
-#~ "  untuk mendapatkan peta dengan batas-batas yang tepat dari kota ketika batas-batas seperti ini\n"
-#~ "  tersedia dalam database. Selain dari pada itu, Anda harus menggunakan sebuah bounding\n"
-#~ "  box."
-
-#~ msgid "<em>Using a traditional bounding box</em>."
-#~ msgstr "<em>Menggunakan kotak pembatas konvensional</em>."
-
-#~ msgid ""
-#~ "Once the rendering is submitted, you will be brought\n"
-#~ "to a page giving the status of your rendering request. As soon as the\n"
-#~ "rendering is completed (that might take some time depending on the queue\n"
-#~ "length), this page will contain links to the generated\n"
-#~ "map."
-#~ msgstr ""
-#~ "Ketika hasil rendering telah dikirim, Anda akan dibawa\n"
-#~ "pada sebuah halaman yang memberikan status terhadap permintaan rendering Anda. Setelah\n"
-#~ "proses rendering selesai (mungkin akan memakan waktu beberapa lama tergantung panjang\n"
-#~ "antrian), halamanini akan memberikan link ke peta yang telah\n"
-#~ "dibuat."
-
-#~ msgid "Area selection mode:"
-#~ msgstr "Modus pilihan area (zona):"
-
-#~ msgid "City name:"
-#~ msgstr "Nama kota:"
-
-#~ msgid "Title of the map:"
-#~ msgstr "Judul peta:"
-
-#~ msgid "Bounding box:"
-#~ msgstr "Kotak pembatas:"
-
-#~ msgid "No map starts with %(current_letter)s in our database!"
-#~ msgstr "Tidak ada peta yang dimulai dengan huruf %(current_letter)s di database kami!"
-
-#~ msgid "Page"
-#~ msgstr "Halaman"
-
-#~ msgid "of"
-#~ msgstr "dari"
-
-#~ msgid "All"
-#~ msgstr "Semua"
-
-#~ msgid "No index was generated because no information was available in OpenStreetMap to create one!"
-#~ msgstr "Tidak ada indeks yang dibuat karena informasi tidak tersedia bagi OpenStreetMap untuk membuatnya!"
