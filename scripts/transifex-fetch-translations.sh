@@ -10,7 +10,7 @@ git config user.email "hakan@gurkensalat.com"
 git config user.name "Hakan Tandogan"
 
 git add scripts/transifex-fetch-translations.sh
-git commit -m "Updated message key extraction script" scripts/transifex-fetch-translations.sh
+git commit -m "Updated message translation fetching script" scripts/transifex-fetch-translations.sh
 
 # Loop over all translations
 for translation in $(find www/locale -name \*.po)
@@ -35,8 +35,10 @@ do
 	fi
     fi
 
-    # git add ${translation}
-    # git commit -m "Translated ${translation} on transifex.com" ${translation}
+    # git config --list
+
+    git add ${translation}
+    git commit -m "Translated ${translation} on transifex.com" ${translation}
 
 done
 
