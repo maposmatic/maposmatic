@@ -15,8 +15,6 @@ extract_django() {
     fi
 }
 
-git checkout master
-
 # Try to extract keys no matter where we are
 [ -d www ]    && extract_django www
 [ -d ../www ] && extract_django ../www
@@ -31,12 +29,16 @@ git config user.email "hakan@gurkensalat.com"
 git config user.name "Hakan Tandogan"
 
 git add scripts/transifex-extract-keys.sh
-git commit -m "Updated extraction script" scripts/transifex-extract-keys.sh
+git commit -m "Updated message key extraction script" scripts/transifex-extract-keys.sh
 
 git config user.email "transifex-daemon@gurkensalat.com"
 git config user.name "Transifex Daemon"
 
-git add $(find . -name \*.pot)
-git commit -m "Extracted message keys" $(find . -name \*.pot)
+POTFILE=$(find . -name \*.pot | head -n 1)
+git add ${POTFILE}
+git commit -m "Extracted message keys" ${POTFILE}
+
+# Keep Jenkins happy so it won't mark the build as failed for no reason :-(
+true
 
 # Done, git push to be done manually or from jenkins
