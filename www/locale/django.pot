@@ -489,11 +489,11 @@ msgid "Indonesian translation"
 msgstr ""
 
 #: templates/maposmatic/about.html:201 templates/maposmatic/about.html:202
-msgid "Norvegian bokmål translation"
+msgid "Norwegian bokmål translation"
 msgstr ""
 
 #: templates/maposmatic/about.html:202
-msgid "Norvegian nynorsk translation"
+msgid "Norwegian nynorsk translation"
 msgstr ""
 
 #: templates/maposmatic/about.html:203
@@ -505,6 +505,10 @@ msgid "Translation automation"
 msgstr ""
 
 #: templates/maposmatic/about.html:204
+msgid "Kirgyz translation"
+msgstr ""
+
+#: templates/maposmatic/about.html:205
 msgid "Printable stylesheet"
 msgstr ""
 
