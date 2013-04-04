@@ -1,21 +1,21 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
+# 
+# Translators:
 # Bassem JARKAS <jarkas@gmail.com>, 2010.
 msgid ""
 msgstr ""
-"Project-Id-Version: PACKAGE VERSION\n"
-"Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-12-16 12:51+0100\n"
-"PO-Revision-Date: 2010-01-12 17:29+0300\n"
-"Last-Translator: Bassem JARKAS <jarkas@gmail.com>\n"
-"Language-Team: Arabic Translation\n"
-"Language: ar\n"
+"Project-Id-Version: MapOSMatic\n"
+"Report-Msgid-Bugs-To: https://savannah.nongnu.org/bugs/?group=maposmatic\n"
+"PO-Revision-Date: 2013-01-13 15:03+0000\n"
+"Last-Translator: Hakan Tandogan <hakan.tandogan@gmail.com>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: ar\n"
 "Plural-Forms: nplurals=6; plural=n==0 ? 0 : n==1 ? 1 : n==2 ? 2 : n%100>=3 && n%100<=10 ? 3 : n%100>=11 && n%100<=99 ? 4 : 5;\n"
-"X-Generator: Virtaal 0.5.0\n"
 
 #: settings.py:238
 msgid "No localization"
@@ -41,7 +41,7 @@ msgstr ""
 msgid "Administrative boundary"
 msgstr "حدود إدارية"
 
-#: maposmatic/forms.py:58 templates/maposmatic/map-full.html:157
+#: maposmatic/forms.py:58 templates/maposmatic/map-full.html:171
 msgid "Bounding box"
 msgstr "مربع إحاطة"
 
@@ -112,14 +112,12 @@ msgid "Map title required"
 msgstr "عنوان الخريطة مطلوب"
 
 #: maposmatic/forms.py:162
-#, fuzzy
 msgid "Layout required"
-msgstr "عنوان الخريطة مطلوب"
+msgstr ""
 
 #: maposmatic/forms.py:167
-#, fuzzy
 msgid "Stylesheet required"
-msgstr "عنوان الخريطة مطلوب"
+msgstr ""
 
 #: maposmatic/forms.py:173
 msgid "Administrative city required"
@@ -157,66 +155,65 @@ msgid "%(title)s %(format)s Index"
 msgstr "فهرس %(title)s %(format)s"
 
 #: maposmatic/nominatim.py:244
-#, fuzzy
 msgid "Administrative area too big for rendering"
-msgstr "حدود إدارية"
+msgstr ""
 
 #: maposmatic/nominatim.py:300 maposmatic/nominatim.py:314
-#, fuzzy
 msgid "No administrative boundary"
-msgstr "حدود إدارية"
+msgstr ""
 
-#: maposmatic/widgets.py:74
+#: maposmatic/widgets.py:66
 msgid "Latitude of the top left corner"
 msgstr ""
 
-#: maposmatic/widgets.py:75
+#: maposmatic/widgets.py:67
 msgid "Longitude of the top left corner"
 msgstr ""
 
-#: maposmatic/widgets.py:76
+#: maposmatic/widgets.py:68
 msgid "Latitude of the bottom right corner"
 msgstr ""
 
-#: maposmatic/widgets.py:77
+#: maposmatic/widgets.py:69
 msgid "Longitude of the bottom right corner"
 msgstr ""
 
-#: maposmatic/widgets.py:78
+#: maposmatic/widgets.py:70
 msgid "<i class=\"icon-warning-sign\"></i> Area too big to be rendered!"
 msgstr ""
 
-#: maposmatic/widgets.py:79
+#: maposmatic/widgets.py:71
 msgid "Remove any selected region from the map"
 msgstr ""
 
 #: maposmatic/templatetags/extratags.py:34
-#, fuzzy
 msgid "Waiting for rendering to begin..."
-msgstr "انتظار العرض"
+msgstr ""
 
 #: maposmatic/templatetags/extratags.py:36
-#, fuzzy
 msgid "The rendering is in progress..."
-msgstr "جاري العرض..."
+msgstr ""
 
 #: maposmatic/templatetags/extratags.py:39
-#, fuzzy
 msgid "Rendering was successful."
-msgstr "نجح العرض"
+msgstr ""
 
 #: maposmatic/templatetags/extratags.py:41
-#, fuzzy
-msgid "Rendering failed! Please contact contact@maposmatic.org for more information."
-msgstr "فشل العرض، يرجى الاتصال contact@maposmatic.org"
+msgid ""
+"Rendering failed! Please contact contact@maposmatic.org for more "
+"information."
+msgstr ""
 
 #: maposmatic/templatetags/extratags.py:44
-#, fuzzy
-msgid "Rendering is obsolete: the rendering was successful, but the files are no longer available."
-msgstr "الملفات التي تم إنشاؤها لم تعد متوفرة."
+msgid ""
+"Rendering is obsolete: the rendering was successful, but the files are no "
+"longer available."
+msgstr ""
 
 #: maposmatic/templatetags/extratags.py:46
-msgid "Obsolete failed rendering: the rendering failed, and the incomplete files have been removed."
+msgid ""
+"Obsolete failed rendering: the rendering failed, and the incomplete files "
+"have been removed."
 msgstr ""
 
 #: maposmatic/templatetags/extratags.py:48
@@ -232,9 +229,8 @@ msgid "Woups. Looks like you've followed a broken link ;-("
 msgstr ""
 
 #: templates/500.html:34
-#, fuzzy
 msgid "Server error!"
-msgstr "خطأ الخادم"
+msgstr ""
 
 #: templates/500.html:37
 msgid ""
@@ -245,11 +241,11 @@ msgstr ""
 #: templates/maposmatic/about.html:34 templates/maposmatic/about.html.py:36
 #: templates/maposmatic/base.html:72
 msgid "About"
-msgstr "حول MapOSMatic"
+msgstr ""
 
 #: templates/maposmatic/about.html:37
 msgid "History"
-msgstr "التاريخ"
+msgstr ""
 
 #: templates/maposmatic/about.html:40
 msgid ""
@@ -275,7 +271,7 @@ msgstr ""
 
 #: templates/maposmatic/about.html:61
 msgid "How does it work?"
-msgstr "كيف تعمل؟"
+msgstr ""
 
 #: templates/maposmatic/about.html:64
 msgid ""
@@ -364,7 +360,7 @@ msgstr ""
 
 #: templates/maposmatic/about.html:131
 msgid "Contributing"
-msgstr "المساهمة"
+msgstr ""
 
 #: templates/maposmatic/about.html:134
 msgid ""
@@ -427,7 +423,7 @@ msgstr ""
 
 #: templates/maposmatic/about.html:166
 msgid "Contributors"
-msgstr "المساهمون"
+msgstr ""
 
 #: templates/maposmatic/about.html:170
 msgid "Core team"
@@ -444,7 +440,8 @@ msgid "Developer and Mapnik stylesheets"
 msgstr ""
 
 #: templates/maposmatic/about.html:178
-msgid "Developer, system administration, GIS database maintenance and site design"
+msgid ""
+"Developer, system administration, GIS database maintenance and site design"
 msgstr ""
 
 #: templates/maposmatic/about.html:179
@@ -452,9 +449,8 @@ msgid "Developer, treasurer"
 msgstr ""
 
 #: templates/maposmatic/about.html:186
-#, fuzzy
 msgid "Other contributors"
-msgstr "المساهمون"
+msgstr ""
 
 #: templates/maposmatic/about.html:189
 msgid "German translation"
@@ -500,36 +496,41 @@ msgstr ""
 msgid "Indonesian translation"
 msgstr ""
 
-#: templates/maposmatic/about.html:201
-msgid "Norvegian bokmål translation"
+#: templates/maposmatic/about.html:201 templates/maposmatic/about.html:202
+msgid "Norwegian bokmål translation"
 msgstr ""
 
 #: templates/maposmatic/about.html:202
-msgid "Norvegian bokmål and Norvegian nynorsk translations"
+msgid "Norwegian nynorsk translation"
 msgstr ""
 
 #: templates/maposmatic/about.html:203
 msgid "Turkish translation"
 msgstr ""
 
+#: templates/maposmatic/about.html:203
+msgid "Translation automation"
+msgstr ""
+
 #: templates/maposmatic/about.html:204
+msgid "Kirgyz translation"
+msgstr ""
+
+#: templates/maposmatic/about.html:205
 msgid "Printable stylesheet"
 msgstr ""
 
 #: templates/maposmatic/base.html:41
-#, fuzzy
 msgid "Maps feed"
-msgstr "الخرائط"
+msgstr ""
 
 #: templates/maposmatic/base.html:58 templates/maposmatic/index.html:65
-#, fuzzy
 msgid "Platform status"
-msgstr "حالة المهمة"
+msgstr ""
 
 #: templates/maposmatic/base.html:60
-#, fuzzy
 msgid "Rendering daemon: "
-msgstr "العرض:"
+msgstr ""
 
 #: templates/maposmatic/base.html:61
 msgid "GIS database: "
@@ -537,16 +538,16 @@ msgstr ""
 
 #: templates/maposmatic/base.html:69
 msgid "Home"
-msgstr "الصفحة الرئيسية"
+msgstr ""
 
 #: templates/maposmatic/base.html:70 templates/maposmatic/new.html:34
 msgid "Create map"
-msgstr "أنشئ خريطة"
+msgstr ""
 
 #: templates/maposmatic/base.html:71 templates/maposmatic/maps.html:34
 #: templates/maposmatic/maps.html.py:38
 msgid "Maps"
-msgstr "الخرائط"
+msgstr ""
 
 #: templates/maposmatic/base.html:73 templates/maposmatic/donate.html:34
 #: templates/maposmatic/donate.html:36 templates/maposmatic/index.html:119
@@ -554,9 +555,10 @@ msgid "Donate"
 msgstr ""
 
 #: templates/maposmatic/base.html:113
-#, fuzzy
-msgid "MapOSMatic is a free software webservice to generate maps of cities using OpenStreetMap data."
-msgstr "MapOSMatic هو برنامج خدمة ويب حر يسمح لك بتوليد خرائط للمدن باستخدام بيانات <a href=\"http://www.openstreetmap.org\">خريطة الشارع المفتوحة</a>. خريطة المدينة تتكون من صفحتين:"
+msgid ""
+"MapOSMatic is a free software webservice to generate maps of cities using "
+"OpenStreetMap data."
+msgstr ""
 
 #: templates/maposmatic/donate-thanks.html:34
 msgid "Thanks!"
@@ -627,25 +629,28 @@ msgid "Donate via PayPal &raquo;"
 msgstr ""
 
 #: templates/maposmatic/index.html:41
-#, fuzzy
-msgid "MapOSMatic is a free software web service that allows you to generate maps of cities using <a href=\"http://www.openstreetmap.org\">OpenStreetMap</a> data. The generated maps are available in PNG, PDF and SVG formats and are ready to be printed."
-msgstr "MapOSMatic هو برنامج خدمة ويب حر يسمح لك بتوليد خرائط للمدن باستخدام بيانات <a href=\"http://www.openstreetmap.org\">خريطة الشارع المفتوحة</a>. خريطة المدينة تتكون من صفحتين:"
+msgid ""
+"MapOSMatic is a free software web service that allows you to generate maps "
+"of cities using <a href=\"http://www.openstreetmap.org\">OpenStreetMap</a> "
+"data. The generated maps are available in PNG, PDF and SVG formats and are "
+"ready to be printed."
+msgstr ""
 
 #: templates/maposmatic/index.html:45
-#, fuzzy
-msgid "As the data used to generate maps is coming from OpenStreetMap, you can freely reuse, sell, or modify the generated maps under the <a href=\"http://wiki.openstreetmap.org/wiki/License\">terms of the OpenStreetMap license</a>."
+msgid ""
+"As the data used to generate maps is coming from OpenStreetMap, you can "
+"freely reuse, sell, or modify the generated maps under the <a "
+"href=\"http://wiki.openstreetmap.org/wiki/License\">terms of the "
+"OpenStreetMap license</a>."
 msgstr ""
-"بما أن البيانات المستخدمة لتوليد الخرائط قادمة من مشروع خريطة الشارع المفتوحة، يمكنك بحرية (بموجب <a\n"
-"href=\"http://wiki.openstreetmap.org/wiki/License\">شروط رخصة خريطة الشارع المفتوحة</a>) إعادة استخدام أو بيع أو تعديل أو... الخرائط المولّدة."
 
 #: templates/maposmatic/index.html:49
 msgid "Learn more"
 msgstr ""
 
 #: templates/maposmatic/index.html:50
-#, fuzzy
 msgid "Create a map &raquo;"
-msgstr "أنشئ خريطة"
+msgstr ""
 
 #: templates/maposmatic/index.html:69
 #, python-format
@@ -654,11 +659,17 @@ msgstr ""
 
 #: templates/maposmatic/index.html:75
 #, python-format
-msgid "<i class=\"icon-white icon-ok\"></i> All systems are operational. The rendering daemon is running and the GIS database was <span class=\"tooltipped\" data-original-title=\"%(gis_lastupdate)s\">updated %(date)s ago</span>."
+msgid ""
+"<i class=\"icon-white icon-ok\"></i> All systems are operational. The "
+"rendering daemon is running and the GIS database was <span "
+"class=\"tooltipped\" data-original-title=\"%(gis_lastupdate)s\">updated "
+"%(date)s ago</span>."
 msgstr ""
 
 #: templates/maposmatic/index.html:78
-msgid "Systems are operational but renderings may not reflect the latest available OpenStreetMap data:"
+msgid ""
+"Systems are operational but renderings may not reflect the latest available "
+"OpenStreetMap data:"
 msgstr ""
 
 #: templates/maposmatic/index.html:83
@@ -666,26 +677,36 @@ msgid "<i class=\"icon-white icon-ok\"></i> The rendering daemon is running."
 msgstr ""
 
 #: templates/maposmatic/index.html:85
-msgid "<i class=\"icon-white icon-off\"></i> The rendering daemon is not running: jobs will be queued until the rendering daemon is back up."
+msgid ""
+"<i class=\"icon-white icon-off\"></i> The rendering daemon is not running: "
+"jobs will be queued until the rendering daemon is back up."
 msgstr ""
 
 #: templates/maposmatic/index.html:91
 #, python-format
-msgid "<i class=\"icon-white icon-ok\"></i> The GIS database is online and up to date, <span class=\"tooltipped\" data-original-title=\"%(gis_lastupdate)s\">updated %(date)s ago</span>."
+msgid ""
+"<i class=\"icon-white icon-ok\"></i> The GIS database is online and up to "
+"date, <span class=\"tooltipped\" data-original-"
+"title=\"%(gis_lastupdate)s\">updated %(date)s ago</span>."
 msgstr ""
 
 #: templates/maposmatic/index.html:94
 #, python-format
-msgid "<i class=\"icon-white icon-warning-sign\"></i> The GIS database is not up to date and was only <span class=\"tooltipped\" data-original-title=\"%(gis_lastupdate)s\">updated %(date)s ago</span>."
+msgid ""
+"<i class=\"icon-white icon-warning-sign\"></i> The GIS database is not up to"
+" date and was only <span class=\"tooltipped\" data-original-"
+"title=\"%(gis_lastupdate)s\">updated %(date)s ago</span>."
 msgstr ""
 
 #: templates/maposmatic/index.html:96
-msgid "<i class=\"icon-white icon-off\"></i> The GIS database is not available. Renderings cannot be processed at this time."
+msgid ""
+"<i class=\"icon-white icon-off\"></i> The GIS database is not available. "
+"Renderings cannot be processed at this time."
 msgstr ""
 
 #: templates/maposmatic/index.html:106
 msgid "Latest news"
-msgstr "آخر الأخبار"
+msgstr ""
 
 #: templates/maposmatic/index.html:112
 #, python-format
@@ -693,141 +714,141 @@ msgid "published %(date)s ago"
 msgstr ""
 
 #: templates/maposmatic/index.html:122
-msgid "You can donate to help us improve the service. See our <a href=\"/donate\">donation</a> page for more information on how donations are processed and how they help us keep MapOSMatic free (and ad-free!)."
+msgid ""
+"You can donate to help us improve the service. See our <a "
+"href=\"/donate\">donation</a> page for more information on how donations are"
+" processed and how they help us keep MapOSMatic free (and ad-free!)."
 msgstr ""
 
 #: templates/maposmatic/map-full.html:41
 msgid "Updating now..."
 msgstr ""
 
-#: templates/maposmatic/map-full.html:55
+#: templates/maposmatic/map-full.html:59 templates/maposmatic/maps.html:59
 #, python-format
-msgid "Submitted %(date)s"
+msgid "Request submitted: %(date)s"
 msgstr ""
 
-#: templates/maposmatic/map-full.html:60
-#, fuzzy, python-format
-msgid "Rendering completed %(date)s"
-msgstr "العرض اكتمل في"
+#: templates/maposmatic/map-full.html:64 templates/maposmatic/maps.html:64
+#, python-format
+msgid "Rendering started: %(date)s"
+msgstr ""
 
-#: templates/maposmatic/map-full.html:80 templates/maposmatic/maps.html:63
-#, fuzzy, python-format
+#: templates/maposmatic/map-full.html:69 templates/maposmatic/maps.html:69
+#, python-format
+msgid "Rendering completed: %(date)s"
+msgstr ""
+
+#: templates/maposmatic/map-full.html:74 templates/maposmatic/maps.html:74
+#, python-format
+msgid "Rendering cancelled: %(date)s"
+msgstr ""
+
+#: templates/maposmatic/map-full.html:94 templates/maposmatic/maps.html:83
+#, python-format
 msgid "Pending, submitted %(date)s ago"
-msgstr "تم إرسال العرض"
+msgstr ""
 
-#: templates/maposmatic/map-full.html:82 templates/maposmatic/maps.html:65
+#: templates/maposmatic/map-full.html:96 templates/maposmatic/maps.html:85
 msgid "Pending..."
 msgstr ""
 
-#: templates/maposmatic/map-full.html:92
+#: templates/maposmatic/map-full.html:106
 #, python-format
 msgid "Cancel this queued request (position %(pos)s in the queue)"
 msgstr ""
 
-#: templates/maposmatic/map-full.html:93
+#: templates/maposmatic/map-full.html:107
 msgid "<i class=\"icon-white icon-remove-sign\"></i> Cancel"
 msgstr ""
 
-#: templates/maposmatic/map-full.html:104 templates/maposmatic/maps.html:73
-#, fuzzy, python-format
+#: templates/maposmatic/map-full.html:118 templates/maposmatic/maps.html:93
+#, python-format
 msgid "Rendering is in progress, started %(date)s ago"
-msgstr "جاري العرض"
+msgstr ""
 
-#: templates/maposmatic/map-full.html:106 templates/maposmatic/maps.html:75
-#, fuzzy
+#: templates/maposmatic/map-full.html:120 templates/maposmatic/maps.html:95
 msgid "Rendering..."
-msgstr "العرض:"
+msgstr ""
 
-#: templates/maposmatic/map-full.html:115
-#: templates/maposmatic/map-full.html:139 templates/maposmatic/maps.html:83
-#: templates/maposmatic/maps.html.py:107
+#: templates/maposmatic/map-full.html:129
+#: templates/maposmatic/map-full.html:153 templates/maposmatic/maps.html:102
+#: templates/maposmatic/maps.html.py:126
 msgid "Download"
 msgstr ""
 
-#: templates/maposmatic/map-full.html:120 templates/maposmatic/maps.html:88
+#: templates/maposmatic/map-full.html:134 templates/maposmatic/maps.html:107
 msgid "Download other formats and map indeces"
 msgstr ""
 
-#: templates/maposmatic/map-full.html:125 templates/maposmatic/maps.html:93
+#: templates/maposmatic/map-full.html:139 templates/maposmatic/maps.html:112
 msgid "map"
 msgstr ""
 
-#: templates/maposmatic/map-full.html:130 templates/maposmatic/maps.html:98
-#, fuzzy
+#: templates/maposmatic/map-full.html:144 templates/maposmatic/maps.html:117
 msgid "index"
-msgstr "الفهرس:"
+msgstr ""
 
-#: templates/maposmatic/map-full.html:138 templates/maposmatic/maps.html:106
+#: templates/maposmatic/map-full.html:152
 msgid "The generated files are no longer available."
-msgstr "الملفات التي تم إنشاؤها لم تعد متوفرة."
+msgstr ""
 
-#: templates/maposmatic/map-full.html:147
+#: templates/maposmatic/map-full.html:161
 #, python-format
 msgid "Updating in <span>%(refresh)s</span>s..."
 msgstr ""
 
-#: templates/maposmatic/map-full.html:149
-#, fuzzy
+#: templates/maposmatic/map-full.html:163
 msgid "Map details"
-msgstr "المزيد من التفاصيل"
+msgstr ""
 
-#: templates/maposmatic/map-full.html:154
-#, fuzzy
+#: templates/maposmatic/map-full.html:168
 msgid "City"
-msgstr "خريطة المدينة"
+msgstr ""
 
-#: templates/maposmatic/map-full.html:161 templates/maposmatic/new.html:108
+#: templates/maposmatic/map-full.html:175 templates/maposmatic/new.html:108
 msgid "Layout"
 msgstr ""
 
-#: templates/maposmatic/map-full.html:163 templates/maposmatic/new.html:115
+#: templates/maposmatic/map-full.html:177 templates/maposmatic/new.html:115
 msgid "Stylesheet"
 msgstr ""
 
-#: templates/maposmatic/map-full.html:165
+#: templates/maposmatic/map-full.html:179
 msgid "Paper format"
 msgstr ""
 
-#: templates/maposmatic/map-full.html:167
-#, fuzzy
+#: templates/maposmatic/map-full.html:181
 msgid "Map locale"
-msgstr "عنوان الخريطة"
-
-#: templates/maposmatic/maps.html:115
-#, python-format
-msgid "Map #%(id)s details"
 msgstr ""
 
-#: templates/maposmatic/maps.html:116
-#, python-format
-msgid "Request created %(date)s %(status)s"
+#: templates/maposmatic/maps.html:133
+msgid "Recreate map"
 msgstr ""
 
-#: templates/maposmatic/maps.html:117
-msgid "Map details <b class=\"caret caret-up\"></b>"
+#: templates/maposmatic/maps.html:140
+msgid "Map thumbnail"
 msgstr ""
 
-#: templates/maposmatic/maps.html:134
+#: templates/maposmatic/maps.html:160
 msgid "Our database does not contain any rendered maps for the moment."
 msgstr ""
 
-#: templates/maposmatic/maps.html:136
+#: templates/maposmatic/maps.html:162
 msgid "No map matches your query."
 msgstr ""
 
-#: templates/maposmatic/maps.html:136
-#, fuzzy
+#: templates/maposmatic/maps.html:162
 msgid "Create a new map!"
-msgstr "أنشئ خريطة"
+msgstr ""
 
 #: templates/maposmatic/new.html:41
 msgid "Generate your own map"
-msgstr "ولّد خريطتك"
+msgstr ""
 
 #: templates/maposmatic/new.html:56
-#, fuzzy
 msgid "City search"
-msgstr "ابحث"
+msgstr ""
 
 #: templates/maposmatic/new.html:62
 msgid "Geographic area"
@@ -872,7 +893,9 @@ msgid "An error occured while retrieving compatible paper sizes."
 msgstr ""
 
 #: templates/maposmatic/new.html:156
-msgid "<i class=\"icon-refresh\"></i> Calculating available paper formats for your map..."
+msgid ""
+"<i class=\"icon-refresh\"></i> Calculating available paper formats for your "
+"map..."
 msgstr ""
 
 #: templates/maposmatic/new.html:161
@@ -885,21 +908,19 @@ msgstr ""
 
 #: templates/maposmatic/new.html:172
 msgid "Map title"
-msgstr "عنوان الخريطة"
+msgstr ""
 
 #: templates/maposmatic/new.html:178
-#, fuzzy
 msgid "Language"
-msgstr "اللغة:"
+msgstr ""
 
 #: templates/maposmatic/new.html:187
 msgid "Summary"
 msgstr ""
 
 #: templates/maposmatic/new.html:190
-#, fuzzy
 msgid "Location:"
-msgstr "الموقع"
+msgstr ""
 
 #: templates/maposmatic/new.html:191
 msgid "Layout:"
@@ -914,9 +935,8 @@ msgid "Paper format:"
 msgstr ""
 
 #: templates/maposmatic/new.html:199
-#, fuzzy
 msgid "Generate &raquo;"
-msgstr "توليد"
+msgstr ""
 
 #: templates/maposmatic/new.html:205
 msgid "Almost there!"
@@ -927,255 +947,3 @@ msgid ""
 "You're almost ready to request to map rendering! Select the map\n"
 "language, eventually adjust the title of your map, and you're good to go!"
 msgstr ""
-
-#~ msgid "Not Found"
-#~ msgstr "غير موجود"
-
-#~ msgid "Not Found (404)"
-#~ msgstr "غير موجود (404)"
-
-#~ msgid "Not Found <em>(404)</em>"
-#~ msgstr "غير موجود <em>(404)</em>"
-
-#~ msgid "Not Found."
-#~ msgstr "غير موجود."
-
-#~ msgid "Server error (500)"
-#~ msgstr "خطأ الخادم (500)"
-
-#~ msgid "Server Error <em>(500)</em>"
-#~ msgstr "خطأ الخادم <em>(500)</em>"
-
-#~ msgid "There's been an error."
-#~ msgstr "كان هناك خطأ."
-
-#~ msgid "Authors"
-#~ msgstr "المؤلّفون"
-
-#~ msgid "Job list"
-#~ msgstr "قائمة المهام"
-
-#~ msgid "Search"
-#~ msgstr "ابحث"
-
-#~ msgid "Your free city maps!"
-#~ msgstr "خرائط مدينتك الحرة!"
-
-#~ msgid "Jobs"
-#~ msgstr "المهام"
-
-#~ msgid "News"
-#~ msgstr "الأخبار"
-
-#~ msgid "Random map"
-#~ msgstr "خريطة عشوائية"
-
-#~ msgid "No random map found."
-#~ msgstr "لم يتم العثور على أي خريطة عشوائي."
-
-#~ msgid "Contact"
-#~ msgstr "اتصال"
-
-#~ msgid "Mail:"
-#~ msgstr "البريد:"
-
-#~ msgid "IRC:"
-#~ msgstr "أي أر سي:"
-
-#~ msgid "on"
-#~ msgstr "على"
-
-#~ msgid "Introduction"
-#~ msgstr "المقدمة"
-
-#, fuzzy
-#~ msgid "The generated maps are available in PNG, PDF and SVG formats and are ready to be printed."
-#~ msgstr "الخرائط المولّدة متاحة بالصيغ PNG، PDF و SVG وهي جاهزة للطباعة."
-
-#, fuzzy
-#~ msgid "Find map"
-#~ msgstr "خريطة عشوائية"
-
-#, fuzzy
-#~ msgid "Recreate map"
-#~ msgstr "أنشئ خريطة"
-
-#~ msgid "Refresh the status"
-#~ msgstr "حدّث الحالة"
-
-#, fuzzy
-#~ msgid "Reported error: "
-#~ msgstr "خطأ الخادم"
-
-#~ msgid "In queue, position"
-#~ msgstr "في قائمة الانتظار ، الموضع"
-
-#~ msgid "Rendering in progress..."
-#~ msgstr "جاري العرض..."
-
-#~ msgid "Completed on"
-#~ msgstr "اكتمل في"
-
-#~ msgid "Failed on"
-#~ msgstr "فشل في"
-
-#, fuzzy
-#~ msgid "Cancelled on"
-#~ msgstr "فشل في"
-
-#~ msgid "rendering took %(rendering)s"
-#~ msgstr "العرض استغرق %(rendering)s"
-
-#~ msgid "Files: "
-#~ msgstr "الملفات:"
-
-#~ msgid "Map: "
-#~ msgstr "الخرائط:"
-
-#~ msgid "Location"
-#~ msgstr "الموقع"
-
-#~ msgid "Title"
-#~ msgstr "العنوان"
-
-#, fuzzy
-#~ msgid ""
-#~ "To select the city to be rendered, two modes are\n"
-#~ "      available:"
-#~ msgstr "يوجد وضعين لاختيار المدينة التي ستعرض:"
-
-#~ msgid "No results."
-#~ msgstr "لا يوجد نتائج."
-
-#~ msgid "Map Index Language:"
-#~ msgstr "لغة فهرس الخريطة:"
-
-#, fuzzy
-#~ msgid "Title:"
-#~ msgstr "العنوان"
-
-#, fuzzy
-#~ msgid "Language:"
-#~ msgstr "اللغة:"
-
-#, fuzzy
-#~ msgid "Continue"
-#~ msgstr "المساهمة"
-
-#~ msgid "Previous"
-#~ msgstr "السابق"
-
-#~ msgid "Next"
-#~ msgstr "التالي"
-
-#~ msgid "Streets index"
-#~ msgstr "فهرس الشوارع"
-
-#~ msgid "The map itself, splitted in squares allowing to easily look for streets;"
-#~ msgstr "الخريطة نفسها مقسمة إلى مربعات تسمح لك البحث بسهولة عن الشوارع؛"
-
-#~ msgid "An index of the streets with references to the squares on the map."
-#~ msgstr "فهرس الشوارع مع الإشارة إلى المربعات على الخريطة."
-
-#, fuzzy
-#~ msgid "Rendering failed, and the incomplete files were removed. Please contact contact@maposmatic.org"
-#~ msgstr "فشل العرض، يرجى الاتصال contact@maposmatic.org"
-
-#~ msgid ""
-#~ "<em>MapOSMatic</em> covers the whole world but we need\n"
-#~ "contributors to translate and adapt the few parts of <em>MapOSMatic</em>\n"
-#~ "that are country specific."
-#~ msgstr "<em>MapOSMatic</em> يغطي العالم كله ولكننا بحاجة إلى مساهمين لترجمة وتطويع بعض من أقسام <em>MapOSMatic</em> التي تخص البلدان."
-
-#~ msgid ""
-#~ "<em>Using an administrative boundary</em>. It allows\n"
-#~ "  to get a map with precise boundaries of the city when such limits are\n"
-#~ "  available in the database. Otherwise, you need to use a bounding\n"
-#~ "  box."
-#~ msgstr "<em>باستخدام الحدود الإدارية</em>. يسمح لك بالحصول على خريطة بالحدود الدقيقة للمدينة عندما تكون هذه الحدود متاحة في قاعدة البيانات. غير ذلك، أنت بحاجة إلى استخدام مربع الإحاطة."
-
-#~ msgid "<em>Using a traditional bounding box</em>."
-#~ msgstr "<em>باستخدام مربع الإحاطة التقليدي</em>."
-
-#~ msgid ""
-#~ "Once the rendering is submitted, you will be brought\n"
-#~ "to a page giving the status of your rendering request. As soon as the\n"
-#~ "rendering is completed (that might take some time depending on the queue\n"
-#~ "length), this page will contain links to the generated\n"
-#~ "map."
-#~ msgstr "عند إرسال بيانات العرض، سيتم توجيهك إلى صفحة تعطي حالة عرض طلبك. وبمجرد اكتمال العرض (والذي قد يأخذ بعض الوقت اعتمادًا على طول طابور الانتظار) فإن هذه الصفحة ستحتوي على وصلات الخريطة المولّدة."
-
-#~ msgid "Area selection mode:"
-#~ msgstr "نمط اختيار المنطقة:"
-
-#~ msgid "City name:"
-#~ msgstr "اسم المدينة:"
-
-#~ msgid "Title of the map:"
-#~ msgstr "عنوان الخريطة:"
-
-#~ msgid "Bounding box:"
-#~ msgstr "مربع الإحاطة:"
-
-#~ msgid "Page"
-#~ msgstr "الصفحة"
-
-#~ msgid "of"
-#~ msgstr "من"
-
-#~ msgid "All"
-#~ msgstr "الكل"
-
-#~ msgid "Search coming soon!"
-#~ msgstr "البحث سيتوفر قريبًا!"
-
-#~ msgid "Please fill in the form before trying to proceed"
-#~ msgstr "يرجى ملء النموذج قبل محاولة التنفيذ"
-
-#~ msgid "Submission at"
-#~ msgstr "أُرسل في"
-
-#~ msgid "Rendering finished at"
-#~ msgstr "انتهي العرض في"
-
-#~ msgid "Position in queue"
-#~ msgstr "الموضع في الانتظار"
-
-#~ msgid "not started"
-#~ msgstr "لم يبدأ"
-
-#~ msgid "not finished"
-#~ msgstr "لم ينته"
-
-#~ msgid "Thumbnail"
-#~ msgstr "مصغرة"
-
-#~ msgid "Administrative city"
-#~ msgstr "مدينة إدارية"
-
-#~ msgid "Bounding-box coordinates"
-#~ msgstr "إحداثيات مربع الإحاطة"
-
-#~ msgid "Status"
-#~ msgstr "الحالة"
-
-#~ msgid "Submission time"
-#~ msgstr "وقت الإرسال"
-
-#~ msgid "Start of rendering time"
-#~ msgstr "وقت بدء العرض"
-
-#~ msgid "Rendering not started yet"
-#~ msgstr "العرض لم يبدأ بعد"
-
-#~ msgid "End of rendering time"
-#~ msgstr "وقت نهاية العرض"
-
-#~ msgid "Rendering not finished yet"
-#~ msgstr "العرض لم ينته بعد"
-
-#~ msgid "Current position in queue"
-#~ msgstr "الموضع الحالي في الانتظار"
-
-#~ msgid "Result files"
-#~ msgstr "ملفات النتيجة"
