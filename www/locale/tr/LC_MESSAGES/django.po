@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: MapOSMatic\n"
 "Report-Msgid-Bugs-To: https://savannah.nongnu.org/bugs/?group=maposmatic\n"
-"PO-Revision-Date: 2013-01-13 15:03+0000\n"
+"PO-Revision-Date: 2013-04-05 16:12+0000\n"
 "Last-Translator: Hakan Tandogan <hakan.tandogan@gmail.com>\n"
 "Language-Team: Turkish (http://www.transifex.com/projects/p/maposmatic/language/tr/)\n"
 "MIME-Version: 1.0\n"
@@ -134,11 +134,11 @@ msgstr "Gerekli"
 
 #: maposmatic/forms.py:204
 msgid "Same latitude"
-msgstr ""
+msgstr "Aynı enlem"
 
 #: maposmatic/forms.py:211
 msgid "Same longitude"
-msgstr ""
+msgstr "Aynı boylam"
 
 #: maposmatic/forms.py:235
 msgid "Bounding Box too large"
@@ -222,7 +222,7 @@ msgstr "İşlenme kullanıcı tarafından iptal edildi."
 
 #: templates/404.html:34
 msgid "Page not found!"
-msgstr ""
+msgstr "Sayfa bulunamadı!"
 
 #: templates/404.html:37
 msgid "Woups. Looks like you've followed a broken link ;-("
@@ -230,7 +230,7 @@ msgstr ""
 
 #: templates/500.html:34
 msgid "Server error!"
-msgstr ""
+msgstr "Sunucu hatası!"
 
 #: templates/500.html:37
 msgid ""
@@ -241,11 +241,11 @@ msgstr ""
 #: templates/maposmatic/about.html:34 templates/maposmatic/about.html.py:36
 #: templates/maposmatic/base.html:72
 msgid "About"
-msgstr ""
+msgstr "Hakkında"
 
 #: templates/maposmatic/about.html:37
 msgid "History"
-msgstr ""
+msgstr "Tarih"
 
 #: templates/maposmatic/about.html:40
 msgid ""
