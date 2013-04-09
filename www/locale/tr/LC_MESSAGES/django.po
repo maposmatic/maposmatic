@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: MapOSMatic\n"
 "Report-Msgid-Bugs-To: https://savannah.nongnu.org/bugs/?group=maposmatic\n"
-"PO-Revision-Date: 2013-04-05 16:12+0000\n"
+"PO-Revision-Date: 2013-04-08 18:11+0000\n"
 "Last-Translator: Hakan Tandogan <hakan.tandogan@gmail.com>\n"
 "Language-Team: Turkish (http://www.transifex.com/projects/p/maposmatic/language/tr/)\n"
 "MIME-Version: 1.0\n"
@@ -454,11 +454,11 @@ msgstr ""
 
 #: templates/maposmatic/about.html:189
 msgid "German translation"
-msgstr ""
+msgstr "Almanca tercüme"
 
 #: templates/maposmatic/about.html:190
 msgid "Italian translation"
-msgstr ""
+msgstr "Italyanca tercüme"
 
 #: templates/maposmatic/about.html:191
 msgid "Catalan translation"
@@ -706,7 +706,7 @@ msgstr ""
 
 #: templates/maposmatic/index.html:106
 msgid "Latest news"
-msgstr ""
+msgstr "Son yenilikler"
 
 #: templates/maposmatic/index.html:112
 #, python-format
