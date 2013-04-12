@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: MapOSMatic\n"
 "Report-Msgid-Bugs-To: https://savannah.nongnu.org/bugs/?group=maposmatic\n"
-"PO-Revision-Date: 2013-04-08 18:11+0000\n"
+"PO-Revision-Date: 2013-04-11 19:00+0000\n"
 "Last-Translator: Hakan Tandogan <hakan.tandogan@gmail.com>\n"
 "Language-Team: Turkish (http://www.transifex.com/projects/p/maposmatic/language/tr/)\n"
 "MIME-Version: 1.0\n"
@@ -450,71 +450,71 @@ msgstr ""
 
 #: templates/maposmatic/about.html:186
 msgid "Other contributors"
-msgstr ""
+msgstr "Katkıda bulunanlar"
 
 #: templates/maposmatic/about.html:189
 msgid "German translation"
-msgstr "Almanca tercüme"
+msgstr "almanca tercüme"
 
 #: templates/maposmatic/about.html:190
 msgid "Italian translation"
-msgstr "Italyanca tercüme"
+msgstr "italyanca tercüme"
 
 #: templates/maposmatic/about.html:191
 msgid "Catalan translation"
-msgstr ""
+msgstr "katalonyaca tercüme"
 
 #: templates/maposmatic/about.html:192
 msgid "Russian translation"
-msgstr ""
+msgstr "rusça tercüme"
 
 #: templates/maposmatic/about.html:193
 msgid "Arabic translation"
-msgstr ""
+msgstr "arapça tercüme"
 
 #: templates/maposmatic/about.html:194 templates/maposmatic/about.html:195
 msgid "Brasilian portuguese translation"
-msgstr ""
+msgstr "brezilya portekizce tercüme"
 
 #: templates/maposmatic/about.html:196
 msgid "Danish translation"
-msgstr ""
+msgstr "danca tercüme"
 
 #: templates/maposmatic/about.html:197
 msgid "Dutch translation"
-msgstr ""
+msgstr "hollandaca tercüme"
 
 #: templates/maposmatic/about.html:198
 msgid "Croatian translation"
-msgstr ""
+msgstr "hırvatca tercüme"
 
 #: templates/maposmatic/about.html:199
 msgid "Polish translation"
-msgstr ""
+msgstr "lehçe tercüme"
 
 #: templates/maposmatic/about.html:200
 msgid "Indonesian translation"
-msgstr ""
+msgstr "endonezyaca tercüme"
 
 #: templates/maposmatic/about.html:201 templates/maposmatic/about.html:202
 msgid "Norwegian bokmål translation"
-msgstr ""
+msgstr "norveç bokmål tercüme"
 
 #: templates/maposmatic/about.html:202
 msgid "Norwegian nynorsk translation"
-msgstr ""
+msgstr "norveç nynorsk tercüme"
 
 #: templates/maposmatic/about.html:203
 msgid "Turkish translation"
-msgstr ""
+msgstr "türkçe tercüme"
 
 #: templates/maposmatic/about.html:203
 msgid "Translation automation"
-msgstr ""
+msgstr "çeviri otomasyonu"
 
 #: templates/maposmatic/about.html:204
 msgid "Kirgyz translation"
-msgstr ""
+msgstr "kırgız tercüme"
 
 #: templates/maposmatic/about.html:205
 msgid "Printable stylesheet"
@@ -547,12 +547,12 @@ msgstr ""
 #: templates/maposmatic/base.html:71 templates/maposmatic/maps.html:34
 #: templates/maposmatic/maps.html.py:38
 msgid "Maps"
-msgstr ""
+msgstr "Haritalar"
 
 #: templates/maposmatic/base.html:73 templates/maposmatic/donate.html:34
 #: templates/maposmatic/donate.html:36 templates/maposmatic/index.html:119
 msgid "Donate"
-msgstr ""
+msgstr "Bağışla"
 
 #: templates/maposmatic/base.html:113
 msgid ""
@@ -562,11 +562,11 @@ msgstr ""
 
 #: templates/maposmatic/donate-thanks.html:34
 msgid "Thanks!"
-msgstr ""
+msgstr "Teşekkürler!"
 
 #: templates/maposmatic/donate-thanks.html:37
 msgid "Thanks for your donation!"
-msgstr ""
+msgstr "Bağışınız için teşekkür ederiz!"
 
 #: templates/maposmatic/donate-thanks.html:40
 msgid ""
@@ -585,7 +585,7 @@ msgstr ""
 
 #: templates/maposmatic/donate.html:37
 msgid "Why are donations useful?"
-msgstr ""
+msgstr "Neden bağış yararlıdır?"
 
 #: templates/maposmatic/donate.html:42
 #, python-format
@@ -711,7 +711,7 @@ msgstr "Son yenilikler"
 #: templates/maposmatic/index.html:112
 #, python-format
 msgid "published %(date)s ago"
-msgstr ""
+msgstr "%(date)s gün önce yayınlandı"
 
 #: templates/maposmatic/index.html:122
 msgid ""
@@ -722,7 +722,7 @@ msgstr ""
 
 #: templates/maposmatic/map-full.html:41
 msgid "Updating now..."
-msgstr ""
+msgstr "Şu an güncelleniyor ..."
 
 #: templates/maposmatic/map-full.html:59 templates/maposmatic/maps.html:59
 #, python-format
@@ -804,7 +804,7 @@ msgstr ""
 
 #: templates/maposmatic/map-full.html:168
 msgid "City"
-msgstr ""
+msgstr "Şehir"
 
 #: templates/maposmatic/map-full.html:175 templates/maposmatic/new.html:108
 msgid "Layout"
@@ -824,7 +824,7 @@ msgstr ""
 
 #: templates/maposmatic/maps.html:133
 msgid "Recreate map"
-msgstr ""
+msgstr "Haritayı yenile"
 
 #: templates/maposmatic/maps.html:140
 msgid "Map thumbnail"
@@ -882,11 +882,11 @@ msgstr ""
 
 #: templates/maposmatic/new.html:137
 msgid "Paper size"
-msgstr ""
+msgstr "Kağıt boyutu"
 
 #: templates/maposmatic/new.html:145
 msgid "Paper orientation"
-msgstr ""
+msgstr "Kağıt yönü"
 
 #: templates/maposmatic/new.html:153
 msgid "An error occured while retrieving compatible paper sizes."
@@ -908,15 +908,15 @@ msgstr ""
 
 #: templates/maposmatic/new.html:172
 msgid "Map title"
-msgstr ""
+msgstr "Harita başlığı"
 
 #: templates/maposmatic/new.html:178
 msgid "Language"
-msgstr ""
+msgstr "Dil"
 
 #: templates/maposmatic/new.html:187
 msgid "Summary"
-msgstr ""
+msgstr "Özet"
 
 #: templates/maposmatic/new.html:190
 msgid "Location:"
