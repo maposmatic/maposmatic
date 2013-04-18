@@ -3,10 +3,10 @@
 # This file is distributed under the same license as the PACKAGE package.
 # 
 # Translators:
-#  <fantajista1089@gmail.com>, 2013.
-# Hal Seki <hal@plants-web.jp>, 2013.
-# nyampire <>, 2013.
-#  <tosseto@gmail.com>, 2013.
+# fantajista <fantajista1089@gmail.com>, 2013
+# hal_sk <hal@plants-web.jp>, 2013
+# nyampire <>, 2013
+# Toshikazu SETO <tosseto@gmail.com>, 2013
 msgid ""
 msgstr ""
 "Project-Id-Version: MapOSMatic\n"
