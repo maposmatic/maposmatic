@@ -3,9 +3,9 @@
 # This file is distributed under the same license as the PACKAGE package.
 # 
 # Translators:
-#   <joan@montane.cat>, 2012-2013.
-# Joan Montané <joan--sense spam--montane.cat>, 2010.
-# Thomas Petazzoni &lt;thomas.petazzoni@enix.org&gt; <>, 2010.
+# jmontane <joan@montane.cat>, 2012-2013
+# Joan Montané <joan--sense spam--montane.cat>, 2010
+# Thomas Petazzoni &lt;thomas.petazzoni@enix.org&gt; <>, 2010
 msgid ""
 msgstr ""
 "Project-Id-Version: MapOSMatic\n"
