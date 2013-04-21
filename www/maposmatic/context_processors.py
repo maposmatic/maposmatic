@@ -63,7 +63,8 @@ def get_osm_database_last_update():
     except:
         pass
     finally:
-        if cursor is not None:
+        # Close the DB cursor if necessary
+        if cursor is not None and not cursor.closed:
             cursor.close()
 
     return None
