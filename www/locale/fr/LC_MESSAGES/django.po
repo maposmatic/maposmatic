@@ -9,8 +9,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: MapOSMatic\n"
 "Report-Msgid-Bugs-To: https://savannah.nongnu.org/bugs/?group=maposmatic\n"
-"PO-Revision-Date: 2013-03-19 13:49+0000\n"
-"Last-Translator: jvrnix <jvrnix@gmail.com>\n"
+"PO-Revision-Date: 2013-04-21 18:06+0000\n"
+"Last-Translator: mpetazzoni <maxime.petazzoni@bulix.org>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -629,6 +629,10 @@ msgstr "Les donnations peuvent être faites via <a href=\"http://www.paypal.com\
 msgid "Donate via PayPal &raquo;"
 msgstr "Donner par PayPal &raquo;"
 
+#: templates/maposmatic/index.html:36
+msgid "Welcome to MapOSMatic!"
+msgstr "Bienvenue sur MapOSMatic !"
+
 #: templates/maposmatic/index.html:41
 msgid ""
 "MapOSMatic is a free software web service that allows you to generate maps "
@@ -879,7 +883,7 @@ msgid ""
 "printing and binding. The map stylesheet determines the style and appearance of\n"
 "the map itself. Note that the stylesheet also drives what details will be\n"
 "visible on the map."
-msgstr ""
+msgstr "La disposition de la carte détermine comment la carte et l'index sont agencé dans le rendu. La disposition <em>multi-page</em> produit un livret que vous pouvez facilement imprimer et relier. La feuille de style de la carte détermine le style et l'apparence de la carte en elle-même. Notez que la feuille de style détermine aussi quels détails sont visibles sur la carte."
 
 #: templates/maposmatic/new.html:137
 msgid "Paper size"
