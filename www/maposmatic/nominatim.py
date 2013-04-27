@@ -288,16 +288,16 @@ def _prepare_entry(cursor, entry):
     """
     # Try to lookup in the OSM DB, when needed and when it
     # makes sense (ie. the data is coming from a relation)
-    if (entry.get("class") == "boundary" and
-        entry.get("type") == "administrative" and
-        entry.get('osm_type') == "relation"):
+    entry_type = (entry.get('class'), entry.get('type'), entry.get('osm_type'))
+    if entry_type in [('boundary', 'administrative', 'relation'),
+                      ('place', 'city', 'relation')]:
         details = _get_admin_boundary_info_from_GIS(cursor, entry["osm_id"])
 
         if details is None:
             entry["ocitysmap_params"] \
                 = dict(valid=False,
                        reason="no-admin",
-                       reason_text=ugettext("No administrative boundary"))
+                       reason_text=ugettext("No administrative boundary details from GIS"))
         else:
             (osm_id, admin_level, table_name,
              valid, reason, reason_text) = details

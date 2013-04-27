@@ -123,17 +123,18 @@ div.carousel-caption { position: relative; margin: 2em -80px 0 -80px; }
 #wizard-step-location .tab-content { min-height: 400px; }
 
 /* By administrative boundary */
-#wizard-step-location .suggest-icon { top: 25px; right: 3%;
+#wizard-step-location .suggest-icon { top: 25px; right: 5%;
   display: none; position: absolute; z-index: 2; }
 #id_administrative_city { font-size: 25pt;
   line-height: normal; height: 26pt;
   margin: 10px auto; width: 95%;
   position: relative; z-index: 1; }
-#suggest { width: 96%; margin: 2px auto; padding: 5px 0;
+#suggest { width: 96%; margin: 2px auto 2px 0; padding: 5px 0;
   z-index: 1; float: none; position: relative; }
 #suggest a { padding: 3px 10px; }
-#suggest a img { margin-right: 3px; }
+#suggest a img { margin-right: 5px; }
 #suggest a.suggestoff { color: #999 !important; }
+#suggest img[src="undefined"] { visibility: hidden; }
 #suggest a.suggestoff:hover { background: #e5e5e5 !important; }
 #suggest a { overflow: hidden; text-overflow: ellipsis; }
 
