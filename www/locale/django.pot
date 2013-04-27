@@ -157,7 +157,11 @@ msgstr ""
 msgid "Administrative area too big for rendering"
 msgstr ""
 
-#: maposmatic/nominatim.py:300 maposmatic/nominatim.py:314
+#: maposmatic/nominatim.py:300
+msgid "No administrative boundary details from GIS"
+msgstr ""
+
+#: maposmatic/nominatim.py:314
 msgid "No administrative boundary"
 msgstr ""
 
