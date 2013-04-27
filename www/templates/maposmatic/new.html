@@ -4,13 +4,13 @@
  coding: utf-8
 
  maposmatic, the web front-end of the MapOSMatic city map generation system
- Copyright (C) 2009  David Decotigny
- Copyright (C) 2009  Frédéric Lehobey
- Copyright (C) 2009  Pierre Mauduit
- Copyright (C) 2009  David Mentré
- Copyright (C) 2009  Maxime Petazzoni
- Copyright (C) 2009  Thomas Petazzoni
- Copyright (C) 2009  Gaël Utard
+ Copyright (C) 2012  David Decotigny
+ Copyright (C) 2012  Frédéric Lehobey
+ Copyright (C) 2012  Pierre Mauduit
+ Copyright (C) 2012  David Mentré
+ Copyright (C) 2012  Maxime Petazzoni
+ Copyright (C) 2012  Thomas Petazzoni
+ Copyright (C) 2012  Gaël Utard
 
  This program is free software: you can redistribute it and/or modify
  it under the terms of the GNU Affero General Public License as
@@ -26,160 +26,195 @@
  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 {% endcomment %}
 {% load i18n %}
+{% load extratags %}
 
-{% block extralink %}
-{{ form.media }}
+{% block body-class %}new{% endblock %}
+{% block menu-new %}active{% endblock %}
+
+{% block title %}{% trans "Create map" %}{% endblock %}
+{% block extrajs %}
+{% include "maposmatic/suggest.js" %}
+{% include "maposmatic/wizard.js" %}
 {% endblock %}
-
-{% block menu-new %}class="activelink"{% endblock %}
 
 {% block page %}
 <h1 id="submitmapform">{% trans "Generate your own map" %}</h1>
 
-<form id="mainfrm" method="post" action="{% url new %}#submitmapform" class="submitmap">
-<div class="wizard">
-  {{ form.errors }}
+<div class="row-fluid" style="margin-top: 30px;">
+  <div class="span12">
+    <form id="mainfrm" method="post" action="{% url new %}#submitmapform">
+      <div id="wizard" class="carousel slide">
+        <div class="carousel-inner">
 
-  <ul id="steplist">
-    <li id="step-location-title" class="title-current-step">
-      <span class="step-number">1.</span> {% trans "Location" %}
-    </li>
-    <li id="step-title-title">
-      <span class="step-number">2.</span> {% trans "Title" %}
-    </li>
-    <li id="step-layout-title">
-      <span class="step-number">3.</span> {% trans "Layout" %}
-    </li>
-    <li id="step-stylesheet-title">
-      <span class="step-number">4.</span> {% trans "Stylesheet" %}
-    </li>
-    <li id="step-paper-title">
-      <span class="step-number">5.</span> {% trans "Paper size" %}
-    </li>
-    <li id="step-language-title">
-      <span class="step-number">6.</span> {% trans "Language" %}
-    </li>
-    <li id="step-summary-title">
-      <span class="step-number">7.</span> {% trans "Summary" %}
-    </li>
-  </ul>
+          <div class="active item" id="wizard-step-location">
+            <div class="row-fluid">
+              <div class="span12">
+                <ul class="nav nav-tabs">
+                  <li class="active">
+                    <label for="id_mode_0" data-target="#step-location-admin">
+                      <input name="mode" value="admin" id="id_mode_0" type="radio" checked="checked" />
+                      {% trans "City search" %}
+                    </label>
+                  </li>
+                  <li>
+                    <label for="id_mode_1" data-target="#step-location-bbox">
+                      <input name="mode" value="bbox" id="id_mode_1" type="radio" />
+                      {% trans "Geographic area" %}
+                    </label>
+                  </li>
+                </ul>
 
-  <table>
-    <tbody>
-      <tr>
-        <td class="prev">
-          <a id="prevlink" class="navlink" href="javascript:loadPrevStep();"
-             title="{% trans "Back" %}">&larr;</a>
-        </td>
-        <td class="step">
+                <div class="tab-content">
+                  <div class="tab-pane active" id="step-location-admin">
+                    <div style="position: relative;">
+                    {{ form.administrative_city }}
+                    <i class="icon-refresh suggest-icon" id="loading-icon"></i>
+                    <i class="icon-warning-sign suggest-icon" id="error-icon"></i>
+                    <ul id="suggest" class="dropdown-menu" role="menu"
+                        aria-labelledby="id_administrative_city">
+                    </ul>
 
-  <div id="step-location" class="wizardstep">
-    <h3>{% trans "Geographic area selection" %}</h3>
-    <p>
-      {% blocktrans %}To select the city to be rendered, two modes are
-      available:{% endblocktrans %}
-    </p>
+                    {{ form.errors }}
+                    </div>
 
-    {{ form.mode }}
+                    {{ form.administrative_osmid }}
+                    {{ form.administrative_osmid.errors }}
+                    {{ form.administrative_city.errors }}
+                  </div>
+                  <div class="tab-pane" id="step-location-bbox">
+                    {{ form.bbox }}
+                  </div>
+                </div>
+              </div>
+            </div>
 
-    <div id="step-location-bbox" style="display: none";>
-      {{ form.bbox }}
-      {{ form.bbox.errors }}
-      <p class="bbox_info">
-        {% blocktrans %}Latitude and longitude of the top left and bottom right
-        corners of the area to render.{% endblocktrans %}
-      </p>
+            <div class="carousel-caption">
+              <h4>{% trans "Geographic area selection" %}</h4>
+              <p>
+{% blocktrans %}Start by choosing the city or geographic area you want to
+render. Suggestions will appear as you start typing. If you can't find the city
+you want, or if you prefer to choose the exact area you want to render
+yourself, select the <em>Geographic area</em> tab and use the mini-map to set
+the limits of the rendered area.{% endblocktrans %}
+              </p>
+            </div>
+          </div>
 
-      <img src="/smedia/tip.png" class="tip" />
-      <p class="bbox_select_help">
-        {% blocktrans %}You can use <tt>Shift+drag</tt> to zoom on a specific
-        area of the map. Then, you must select
-        with <tt>Control+drag</tt> (<tt>Alt+drag</tt> on Mac) the
-        limits of the area you wish to render.{% endblocktrans %}
-      </p>
+          <div class="item" id="wizard-step-layout-stylesheet">
 
-      <ul id="toobigareaerror" class="errorlist" style="display: none;">
-        <li>{% blocktrans %}Area too big to be rendered. Please select a
-        smaller area.{% endblocktrans %}</li>
-      </ul>
-    </div>
+            <div class="row-fluid">
+              <div class="span6">
+                <fieldset>
+                  <legend>{% trans "Layout" %}</legend>
+                  {{ form.layout }}
+                </fieldset>
+              </div>
 
-    <div id="step-location-admin">
-      {{ form.administrative_city }}
-      <ul id="suggest"></ul>
-      {{ form.administrative_osmid }}
-      {{ form.administrative_osmid.errors }}
-      {{ form.administrative_city.errors }}
-      <span id="noresultsinfo">{% trans "No results." %}</span>
-      <span id="noadminboundary">{% blocktrans %}Wondering why you can't choose some of these results?<br />Their administrative boundaries are missing from the OSM database.<br />Look at the <a href="http://wiki.maposmatic.org/doku.php?id=faq">FAQ</a> for more details.{% endblocktrans %}</span>
-    </div>
+              <div class="span6">
+                <fieldset>
+                  <legend>{% trans "Stylesheet" %}</legend>
+                  {{ form.stylesheet }}
+                </fieldset>
+              </div>
+            </div>
+
+            <div class="carousel-caption">
+              <h4>{% trans "Map layout and stylesheet" %}</h4>
+              <p>
+{% blocktrans %}The map layout determines how the map and the index are
+rendered. The <em>Multi-page layout</em> produces a booklet very suitable for
+printing and binding. The map stylesheet determines the style and appearance of
+the map itself. Note that the stylesheet also drives what details will be
+visible on the map.{% endblocktrans %}
+              </p>
+            </div>
+          </div>
+
+          <div class="item" id="wizard-step-paper-size">
+            <div class="row-fluid" id="paper-selection">
+              <div class="span6">
+                <fieldset id="paper-size">
+                  <legend>{% trans "Paper size" %}</legend>
+                  {{ form.papersize }}
+                  {{ form.paper_width_mm }}
+                  {{ form.paper_height_mm }}
+                </fieldset>
+              </div>
+              <div class="span6">
+                <fieldset id="paper-orientation">
+                  <legend>{% trans "Paper orientation" %}</legend>
+                  {{ form.paperorientation }}
+                </fieldset>
+              </div>
+            </div>
+
+            <div class="row-fluid">
+              <div class="alert alert-error" id="paper-size-loading-error">
+                {% blocktrans %}An error occured while retrieving compatible paper sizes.{% endblocktrans %}
+              </div>
+              <div class="alert alert-info" id="paper-size-loading">
+                {% blocktrans %}<i class="icon-refresh"></i> Calculating available paper formats for your map...{% endblocktrans %}
+              </div>
+            </div>
+
+            <div class="carousel-caption">
+              <h4>{% trans "Paper format and size" %}</h4>
+              <p>
+                {% blocktrans %}Select the desired format, size and orientation for your map.{% endblocktrans %}
+              </p>
+            </div>
+          </div>
+
+          <div class="item" id="wizard-step-lang-title">
+            <div class="row-fluid">
+              <div class="span8">
+                <fieldset>
+                  <legend>{% trans "Map title" %}</legend>
+                  {{ form.maptitle }}
+                </fieldset>
+              </div>
+              <div class="span4">
+                <fieldset>
+                  <legend>{% trans "Language" %}</legend>
+                  {{ form.map_language }}
+                </fieldset>
+              </div>
+            </div>
+
+            <div class="row-fluid" style="margin-top: 30px;">
+              <div class="span12">
+                <fieldset id="summary">
+                  <legend>{% trans "Summary" %}</legend>
+                  <table class="table table-striped">
+                    <tbody>
+                      <tr><td>{% trans "Location:" %}</td><td id="summary-location"></td></tr>
+                      <tr><td>{% trans "Layout:" %}</td><td id="summary-layout"></td></tr>
+                      <tr><td>{% trans "Stylesheet:" %}</td><td id="summary-stylesheet"></td></tr>
+                      <tr><td>{% trans "Paper format:" %}</td><td id="summary-paper-size"></td></tr>
+                    </tbody>
+                  </table>
+                </fieldset>
+
+                <button id="id_go_next_btn" type="submit" class="btn btn-large btn-primary pull-right">
+                  {% trans "Generate &raquo;" %}
+                </button>
+              </div>
+            </div>
+
+            <div class="carousel-caption">
+              <h4>{% trans "Almost there!" %}</h4>
+              <p>
+{% blocktrans %}You're almost ready to request to map rendering! Select the map
+language, eventually adjust the title of your map, and you're good to go!{% endblocktrans %}
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <a href="#wizard" id="prevlink" class="carousel-control left" data-slide="prev">&lsaquo;</a>
+        <a href="#wizard" id="nextlink" class="carousel-control right" data-slide="next">&rsaquo;</a>
+      </div>
+    </form>
   </div>
-
-  <div id="step-title" class="wizardstep">
-    <h3>{% trans "Map title" %}</h3>
-    {{ form.maptitle }}
-  </div>
-
-  <div id="step-layout" class="wizardstep">
-    <h3>{% trans "Layout" %}</h3>
-    {{ form.layout }}
-  </div>
-
-  <div id="step-stylesheet" class="wizardstep">
-    <h3>{% trans "Stylesheet" %}</h3>
-    {{ form.stylesheet }}
-  </div>
-
-  <div id="step-paper" class="wizardstep">
-    <h3>{% trans "Paper" %}</h3>
-    <span id="papersizeerror" style="display: none;">{% trans "An error occured while retrieving compatible paper sizes." %}</span>
-    <span id="papersizeloading" style="display: none;">Calculating available paper formats for your map...</span>
-    <table id="paperselection">
-      <tr>
-        <td id="papersizeselection">{{ form.papersize }}</td>
-        <td id="paperorientationselection">{{ form.paperorientation }}</td>
-      </tr>
-    </table>
-    {{ form.paper_width_mm }}
-    {{ form.paper_height_mm }}
-  </div>
-
-  <div id="step-language" class="wizardstep">
-    <h3>{% trans "Language" %}</h3>
-      {% trans "Map Index Language:" %} {{ form.map_language }}
-  </div>
-  <div id="step-summary" class="wizardstep">
-    <h3>{% trans "Summary:" %}</h3>
-    <ol id="summary">
-      <dt>{% trans "Location:" %}</dt>
-      <dd id="summary-area"></dd>
-      <dt>{% trans "Title:" %}</dt>
-      <dd id="summary-title"></dd>
-      <dt>{% trans "Layout:" %}</dt>
-      <dd id="summary-layout"></dd>
-      <dt>{% trans "Paper size:" %}</dt>
-      <dd id="summary-papersize"></dd>
-      <dt>{% trans "Stylesheet:" %}</dt>
-      <dd id="summary-stylesheet"></dd>
-      <dt>{% trans "Language:" %}</dt>
-      <dd id="summary-language"></dd>
-    </ol>
-
-    <input id="id_go_next_btn" type="submit" value="{% trans "Generate" %}" />
-  </div>
-
-        </td>
-
-        <td class="next">
-          <a id="nextlink" class="navlink" href="javascript:loadNextStep();"
-             title="{% trans "Continue" %}">&rarr;</a>
-        </td>
-      </tr>
-    </tbody>
-  </table>
-
 </div>
-</form>
-
 {% endblock %}
-

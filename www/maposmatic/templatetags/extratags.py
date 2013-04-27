@@ -49,21 +49,10 @@ def job_status_to_str(value, arg, autoescape=None):
 
     return ''
 
-def job_status_to_icon_name(value, arg, autoescape=None):
-    if value == 0:          return 'job-in-queue'
-    if value == 1:          return 'job-in-progress'
-    if value == 2 and arg == 'ok':
-        if arg == 'ok':     return 'job-done'
-    if value == 3 and arg == 'ok':
-        if arg == 'ok':     return 'job-done-obsolete'
-    if value == 4:          return 'job-cancelled'
-
-    return 'job-error'
-
 def feedparsed(value):
     return datetime.datetime(*value[:6])
 
 register.filter('job_status_to_str', job_status_to_str)
-register.filter('job_status_to_icon_name', job_status_to_icon_name)
 register.filter('feedparsed', feedparsed)
 register.filter('abs', lambda x: abs(x))
+register.filter('getitem', lambda d,i: d.get(i,''))

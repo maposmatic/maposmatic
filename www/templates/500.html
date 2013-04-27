@@ -1,11 +1,45 @@
+{% extends "base.html" %}
+
+{% comment %}
+ coding: utf-8
+
+ maposmatic, the web front-end of the MapOSMatic city map generation system
+ Copyright (C) 2009  David Decotigny
+ Copyright (C) 2009  Frédéric Lehobey
+ Copyright (C) 2009  Pierre Mauduit
+ Copyright (C) 2009  David Mentré
+ Copyright (C) 2009  Maxime Petazzoni
+ Copyright (C) 2009  Thomas Petazzoni
+ Copyright (C) 2009  Gaël Utard
+
+ This program is free software: you can redistribute it and/or modify
+ it under the terms of the GNU Affero General Public License as
+ published by the Free Software Foundation, either version 3 of the
+ License, or any later version.
+
+ This program is distributed in the hope that it will be useful,
+ but WITHOUT ANY WARRANTY; without even the implied warranty of
+ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ GNU Affero General Public License for more details.
+
+ You should have received a copy of the GNU Affero General Public License
+ along with this program.  If not, see <http://www.gnu.org/licenses/>.
+{% endcomment %}
 {% load i18n %}
+{% load extratags %}
 
-{% block breadcrumbs %}<div class="breadcrumbs"><a href="/">{% trans "Home" %}</a> &rsaquo; {% trans "Server error" %}</div>{% endblock %}
+{% block title %}Server error!{% endblock %}
+{% block page %}
+<div class="hero-unit">
+  <h1>{% trans "Server error!" %}</h1>
 
-{% block title %}{% trans 'Server error (500)' %}{% endblock %}
+  <p>
+    {% blocktrans %}Well, this is embarrassing. Looks like the server crashed
+    processing this request.{% endblocktrans %}
+  </p>
 
-{% block content %}
-<h1>{% trans 'Server Error <em>(500)</em>' %}</h1>
-<p>{% trans "There's been an error." %}</p>
-
+  <button class="btn btn-large btn-primary">
+    <i class="icon-home"></i> Back to the home page
+  </button>
+</div>
 {% endblock %}

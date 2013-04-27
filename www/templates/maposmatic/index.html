@@ -4,13 +4,13 @@
  coding: utf-8
 
  maposmatic, the web front-end of the MapOSMatic city map generation system
- Copyright (C) 2009  David Decotigny
- Copyright (C) 2009  Frédéric Lehobey
- Copyright (C) 2009  Pierre Mauduit
- Copyright (C) 2009  David Mentré
- Copyright (C) 2009  Maxime Petazzoni
- Copyright (C) 2009  Thomas Petazzoni
- Copyright (C) 2009  Gaël Utard
+ Copyright (C) 2012  David Decotigny
+ Copyright (C) 2012  Frédéric Lehobey
+ Copyright (C) 2012  Pierre Mauduit
+ Copyright (C) 2012  David Mentré
+ Copyright (C) 2012  Maxime Petazzoni
+ Copyright (C) 2012  Thomas Petazzoni
+ Copyright (C) 2012  Gaël Utard
 
  This program is free software: you can redistribute it and/or modify
  it under the terms of the GNU Affero General Public License as
@@ -26,39 +26,109 @@
  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 {% endcomment %}
 {% load i18n %}
+{% load extratags %}
 
-{% block menu-home %}class="activelink"{% endblock %}
+{% block body-class %}home{% endblock %}
+{% block menu-home %}active{% endblock %}
 
 {% block page %}
-<h1>{% trans "Introduction" %}</h1>
+<div class="hero-unit">
+  <h1>{% trans "Welcome to MapOSMatic!" %}</h1>
 
-<div id="chavagne">
-  <a href="/smedia/chavagne.pdf"><img src="/smedia/chavagne-small.png"/></a><br/>
-  {% trans "City map" %}<br/>
-  <a href="/smedia/chavagne.pdf">PDF</a>
+  <div class="row-fluid">
+    <div class="span8">
+      <p>
+      {% blocktrans %}MapOSMatic is a free software web service that allows you to generate maps of cities using <a href="http://www.openstreetmap.org">OpenStreetMap</a> data. The generated maps are available in PNG, PDF and SVG formats and are ready to be printed.{% endblocktrans %}
+      </p>
+
+      <p>
+      {% blocktrans %}As the data used to generate maps is coming from OpenStreetMap, you can freely reuse, sell, or modify the generated maps under the <a href="http://wiki.openstreetmap.org/wiki/License">terms of the OpenStreetMap license</a>.{% endblocktrans %}
+      </p>
+
+      <p class="actions">
+        <a class="btn btn-large pull-right" href="{% url about %}">{% blocktrans %}Learn more{% endblocktrans %}</a>
+        <a class="btn btn-large btn-primary" href="{% url new %}">{% blocktrans %}Create a map &raquo;{% endblocktrans %}</a>
+      </p>
+    </div>
+
+    <div class="span4">
+      <a href="/media/pub/chavagne.pdf" class="thumbnail">
+        <img data-src="holder.js/427x300" src="/media/img/chavagne-small.png"
+             class="tooltipped" data-original-title="Chavagne, France" />
+      </a>
+    </div>
+  </div>
 </div>
 
-<p>
-{% blocktrans %}MapOSMatic is a free software web service that allows you to generate maps of cities using <a href="http://www.openstreetmap.org">OpenStreetMap</a> data. MapOSMatic can generate two kinds of maps:{% endblocktrans %}
-</p>
+<div class="row-fluid">
+  <div class="span4 platform-status platform-status-{{ platform_status }}">
+    <h2>{% trans "Platform status" %}</h2>
 
-<ul>
-  <li>{% blocktrans %}Single page posters, where the map and the street index are rendered side by side. The map itself is split in squares so that streets are easy to find. This format is typically useful for printing on large paper sheets.{% endblocktrans %}</li>
+    {% if queued %}
+    <p class="queue">
+    {% blocktrans with queued|pluralize as qp %}{{ queued }} job{{ qp }} in the rendering queue.{% endblocktrans %}
+    </p>
+    {% endif %}
 
-  <li>{% blocktrans %}Multiple page booklets, where the map and the street index are split into several pages. This format is typically useful for printing on standard paper sheets.{% endblocktrans %}</li>
-</ul>
+    <p>
+    {% if daemon_running and gis_lag_ok %}
+      {% blocktrans with gis_lastupdate|timesince:utc_now as date %}<i class="icon-white icon-ok"></i> All systems are operational. The rendering daemon is running and the GIS database was <span class="tooltipped" data-original-title="{{ gis_lastupdate }}">updated {{ date }} ago</span>.{% endblocktrans %}
+    {% else %}
+      {% if daemon_running and gis_lastupdate %}
+      {% blocktrans %}Systems are operational but renderings may not reflect the latest available OpenStreetMap data:{% endblocktrans %}
+      {% endif %}
+      <ul>
+        <li>
+          {% if daemon_running %}
+          {% blocktrans %}<i class="icon-white icon-ok"></i> The rendering daemon is running.{% endblocktrans %}
+          {% else %}
+          {% blocktrans %}<i class="icon-white icon-off"></i> The rendering daemon is not running: jobs will be queued until the rendering daemon is back up.{% endblocktrans %}
+          {% endif %}
+        </li>
 
-<p>
-{% blocktrans %}The generated maps are available in PNG, PDF and SVG formats and are ready to be printed.{% endblocktrans %}
-</p>
+        <li>
+          {% if gis_lag_ok %}
+          {% blocktrans with gis_lastupdate|timesince:utc_now as date %}<i class="icon-white icon-ok"></i> The GIS database is online and up to date, <span class="tooltipped" data-original-title="{{ gis_lastupdate }}">updated {{ date }} ago</span>.{% endblocktrans %}
+          {% else %}
+            {% if gis_lastupdate %}
+            {% blocktrans with gis_lastupdate|timesince:utc_now as date %}<i class="icon-white icon-warning-sign"></i> The GIS database is not up to date and was only <span class="tooltipped" data-original-title="{{ gis_lastupdate }}">updated {{ date }} ago</span>.{% endblocktrans %}
+            {% else %}
+            {% blocktrans %}<i class="icon-white icon-off"></i> The GIS database is not available. Renderings cannot be processed at this time.{% endblocktrans %}
+            {% endif %}
+          {% endif %}
+        </li>
+      </ul>
+    {% endif %}
+    </p>
+  </div>
 
-<p>
-{% blocktrans %}As the data used to generate maps is coming from OpenStreetMap, you can freely (under the <a href="http://wiki.openstreetmap.org/wiki/License">terms of OpenStreetMap license</a>) reuse, sell, modify, ... the generated maps.{% endblocktrans %}
-</p>
+  <div class="span4 latest-news">
+    <h2>{% trans "Latest news" %}</h2>
 
-<div id="more">
-  <strong><a href="{% url new %}"><img src="/smedia/go-next.png" />{% trans "Create a map" %}</a></strong><br />
-  <a href="#" onclick="javascript:document.getElementById('searchform').style.visibility='visible'; document.getElementById('id_query').focus();"><img src="/smedia/search.png" />{% trans "Find map" %}</a><form id="searchform" style="visibility: hidden; display: inline;" action="{% url maps %}" method="get">&nbsp;{{ form.query }}<input type="submit" value="{% trans "Search" %}" /></form><br/>
-  <a href="{% url about %}"><img src="/smedia/about.png" />{% trans "More details" %}</a><br />
+    <ul>
+      {% for entry in blogposts %}<li>
+        <a href="{{ entry.link }}">{{ entry.title }}</a>
+        <p class="newsinfo">
+          {% blocktrans with entry.updated_parsed|feedparsed|timesince as date %}published {{ date }} ago{% endblocktrans %}
+        </p>
+      </li>{% endfor %}
+    </ul>
+  </div>
+
+  <div class="span4">
+    <h2>{% trans "Donate" %}</h2>
+
+    <p>
+      {% blocktrans %}You can donate to help us improve the service. See our <a href="/donate">donation</a> page for more information on how donations are processed and how they help us keep MapOSMatic free (and ad-free!).{% endblocktrans %}
+    </p>
+
+    <form action="https://www.paypal.com/cgi-bin/webscr" method="post">
+      <input type="hidden" name="cmd" value="_s-xclick" />
+      <input type="hidden" name="hosted_button_id" value="YQPBAUM3JW8T2" />
+      <input type="hidden" name="country" value="{{paypal_country_code}}" />
+      <button type="submit" class="btn" name="submit" alt="PayPal — The safer, easier way to pay online.">{% trans "Donate via PayPal &raquo;" %}</button>
+      <img alt="" border="0" src="https://www.paypalobjects.com/{{paypal_lang_code}}/i/scr/pixel.gif" width="1" height="1"/>
+    </form>
+  </div>
 </div>
 {% endblock %}

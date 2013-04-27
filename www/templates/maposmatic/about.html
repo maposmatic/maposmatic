@@ -4,12 +4,13 @@
  coding: utf-8
 
  maposmatic, the web front-end of the MapOSMatic city map generation system
- Copyright (C) 2009  David Decotigny
- Copyright (C) 2009  Frédéric Lehobey
- Copyright (C) 2009  David Mentré
- Copyright (C) 2009  Maxime Petazzoni
- Copyright (C) 2009  Thomas Petazzoni
- Copyright (C) 2009  Gaël Utard
+ Copyright (C) 2012  David Decotigny
+ Copyright (C) 2012  Frédéric Lehobey
+ Copyright (C) 2012  Pierre Mauduit
+ Copyright (C) 2012  David Mentré
+ Copyright (C) 2012  Maxime Petazzoni
+ Copyright (C) 2012  Thomas Petazzoni
+ Copyright (C) 2012  Gaël Utard
 
  This program is free software: you can redistribute it and/or modify
  it under the terms of the GNU Affero General Public License as
@@ -24,13 +25,13 @@
  You should have received a copy of the GNU Affero General Public License
  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 {% endcomment %}
-
 {% load i18n %}
+{% load extratags %}
 
-{% block menu-about %}
-class="activelink"
-{% endblock %}
+{% block body-class %}about{% endblock %}
+{% block menu-about %}active{% endblock %}
 
+{% block title %}{% trans "About" %}{% endblock %}
 {% block page %}
 <h1>{% trans "About" %}</h1>
 <h2>{% trans "History" %}</h2>
@@ -51,7 +52,7 @@ idea!{% endblocktrans %}
 
 <p>
 {% blocktrans %}Of course, MapOSMatic is fully free software,
-licensed under the <a
+licensed under the <a 
 href="http://www.fsf.org/licensing/licenses/agpl-3.0.html">AGPLv3</a>.
 {% endblocktrans %}
 </p>
@@ -119,7 +120,7 @@ intensive nature of the map rendering process.{% endblocktrans %}
 </p>
 
 <p>
-{% blocktrans %}For the city search engine, we use the wonderful <a
+{% blocktrans %}For the city search engine, we use the wonderful <a 
 href="http://nominatim.openstreetmap.org">Nominatim</a> service. This
 service made it really simple to provide a nice search engine that
 allows to select between multiple cities of the same name, by
@@ -162,40 +163,46 @@ us:{% endblocktrans %}
   and ideas</a>.{% endblocktrans %}</li>
 </ul>
 
-<table class="authors"><tbody><tr>
-  <td width="50%">
-    <h2>{% trans "Authors" %}</h2>
-    <ul>
-      <li>David Decotigny</li>
-      <li>Frédéric Lehobey</li>
-      <li>Étienne Loks</li>
-      <li>Pierre Mauduit</li>
-      <li>David Mentré</li>
-      <li>Maxime Petazzoni</li>
-      <li>Thomas Petazzoni</li>
-      <li>Gaël Utard</li>
-    </ul>
-  </td><td width="50%">
-    <h2>{% trans "Contributors" %}</h2>
-    <ul>
-      <li>Malenki ({% trans "german translation" %})</li>
-      <li>Simone Cortesi ({% trans "italian translation" %})</li>
-      <li>Joan Montané ({% trans "catalan translation" %})</li>
-      <li>Konstantin Mochalov ({% trans "russian translation" %})</li>
-      <li>Bassem Jarkas ({% trans "arabic translation" %})</li>
-      <li>Arlindo Pereira ({% trans "brasilian portuguese translation" %})</li>
-      <li>Rodrigo de Avila ({% trans "brasilian portuguese translation" %})</li>
-      <li>Esben Damgaard ({% trans "danish translation" %})</li>
-      <li>Jeroen van Rijn ({% trans "dutch translation" %})</li>
-      <li>Marjan Vrban ({% trans "croatian translation" %})</li>
-      <li>Łukasz Jernaś ({%trans "polish translation" %})</li>
-      <li>Jeff Haack ({%trans "indonesian translation" %})</li>
-      <li>Hans F. Nordhaug ({%trans "norvegian bokmål translation" %})</li>
-      <li>Guttorm Flatabø ({%trans "norvegian bokmål translation" %},
-          {%trans "norvegian nynorsk translation" %})</li> 
-      <li>Hakan Tandogan ({%trans "turkish translation" %})</li>
-      <li>Sylvain Collilieux ({%trans "printable stylesheet" %})</li>
-    </ul>
-  </td>
-</tr></tbody></table>
+<h2>{% trans "Contributors" %}</h2>
+
+<table class="table table-striped table-condensed">
+  <thead>
+    <tr><th width="25%">{% trans "Core team" %}</th><th></th></tr>
+  </thead>
+  <tbody>
+    <tr><td>David Decotigny</td><td>{% trans "Developer" %}</td></tr>
+    <tr><td>Frédéric Lehobey</td><td>{% trans "Developer" %}</td></tr>
+    <tr><td>Étienne Loks</td><td>{% trans "Developer" %}</td></tr>
+    <tr><td>Pierre Mauduit</td><td>{% trans "Developer and Mapnik stylesheets" %}</td></tr>
+    <tr><td>David Mentré</td><td>{% trans "Developer" %}</td></tr>
+    <tr><td>Maxime Petazzoni</td><td>{% trans "Developer, system administration, GIS database maintenance and site design" %}</td></tr>
+    <tr><td>Thomas Petazzoni</td><td>{% trans "Developer, treasurer" %}</td></tr>
+    <tr><td>Gaël Utard</td><td>{% trans "Developer" %}</td></tr>
+  </tbody>
+</table>
+
+<table class="table table-striped table-condensed">
+  <thead>
+    <tr><th width="25%">{% trans "Other contributors" %}</th><th></th></tr>
+  </thead>
+  <tbody>
+    <tr><td>Malenki</td><td>{% trans "German translation" %}</td></tr>
+    <tr><td>Simone Cortesi</td><td>{% trans "Italian translation" %}</td></tr>
+    <tr><td>Joan Montané</td><td>{% trans "Catalan translation" %}</td></tr>
+    <tr><td>Konstantin Mochalov</td><td>{% trans "Russian translation" %}</td></tr>
+    <tr><td>Bassem Jarkas</td><td>{% trans "Arabic translation" %}</td></tr>
+    <tr><td>Arlindo Pereira</td><td>{% trans "Brasilian portuguese translation" %}</td></tr>
+    <tr><td>Rodrigo de Avila</td><td>{% trans "Brasilian portuguese translation" %}</td></tr>
+    <tr><td>Esben Damgaard</td><td>{% trans "Danish translation" %}</td></tr>
+    <tr><td>Jeroen van Rijn</td><td>{% trans "Dutch translation" %}</td></tr>
+    <tr><td>Marjan Vrban</td><td>{% trans "Croatian translation" %}</td></tr>
+    <tr><td>Łukasz Jernaś</td><td>{% trans "Polish translation" %}</td></tr>
+    <tr><td>Jeff Haack</td><td>{% trans "Indonesian translation" %}</td></tr>
+    <tr><td>Hans F. Nordhaug</td><td>{% trans "Norwegian bokmål translation" %}</td></tr>
+    <tr><td>Guttorm Flatabø</td><td>{% trans "Norwegian bokmål translation" %}, {%trans "Norwegian nynorsk translation" %}</td></tr>
+    <tr><td>Hakan Tandogan</td><td>{% trans "Turkish translation" %}, {% trans "Translation automation" %}</td></tr>
+    <tr><td>Chingis</td><td>{% trans "Kirgyz translation" %}</td></tr>
+    <tr><td>Sylvain Collilieux</td><td>{% trans "Printable stylesheet" %}</td></tr>
+  </tbody>
+</table>
 {% endblock %}

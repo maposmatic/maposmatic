@@ -27,18 +27,10 @@ from django.utils.translation import ugettext_lazy as _
 
 from www import settings
 
-URL_OSM_CSS = ["http://www.openlayers.org/api/theme/default/style.css"]
-URL_OSM_JS = ["http://www.openlayers.org/api/OpenLayers.js",
-          "http://www.openstreetmap.org/openlayers/OpenStreetMap.js"]
-
 class AreaWidget(forms.TextInput):
     """
     Manage the edition of an area on the map
     """
-    class Media:
-        css = {"all": URL_OSM_CSS}
-        js = URL_OSM_JS + ["/smedia/js/osm.js"]
-
     def render(self, name, value, attrs=None):
         """
         Render the bbox selection widget.
@@ -47,48 +39,37 @@ class AreaWidget(forms.TextInput):
         # contains the France
         if value:
             upper_left_lat, upper_left_lon, \
-                lower_right_lat, lower_right_lon = value[0]
-            area_upper_left_lat, area_upper_left_lon, \
-                area_lower_right_lat, area_lower_right_lon = value[1]
+                lower_right_lat, lower_right_lon = value
         else:
             upper_left_lat, upper_left_lon, \
-                lower_right_lat, lower_right_lon = '', '', '', ''
-            area_upper_left_lat, area_upper_left_lon, \
-                area_lower_right_lat, area_lower_right_lon = settings.BASE_BOUNDING_BOX
+                lower_right_lat, lower_right_lon = settings.BASE_BOUNDING_BOX
 
-        tpl = u"""<div id="map"></div>
-        <div id="map_bb">
-            <input type="text" name="lat_upper_left" id="lat_upper_left"
-                   onchange="updateMap();" value="%(tl_lat)s"
-                   title="%(tl_lat_help)s" />,
-            <input type="text" name="lon_upper_left" id="lon_upper_left"
-                   onchange="updateMap();" value="%(tl_lon)s"
-                   title="%(tl_lon_help)s" />
-            &rarr;
-            <input type="text" name="lat_bottom_right" id="lat_bottom_right"
-                   onchange="updateMap();" value="%(br_lat)s"
-                   title="%(br_lat_help)s" />,
-            <input type="text" name="lon_bottom_right" id="lon_bottom_right"
-                   onchange="updateMap();" value="%(br_lon)s"
-                   title="%(br_lon_help)s" />
-            <input type="hidden" name="area_lat_upper_left"
-                   id="area_lat_upper_left" value="%(area_tl_lat)s">
-            <input type="hidden" name="area_lon_upper_left"
-                   id="area_lon_upper_left" value="%(area_tl_lon)s">
-            <input type="hidden" name="area_lat_bottom_right"
-                   id="area_lat_bottom_right" value="%(area_br_lat)s">
-            <input type="hidden" name="area_lon_bottom_right"
-                   id="area_lon_bottom_right" value="%(area_br_lon)s">
-        </div>""" % {'tl_lat': upper_left_lat, 'tl_lon': upper_left_lon,
-                     'br_lat': lower_right_lat, 'br_lon': lower_right_lon,
-                     'area_tl_lat': area_upper_left_lat,
-                     'area_tl_lon': area_upper_left_lon,
-                     'area_br_lat': area_lower_right_lat,
-                     'area_br_lon': area_lower_right_lon,
-                     'tl_lat_help': _("Latitude of the top left corner"),
-                     'tl_lon_help': _("Longitude of the top left corner"),
-                     'br_lat_help': _("Latitude of the bottom right corner"),
-                     'br_lon_help': _("Longitude of the bottom right corner")}
+        tpl = u"""<div id="step-location-map"></div>
+        <div class="row-fluid step-location-map-bbox">
+          <div class="span12">
+            <input type="text" name="lat_upper_left" id="id_lat_upper_left"
+                   value="%(tl_lat)s" title="%(tl_lat_help)s" />
+            &middot;
+            <input type="text" name="lon_upper_left" id="id_lon_upper_left"
+                   value="%(tl_lon)s" title="%(tl_lon_help)s" />
+            &nbsp;&rarr;&nbsp;
+            <input type="text" name="lat_bottom_right" id="id_lat_bottom_right"
+                   value="%(br_lat)s" title="%(br_lat_help)s" />
+            &middot;
+            <input type="text" name="lon_bottom_right" id="id_lon_bottom_right"
+                   value="%(br_lon)s" title="%(br_lon_help)s" />
+          </div>
+        </div>
+        <div id="area-size-alert" class="alert alert-error">%(alert)s</div>
+        """ % {'tl_lat': upper_left_lat, 'tl_lon': upper_left_lon,
+                   'br_lat': lower_right_lat, 'br_lon': lower_right_lon,
+                   'tl_lat_help': _('Latitude of the top left corner'),
+                   'tl_lon_help': _('Longitude of the top left corner'),
+                   'br_lat_help': _('Latitude of the bottom right corner'),
+                   'br_lon_help': _('Longitude of the bottom right corner'),
+                   'alert': _('<i class="icon-warning-sign"></i> Area too big to be rendered!'),
+                   'clear': _('Remove any selected region from the map')
+                  }
 
         return mark_safe(tpl)
 
@@ -96,10 +77,8 @@ class AreaWidget(forms.TextInput):
         """
         Return the appropriate values
         """
-        return ((data['lat_upper_left'], data['lon_upper_left'],
-                 data['lat_bottom_right'], data['lon_bottom_right']),
-                (data['area_lat_upper_left'], data['area_lon_upper_left'],
-                 data['area_lat_bottom_right'], data['area_lon_bottom_right']))
+        return (data['lat_upper_left'], data['lon_upper_left'],
+                 data['lat_bottom_right'], data['lon_bottom_right'])
 
 class AreaField(forms.MultiValueField):
     '''

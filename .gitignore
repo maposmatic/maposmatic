@@ -12,8 +12,22 @@
 # Ignore compiled language files
 /www/locale/*/LC_MESSAGES/*.mo
 
+# LaTeX outputs in presentations
+/talks/*.aux
+/talks/*.log
+/talks/*.nav
+/talks/*.out
+/talks/*.snm
+/talks/*.toc
+/talks/*.vrb
 /talks/*.pdf
 
 # Ignore temp files
 *~
 *.swp
+
+# From scripts directory
+/scripts/config.py
+
+# From www
+*.pyc

@@ -30,14 +30,15 @@ from django.contrib.gis.feeds import Feed
 from django.utils.translation import ugettext_lazy as _
 
 from www.maposmatic import models
+import www.settings
 
 class MapsFeed(Feed):
     """
-    This feeds syndicates the latest successful rendering jobs in MapOSMatic,
+    This feeds syndicates the latest successfully rendered maps in MapOSMatic,
     with their thumbnail, and links to the rendered files.
     """
 
-    title = _('MapOSMatic maps')
+    title = www.settings.DEBUG and _('MapOSMatic maps') or _('MapOSMatic maps [DEV]')
     link = '/maps/' # We can't use reverse here as the urlpatterns aren't
                     # defined yet at this point.
     description = _('The latest rendered maps on MapOSMatic.')
@@ -45,8 +46,8 @@ class MapsFeed(Feed):
     description_template = 'maposmatic/map-feed.html'
 
     def items(self):
-        """Returns the successfull rendering jobs from the last 24 hours, or
-        the last 10 jobs if nothing happened recently."""
+        """Returns the successfully rendered maps from the last 24 hours, or
+        the last 10 maps/jobs if nothing happened recently."""
 
         one_day_before = datetime.datetime.now() - datetime.timedelta(1)
         items = (models.MapRenderingJob.objects

@@ -51,8 +51,16 @@ except ImportError:
 def index(request):
     """The main page."""
     form = forms.MapSearchForm(request.GET)
+
+    job_list = (models.MapRenderingJob.objects.all()
+                .order_by('-submission_time'))
+    job_list = (job_list.filter(status=0) |
+                job_list.filter(status=1))
+
     return render_to_response('maposmatic/index.html',
-                              { 'form': form },
+                              { 'form': form,
+                                'queued': job_list.count()
+                              },
                               context_instance=RequestContext(request))
 
 def about(request):
@@ -90,7 +98,7 @@ def new(request):
             job.nonce = helpers.generate_nonce(models.MapRenderingJob.NONCE_SIZE)
             job.save()
 
-            return HttpResponseRedirect(reverse('job-by-id-and-nonce',
+            return HttpResponseRedirect(reverse('map-by-id-and-nonce',
                                                 args=[job.id, job.nonce]))
     else:
         form = forms.MapRenderingJobForm()
@@ -99,176 +107,79 @@ def new(request):
                               { 'form' : form },
                               context_instance=RequestContext(request))
 
-def job(request, job_id, job_nonce=None):
-    """The job details page.
+def map_full(request, id, nonce=None):
+    """The full-page map details page.
 
     Args:
-        job_id (int): the job ID in the database.
+        id (int): the job ID in the database.
     """
 
-    job = get_object_or_404(models.MapRenderingJob, id=job_id)
+    job = get_object_or_404(models.MapRenderingJob, id=id)
     isredirected = request.session.get('redirected', False)
     request.session.pop('redirected', None)
 
-    refresh = www.settings.REFRESH_JOB_WAITING
-    if job.is_rendering():
-        refresh = www.settings.REFRESH_JOB_RENDERING
+    queue_size = models.MapRenderingJob.objects.queue_size()
+    progress = 100
+    if queue_size:
+        progress = 20 + int(80 * (queue_size -
+            job.current_position_in_queue()) / float(queue_size))
 
-    return render_to_response('maposmatic/job-page.html',
-                              { 'job': job, 'single': True,
-                                'redirected': isredirected, 'nonce': job_nonce,
-                                'refresh': refresh, 'refresh_ms': (refresh*1000) },
+    refresh = job.is_rendering() and \
+        www.settings.REFRESH_JOB_RENDERING or \
+        www.settings.REFRESH_JOB_WAITING
+
+    return render_to_response('maposmatic/map-full.html',
+                              { 'map': job, 'redirected': isredirected,
+                                'nonce': nonce, 'refresh': refresh,
+                                'progress': progress, 'queue_size': queue_size },
                               context_instance=RequestContext(request))
 
-def all_jobs(request):
-    """Displays all jobs from the last 24 hours."""
-
-    one_day_before = datetime.datetime.now() - datetime.timedelta(1)
-    job_list = (models.MapRenderingJob.objects.all()
-                .order_by('-submission_time'))
-    job_list = (job_list.filter(submission_time__gte=one_day_before) |
-                job_list.filter(status=0) |
-                job_list.filter(status=1))
-    paginator = Paginator(job_list, www.settings.ITEMS_PER_PAGE)
-
-    try:
-        page = int(request.GET.get('page', '1'))
-    except ValueError:
-        page = 1
-
-    try:
-        jobs = paginator.page(page)
-    except (EmptyPage, InvalidPage):
-        jobs = paginator.page(paginator.num_pages)
-
-    return render_to_response('maposmatic/all_jobs.html',
-                              { 'jobs': jobs,
-                                'pages': helpers.get_pages_list(jobs, paginator) },
-                              context_instance=RequestContext(request))
-
-def all_maps(request):
-    """Displays all maps, sorted alphabetically, eventually matching the search
-    terms, when provided."""
+def maps(request):
+    """Displays all maps and jobs, sorted by submission time, or maps matching
+    the search terms when provided."""
 
     map_list = None
-    form = forms.MapSearchForm(request.GET)
 
+    form = forms.MapSearchForm(request.GET)
     if form.is_valid():
         map_list = (models.MapRenderingJob.objects
-                    .order_by('maptitle')
-                    .filter(status=2)
+                    .order_by('-submission_time')
                     .filter(maptitle__icontains=form.cleaned_data['query']))
         if len(map_list) == 1:
-            return HttpResponseRedirect(reverse('job-by-id',
+            return HttpResponseRedirect(reverse('map-by-id',
                                                 args=[map_list[0].id]))
     else:
         form = forms.MapSearchForm()
 
     if map_list is None:
-        map_list = (models.MapRenderingJob.objects.filter(status=2)
-                    .filter(resultmsg="ok")
-                    .order_by('maptitle'))
+        map_list = (models.MapRenderingJob.objects
+                    .order_by('-submission_time'))
+
     paginator = Paginator(map_list, www.settings.ITEMS_PER_PAGE)
 
     try:
-        page = int(request.GET.get('page', '1'))
-    except ValueError:
-        page = 1
+        try:
+            page = int(request.GET.get('page', '1'))
+        except ValueError:
+            page = 1
 
-    try:
         maps = paginator.page(page)
     except (EmptyPage, InvalidPage):
         maps = paginator.page(paginator.num_pages)
 
-    return render_to_response('maposmatic/all_maps.html',
+    return render_to_response('maposmatic/maps.html',
                               { 'maps': maps, 'form': form,
                                 'is_search': form.is_valid(),
                                 'pages': helpers.get_pages_list(maps, paginator) },
                               context_instance=RequestContext(request))
 
-def query_nominatim(request):
-    """Nominatim query gateway."""
-    exclude = request.GET.get('exclude', '')
-    squery = request.GET.get('q', '')
-    lang = None
-
-    if 'HTTP_ACCEPT_LANGUAGE' in request.META:
-        # Accept-Language headers typically look like
-        # fr,fr-fr;q=0.8,en-us;q=0.5,en;q=0.3. Unfortunately,
-        # Nominatim behaves improperly with such a string: it gives
-        # the region name in French, but the country name in
-        # English. We split at the first comma to only keep the
-        # preferred language, which makes Nominatim work properly.
-        lang = request.META['HTTP_ACCEPT_LANGUAGE'].split(',')[0]
-
-    try:
-        contents = nominatim.query(squery, exclude, with_polygons=False,
-                accept_language=lang)
-    except Exception, e:
-        LOG.exception("Error querying Nominatim")
-        contents = []
-
-    return HttpResponse(content=json_encode(contents),
-                        mimetype='text/json')
-
-def nominatim_reverse(request, lat, lon):
-    """Nominatim reverse geocoding query gateway."""
-    lat = float(lat)
-    lon = float(lon)
-    return HttpResponse(json_encode(nominatim.reverse_geo(lat, lon)),
-                        mimetype='text/json')
-
-def query_papersize(request):
-    """AJAX query handler to get the compatible paper sizes for the provided
-    layout and bounding box."""
-
-    if request.method == 'POST':
-        f = forms.MapPaperSizeForm(request.POST)
-        if f.is_valid():
-            renderer = ocitysmap.OCitySMap(www.settings.OCITYSMAP_CFG_PATH)
-            osmid = f.cleaned_data.get('osmid')
-            layout = f.cleaned_data.get('layout')
-            stylesheet = renderer.get_stylesheet_by_name(
-                f.cleaned_data.get('stylesheet'))
-
-            # Determine geographic area
-            if osmid is not None:
-                try:
-                    bbox_wkt, area_wkt = renderer.get_geographic_info(osmid)
-                except ValueError:
-                    LOG.exception("Error determining compatible paper sizes")
-                    raise
-                bbox = ocitysmap.coords.BoundingBox.parse_wkt(bbox_wkt)
-            else:
-                lat_upper_left = f.cleaned_data.get("lat_upper_left")
-                lon_upper_left = f.cleaned_data.get("lon_upper_left")
-                lat_bottom_right = f.cleaned_data.get("lat_bottom_right")
-                lon_bottom_right = f.cleaned_data.get("lon_bottom_right")
-
-                # Check we have correct floats
-                if (lat_upper_left == None or lon_upper_left == None
-                    or lat_bottom_right == None or lon_bottom_right == None):
-                   return HttpResponseBadRequest("ERROR: Invalid arguments")
-
-                bbox = ocitysmap.coords.BoundingBox(
-                    lat_upper_left, lon_upper_left,
-                    lat_bottom_right, lon_bottom_right)
-
-            renderer_cls = ocitysmap.renderers.get_renderer_class_by_name(layout)
-            paper_sizes = sorted(renderer_cls.get_compatible_paper_sizes(bbox),
-                                 key = lambda p: p[1])
-
-            return HttpResponse(content=json_encode(paper_sizes),
-                                mimetype='text/json')
-
-    return HttpResponseBadRequest("ERROR: Invalid arguments")
 
 def recreate(request):
     if request.method == 'POST':
         form = forms.MapRecreateForm(request.POST)
         if form.is_valid():
             job = get_object_or_404(models.MapRenderingJob,
-                                    id=form.cleaned_data['jobid'])
+                                    id=form.cleaned_data['id'])
 
             newjob = models.MapRenderingJob()
             newjob.maptitle = job.maptitle
@@ -294,7 +205,7 @@ def recreate(request):
             newjob.nonce = helpers.generate_nonce(models.MapRenderingJob.NONCE_SIZE)
             newjob.save()
 
-            return HttpResponseRedirect(reverse('job-by-id-and-nonce',
+            return HttpResponseRedirect(reverse('map-by-id-and-nonce',
                                                 args=[newjob.id, newjob.nonce]))
 
     return HttpResponseBadRequest("ERROR: Invalid request")
@@ -304,12 +215,110 @@ def cancel(request):
         form = forms.MapCancelForm(request.POST)
         if form.is_valid():
             job = get_object_or_404(models.MapRenderingJob,
-                                    id=form.cleaned_data['jobid'],
-                                    nonce=form.cleaned_data['jobnonce'])
+                                    id=form.cleaned_data['id'],
+                                    nonce=form.cleaned_data['nonce'])
             job.cancel()
 
-            return HttpResponseRedirect(reverse('job-by-id-and-nonce',
+            return HttpResponseRedirect(reverse('map-by-id-and-nonce',
                                                 args=[job.id, job.nonce]))
 
     return HttpResponseBadRequest("ERROR: Invalid request")
 
+def api_nominatim(request):
+    """Nominatim query gateway."""
+    exclude = request.GET.get('exclude', '')
+    squery = request.GET.get('q', '')
+    lang = None
+
+    if 'HTTP_ACCEPT_LANGUAGE' in request.META:
+        # Accept-Language headers typically look like
+        # fr,fr-fr;q=0.8,en-us;q=0.5,en;q=0.3. Unfortunately,
+        # Nominatim behaves improperly with such a string: it gives
+        # the region name in French, but the country name in
+        # English. We split at the first comma to only keep the
+        # preferred language, which makes Nominatim work properly.
+        lang = request.META['HTTP_ACCEPT_LANGUAGE'].split(',')[0]
+
+    try:
+        contents = nominatim.query(squery, exclude, with_polygons=False,
+                accept_language=lang)
+    except Exception, e:
+        LOG.exception("Error querying Nominatim")
+        contents = []
+
+    return HttpResponse(content=json_encode(contents),
+                        mimetype='text/json')
+
+def api_nominatim_reverse(request, lat, lon):
+    """Nominatim reverse geocoding query gateway."""
+    lat = float(lat)
+    lon = float(lon)
+    return HttpResponse(json_encode(nominatim.reverse_geo(lat, lon)),
+                        mimetype='text/json')
+
+def api_papersize(request):
+    """API handler to get the compatible paper sizes for the provided layout
+    and bounding box."""
+
+    if request.method != 'POST':
+        return HttpResponseBadRequest("ERROR: Bad request")
+
+    f = forms.MapPaperSizeForm(request.POST)
+    if not f.is_valid():
+       return HttpResponseBadRequest("ERROR: Invalid arguments")
+
+    renderer = ocitysmap.OCitySMap(www.settings.OCITYSMAP_CFG_PATH)
+    osmid = f.cleaned_data.get('osmid')
+    layout = f.cleaned_data.get('layout')
+    stylesheet = renderer.get_stylesheet_by_name(
+        f.cleaned_data.get('stylesheet'))
+
+    # Determine geographic area
+    if osmid is not None:
+        try:
+            bbox_wkt, area_wkt = renderer.get_geographic_info(osmid)
+        except ValueError:
+            LOG.exception("Error determining compatible paper sizes")
+            raise
+        bbox = ocitysmap.coords.BoundingBox.parse_wkt(bbox_wkt)
+    else:
+        lat_upper_left = f.cleaned_data.get("lat_upper_left")
+        lon_upper_left = f.cleaned_data.get("lon_upper_left")
+        lat_bottom_right = f.cleaned_data.get("lat_bottom_right")
+        lon_bottom_right = f.cleaned_data.get("lon_bottom_right")
+
+        # Check we have correct floats
+        if (lat_upper_left == None or lon_upper_left == None
+            or lat_bottom_right == None or lon_bottom_right == None):
+           return HttpResponseBadRequest("ERROR: Invalid arguments")
+
+        bbox = ocitysmap.coords.BoundingBox(
+            lat_upper_left, lon_upper_left,
+            lat_bottom_right, lon_bottom_right)
+
+    renderer_cls = ocitysmap.renderers.get_renderer_class_by_name(layout)
+    paper_sizes = sorted(renderer_cls.get_compatible_paper_sizes(bbox),
+                         key = lambda p: p[1])
+
+    return HttpResponse(content=json_encode(paper_sizes),
+                        mimetype='text/json')
+
+
+def api_bbox(request, osm_id):
+    """API handler that returns the bounding box from an OSM ID polygon."""
+
+    try:
+        osm_id = int(osm_id)
+    except ValueError:
+        return HttpResponseBadRequest("ERROR: Invalid arguments")
+
+    renderer = ocitysmap.OCitySMap(www.settings.OCITYSMAP_CFG_PATH)
+    try:
+        bbox_wkt, area_wkt = renderer.get_geographic_info(osm_id)
+        bbox = ocitysmap.coords.BoundingBox.parse_wkt(bbox_wkt)
+        return HttpResponse(content=json_encode(bbox.as_json_bounds()),
+                            mimetype='text/json')
+    except:
+        LOG.exception("Error calculating bounding box for OSM ID %d!" % osm_id)
+
+    return HttpResponseBadRequest("ERROR: OSM ID %d not found!" % osm_id)

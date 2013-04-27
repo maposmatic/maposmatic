@@ -4,7 +4,13 @@
  coding: utf-8
 
  maposmatic, the web front-end of the MapOSMatic city map generation system
+ Copyright (C) 2012  David Decotigny
+ Copyright (C) 2012  Frédéric Lehobey
+ Copyright (C) 2012  Pierre Mauduit
+ Copyright (C) 2012  David Mentré
+ Copyright (C) 2012  Maxime Petazzoni
  Copyright (C) 2012  Thomas Petazzoni
+ Copyright (C) 2012  Gaël Utard
 
  This program is free software: you can redistribute it and/or modify
  it under the terms of the GNU Affero General Public License as
@@ -19,24 +25,28 @@
  You should have received a copy of the GNU Affero General Public License
  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 {% endcomment %}
-
 {% load i18n %}
+{% load extratags %}
 
-{% block menu-donate %}
-class="activelink"
-{% endblock %}
+{% block body-class %}donate{% endblock %}
+{% block menu-donate %}active{% endblock %}
 
+{% block title %}{% trans "Thanks!" %}{% endblock %}
 {% block page %}
+<div class="hero-unit">
 <h1>{% trans "Thanks for your donation!" %}</h1>
 
-<p>{%blocktrans%}We have received your donation, thanks for your
-support to the MapOSMatic project!{%endblocktrans%}</p>
+<p>
+{% blocktrans %}<i class="icon-ok"></i> We have received your donation.
+Thank you for your support to the MapOSMatic project!{% endblocktrans %}
+</p>
 
-<p>{%blocktrans%}You will receive a notification e-mail concerning
-your donation. This e-mail will indicate that the donation has been
-received by <i>Thomas Petazzoni</i>, who is the MapOSMatic developer
-in charge of donations and funds. MapOSMatic is still an informal
-gathering of developers, and we have not (yet) created a non-profit
-organization to support the project.{%endblocktrans%}</p>
-
+<p class="info">
+{% blocktrans %}You will receive a notification e-mail concerning your
+donation. This e-mail will indicate that the donation has been received by
+<i>Thomas Petazzoni</i>, who is the MapOSMatic developer in charge of donations
+and funds. MapOSMatic is still an informal gathering of developers, and we have
+not (yet) created a non-profit organization to support the project.{% endblocktrans %}
+</p>
+</div>
 {% endblock %}
