@@ -124,6 +124,7 @@ LANGUAGES = {
     "es":    u"Español",
     "id":    u"Bahasa Indonesia",
     "tr":    u"Türkçe",
+    "ja":    u"日本人",
 }
 
 # Associate a Django language code with:
@@ -195,6 +196,7 @@ MAP_LANGUAGES = {
     "ar_JO.UTF-8": u"الأردنّ‎ (AR)",
     "ar_KW.UTF-8": u"الكويت (AR)",
     "ar_LB.UTF-8": u"لبنان (AR)",
+    "ja_JA.UTF-8": u"日本人 (JA)",
     "fr_LU.UTF-8": u"Luxembourg (FR)",
     "de_LU.UTF-8": u"Luxemburg (DE)",
     "ar_LY.UTF-8": u"ليبيا (AR)",
