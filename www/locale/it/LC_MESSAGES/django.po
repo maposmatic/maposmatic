@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: MapOSMatic\n"
 "Report-Msgid-Bugs-To: https://savannah.nongnu.org/bugs/?group=maposmatic\n"
-"PO-Revision-Date: 2013-04-25 09:10+0000\n"
+"PO-Revision-Date: 2013-04-26 07:39+0000\n"
 "Last-Translator: White_Rabbit <bruno@tracciabi.li>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -286,7 +286,7 @@ msgid ""
 "href=\"http://planet.openstreetmap.org/daily/\">daily differences</a> of\n"
 "the database, which allows to keep it up to date with the new\n"
 "contributions of OpenStreetMap users."
-msgstr "Sull nostro server, gira <a⏎\nhref=\"http://www.postgresql.org\">PostgreSQL</a>, con l'estensione <a⏎\nhref=\"http://postgis.refractions.net\">PostGIS</a>. In questo server PostgreSQL abbiamo caricato i <a⏎\nhref=\"http://wiki.openstreetmap.org/wiki/Planet.osm\">dati di OpenStreetMap per tutto il pianeta</a> usando lo strumento <a⏎\nhref=\"http://wiki.openstreetmap.org/wiki/Osm2pgsql\">osm2pgsql</a>. Lo stesso strumento viene usato per applicare gli <a⏎\nhref=\"http://planet.openstreetmap.org/daily/\">aggiornamenti giornalieri</a> del database, permettendo di mantenere i dati aggiornati ad ogni modifica fatta dagli utenti di OpenStreetMap"
+msgstr "Sul nostro server gira <a⏎\nhref=\"http://www.postgresql.org\">PostgreSQL</a>, con l'estensione <a⏎\nhref=\"http://postgis.refractions.net\">PostGIS</a>. In questo server PostgreSQL abbiamo caricato i <a⏎\nhref=\"http://wiki.openstreetmap.org/wiki/Planet.osm\">dati di OpenStreetMap per tutto il pianeta</a> usando lo strumento <a⏎\nhref=\"http://wiki.openstreetmap.org/wiki/Osm2pgsql\">osm2pgsql</a>. Lo stesso strumento viene usato per applicare gli <a⏎\nhref=\"http://planet.openstreetmap.org/daily/\">aggiornamenti giornalieri</a> del database, permettendo di mantenere i dati aggiornati ad ogni modifica fatta dagli utenti di OpenStreetMap"
 
 #: templates/maposmatic/about.html:78
 msgid ""
@@ -437,7 +437,7 @@ msgstr "Sviluppatore"
 
 #: templates/maposmatic/about.html:176
 msgid "Developer and Mapnik stylesheets"
-msgstr "Sviluppatore e stili Mapnik"
+msgstr "Stili per sviluppatori e Mapnik"
 
 #: templates/maposmatic/about.html:178
 msgid ""
@@ -594,7 +594,7 @@ msgid ""
 "team of volunteers (see our <a href=\"%(about_url)s\">About</a> page for\n"
 "details). However, running the MapOSMatic service and making improvements to it\n"
 "has various costs beyond the time of the volunteer developers."
-msgstr "MapOSMatic è un progetto interamente sviluppato e mantenuto da un team di volontari(vedi la nostra pagina <a href=\"%(about_url)s\">Informazioni</a> per i dettagli). Comunque, mantenere il servizio MapOSMatic e migliorarlo ha vari costi oltre al tempo degli sviluppatori volontari."
+msgstr "MapOSMatic è un progetto interamente sviluppato e mantenuto da un team di volontari (vedi la nostra pagina <a href=\"%(about_url)s\">Informazioni</a> per i dettagli). Comunque, mantenere il servizio MapOSMatic e migliorarlo ha vari costi oltre al tempo degli sviluppatori."
 
 #: templates/maposmatic/donate.html:49
 msgid ""
@@ -646,7 +646,7 @@ msgid ""
 "freely reuse, sell, or modify the generated maps under the <a "
 "href=\"http://wiki.openstreetmap.org/wiki/License\">terms of the "
 "OpenStreetMap license</a>."
-msgstr "Dal momento che i dati per generare le mappe vengono da OpenStreetMap, potete liberamente riutilizzare, vendere o modificare le mappe generate, secondo i <a href=\"http://wiki.openstreetmap.org/wiki/License\">termini della licenza OpenStreetMap</a>."
+msgstr "Dal momento che i dati per generare le mappe vengono da OpenStreetMap, potete liberamente riutilizzare, vendere o modificare le mappe generate, secondo i <a href=\"http://www.openstreetmap.org/copyright\">termini della licenza OpenStreetMap</a>."
 
 #: templates/maposmatic/index.html:49
 msgid "Learn more"
