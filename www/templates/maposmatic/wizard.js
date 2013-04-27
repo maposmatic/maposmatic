@@ -240,7 +240,7 @@ $('#wizard-step-lang-title').bind('prepare', function(e) {
   $('#summary-layout').text($('input[name=layout]:checked').parent().text().trim());
   $('#summary-stylesheet').text($('input[name=stylesheet]:checked').parent().text().trim());
   $('#summary-paper-size').text(
-      ($('input[value=landscape]').attr('checked') == 'checked'
+      ($('input[value=landscape]').is(':checked')
           ? '{% trans "Landscape" %}'
           : '{% trans "Portrait" %}'
       ) + ', ' + $('input[name=papersize]:checked').parent().text().trim());
