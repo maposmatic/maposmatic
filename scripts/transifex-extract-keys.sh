@@ -7,7 +7,7 @@ extract_django() {
     then    
 	pushd ${DIR}
 	TEMPLANG=foobar
-	django-admin.py makemessages --no-wrap -l ${TEMPLANG}
+	django-admin.py makemessages --no-wrap -l ${TEMPLANG} -e html,txt,js
 	# Remove the creation date to avoid spurious commits
 	grep -v "POT-Creation-Date:" locale/${TEMPLANG}/LC_MESSAGES/django.po > locale/django.pot
 	rm -rf locale/${TEMPLANG}

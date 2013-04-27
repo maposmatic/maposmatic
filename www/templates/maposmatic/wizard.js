@@ -242,7 +242,7 @@ $('#wizard-step-lang-title').bind('prepare', function(e) {
   $('#summary-paper-size').text(
       ($('input[value=landscape]').attr('checked') == 'checked'
           ? '{% trans "Landscape" %}'
-          : '{% trans "Paysage" %}'
+          : '{% trans "Portrait" %}'
       ) + ', ' + $('input[name=papersize]:checked').parent().text().trim());
 });
 
