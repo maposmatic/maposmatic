@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: MapOSMatic\n"
 "Report-Msgid-Bugs-To: https://savannah.nongnu.org/bugs/?group=maposmatic\n"
-"PO-Revision-Date: 2013-04-22 00:42+0000\n"
+"PO-Revision-Date: 2013-04-29 11:29+0000\n"
 "Last-Translator: rodrigo.avila <rodrigo@avila.net.br>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Language: pt_BR\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
-#: settings.py:238
+#: settings.py:240
 msgid "No localization"
 msgstr "Sem tradução"
 
@@ -46,11 +46,11 @@ msgstr "Limites administrativos (nome da cidade)"
 msgid "Bounding box"
 msgstr "Bounding box"
 
-#: maposmatic/forms.py:60
+#: maposmatic/forms.py:60 templates/maposmatic/wizard.js:245
 msgid "Portrait"
 msgstr "Retrato"
 
-#: maposmatic/forms.py:61
+#: maposmatic/forms.py:61 templates/maposmatic/wizard.js:244
 msgid "Landscape"
 msgstr "Paisagem"
 
@@ -159,7 +159,11 @@ msgstr "Índice de ruas pelo %(title)s (format %(format)s)"
 msgid "Administrative area too big for rendering"
 msgstr "Área administrativa muito grande para renderizar"
 
-#: maposmatic/nominatim.py:300 maposmatic/nominatim.py:314
+#: maposmatic/nominatim.py:300
+msgid "No administrative boundary details from GIS"
+msgstr "O GIS não tem detalhes para este limite administrativo"
+
+#: maposmatic/nominatim.py:314
 msgid "No administrative boundary"
 msgstr "Sem limite administrativo"
 
@@ -952,3 +956,11 @@ msgid ""
 "You're almost ready to request to map rendering! Select the map\n"
 "language, eventually adjust the title of your map, and you're good to go!"
 msgstr "Você está quase pronto para pedir a renderização do seu mapa! Selecione o\nidioma do mapa, e quem sabe ajuste o título do seu mapa. E então você estará pronto!"
+
+#: templates/maposmatic/suggest.js:40
+msgid "Start typing for suggestions..."
+msgstr "Digite algo para receber sugestões..."
+
+#: templates/maposmatic/wizard.js:365
+msgid "Clear selected area"
+msgstr "Limpar seleção"
