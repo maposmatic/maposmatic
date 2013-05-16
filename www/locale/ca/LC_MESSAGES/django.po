@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: MapOSMatic\n"
 "Report-Msgid-Bugs-To: https://savannah.nongnu.org/bugs/?group=maposmatic\n"
-"PO-Revision-Date: 2013-04-21 18:03+0000\n"
+"PO-Revision-Date: 2013-04-28 08:07+0000\n"
 "Last-Translator: Hakan Tandogan <hakan.tandogan@gmail.com>\n"
 "Language-Team: Catalan (http://www.transifex.com/projects/p/maposmatic/language/ca/)\n"
 "MIME-Version: 1.0\n"
@@ -19,7 +19,7 @@ msgstr ""
 "Language: ca\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: settings.py:238
+#: settings.py:240
 msgid "No localization"
 msgstr "Sense localització"
 
@@ -47,11 +47,11 @@ msgstr "Límit administratiu"
 msgid "Bounding box"
 msgstr "Àrea geogràfica"
 
-#: maposmatic/forms.py:60
+#: maposmatic/forms.py:60 templates/maposmatic/wizard.js:245
 msgid "Portrait"
 msgstr "Vertical"
 
-#: maposmatic/forms.py:61
+#: maposmatic/forms.py:61 templates/maposmatic/wizard.js:244
 msgid "Landscape"
 msgstr "Horitzontal"
 
@@ -160,7 +160,11 @@ msgstr "Índex de %(title)s (format %(format)s)"
 msgid "Administrative area too big for rendering"
 msgstr "El límit administratiu és massa gran per a renderitzar el mapa"
 
-#: maposmatic/nominatim.py:300 maposmatic/nominatim.py:314
+#: maposmatic/nominatim.py:300
+msgid "No administrative boundary details from GIS"
+msgstr ""
+
+#: maposmatic/nominatim.py:314
 msgid "No administrative boundary"
 msgstr "No hi ha cap límit administratiu"
 
@@ -953,3 +957,11 @@ msgid ""
 "You're almost ready to request to map rendering! Select the map\n"
 "language, eventually adjust the title of your map, and you're good to go!"
 msgstr "Sou a punt de sol·licitar generar un mapa! Seleccioneu la llengua\ndel mapa, ajusteu el títol del mapa, i ho aconseguireu!"
+
+#: templates/maposmatic/suggest.js:40
+msgid "Start typing for suggestions..."
+msgstr ""
+
+#: templates/maposmatic/wizard.js:365
+msgid "Clear selected area"
+msgstr ""
