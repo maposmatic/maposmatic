@@ -3,12 +3,13 @@
 # This file is distributed under the same license as the PACKAGE package.
 # 
 # Translators:
+# Wasilis <m.wasilis@yahoo.de>, 2013
 msgid ""
 msgstr ""
 "Project-Id-Version: MapOSMatic\n"
 "Report-Msgid-Bugs-To: https://savannah.nongnu.org/bugs/?group=maposmatic\n"
-"PO-Revision-Date: 2013-04-21 18:03+0000\n"
-"Last-Translator: Hakan Tandogan <hakan.tandogan@gmail.com>\n"
+"PO-Revision-Date: 2013-05-01 01:24+0000\n"
+"Last-Translator: Wasilis <m.wasilis@yahoo.de>\n"
 "Language-Team: Greek (http://www.transifex.com/projects/p/maposmatic/language/el/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -16,198 +17,202 @@ msgstr ""
 "Language: el\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: settings.py:238
+#: settings.py:240
 msgid "No localization"
-msgstr ""
+msgstr "Δεν υπαρχει εντοπισμος"
 
 #: maposmatic/feeds.py:41
 msgid "MapOSMatic maps"
-msgstr ""
+msgstr "MapOSMatic χαρτες"
 
 #: maposmatic/feeds.py:41
 msgid "MapOSMatic maps [DEV]"
-msgstr ""
+msgstr "MapOSMatic χαρτες [DEV]"
 
 #: maposmatic/feeds.py:44
 msgid "The latest rendered maps on MapOSMatic."
-msgstr ""
+msgstr "Οι τελευταίοι χάρτες παρέχονται για το MapOSMatic."
 
 #: maposmatic/forms.py:43
 msgid "Search for a map"
-msgstr ""
+msgstr "Αναζητηση ενος χαρτη"
 
 #: maposmatic/forms.py:57
 msgid "Administrative boundary"
-msgstr ""
+msgstr "Διοικητικο όριο"
 
 #: maposmatic/forms.py:58 templates/maposmatic/map-full.html:171
 msgid "Bounding box"
-msgstr ""
+msgstr "πλαισίο οριοθέτησης "
 
-#: maposmatic/forms.py:60
+#: maposmatic/forms.py:60 templates/maposmatic/wizard.js:245
 msgid "Portrait"
-msgstr ""
+msgstr "Πορτραιτο"
 
-#: maposmatic/forms.py:61
+#: maposmatic/forms.py:61 templates/maposmatic/wizard.js:244
 msgid "Landscape"
-msgstr ""
+msgstr "Τοπιο"
 
 #: maposmatic/forms.py:73
 msgid "Area"
-msgstr ""
+msgstr "Περιοχη"
 
 #: maposmatic/forms.py:93
 msgid "Full-page layout without street index"
-msgstr ""
+msgstr "Ολοσέλιδη διάταξη χωρίς ευρετήριο οδών "
 
 #: maposmatic/forms.py:95
 msgid "Full-page layout with the street index on the side"
-msgstr ""
+msgstr "Full-σελιδοποίηση με το δείκτη του δρόμου από την πλευρά της"
 
 #: maposmatic/forms.py:97
 msgid "Full-page layout with the street index at the bottom"
-msgstr ""
+msgstr "Full-σελιδοποίηση με το δείκτη του δρόμου στο κάτω μέρος "
 
 #: maposmatic/forms.py:99
 msgid "Multi-page layout"
-msgstr ""
+msgstr "Multi-page layout"
 
 #: maposmatic/forms.py:101
 #, python-format
 msgid "The %(layout_name)s layout"
-msgstr ""
+msgstr "Η %(layout_name)s κατοψη "
 
 #: maposmatic/forms.py:109
 msgid "The default OpenStreetMap.org style"
-msgstr ""
+msgstr "Το προεπιλεγμένο στυλ του OpenStreetMap.org "
 
 #: maposmatic/forms.py:111
 msgid "The european MapQuest style"
-msgstr ""
+msgstr "Το ευρωπαικο MapQuest στιλ"
 
 #: maposmatic/forms.py:113
 msgid "The US MapQuest style"
-msgstr ""
+msgstr "Το αμερικανικο MapQuest στιλ"
 
 #: maposmatic/forms.py:115
 msgid "The UK MapQuest style"
-msgstr ""
+msgstr "Το βρετανικο MapQuest στιλ"
 
 #: maposmatic/forms.py:117
 msgid "A MapOSMatic-specific stylesheet suitable for printing"
-msgstr ""
+msgstr "Ενα MapOSMatic ειδικο στυλ κατάλληλο για εκτύπωση "
 
 #: maposmatic/forms.py:119
 #, python-format
 msgid "The <i>%(stylesheet_name)s</i> stylesheet"
-msgstr ""
+msgstr "Το <i>%(stylesheet_name)s</i> στυλ φύλλου"
 
 #: maposmatic/forms.py:126
 msgid "Best fit <em class=\"papersize\"></em>"
-msgstr ""
+msgstr "Καλυτερο μεγεθος <em class=\"papersize\"></em>"
 
 #: maposmatic/forms.py:157
 msgid "Map title required"
-msgstr ""
+msgstr "Απαιτείται ο τιτλος του χαρτη"
 
 #: maposmatic/forms.py:162
 msgid "Layout required"
-msgstr ""
+msgstr "Απαιτείται διάταξη "
 
 #: maposmatic/forms.py:167
 msgid "Stylesheet required"
-msgstr ""
+msgstr "Απαιτειται στυλ φυλλου"
 
 #: maposmatic/forms.py:173
 msgid "Administrative city required"
-msgstr ""
+msgstr "Απαιτειται Διοικητική πόλη"
 
 #: maposmatic/forms.py:186
 #, python-format
 msgid "Error with osm city: %s"
-msgstr ""
+msgstr "Σφαλμα με την osm πολη: %s"
 
 #: maposmatic/forms.py:196
 msgid "Required"
-msgstr ""
+msgstr "Απαιτειται"
 
 #: maposmatic/forms.py:204
 msgid "Same latitude"
-msgstr ""
+msgstr "Ίδιο γεωγραφικό πλάτος "
 
 #: maposmatic/forms.py:211
 msgid "Same longitude"
-msgstr ""
+msgstr "Ίδιο Γεωγραφικό μήκος"
 
 #: maposmatic/forms.py:235
 msgid "Bounding Box too large"
-msgstr ""
+msgstr "Το Πλαισίο οριοθέτησης ειναι πολυ μεγαλο"
 
 #: maposmatic/models.py:192
 #, python-format
 msgid "%(title)s %(format)s Map"
-msgstr ""
+msgstr "%(title)s %(format)s Χαρτης"
 
 #: maposmatic/models.py:200
 #, python-format
 msgid "%(title)s %(format)s Index"
-msgstr ""
+msgstr "%(title)s %(format)s Ευρετήριο "
 
 #: maposmatic/nominatim.py:244
 msgid "Administrative area too big for rendering"
+msgstr "Η διοικητική περιοχή είναι πολύ μεγάλη για την παροχή "
+
+#: maposmatic/nominatim.py:300
+msgid "No administrative boundary details from GIS"
 msgstr ""
 
-#: maposmatic/nominatim.py:300 maposmatic/nominatim.py:314
+#: maposmatic/nominatim.py:314
 msgid "No administrative boundary"
-msgstr ""
+msgstr "Δεν υπαρχει διοικητικό όριο"
 
 #: maposmatic/widgets.py:66
 msgid "Latitude of the top left corner"
-msgstr ""
+msgstr "Γεωγραφικό πλάτος στην επάνω αριστερή γωνία"
 
 #: maposmatic/widgets.py:67
 msgid "Longitude of the top left corner"
-msgstr ""
+msgstr "Μήκος στην επάνω αριστερή γωνία "
 
 #: maposmatic/widgets.py:68
 msgid "Latitude of the bottom right corner"
-msgstr ""
+msgstr "Γεωγραφικό πλάτος στην κάτω δεξιά γωνία "
 
 #: maposmatic/widgets.py:69
 msgid "Longitude of the bottom right corner"
-msgstr ""
+msgstr "Γεωγραφικό μήκος στην κάτω δεξιά γωνία "
 
 #: maposmatic/widgets.py:70
 msgid "<i class=\"icon-warning-sign\"></i> Area too big to be rendered!"
-msgstr ""
+msgstr "<i class=\"icon-warning-sign\"></i> η περιοχη ειναι πολυ μεγαλη για να επεξεργασθει!"
 
 #: maposmatic/widgets.py:71
 msgid "Remove any selected region from the map"
-msgstr ""
+msgstr "Απομακρυνση καθε επιλεγμενης περιοχης απο τον χαρτη"
 
 #: maposmatic/templatetags/extratags.py:34
 msgid "Waiting for rendering to begin..."
-msgstr ""
+msgstr "Αναμονή για να ξεκινήσει η επεξεργασια..."
 
 #: maposmatic/templatetags/extratags.py:36
 msgid "The rendering is in progress..."
-msgstr ""
+msgstr "Η επεξεργασια τρεχει..."
 
 #: maposmatic/templatetags/extratags.py:39
 msgid "Rendering was successful."
-msgstr ""
+msgstr "Η επεξεργασια ολοκληρωθηκε."
 
 #: maposmatic/templatetags/extratags.py:41
 msgid ""
 "Rendering failed! Please contact contact@maposmatic.org for more "
 "information."
-msgstr ""
+msgstr "Η επεξεργασια απετυχε! Επικοινωνηστε στην διευθυνση contact@maposmatic.org για περισσοτερες πληροφοριες."
 
 #: maposmatic/templatetags/extratags.py:44
 msgid ""
 "Rendering is obsolete: the rendering was successful, but the files are no "
 "longer available."
-msgstr ""
+msgstr "Η επεξεργασια είναι ξεπερασμένη: η απόδοση ήταν επιτυχής, αλλά τα αρχεία δεν είναι πλέον διαθέσιμα. "
 
 #: maposmatic/templatetags/extratags.py:46
 msgid ""
@@ -217,34 +222,34 @@ msgstr ""
 
 #: maposmatic/templatetags/extratags.py:48
 msgid "The rendering was cancelled by the user."
-msgstr ""
+msgstr "Η επεξεργασια διακοπηκε απο τον χρηστη."
 
 #: templates/404.html:34
 msgid "Page not found!"
-msgstr ""
+msgstr "Η σελιδα δεν βρεθηκε!"
 
 #: templates/404.html:37
 msgid "Woups. Looks like you've followed a broken link ;-("
-msgstr ""
+msgstr "Ακολουθησατε ενα χαλασμενο λινκ ;-("
 
 #: templates/500.html:34
 msgid "Server error!"
-msgstr ""
+msgstr "Σφαλμα διακομιστη!"
 
 #: templates/500.html:37
 msgid ""
 "Well, this is embarrassing. Looks like the server crashed\n"
 "    processing this request."
-msgstr ""
+msgstr "Λοιπόν, αυτό είναι ενοχλητικό. Μοιάζει ο διακομιστής να συνετρίβη ⏎ κατα την επεξεργασία του αιτήματός σας."
 
 #: templates/maposmatic/about.html:34 templates/maposmatic/about.html.py:36
 #: templates/maposmatic/base.html:72
 msgid "About"
-msgstr ""
+msgstr "Σχετικα"
 
 #: templates/maposmatic/about.html:37
 msgid "History"
-msgstr ""
+msgstr "Ιστορικο"
 
 #: templates/maposmatic/about.html:40
 msgid ""
@@ -259,18 +264,18 @@ msgid ""
 "named the project <strong>MapOSMatic</strong>. The group of crazy\n"
 "hackers would like to thank Gilles for sharing his bright\n"
 "idea!"
-msgstr ""
+msgstr "Το MapOSMatic ξεκινησε απο μια ιδεα του⏎\nGilles Lamiral, ενος <a⏎\nhref=\"http://www.openstreetmap.org\">OpenStreetMap</a> ελευθερου⏎\nπρογραμματιστη στην Rennes, Γαλλια. Απο αυτη την ιδεα, μια ομαδα⏎\ncrazy <a⏎\nhref=\"http://en.wikipedia.org/wiki/Hacker_(programmer_subculture)\">χακερς</a>⏎\nσυναντηθηκαν για μια εβδομαδα <em>Hackfest</em> τον Αυγουστο του 2009 και⏎\nπηραν την ιδεια του Gilles Lamiral εγραψαν εναν κωδικο και⏎\nκαι ονομασαν το προγραμμα <strong>MapOSMatic</strong>. Μια ομαδα τρελων⏎\nχακερ θελουν να ευχαριστησουν τον Gilles που μοιραστηκε την ⏎\nιδεα του!"
 
 #: templates/maposmatic/about.html:54
 msgid ""
 "Of course, MapOSMatic is fully free software,\n"
 "licensed under the <a \n"
 "href=\"http://www.fsf.org/licensing/licenses/agpl-3.0.html\">AGPLv3</a>.\n"
-msgstr ""
+msgstr "Φυσικά, το MapOSMatic είναι ενα πλήρως ελεύθερο λογισμικό, ⏎ χορηγημένο άδειας κάτω από το <a ⏎\nhref=\"http://www.fsf.org/licensing/licenses/agpl-3.0.html\">AGPLv3</a>.⏎\n"
 
 #: templates/maposmatic/about.html:61
 msgid "How does it work?"
-msgstr ""
+msgstr "Πως δουλευει?"
 
 #: templates/maposmatic/about.html:64
 msgid ""
@@ -285,7 +290,7 @@ msgid ""
 "href=\"http://planet.openstreetmap.org/daily/\">daily differences</a> of\n"
 "the database, which allows to keep it up to date with the new\n"
 "contributions of OpenStreetMap users."
-msgstr ""
+msgstr "Στον διακομιστη μας, τρεχει ενας <a⏎\nhref=\"http://www.postgresql.org\">PostgreSQL</a> διακομιστης, με <a⏎\nhref=\"http://postgis.refractions.net\">PostGIS</a> προεκτασεις. Σε αυτον τον⏎\nPostgreSQL διακομιστη, φορτωσαμε <a⏎\nhref=\"http://wiki.openstreetmap.org/wiki/Planet.osm\">OpenStreetMap⏎\nδεδομενα για ολη την γη</a> χρησιμοποιοντας το <a⏎\nhref=\"http://wiki.openstreetmap.org/wiki/Osm2pgsql\">osm2pgsql</a>⏎\nεργαλειο. Το ιδιο εργαλειο χρησιμοποιητε για <a⏎\nhref=\"http://planet.openstreetmap.org/daily/\">καθημερινες αλλαγες</a> of⏎\nτης βασης δεδομενων, που μας επιτρεπει να ανανεωνουμε τα δεδομενα που χρησιμοποιουν⏎\nοι OpenStreetMap χρηστες."
 
 #: templates/maposmatic/about.html:78
 msgid ""
@@ -296,13 +301,13 @@ msgid ""
 "OpenStreetMap Subversion repository</a>. Using Mapnik\n"
 "and <a href=\"http://cairographics.org/pycairo/\">Cairo</a>, we\n"
 "built <i>OCitySMap</i>, a Python module that:"
-msgstr ""
+msgstr "Για την επεξεργασια χαρτων, χρησιμοποιουμε το⏎\nδιασημο <a href=\"http://www.mapnik.org\">Mapnik</a> με OpenStreetMap⏎\nστυλ φυλλου⏎\nπου ειναι διαθεσιμο <a href=\"http://svn.openstreetmap.org/applications/rendering/mapnik\">στο⏎\nOpenStreetMap Subversion repository</a>. Χρησιμοποιοντας το Mapnik⏎\nκαι το <a href=\"http://cairographics.org/pycairo/\">Cairo</a>, εμεις⏎\nδημιουργησαμε <i>OCitySMap</i>, μια Python μοναδα:"
 
 #: templates/maposmatic/about.html:88
 msgid ""
 "Renders the map using OpenStreetMap data and the\n"
 "  OpenStreetMap Mapnik stylesheet;"
-msgstr ""
+msgstr "Επεξεργαζετε τους χαρτες χρησιμοποιοντας OpenStreetMap δεδομενα και OpenStreetMap Mapnik στυλ φυλλου;"
 
 #: templates/maposmatic/about.html:90
 msgid ""
@@ -310,7 +315,7 @@ msgid ""
 "  of 500 meters squares, the labels of the squares, and a few other\n"
 "  informations on the map (copyright, scale,\n"
 "  etc.);"
-msgstr ""
+msgstr "Επεξεργασια στην κορυφη του χαρτη, χρησιμοποιοντας το Mapnik, το πλεγμα⏎\n500 μετρων πλατειων, ετικετες πλατειων, και μερικες αλλες⏎\nπληροφοριες στον χαρτη (πνευματικα δικαιωματα, κλιμακα,⏎\nκλπ.);"
 
 #: templates/maposmatic/about.html:94
 msgid ""
@@ -323,7 +328,7 @@ msgid ""
 "Renders an index of the streets, based on\n"
 "  OpenStreetMap data and the intersection of the streets with the\n"
 "  squares on the map."
-msgstr ""
+msgstr "Επεξεργαζετε ένα ευρετήριο δρόμων, με βάση ⏎ OpenStreetMap δεδομένα και τη διασταύρωση δρόμων με ⏎ τετράγωνα του χάρτη. "
 
 #: templates/maposmatic/about.html:102
 msgid ""
@@ -949,4 +954,12 @@ msgstr ""
 msgid ""
 "You're almost ready to request to map rendering! Select the map\n"
 "language, eventually adjust the title of your map, and you're good to go!"
+msgstr ""
+
+#: templates/maposmatic/suggest.js:40
+msgid "Start typing for suggestions..."
+msgstr ""
+
+#: templates/maposmatic/wizard.js:365
+msgid "Clear selected area"
 msgstr ""
