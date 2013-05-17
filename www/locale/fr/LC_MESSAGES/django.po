@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: MapOSMatic\n"
 "Report-Msgid-Bugs-To: https://savannah.nongnu.org/bugs/?group=maposmatic\n"
-"PO-Revision-Date: 2013-04-28 16:50+0000\n"
+"PO-Revision-Date: 2013-05-16 16:16+0000\n"
 "Last-Translator: mpetazzoni <maxime.petazzoni@bulix.org>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -605,7 +605,7 @@ msgstr "MapOSMatic est un projet entièrement développé et réalisé par une �
 msgid ""
 "Therefore, we are currently seeking donations to help us\n"
 "funding:"
-msgstr "Nous cherchons donc actuellement des donnations pour nous aider à financer :"
+msgstr "Nous cherchons donc actuellement des dons pour nous aider à financer :"
 
 #: templates/maposmatic/donate.html:54
 msgid ""
@@ -620,14 +620,14 @@ msgstr "Participation aux frais de déplacement des développeurs MapOSMatic lor
 
 #: templates/maposmatic/donate.html:63
 msgid "Considering making a donation?"
-msgstr "Vous pensez faire une donation ?"
+msgstr "Vous pensez faire un don ?"
 
 #: templates/maposmatic/donate.html:66
 msgid ""
 "Donations can be done through the well-known <a\n"
 "href=\"http://www.paypal.com\">PayPal</a> service. We accept donations of any\n"
 "amount: all donations are helpful, even the smallest ones."
-msgstr "Les donnations peuvent être faites via <a href=\"http://www.paypal.com\">PayPal</a>. Nous acceptons les donnations de tout montants : toutes les donnations sont utiles, y compris les plus petites."
+msgstr "Les dons peuvent être faits via <a href=\"http://www.paypal.com\">PayPal</a>. Nous acceptons les dons de tout montants : tous les dons sont utiles, y compris les plus petits."
 
 #: templates/maposmatic/donate.html:75 templates/maposmatic/index.html:129
 msgid "Donate via PayPal &raquo;"
@@ -727,7 +727,7 @@ msgid ""
 "You can donate to help us improve the service. See our <a "
 "href=\"/donate\">donation</a> page for more information on how donations are"
 " processed and how they help us keep MapOSMatic free (and ad-free!)."
-msgstr "Vous pouvez faire un don pour nous aider à améliorer ce service. Voir notre <a href=\"/donate\">page sur les dons</a> pour plus d'informations sur comment nous traitons les donnations et comment elles nous aident à garder MapOSMatic gratuit (et sans publicité !)."
+msgstr "Vous pouvez faire un don pour nous aider à améliorer ce service. Voir notre <a href=\"/donate\">page sur les dons</a> pour plus d'informations sur comment nous traitons les dons et comment ils nous aident à garder MapOSMatic gratuit (et sans publicité !)."
 
 #: templates/maposmatic/map-full.html:41
 msgid "Updating now..."
