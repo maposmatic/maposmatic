@@ -3,6 +3,7 @@
 # This file is distributed under the same license as the PACKAGE package.
 # 
 # Translators:
+# jmontane <joan@montane.cat>, 2013
 # jmontane <joan@montane.cat>, 2012-2013
 # Joan Montané <joan--sense spam--montane.cat>, 2010
 # Thomas Petazzoni &lt;thomas.petazzoni@enix.org&gt; <>, 2010
@@ -10,8 +11,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: MapOSMatic\n"
 "Report-Msgid-Bugs-To: https://savannah.nongnu.org/bugs/?group=maposmatic\n"
-"PO-Revision-Date: 2013-04-28 08:07+0000\n"
-"Last-Translator: Hakan Tandogan <hakan.tandogan@gmail.com>\n"
+"PO-Revision-Date: 2013-05-17 11:16+0000\n"
+"Last-Translator: jmontane <joan@montane.cat>\n"
 "Language-Team: Catalan (http://www.transifex.com/projects/p/maposmatic/language/ca/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -232,7 +233,7 @@ msgstr "No s'ha trobat la pàgina!"
 
 #: templates/404.html:37
 msgid "Woups. Looks like you've followed a broken link ;-("
-msgstr "Ep! sembla que heu seguit un enllaç trencat;-("
+msgstr "Ep! sembla que heu seguit un enllaç trencat ;-("
 
 #: templates/500.html:34
 msgid "Server error!"
@@ -242,7 +243,7 @@ msgstr "S'ha produït un error al servidor!"
 msgid ""
 "Well, this is embarrassing. Looks like the server crashed\n"
 "    processing this request."
-msgstr "Això és compromès. Sembla que el servidor ha caigut\n    processant aquesta petició."
+msgstr "Això és compromès. Sembla que el servidor ha caigut\n    en processar aquesta petició."
 
 #: templates/maposmatic/about.html:34 templates/maposmatic/about.html.py:36
 #: templates/maposmatic/base.html:72
@@ -273,7 +274,7 @@ msgid ""
 "Of course, MapOSMatic is fully free software,\n"
 "licensed under the <a \n"
 "href=\"http://www.fsf.org/licensing/licenses/agpl-3.0.html\">AGPLv3</a>.\n"
-msgstr "Òbviament, el MapOSMatic programari completament lliure,\nllicenciat sota la <a \nhref=\"http://www.fsf.org/licensing/licenses/agpl-3.0.html\">AGPLv3</a>.\n"
+msgstr "Òbviament, el MapOSMatic és programari completament lliure,\nllicenciat sota l'<a \nhref=\"http://www.fsf.org/licensing/licenses/agpl-3.0.html\">AGPLv3</a>.\n"
 
 #: templates/maposmatic/about.html:61
 msgid "How does it work?"
@@ -504,11 +505,11 @@ msgstr "Traducció a l'indonesi"
 
 #: templates/maposmatic/about.html:201 templates/maposmatic/about.html:202
 msgid "Norwegian bokmål translation"
-msgstr ""
+msgstr "Traducció al noruec bokmål"
 
 #: templates/maposmatic/about.html:202
 msgid "Norwegian nynorsk translation"
-msgstr ""
+msgstr "Traducció al noruec nynorsk"
 
 #: templates/maposmatic/about.html:203
 msgid "Turkish translation"
@@ -520,7 +521,7 @@ msgstr ""
 
 #: templates/maposmatic/about.html:204
 msgid "Kirgyz translation"
-msgstr ""
+msgstr "Traducció al kirguís"
 
 #: templates/maposmatic/about.html:205
 msgid "Printable stylesheet"
@@ -636,7 +637,7 @@ msgstr "Feu un donatiu via PayPal &raquo;"
 
 #: templates/maposmatic/index.html:36
 msgid "Welcome to MapOSMatic!"
-msgstr ""
+msgstr "Us donem la benvinguda al MapOSMatic!"
 
 #: templates/maposmatic/index.html:41
 msgid ""
@@ -644,7 +645,7 @@ msgid ""
 "of cities using <a href=\"http://www.openstreetmap.org\">OpenStreetMap</a> "
 "data. The generated maps are available in PNG, PDF and SVG formats and are "
 "ready to be printed."
-msgstr ""
+msgstr "El MapOSMatic és un servei web gratuït que us permet generar mapes de ciutats fent servir dades de l'<a href=\"http://www.openstreetmap.org\">OpenStreetMap</a>. Els formats disponibles dels mapes generats són PNG, PDF i SVG, preparats per a imprimir-los."
 
 #: templates/maposmatic/index.html:45
 msgid ""
@@ -660,7 +661,7 @@ msgstr "Apreneu-ne més"
 
 #: templates/maposmatic/index.html:50
 msgid "Create a map &raquo;"
-msgstr "Crea un map &raquo;"
+msgstr "Crea un mapa &raquo;"
 
 #: templates/maposmatic/index.html:69
 #, python-format
@@ -706,7 +707,7 @@ msgid ""
 "<i class=\"icon-white icon-warning-sign\"></i> The GIS database is not up to"
 " date and was only <span class=\"tooltipped\" data-original-"
 "title=\"%(gis_lastupdate)s\">updated %(date)s ago</span>."
-msgstr ""
+msgstr "<i class=\"icon-white icon-warning-sign\"></i> La base de dades SIG no està actualitzada, actualitzada fa només <span class=\"tooltipped\" data-original-title=\"%(gis_lastupdate)s\">updated %(date)s</span>."
 
 #: templates/maposmatic/index.html:96
 msgid ""
@@ -960,8 +961,8 @@ msgstr "Sou a punt de sol·licitar generar un mapa! Seleccioneu la llengua\ndel 
 
 #: templates/maposmatic/suggest.js:40
 msgid "Start typing for suggestions..."
-msgstr ""
+msgstr "Escriviu per veure suggeriments..."
 
 #: templates/maposmatic/wizard.js:365
 msgid "Clear selected area"
-msgstr ""
+msgstr "Neteja l'àrea seleccionada"
