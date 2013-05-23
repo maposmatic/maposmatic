@@ -44,11 +44,11 @@ msgstr ""
 msgid "Bounding box"
 msgstr ""
 
-#: maposmatic/forms.py:60
+#: maposmatic/forms.py:60 templates/maposmatic/wizard.js:245
 msgid "Portrait"
 msgstr ""
 
-#: maposmatic/forms.py:61
+#: maposmatic/forms.py:61 templates/maposmatic/wizard.js:244
 msgid "Landscape"
 msgstr ""
 
@@ -915,4 +915,12 @@ msgstr ""
 msgid ""
 "You're almost ready to request to map rendering! Select the map\n"
 "language, eventually adjust the title of your map, and you're good to go!"
+msgstr ""
+
+#: templates/maposmatic/suggest.js:40
+msgid "Start typing for suggestions..."
+msgstr ""
+
+#: templates/maposmatic/wizard.js:365
+msgid "Clear selected area"
 msgstr ""

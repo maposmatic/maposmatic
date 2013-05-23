@@ -8,16 +8,16 @@ msgid ""
 msgstr ""
 "Project-Id-Version: MapOSMatic\n"
 "Report-Msgid-Bugs-To: https://savannah.nongnu.org/bugs/?group=maposmatic\n"
-"PO-Revision-Date: 2013-04-21 18:03+0000\n"
+"PO-Revision-Date: 2013-04-28 08:07+0000\n"
 "Last-Translator: Hakan Tandogan <hakan.tandogan@gmail.com>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language-Team: Norwegian Bokmål (http://www.transifex.com/projects/p/maposmatic/language/nb/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Language: nb\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: settings.py:238
+#: settings.py:240
 msgid "No localization"
 msgstr "Ingen språktilpassing"
 
@@ -45,11 +45,11 @@ msgstr "Administrativ grense"
 msgid "Bounding box"
 msgstr "Avgrensingsboks"
 
-#: maposmatic/forms.py:60
+#: maposmatic/forms.py:60 templates/maposmatic/wizard.js:245
 msgid "Portrait"
 msgstr ""
 
-#: maposmatic/forms.py:61
+#: maposmatic/forms.py:61 templates/maposmatic/wizard.js:244
 msgid "Landscape"
 msgstr ""
 
@@ -158,7 +158,11 @@ msgstr "%(title)s %(format)s indeks"
 msgid "Administrative area too big for rendering"
 msgstr ""
 
-#: maposmatic/nominatim.py:300 maposmatic/nominatim.py:314
+#: maposmatic/nominatim.py:300
+msgid "No administrative boundary details from GIS"
+msgstr ""
+
+#: maposmatic/nominatim.py:314
 msgid "No administrative boundary"
 msgstr ""
 
@@ -950,4 +954,12 @@ msgstr ""
 msgid ""
 "You're almost ready to request to map rendering! Select the map\n"
 "language, eventually adjust the title of your map, and you're good to go!"
+msgstr ""
+
+#: templates/maposmatic/suggest.js:40
+msgid "Start typing for suggestions..."
+msgstr ""
+
+#: templates/maposmatic/wizard.js:365
+msgid "Clear selected area"
 msgstr ""

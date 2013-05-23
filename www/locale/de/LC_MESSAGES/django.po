@@ -6,20 +6,21 @@
 # jvrnix <jvrnix@gmail.com>, 2013
 # mpetazzoni <maxime.petazzoni@bulix.org>, 2013
 # malenki <transifex@malenki.ch>, 2013
+# Wasilis <inactive+Wasilis@transifex.com>, 2013
 msgid ""
 msgstr ""
 "Project-Id-Version: MapOSMatic\n"
 "Report-Msgid-Bugs-To: https://savannah.nongnu.org/bugs/?group=maposmatic\n"
-"PO-Revision-Date: 2013-04-21 18:08+0000\n"
-"Last-Translator: mpetazzoni <maxime.petazzoni@bulix.org>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
+"PO-Revision-Date: 2013-04-30 03:58+0000\n"
+"Last-Translator: Wasilis <inactive+Wasilis@transifex.com>\n"
+"Language-Team: German (http://www.transifex.com/projects/p/maposmatic/language/de/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Language: de\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: settings.py:238
+#: settings.py:240
 msgid "No localization"
 msgstr "Keine Übersetzung"
 
@@ -47,11 +48,11 @@ msgstr "Verwaltungsgrenze (Name der Stadt)"
 msgid "Bounding box"
 msgstr "Begrenzungsrahmen"
 
-#: maposmatic/forms.py:60
+#: maposmatic/forms.py:60 templates/maposmatic/wizard.js:245
 msgid "Portrait"
 msgstr "Hochkant"
 
-#: maposmatic/forms.py:61
+#: maposmatic/forms.py:61 templates/maposmatic/wizard.js:244
 msgid "Landscape"
 msgstr "Quer"
 
@@ -160,7 +161,11 @@ msgstr "Straßenverzeichnis von %(title)s (format %(format)s)"
 msgid "Administrative area too big for rendering"
 msgstr "Das von der Verwaltungsgrenze umfasste Gebiet ist zu groß, um gerendert zu werden."
 
-#: maposmatic/nominatim.py:300 maposmatic/nominatim.py:314
+#: maposmatic/nominatim.py:300
+msgid "No administrative boundary details from GIS"
+msgstr "Keine administrativen Grenzen Details von GIS "
+
+#: maposmatic/nominatim.py:314
 msgid "No administrative boundary"
 msgstr "Keine Verwaltungsgrenze vorhanden."
 
@@ -953,3 +958,11 @@ msgid ""
 "You're almost ready to request to map rendering! Select the map\n"
 "language, eventually adjust the title of your map, and you're good to go!"
 msgstr "Sie haben es gleich geschafft! Wählen Sie noch die Sprache des Plans,\nändern Sie gegebenenfalls den Titel und Sie können den Plan erstellen lassen!"
+
+#: templates/maposmatic/suggest.js:40
+msgid "Start typing for suggestions..."
+msgstr "Beginnen Sie Anregungen zu schreiben... "
+
+#: templates/maposmatic/wizard.js:365
+msgid "Clear selected area"
+msgstr "Klar ausgewählter Bereich "
