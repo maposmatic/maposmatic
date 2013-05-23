@@ -4,12 +4,13 @@
 # 
 # Translators:
 # Łukasz Jernaś <deejay1@srem.org>, 2010
+# ireun <gatkowski.michal@gmail.com>, 2013
 msgid ""
 msgstr ""
 "Project-Id-Version: MapOSMatic\n"
 "Report-Msgid-Bugs-To: https://savannah.nongnu.org/bugs/?group=maposmatic\n"
-"PO-Revision-Date: 2013-04-28 08:07+0000\n"
-"Last-Translator: Hakan Tandogan <hakan.tandogan@gmail.com>\n"
+"PO-Revision-Date: 2013-05-22 18:33+0000\n"
+"Last-Translator: ireun <gatkowski.michal@gmail.com>\n"
 "Language-Team: Polish (http://www.transifex.com/projects/p/maposmatic/language/pl/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -35,7 +36,7 @@ msgstr "Najnowsze utworzone mapy w serwisie MapOSMatic."
 
 #: maposmatic/forms.py:43
 msgid "Search for a map"
-msgstr ""
+msgstr "Szukaj mapy"
 
 #: maposmatic/forms.py:57
 msgid "Administrative boundary"
@@ -546,7 +547,7 @@ msgstr ""
 
 #: templates/maposmatic/base.html:70 templates/maposmatic/new.html:34
 msgid "Create map"
-msgstr ""
+msgstr "Stwórz mapę"
 
 #: templates/maposmatic/base.html:71 templates/maposmatic/maps.html:34
 #: templates/maposmatic/maps.html.py:38
@@ -658,7 +659,7 @@ msgstr ""
 
 #: templates/maposmatic/index.html:50
 msgid "Create a map &raquo;"
-msgstr ""
+msgstr "Stwórz mapę &raquo;"
 
 #: templates/maposmatic/index.html:69
 #, python-format
@@ -832,7 +833,7 @@ msgstr ""
 
 #: templates/maposmatic/maps.html:133
 msgid "Recreate map"
-msgstr ""
+msgstr "Odtwórz mapę"
 
 #: templates/maposmatic/maps.html:140
 msgid "Map thumbnail"
@@ -848,7 +849,7 @@ msgstr ""
 
 #: templates/maposmatic/maps.html:162
 msgid "Create a new map!"
-msgstr ""
+msgstr "Stwórz nową mapę!"
 
 #: templates/maposmatic/new.html:41
 msgid "Generate your own map"
