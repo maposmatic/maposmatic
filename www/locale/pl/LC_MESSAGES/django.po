@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: MapOSMatic\n"
 "Report-Msgid-Bugs-To: https://savannah.nongnu.org/bugs/?group=maposmatic\n"
-"PO-Revision-Date: 2013-05-22 18:33+0000\n"
+"PO-Revision-Date: 2013-05-24 21:38+0000\n"
 "Last-Translator: Michał Gątkowski <gatkowski.michal@gmail.com>\n"
 "Language-Team: Polish (http://www.transifex.com/projects/p/maposmatic/language/pl/)\n"
 "MIME-Version: 1.0\n"
@@ -48,11 +48,11 @@ msgstr "Obszar"
 
 #: maposmatic/forms.py:60 templates/maposmatic/wizard.js:245
 msgid "Portrait"
-msgstr ""
+msgstr "Pionowy"
 
 #: maposmatic/forms.py:61 templates/maposmatic/wizard.js:244
 msgid "Landscape"
-msgstr ""
+msgstr "Poziomy"
 
 #: maposmatic/forms.py:73
 msgid "Area"
@@ -77,23 +77,23 @@ msgstr ""
 #: maposmatic/forms.py:101
 #, python-format
 msgid "The %(layout_name)s layout"
-msgstr ""
+msgstr "Interfejs %(layout_name)s"
 
 #: maposmatic/forms.py:109
 msgid "The default OpenStreetMap.org style"
-msgstr ""
+msgstr "Domyślny styl OpenStreetMap.org"
 
 #: maposmatic/forms.py:111
 msgid "The european MapQuest style"
-msgstr ""
+msgstr "Europejski styl MapQuest"
 
 #: maposmatic/forms.py:113
 msgid "The US MapQuest style"
-msgstr ""
+msgstr "Amerykański styl MapQuest"
 
 #: maposmatic/forms.py:115
 msgid "The UK MapQuest style"
-msgstr ""
+msgstr "Brytyjski styl MapQuest"
 
 #: maposmatic/forms.py:117
 msgid "A MapOSMatic-specific stylesheet suitable for printing"
@@ -193,21 +193,21 @@ msgstr ""
 
 #: maposmatic/templatetags/extratags.py:34
 msgid "Waiting for rendering to begin..."
-msgstr ""
+msgstr "Czekanie na rozpoczecie renderowania.."
 
 #: maposmatic/templatetags/extratags.py:36
 msgid "The rendering is in progress..."
-msgstr ""
+msgstr "Trwa renderowanie..."
 
 #: maposmatic/templatetags/extratags.py:39
 msgid "Rendering was successful."
-msgstr ""
+msgstr "Wyrenderowano pomyślnie."
 
 #: maposmatic/templatetags/extratags.py:41
 msgid ""
 "Rendering failed! Please contact contact@maposmatic.org for more "
 "information."
-msgstr ""
+msgstr "Renderowanie nieudane! Proszę skontaktuj się z contact@maposmatic.org po więcej informacji."
 
 #: maposmatic/templatetags/extratags.py:44
 msgid ""
@@ -223,11 +223,11 @@ msgstr ""
 
 #: maposmatic/templatetags/extratags.py:48
 msgid "The rendering was cancelled by the user."
-msgstr ""
+msgstr "Renderowanie anulowane przez użytkownika."
 
 #: templates/404.html:34
 msgid "Page not found!"
-msgstr ""
+msgstr "Nie znaleziono strony!"
 
 #: templates/404.html:37
 msgid "Woups. Looks like you've followed a broken link ;-("
@@ -235,7 +235,7 @@ msgstr ""
 
 #: templates/500.html:34
 msgid "Server error!"
-msgstr ""
+msgstr "Błąd serwera!"
 
 #: templates/500.html:37
 msgid ""
@@ -246,11 +246,11 @@ msgstr ""
 #: templates/maposmatic/about.html:34 templates/maposmatic/about.html.py:36
 #: templates/maposmatic/base.html:72
 msgid "About"
-msgstr ""
+msgstr "Informacje"
 
 #: templates/maposmatic/about.html:37
 msgid "History"
-msgstr ""
+msgstr "Historia"
 
 #: templates/maposmatic/about.html:40
 msgid ""
@@ -276,7 +276,7 @@ msgstr ""
 
 #: templates/maposmatic/about.html:61
 msgid "How does it work?"
-msgstr ""
+msgstr "Jak to działa?"
 
 #: templates/maposmatic/about.html:64
 msgid ""
@@ -459,11 +459,11 @@ msgstr ""
 
 #: templates/maposmatic/about.html:189
 msgid "German translation"
-msgstr ""
+msgstr "Niemieckie tłumaczenie"
 
 #: templates/maposmatic/about.html:190
 msgid "Italian translation"
-msgstr ""
+msgstr "Włoskie tłumaczenie"
 
 #: templates/maposmatic/about.html:191
 msgid "Catalan translation"
@@ -471,7 +471,7 @@ msgstr ""
 
 #: templates/maposmatic/about.html:192
 msgid "Russian translation"
-msgstr ""
+msgstr "Rosyjskie tłumaczenie"
 
 #: templates/maposmatic/about.html:193
 msgid "Arabic translation"
@@ -479,11 +479,11 @@ msgstr ""
 
 #: templates/maposmatic/about.html:194 templates/maposmatic/about.html:195
 msgid "Brasilian portuguese translation"
-msgstr ""
+msgstr "Brazylijsko-portugalskie tłumaczenie"
 
 #: templates/maposmatic/about.html:196
 msgid "Danish translation"
-msgstr ""
+msgstr "Duńskie tłumaczenie"
 
 #: templates/maposmatic/about.html:197
 msgid "Dutch translation"
@@ -495,11 +495,11 @@ msgstr ""
 
 #: templates/maposmatic/about.html:199
 msgid "Polish translation"
-msgstr ""
+msgstr "Polskie tłumaczenie"
 
 #: templates/maposmatic/about.html:200
 msgid "Indonesian translation"
-msgstr ""
+msgstr "Indonezyjskie tłumaczenie"
 
 #: templates/maposmatic/about.html:201 templates/maposmatic/about.html:202
 msgid "Norwegian bokmål translation"
@@ -511,7 +511,7 @@ msgstr ""
 
 #: templates/maposmatic/about.html:203
 msgid "Turkish translation"
-msgstr ""
+msgstr "Tureckie tłumaczenie"
 
 #: templates/maposmatic/about.html:203
 msgid "Translation automation"
@@ -531,7 +531,7 @@ msgstr ""
 
 #: templates/maposmatic/base.html:58 templates/maposmatic/index.html:65
 msgid "Platform status"
-msgstr ""
+msgstr "Status platformy"
 
 #: templates/maposmatic/base.html:60
 msgid "Rendering daemon: "
@@ -543,7 +543,7 @@ msgstr ""
 
 #: templates/maposmatic/base.html:69
 msgid "Home"
-msgstr ""
+msgstr "Start"
 
 #: templates/maposmatic/base.html:70 templates/maposmatic/new.html:34
 msgid "Create map"
@@ -552,12 +552,12 @@ msgstr "Stwórz mapę"
 #: templates/maposmatic/base.html:71 templates/maposmatic/maps.html:34
 #: templates/maposmatic/maps.html.py:38
 msgid "Maps"
-msgstr ""
+msgstr "Mapy"
 
 #: templates/maposmatic/base.html:73 templates/maposmatic/donate.html:34
 #: templates/maposmatic/donate.html:36 templates/maposmatic/index.html:119
 msgid "Donate"
-msgstr ""
+msgstr "Dotacja"
 
 #: templates/maposmatic/base.html:113
 msgid ""
@@ -567,11 +567,11 @@ msgstr ""
 
 #: templates/maposmatic/donate-thanks.html:34
 msgid "Thanks!"
-msgstr ""
+msgstr "Dziękujemy!"
 
 #: templates/maposmatic/donate-thanks.html:37
 msgid "Thanks for your donation!"
-msgstr ""
+msgstr "Dziękujemy za dotację!"
 
 #: templates/maposmatic/donate-thanks.html:40
 msgid ""
@@ -590,7 +590,7 @@ msgstr ""
 
 #: templates/maposmatic/donate.html:37
 msgid "Why are donations useful?"
-msgstr ""
+msgstr "Dlaczego dotacje są pomocne?"
 
 #: templates/maposmatic/donate.html:42
 #, python-format
@@ -620,7 +620,7 @@ msgstr ""
 
 #: templates/maposmatic/donate.html:63
 msgid "Considering making a donation?"
-msgstr ""
+msgstr "Myślisz nad dotacją?"
 
 #: templates/maposmatic/donate.html:66
 msgid ""
@@ -631,11 +631,11 @@ msgstr ""
 
 #: templates/maposmatic/donate.html:75 templates/maposmatic/index.html:129
 msgid "Donate via PayPal &raquo;"
-msgstr ""
+msgstr "Złóż dotację przez PayPal &raquo;"
 
 #: templates/maposmatic/index.html:36
 msgid "Welcome to MapOSMatic!"
-msgstr ""
+msgstr "Witaj w MapOSMatic!"
 
 #: templates/maposmatic/index.html:41
 msgid ""
@@ -655,7 +655,7 @@ msgstr ""
 
 #: templates/maposmatic/index.html:49
 msgid "Learn more"
-msgstr ""
+msgstr "Dowiedz się więcej"
 
 #: templates/maposmatic/index.html:50
 msgid "Create a map &raquo;"
@@ -715,12 +715,12 @@ msgstr ""
 
 #: templates/maposmatic/index.html:106
 msgid "Latest news"
-msgstr ""
+msgstr "Najnowsze wiadomości "
 
 #: templates/maposmatic/index.html:112
 #, python-format
 msgid "published %(date)s ago"
-msgstr ""
+msgstr "opublikowano %(date)s temu"
 
 #: templates/maposmatic/index.html:122
 msgid ""
@@ -731,36 +731,36 @@ msgstr ""
 
 #: templates/maposmatic/map-full.html:41
 msgid "Updating now..."
-msgstr ""
+msgstr "Trwa aktualizowanie.."
 
 #: templates/maposmatic/map-full.html:59 templates/maposmatic/maps.html:59
 #, python-format
 msgid "Request submitted: %(date)s"
-msgstr ""
+msgstr "Zapytanie wysłane: %(date)s"
 
 #: templates/maposmatic/map-full.html:64 templates/maposmatic/maps.html:64
 #, python-format
 msgid "Rendering started: %(date)s"
-msgstr ""
+msgstr "Renderowanie rozpoczęte: %(date)s"
 
 #: templates/maposmatic/map-full.html:69 templates/maposmatic/maps.html:69
 #, python-format
 msgid "Rendering completed: %(date)s"
-msgstr ""
+msgstr "Renderowanie skończone: %(date)s"
 
 #: templates/maposmatic/map-full.html:74 templates/maposmatic/maps.html:74
 #, python-format
 msgid "Rendering cancelled: %(date)s"
-msgstr ""
+msgstr "Renderowanie anulowane: %(date)s"
 
 #: templates/maposmatic/map-full.html:94 templates/maposmatic/maps.html:83
 #, python-format
 msgid "Pending, submitted %(date)s ago"
-msgstr ""
+msgstr "W toku, wysłano %(date)s temu"
 
 #: templates/maposmatic/map-full.html:96 templates/maposmatic/maps.html:85
 msgid "Pending..."
-msgstr ""
+msgstr "W toku.."
 
 #: templates/maposmatic/map-full.html:106
 #, python-format
@@ -778,13 +778,13 @@ msgstr ""
 
 #: templates/maposmatic/map-full.html:120 templates/maposmatic/maps.html:95
 msgid "Rendering..."
-msgstr ""
+msgstr "Renderowanie.."
 
 #: templates/maposmatic/map-full.html:129
 #: templates/maposmatic/map-full.html:153 templates/maposmatic/maps.html:102
 #: templates/maposmatic/maps.html.py:126
 msgid "Download"
-msgstr ""
+msgstr "Pobierz"
 
 #: templates/maposmatic/map-full.html:134 templates/maposmatic/maps.html:107
 msgid "Download other formats and map indeces"
@@ -792,7 +792,7 @@ msgstr ""
 
 #: templates/maposmatic/map-full.html:139 templates/maposmatic/maps.html:112
 msgid "map"
-msgstr ""
+msgstr "mapa"
 
 #: templates/maposmatic/map-full.html:144 templates/maposmatic/maps.html:117
 msgid "index"
@@ -809,15 +809,15 @@ msgstr ""
 
 #: templates/maposmatic/map-full.html:163
 msgid "Map details"
-msgstr ""
+msgstr "Szczegóły mapy"
 
 #: templates/maposmatic/map-full.html:168
 msgid "City"
-msgstr ""
+msgstr "Miasto"
 
 #: templates/maposmatic/map-full.html:175 templates/maposmatic/new.html:108
 msgid "Layout"
-msgstr ""
+msgstr "Styl"
 
 #: templates/maposmatic/map-full.html:177 templates/maposmatic/new.html:115
 msgid "Stylesheet"
@@ -841,7 +841,7 @@ msgstr ""
 
 #: templates/maposmatic/maps.html:160
 msgid "Our database does not contain any rendered maps for the moment."
-msgstr ""
+msgstr "Nasza baza danych nie posiada teraz żadnych wyrenderowanych map."
 
 #: templates/maposmatic/maps.html:162
 msgid "No map matches your query."
@@ -853,11 +853,11 @@ msgstr "Stwórz nową mapę!"
 
 #: templates/maposmatic/new.html:41
 msgid "Generate your own map"
-msgstr ""
+msgstr "Wygeneruj własną mapę"
 
 #: templates/maposmatic/new.html:56
 msgid "City search"
-msgstr ""
+msgstr "Wyszukiwanie miasta"
 
 #: templates/maposmatic/new.html:62
 msgid "Geographic area"
@@ -891,11 +891,11 @@ msgstr ""
 
 #: templates/maposmatic/new.html:137
 msgid "Paper size"
-msgstr ""
+msgstr "Rozmiar papieru"
 
 #: templates/maposmatic/new.html:145
 msgid "Paper orientation"
-msgstr ""
+msgstr "Orientacja papieru"
 
 #: templates/maposmatic/new.html:153
 msgid "An error occured while retrieving compatible paper sizes."
@@ -921,7 +921,7 @@ msgstr ""
 
 #: templates/maposmatic/new.html:178
 msgid "Language"
-msgstr ""
+msgstr "Język"
 
 #: templates/maposmatic/new.html:187
 msgid "Summary"
@@ -949,7 +949,7 @@ msgstr ""
 
 #: templates/maposmatic/new.html:205
 msgid "Almost there!"
-msgstr ""
+msgstr "Prawie gotowe!"
 
 #: templates/maposmatic/new.html:207
 msgid ""
@@ -959,8 +959,8 @@ msgstr ""
 
 #: templates/maposmatic/suggest.js:40
 msgid "Start typing for suggestions..."
-msgstr ""
+msgstr "Zacznij pisać a zobaczysz sugestie.."
 
 #: templates/maposmatic/wizard.js:365
 msgid "Clear selected area"
-msgstr ""
+msgstr "Wyczyść zaznaczony obszar"
