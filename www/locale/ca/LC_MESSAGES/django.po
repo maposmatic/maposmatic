@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: MapOSMatic\n"
 "Report-Msgid-Bugs-To: https://savannah.nongnu.org/bugs/?group=maposmatic\n"
-"PO-Revision-Date: 2013-05-17 11:16+0000\n"
+"PO-Revision-Date: 2013-05-29 10:15+0000\n"
 "Last-Translator: jmontane <joan@montane.cat>\n"
 "Language-Team: Catalan (http://www.transifex.com/projects/p/maposmatic/language/ca/)\n"
 "MIME-Version: 1.0\n"
@@ -163,7 +163,7 @@ msgstr "El límit administratiu és massa gran per a renderitzar el mapa"
 
 #: maposmatic/nominatim.py:300
 msgid "No administrative boundary details from GIS"
-msgstr ""
+msgstr "No hi ha detalls dels límits administratius del SIG"
 
 #: maposmatic/nominatim.py:314
 msgid "No administrative boundary"
@@ -267,7 +267,7 @@ msgid ""
 "named the project <strong>MapOSMatic</strong>. The group of crazy\n"
 "hackers would like to thank Gilles for sharing his bright\n"
 "idea!"
-msgstr ""
+msgstr "El MapOSMatic començà gràcies a una idea d'en Gilles Lamiral, un col·laborador de l'<a\nhref=\"http://www.openstreetmap.org\">OpenStreetMap</a> i del programari lliure de l'àrea de Rennes, França. Partint d'aquesta idea, un grup d'esbojarrats <a\nhref=\"http://en.wikipedia.org/wiki/Hacker_(programmer_subculture)\">hackers</a>\ns'ajuntaren durant una <em>hackfesta</em> d'una setmana l'agost del 2009 i portaren la idea d'en Gilles Lamiral a la realitat, escriviren el codi i posaren el nom <strong>MapOSMatic</strong> al projecte . El grup de hackers volen agrair a en Gilles que compartís la seva brillant idea!"
 
 #: templates/maposmatic/about.html:54
 msgid ""
@@ -318,7 +318,7 @@ msgid ""
 "  of 500 meters squares, the labels of the squares, and a few other\n"
 "  informations on the map (copyright, scale,\n"
 "  etc.);"
-msgstr ""
+msgstr "Renderitzats a la part superior del mapa, usant Mapnik, la graella de 500 metres quadrats, les etiquetes dels quadrats i informació addicional al mapa (copyright, escala...);"
 
 #: templates/maposmatic/about.html:94
 msgid ""
@@ -517,7 +517,7 @@ msgstr "Traducció al turc"
 
 #: templates/maposmatic/about.html:203
 msgid "Translation automation"
-msgstr ""
+msgstr "Automatització de la traducció"
 
 #: templates/maposmatic/about.html:204
 msgid "Kirgyz translation"
@@ -588,7 +588,7 @@ msgid ""
 "<i>Thomas Petazzoni</i>, who is the MapOSMatic developer in charge of donations\n"
 "and funds. MapOSMatic is still an informal gathering of developers, and we have\n"
 "not (yet) created a non-profit organization to support the project."
-msgstr ""
+msgstr "Rebreu una notificació per correu electrònic en referència al vostre donatiu. Aquest correu indicarà que el donatiu l'ha rebut en <i>Thomas Petazzoni</i>, que és el desenvolupador del MapOSMatic a càrrec dels donatius i fons. El MapOSMatic segueix sent grup informal de desenvolupadors, i (encara) no hem creat una organització sense afany de lucre per donar suport al projecte."
 
 #: templates/maposmatic/donate.html:37
 msgid "Why are donations useful?"
@@ -629,7 +629,7 @@ msgid ""
 "Donations can be done through the well-known <a\n"
 "href=\"http://www.paypal.com\">PayPal</a> service. We accept donations of any\n"
 "amount: all donations are helpful, even the smallest ones."
-msgstr ""
+msgstr "Els donatius es poden fer mitjançant el conegut servei <a ⏎\nhref = \"http://www.paypal.com\">PayPal</ a>. Acceptem donatius de qualsevol quantitat: tots els donatius són útils, fins i tot els més petits."
 
 #: templates/maposmatic/donate.html:75 templates/maposmatic/index.html:129
 msgid "Donate via PayPal &raquo;"
@@ -699,7 +699,7 @@ msgid ""
 "<i class=\"icon-white icon-ok\"></i> The GIS database is online and up to "
 "date, <span class=\"tooltipped\" data-original-"
 "title=\"%(gis_lastupdate)s\">updated %(date)s ago</span>."
-msgstr ""
+msgstr "<i class=\"icon-white icon-ok\"></i> La base de dades SIG és en línia i al dia, <span class=\"tooltipped\" data-original-title=\"%(gis_lastupdate)s\">actualitzada fa %(date)s </span>."
 
 #: templates/maposmatic/index.html:94
 #, python-format
@@ -876,7 +876,7 @@ msgid ""
 "you want, or if you prefer to choose the exact area you want to render\n"
 "yourself, select the <em>Geographic area</em> tab and use the mini-map to set\n"
 "the limits of the rendered area."
-msgstr ""
+msgstr "Comenceu seleccionant el municipi o àrea geogràfica que voleu renderitzar. Apareixeran suggeriments quan comenceu a escriure. Si no podeu trobar el muncipi que voleu, o si voleu seleccionar una àrea exacta per renderitzar-la, seleccioneu la pestanya <em>Àrea geogràfica</em> i useu el minimapa per definir els límits de l'àrea renderitzada."
 
 #: templates/maposmatic/new.html:122
 msgid "Map layout and stylesheet"
