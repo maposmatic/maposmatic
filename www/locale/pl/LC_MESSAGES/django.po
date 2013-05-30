@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: MapOSMatic\n"
 "Report-Msgid-Bugs-To: https://savannah.nongnu.org/bugs/?group=maposmatic\n"
-"PO-Revision-Date: 2013-05-25 21:02+0000\n"
+"PO-Revision-Date: 2013-05-29 11:14+0000\n"
 "Last-Translator: Michał Gątkowski <gatkowski.michal@gmail.com>\n"
 "Language-Team: Polish (http://www.transifex.com/projects/p/maposmatic/language/pl/)\n"
 "MIME-Version: 1.0\n"
@@ -114,7 +114,7 @@ msgstr "Nazwa mapy jest wymagana"
 
 #: maposmatic/forms.py:162
 msgid "Layout required"
-msgstr ""
+msgstr "Układ strony jest wymagany"
 
 #: maposmatic/forms.py:167
 msgid "Stylesheet required"
@@ -519,7 +519,7 @@ msgstr ""
 
 #: templates/maposmatic/about.html:204
 msgid "Kirgyz translation"
-msgstr ""
+msgstr "Kirgiskie tłumaczenie"
 
 #: templates/maposmatic/about.html:205
 msgid "Printable stylesheet"
@@ -805,7 +805,7 @@ msgstr "Wygenerowane pliki nie są już dostępne."
 #: templates/maposmatic/map-full.html:161
 #, python-format
 msgid "Updating in <span>%(refresh)s</span>s..."
-msgstr ""
+msgstr "Aktualizacja za <span>%(refresh)s</span>..."
 
 #: templates/maposmatic/map-full.html:163
 msgid "Map details"
@@ -917,7 +917,7 @@ msgstr ""
 
 #: templates/maposmatic/new.html:172
 msgid "Map title"
-msgstr ""
+msgstr "Nazwa mapy"
 
 #: templates/maposmatic/new.html:178
 msgid "Language"
