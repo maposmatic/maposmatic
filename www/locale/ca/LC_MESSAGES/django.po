@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: MapOSMatic\n"
 "Report-Msgid-Bugs-To: https://savannah.nongnu.org/bugs/?group=maposmatic\n"
-"PO-Revision-Date: 2013-05-29 10:15+0000\n"
+"PO-Revision-Date: 2013-05-30 19:00+0000\n"
 "Last-Translator: jmontane <joan@montane.cat>\n"
 "Language-Team: Catalan (http://www.transifex.com/projects/p/maposmatic/language/ca/)\n"
 "MIME-Version: 1.0\n"
@@ -331,7 +331,7 @@ msgid ""
 "Renders an index of the streets, based on\n"
 "  OpenStreetMap data and the intersection of the streets with the\n"
 "  squares on the map."
-msgstr ""
+msgstr "Renderitza un índex dels carrers, basat en les dades de l'OpenStreetMap i la intersecció dels carrers amb la graella del mapa."
 
 #: templates/maposmatic/about.html:102
 msgid ""
@@ -601,13 +601,13 @@ msgid ""
 "team of volunteers (see our <a href=\"%(about_url)s\">About</a> page for\n"
 "details). However, running the MapOSMatic service and making improvements to it\n"
 "has various costs beyond the time of the volunteer developers."
-msgstr ""
+msgstr "El MapOSMatic és un projecte desenvolupat i mantingut completament per un equip (vegeu els detalsl a la pàgina <a href=\"%(about_url)s\">Qui som</a>). Tot i això, fer funcionar el servei MapOSMatic i fer-hi millores implica costos, més enllà del temps dels desenvolupadors voluntaris."
 
 #: templates/maposmatic/donate.html:49
 msgid ""
 "Therefore, we are currently seeking donations to help us\n"
 "funding:"
-msgstr ""
+msgstr "Per tant, cerquem donatius que en ajudin finançant:"
 
 #: templates/maposmatic/donate.html:54
 msgid ""
@@ -653,7 +653,7 @@ msgid ""
 "freely reuse, sell, or modify the generated maps under the <a "
 "href=\"http://wiki.openstreetmap.org/wiki/License\">terms of the "
 "OpenStreetMap license</a>."
-msgstr ""
+msgstr "Com les dades usades per generar els mapes provenen de l'OpenStreetMap, podeu reusar, vendre o modificar els mapes lliurement sota els <a href=\"http://wiki.openstreetmap.org/wiki/License\">termes de la llicència de l'OpenStreetMap</a>."
 
 #: templates/maposmatic/index.html:49
 msgid "Learn more"
@@ -675,7 +675,7 @@ msgid ""
 "rendering daemon is running and the GIS database was <span "
 "class=\"tooltipped\" data-original-title=\"%(gis_lastupdate)s\">updated "
 "%(date)s ago</span>."
-msgstr ""
+msgstr "<i class=\"icon-white icon-ok\"></i> Tots els sistemes són operatius. El dimoni està executant-se i la base de dades SIG fou <span class=\"tooltipped\" data-original-title=\"%(gis_lastupdate)s\">actualizada fa %(date)s</span>."
 
 #: templates/maposmatic/index.html:78
 msgid ""
