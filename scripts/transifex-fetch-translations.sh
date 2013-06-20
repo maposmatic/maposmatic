@@ -20,6 +20,10 @@ do
     $(dirname $0)/../ci-scripts/transifex-commit-translations.pl ${translation}
 done
 
+# Reset my own git config after shell run
+git config user.email "hakan@gurkensalat.com"
+git config user.name "Hakan Tandogan"
+
 # Keep Jenkins happy so it won't mark the build as failed for no reason :-(
 true
 
