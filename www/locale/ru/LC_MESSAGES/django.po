@@ -3,12 +3,13 @@
 # This file is distributed under the same license as the PACKAGE package.
 # 
 # Translators:
+# Viktar Palstsiuk <vipals@gmail.com>, 2013
 msgid ""
 msgstr ""
 "Project-Id-Version: MapOSMatic\n"
 "Report-Msgid-Bugs-To: https://savannah.nongnu.org/bugs/?group=maposmatic\n"
-"PO-Revision-Date: 2013-04-28 08:07+0000\n"
-"Last-Translator: Hakan Tandogan <hakan.tandogan@gmail.com>\n"
+"PO-Revision-Date: 2013-06-19 09:03+0000\n"
+"Last-Translator: Viktar Palstsiuk <vipals@gmail.com>\n"
 "Language-Team: Russian (http://www.transifex.com/projects/p/maposmatic/language/ru/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -133,11 +134,11 @@ msgstr "Требуется"
 
 #: maposmatic/forms.py:204
 msgid "Same latitude"
-msgstr ""
+msgstr "Одинаковая широта"
 
 #: maposmatic/forms.py:211
 msgid "Same longitude"
-msgstr ""
+msgstr "Одинаковая долгота"
 
 #: maposmatic/forms.py:235
 msgid "Bounding Box too large"
@@ -436,7 +437,7 @@ msgstr "Основная команда"
 #: templates/maposmatic/about.html:175 templates/maposmatic/about.html:177
 #: templates/maposmatic/about.html:180
 msgid "Developer"
-msgstr ""
+msgstr "Разработчик"
 
 #: templates/maposmatic/about.html:176
 msgid "Developer and Mapnik stylesheets"
@@ -633,7 +634,7 @@ msgstr ""
 
 #: templates/maposmatic/index.html:36
 msgid "Welcome to MapOSMatic!"
-msgstr ""
+msgstr "Добро пожаловать на MapOSMatic!"
 
 #: templates/maposmatic/index.html:41
 msgid ""
@@ -657,7 +658,7 @@ msgstr ""
 
 #: templates/maposmatic/index.html:50
 msgid "Create a map &raquo;"
-msgstr ""
+msgstr "Создать карту &raquo;"
 
 #: templates/maposmatic/index.html:69
 #, python-format
