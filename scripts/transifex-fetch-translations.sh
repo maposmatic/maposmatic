@@ -3,7 +3,7 @@
 # Pull translations from transifex
 # Forcibly pull all translations becase git clone in a fresh repo causes the local files to
 # be more recent then translations on transifex, therefore the translastion is skipped
-### tx pull --force --all
+tx pull --force --all
 
 # Commit any changes
 # git diff
@@ -15,7 +15,7 @@ git config user.name "Hakan Tandogan"
 # git commit -m "Updated message translation fetching script" scripts/transifex-fetch-translations.sh
 
 # Loop over all translations
-for translation in $(find $(dirname $0)/../www/locale/eo -name \*.po)
+for translation in $(find $(dirname $0)/../www/locale -name \*.po)
 do
     $(dirname $0)/../ci-scripts/transifex-commit-translations.pl ${translation}
 done
