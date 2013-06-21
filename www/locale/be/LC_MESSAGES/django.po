@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: MapOSMatic\n"
 "Report-Msgid-Bugs-To: https://savannah.nongnu.org/bugs/?group=maposmatic\n"
-"PO-Revision-Date: 2013-06-15 14:51+0000\n"
+"PO-Revision-Date: 2013-06-20 14:55+0000\n"
 "Last-Translator: Viktar Palstsiuk <vipals@gmail.com>\n"
 "Language-Team: Belarusian (http://www.transifex.com/projects/p/maposmatic/language/be/)\n"
 "MIME-Version: 1.0\n"
@@ -64,7 +64,7 @@ msgstr "Мапа на адным аркушы без пераліку вуліц
 
 #: maposmatic/forms.py:95
 msgid "Full-page layout with the street index on the side"
-msgstr "Мапа на адным аркушы с пералікам вуліц збоку"
+msgstr "Мапа на адным аркушы з пералікам вуліц збоку"
 
 #: maposmatic/forms.py:97
 msgid "Full-page layout with the street index at the bottom"
@@ -302,7 +302,7 @@ msgid ""
 "OpenStreetMap Subversion repository</a>. Using Mapnik\n"
 "and <a href=\"http://cairographics.org/pycairo/\">Cairo</a>, we\n"
 "built <i>OCitySMap</i>, a Python module that:"
-msgstr "Мапа стварецца з дапамогай знакамітага <a href=\"http://www.mapnik.org\">Mapnik</a> з выкарыстаннем стыляў OpenStreetMap змешчаных <a href=\"http://svn.openstreetmap.org/applications/rendering/mapnik\">у Subversion-рэпазіторыі OpenStreetMap</a>. Дзякуючы Mapnik і <a href=\"http://cairographics.org/pycairo/\">Cairo</a> мы стварылі модуль <i>OCitySMap</i> на мове Python, які:"
+msgstr "Мапа ствараецца з дапамогай знакамітага <a href=\"http://www.mapnik.org\">Mapnik</a> з выкарыстаннем стыляў OpenStreetMap змешчаных <a href=\"http://svn.openstreetmap.org/applications/rendering/mapnik\">у Subversion-рэпазіторыі OpenStreetMap</a>. Дзякуючы Mapnik і <a href=\"http://cairographics.org/pycairo/\">Cairo</a> мы стварылі модуль <i>OCitySMap</i> на мове Python, які:"
 
 #: templates/maposmatic/about.html:88
 msgid ""
