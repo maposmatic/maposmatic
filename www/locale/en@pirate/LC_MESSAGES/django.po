@@ -3,11 +3,12 @@
 # This file is distributed under the same license as the PACKAGE package.
 # 
 # Translators:
+# Hakan Tandogan <hakan.tandogan@gmail.com>, 2013
 msgid ""
 msgstr ""
 "Project-Id-Version: MapOSMatic\n"
 "Report-Msgid-Bugs-To: https://savannah.nongnu.org/bugs/?group=maposmatic\n"
-"PO-Revision-Date: 2013-06-21 16:53+0000\n"
+"PO-Revision-Date: 2013-06-29 11:14+0000\n"
 "Last-Translator: Hakan Tandogan <hakan.tandogan@gmail.com>\n"
 "Language-Team: Pirate English (http://www.transifex.com/projects/p/maposmatic/language/en@pirate/)\n"
 "MIME-Version: 1.0\n"
@@ -248,7 +249,7 @@ msgstr ""
 
 #: templates/maposmatic/about.html:37
 msgid "History"
-msgstr ""
+msgstr "Hissstry!"
 
 #: templates/maposmatic/about.html:40
 msgid ""
