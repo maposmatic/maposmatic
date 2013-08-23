@@ -3,12 +3,13 @@
 # This file is distributed under the same license as the PACKAGE package.
 # 
 # Translators:
+# jaakl <jaak@letsdoitworld.org>, 2013
 msgid ""
 msgstr ""
 "Project-Id-Version: MapOSMatic\n"
 "Report-Msgid-Bugs-To: https://savannah.nongnu.org/bugs/?group=maposmatic\n"
-"PO-Revision-Date: 2013-08-08 07:41+0000\n"
-"Last-Translator: dmentre <dmentre@linux-france.org>\n"
+"PO-Revision-Date: 2013-08-23 14:44+0000\n"
+"Last-Translator: jaakl <jaak@letsdoitworld.org>\n"
 "Language-Team: Estonian (http://www.transifex.com/projects/p/maposmatic/language/et/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -18,188 +19,188 @@ msgstr ""
 
 #: settings.py:240
 msgid "No localization"
-msgstr ""
+msgstr "Pole tõlget"
 
 #: maposmatic/feeds.py:41
 msgid "MapOSMatic maps"
-msgstr ""
+msgstr "MapOSMatic kaardid"
 
 #: maposmatic/feeds.py:41
 msgid "MapOSMatic maps [DEV]"
-msgstr ""
+msgstr "MapOSMatic kaardid [DEV]"
 
 #: maposmatic/feeds.py:44
 msgid "The latest rendered maps on MapOSMatic."
-msgstr ""
+msgstr "Viimased MapOSMatic renderdatud kaardid."
 
 #: maposmatic/forms.py:43
 msgid "Search for a map"
-msgstr ""
+msgstr "Otsi kaarti"
 
 #: maposmatic/forms.py:57
 msgid "Administrative boundary"
-msgstr ""
+msgstr "Administratiivpiir"
 
 #: maposmatic/forms.py:58 templates/maposmatic/map-full.html:171
 msgid "Bounding box"
-msgstr ""
+msgstr "Kaardi ala"
 
 #: maposmatic/forms.py:60 templates/maposmatic/wizard.js:245
 msgid "Portrait"
-msgstr ""
+msgstr "Portree"
 
 #: maposmatic/forms.py:61 templates/maposmatic/wizard.js:244
 msgid "Landscape"
-msgstr ""
+msgstr "Maastikuvaade"
 
 #: maposmatic/forms.py:73
 msgid "Area"
-msgstr ""
+msgstr "Ala"
 
 #: maposmatic/forms.py:93
 msgid "Full-page layout without street index"
-msgstr ""
+msgstr "Täis-lehekülg ilma tänavaindeksita"
 
 #: maposmatic/forms.py:95
 msgid "Full-page layout with the street index on the side"
-msgstr ""
+msgstr "Täis-lehekülg tänavaindeksiga küljel"
 
 #: maposmatic/forms.py:97
 msgid "Full-page layout with the street index at the bottom"
-msgstr ""
+msgstr "Täis-lehekülg tänavaindeksiga allservas"
 
 #: maposmatic/forms.py:99
 msgid "Multi-page layout"
-msgstr ""
+msgstr "Mitme leheküljega kujundus"
 
 #: maposmatic/forms.py:101
 #, python-format
 msgid "The %(layout_name)s layout"
-msgstr ""
+msgstr "%(layout_name)s kujundus"
 
 #: maposmatic/forms.py:109
 msgid "The default OpenStreetMap.org style"
-msgstr ""
+msgstr "Tavaline OpenStreetMap.org stiil"
 
 #: maposmatic/forms.py:111
 msgid "The european MapQuest style"
-msgstr ""
+msgstr "Euroopa MapQuest stiil"
 
 #: maposmatic/forms.py:113
 msgid "The US MapQuest style"
-msgstr ""
+msgstr "US MapQuest stiil"
 
 #: maposmatic/forms.py:115
 msgid "The UK MapQuest style"
-msgstr ""
+msgstr "UK MapQuest stiil"
 
 #: maposmatic/forms.py:117
 msgid "A MapOSMatic-specific stylesheet suitable for printing"
-msgstr ""
+msgstr "MapOSMatic enda printimiseks kohandatud stiil"
 
 #: maposmatic/forms.py:119
 #, python-format
 msgid "The <i>%(stylesheet_name)s</i> stylesheet"
-msgstr ""
+msgstr "<i>%(stylesheet_name)s</i> stylesheet"
 
 #: maposmatic/forms.py:126
 msgid "Best fit <em class=\"papersize\"></em>"
-msgstr ""
+msgstr "Paiguta <em class=\"papersize\"></em>"
 
 #: maposmatic/forms.py:157
 msgid "Map title required"
-msgstr ""
+msgstr "Kaardi pealkiri on nõutav"
 
 #: maposmatic/forms.py:162
 msgid "Layout required"
-msgstr ""
+msgstr "Kujunduse valik nõutav"
 
 #: maposmatic/forms.py:167
 msgid "Stylesheet required"
-msgstr ""
+msgstr "Stylesheet valik nõutav"
 
 #: maposmatic/forms.py:173
 msgid "Administrative city required"
-msgstr ""
+msgstr "Linna valik on nõutav"
 
 #: maposmatic/forms.py:186
 #, python-format
 msgid "Error with osm city: %s"
-msgstr ""
+msgstr "Vigane OSM linn: %s"
 
 #: maposmatic/forms.py:196
 msgid "Required"
-msgstr ""
+msgstr "Nõutav on"
 
 #: maposmatic/forms.py:204
 msgid "Same latitude"
-msgstr ""
+msgstr "Sama laiuskraad"
 
 #: maposmatic/forms.py:211
 msgid "Same longitude"
-msgstr ""
+msgstr "Sama pikkuskraad"
 
 #: maposmatic/forms.py:235
 msgid "Bounding Box too large"
-msgstr ""
+msgstr "Kaardi ala liiga suur"
 
 #: maposmatic/models.py:192
 #, python-format
 msgid "%(title)s %(format)s Map"
-msgstr ""
+msgstr "%(title)s %(format)s kaart"
 
 #: maposmatic/models.py:200
 #, python-format
 msgid "%(title)s %(format)s Index"
-msgstr ""
+msgstr "%(title)s %(format)s indeks"
 
 #: maposmatic/nominatim.py:244
 msgid "Administrative area too big for rendering"
-msgstr ""
+msgstr "Administratiivala on renderduseks liialt suur"
 
 #: maposmatic/nominatim.py:300
 msgid "No administrative boundary details from GIS"
-msgstr ""
+msgstr "Administratiivala detaile GIS-ist ei leitud"
 
 #: maposmatic/nominatim.py:314
 msgid "No administrative boundary"
-msgstr ""
+msgstr "Puudub administratiivpiir"
 
 #: maposmatic/widgets.py:66
 msgid "Latitude of the top left corner"
-msgstr ""
+msgstr "Ülal vasak laiuskraad."
 
 #: maposmatic/widgets.py:67
 msgid "Longitude of the top left corner"
-msgstr ""
+msgstr "Ülal vasak pikkuskraad"
 
 #: maposmatic/widgets.py:68
 msgid "Latitude of the bottom right corner"
-msgstr ""
+msgstr "All parem laiuskraad"
 
 #: maposmatic/widgets.py:69
 msgid "Longitude of the bottom right corner"
-msgstr ""
+msgstr "All parem pikkuskraad"
 
 #: maposmatic/widgets.py:70
 msgid "<i class=\"icon-warning-sign\"></i> Area too big to be rendered!"
-msgstr ""
+msgstr "<i class=\"icon-warning-sign\"></i> Ala on renderduseks liiga suur!"
 
 #: maposmatic/widgets.py:71
 msgid "Remove any selected region from the map"
-msgstr ""
+msgstr "Eemalda valitud ala kaardilt"
 
 #: maposmatic/templatetags/extratags.py:34
 msgid "Waiting for rendering to begin..."
-msgstr ""
+msgstr "Oota kui renderdus algab..."
 
 #: maposmatic/templatetags/extratags.py:36
 msgid "The rendering is in progress..."
-msgstr ""
+msgstr "Renderdus on töös..."
 
 #: maposmatic/templatetags/extratags.py:39
 msgid "Rendering was successful."
-msgstr ""
+msgstr "Renderdus oli edukas."
 
 #: maposmatic/templatetags/extratags.py:41
 msgid ""
@@ -225,7 +226,7 @@ msgstr ""
 
 #: templates/404.html:34
 msgid "Page not found!"
-msgstr ""
+msgstr "Lehte ei leitud!"
 
 #: templates/404.html:37
 msgid "Woups. Looks like you've followed a broken link ;-("
@@ -233,7 +234,7 @@ msgstr ""
 
 #: templates/500.html:34
 msgid "Server error!"
-msgstr ""
+msgstr "Serveri viga!"
 
 #: templates/500.html:37
 msgid ""
@@ -244,11 +245,11 @@ msgstr ""
 #: templates/maposmatic/about.html:34 templates/maposmatic/about.html.py:36
 #: templates/maposmatic/base.html:72
 msgid "About"
-msgstr ""
+msgstr "Teenusest"
 
 #: templates/maposmatic/about.html:37
 msgid "History"
-msgstr ""
+msgstr "Ajalugu"
 
 #: templates/maposmatic/about.html:40
 msgid ""
@@ -274,7 +275,7 @@ msgstr ""
 
 #: templates/maposmatic/about.html:61
 msgid "How does it work?"
-msgstr ""
+msgstr "Kuidas see töötab?"
 
 #: templates/maposmatic/about.html:64
 msgid ""
@@ -363,7 +364,7 @@ msgstr ""
 
 #: templates/maposmatic/about.html:131
 msgid "Contributing"
-msgstr ""
+msgstr "Panustamine"
 
 #: templates/maposmatic/about.html:134
 msgid ""
@@ -426,17 +427,17 @@ msgstr ""
 
 #: templates/maposmatic/about.html:166
 msgid "Contributors"
-msgstr ""
+msgstr "Panustajad"
 
 #: templates/maposmatic/about.html:170
 msgid "Core team"
-msgstr ""
+msgstr "Tuumikmeeskond"
 
 #: templates/maposmatic/about.html:173 templates/maposmatic/about.html:174
 #: templates/maposmatic/about.html:175 templates/maposmatic/about.html:177
 #: templates/maposmatic/about.html:180
 msgid "Developer"
-msgstr ""
+msgstr "Arendaja"
 
 #: templates/maposmatic/about.html:176
 msgid "Developer and Mapnik stylesheets"
@@ -453,7 +454,7 @@ msgstr ""
 
 #: templates/maposmatic/about.html:186
 msgid "Other contributors"
-msgstr ""
+msgstr "Teised kontributsioonid"
 
 #: templates/maposmatic/about.html:189
 msgid "German translation"
@@ -513,7 +514,7 @@ msgstr ""
 
 #: templates/maposmatic/about.html:203
 msgid "Translation automation"
-msgstr ""
+msgstr "Tõlke automaatika"
 
 #: templates/maposmatic/about.html:204
 msgid "Kirgyz translation"
@@ -521,55 +522,55 @@ msgstr ""
 
 #: templates/maposmatic/about.html:205
 msgid "Printable stylesheet"
-msgstr ""
+msgstr "Trükitav stiilikirjeldus"
 
 #: templates/maposmatic/base.html:41
 msgid "Maps feed"
-msgstr ""
+msgstr "Kaartide feed"
 
 #: templates/maposmatic/base.html:58 templates/maposmatic/index.html:65
 msgid "Platform status"
-msgstr ""
+msgstr "Platvormi staatus"
 
 #: templates/maposmatic/base.html:60
 msgid "Rendering daemon: "
-msgstr ""
+msgstr "Renderduse teenus: "
 
 #: templates/maposmatic/base.html:61
 msgid "GIS database: "
-msgstr ""
+msgstr "GIS andmebaas: "
 
 #: templates/maposmatic/base.html:69
 msgid "Home"
-msgstr ""
+msgstr "Kodu"
 
 #: templates/maposmatic/base.html:70 templates/maposmatic/new.html:34
 msgid "Create map"
-msgstr ""
+msgstr "Loo kaart"
 
 #: templates/maposmatic/base.html:71 templates/maposmatic/maps.html:34
 #: templates/maposmatic/maps.html.py:38
 msgid "Maps"
-msgstr ""
+msgstr "Kaardid"
 
 #: templates/maposmatic/base.html:73 templates/maposmatic/donate.html:34
 #: templates/maposmatic/donate.html:36 templates/maposmatic/index.html:119
 msgid "Donate"
-msgstr ""
+msgstr "Toeta"
 
 #: templates/maposmatic/base.html:113
 msgid ""
 "MapOSMatic is a free software webservice to generate maps of cities using "
 "OpenStreetMap data."
-msgstr ""
+msgstr "MapOSMatic on tasuta teenus et luua linnakaarte OpenStreetMap andmete abil."
 
 #: templates/maposmatic/donate-thanks.html:34
 msgid "Thanks!"
-msgstr ""
+msgstr "Aitäh!"
 
 #: templates/maposmatic/donate-thanks.html:37
 msgid "Thanks for your donation!"
-msgstr ""
+msgstr "Täname toetuse eest!"
 
 #: templates/maposmatic/donate-thanks.html:40
 msgid ""
@@ -633,7 +634,7 @@ msgstr ""
 
 #: templates/maposmatic/index.html:36
 msgid "Welcome to MapOSMatic!"
-msgstr ""
+msgstr "Teretulemast MapOSMMaticusse!"
 
 #: templates/maposmatic/index.html:41
 msgid ""
@@ -653,11 +654,11 @@ msgstr ""
 
 #: templates/maposmatic/index.html:49
 msgid "Learn more"
-msgstr ""
+msgstr "Loe veel"
 
 #: templates/maposmatic/index.html:50
 msgid "Create a map &raquo;"
-msgstr ""
+msgstr "Loo kaart &raquo;"
 
 #: templates/maposmatic/index.html:69
 #, python-format
@@ -681,7 +682,7 @@ msgstr ""
 
 #: templates/maposmatic/index.html:83
 msgid "<i class=\"icon-white icon-ok\"></i> The rendering daemon is running."
-msgstr ""
+msgstr "<i class=\"icon-white icon-ok\"></i> Renderdusteenus töötab."
 
 #: templates/maposmatic/index.html:85
 msgid ""
@@ -713,7 +714,7 @@ msgstr ""
 
 #: templates/maposmatic/index.html:106
 msgid "Latest news"
-msgstr ""
+msgstr "Viimased uudised"
 
 #: templates/maposmatic/index.html:112
 #, python-format
@@ -729,36 +730,36 @@ msgstr ""
 
 #: templates/maposmatic/map-full.html:41
 msgid "Updating now..."
-msgstr ""
+msgstr "Uuendan nüüd..."
 
 #: templates/maposmatic/map-full.html:59 templates/maposmatic/maps.html:59
 #, python-format
 msgid "Request submitted: %(date)s"
-msgstr ""
+msgstr "Tellimus esitatud: %(date)s"
 
 #: templates/maposmatic/map-full.html:64 templates/maposmatic/maps.html:64
 #, python-format
 msgid "Rendering started: %(date)s"
-msgstr ""
+msgstr "Renderdus algas: %(date)s"
 
 #: templates/maposmatic/map-full.html:69 templates/maposmatic/maps.html:69
 #, python-format
 msgid "Rendering completed: %(date)s"
-msgstr ""
+msgstr "Renderdus valmis: %(date)s"
 
 #: templates/maposmatic/map-full.html:74 templates/maposmatic/maps.html:74
 #, python-format
 msgid "Rendering cancelled: %(date)s"
-msgstr ""
+msgstr "Renderdus katkestati: %(date)s"
 
 #: templates/maposmatic/map-full.html:94 templates/maposmatic/maps.html:83
 #, python-format
 msgid "Pending, submitted %(date)s ago"
-msgstr ""
+msgstr "Ootel, alustatud %(date)s tagasi"
 
 #: templates/maposmatic/map-full.html:96 templates/maposmatic/maps.html:85
 msgid "Pending..."
-msgstr ""
+msgstr "Ootel..."
 
 #: templates/maposmatic/map-full.html:106
 #, python-format
@@ -767,34 +768,34 @@ msgstr ""
 
 #: templates/maposmatic/map-full.html:107
 msgid "<i class=\"icon-white icon-remove-sign\"></i> Cancel"
-msgstr ""
+msgstr "<i class=\"icon-white icon-remove-sign\"></i> Katkesta"
 
 #: templates/maposmatic/map-full.html:118 templates/maposmatic/maps.html:93
 #, python-format
 msgid "Rendering is in progress, started %(date)s ago"
-msgstr ""
+msgstr "Rederdus on töös, alustatud %(date)s tagasi"
 
 #: templates/maposmatic/map-full.html:120 templates/maposmatic/maps.html:95
 msgid "Rendering..."
-msgstr ""
+msgstr "Renderdan..."
 
 #: templates/maposmatic/map-full.html:129
 #: templates/maposmatic/map-full.html:153 templates/maposmatic/maps.html:102
 #: templates/maposmatic/maps.html.py:126
 msgid "Download"
-msgstr ""
+msgstr "Lae alla"
 
 #: templates/maposmatic/map-full.html:134 templates/maposmatic/maps.html:107
 msgid "Download other formats and map indeces"
-msgstr ""
+msgstr "Lae alla kaart ja indeksid teistes formaatides"
 
 #: templates/maposmatic/map-full.html:139 templates/maposmatic/maps.html:112
 msgid "map"
-msgstr ""
+msgstr "kaart"
 
 #: templates/maposmatic/map-full.html:144 templates/maposmatic/maps.html:117
 msgid "index"
-msgstr ""
+msgstr "indeks"
 
 #: templates/maposmatic/map-full.html:152
 msgid "The generated files are no longer available."
@@ -803,39 +804,39 @@ msgstr ""
 #: templates/maposmatic/map-full.html:161
 #, python-format
 msgid "Updating in <span>%(refresh)s</span>s..."
-msgstr ""
+msgstr "Uuendan <span>%(refresh)s</span>s..."
 
 #: templates/maposmatic/map-full.html:163
 msgid "Map details"
-msgstr ""
+msgstr "Kaardi detailid"
 
 #: templates/maposmatic/map-full.html:168
 msgid "City"
-msgstr ""
+msgstr "Linn"
 
 #: templates/maposmatic/map-full.html:175 templates/maposmatic/new.html:108
 msgid "Layout"
-msgstr ""
+msgstr "Kujundus"
 
 #: templates/maposmatic/map-full.html:177 templates/maposmatic/new.html:115
 msgid "Stylesheet"
-msgstr ""
+msgstr "Stiilikirjeldus"
 
 #: templates/maposmatic/map-full.html:179
 msgid "Paper format"
-msgstr ""
+msgstr "Paberi formaat"
 
 #: templates/maposmatic/map-full.html:181
 msgid "Map locale"
-msgstr ""
+msgstr "Kaardi keel"
 
 #: templates/maposmatic/maps.html:133
 msgid "Recreate map"
-msgstr ""
+msgstr "Loo kaart uuesti"
 
 #: templates/maposmatic/maps.html:140
 msgid "Map thumbnail"
-msgstr ""
+msgstr "Kaardi pisivaade"
 
 #: templates/maposmatic/maps.html:160
 msgid "Our database does not contain any rendered maps for the moment."
@@ -843,27 +844,27 @@ msgstr ""
 
 #: templates/maposmatic/maps.html:162
 msgid "No map matches your query."
-msgstr ""
+msgstr "Kaarti ei leitud."
 
 #: templates/maposmatic/maps.html:162
 msgid "Create a new map!"
-msgstr ""
+msgstr "Loo uus kaart!"
 
 #: templates/maposmatic/new.html:41
 msgid "Generate your own map"
-msgstr ""
+msgstr "Genereeri enda kaart"
 
 #: templates/maposmatic/new.html:56
 msgid "City search"
-msgstr ""
+msgstr "Linna otsing"
 
 #: templates/maposmatic/new.html:62
 msgid "Geographic area"
-msgstr ""
+msgstr "Geograafiline ala"
 
 #: templates/maposmatic/new.html:92
 msgid "Geographic area selection"
-msgstr ""
+msgstr "Geograafilise ala valik"
 
 #: templates/maposmatic/new.html:94
 msgid ""
@@ -876,7 +877,7 @@ msgstr ""
 
 #: templates/maposmatic/new.html:122
 msgid "Map layout and stylesheet"
-msgstr ""
+msgstr "Kaardi kujundus ja stiil"
 
 #: templates/maposmatic/new.html:124
 msgid ""
@@ -889,11 +890,11 @@ msgstr ""
 
 #: templates/maposmatic/new.html:137
 msgid "Paper size"
-msgstr ""
+msgstr "Paberi suurus"
 
 #: templates/maposmatic/new.html:145
 msgid "Paper orientation"
-msgstr ""
+msgstr "Paberi orientatsioon"
 
 #: templates/maposmatic/new.html:153
 msgid "An error occured while retrieving compatible paper sizes."
@@ -907,47 +908,47 @@ msgstr ""
 
 #: templates/maposmatic/new.html:161
 msgid "Paper format and size"
-msgstr ""
+msgstr "Paberi formaat ja suurus"
 
 #: templates/maposmatic/new.html:163
 msgid "Select the desired format, size and orientation for your map."
-msgstr ""
+msgstr "Vali kaardi formaat, suurus ja orientatsioon."
 
 #: templates/maposmatic/new.html:172
 msgid "Map title"
-msgstr ""
+msgstr "Kaardi pealkiri"
 
 #: templates/maposmatic/new.html:178
 msgid "Language"
-msgstr ""
+msgstr "Keel"
 
 #: templates/maposmatic/new.html:187
 msgid "Summary"
-msgstr ""
+msgstr "Kokkuvõte"
 
 #: templates/maposmatic/new.html:190
 msgid "Location:"
-msgstr ""
+msgstr "Asukoht:"
 
 #: templates/maposmatic/new.html:191
 msgid "Layout:"
-msgstr ""
+msgstr "Kujundus:"
 
 #: templates/maposmatic/new.html:192
 msgid "Stylesheet:"
-msgstr ""
+msgstr "Stiil:"
 
 #: templates/maposmatic/new.html:193
 msgid "Paper format:"
-msgstr ""
+msgstr "Paberi formaat:"
 
 #: templates/maposmatic/new.html:199
 msgid "Generate &raquo;"
-msgstr ""
+msgstr "Genereeri &raquo;"
 
 #: templates/maposmatic/new.html:205
 msgid "Almost there!"
-msgstr ""
+msgstr "Peaaegu valmis!"
 
 #: templates/maposmatic/new.html:207
 msgid ""
@@ -957,8 +958,8 @@ msgstr ""
 
 #: templates/maposmatic/suggest.js:40
 msgid "Start typing for suggestions..."
-msgstr ""
+msgstr "Alusta sisestust soovitusteks..."
 
 #: templates/maposmatic/wizard.js:365
 msgid "Clear selected area"
-msgstr ""
+msgstr "Puhasta valitud ala"
