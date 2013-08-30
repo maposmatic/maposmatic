@@ -20,7 +20,7 @@ msgstr ""
 "Language: ca\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: settings.py:240
+#: settings.py:245
 msgid "No localization"
 msgstr "Sense localització"
 
