@@ -16,7 +16,7 @@ msgstr ""
 "Language: vi_VN\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
-#: settings.py:240
+#: settings.py:245
 msgid "No localization"
 msgstr ""
 
