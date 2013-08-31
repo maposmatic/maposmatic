@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: MapOSMatic\n"
 "Report-Msgid-Bugs-To: https://savannah.nongnu.org/bugs/?group=maposmatic\n"
-"PO-Revision-Date: 2013-06-20 14:55+0000\n"
+"PO-Revision-Date: 2013-08-31 19:37+0000\n"
 "Last-Translator: Viktar Palstsiuk <vipals@gmail.com>\n"
 "Language-Team: Belarusian (http://www.transifex.com/projects/p/maposmatic/language/be/)\n"
 "MIME-Version: 1.0\n"
@@ -193,7 +193,7 @@ msgstr "Выдаліць ​​выдзеленую вобласць з мапы
 
 #: maposmatic/templatetags/extratags.py:34
 msgid "Waiting for rendering to begin..."
-msgstr "Запыт на стварэнне мапы дадазены ў чаргу..."
+msgstr "Запыт на стварэнне мапы дададзены ў чаргу..."
 
 #: maposmatic/templatetags/extratags.py:36
 msgid "The rendering is in progress..."
