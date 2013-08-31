@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: MapOSMatic\n"
 "Report-Msgid-Bugs-To: https://savannah.nongnu.org/bugs/?group=maposmatic\n"
-"PO-Revision-Date: 2013-06-19 09:03+0000\n"
+"PO-Revision-Date: 2013-08-31 19:46+0000\n"
 "Last-Translator: Viktar Palstsiuk <vipals@gmail.com>\n"
 "Language-Team: Russian (http://www.transifex.com/projects/p/maposmatic/language/ru/)\n"
 "MIME-Version: 1.0\n"
@@ -27,7 +27,7 @@ msgstr "Карты MapOSMatic"
 
 #: maposmatic/feeds.py:41
 msgid "MapOSMatic maps [DEV]"
-msgstr ""
+msgstr "Карты MapOSMatic [DEV]"
 
 #: maposmatic/feeds.py:44
 msgid "The latest rendered maps on MapOSMatic."
@@ -59,19 +59,19 @@ msgstr "Область"
 
 #: maposmatic/forms.py:93
 msgid "Full-page layout without street index"
-msgstr ""
+msgstr "Карта на одном листе без перечня улиц"
 
 #: maposmatic/forms.py:95
 msgid "Full-page layout with the street index on the side"
-msgstr ""
+msgstr "Карта на одном листе с перечнем улиц сбоку"
 
 #: maposmatic/forms.py:97
 msgid "Full-page layout with the street index at the bottom"
-msgstr ""
+msgstr "Карта на одном листе с перечнем улиц снизу"
 
 #: maposmatic/forms.py:99
 msgid "Multi-page layout"
-msgstr ""
+msgstr "Карта на нескольких страницах"
 
 #: maposmatic/forms.py:101
 #, python-format
@@ -530,7 +530,7 @@ msgstr ""
 
 #: templates/maposmatic/base.html:58 templates/maposmatic/index.html:65
 msgid "Platform status"
-msgstr ""
+msgstr "Состояние платформы"
 
 #: templates/maposmatic/base.html:60
 msgid "Rendering daemon: "
@@ -630,7 +630,7 @@ msgstr "Пожертвование можно сделать через хоро
 
 #: templates/maposmatic/donate.html:75 templates/maposmatic/index.html:129
 msgid "Donate via PayPal &raquo;"
-msgstr ""
+msgstr "Пожертвовать через PayPal &raquo;"
 
 #: templates/maposmatic/index.html:36
 msgid "Welcome to MapOSMatic!"
@@ -654,7 +654,7 @@ msgstr "Поскольку данные для создания карт бер�
 
 #: templates/maposmatic/index.html:49
 msgid "Learn more"
-msgstr ""
+msgstr "Узнать больше"
 
 #: templates/maposmatic/index.html:50
 msgid "Create a map &raquo;"
@@ -783,7 +783,7 @@ msgstr "Отрисовка..."
 #: templates/maposmatic/map-full.html:153 templates/maposmatic/maps.html:102
 #: templates/maposmatic/maps.html.py:126
 msgid "Download"
-msgstr ""
+msgstr "Скачать"
 
 #: templates/maposmatic/map-full.html:134 templates/maposmatic/maps.html:107
 msgid "Download other formats and map indeces"
@@ -832,7 +832,7 @@ msgstr "Язык карты"
 
 #: templates/maposmatic/maps.html:133
 msgid "Recreate map"
-msgstr ""
+msgstr "Создать повторно"
 
 #: templates/maposmatic/maps.html:140
 msgid "Map thumbnail"
@@ -944,7 +944,7 @@ msgstr "Формат бумаги:"
 
 #: templates/maposmatic/new.html:199
 msgid "Generate &raquo;"
-msgstr ""
+msgstr "Создать &raquo;"
 
 #: templates/maposmatic/new.html:205
 msgid "Almost there!"
@@ -958,7 +958,7 @@ msgstr "Вы почти готовы к отправке запроса на о�
 
 #: templates/maposmatic/suggest.js:40
 msgid "Start typing for suggestions..."
-msgstr ""
+msgstr "Начните печатать для подсказок..."
 
 #: templates/maposmatic/wizard.js:365
 msgid "Clear selected area"
