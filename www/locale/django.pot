@@ -554,6 +554,10 @@ msgstr ""
 msgid "MapOSMatic is a free software webservice to generate maps of cities using OpenStreetMap data."
 msgstr ""
 
+#: templates/maposmatic/base.html:121
+msgid "MapOSMatic website and rendering pipeline hosted by <a href=\"http://www.enix.org\">eNiX</a>.<br />GIS database hosted by the <a href=\"http://www.fsffrance.org\">Free Software Foundation France</a>."
+msgstr ""
+
 #: templates/maposmatic/donate-thanks.html:34
 msgid "Thanks!"
 msgstr ""
