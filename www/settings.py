@@ -125,6 +125,8 @@ LANGUAGES = {
     "id":    u"Bahasa Indonesia",
     "tr":    u"Türkçe",
     "ja":    u"日本人",
+    "el":    u"ελληνικά",
+    "be":    u"беларуская",
 }
 
 # Associate a Django language code with:
@@ -140,6 +142,7 @@ PAYPAL_LANGUAGES = {
     "nl": ("nl_NL", "NL"),
     "pl": ("pl_PL", "PL"),
     "es": ("es_ES", "ES"),
+    "el": ("el_GR", "GR"),
 }
 
 # Languages must be ordered by country (in xx_YY, YY is the country
@@ -161,6 +164,7 @@ MAP_LANGUAGES = {
     "fr_BE.UTF-8": u"Royaume de Belgique (FR)",
     "de_BE.UTF-8": u"Königreich Belgien (DE)",
     "ar_BH.UTF-8": u"البحرين (AR)",
+    "be_BY.UTF-8": u"Белару́сь (BY)",
     "es_BO.UTF-8": u"Bolivia (ES)",
     "pt_BR.UTF-8": u"Brasil (PT)",
     "en_BW.UTF-8": u"Botswana (EN)",
@@ -169,6 +173,7 @@ MAP_LANGUAGES = {
     "de_CH.UTF-8": u"Schweiz (DE)",
     "fr_CH.UTF-8": u"Suisse (FR)",
     "it_CH.UTF-8": u"Svizzera (IT)",
+    "el_GR.UTF-8": u"Ελλάδα (GR)",
     "es_CL.UTF-8": u"Chile (ES)",
     "es_CR.UTF-8": u"Costa Rica (ES)",
     "de_DE.UTF-8": u"Deutschland (DE)",
