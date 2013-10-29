@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: MapOSMatic\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-10-29 18:30+0100\n"
+"POT-Creation-Date: 2013-10-29 18:34+0100\n"
 "PO-Revision-Date: 2013-05-16 16:16+0000\n"
 "Last-Translator: mpetazzoni <maxime.petazzoni@bulix.org>\n"
 "Language-Team: French (http://www.transifex.com/projects/p/maposmatic/"
@@ -660,13 +660,14 @@ msgstr ""
 "des cartes de villes en utilisant les données OpenStreetMap."
 
 #: templates/maposmatic/base.html:121
+#, fuzzy
 msgid ""
 "MapOSMatic website and rendering pipeline hosted by <a href=\"http://www."
-"enix.org\">eNiX</a>. PostGIS database hosted by the <a href=\"http://www."
+"enix.org\">eNiX</a>.<br />GIS database hosted by the <a href=\"http://www."
 "fsffrance.org\">Free Software Foundation France</a>."
 msgstr ""
-"Site web et démon de rendu MapOSMatic hébergé par <a href=\"http://www."
-"enix.org\">eNiX</a>. Base de données PostGIS hébergée par la <a href=\"http://www."
+"Site web et démon de rendu MapOSMatic hébergé par <a href=\"http://www.enix."
+"org\">eNiX</a>.<br />Base de données GIS hébergée par la <a href=\"http://www."
 "fsffrance.org\">Free Software Foundation France</a>."
 
 #: templates/maposmatic/donate-thanks.html:34
