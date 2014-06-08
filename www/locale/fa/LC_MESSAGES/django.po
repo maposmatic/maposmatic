@@ -3,7 +3,7 @@
 # This file is distributed under the same license as the PACKAGE package.
 # 
 # Translators:
-# Mohammad Hosseini <PersianPolaris@Gmail.com>, 2013
+# Seyed Mohammad Hosseini <PersianPolaris@Gmail.com>, 2013
 msgid ""
 msgstr ""
 "Project-Id-Version: MapOSMatic\n"
