@@ -4,8 +4,8 @@
 # 
 # Translators:
 # Konstantinos Stampoulis, 2014
-# Wasilis <inactive+Wasilis@transifex.com>, 2013
-# Wasilis Mandratzis <m.wasilis@yahoo.de>, 2013
+# Wasilis Mandratzis <inactive+Wasilis@transifex.com>, 2013
+# Wasilis <m.wasilis@yahoo.de>, 2013
 # Γιάννης Ανθυμίδης <yannanth@gmail.com>, 2013
 # Γιάννης Ανθυμίδης <yannanth@gmail.com>, 2013-2014
 msgid ""
