@@ -4,10 +4,10 @@
 # 
 # Translators:
 # fantajista <fantajista1089@gmail.com>, 2013
-# hal_sk <hal@plants-web.jp>, 2013
+# Hal Seki <hal@plants-web.jp>, 2013
 # nyampire <nyampire@gmail.com>, 2013
 # nyampire <nyampire@gmail.com>, 2013
-# Toshikazu SETO <tosseto@gmail.com>, 2013
+# tosseto <tosseto@gmail.com>, 2013
 msgid ""
 msgstr ""
 "Project-Id-Version: MapOSMatic\n"
