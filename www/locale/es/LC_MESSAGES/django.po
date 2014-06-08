@@ -3,14 +3,14 @@
 # This file is distributed under the same license as the PACKAGE package.
 # 
 # Translators:
-# sanchi <sanchi2@gmail.com>, 2013
-# Jose Manuel del Rio Noya <info@picholeiro.info>, 2013
+# Jorge Sanz <sanchi2@gmail.com>, 2013
+# Manuel <info@picholeiro.info>, 2013
 msgid ""
 msgstr ""
 "Project-Id-Version: MapOSMatic\n"
 "Report-Msgid-Bugs-To: \n"
 "PO-Revision-Date: 2013-11-27 14:24+0000\n"
-"Last-Translator: Jose Manuel del Rio Noya <info@picholeiro.info>\n"
+"Last-Translator: Manuel <info@picholeiro.info>\n"
 "Language-Team: Spanish (http://www.transifex.com/projects/p/maposmatic/language/es/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
