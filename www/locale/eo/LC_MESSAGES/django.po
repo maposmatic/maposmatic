@@ -5,7 +5,7 @@
 # Translators:
 # abatelle <rrrubego@riseup.net>, 2013
 # Tim Morley <t_morley@argonet.co.uk>, 2013
-# timsk <transifex.com@timsk.org>, 2013
+# Tim Morley <transifex.com@timsk.org>, 2013
 msgid ""
 msgstr ""
 "Project-Id-Version: MapOSMatic\n"
