@@ -3,16 +3,16 @@
 # This file is distributed under the same license as the PACKAGE package.
 # 
 # Translators:
-# jvrnix <jvrnix@gmail.com>, 2013
-# jvrnix <jvrnix@gmail.com>, 2013
+# Jeroen van Rijn <jvrnix@gmail.com>, 2013
+# Jeroen van Rijn <jvrnix@gmail.com>, 2013
 # malenki <transifex@malenki.ch>, 2013
-# mpetazzoni <maxime.petazzoni@bulix.org>, 2013
-# mpetazzoni <maxime.petazzoni@bulix.org>, 2013
-# pmsg2010 <pmsg2010@yahoo.com>, 2013
-# pmsg2010 <pmsg2010@yahoo.com>, 2013
+# Maxime Petazzoni <maxime.petazzoni@bulix.org>, 2013
+# Maxime Petazzoni <maxime.petazzoni@bulix.org>, 2013
+# Nils <pmsg2010@yahoo.com>, 2013
+# Nils <pmsg2010@yahoo.com>, 2013
 # malenki <transifex@malenki.ch>, 2013
-# Wasilis <inactive+Wasilis@transifex.com>, 2013
-# Wasilis <inactive+Wasilis@transifex.com>, 2013
+# Wasilis Mandratzis <inactive+Wasilis@transifex.com>, 2013
+# Wasilis Mandratzis <inactive+Wasilis@transifex.com>, 2013
 msgid ""
 msgstr ""
 "Project-Id-Version: MapOSMatic\n"
