@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: MapOSMatic\n"
 "Report-Msgid-Bugs-To: \n"
-"PO-Revision-Date: 2014-08-22 15:50+0000\n"
+"PO-Revision-Date: 2014-08-25 15:18+0000\n"
 "Last-Translator: karvjorm <karvonen.jorma@gmail.com>\n"
 "Language-Team: Finnish (Finland) (http://www.transifex.com/projects/p/maposmatic/language/fi_FI/)\n"
 "MIME-Version: 1.0\n"
@@ -212,7 +212,7 @@ msgstr "Renderointi epäonnistui! Lisätietoja varten ota yhteys osoitteeseen co
 msgid ""
 "Rendering is obsolete: the rendering was successful, but the files are no "
 "longer available."
-msgstr ""
+msgstr "Renderointi on vanhentunut: renderointi onnistui, mutta tiedostot eivät ole enää käytettävissä."
 
 #: maposmatic/templatetags/extratags.py:46
 msgid ""
@@ -364,7 +364,7 @@ msgstr ""
 
 #: templates/maposmatic/about.html:131
 msgid "Contributing"
-msgstr ""
+msgstr "Avustaen"
 
 #: templates/maposmatic/about.html:134
 msgid ""
@@ -400,7 +400,7 @@ msgstr ""
 msgid ""
 "The IRC channel <tt>#maposmatic</tt> on\n"
 "  Freenode;"
-msgstr ""
+msgstr "IRC-kanava <tt>#maposmatic</tt> Freenode-verkossa;"
 
 #: templates/maposmatic/about.html:153
 msgid ""
@@ -423,7 +423,7 @@ msgid ""
 "<a\n"
 "  href=\"https://savannah.nongnu.org/task/?group=maposmatic\">TODO-list\n"
 "  and ideas</a>."
-msgstr ""
+msgstr "<a\n  href=\"https://savannah.nongnu.org/task/?group=maposmatic\">TODO-lista ja ideat</a>."
 
 #: templates/maposmatic/about.html:166
 msgid "Contributors"
@@ -911,7 +911,7 @@ msgstr "Tapahtui virhe noudettaessa yhteensopivia paperikokoja."
 msgid ""
 "<i class=\"icon-refresh\"></i> Calculating available paper formats for your "
 "map..."
-msgstr ""
+msgstr "<i class=\"icon-refresh\"></i> Lasketaan käytettävissä olevia paperimuotoja kartallesi..."
 
 #: templates/maposmatic/new.html:161
 msgid "Paper format and size"
@@ -947,7 +947,7 @@ msgstr "Tyylisivu:"
 
 #: templates/maposmatic/new.html:193
 msgid "Paper format:"
-msgstr ""
+msgstr "Paperimuoto:"
 
 #: templates/maposmatic/new.html:199
 msgid "Generate &raquo;"
@@ -965,7 +965,7 @@ msgstr ""
 
 #: templates/maposmatic/suggest.js:40
 msgid "Start typing for suggestions..."
-msgstr ""
+msgstr "Aloita ehdotusten kirjoittaminen..."
 
 #: templates/maposmatic/wizard.js:365
 msgid "Clear selected area"
