@@ -5,12 +5,13 @@
 # Translators:
 # Jorge Sanz <sanchi2@gmail.com>, 2013
 # Manuel <info@picholeiro.info>, 2013
+# Marco Antonio Frias Butrón <marcoantoniofrias@gmail.com>, 2014
 msgid ""
 msgstr ""
 "Project-Id-Version: MapOSMatic\n"
 "Report-Msgid-Bugs-To: \n"
-"PO-Revision-Date: 2013-11-27 14:24+0000\n"
-"Last-Translator: Manuel <info@picholeiro.info>\n"
+"PO-Revision-Date: 2014-09-11 05:47+0000\n"
+"Last-Translator: Marco Antonio Frias Butrón <marcoantoniofrias@gmail.com>\n"
 "Language-Team: Spanish (http://www.transifex.com/projects/p/maposmatic/language/es/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -20,7 +21,7 @@ msgstr ""
 
 #: settings.py:247
 msgid "No localization"
-msgstr "No localizado"
+msgstr "Sin ubicación"
 
 #: maposmatic/feeds.py:41
 msgid "MapOSMatic maps"
@@ -40,19 +41,19 @@ msgstr "Buscar un mapa"
 
 #: maposmatic/forms.py:57
 msgid "Administrative boundary"
-msgstr "Límites administrativas"
+msgstr "Límites administrativos"
 
 #: maposmatic/forms.py:58 templates/maposmatic/map-full.html:171
 msgid "Bounding box"
-msgstr "Caja delimitadora"
+msgstr "Cuadro delimitador"
 
 #: maposmatic/forms.py:60 templates/maposmatic/wizard.js:245
 msgid "Portrait"
-msgstr "Vertical"
+msgstr "Retrato"
 
 #: maposmatic/forms.py:61 templates/maposmatic/wizard.js:244
 msgid "Landscape"
-msgstr "Horizontal"
+msgstr "Paisaje"
 
 #: maposmatic/forms.py:73
 msgid "Area"
@@ -77,27 +78,27 @@ msgstr "Diseño de varias páginas"
 #: maposmatic/forms.py:101
 #, python-format
 msgid "The %(layout_name)s layout"
-msgstr ""
+msgstr "El diseño %(layout_name)s"
 
 #: maposmatic/forms.py:109
 msgid "The default OpenStreetMap.org style"
-msgstr "Estilo por defecto de OpenStreetMap.org"
+msgstr "El estilo predeterminado de OpenStreetMap.org"
 
 #: maposmatic/forms.py:111
 msgid "The european MapQuest style"
-msgstr "Estilo de MapQuest europeo"
+msgstr "El estilo europeo MapQuest"
 
 #: maposmatic/forms.py:113
 msgid "The US MapQuest style"
-msgstr "Estilo de MapQuest US"
+msgstr "El estilo estadounidense MapQuest"
 
 #: maposmatic/forms.py:115
 msgid "The UK MapQuest style"
-msgstr "Estilo de MapQuest UK"
+msgstr "El estilo británico MapQuest"
 
 #: maposmatic/forms.py:117
 msgid "A MapOSMatic-specific stylesheet suitable for printing"
-msgstr ""
+msgstr "Una hoja de estilo específica MapOSMatic adecuada para la impresión"
 
 #: maposmatic/forms.py:119
 #, python-format
@@ -106,142 +107,142 @@ msgstr "La hoja de estilo <i>%(stylesheet_name)s</i>"
 
 #: maposmatic/forms.py:126
 msgid "Best fit <em class=\"papersize\"></em>"
-msgstr ""
+msgstr "Mejor ajuste <em class=\"papersize\"></em>"
 
 #: maposmatic/forms.py:157
 msgid "Map title required"
-msgstr "El titulo del mapa es obligatorio"
+msgstr "Titulo del mapa requerido"
 
 #: maposmatic/forms.py:162
 msgid "Layout required"
-msgstr "Layout requerido"
+msgstr "Diseño requerido"
 
 #: maposmatic/forms.py:167
 msgid "Stylesheet required"
-msgstr "Hoja de estilo obligatoria"
+msgstr "Hoja de estilo requerido"
 
 #: maposmatic/forms.py:173
 msgid "Administrative city required"
-msgstr "Ciudad administrativa obligatorio"
+msgstr "Ciudad administrativa requerido"
 
 #: maposmatic/forms.py:186
 #, python-format
 msgid "Error with osm city: %s"
-msgstr "Error con la ciudad OSM: %s"
+msgstr "Error con la ciudad osm: %s"
 
 #: maposmatic/forms.py:196
 msgid "Required"
-msgstr "Obligatorio"
+msgstr "Requerido"
 
 #: maposmatic/forms.py:204
 msgid "Same latitude"
-msgstr ""
+msgstr "Misma latitud"
 
 #: maposmatic/forms.py:211
 msgid "Same longitude"
-msgstr ""
+msgstr "Misma longitud"
 
 #: maposmatic/forms.py:235
 msgid "Bounding Box too large"
-msgstr "Caja delimitadora demasiado grande"
+msgstr "Cuadro delimitador demasiado grande"
 
 #: maposmatic/models.py:192
 #, python-format
 msgid "%(title)s %(format)s Map"
-msgstr "Mapa para %(title)s (format %(format)s)"
+msgstr "Mapa para %(title)s %(format)s"
 
 #: maposmatic/models.py:200
 #, python-format
 msgid "%(title)s %(format)s Index"
-msgstr "Índice de calles para %(title)s (format %(format)s)"
+msgstr "Índice para %(title)s %(format)s"
 
 #: maposmatic/nominatim.py:244
 msgid "Administrative area too big for rendering"
-msgstr "Área administrativa demasiado grande pasa ser representada"
+msgstr "Área administrativa demasiada grande para ser renderizada"
 
 #: maposmatic/nominatim.py:300
 msgid "No administrative boundary details from GIS"
-msgstr ""
+msgstr "Sin detalles de límites administrativos desde SIG"
 
 #: maposmatic/nominatim.py:314
 msgid "No administrative boundary"
-msgstr "Sin límites adminsitrativos"
+msgstr "Sin límites administrativos"
 
 #: maposmatic/widgets.py:66
 msgid "Latitude of the top left corner"
-msgstr ""
+msgstr "Latitud de la esquina superior izquierda"
 
 #: maposmatic/widgets.py:67
 msgid "Longitude of the top left corner"
-msgstr ""
+msgstr "Longitud de la esquina superior izquierda"
 
 #: maposmatic/widgets.py:68
 msgid "Latitude of the bottom right corner"
-msgstr ""
+msgstr "Latitud de la esquina inferior derecha"
 
 #: maposmatic/widgets.py:69
 msgid "Longitude of the bottom right corner"
-msgstr ""
+msgstr "Longitud de la esquina inferior derecha"
 
 #: maposmatic/widgets.py:70
 msgid "<i class=\"icon-warning-sign\"></i> Area too big to be rendered!"
-msgstr ""
+msgstr "<i class=\"icon-warning-sign\"></i> ¡Area demasiado grande para ser renderizado!"
 
 #: maposmatic/widgets.py:71
 msgid "Remove any selected region from the map"
-msgstr ""
+msgstr "Retirar cualquier región seleccionada del mapa"
 
 #: maposmatic/templatetags/extratags.py:34
 msgid "Waiting for rendering to begin..."
-msgstr ""
+msgstr "Esperando por el renderizado para empezar..."
 
 #: maposmatic/templatetags/extratags.py:36
 msgid "The rendering is in progress..."
-msgstr "Renderización en proceso..."
+msgstr "Renderización está en progreso..."
 
 #: maposmatic/templatetags/extratags.py:39
 msgid "Rendering was successful."
-msgstr "Renderización exitosa"
+msgstr "Renderización exitosa."
 
 #: maposmatic/templatetags/extratags.py:41
 msgid ""
 "Rendering failed! Please contact contact@maposmatic.org for more "
 "information."
-msgstr "Renderización fallida! Por favor, ponte en contacto con  contact@maposmatic.org for para mas información."
+msgstr "¡Renderización fallida! Contacte con contact@maposmatic.org for para más información."
 
 #: maposmatic/templatetags/extratags.py:44
 msgid ""
 "Rendering is obsolete: the rendering was successful, but the files are no "
 "longer available."
-msgstr ""
+msgstr "La renderización está obsoleta: la renderización fue exitosa, pero los archivos ya no están disponibles."
 
 #: maposmatic/templatetags/extratags.py:46
 msgid ""
 "Obsolete failed rendering: the rendering failed, and the incomplete files "
 "have been removed."
-msgstr ""
+msgstr "Renderización fallada obsoleta: la renderización falló, y los archivos incompletos han sido eliminados."
 
 #: maposmatic/templatetags/extratags.py:48
 msgid "The rendering was cancelled by the user."
-msgstr "La renderización a sido cancelada por el usuario."
+msgstr "La renderización fue cancelada por el usuario."
 
 #: templates/404.html:34
 msgid "Page not found!"
-msgstr "La página no funciona"
+msgstr "¡Página no encontrada!"
 
 #: templates/404.html:37
 msgid "Woups. Looks like you've followed a broken link ;-("
-msgstr ""
+msgstr "Ups. Parece que seguiste un enlace roto ;-("
 
 #: templates/500.html:34
 msgid "Server error!"
-msgstr "Error del servidor"
+msgstr "¡Error del servidor!"
 
 #: templates/500.html:37
 msgid ""
 "Well, this is embarrassing. Looks like the server crashed\n"
 "    processing this request."
-msgstr ""
+msgstr "Bueno, esto es vergonzoso. Parece que el servidor falló\nel procesamiento de esta solicitud."
 
 #: templates/maposmatic/about.html:34 templates/maposmatic/about.html.py:36
 #: templates/maposmatic/base.html:72
@@ -276,7 +277,7 @@ msgstr ""
 
 #: templates/maposmatic/about.html:61
 msgid "How does it work?"
-msgstr ""
+msgstr "¿Cómo funciona?"
 
 #: templates/maposmatic/about.html:64
 msgid ""
