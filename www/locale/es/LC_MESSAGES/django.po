@@ -3,15 +3,17 @@
 # This file is distributed under the same license as the PACKAGE package.
 # 
 # Translators:
+# Alexander Granizo, 2015
 # Jorge Sanz <sanchi2@gmail.com>, 2013
 # Manuel <info@picholeiro.info>, 2013
-# Marco Antonio Frias Butrón <marcoantoniofrias@gmail.com>, 2014
+# Marco Antonio <marcoantoniofrias@gmail.com>, 2014
+# Marco Antonio <marcoantoniofrias@gmail.com>, 2014
 msgid ""
 msgstr ""
 "Project-Id-Version: MapOSMatic\n"
 "Report-Msgid-Bugs-To: \n"
-"PO-Revision-Date: 2014-09-11 05:47+0000\n"
-"Last-Translator: Marco Antonio Frias Butrón <marcoantoniofrias@gmail.com>\n"
+"PO-Revision-Date: 2015-03-04 00:54+0000\n"
+"Last-Translator: Alexander Granizo\n"
 "Language-Team: Spanish (http://www.transifex.com/projects/p/maposmatic/language/es/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -266,14 +268,14 @@ msgid ""
 "named the project <strong>MapOSMatic</strong>. The group of crazy\n"
 "hackers would like to thank Gilles for sharing his bright\n"
 "idea!"
-msgstr ""
+msgstr "MapOSMatic se inició gracias a una idea de\nGilles Lamiral, un contribuidor de <a\nhref=\"http://www.openstreetmap.org\">OpenStreetMap</a> y el\nsoftware libre del área de Rennes, Francia. Desde su idea, un grupo de\n<a\nhref=\"http://en.wikipedia.org/wiki/Hacker_(programmer_subculture)\">hackers</a>\nlocos se reunieron durante una semana en el <em>Hackfest</em> en agosto 2009\ny trajeron la idea de Gilles Lamiral a la vida al escribir el código y\nnombrar el proyecto <strong>MapOSMatic</strong>. El grupo de hackers locos\ndesean dar las gracias a Gilles por compartir su brillante idea!"
 
 #: templates/maposmatic/about.html:54
 msgid ""
 "Of course, MapOSMatic is fully free software,\n"
 "licensed under the <a \n"
 "href=\"http://www.fsf.org/licensing/licenses/agpl-3.0.html\">AGPLv3</a>.\n"
-msgstr ""
+msgstr "Por supuesto, MapOSMatic es un software\n totalmente libre, licenciado bajo <a \nhref=\"http://www.fsf.org/licensing/licenses/agpl-3.0.html\">AGPLv3</a>.\n"
 
 #: templates/maposmatic/about.html:61
 msgid "How does it work?"
@@ -433,7 +435,7 @@ msgstr "Colaboradores"
 
 #: templates/maposmatic/about.html:170
 msgid "Core team"
-msgstr ""
+msgstr "Equipo principal"
 
 #: templates/maposmatic/about.html:173 templates/maposmatic/about.html:174
 #: templates/maposmatic/about.html:175 templates/maposmatic/about.html:177
@@ -452,7 +454,7 @@ msgstr ""
 
 #: templates/maposmatic/about.html:179
 msgid "Developer, treasurer"
-msgstr ""
+msgstr "Desarrollador, tesorero"
 
 #: templates/maposmatic/about.html:186
 msgid "Other contributors"
@@ -484,7 +486,7 @@ msgstr "Traducción al Portugués Brasileño"
 
 #: templates/maposmatic/about.html:196
 msgid "Danish translation"
-msgstr ""
+msgstr "Traducción al Danés"
 
 #: templates/maposmatic/about.html:197
 msgid "Dutch translation"
@@ -672,7 +674,7 @@ msgstr "Crear un mapa &raquo;"
 #: templates/maposmatic/index.html:69
 #, python-format
 msgid "%(queued)s job%(qp)s in the rendering queue."
-msgstr ""
+msgstr "%(queued)s trabajo%(qp)s en la cola de renderizado."
 
 #: templates/maposmatic/index.html:75
 #, python-format
@@ -681,23 +683,23 @@ msgid ""
 "rendering daemon is running and the GIS database was <span "
 "class=\"tooltipped\" data-original-title=\"%(gis_lastupdate)s\">updated "
 "%(date)s ago</span>."
-msgstr ""
+msgstr "<i class=\"icon-white icon-ok\"></i> Todos los sistemas están operativos. El demonio de renderizado está en marcha y la base de datos SIG fue <span class=\"tooltipped\" data-original-title=\"%(gis_lastupdate)s\">actualizado hace %(date)s</span>."
 
 #: templates/maposmatic/index.html:78
 msgid ""
 "Systems are operational but renderings may not reflect the latest available "
 "OpenStreetMap data:"
-msgstr ""
+msgstr "Los sistemas están en funcionamiento, pero las representaciones pueden no reflejar los últimos datos de OpenStreetMap disponibles:"
 
 #: templates/maposmatic/index.html:83
 msgid "<i class=\"icon-white icon-ok\"></i> The rendering daemon is running."
-msgstr ""
+msgstr "<i class=\"icon-white icon-ok\"></i> El demonio de renderizado se está ejecutando."
 
 #: templates/maposmatic/index.html:85
 msgid ""
 "<i class=\"icon-white icon-off\"></i> The rendering daemon is not running: "
 "jobs will be queued until the rendering daemon is back up."
-msgstr ""
+msgstr "<i class=\"icon-white icon-off\"></i> El demonio de renderizado no está en marcha: se pondrá en cola los trabajos hasta que el demonio de renderizado sea restaurado."
 
 #: templates/maposmatic/index.html:91
 #, python-format
@@ -739,32 +741,32 @@ msgstr ""
 
 #: templates/maposmatic/map-full.html:41
 msgid "Updating now..."
-msgstr ""
+msgstr "Actualizando ahora..."
 
 #: templates/maposmatic/map-full.html:59 templates/maposmatic/maps.html:59
 #, python-format
 msgid "Request submitted: %(date)s"
-msgstr ""
+msgstr "Solicitud enviada: %(date)s"
 
 #: templates/maposmatic/map-full.html:64 templates/maposmatic/maps.html:64
 #, python-format
 msgid "Rendering started: %(date)s"
-msgstr ""
+msgstr "Renderizado comenzado: %(date)s"
 
 #: templates/maposmatic/map-full.html:69 templates/maposmatic/maps.html:69
 #, python-format
 msgid "Rendering completed: %(date)s"
-msgstr ""
+msgstr "Renderizado completado: %(date)s"
 
 #: templates/maposmatic/map-full.html:74 templates/maposmatic/maps.html:74
 #, python-format
 msgid "Rendering cancelled: %(date)s"
-msgstr ""
+msgstr "Renderizado cancelado: %(date)s"
 
 #: templates/maposmatic/map-full.html:94 templates/maposmatic/maps.html:83
 #, python-format
 msgid "Pending, submitted %(date)s ago"
-msgstr ""
+msgstr "Pendiente, enviado hace %(date)s"
 
 #: templates/maposmatic/map-full.html:96 templates/maposmatic/maps.html:85
 msgid "Pending..."
@@ -773,16 +775,16 @@ msgstr "Pendiente..."
 #: templates/maposmatic/map-full.html:106
 #, python-format
 msgid "Cancel this queued request (position %(pos)s in the queue)"
-msgstr ""
+msgstr "Cancelar este pedido en cola (posición %(pos)s en la cola)"
 
 #: templates/maposmatic/map-full.html:107
 msgid "<i class=\"icon-white icon-remove-sign\"></i> Cancel"
-msgstr ""
+msgstr "<i class=\"icon-white icon-remove-sign\"></i> Cancelar"
 
 #: templates/maposmatic/map-full.html:118 templates/maposmatic/maps.html:93
 #, python-format
 msgid "Rendering is in progress, started %(date)s ago"
-msgstr ""
+msgstr "Renderizado en curso, comenzó hace %(date)s"
 
 #: templates/maposmatic/map-full.html:120 templates/maposmatic/maps.html:95
 msgid "Rendering..."
@@ -808,7 +810,7 @@ msgstr "índice"
 
 #: templates/maposmatic/map-full.html:152
 msgid "The generated files are no longer available."
-msgstr ""
+msgstr "Los archivos generados ya no están disponibles."
 
 #: templates/maposmatic/map-full.html:161
 #, python-format
@@ -825,7 +827,7 @@ msgstr "Ciudad"
 
 #: templates/maposmatic/map-full.html:175 templates/maposmatic/new.html:108
 msgid "Layout"
-msgstr ""
+msgstr "Disposición"
 
 #: templates/maposmatic/map-full.html:177 templates/maposmatic/new.html:115
 msgid "Stylesheet"
@@ -845,15 +847,15 @@ msgstr "Recrear mapa:"
 
 #: templates/maposmatic/maps.html:140
 msgid "Map thumbnail"
-msgstr ""
+msgstr "Mapa miniatura"
 
 #: templates/maposmatic/maps.html:160
 msgid "Our database does not contain any rendered maps for the moment."
-msgstr ""
+msgstr "Nuestra base de datos no contiene mapas renderizados por el momento."
 
 #: templates/maposmatic/maps.html:162
 msgid "No map matches your query."
-msgstr ""
+msgstr "Ningún mapa coincide con tu consulta."
 
 #: templates/maposmatic/maps.html:162
 msgid "Create a new map!"
@@ -861,7 +863,7 @@ msgstr "Crear un nuevo mapa"
 
 #: templates/maposmatic/new.html:41
 msgid "Generate your own map"
-msgstr ""
+msgstr "Genere su propio mapa"
 
 #: templates/maposmatic/new.html:56
 msgid "City search"
@@ -886,7 +888,7 @@ msgstr ""
 
 #: templates/maposmatic/new.html:122
 msgid "Map layout and stylesheet"
-msgstr ""
+msgstr "Disposición del mapa y hoja de estilo"
 
 #: templates/maposmatic/new.html:124
 msgid ""
@@ -907,13 +909,13 @@ msgstr "Orientación del papel"
 
 #: templates/maposmatic/new.html:153
 msgid "An error occured while retrieving compatible paper sizes."
-msgstr ""
+msgstr "Se produjo un error al recuperar los tamaños de papel compatibles."
 
 #: templates/maposmatic/new.html:156
 msgid ""
 "<i class=\"icon-refresh\"></i> Calculating available paper formats for your "
 "map..."
-msgstr ""
+msgstr "<i class=\"icon-refresh\"></i> Calculando los formatos de papel disponibles para el mapa..."
 
 #: templates/maposmatic/new.html:161
 msgid "Paper format and size"
@@ -921,7 +923,7 @@ msgstr "Formato y tamaño del papel:"
 
 #: templates/maposmatic/new.html:163
 msgid "Select the desired format, size and orientation for your map."
-msgstr ""
+msgstr "Seleccione el formato, el tamaño y la orientación deseado para el mapa."
 
 #: templates/maposmatic/new.html:172
 msgid "Map title"
@@ -933,7 +935,7 @@ msgstr "Idioma"
 
 #: templates/maposmatic/new.html:187
 msgid "Summary"
-msgstr ""
+msgstr "Resumen"
 
 #: templates/maposmatic/new.html:190
 msgid "Location:"
@@ -941,7 +943,7 @@ msgstr "Localización:"
 
 #: templates/maposmatic/new.html:191
 msgid "Layout:"
-msgstr ""
+msgstr "Disposición:"
 
 #: templates/maposmatic/new.html:192
 msgid "Stylesheet:"
@@ -953,21 +955,21 @@ msgstr "Formato del papel:"
 
 #: templates/maposmatic/new.html:199
 msgid "Generate &raquo;"
-msgstr ""
+msgstr "Generar &raquo;"
 
 #: templates/maposmatic/new.html:205
 msgid "Almost there!"
-msgstr ""
+msgstr "Casi listo!"
 
 #: templates/maposmatic/new.html:207
 msgid ""
 "You're almost ready to request to map rendering! Select the map\n"
 "language, eventually adjust the title of your map, and you're good to go!"
-msgstr ""
+msgstr "Usted está casi listo para solicitar el renderizado del mapa! Seleccione el mapa\nidioma, eventualmente ajuste el título de su mapa, y usted estará listo para comenzar!"
 
 #: templates/maposmatic/suggest.js:40
 msgid "Start typing for suggestions..."
-msgstr ""
+msgstr "Empieza a escribir para sugerencias..."
 
 #: templates/maposmatic/wizard.js:365
 msgid "Clear selected area"
