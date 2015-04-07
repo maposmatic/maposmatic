@@ -3,13 +3,14 @@
 # This file is distributed under the same license as the PACKAGE package.
 # 
 # Translators:
-# karvjorm <karvonen.jorma@gmail.com>, 2014
+# Jorma Karvonen <karvonen.jorma@gmail.com>, 2015
+# Jorma Karvonen <karvonen.jorma@gmail.com>, 2014
 msgid ""
 msgstr ""
 "Project-Id-Version: MapOSMatic\n"
 "Report-Msgid-Bugs-To: \n"
-"PO-Revision-Date: 2014-08-25 15:18+0000\n"
-"Last-Translator: karvjorm <karvonen.jorma@gmail.com>\n"
+"PO-Revision-Date: 2015-01-01 20:08+0000\n"
+"Last-Translator: Jorma Karvonen <karvonen.jorma@gmail.com>\n"
 "Language-Team: Finnish (Finland) (http://www.transifex.com/projects/p/maposmatic/language/fi_FI/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -431,7 +432,7 @@ msgstr "Avustajat"
 
 #: templates/maposmatic/about.html:170
 msgid "Core team"
-msgstr ""
+msgstr "Ydinryhmä"
 
 #: templates/maposmatic/about.html:173 templates/maposmatic/about.html:174
 #: templates/maposmatic/about.html:175 templates/maposmatic/about.html:177
@@ -446,7 +447,7 @@ msgstr ""
 #: templates/maposmatic/about.html:178
 msgid ""
 "Developer, system administration, GIS database maintenance and site design"
-msgstr ""
+msgstr "Kehittäjä, järjestelmäylläpitäjä, GIS-tietokantahuolto ja sivustosuunnittelu"
 
 #: templates/maposmatic/about.html:179
 msgid "Developer, treasurer"
@@ -466,59 +467,59 @@ msgstr "italiaislokalisointi"
 
 #: templates/maposmatic/about.html:191
 msgid "Catalan translation"
-msgstr ""
+msgstr "katalaaninkielinen lokalisointi"
 
 #: templates/maposmatic/about.html:192
 msgid "Russian translation"
-msgstr ""
+msgstr "venäjänkielinen lokalisointi"
 
 #: templates/maposmatic/about.html:193
 msgid "Arabic translation"
-msgstr ""
+msgstr "arabiankielinen lokalisointi"
 
 #: templates/maposmatic/about.html:194 templates/maposmatic/about.html:195
 msgid "Brasilian portuguese translation"
-msgstr ""
+msgstr "Brasilian portugalinkielinen lokalisointi"
 
 #: templates/maposmatic/about.html:196
 msgid "Danish translation"
-msgstr ""
+msgstr "tanskankielinen lokalisointi"
 
 #: templates/maposmatic/about.html:197
 msgid "Dutch translation"
-msgstr ""
+msgstr "hollanninkielinen lokalisointi"
 
 #: templates/maposmatic/about.html:198
 msgid "Croatian translation"
-msgstr ""
+msgstr "kroatiankielinen lokalisointi"
 
 #: templates/maposmatic/about.html:199
 msgid "Polish translation"
-msgstr ""
+msgstr "puolankielinen lokalisointi"
 
 #: templates/maposmatic/about.html:200
 msgid "Indonesian translation"
-msgstr ""
+msgstr "indonesinakielinen lokalisointi"
 
 #: templates/maposmatic/about.html:201 templates/maposmatic/about.html:202
 msgid "Norwegian bokmål translation"
-msgstr ""
+msgstr "Norjan bokmål-kielinen lokalisointi"
 
 #: templates/maposmatic/about.html:202
 msgid "Norwegian nynorsk translation"
-msgstr ""
+msgstr "Norjan nynorsk-kielinen lokalisointi"
 
 #: templates/maposmatic/about.html:203
 msgid "Turkish translation"
-msgstr ""
+msgstr "turkinkielinen lokalisointi"
 
 #: templates/maposmatic/about.html:203
 msgid "Translation automation"
-msgstr ""
+msgstr "Käännösautomaatio"
 
 #: templates/maposmatic/about.html:204
 msgid "Kirgyz translation"
-msgstr ""
+msgstr "kirkiisinkielinen lokalisointi"
 
 #: templates/maposmatic/about.html:205
 msgid "Printable stylesheet"
@@ -534,7 +535,7 @@ msgstr "Alustatila"
 
 #: templates/maposmatic/base.html:60
 msgid "Rendering daemon: "
-msgstr ""
+msgstr "Renderointitaustaprosessi:"
 
 #: templates/maposmatic/base.html:61
 msgid "GIS database: "
@@ -542,7 +543,7 @@ msgstr "GIS-tietokanta:"
 
 #: templates/maposmatic/base.html:69
 msgid "Home"
-msgstr ""
+msgstr "Koti"
 
 #: templates/maposmatic/base.html:70 templates/maposmatic/new.html:34
 msgid "Create map"
@@ -626,7 +627,7 @@ msgstr ""
 
 #: templates/maposmatic/donate.html:63
 msgid "Considering making a donation?"
-msgstr ""
+msgstr "Harkitsetko lahjoituksen tekemistä?"
 
 #: templates/maposmatic/donate.html:66
 msgid ""
@@ -637,7 +638,7 @@ msgstr ""
 
 #: templates/maposmatic/donate.html:75 templates/maposmatic/index.html:129
 msgid "Donate via PayPal &raquo;"
-msgstr ""
+msgstr "Lahjoita PayPalin kautta &raquo;"
 
 #: templates/maposmatic/index.html:36
 msgid "Welcome to MapOSMatic!"
@@ -762,11 +763,11 @@ msgstr "Renderointi peruttu: %(date)s"
 #: templates/maposmatic/map-full.html:94 templates/maposmatic/maps.html:83
 #, python-format
 msgid "Pending, submitted %(date)s ago"
-msgstr ""
+msgstr "Odotetaan, lähetetty %(date)s päivää sitten"
 
 #: templates/maposmatic/map-full.html:96 templates/maposmatic/maps.html:85
 msgid "Pending..."
-msgstr ""
+msgstr "Odotetaan..."
 
 #: templates/maposmatic/map-full.html:106
 #, python-format
@@ -784,7 +785,7 @@ msgstr ""
 
 #: templates/maposmatic/map-full.html:120 templates/maposmatic/maps.html:95
 msgid "Rendering..."
-msgstr ""
+msgstr "Renderoidaan..."
 
 #: templates/maposmatic/map-full.html:129
 #: templates/maposmatic/map-full.html:153 templates/maposmatic/maps.html:102
@@ -951,7 +952,7 @@ msgstr "Paperimuoto:"
 
 #: templates/maposmatic/new.html:199
 msgid "Generate &raquo;"
-msgstr ""
+msgstr "Tuota &raquo;"
 
 #: templates/maposmatic/new.html:205
 msgid "Almost there!"
