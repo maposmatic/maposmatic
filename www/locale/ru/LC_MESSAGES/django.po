@@ -3,13 +3,14 @@
 # This file is distributed under the same license as the PACKAGE package.
 # 
 # Translators:
+# Nikolay Parukhin <parukhin@gmail.com>, 2015
 # Viktar Palstsiuk <vipals@gmail.com>, 2013
 msgid ""
 msgstr ""
 "Project-Id-Version: MapOSMatic\n"
 "Report-Msgid-Bugs-To: \n"
-"PO-Revision-Date: 2013-11-20 12:37+0000\n"
-"Last-Translator: Hakan Tandogan <hakan.tandogan@gmail.com>\n"
+"PO-Revision-Date: 2015-04-01 22:07+0000\n"
+"Last-Translator: Nikolay Parukhin <parukhin@gmail.com>\n"
 "Language-Team: Russian (http://www.transifex.com/projects/p/maposmatic/language/ru/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -76,7 +77,7 @@ msgstr "Карта на нескольких страницах"
 #: maposmatic/forms.py:101
 #, python-format
 msgid "The %(layout_name)s layout"
-msgstr ""
+msgstr "Макет %(layout_name)s"
 
 #: maposmatic/forms.py:109
 msgid "The default OpenStreetMap.org style"
@@ -96,7 +97,7 @@ msgstr "Стиль MapQuest Великобритании"
 
 #: maposmatic/forms.py:117
 msgid "A MapOSMatic-specific stylesheet suitable for printing"
-msgstr ""
+msgstr "Таблица стилей MapOSMatic подходит для печати"
 
 #: maposmatic/forms.py:119
 #, python-format
@@ -105,7 +106,7 @@ msgstr "Таблица стилей <i>%(stylesheet_name)s</i>"
 
 #: maposmatic/forms.py:126
 msgid "Best fit <em class=\"papersize\"></em>"
-msgstr ""
+msgstr "Разместить на <em class=\"papersize\"></em>"
 
 #: maposmatic/forms.py:157
 msgid "Map title required"
@@ -113,7 +114,7 @@ msgstr "Требуется название карты"
 
 #: maposmatic/forms.py:162
 msgid "Layout required"
-msgstr ""
+msgstr "Требуется макет"
 
 #: maposmatic/forms.py:167
 msgid "Stylesheet required"
@@ -160,7 +161,7 @@ msgstr "Административная граница слишком вели�
 
 #: maposmatic/nominatim.py:300
 msgid "No administrative boundary details from GIS"
-msgstr ""
+msgstr "В ГИС отсутствуют административные границы"
 
 #: maposmatic/nominatim.py:314
 msgid "No administrative boundary"
@@ -188,7 +189,7 @@ msgstr "<i class=\"icon-warning-sign\"></i> Область слишком вел
 
 #: maposmatic/widgets.py:71
 msgid "Remove any selected region from the map"
-msgstr ""
+msgstr "Удалите любой выделенный регион с карты"
 
 #: maposmatic/templatetags/extratags.py:34
 msgid "Waiting for rendering to begin..."
@@ -328,7 +329,7 @@ msgid ""
 "Renders an index of the streets, based on\n"
 "  OpenStreetMap data and the intersection of the streets with the\n"
 "  squares on the map."
-msgstr ""
+msgstr "Отображает индекс улиц, на основе \nданных OpenStreetMap и пересечении улиц \nс квадратами на карте."
 
 #: templates/maposmatic/about.html:102
 msgid ""
@@ -441,16 +442,16 @@ msgstr "Разработчик"
 
 #: templates/maposmatic/about.html:176
 msgid "Developer and Mapnik stylesheets"
-msgstr ""
+msgstr "Разработчик и таблицы стилей Mapnik"
 
 #: templates/maposmatic/about.html:178
 msgid ""
 "Developer, system administration, GIS database maintenance and site design"
-msgstr ""
+msgstr "Разработчик, системный администратор, эксплуатация ГИС базы данных и дизайн сайта"
 
 #: templates/maposmatic/about.html:179
 msgid "Developer, treasurer"
-msgstr ""
+msgstr "Разработчик, казначей"
 
 #: templates/maposmatic/about.html:186
 msgid "Other contributors"
@@ -514,7 +515,7 @@ msgstr "Перевод на турецкий"
 
 #: templates/maposmatic/about.html:203
 msgid "Translation automation"
-msgstr ""
+msgstr "Автоматизирование перевода"
 
 #: templates/maposmatic/about.html:204
 msgid "Kirgyz translation"
@@ -522,11 +523,11 @@ msgstr "Перевод на киргизский"
 
 #: templates/maposmatic/about.html:205
 msgid "Printable stylesheet"
-msgstr ""
+msgstr "Печатная таблица стилей"
 
 #: templates/maposmatic/base.html:41
 msgid "Maps feed"
-msgstr ""
+msgstr "Поток карт"
 
 #: templates/maposmatic/base.html:58 templates/maposmatic/index.html:65
 msgid "Platform status"
@@ -569,7 +570,7 @@ msgid ""
 "MapOSMatic website and rendering pipeline hosted by <a "
 "href=\"http://www.enix.org\">eNiX</a>.<br />GIS database hosted by the <a "
 "href=\"http://www.fsffrance.org\">Free Software Foundation France</a>."
-msgstr ""
+msgstr "Сайт MapOSMatic и конвейер отрисовки размещены на <a href=\"http://www.enix.org\">eNiX</a>.<br />ГИС база данных размещена <a href=\"http://www.fsffrance.org\">Free Software Foundation France</a>."
 
 #: templates/maposmatic/donate-thanks.html:34
 msgid "Thanks!"
@@ -670,7 +671,7 @@ msgstr "Создать карту &raquo;"
 #: templates/maposmatic/index.html:69
 #, python-format
 msgid "%(queued)s job%(qp)s in the rendering queue."
-msgstr ""
+msgstr "%(queued)s задание%(qp)s в очереди отрисовки."
 
 #: templates/maposmatic/index.html:75
 #, python-format
@@ -679,7 +680,7 @@ msgid ""
 "rendering daemon is running and the GIS database was <span "
 "class=\"tooltipped\" data-original-title=\"%(gis_lastupdate)s\">updated "
 "%(date)s ago</span>."
-msgstr ""
+msgstr "<i class=\"icon-white icon-ok\"></i> Все системы находятся в рабочем состоянии. Демон отрисовки работает и ГИС база данных <span class=\"tooltipped\" data-original-title=\"%(gis_lastupdate)s\">обновлена %(date)s назад</span>."
 
 #: templates/maposmatic/index.html:78
 msgid ""
@@ -703,7 +704,7 @@ msgid ""
 "<i class=\"icon-white icon-ok\"></i> The GIS database is online and up to "
 "date, <span class=\"tooltipped\" data-original-"
 "title=\"%(gis_lastupdate)s\">updated %(date)s ago</span>."
-msgstr ""
+msgstr "<i class=\"icon-white icon-ok\"></i> ГИС база данных в режиме онлайн, <span class=\"tooltipped\" data-original-title=\"%(gis_lastupdate)s\">обновлена %(date)s назад</span>."
 
 #: templates/maposmatic/index.html:94
 #, python-format
@@ -711,13 +712,13 @@ msgid ""
 "<i class=\"icon-white icon-warning-sign\"></i> The GIS database is not up to"
 " date and was only <span class=\"tooltipped\" data-original-"
 "title=\"%(gis_lastupdate)s\">updated %(date)s ago</span>."
-msgstr ""
+msgstr "<i class=\"icon-white icon-warning-sign\"></i> ГИС база данных не актуализирована и была <span class=\"tooltipped\" data-original-title=\"%(gis_lastupdate)s\">обновлена %(date)s назад</span>."
 
 #: templates/maposmatic/index.html:96
 msgid ""
 "<i class=\"icon-white icon-off\"></i> The GIS database is not available. "
 "Renderings cannot be processed at this time."
-msgstr ""
+msgstr "<i class=\"icon-white icon-off\"></i> ГИС база данных не доступна. Отрисовка не может быть выполнена в текущее время."
 
 #: templates/maposmatic/index.html:106
 msgid "Latest news"
@@ -726,7 +727,7 @@ msgstr "Последние новости"
 #: templates/maposmatic/index.html:112
 #, python-format
 msgid "published %(date)s ago"
-msgstr ""
+msgstr "опубликована %(date)s назад"
 
 #: templates/maposmatic/index.html:122
 msgid ""
@@ -762,11 +763,11 @@ msgstr "Отрисовка отменена: %(date)s"
 #: templates/maposmatic/map-full.html:94 templates/maposmatic/maps.html:83
 #, python-format
 msgid "Pending, submitted %(date)s ago"
-msgstr ""
+msgstr "В ожидании, отправлено %(date)s назад"
 
 #: templates/maposmatic/map-full.html:96 templates/maposmatic/maps.html:85
 msgid "Pending..."
-msgstr ""
+msgstr "Ожидание..."
 
 #: templates/maposmatic/map-full.html:106
 #, python-format
@@ -780,7 +781,7 @@ msgstr "<i class=\"icon-white icon-remove-sign\"></i> Отменить"
 #: templates/maposmatic/map-full.html:118 templates/maposmatic/maps.html:93
 #, python-format
 msgid "Rendering is in progress, started %(date)s ago"
-msgstr ""
+msgstr "Выполняется отрисовка, начата %(date)s назад"
 
 #: templates/maposmatic/map-full.html:120 templates/maposmatic/maps.html:95
 msgid "Rendering..."
@@ -794,7 +795,7 @@ msgstr "Скачать"
 
 #: templates/maposmatic/map-full.html:134 templates/maposmatic/maps.html:107
 msgid "Download other formats and map indeces"
-msgstr ""
+msgstr "Скачать карты в других форматах и картографические индексы"
 
 #: templates/maposmatic/map-full.html:139 templates/maposmatic/maps.html:112
 msgid "map"
@@ -802,7 +803,7 @@ msgstr "карта"
 
 #: templates/maposmatic/map-full.html:144 templates/maposmatic/maps.html:117
 msgid "index"
-msgstr ""
+msgstr "индекс"
 
 #: templates/maposmatic/map-full.html:152
 msgid "The generated files are no longer available."
@@ -811,11 +812,11 @@ msgstr "Сгенерированные файлы больше недоступ�
 #: templates/maposmatic/map-full.html:161
 #, python-format
 msgid "Updating in <span>%(refresh)s</span>s..."
-msgstr ""
+msgstr "Обновление через <span>%(refresh)s</span>с..."
 
 #: templates/maposmatic/map-full.html:163
 msgid "Map details"
-msgstr ""
+msgstr "Нагрузка карты"
 
 #: templates/maposmatic/map-full.html:168
 msgid "City"
@@ -823,7 +824,7 @@ msgstr "Город"
 
 #: templates/maposmatic/map-full.html:175 templates/maposmatic/new.html:108
 msgid "Layout"
-msgstr ""
+msgstr "Макет"
 
 #: templates/maposmatic/map-full.html:177 templates/maposmatic/new.html:115
 msgid "Stylesheet"
@@ -843,7 +844,7 @@ msgstr "Создать повторно"
 
 #: templates/maposmatic/maps.html:140
 msgid "Map thumbnail"
-msgstr ""
+msgstr "Миниатюра карты"
 
 #: templates/maposmatic/maps.html:160
 msgid "Our database does not contain any rendered maps for the moment."
@@ -880,11 +881,11 @@ msgid ""
 "you want, or if you prefer to choose the exact area you want to render\n"
 "yourself, select the <em>Geographic area</em> tab and use the mini-map to set\n"
 "the limits of the rendered area."
-msgstr ""
+msgstr "Начните с выбора города или географической области, которую необходимо отрисовать. Предложения появятся после того, как вы начнете набирать название. Если вы не можете найти нужный город, или если вы предпочитаете выбрать точную область, которую необходимо отрисовать, выберите вкладку <em> Географическая область</em> и используйте мини-карту \nдля задания границ области отрисовки."
 
 #: templates/maposmatic/new.html:122
 msgid "Map layout and stylesheet"
-msgstr ""
+msgstr "Макет карты и таблица стилей"
 
 #: templates/maposmatic/new.html:124
 msgid ""
@@ -893,7 +894,7 @@ msgid ""
 "printing and binding. The map stylesheet determines the style and appearance of\n"
 "the map itself. Note that the stylesheet also drives what details will be\n"
 "visible on the map."
-msgstr ""
+msgstr "Макет карты определяет, как отрисовываются карта и индекс. <em>Карта на нескольких страницах</em> производит буклет очень подходящий для печати и переплета. Таблица стилей карты определяет стиль и внешний вид самой карты. Обратите внимание, что таблица стилей также определяет то, какие данные будут видны на карте."
 
 #: templates/maposmatic/new.html:137
 msgid "Paper size"
@@ -931,15 +932,15 @@ msgstr "Язык"
 
 #: templates/maposmatic/new.html:187
 msgid "Summary"
-msgstr ""
+msgstr "Итог"
 
 #: templates/maposmatic/new.html:190
 msgid "Location:"
-msgstr ""
+msgstr "Расположение:"
 
 #: templates/maposmatic/new.html:191
 msgid "Layout:"
-msgstr ""
+msgstr "Макет:"
 
 #: templates/maposmatic/new.html:192
 msgid "Stylesheet:"
@@ -969,4 +970,4 @@ msgstr "Начните печатать для подсказок..."
 
 #: templates/maposmatic/wizard.js:365
 msgid "Clear selected area"
-msgstr ""
+msgstr "Очистить выбранную область"
